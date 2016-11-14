@@ -46,7 +46,7 @@ class ZeroButton(Button):
         self.config(command=newcommand)
 
     # Change text
-    def set(self, text):
+    def set_text(self, text):
         self.config(text=text)
 
     # Change padding
