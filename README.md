@@ -9,11 +9,14 @@ There will eventually be a friendly installation process, but until then...
 git clone git://github.com/lawsie/guizero.git
 sudo nano ~/.bashrc
 ```
-At the end of the file, add the following line of code (where /home/pi/guizero is the folder containing guizero), then save
+At the end of the file, add the following line of code (where /home/pi/guizero is the folder containing guizero), then save.
 
 ```
 export PYTHONPATH="${PYTHONPATH}:/home/pi/guizero"
 ```
+
+When you're done, reboot your pi
+```sudo reboot```
 
 # Mission statement
 The aim of guizero is to make the process of creating simple GUIs quick, accessible and understandable for children.
