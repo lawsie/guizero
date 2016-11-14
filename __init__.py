@@ -5,6 +5,7 @@ except:
 import utilities as utils
 from App import App
 from Box import Box
+from CheckBox import CheckBox
 from Combo import Combo
 from MenuBar import MenuBar
 from Picture import Picture
