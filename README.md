@@ -5,10 +5,10 @@ The aim of guizero is to make the process of creating simple GUIs quick, accessi
 
 # Aims
 * Works with standard Python GUI library (and no need to install other libraries)
-* Abstracts away details such as Tkinter StringVar() objects
+* Abstracts away details children find hard (such as Tkinter StringVar() objects)
 * Accessible widget naming system to help children to build up a mental model
-* Flexible enough to be used for projects up to A-Level standard, accessible to primary school children
-* Comprehensive and accessible documentation with examples
+* Flexible enough to be used for projects up to A-Level standard, yet accessible to primary school children
+* Comprehensive and accessible documentation with examples - Coming Soon!
 * Helpful error messages
 
 # Included at the moment
