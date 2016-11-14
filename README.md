@@ -29,3 +29,7 @@ The aim of guizero is to make the process of creating simple GUIs quick, accessi
 * Add Alert (pop up message)
 * Add docstrings
 * Work out why you have to import tkinter separately at the start of each class file(?!)
+
+# Examples
+There are no docs at the moment so you'll have to look at the code.
+I made some examples of a [general GUI](general_example.md) and a [colour picker](colour_example.md)
