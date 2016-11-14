@@ -4,7 +4,7 @@ GUIZERO IS NOT FINISHED! There are no docs, no nice installation process, and so
 You probably want to wait until it's finished before using this with real children :)
 
 ## Install on Raspberry Pi
-
+There will eventually be a friendly installation process, but until then...
 ```
 git clone git://github.com/lawsie/guizero.git
 sudo nano ~/.bashrc
