@@ -33,6 +33,7 @@ The aim of guizero is to make the process of creating simple GUIs quick, accessi
 * Add docstrings
 * Work out why you have to import tkinter separately at the start of each class file(?!)
 * Probably fix numerous bugs
+* Package this properly to allow easy installation (would love some help with this)
 
 # Examples
 There are no docs at the moment so you'll have to look at the code.
