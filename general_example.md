@@ -1,3 +1,4 @@
+```python
 # DEBUG ONLY ------------------------------------------------------------------------
 
 # guizero package should be in a sub folder to the folder containing this script
@@ -7,7 +8,7 @@ import os
 
 # Get path of this script and append guizero
 this_script = os.path.dirname(os.path.realpath(sys.argv[0])).replace("\\", "/")+"/guizero"
-```python
+
 print( "Path to module - " + this_script )
 
 # Add the package to the python path
