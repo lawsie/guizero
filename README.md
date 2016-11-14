@@ -12,7 +12,7 @@ sudo nano ~/.bashrc
 At the end of the file, add the following line of code (where /home/pi/guizero/ is the folder containing guizero), then save
 
 ```
-export PYTHONPATH="${PYTHONPATH}:/home/pi/guizero/"
+export PYTHONPATH="${PYTHONPATH}:/home/pi/guizero"
 ```
 
 # Mission statement
