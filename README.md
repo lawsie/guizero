@@ -3,6 +3,18 @@
 GUIZERO IS NOT FINISHED! There are no docs, no nice installation process, and some functionality is missing! 
 You probably want to wait until it's finished before using this with real children :)
 
+## Install on Raspberry Pi
+
+```
+git clone git://github.com/lawsie/guizero.git
+sudo nano ~/.bashrc
+```
+At the end of the file, add the following line of code (where /home/pi/guizero/ is the folder containing guizero), then save
+
+```
+export PYTHONPATH="${PYTHONPATH}:/home/pi/guizero/"
+```
+
 # Mission statement
 The aim of guizero is to make the process of creating simple GUIs quick, accessible and understandable for children.
 
