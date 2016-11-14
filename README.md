@@ -9,7 +9,7 @@ You probably want to wait until it's finished before using this with real childr
 git clone git://github.com/lawsie/guizero.git
 sudo nano ~/.bashrc
 ```
-At the end of the file, add the following line of code (where /home/pi/guizero/ is the folder containing guizero), then save
+At the end of the file, add the following line of code (where /home/pi/guizero is the folder containing guizero), then save
 
 ```
 export PYTHONPATH="${PYTHONPATH}:/home/pi/guizero"
