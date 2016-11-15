@@ -8,10 +8,9 @@ import utilities as utils
 class CheckBox(Checkbutton):
 
     def __init__(self, master, text, command=None, grid=None, align=None):  
-
-        # Description of this object (for friendly error messages)
-        self.description = "[CheckBox] object"   
+      
         self.text = str(text)
+        self.description = "[CheckBox] object with text " + self.text
         self.value = IntVar()
 
         try:
@@ -30,7 +29,7 @@ class CheckBox(Checkbutton):
         if command is not None:
             self.config(command=command)
 
-    # Return text label for this checkbox
+    # Return text associated with this checkbox
     def get_text(self):
         return self.text
 
@@ -44,3 +43,4 @@ class CheckBox(Checkbutton):
     def change_text(self, newtext):
         self.text = str(newtext)
         self.config(text=self.text)
+        self.description = "[CheckBox] object with text " + str(self.text) 
