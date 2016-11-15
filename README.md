@@ -44,8 +44,6 @@ The aim of guizero is to make the process of creating simple GUIs quick, accessi
 * utilities - Some functions to help the GUI auto pack itself, to allow callbacks to be passed arguments and to format errors nicely
 
 # To do list
-* Add CheckBox 
-* Add RadioButton
 * Add Alert (pop up message)
 * Add docstrings
 * Work out why you have to import tkinter separately at the start of each class file(?!)
