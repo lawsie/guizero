@@ -6,8 +6,8 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name="guizero",
-    version="0.1.0",
+    name="GUIzero",
+    version="0.1.1",
     author="Laura Sach",
     author_email="laura.sach@raspberrypi.org",
     description="Python module to allow kids to easily create GUIs",
@@ -20,9 +20,6 @@ setup(
     ],
     url="https://github.com/lawsie/guizero",
     packages=find_packages(),
-    install_requires=[
-        "tkinter"
-    ],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
