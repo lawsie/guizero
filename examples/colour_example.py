@@ -1,16 +1,14 @@
-
-```python
 from guizero import *
 
 
-def set_color(value):	
+def set_color(value):
 	try:
 		rgb = '#%02x%02x%02x' % (red.get(), green.get(), blue.get())
 		coloured_text.set(rgb)
 		coloured_text.color(rgb)
 	except:
 		print("Something went wrong with setting colours")
-	
+
 
 app = App()
 
@@ -34,4 +32,3 @@ coloured_text = Text(app, "Coloured text", size=40, grid=[4,1])
 
 
 app.display()
-```

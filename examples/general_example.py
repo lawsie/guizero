@@ -1,4 +1,3 @@
-```python
 from guizero import *
 
 # Functions you write that are called by widgets
@@ -32,7 +31,7 @@ app.rowconfigure(1, pad=20)
 name_label = Text(app, text="What is your name?", grid=[1,1], align="right")
 
 # Create a text box
-# OPTIONAL text(str), width(int) 
+# OPTIONAL text(str), width(int)
 name = TextBox(app, width=30, grid=[1,2])
 
 
@@ -44,12 +43,10 @@ pokemon = Combo(app, ["Zapdos", "Gyarados", "Weedle"], grid=[2,2], align="left")
 
 # Create a button
 # master(obj), text(str), command(function), OPTIONAL padx(int), pady(int)
-button = ZeroButton(app, donothing, text="Button!", grid=[3,2], align="left")
+button = PushButton(app, donothing, text="Button!", grid=[3,2], align="left")
 
 rockstar = Text(app, grid=[4,2], align="left")
 
 
 
 app.display()
-```
-
