@@ -5,12 +5,12 @@ except ImportError:
 
 import utilities as utils
     
-class ZeroButton(Button):
+class PushButton(Button):
 
     def __init__(self, master, command, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
 
         # Description of this object (for friendly error messages)
-        self.description = "[ZeroButton] object with text \"" + str(text) + "\""
+        self.description = "[PushButton] object with text \"" + str(text) + "\""
 
         # Attempt to instantiate the object and raise an error if failed
         try:

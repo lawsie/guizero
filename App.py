@@ -4,10 +4,10 @@ except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
 import utilities as utils
-    
+
 class App(Tk):
 
-    def __init__(self, manager="auto", title="GuiZero",  height=500, width=500):
+    def __init__(self, title="GUIzero", width=500, height=500, manager="auto"):
 
         try:
             super().__init__()
@@ -16,7 +16,7 @@ class App(Tk):
 
         # Initial setup
         self.title( str(title) )
-        self.geometry(str(height)+"x"+str(width))
+        self.geometry(str(width)+"x"+str(height))
         self.layout_manager = manager  		# Only behaves differently if equals "grid"
     
     
