@@ -4,7 +4,10 @@ except:
     from Tkinter import *
 
 # -----------------------------
-   
+__all__ = ['utilities', 'alerts', 'App', 'Box', 'ButtonGroup', 'CheckBox', 'Combo', 'MenuBar', 'Picture', 'PushButton',
+           'RadioButton', 'Slider', 'Text', 'TextBox', 'PushButton']
+
+
 import utilities as utils
 from alerts import *
 
