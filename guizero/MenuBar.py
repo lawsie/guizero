@@ -3,8 +3,8 @@ try:
 except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
-import utilities as utils
-from App import App
+from . import utilities as utils
+from .App import App
     
 class MenuBar(Menu):
 

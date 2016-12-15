@@ -1,8 +1,9 @@
 try:
     from tkinter import *
-except:
-    from Tkinter import *
-import utilities as utils
+except ImportError:
+    print("tkinter did not import successfully. Please check your setup.")
+
+from . import utilities as utils
 
 class Picture(Label):
 

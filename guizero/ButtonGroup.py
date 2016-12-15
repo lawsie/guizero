@@ -3,9 +3,9 @@ try:
 except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
-import utilities as utils
-from Box import Box
-from RadioButton import RadioButton
+from . import utilities as utils
+from .Box import Box
+from .RadioButton import RadioButton
 
     
 class ButtonGroup(Box):

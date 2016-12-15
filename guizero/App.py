@@ -3,7 +3,7 @@ try:
 except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
-import utilities as utils
+from . import utilities as utils
 
 class App(Tk):
 
