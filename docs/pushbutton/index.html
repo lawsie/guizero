@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>PushButton - GUI Zero</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "PushButton";
+    var mkdocs_page_input_path = "pushbutton.md";
+    var mkdocs_page_url = "/pushbutton/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../about/" class="icon icon-home"> GUI Zero</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../about/">About</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../howto/">How to...</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../start/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../alerts/">Alerts</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../app/">App</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../box/">Box</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../buttongroup/">ButtonGroup</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../checkbox/">CheckBox</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../combo/">Combo</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../menubar/">MenuBar</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../picture/">Picture</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">PushButton</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#pushbutton">PushButton</a></li>
+                
+                    <li><a class="toctree-l4" href="#purpose">Purpose</a></li>
+                
+                    <li><a class="toctree-l4" href="#create-a-pushbutton-object">Create a PushButton object</a></li>
+                
+                    <li><a class="toctree-l4" href="#methods">Methods</a></li>
+                
+                    <li><a class="toctree-l4" href="#examples">Examples</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../slider/">Slider</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../text/">Text</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../textbox/">TextBox</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../about/">GUI Zero</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../about/">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>PushButton</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="pushbutton">PushButton</h1>
+<p>(Extends the <code>Button</code> class from <code>tkinter</code>)</p>
+<h3 id="purpose">Purpose</h3>
+<p>Display a button with text or an image, which calls a function when pressed</p>
+<pre><code>class guizero.PushButton(master, command, args=None, text=&quot;Button&quot;, icon=None, pady=10,
+padx=10, grid=None, align=None)
+</code></pre>
+
+<h3 id="create-a-pushbutton-object">Create a PushButton object</h3>
+<p>Create a basic PushButton object like this:</p>
+<pre><code class="python">def do_nothing():
+  print(&quot;Button was pressed&quot;)
+
+app = App()
+button = PushButton(app, do_nothing)
+app.display()
+</code></pre>
+
+<p>The above code looks like this on Windows:
+<img alt="PushButton on Windows" src="../images/pushbutton_windows.png" /></p>
+<p>When creating a PushButton object, you can specify the following parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Takes</th>
+<th>Default</th>
+<th>Compulsory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>master</td>
+<td>App or Box</td>
+<td>-</td>
+<td>Yes</td>
+<td>The container to which this widget belongs</td>
+</tr>
+<tr>
+<td>command</td>
+<td>function name</td>
+<td>None</td>
+<td>Yes</td>
+<td>The name of a function to call when the button is pressed.</td>
+</tr>
+<tr>
+<td>args</td>
+<td>List</td>
+<td>None</td>
+<td>No</td>
+<td>If you wish to pass any arguments to the function specified in the command paramter, you can specify them as a list</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>"Button"</td>
+<td>No</td>
+<td>The text to display on the button</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>string</td>
+<td>None</td>
+<td>No</td>
+<td>The path to a GIF image file to display on the button. If both an image and text are specified, the image will override the text.</td>
+</tr>
+<tr>
+<td>pady</td>
+<td>int</td>
+<td>10</td>
+<td>No</td>
+<td>How much vertical padding to add between the text/icon and the edge of the button.</td>
+</tr>
+<tr>
+<td>padx</td>
+<td>int</td>
+<td>10</td>
+<td>No</td>
+<td>How much horizontal padding to add between the text/icon and the edge of the button.</td>
+</tr>
+<tr>
+<td>grid</td>
+<td>List [int, int]</td>
+<td>None</td>
+<td>No</td>
+<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
+</tr>
+<tr>
+<td>align</td>
+<td>string</td>
+<td>None</td>
+<td>No</td>
+<td>Alignment of this widget within its grid location. Possible values: <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>. This parameter is only required if the <code>master</code> object has a grid layout.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods">Methods</h3>
+<p>You can call the following methods on your PushButton object</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Takes</th>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>change_command(newcommand, args)</td>
+<td>newcommand (function name), args (List)</td>
+<td>-</td>
+<td>Sets the function called when the button is pressed to the one specified as <code>newcommand</code>. You can optionally specify new <code>args</code> as a list.</td>
+</tr>
+<tr>
+<td>set_text(text)</td>
+<td>text (string)</td>
+<td>-</td>
+<td>Sets the text on the button to the string specified in <code>text</code>.</td>
+</tr>
+<tr>
+<td>padding(padx, pady)</td>
+<td>padx (int), pady(int)</td>
+<td>-</td>
+<td>Sets the amount of x (horizontal) and y (vertical) padding between the text/icon and the edge of the button</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<p><strong>Creating a PushButton</strong></p>
+<p>The simplest way to create a PushButton object is as follows:</p>
+<pre><code class="python">def do_nothing():
+  print(&quot;Button was pressed&quot;)
+
+app = App()
+button = PushButton(app, do_nothing)
+app.display()
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../slider/" class="btn btn-neutral float-right" title="Slider">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../picture/" class="btn btn-neutral" title="Picture"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../picture/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../slider/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
