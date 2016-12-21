@@ -19,7 +19,7 @@ class ButtonGroup(Box):
 
         # Init the box
         try:    
-            super().__init__(master, manager="auto")
+            super().__init__(master, layout="auto")
         except AttributeError:
             utils.error_format( self.description + "\n" + 
             "The first argument was a " + str(type(master)) +". First argument must be [App] or [Box]")

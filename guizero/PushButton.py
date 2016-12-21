@@ -42,7 +42,9 @@ class PushButton(Button):
 
 
     # Change command
-    def change_command(self, newcommand):
+    def change_command(self, newcommand, args=None):
+        if args is not None:            
+            newcommand = utils.with_args(newcommand, *args)
         self.config(command=newcommand)
 
     # Change text
