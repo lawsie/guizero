@@ -25,7 +25,7 @@ class ButtonGroup(Box):
             "The first argument was a " + str(type(master)) +". First argument must be [App] or [Box]")
 
         for button in options:
-            rbutton = RadioButton(self, text=button[0], value=button[1], variable=self.selected)
+            rbutton = RadioButton(self, text=str(button[0]), value=str(button[1]), variable=self.selected)
 
             # Add a command if there was one
             if command is not None:
