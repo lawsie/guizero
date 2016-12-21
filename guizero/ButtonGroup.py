@@ -26,7 +26,6 @@ class ButtonGroup(Box):
 
         for button in options:
             rbutton = RadioButton(self, text=button[0], value=button[1], variable=self.selected)
-            print (rbutton.description)
 
             # Add a command if there was one
             if command is not None:

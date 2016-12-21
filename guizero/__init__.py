@@ -12,7 +12,7 @@ from .alerts import info, warn, error, yesno
 
 from .App import App
 from .Box import Box
-from . import ButtonGroup
+from .ButtonGroup import ButtonGroup
 from .CheckBox import CheckBox
 from .Combo import Combo
 from .MenuBar import MenuBar

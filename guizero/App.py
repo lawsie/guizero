@@ -7,7 +7,7 @@ from . import utilities as utils
 
 class App(Tk):
 
-    def __init__(self, title="GUIzero", width=500, height=500, manager="auto"):
+    def __init__(self, title="GUIzero", width=500, height=500, layout="auto"):
 
         try:
             super().__init__()
@@ -17,7 +17,7 @@ class App(Tk):
         # Initial setup
         self.title( str(title) )
         self.geometry(str(width)+"x"+str(height))
-        self.layout_manager = manager  		# Only behaves differently if equals "grid"
+        self.layout_manager = layout  		# Only behaves differently if equals "grid"
     
     
     # Alias of mainloop with friendlier name
