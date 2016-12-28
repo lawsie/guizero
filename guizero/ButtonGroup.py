@@ -8,23 +8,27 @@ from .Box import Box
 from .RadioButton import RadioButton
 
     
-class ButtonGroup(Box):
+class ButtonGroup(Frame):
 
-    def __init__(self, master, options, selected, command=None, grid=None, align=None):  
+    def __init__(self, master, options, selected, orient="vertical", command=None, grid=None, align=None):  
               
         self.selected = StringVar()
         self.selected.set(str(selected))    # Should be the hidden value not the text
         self.description = "[ButtonGroup] object with selected option \"" + self.selected.get() + "\""
         self.options = []   # List of RadioButton objects
+        self.layout_manager = "grid"
 
         # Init the box
         try:    
-            super().__init__(master, layout="auto")
+            super().__init__(master)
         except AttributeError:
             utils.error_format( self.description + "\n" + 
             "The first argument was a " + str(type(master)) +". First argument must be [App] or [Box]")
 
-        for button in options:
+        gridx = 0
+        gridy = 0
+
+        for button in options:          
             rbutton = RadioButton(self, text=str(button[0]), value=str(button[1]), variable=self.selected)
 
             # Add a command if there was one
@@ -34,8 +38,17 @@ class ButtonGroup(Box):
             # Track this object
             self.options.append(rbutton)
 
-            # Pack this object
-            utils.auto_pack(rbutton, self, grid, align)
+            # Place on grid
+            utils.auto_pack(rbutton, self, [gridx, gridy], "left")
+
+            # Which way the buttons go
+            if orient == "vertical":
+                gridx += 1
+            else:
+                gridy += 1
+
+        # Pack the whole button group
+        utils.auto_pack(self, master, grid, align)
         
     # Get selected value
     def get(self):

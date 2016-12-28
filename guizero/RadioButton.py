@@ -18,12 +18,12 @@ class RadioButton(Radiobutton):
         
         try:
             super().__init__(master, text=text, value=value, variable=variable)
-            utils.auto_pack(self, master, grid, align)
+            #utils.auto_pack(self, master, grid, align)
         
 
         except AttributeError:
             utils.error_format( self.description + "\n" + 
-            "The first argument was a " + str(type(master)) +". First argument must be [App] or [Box]")
+            "The first argument was a " + str(type(master)) +". First argument must be [ButtonGroup]")
 
         
 
