@@ -206,10 +206,10 @@
             <div class="section">
               
                 <h1 id="buttongroup">ButtonGroup</h1>
-<p>(Extends the <code>Box</code> class)</p>
+<p>(Extends the <code>Frame</code> class from <code>tkinter</code>)</p>
 <h3 id="purpose">Purpose</h3>
 <p>Display a group of radio buttons to allow the user to choose an option</p>
-<pre><code>class guizero.ButtonGroup(master, options, selected, command=None, grid=None, align=None)
+<pre><code>class guizero.ButtonGroup(master, options, selected, orient=&quot;vertical&quot;, command=None, grid=None, align=None)
 </code></pre>
 
 <h3 id="create-a-buttongroup-object">Create a ButtonGroup object</h3>
@@ -227,7 +227,7 @@ app.display()
 <p>The <code>options</code> parameter takes a 2D list (a list of lists) of options to display. The numerical values in this example are hidden, but will be returned by the method <code>get()</code>. <strong>All items provided in the options list will be autmatically converted to strings when added to the ButtonGroup.</strong></p>
 <p>The code above will look like this on Windows:</p>
 <p><img alt="Windows ButtonGroup" src="../images/buttongroup_windows.png" /></p>
-<p>When creating a ButtonGroup object, you can specify the following parameters.</p>
+<p>When creating a ButtonGroup object, you can specify the following parameters. (More information about how to specify parameters can be found in the <a href="../howto/">'How to...'' section</a>.</p>
 <table>
 <thead>
 <tr>
@@ -259,6 +259,13 @@ app.display()
 <td>-</td>
 <td>Yes</td>
 <td>The option that is selected. This should be the <strong>hidden value</strong> and NOT the text.</td>
+</tr>
+<tr>
+<td>orient</td>
+<td>string</td>
+<td>"vertical"</td>
+<td>No</td>
+<td>Whether the buttons stack vertically or horizontally.</td>
 </tr>
 <tr>
 <td>command</td>
