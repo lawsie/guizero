@@ -317,6 +317,35 @@ glitter = CheckBox(app, &quot;Add glitter&quot;)
 sparkles = CheckBox(app, &quot;Add sparkles&quot;)
 app.display()
 </code></pre>
+
+<p><strong>Calling a function when a CheckBox value changes</strong></p>
+<p>You can call a function when the value of a CheckBox changes (becomes ticked or unticked). In this example, all three CheckBoxes call the same function, but each CheckBox object could call a different function.</p>
+<pre><code class="python">def calculate_extras():
+    total = 0
+    if syrup.get_value() == 1:
+        total += 20
+    if sprinkles.get_value() == 1:
+        total += 10
+    if cream.get_value() == 1:
+        total += 50
+    cost.set(total)
+
+
+app = App()
+
+questions = Text(app, &quot;What would you like with your coffee?&quot;)
+
+syrup = CheckBox(app, &quot;Caramel syrup (20p)&quot;, command=calculate_extras)
+sprinkles = CheckBox(app, &quot;Chocolate sprinkles (10p)&quot;, command=calculate_extras)
+cream = CheckBox(app, &quot;Whipped cream (50p)&quot;, command=calculate_extras)
+
+cost_of_extras = Text(app, &quot;Cost of extras:&quot;)
+cost = TextBox(app, &quot;0&quot;)
+
+app.display()
+</code></pre>
+
+<p><img alt="CheckBox calling a function" src="../images/checkbox_function_windows.png" /></p>
               
             </div>
           </div>

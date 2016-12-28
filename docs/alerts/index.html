@@ -229,12 +229,12 @@ app.display()
 <li>If <code>No</code> was pressed, return <code>False</code></li>
 </ul>
 <p>You can store this value in a variable and test it:</p>
-<pre><code class="python">app = App(&quot;Biscuit monitor&quot;)
-eat_a_biscuit = yesno(&quot;Eating biscuits&quot;, &quot;Would you like to eat a biscuit?&quot;)
-if eat_a_biscuit == True:
-    info(&quot;Biscuit information&quot;, &quot;You have 10 biscuits left&quot;)
+<pre><code class="python">app = App(&quot;Snowman&quot;)
+build_a_snowman = yesno(&quot;A question...&quot;, &quot;Do you want to build a snowman?&quot;)
+if build_a_snowman == True:
+    info(&quot;Snowman&quot;, &quot;It doesn't have to be a snowman&quot;)
 else:
-    error(&quot;Biscuit error&quot;, &quot;That was a mistake!&quot;)
+    error(&quot;Snowman&quot;, &quot;Okay bye...&quot;)
 app.display()
 </code></pre>
 

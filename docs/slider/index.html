@@ -311,6 +311,19 @@ app.display()
 slider = Slider(app)
 app.display()
 </code></pre>
+
+<p><strong>Calling a function when the slider value changes</strong></p>
+<p>You can specify a function to call when the slider value changes. Your function <strong>MUST</strong> have a minimum of one parameter as it will automatically receive a string containing the value of the slider (called <code>slider_value</code> in the example) when it is called.</p>
+<p>This code has a slider and a text box, and the text box updates automatically to display the current value of the slider.</p>
+<p><img alt="Text box and slider" src="../images/textbox_slider_windows.png" /></p>
+<pre><code class="python">def slider_changed(slider_value):
+    textbox.set(slider_value)
+
+app = App()
+slider = Slider(app, command=slider_changed)
+textbox = TextBox(app)
+app.display()
+</code></pre>
               
             </div>
           </div>
