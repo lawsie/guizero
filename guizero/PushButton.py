@@ -51,6 +51,22 @@ class PushButton(Button):
     def set_text(self, text):
         self.config(text=text)
 
+    # Disable Button
+    def enabled(self):
+        self.config(state=NORMAL)
+
+    # Enable Button
+    def disabled(self):
+        self.config(state=DISABLED)
+
+    # Toggle button state 
+    def toggle_state(self):
+        button_state = self.cget("state")
+        if button_state == "disabled":
+            self.enabled()
+        elif button_state == "normal":
+            self.disabled()
+            
     # Change padding
     def padding(self, padx, pady):
         self.config(padx=padx, pady=pady)
