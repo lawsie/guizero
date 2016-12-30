@@ -51,11 +51,11 @@ class PushButton(Button):
     def set_text(self, text):
         self.config(text=text)
 
-    # Disable Button
+    # Enable Button
     def enabled(self):
         self.config(state=NORMAL)
 
-    # Enable Button
+    # Disable Button
     def disabled(self):
         self.config(state=DISABLED)
 
