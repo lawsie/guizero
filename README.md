@@ -1,10 +1,10 @@
-## GUIzero
+## gui zero
 
 Version 0.1.2
 
 ## Installing with pip
 
-```bash 
+```bash
 pip install guizero
 ```
 [Help, I don't know how to install something with pip](http://catcatcode.com/blog/installing-python-packages-with-pip/)
@@ -22,4 +22,8 @@ The aim of guizero is to make the process of creating simple GUIs quick, accessi
 
 # Documentation
 
-In progress!
+[http://lawsie.github.io/guizero](http://lawsie.github.io/guizero)
+
+# Contributing
+
+Contributions are welcome - please create a pull request for each fix/addition. The documentation for the latest release is in /docs as HTML files. Please edit the .md files inside /docs-src/docs folder to add documentation for a new feature.
