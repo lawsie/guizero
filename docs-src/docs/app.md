@@ -87,7 +87,7 @@ This will display the app with the updated title:
 
 You can lay components out in a grid and specify where they appear with grid layout.
 
-![App title](images/Keypad_windows.png)
+![App title](images/keypad_windows.png)
 
 ```python
 def do_nothing():
