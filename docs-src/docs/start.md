@@ -43,6 +43,8 @@ message = Text(app, “Welcome to the Hello world app!”)
 app.display()
 ```
 
+![Mac hello world example](images/mac-hello-world.png)
+
 There is a new line of code to add a piece of text. Let’s look at this piece of code in a bit more detail:
 
 ```python

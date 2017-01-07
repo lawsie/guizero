@@ -18,7 +18,9 @@ class App(Tk):
         self.title( str(title) )
         self.geometry(str(width)+"x"+str(height))
         self.layout_manager = layout  		# Only behaves differently if equals "grid"
-        self.configure(background=str(bgcolor))
+
+        if bgcolor is not None:
+            self.configure(background=str(bgcolor))
     
     
     # Alias of mainloop with friendlier name

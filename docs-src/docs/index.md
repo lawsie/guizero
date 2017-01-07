@@ -21,3 +21,15 @@ Make sure your Raspberry Pi is connected to the internet, then open a terminal w
 ```bash
 sudo pip3 install guizero
 ```
+
+# On Mac
+Open the terminal (you can search for it in the Launch Pad)
+
+![Mac terminal](images/mac-terminal.png)
+
+Type in the command:
+
+```bash
+sudo pip3 install guizero
+```
+![Mac install screenshot](images/mac-install.png)
