@@ -58,7 +58,7 @@ If `No` is pressed, an error box will be displayed
 
 ![Info popup](images/error_windows.png)
 
-**Using functions as a callback**
+**Example: Using an alert as a callback**
 
 You can also use these functions in a *callback* (when you have to provide a function for another widget to call). Here is an example with a `PushButton` which pops up an `info` box when it is pressed.
 
@@ -73,3 +73,24 @@ The arguments provided to the `PushButton` are:
 * Where the button should be created (within the `app`)
 * The name of the function to call when pressed (`info`)
 * A list of the arguments to the function you are calling (values for the `title` and `message` arguments for the `info` function)
+
+**Example: Do you really want to close?**
+
+You can use a `yesno` box to check whether someone really wants to exit your app. If they click yes, the app is closed, if not, nothing happens and they can continue with what they were doing.
+
+```python
+# Ask user if they really want to close the window
+def do_this_on_close():
+    if alerts.yesno("Close", "Do you want to quit?"):
+        app.destroy()
+
+app = App()
+
+title = Text(app, "blank app")
+
+# When user tries to close the window, execute do_this_on_close()
+app.on_close(do_this_on_close)
+
+app.display()
+
+```

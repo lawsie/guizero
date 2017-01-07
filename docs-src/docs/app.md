@@ -51,7 +51,7 @@ You can call the following methods on your App object
 | display()     |-          | -          | Displays the app on the screen. You **MUST** call this method at the end of your program to display the app on the screen. |
 | set_title(title)   | title (string)         | -          | Takes a string `title` and displays this in the top bar of the app window        |
 | on_close(command)   | command (function name)         | -          | Calls the given function when the user tries to close the window.      |
-
+| destroy   | -         | -          | Closes the app window.    |
 
 ### Examples
 
