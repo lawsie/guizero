@@ -6,7 +6,7 @@
 The `App` object  is the basis of all GUIs created using GUIzero. You can imagine it as a container, to which other widgets are added.
 
 ```
-class guizero.App(title="GUIzero", height=500, width=500, layout="auto")
+class guizero.App(title="GUIzero", height=500, width=500, layout="auto", bgcolor=None)
 ```
 
 
@@ -28,6 +28,7 @@ When creating an `App` object, you can specify the following parameters, all of 
 | height    | int       | 500     | No         | The height of the window in pixels. |
 | width     | int       | 500     | No         | The width of the window in pixels.  |
 | layout    | string    | "auto"  | No         | Whether widgets pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
+| bgcolor    | string    | None  | No         | The background colour of the app window. Takes a RGB Hex colour (e.g. #0099ff) or a known colour string (e.g. "black").  |
 
 
 **About the 'layout' parameter**
@@ -52,6 +53,7 @@ You can call the following methods on your App object
 | set_title(title)   | title (string)         | -          | Takes a string `title` and displays this in the top bar of the app window        |
 | on_close(command)   | command (function name)         | -          | Calls the given function when the user tries to close the window.      |
 | destroy   | -         | -          | Closes the app window.    |
+| bgcolor   | bgcolor (string)       | -          | Changes the background colour of the window. Takes a RGB Hex colour (e.g. #0099ff) or a known colour string (e.g. "black").   |
 
 ### Examples
 
