@@ -7,7 +7,7 @@ from . import utilities as utils
     
 class Text(Label):
 
-    def __init__(self, master, text="", size=12, color="black", font="Helvetica", grid=None, align="left"):
+    def __init__(self, master, text="", size=12, color="black", font="Helvetica", grid=None, align=None):
 
 
         # Description of this object (for friendly error messages)

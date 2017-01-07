@@ -6,7 +6,7 @@
 Display a text box which the user can type in
 
 ```
-class guizero.TextBox(master, text="", width=10, grid=None, align="left")
+class guizero.TextBox(master, text="", width=10, grid=None, align=None)
 ```
 
 ### Create a TextBox object
@@ -28,7 +28,7 @@ When creating a Text object, you can specify the following parameters. (More inf
 | text   | string    | ""  | No         | Any text you wish to be pre-filled in the text box |
 | width   | int    | 10     | No         | The width of the text box|
 | grid   | List [int, int]   | None     | No         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
-| align   | string     | "left"     | No         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
+| align   | string     | None     | No         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 
 
 ### Methods
