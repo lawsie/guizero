@@ -52,9 +52,9 @@ You can call the following methods on your PushButton object
 | change_command(newcommand, args)  | newcommand (function name), args (List)  | -          | Sets the function called when the button is pressed to the one specified as `newcommand`. You can optionally specify new `args` as a list. |
 | set_text(text)   | text (string)         | -         | Sets the text on the button to the string specified in `text`.  |
 | padding(padx, pady) | padx (int), pady(int) | - |  Sets the amount of x (horizontal) and y (vertical) padding between the text/icon and the edge of the button |
-| disable | - | - |  Makes the button greyed out so you can't click on it |
-| enable | - | - |  Makes the button clickable (opposite of disable) |
-| toggle_state | - | - |  Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa |
+| disable() | - | - |  Makes the button greyed out so you can't click on it |
+| enable() | - | - |  Makes the button clickable (opposite of disable) |
+| toggle_state() | - | - |  Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa |
 
 
 ### Examples
