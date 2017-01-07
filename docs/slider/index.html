@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Slider - GUI Zero</title>
+  <title>Slider - gui zero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -35,7 +35,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../about/" class="icon icon-home"> GUI Zero</a>
+        <a href="../about/" class="icon icon-home"> gui zero</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -183,7 +183,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../about/">GUI Zero</a>
+        <a href="../about/">gui zero</a>
       </nav>
 
       
@@ -209,7 +209,7 @@
 <p>(Extends the <code>Scale</code> class from <code>tkinter</code>)</p>
 <h3 id="purpose">Purpose</h3>
 <p>Display a slider which can be used to specify a value within a range</p>
-<pre><code>class guizero.Slider(master, start=0, end=100, orient=HORIZONTAL, command=None, grid=None, align=None)
+<pre><code>class guizero.Slider(master, start=0, end=100, horizontal=True, command=None, grid=None, align=None)
 </code></pre>
 
 <h3 id="create-a-slider-object">Create a Slider object</h3>
@@ -255,11 +255,11 @@ app.display()
 <td>The largest value selectable on the slider</td>
 </tr>
 <tr>
-<td>orient</td>
-<td>HORIZONTAL or VERTICAL</td>
-<td>HORIZONTAL</td>
+<td>horizontal</td>
+<td>Boolean</td>
+<td>True</td>
 <td>No</td>
-<td>Whether you wish to display your slider horizontally or vertically</td>
+<td>Whether you wish to display your slider horizontally or vertically (defaults to horizontal)</td>
 </tr>
 <tr>
 <td>command</td>

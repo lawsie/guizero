@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>App - GUI Zero</title>
+  <title>App - gui zero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -35,7 +35,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../about/" class="icon icon-home"> GUI Zero</a>
+        <a href="../about/" class="icon icon-home"> gui zero</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -183,7 +183,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../about/">GUI Zero</a>
+        <a href="../about/">gui zero</a>
       </nav>
 
       
@@ -209,7 +209,7 @@
 <p>(Extends the <code>Tk</code> class from <code>tkinter</code>)</p>
 <h3 id="purpose">Purpose</h3>
 <p>The <code>App</code> object  is the basis of all GUIs created using GUIzero. You can imagine it as a container, to which other widgets are added.</p>
-<pre><code>class guizero.App(title=&quot;GUIzero&quot;, height=500, width=500, layout=&quot;auto&quot;)
+<pre><code>class guizero.App(title=&quot;GUIzero&quot;, height=500, width=500, layout=&quot;auto&quot;, bgcolor=None)
 </code></pre>
 
 <h3 id="documentation">Documentation</h3>
@@ -258,6 +258,13 @@
 <td>No</td>
 <td>Whether widgets pack themselves (<code>"auto"</code>) or you specify their position on a grid (<code>"grid"</code>)</td>
 </tr>
+<tr>
+<td>bgcolor</td>
+<td>string</td>
+<td>None</td>
+<td>No</td>
+<td>The background colour of the app window. Takes a RGB Hex colour (e.g. #0099ff) or a known colour string (e.g. "black").</td>
+</tr>
 </tbody>
 </table>
 <p><strong>About the 'layout' parameter</strong></p>
@@ -290,6 +297,24 @@
 <td>title (string)</td>
 <td>-</td>
 <td>Takes a string <code>title</code> and displays this in the top bar of the app window</td>
+</tr>
+<tr>
+<td>on_close(command)</td>
+<td>command (function name)</td>
+<td>-</td>
+<td>Calls the given function when the user tries to close the window.</td>
+</tr>
+<tr>
+<td>destroy</td>
+<td>-</td>
+<td>-</td>
+<td>Closes the app window.</td>
+</tr>
+<tr>
+<td>bgcolor</td>
+<td>bgcolor (string)</td>
+<td>-</td>
+<td>Changes the background colour of the window. Takes a RGB Hex colour (e.g. #0099ff) or a known colour string (e.g. "black").</td>
 </tr>
 </tbody>
 </table>

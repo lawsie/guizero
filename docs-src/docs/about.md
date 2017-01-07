@@ -18,6 +18,6 @@ The aim of guizero is to make the process of creating simple GUIs quick, accessi
 
 ### Version
 
-guizero is currently version 0.2.0
+guizero is currently version 0.2.1
 
 This is a pre-release version, so there may be bugs and features may change.
