@@ -28,4 +28,6 @@ class App(Tk):
     def set_title(self, title):
         self.title( str(title) )
 
-   
+    # do `command` on window close instruction
+    def on_close(self, command):
+        super().wm_protocol("WM_DELETE_WINDOW", command)
