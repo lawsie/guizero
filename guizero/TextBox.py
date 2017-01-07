@@ -7,7 +7,7 @@ from . import utilities as utils
     
 class TextBox(Entry):
 
-    def __init__(self, master, text="", width=10, grid=None, align=None):
+    def __init__(self, master, text="", width=10, grid=None, align="left"):
         
         # Description of this object (for friendly error messages)
         self.description = "[TextBox] object with text \"" + str(text) + "\""

@@ -6,7 +6,7 @@
 Display non editable text in your app, such as for titles, labels and instructions.
 
 ```
-class guizero.Text(master, text="", size=12, color="black", font="Helvetica", grid=None, align=None)
+class guizero.Text(master, text="", size=12, color="black", font="Helvetica", grid=None, align="left")
 ```
 
 ### Create a Text object
@@ -30,7 +30,7 @@ When creating a Text object, you can specify the following parameters. (More inf
 | color   | string     | black     | No         | The colour of the text. Accepts some colour strings (e.g. `red`) and colours specified in hex format (e.g. `#0099ff`)  |
 | font   | string     | "Helvetica"     | No         | The font face that the text will be displayed in. Availability of fonts depends on which fonts are installed locally. |
 | grid   | List [int, int]   | None     | No         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
-| align   | string     | None     | No         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
+| align   | string     | "left"     | No         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 
 
 ### Methods
