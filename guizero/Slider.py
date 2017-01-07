@@ -7,13 +7,19 @@ from . import utilities as utils
     
 class Slider(Scale):
 
-    def __init__(self, master, start=0, end=100, orient=HORIZONTAL, command=None, grid=None, align=None):  
+    def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None):  
 
         # If you specify a command to the slider, it must take one argument as it will be given
         # the slider's current value
 
         # Description of this object (for friendly error messages)
-        self.description = "[Slider] object from " + str(start) + " to " + str(end)    
+        self.description = "[Slider] object from " + str(start) + " to " + str(end)  
+
+        # Set up orientation
+        # Contributed by bennuttall
+        orient = HORIZONTAL
+        if horizontal == False:
+            orient = VERTICAL
 
         try:
             super().__init__(master, from_=start, to=end, orient=orient, command=command)

@@ -3,4 +3,3 @@ build
 dist
 guizero.egg-info
 .pypirc
-docs-src/site

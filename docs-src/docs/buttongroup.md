@@ -6,7 +6,7 @@
 Display a group of radio buttons to allow the user to choose an option
 
 ```
-class guizero.ButtonGroup(master, options, selected, orient="vertical", command=None, grid=None, align=None)
+class guizero.ButtonGroup(master, options, horizontal=False, command=None, grid=None, align=None)
 ```
 
 ### Create a ButtonGroup object
@@ -38,7 +38,7 @@ When creating a ButtonGroup object, you can specify the following parameters. (M
 | master    | App or Box   | - | Yes       | The container to which this widget belongs
 | options   | 2D List    | -  | Yes         | A two dimensional list of [text, value] pairs. The first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. |
 | selected   | string    | -     | Yes       | The option that is selected. This should be the **hidden value** and NOT the text. |
-| orient   | string    | "vertical"     | No       | Whether the buttons stack vertically or horizontally. |
+| horizontal   | Boolean    | False     | No       | Whether the buttons stack vertically or horizontally. (Defaults to vertical.)|
 | command | function name | None | No   | The name of a function to call when a different option is selected. |
 | grid   | List [int, int]   | None     | No         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | align   | string     | None     | No         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |

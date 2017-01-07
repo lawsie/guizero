@@ -6,7 +6,7 @@
 Display a slider which can be used to specify a value within a range
 
 ```
-class guizero.Slider(master, start=0, end=100, orient=HORIZONTAL, command=None, grid=None, align=None)
+class guizero.Slider(master, start=0, end=100, horizontal=True, command=None, grid=None, align=None)
 ```
 
 ### Create a Slider object
@@ -30,7 +30,7 @@ When creating a Slider object, you can specify the following parameters. (More i
 | master    | App or Box   | - | Yes       | The container to which this widget belongs
 | start   | int    | 0  | No         | The smallest value selectable on the slider |
 | end | int | 100 | No   | The largest value selectable on the slider |
-| orient | HORIZONTAL or VERTICAL | HORIZONTAL | No   | Whether you wish to display your slider horizontally or vertically |
+| horizontal | Boolean | True | No   | Whether you wish to display your slider horizontally or vertically (defaults to horizontal) |
 | command | function name | None | No   | The name of a function to call when the slider value is changed |
 | grid   | List [int, int]   | None     | No         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | align   | string     | None     | No         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
