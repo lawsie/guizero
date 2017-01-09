@@ -4,8 +4,10 @@ except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
 from . import utilities as utils
+from .guizerocontroleventcore import GuiZeroControlEventCore
 
-class Picture(Label):
+
+class Picture(Label, GuiZeroControlEventCore):
 
     def __init__(self, master, image, grid=None, align=None):
 
@@ -13,7 +15,7 @@ class Picture(Label):
         try:
             img = PhotoImage(file=image)                      
         except:
-            error_format("Image import error - image must be a gif, check correct path")
+            utils.error_format("Image import error - image must be a gif, check correct path")
 
         self.image = img  
 
@@ -34,7 +36,6 @@ class Picture(Label):
         # Pack or grid depending on parent
         utils.auto_pack(self, master, grid, align)
 
-
     # Sets the image to something new
     def set(self, image):
         try:
@@ -42,7 +43,7 @@ class Picture(Label):
             self.image = img  
             self.config(image=self.image)              
         except:
-            error_format("Image import error - image must be a gif, check correct path")
+            utils.error_format("Image import error - image must be a gif, check correct path")
         
 
    

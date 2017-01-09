@@ -4,8 +4,10 @@ except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
 from . import utilities as utils
+from .guizerocontroleventcore import GuiZeroControlEventCore
+
     
-class CheckBox(Checkbutton):
+class CheckBox(Checkbutton, GuiZeroControlEventCore):
 
     def __init__(self, master, text, command=None, grid=None, align=None):  
       
@@ -43,4 +45,4 @@ class CheckBox(Checkbutton):
     def change_text(self, newtext):
         self.text = str(newtext)
         self.config(text=self.text)
-        self.description = "[CheckBox] object with text " + str(self.text) 
+        self.description = "[CheckBox] object with text " + str(self.text)

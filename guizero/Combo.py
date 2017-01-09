@@ -4,8 +4,10 @@ except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
 from . import utilities as utils
-    
-class Combo(OptionMenu):
+from .guizerocontroleventcore import GuiZeroControlEventCore
+
+
+class Combo(OptionMenu, GuiZeroControlEventCore):
 
     def __init__(self, master, options, selected=None, command=None, grid=None, align=None):
 
@@ -70,4 +72,3 @@ class Combo(OptionMenu):
         self.options = []
         self.children["menu"].delete(0, END)
         self.selected.set("")
-       

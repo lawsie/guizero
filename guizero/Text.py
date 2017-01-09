@@ -4,11 +4,12 @@ except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
 from . import utilities as utils
-    
-class Text(Label):
+from .guizerocontroleventcore import GuiZeroControlEventCore
+
+
+class Text(Label, GuiZeroControlEventCore):
 
     def __init__(self, master, text="", size=12, color="black", font="Helvetica", grid=None, align=None):
-
 
         # Description of this object (for friendly error messages)
         self.description = "[Text] object with text \"" + str(text) + "\""
@@ -65,4 +66,3 @@ class Text(Label):
     # Append to the StringVar controlling this text
     def append(self, text):
         self.string_var.set( self.string_var.get() + str(text) )
-
