@@ -1,5 +1,4 @@
 from tkinter import messagebox
-
 # Generates alerts
 
 def warn(title, text):

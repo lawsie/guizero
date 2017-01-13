@@ -10,8 +10,8 @@ from .RadioButton import RadioButton
 
 class ButtonGroup(Frame):
 
-    def __init__(self, master, options, selected, orient="vertical", command=None, grid=None, align=None):
-
+    def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None):  
+              
         self.selected = StringVar()
         self.selected.set(str(selected))    # Should be the hidden value not the text
         self.description = "[ButtonGroup] object with selected option \"" + self.selected.get() + "\""
@@ -42,7 +42,7 @@ class ButtonGroup(Frame):
             utils.auto_pack(rbutton, self, [gridx, gridy], "left")
 
             # Which way the buttons go
-            if orient == "vertical":
+            if horizontal == False:
                 gridx += 1
             else:
                 gridy += 1

@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>ButtonGroup - GUI Zero</title>
+  <title>ButtonGroup - gui zero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -35,7 +35,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../about/" class="icon icon-home"> GUI Zero</a>
+        <a href="../about/" class="icon icon-home"> gui zero</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -183,7 +183,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../about/">GUI Zero</a>
+        <a href="../about/">gui zero</a>
       </nav>
 
       
@@ -209,7 +209,7 @@
 <p>(Extends the <code>Frame</code> class from <code>tkinter</code>)</p>
 <h3 id="purpose">Purpose</h3>
 <p>Display a group of radio buttons to allow the user to choose an option</p>
-<pre><code>class guizero.ButtonGroup(master, options, selected, orient=&quot;vertical&quot;, command=None, grid=None, align=None)
+<pre><code>class guizero.ButtonGroup(master, options, horizontal=False, command=None, grid=None, align=None)
 </code></pre>
 
 <h3 id="create-a-buttongroup-object">Create a ButtonGroup object</h3>
@@ -261,11 +261,11 @@ app.display()
 <td>The option that is selected. This should be the <strong>hidden value</strong> and NOT the text.</td>
 </tr>
 <tr>
-<td>orient</td>
-<td>string</td>
-<td>"vertical"</td>
+<td>horizontal</td>
+<td>Boolean</td>
+<td>False</td>
 <td>No</td>
-<td>Whether the buttons stack vertically or horizontally.</td>
+<td>Whether the buttons stack vertically or horizontally. (Defaults to vertical.)</td>
 </tr>
 <tr>
 <td>command</td>
