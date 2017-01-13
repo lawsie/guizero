@@ -4,6 +4,7 @@ except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
 from . import utilities as utils
+from .guizerocontroleventcore import GuiZeroControlEventCore
 
 ## See if PIL is installed
 #try:
@@ -12,14 +13,15 @@ from . import utilities as utils
     #utils.error_format("You will only be able to display GIF images as you do not have the PIL library.")
 
 
-class Picture(Label):
+class Picture(Label, GuiZeroControlEventCore):
 
     def __init__(self, master, image, grid=None, align=None):
 
 
         try:
+
             img = PhotoImage(file=image)  
-            self.image = img  
+            self.image = img 
 
             # Description of this object (for friendly error messages)
             self.description = "[Picture] object \"" + str(self.image) + "\""
@@ -42,7 +44,6 @@ class Picture(Label):
 
         
 
-
     # Sets the image to something new
     def set(self, image):
         try:
@@ -51,6 +52,5 @@ class Picture(Label):
             self.config(image=self.image)              
         except:
             utils.error_format("Image import error - image must be a GIF, check correct path")
-        
 
    

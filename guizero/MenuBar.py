@@ -4,9 +4,11 @@ except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
 from . import utilities as utils
+from .guizerocontroleventcore import GuiZeroControlEventCore
 from .App import App
+
     
-class MenuBar(Menu):
+class MenuBar(Menu, GuiZeroControlEventCore):
 
     def __init__(self, master, toplevel, options):
 
@@ -39,4 +41,3 @@ class MenuBar(Menu):
 
        	# Set this as the menu for the main App object
        	master.config(menu=self)
-

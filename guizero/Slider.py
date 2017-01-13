@@ -4,8 +4,10 @@ except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
 from . import utilities as utils
-    
-class Slider(Scale):
+from .guizerocontroleventcore import GuiZeroControlEventCore
+
+
+class Slider(Scale, GuiZeroControlEventCore):
 
     def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None):  
 

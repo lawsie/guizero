@@ -1,3 +1,11 @@
+<<<<<<< master
+__pycache__
+build
+dist
+guizero.egg-info
+.pypirc
+.idea/
+=======
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -136,3 +144,4 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+>>>>>>> master

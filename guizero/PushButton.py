@@ -4,8 +4,10 @@ except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
 from . import utilities as utils
-    
-class PushButton(Button):
+from .guizerocontroleventcore import GuiZeroControlEventCore
+
+
+class PushButton(Button, GuiZeroControlEventCore):
 
     def __init__(self, master, command, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
 

@@ -4,8 +4,10 @@ except ImportError:
     print("tkinter did not import successfully. Please check your setup.")
 
 from . import utilities as utils
-    
-class TextBox(Entry):
+from .guizerocontroleventcore import GuiZeroControlEventCore
+
+
+class TextBox(Entry, GuiZeroControlEventCore):
 
     def __init__(self, master, text="", width=10, grid=None, align=None):
         
@@ -43,5 +45,4 @@ class TextBox(Entry):
 
     # Append text
     def append(self, text):
-        self.string_var.set( self.string_var.get() + str(text) )
-        
+        self.string_var.set(self.string_var.get() + str(text) )
