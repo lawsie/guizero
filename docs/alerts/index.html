@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Alerts - GUI Zero</title>
+  <title>Alerts - gui zero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -35,7 +35,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../about/" class="icon icon-home"> GUI Zero</a>
+        <a href="../about/" class="icon icon-home"> gui zero</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -179,7 +179,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../about/">GUI Zero</a>
+        <a href="../about/">gui zero</a>
       </nav>
 
       
@@ -244,7 +244,7 @@ app.display()
 <p><img alt="Info popup" src="../images/info_windows.png" /></p>
 <p>If <code>No</code> is pressed, an error box will be displayed</p>
 <p><img alt="Info popup" src="../images/error_windows.png" /></p>
-<p><strong>Using functions as a callback</strong></p>
+<p><strong>Example: Using an alert as a callback</strong></p>
 <p>You can also use these functions in a <em>callback</em> (when you have to provide a function for another widget to call). Here is an example with a <code>PushButton</code> which pops up an <code>info</code> box when it is pressed.</p>
 <pre><code class="python">app = App()
 button = PushButton(app, info, [&quot;Info&quot;, &quot;You pressed the button&quot;])
@@ -257,6 +257,23 @@ app.display()
 <li>The name of the function to call when pressed (<code>info</code>)</li>
 <li>A list of the arguments to the function you are calling (values for the <code>title</code> and <code>message</code> arguments for the <code>info</code> function)</li>
 </ul>
+<p><strong>Example: Do you really want to close?</strong></p>
+<p>You can use a <code>yesno</code> box to check whether someone really wants to exit your app. If they click yes, the app is closed, if not, nothing happens and they can continue with what they were doing.</p>
+<pre><code class="python"># Ask user if they really want to close the window
+def do_this_on_close():
+    if alerts.yesno(&quot;Close&quot;, &quot;Do you want to quit?&quot;):
+        app.destroy()
+
+app = App()
+
+title = Text(app, &quot;blank app&quot;)
+
+# When user tries to close the window, execute do_this_on_close()
+app.on_close(do_this_on_close)
+
+app.display()
+
+</code></pre>
               
             </div>
           </div>

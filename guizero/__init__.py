@@ -3,12 +3,8 @@ try:
 except:
     from Tkinter import *
 
-# -----------------------------
-__all__ = ['utilities', 'alerts', 'App', 'Box', 'ButtonGroup', 'CheckBox', 'Combo', 'MenuBar', 'Picture', 'PushButton',
-           'RadioButton', 'Slider', 'Text', 'TextBox', 'PushButton']
-
 from . import utilities as utils
-from .alerts import info, warn, error, yesno
+from .alerts import *
 
 from .App import App
 from .Box import Box
