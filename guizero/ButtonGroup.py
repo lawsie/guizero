@@ -1,7 +1,4 @@
-try:
-    from tkinter import *
-except ImportError:
-    print("tkinter did not import successfully. Please check your setup.")
+from tkinter import Frame, StringVar
 
 from . import utilities as utils
 from .Box import Box
