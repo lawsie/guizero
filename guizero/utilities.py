@@ -40,6 +40,7 @@ def auto_pack(self, master, grid, align):
 
                 # Place on grid
                 self.grid(row=grid[0], column=grid[1], sticky=align_this)
+                print("Packed component" + self.description)
 
             
 
@@ -54,6 +55,6 @@ def with_args( func_name, *args):
 # Format errors in a pretty way
 def error_format(error_message):
     print("------------------------------------------------------------")
-    print("*** GUIZERO WARNING *** " )
+    print("*** GUIZERO WARNING ***" )
     print(error_message)
     print("------------------------------------------------------------")
