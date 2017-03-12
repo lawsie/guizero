@@ -2,6 +2,11 @@
 
 Version 0.2.1
 
+## Installing on Raspbian
+```bash
+sudo apt-get install python3-guizero
+```
+
 ## Installing with pip
 
 ```bash
