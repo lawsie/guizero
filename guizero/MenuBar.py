@@ -1,7 +1,4 @@
-try:
-    from tkinter import *
-except ImportError:
-    print("tkinter did not import successfully. Please check your setup.")
+from tkinter import Menu
 
 from . import utilities as utils
 from .App import App
