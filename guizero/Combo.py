@@ -1,4 +1,5 @@
 from tkinter import OptionMenu, StringVar
+import tkinter as Tk
 
 from . import utilities as utils
     
@@ -14,10 +15,13 @@ class Combo(OptionMenu):
         self.description = "[Combo] object with default selection \"" + str(selected) + "\""    
 
         # Maintain a list of options (as strings, to avoid problems comparing)
-        self.options = [str(x) for x in options]           
+        self.options = [str(x) for x in options]
 
         # Store currently selected item
         self.selected = StringVar()
+
+        # The command associated with this combo
+        self.command = command
 
         # Set the first item in the list as default
         if selected is None and len(options) > 0:                     
@@ -58,9 +62,22 @@ class Combo(OptionMenu):
 
     # Add an option to the combo
     def add_option(self, option):
+
+        # Add to the internal list
         self.options.append( str(option) )
-        self.children["menu"].add_command(label=option, command="") # Don't do any command
-        self.selected.set( str(option) )        
+        # self.children["menu"].add_command(label=option, command=self.command) 
+
+        # Delete all options
+        menu = self.children["menu"]
+        menu.delete(0, 'end')
+
+        # Re-add all options
+        for item in self.options:
+            menu.add_command(label=item, command=Tk._setit(self.selected, item, self.command))
+
+        # Set the new option as selected
+        self.selected.set( str(option) )
+        
 
     # Clear all options from a combo
     def clear(self):
