@@ -173,6 +173,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -208,7 +215,7 @@
                 <h1 id="app">App</h1>
 <p>(Extends the <code>Tk</code> class from <code>tkinter</code>)</p>
 <h3 id="purpose">Purpose</h3>
-<p>The <code>App</code> object  is the basis of all GUIs created using GUIzero. You can imagine it as a container, to which other widgets are added.</p>
+<p>The <code>App</code> object  is the basis of all GUIs created using guizero. You can imagine it as a container, to which other widgets are added.</p>
 <pre><code>class guizero.App(title=&quot;GUIzero&quot;, height=500, width=500, layout=&quot;auto&quot;, bgcolor=None)
 </code></pre>
 
@@ -322,14 +329,16 @@
 <p><strong>Creating an App object</strong></p>
 <p>You can create an <code>App</code> object by calling the <code>App()</code> constructor. You should give the object a name so you can refer to it later - in this case we have called it <code>app</code>.</p>
 <p>It is best to keep the name you give to your <code>App</code> object quite short, as you will have to use it to tell other widgets where they should be stored.</p>
-<p>Then, at the end of the program you <strong>MUST</strong> tell the app object to display itself, or nothing will be displayed on the screen.</p>
-<pre><code class="python">app = App(&quot;My app&quot;, 300, 200, &quot;auto&quot;)
+<p>Then, at the end of the program you <strong>MUST</strong> tell the app object to begin the display loop.</p>
+<pre><code class="python">from guizero import App
+app = App(title=&quot;My app&quot;, height=300, width=200)
 app.display()
 </code></pre>
 
 <p><strong>Changing the title</strong></p>
 <p>You can change the title of the app object once it has been created like this:</p>
-<pre><code class="python">app = App(&quot;My app&quot;, 300, 200, &quot;auto&quot;)
+<pre><code class="python">from guizero import App
+app = App(title=&quot;My app&quot;, height=300, width=200)
 app.set_title(&quot;A different title&quot;)
 app.display()
 </code></pre>
@@ -339,16 +348,17 @@ app.display()
 <p><strong>Using grid layout</strong></p>
 <p>You can lay components out in a grid and specify where they appear with grid layout.</p>
 <p><img alt="App title" src="../images/keypad_windows.png" /></p>
-<pre><code class="python">def do_nothing():
+<pre><code class="python">from guizero import App, PushButton
+def do_nothing():
     print(&quot;Nothing happened&quot;)
 
-app = App(&quot;Keypad example&quot;, width=100, height=90, layout=&quot;grid&quot;)
-button1 = PushButton(app, do_nothing, text=&quot;1&quot;, grid=[0,0])
-button2 = PushButton(app, do_nothing, text=&quot;2&quot;, grid=[0,1])
-button3  = PushButton(app, do_nothing, text=&quot;3&quot;, grid=[0,2])
-button4  = PushButton(app, do_nothing, text=&quot;4&quot;, grid=[1,0])
-button5  = PushButton(app, do_nothing, text=&quot;5&quot;, grid=[1,1])
-button6  = PushButton(app, do_nothing, text=&quot;6&quot;, grid=[1,2])
+app = App(tile=&quot;Keypad example&quot;, width=100, height=90, layout=&quot;grid&quot;)
+button1 = PushButton(app, command=do_nothing, text=&quot;1&quot;, grid=[0,0])
+button2 = PushButton(app, command=do_nothing, text=&quot;2&quot;, grid=[0,1])
+button3  = PushButton(app, command=do_nothing, text=&quot;3&quot;, grid=[0,2])
+button4  = PushButton(app, command=do_nothing, text=&quot;4&quot;, grid=[1,0])
+button5  = PushButton(app, command=do_nothing, text=&quot;5&quot;, grid=[1,1])
+button6  = PushButton(app, command=do_nothing, text=&quot;6&quot;, grid=[1,2])
 app.display()
 </code></pre>
               

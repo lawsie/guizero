@@ -173,6 +173,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -214,7 +221,8 @@
 
 <h3 id="create-a-menubar-object">Create a MenuBar object</h3>
 <p>Create a basic MenuBar object like this:</p>
-<pre><code class="python">def file_function():
+<pre><code class="python">from guizero import App, MenuBar
+def file_function():
     print(&quot;File option&quot;)
 
 def edit_function():
@@ -222,8 +230,8 @@ def edit_function():
 
 app = App()
 menubar = MenuBar(app,
-                  [&quot;File&quot;, &quot;Edit&quot;],
-                  [
+                  toplevel=[&quot;File&quot;, &quot;Edit&quot;],
+                  options=[
                       [ [&quot;File option 1&quot;, file_function], [&quot;File option 2&quot;, file_function] ],
                       [ [&quot;Edit option 1&quot;, edit_function], [&quot;Edit option 2&quot;, edit_function] ]
                   ])
@@ -281,7 +289,8 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong>Creating a MenuBar</strong></p>
 <p>The simplest way to create a MenuBar object is as follows:</p>
-<pre><code class="python">def file_function():
+<pre><code class="python">from guizero import App, MenuBar
+def file_function():
     print(&quot;File option&quot;)
 
 def edit_function():
@@ -289,8 +298,8 @@ def edit_function():
 
 app = App()
 menubar = MenuBar(app,
-                  [&quot;File&quot;, &quot;Edit&quot;],
-                  [
+                  toplevel=[&quot;File&quot;, &quot;Edit&quot;],
+                  options=[
                       [ [&quot;File option 1&quot;, file_function], [&quot;File option 2&quot;, file_function] ],
                       [ [&quot;Edit option 1&quot;, edit_function], [&quot;Edit option 2&quot;, edit_function] ]
                   ])

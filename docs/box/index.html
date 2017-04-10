@@ -173,6 +173,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -215,7 +222,8 @@
 
 <h3 id="documentation">Documentation</h3>
 <p>Create a Box object like this:</p>
-<pre><code class="python">app = App()
+<pre><code class="python">from guizero import App, Box
+app = App()
 box = Box(app)
 app.display()
 </code></pre>
@@ -275,29 +283,30 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong>Putting widgets in a Box</strong></p>
 <p>A <code>Box</code> object is invisible, but it can contain other widgets. In this example, there are two <code>Text</code> objects. One has <code>box</code> as its master, the other has <code>app</code> as its master.</p>
-<pre><code class="python">app = App(&quot;My app&quot;, 300, 200)
+<pre><code class="python">from guizero import App, Box, Text
+app = App(title=&quot;My app&quot;, height=300, width=200)
 box = Box(app)
-text1 = Text(box, &quot;Hello from the box&quot;, 14, &quot;red&quot;, &quot;Arial&quot;)
-text2 = Text(app, &quot;Hello from the app&quot;, 14, &quot;blue&quot;, &quot;Courier New&quot;)
+text1 = Text(box, text=&quot;Hello from the box&quot;, size=14, color=&quot;red&quot;, font=&quot;Arial&quot;)
+text2 = Text(app, text=&quot;Hello from the app&quot;, size=14, color=&quot;blue&quot;, font=&quot;Courier New&quot;)
 app.display()
 </code></pre>
 
 <p><strong>Grouping objects within a Box</strong></p>
 <p>It is useful to put objects in a box to group them together. For example here we have given the <code>app</code> a grid layout, then placed some text at [0,0] and the <code>Box</code> object at [0,1]. This means that the text will appear on the left, and the contents of the Box will appear on the right.</p>
 <p>The <code>Box</code> object itself has a grid layout and contains six buttons which are positioned on a <em>separate</em> grid layout belonging to the box.</p>
-<pre><code class="python">
+<pre><code class="python">from guizero import App, Text, Box, PushButton
 def do_nothing():
     return 0
 
-app = App(&quot;My app&quot;, 300, 200, layout=&quot;grid&quot;)
-text = Text(app, &quot;Some text here&quot;, grid=[0,0])
+app = App(title=&quot;My app&quot;, height=300, width=200, layout=&quot;grid&quot;)
+text = Text(app, text=&quot;Some text here&quot;, grid=[0,0])
 box = Box(app, layout=&quot;grid&quot;, grid=[0,1])
-button1 = PushButton(box, do_nothing, text=&quot;1&quot;, grid=[0,0])
-button2 = PushButton(box, do_nothing, text=&quot;2&quot;, grid=[0,1])
-button3 = PushButton(box, do_nothing, text=&quot;3&quot;, grid=[0,2])
-button4 = PushButton(box, do_nothing, text=&quot;4&quot;, grid=[1,0])
-button5 = PushButton(box, do_nothing, text=&quot;5&quot;, grid=[1,1])
-button6 = PushButton(box, do_nothing, text=&quot;6&quot;, grid=[1,2])
+button1 = PushButton(box, command=do_nothing, text=&quot;1&quot;, grid=[0,0])
+button2 = PushButton(box, command=do_nothing, text=&quot;2&quot;, grid=[0,1])
+button3 = PushButton(box, command=do_nothing, text=&quot;3&quot;, grid=[0,2])
+button4 = PushButton(box, command=do_nothing, text=&quot;4&quot;, grid=[1,0])
+button5 = PushButton(box, command=do_nothing, text=&quot;5&quot;, grid=[1,1])
+button6 = PushButton(box, command=do_nothing, text=&quot;6&quot;, grid=[1,2])
 app.display()
 </code></pre>
 

@@ -173,6 +173,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -214,8 +221,9 @@
 
 <h3 id="create-a-text-object">Create a Text object</h3>
 <p>Create a basic Text object like this:</p>
-<pre><code class="python">app = App()
-text = Text(app, &quot;Hello World&quot;)
+<pre><code class="python">from guizero import App, Text
+app = App()
+text = Text(app, text=&quot;Hello World&quot;)
 app.display()
 </code></pre>
 
@@ -339,7 +347,8 @@ app.display()
 </tbody>
 </table>
 <p>Call a method like this:</p>
-<pre><code class="python">app = App()
+<pre><code class="python">from guizero import App, Text
+app = App()
 writing = Text(app, text=&quot;Hello world&quot;, color=&quot;red&quot;)
 
 # Call the font_size() method
@@ -349,8 +358,9 @@ writing.font_size(20)
 <h3 id="examples">Examples</h3>
 <p><strong>Creating text</strong></p>
 <p>The simplest way to create a text object is as follows:</p>
-<pre><code class="python">app = App()
-mytext = Text(app, &quot;Hello world&quot;)
+<pre><code class="python">from guizero import App, Text
+app = App()
+mytext = Text(app, text=&quot;Hello world&quot;)
 app.display()
 </code></pre>
               

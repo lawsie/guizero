@@ -75,8 +75,6 @@
             
                 <li class="toctree-l3"><a href="#getting-started">Getting Started</a></li>
                 
-                    <li><a class="toctree-l4" href="#hello-world">Hello World</a></li>
-                
                     <li><a class="toctree-l4" href="#adding-widgets">Adding widgets</a></li>
                 
             
@@ -169,6 +167,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -203,38 +208,41 @@
               
                 <h1 id="getting-started">Getting Started</h1>
 <p>We believe that it is important for children to be able to use and navigate documentation for themselves, so that their creativity is not limited by the features presented to them. We have provided comprehensive documentation of guizero and would encourage you to share this with children who use the library. Feedback on the accessibility of the documentation is very welcome.</p>
-<p>At the start of every guizero program, you need to import the guizero library to be able to use its functionality, using <code>from guizero import *</code>. All examples in this documentation will assume you have used this import format.</p>
-<p>This will import all of the guizero classes and functions into the current namespace, meaning that you can call them like this:</p>
-<pre><code class="python">app = App()
+<p>At the start of every guizero program, you need to import the items you need from the guizero library to be able to use its functionality, for example:</p>
+<pre><code class="python">from guizero import App
 </code></pre>
 
-<p>... rather than like this:</p>
-<pre><code class="python">app = guizero.App()
-</code></pre>
+<p>Here is how you can import multiple classes at once all on the same line:</p>
+<pre><code class="python">from guizero import App, PushButton, Slider```
 
-<p>Of course, if you are a more competent programmer or need to avoid name clashes, feel free to use <code>import guizero</code> or any other import format.</p>
-<h3 id="hello-world">Hello World</h3>
-<p>To get started with guizero, you first need to create a main window which is called an App. At the end of every guizero program you must tell the program to display the app you have just created.</p>
-<p>Let's create an app window with the title “Hello world”:</p>
-<pre><code class="python">from guizero import *
+You only need to import each class once, and then you can use it in your program as many times as you like.
 
-app = App(“Hello world”)
+### Hello World
+
+To get started with guizero, you first need to create a main window which is called an App. At the end of every guizero program you must tell the program to display the app you have just created.
+
+Let's create an app window with the title “Hello world”:
+
+```python
+from guizero import App
+
+app = App(title=&quot;Hello world&quot;)
 app.display()
 </code></pre>
 
 <p>Save and run the code - you've created your first guizero app!</p>
 <h3 id="adding-widgets">Adding widgets</h3>
 <p>Widgets are the things which appear on the GUI, such as text boxes, buttons, sliders and even plain old pieces of text. Let’s add a text widget to the app.</p>
-<pre><code class="python">from guizero import *
+<pre><code class="python">from guizero import App, Text
 
-app = App(“Hello world”)
-message = Text(app, “Welcome to the Hello world app!”)
+app = App(title=&quot;Hello world&quot;)
+message = Text(app, text=&quot;Welcome to the Hello world app!&quot;)
 app.display()
 </code></pre>
 
 <p><img alt="Mac hello world example" src="../images/mac-hello-world.png" /></p>
 <p>There is a new line of code to add a piece of text. Let’s look at this piece of code in a bit more detail:</p>
-<pre><code class="python">message = Text(app, “Welcome to the Hello world app!”)
+<pre><code class="python">message = Text(app, text=&quot;Welcome to the Hello world app!&quot;)
 </code></pre>
 
 <ul>

@@ -173,6 +173,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -214,12 +221,13 @@
 
 <h3 id="create-a-buttongroup-object">Create a ButtonGroup object</h3>
 <p>Create a basic ButtonGroup object like this:</p>
-<pre><code class="python">app = App()
+<pre><code class="python">from guizero import App, ButtonGroup
+app = App()
 choice = ButtonGroup(app,
-                         [[&quot;cheese&quot;, 0],
+                         options=[[&quot;cheese&quot;, 0],
                           [&quot;ham&quot;, 1],
                           [&quot;salad&quot;, 2]],
-                     2)
+                     selected=2)
 app.display()
 
 </code></pre>
@@ -326,12 +334,12 @@ app.display()
 <p><strong>Creating a ButtonGroup</strong></p>
 <p>The simplest way to create a ButtonGroup object is as follows:</p>
 <pre><code class="python">app = App()
-activties = ButtonGroup(app, [
+activities = ButtonGroup(app, options=[
                               [&quot;Roller Skating&quot;, &quot;skate&quot;],
                               [&quot;White water rafting&quot;, &quot;WWR&quot;],
                               [&quot;Mountain climbing&quot;, &quot;climb&quot;]
                             ],
-                             &quot;skate&quot;)
+                            selected=&quot;skate&quot;)
 app.display()
 </code></pre>
               
