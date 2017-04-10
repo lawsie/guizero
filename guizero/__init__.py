@@ -21,3 +21,4 @@ from .Slider import Slider
 from .Text import Text
 from .TextBox import TextBox
 from .PushButton import PushButton
+from .Waffle import Waffle

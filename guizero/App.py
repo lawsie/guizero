@@ -4,7 +4,7 @@ from . import utilities as utils
 
 class App(Tk):
 
-    def __init__(self, title="GUIzero", width=500, height=500, layout="auto", bgcolor=None):
+    def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None):
 
         try:
             super().__init__()

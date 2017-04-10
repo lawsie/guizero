@@ -167,6 +167,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -203,7 +210,16 @@
 <p>This section aims to explain features that are common to all classes of guizero.</p>
 <h2 id="specifying-parameters">Specifying parameters</h2>
 <p>When first creating an object, you can specify parameters (the properties you want the object to have) in two possible ways:</p>
-<h3 id="option-1-in-order">Option 1 - in order</h3>
+<h3 id="option-1-as-keyword-arguments">Option 1 - as keyword arguments</h3>
+<p>Compulsory parameters should always be specified in the exact order given in the documentation, for example the <code>master</code> parameter is a compulsory first parameter for all widgets.</p>
+<p>If you only want to specify some of the <em>optional</em> parameters, you can specify them after the compulsory parameters in any order, using the format <code>parameter=value</code>.</p>
+<p>In this example the compulsory parameter <code>app</code> has been specified first, followed by the optional <code>width</code> parameter.</p>
+<pre><code class="python">from guizero import App, TextBox
+app = App()
+input_box = TextBox(app, width=20)
+</code></pre>
+
+<h3 id="option-2-in-order">Option 2 - in order</h3>
 <p>Specify the parameters in the <em>exact</em> order given in the table on the documentation page. You do not have to specify all of the optional parameters, but you must specify them in order and not miss any out.</p>
 <p>For example if the parameters available were <strong>a, b, c, d, e</strong></p>
 <ul>
@@ -216,13 +232,6 @@ input_box = TextBox(app, &quot;Type here&quot;)
 </code></pre>
 
 <p>This way will probably be most useful for younger children where programs are not likely to need complex configuration options.</p>
-<h3 id="option-2-as-keyword-arguments">Option 2 - as keyword arguments</h3>
-<p>Compulsory parameters should always be specified in the exact order given in the documentation, for example the <code>master</code> parameter is a compulsory first parameter for all widgets.</p>
-<p>If you only want to specify some of the <em>optional</em> parameters, you can specify them after the compulsory parameters in any order, using the format <code>parameter=value</code>.</p>
-<p>In this example the compulsory parameter <code>app</code> has been specified first, followed by the optional <code>width</code> parameter.</p>
-<pre><code class="python">app = App()
-input_box = TextBox(app, width=20)
-</code></pre>
               
             </div>
           </div>

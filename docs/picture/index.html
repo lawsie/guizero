@@ -173,6 +173,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -213,14 +220,15 @@
 </code></pre>
 
 <h3 id="create-a-picture-object">Create a Picture object</h3>
-<p>Create a basic Picture object like this (assuming your image is called <code>test.gif</code>)</p>
-<pre><code class="python">app = App()
-picture = Picture(app, &quot;test.gif&quot;)
+<p>Create a basic Picture object like this (assuming your image is called <code>test.gif</code> and is saved in the same folder as your Python file)</p>
+<pre><code class="python">from guizero import App, Picture
+app = App()
+picture = Picture(app, image=&quot;test.gif&quot;)
 app.display()
 </code></pre>
 
 <p>You must specify the correct path to the image. The image in the example is in the same directory as the program. If the image is in a different directory, specify a relative path, for example if the picture is in a subfolder called <strong>images</strong> you would write:</p>
-<pre><code class="python">picture = Picture(app, &quot;images/test.gif&quot;)
+<pre><code class="python">picture = Picture(app, image=&quot;images/test.gif&quot;)
 </code></pre>
 
 <p>The code looks like this on Windows:</p>
@@ -290,8 +298,9 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong>Creating a Picture</strong></p>
 <p>The simplest way to create a Picture object is as follows:</p>
-<pre><code class="python">app = App()
-picture = Picture(app, &quot;test.gif&quot;)
+<pre><code class="python">from guizero import App, Picture
+app = App()
+picture = Picture(app, image=&quot;test.gif&quot;)
 app.display()
 </code></pre>
               

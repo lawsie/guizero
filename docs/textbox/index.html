@@ -173,6 +173,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -214,7 +221,8 @@
 
 <h3 id="create-a-textbox-object">Create a TextBox object</h3>
 <p>Create a basic TextBox object like this:</p>
-<pre><code class="python">app = App()
+<pre><code class="python">from guizero import App, TextBox
+app = App()
 input_box = TextBox(app)
 app.display()
 </code></pre>
@@ -308,7 +316,7 @@ app.display()
 </table>
 <p>Call a method like this:</p>
 <pre><code class="python">app = App()
-input_box = TextBox(app, &quot;Type here&quot;)
+input_box = TextBox(app, text=&quot;Type here&quot;)
 
 # Call the clear() method
 input_box.clear()  
@@ -317,8 +325,9 @@ input_box.clear()
 <h3 id="examples">Examples</h3>
 <p><strong>Creating a TextBox</strong></p>
 <p>The simplest way to create a TextBox  object is as follows:</p>
-<pre><code class="python">app = App()
-input_box = TextBox(app, &quot;Type here&quot;)
+<pre><code class="python">from guizero import App, TextBox
+app = App()
+input_box = TextBox(app, text=&quot;Type here&quot;)
 app.display()
 </code></pre>
               
@@ -327,6 +336,8 @@ app.display()
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../waffle/" class="btn btn-neutral float-right" title="Waffle">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../text/" class="btn btn-neutral" title="Text"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -357,6 +368,8 @@ app.display()
       
         <span><a href="../text/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../waffle/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -173,6 +173,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -214,8 +221,9 @@
 
 <h3 id="create-a-checkbox-object">Create a CheckBox object</h3>
 <p>Create a basic CheckBox object like this:</p>
-<pre><code class="python">app = App()
-checkbox = CheckBox(app, &quot;Add extra glitter&quot;)
+<pre><code class="python">from guizero import App, CheckBox
+app = App()
+checkbox = CheckBox(app, text=&quot;Add extra glitter&quot;)
 app.display()
 
 </code></pre>
@@ -312,15 +320,17 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong>Creating a CheckBox</strong></p>
 <p>The simplest way to create a CheckBox object is as follows:</p>
-<pre><code class="python">app = App()
-glitter = CheckBox(app, &quot;Add glitter&quot;)
-sparkles = CheckBox(app, &quot;Add sparkles&quot;)
+<pre><code class="python">from guizero import App, CheckBox
+app = App()
+glitter = CheckBox(app, text=&quot;Add glitter&quot;)
+sparkles = CheckBox(app, text=&quot;Add sparkles&quot;)
 app.display()
 </code></pre>
 
 <p><strong>Calling a function when a CheckBox value changes</strong></p>
 <p>You can call a function when the value of a CheckBox changes (becomes ticked or unticked). In this example, all three CheckBoxes call the same function, but each CheckBox object could call a different function.</p>
-<pre><code class="python">def calculate_extras():
+<pre><code class="python">from guizero import App, Text, CheckBox, TextBox
+def calculate_extras():
     total = 0
     if syrup.get_value() == 1:
         total += 20
@@ -333,14 +343,14 @@ app.display()
 
 app = App()
 
-questions = Text(app, &quot;What would you like with your coffee?&quot;)
+questions = Text(app, text=&quot;What would you like with your coffee?&quot;)
 
-syrup = CheckBox(app, &quot;Caramel syrup (20p)&quot;, command=calculate_extras)
-sprinkles = CheckBox(app, &quot;Chocolate sprinkles (10p)&quot;, command=calculate_extras)
-cream = CheckBox(app, &quot;Whipped cream (50p)&quot;, command=calculate_extras)
+syrup = CheckBox(app, text=&quot;Caramel syrup (20p)&quot;, command=calculate_extras)
+sprinkles = CheckBox(app, text=&quot;Chocolate sprinkles (10p)&quot;, command=calculate_extras)
+cream = CheckBox(app, text=&quot;Whipped cream (50p)&quot;, command=calculate_extras)
 
-cost_of_extras = Text(app, &quot;Cost of extras:&quot;)
-cost = TextBox(app, &quot;0&quot;)
+cost_of_extras = Text(app, text=&quot;Cost of extras:&quot;)
+cost = TextBox(app, text=&quot;0&quot;)
 
 app.display()
 </code></pre>
