@@ -1,6 +1,6 @@
 ## gui zero
 
-Version 0.3.1 (10th April 2017)
+Version 0.3.2 (24th April 2017)
 
 ## Installing with pip
 

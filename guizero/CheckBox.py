@@ -1,4 +1,4 @@
-from tkinter import Checkbutton
+from tkinter import Checkbutton, IntVar
 
 from . import utilities as utils
     
