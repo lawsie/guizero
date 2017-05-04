@@ -11,7 +11,8 @@ from guizero import App
 Here is how you can import multiple classes at once all on the same line:
 
 ```python
-from guizero import App, PushButton, Slider```
+from guizero import App, PushButton, Slider
+```
 
 You only need to import each class once, and then you can use it in your program as many times as you like.
 
