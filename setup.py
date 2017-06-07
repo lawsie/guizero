@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name="guizero",
-    version="0.3.2",
+    version="0.3.3",
     author="Laura Sach",
     author_email="laura.sach@raspberrypi.org",
     description="Python module to allow kids to easily create GUIs",
