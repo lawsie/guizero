@@ -1,4 +1,4 @@
-from tkinter import Button, PhotoImage
+from tkinter import Button, PhotoImage, DISABLED, NORMAL
 
 from . import utilities as utils
     
