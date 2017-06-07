@@ -1,4 +1,4 @@
-from tkinter import Entry, StringVar
+from tkinter import Entry, StringVar, END
 
 from . import utilities as utils
     
