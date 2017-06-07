@@ -32,11 +32,12 @@ class Text(Label):
 
     # Clear text (set to empty string)
     def clear(self):
-        self.string_var.set("")
+        self.text = ""
+        self.config(text="")
         
     # Returns the text
     def get(self):
-        return self.string_var.get()
+        return self.text
 
     # Sets the text
     def set(self, text):
