@@ -24,6 +24,10 @@ class App(Tk):
     def display(self):
         super().mainloop()
 
+    # Have the ability to auto update items
+    def update(self, time_ms, user_callback, *args):
+        super().after(time_ms, user_callback, *args)
+
     # Set the title of the window
     def set_title(self, title):
         self.title( str(title) )
