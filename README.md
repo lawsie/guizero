@@ -17,7 +17,8 @@ pip install guizero
 
 **Upgrading**
 ```bash
-sudo pip3 install guizero --upgrade
+sudo pip3 install -U guizero (on Raspberry Pi)
+pip install guizero --upgrade (on Windows)
 ```
 
 # Mission statement
