@@ -1,14 +1,10 @@
-try:
-    from tkinter import *
-except ImportError:
-    print("tkinter did not import successfully. Please check your setup.")
+from tkinter import Label, StringVar
 
 from . import utilities as utils
     
 class Text(Label):
 
     def __init__(self, master, text="", size=12, color="black", font="Helvetica", grid=None, align=None):
-
 
         # Description of this object (for friendly error messages)
         self.description = "[Text] object with text \"" + str(text) + "\""
@@ -18,35 +14,36 @@ class Text(Label):
         self.current_color = color
         self.current_font = font
 
-        # Create a Tkinter String variable controlling the text within the label
-        self.string_var = StringVar()
-        self.string_var.set( str(text) )
+        self.text = str(text)
 
         # Attempt to instantiate the object and raise an error if failed
         try:
-            super().__init__(master)
+            super().__init__(master, text=self.text)
         except AttributeError:
             utils.error_format( self.description + "\n" +
             "The first argument was a " + str(type(master)) +". First argument must be [App] or [Box]")
 
         # Initial config on setup       
-        self.config(textvariable=self.string_var, fg=color, font=(font, size))
-        
+        self.config(fg=color, font=(font, size))
+
         # Pack or grid depending on parent
         utils.auto_pack(self, master, grid, align)
 
 
     # Clear text (set to empty string)
     def clear(self):
-        self.string_var.set("")
+        self.text = ""
+        self.config(text="")
         
     # Returns the text
     def get(self):
-        return self.string_var.get()
+        return self.text
 
     # Sets the text
     def set(self, text):
-        self.string_var.set(text)
+        self.text = str(text)
+        self.config(text=self.text)
+        self.description = "[Text] object with text \"" + str(text) + "\""
 
     # Sets the text colour
     def color(self, color):
@@ -64,5 +61,8 @@ class Text(Label):
 
     # Append to the StringVar controlling this text
     def append(self, text):
-        self.string_var.set( self.string_var.get() + str(text) )
+        new_text = self.text + str(text)
+        self.text = new_text
+        self.config(text=new_text)
+        self.description = "[Text] object with text \"" + new_text + "\""
 

@@ -1,13 +1,18 @@
 import os
 from setuptools import setup, find_packages
 
+## This is a Python 3 package only
+from sys import version_info
+if version_info.major != 3:
+    print("This package will only work with Python 3. \n" 
+          "If you already have Python 3 installed try 'pip3 install guizero'.")
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name="guizero",
-    version="0.2.1",
+    version="0.3.3",
     author="Laura Sach",
     author_email="laura.sach@raspberrypi.org",
     description="Python module to allow kids to easily create GUIs",

@@ -82,6 +82,8 @@
             
                 <li class="toctree-l3"><a href="#alerts">Alerts</a></li>
                 
+                    <li><a class="toctree-l4" href="#using-alerts">Using alerts</a></li>
+                
                     <li><a class="toctree-l4" href="#purpose">Purpose</a></li>
                 
                     <li><a class="toctree-l4" href="#examples">Examples</a></li>
@@ -169,6 +171,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -202,6 +211,11 @@
             <div class="section">
               
                 <h1 id="alerts">Alerts</h1>
+<h3 id="using-alerts">Using alerts</h3>
+<p>To use the alerts you will need to import each one individually at the start of your program. For example:</p>
+<pre><code class="python">from guizero import warn, info
+</code></pre>
+
 <h3 id="purpose">Purpose</h3>
 <p>These functions pop up a box on the screen that displays a message. The functions available are:</p>
 <ul>
@@ -214,7 +228,8 @@
 <h3 id="examples">Examples</h3>
 <p><strong>Warning box</strong></p>
 <p>This will pop up a warning box with the title <code>"Uh oh!"</code> and the message <code>"You are almost out of biscuits!"</code>.</p>
-<pre><code class="python">app = App(&quot;Biscuit monitor&quot;)
+<pre><code class="python">from guizero import App, warn
+app = App(title=&quot;Biscuit monitor&quot;)
 warn(&quot;Uh oh!&quot;, &quot;You are almost out of biscuits!&quot;)
 app.display()
 </code></pre>
@@ -229,7 +244,8 @@ app.display()
 <li>If <code>No</code> was pressed, return <code>False</code></li>
 </ul>
 <p>You can store this value in a variable and test it:</p>
-<pre><code class="python">app = App(&quot;Snowman&quot;)
+<pre><code class="python">from guizero import App, yesno, info, error
+app = App(title=&quot;Snowman&quot;)
 build_a_snowman = yesno(&quot;A question...&quot;, &quot;Do you want to build a snowman?&quot;)
 if build_a_snowman == True:
     info(&quot;Snowman&quot;, &quot;It doesn't have to be a snowman&quot;)
@@ -259,14 +275,15 @@ app.display()
 </ul>
 <p><strong>Example: Do you really want to close?</strong></p>
 <p>You can use a <code>yesno</code> box to check whether someone really wants to exit your app. If they click yes, the app is closed, if not, nothing happens and they can continue with what they were doing.</p>
-<pre><code class="python"># Ask user if they really want to close the window
+<pre><code class="python">from guizero import App, Text, yesno
+# Ask user if they really want to close the window
 def do_this_on_close():
-    if alerts.yesno(&quot;Close&quot;, &quot;Do you want to quit?&quot;):
+    if yesno(&quot;Close&quot;, &quot;Do you want to quit?&quot;):
         app.destroy()
 
 app = App()
 
-title = Text(app, &quot;blank app&quot;)
+title = Text(app, text=&quot;blank app&quot;)
 
 # When user tries to close the window, execute do_this_on_close()
 app.on_close(do_this_on_close)

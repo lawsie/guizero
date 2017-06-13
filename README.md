@@ -1,13 +1,24 @@
 ## gui zero
 
-Version 0.2.1
+Version 0.3.3 (7th June 2017)
 
 ## Installing with pip
 
+**Raspberry Pi / Linux**
+```bash
+sudo pip3 install guizero
+```
+
+**Windows**
 ```bash
 pip install guizero
 ```
 [Help, I don't know how to install something with pip](http://catcatcode.com/blog/installing-python-packages-with-pip/)
+
+**Upgrading**
+```bash
+sudo pip3 install guizero --upgrade
+```
 
 # Mission statement
 The aim of guizero is to make the process of creating simple GUIs quick, accessible and understandable for children.
@@ -17,7 +28,7 @@ The aim of guizero is to make the process of creating simple GUIs quick, accessi
 * Abstracts away details children find hard (such as Tkinter StringVar() objects)
 * Accessible widget naming system to help children to build up a mental model
 * Flexible enough to be used for projects up to A-Level standard, yet accessible to primary school children
-* Comprehensive and accessible documentation with examples - Coming Soon!
+* Comprehensive and accessible [documentation with examples](http://lawsie.github.io/guizero)
 * Helpful error messages
 
 # Documentation

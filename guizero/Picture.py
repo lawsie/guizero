@@ -1,7 +1,4 @@
-try:
-    from tkinter import *
-except ImportError:
-    print("tkinter did not import successfully. Please check your setup.")
+from tkinter import Label, PhotoImage
 
 from . import utilities as utils
 
@@ -9,7 +6,7 @@ from . import utilities as utils
 #try:
 #    from PIL import Image, ImageTk
 #except ImportError:
-    #utils.error_format("You will only be able to display GIF images as you do not have the PIL library.")
+#    utils.error_format("You will only be able to display GIF images as you do not have the PIL library.")
 
 
 class Picture(Label):

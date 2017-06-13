@@ -173,6 +173,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../waffle/">Waffle</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -214,8 +221,9 @@
 
 <h3 id="create-a-combo-object">Create a Combo object</h3>
 <p>Create a basic Combo object like this:</p>
-<pre><code class="python">app = App()
-combo = Combo(app, [&quot;Beef&quot;, &quot;Chicken&quot;, &quot;Fish&quot;, &quot;Vegetarian&quot;])
+<pre><code class="python">from guizero import App, Combo
+app = App()
+combo = Combo(app, options=[&quot;Beef&quot;, &quot;Chicken&quot;, &quot;Fish&quot;, &quot;Vegetarian&quot;])
 app.display()
 </code></pre>
 
@@ -318,14 +326,16 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong>Creating a Combo</strong></p>
 <p>The simplest way to create a Combo object is as follows:</p>
-<pre><code class="python">app = App()
-combo = Combo(app, [&quot;Beef&quot;, &quot;Chicken&quot;, &quot;Fish&quot;, &quot;Vegetarian&quot;])
+<pre><code class="python">from guizero import App, Combo
+app = App()
+combo = Combo(app, options=[&quot;Beef&quot;, &quot;Chicken&quot;, &quot;Fish&quot;, &quot;Vegetarian&quot;])
 app.display()
 </code></pre>
 
 <p><strong>Calling a function when the value selected changes</strong></p>
 <p>You can call a function when the selected value in a Combo object changes. This must be set up at the time you create the Combo object and cannot be defined later. The function you call <em>MUST</em> take a minimum of one parameter as it will automatically be passed a string containing the currently selected value in the Combo object.</p>
-<pre><code class="python">def you_chose(selected_value):
+<pre><code class="python">from guizero import App, Text, Combo
+def you_chose(selected_value):
     result.set(&quot;You chose...&quot;)
     if selected_value == &quot;Tiny goblet&quot;:
         result.append(&quot;wisely&quot;)
@@ -333,8 +343,8 @@ app.display()
         result.append(&quot;poorly&quot;)
 
 app = App()
-instructions = Text(app, &quot;Choose a goblet&quot;)
-combo = Combo(app, [&quot;&quot;, &quot;Huge golden goblet&quot;, &quot;Jewel encrusted goblet&quot;, &quot;Tiny goblet&quot;], command=you_chose)
+instructions = Text(app, text=&quot;Choose a goblet&quot;)
+combo = Combo(app, options=[&quot;&quot;, &quot;Huge golden goblet&quot;, &quot;Jewel encrusted goblet&quot;, &quot;Tiny goblet&quot;], command=you_chose)
 result = Text(app)
 app.display()
 </code></pre>
