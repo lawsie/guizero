@@ -1,0 +1,20 @@
+* One-off install to enable building of packages:
+  sudo apt install python3-all
+
+* Change version number in:
+  - setup.py
+
+* In debian_wheezy/changelog and debian_stretch/changelog
+  - Update version numbers
+  - Update timestamp
+
+* Make sure that the project builds successfully using python3 setup.py build
+
+* Commit your changes to github
+
+* Run ./make_deb
+
+* Debian packages will appear in the dist/ directory
+
+* Build on a wheezy system to create wheezy packages, a squeeze system
+  for squeeze packages

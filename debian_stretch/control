@@ -1,0 +1,17 @@
+Source: guizero
+Maintainer: Laura Sach <laura.sach@raspberrypi.org>
+Section: python
+Priority: optional
+Build-Depends: python3-setuptools, python3-all, debhelper (>= 7)
+Standards-Version: 3.9.8
+X-Python3-Version: >= 3.2
+Homepage: https://github.com/lawsie/guizero
+
+Package: python3-guizero
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}, python3-tk
+Description: Python module to allow kids to easily create GUIs
+ GUIzero is designed to be used by children. In educational settings,
+ installation of extra programs and features may be difficult, so the set up
+ process is designed to be as simple as possible.
+
