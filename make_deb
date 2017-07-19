@@ -1,0 +1,23 @@
+#!/bin/sh
+VERSION=0.3.3
+DISTRO=`lsb_release -sc`
+SCRIPT=$(readlink -f "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+set -e
+
+# create debian source package
+python setup.py sdist
+rm -rf ~/build-guizero
+mkdir ~/build-guizero
+cp dist/guizero-$VERSION.tar.gz ~/build-guizero/guizero_$VERSION~$DISTRO.orig.tar.gz
+cd ~/build-guizero
+tar xvf guizero_$VERSION~$DISTRO.orig.tar.gz
+cp -a $SCRIPTPATH/debian_$DISTRO ~/build-guizero/guizero-$VERSION/debian
+
+# build .deb file
+cd ~/build-guizero/guizero-$VERSION
+debuild -us -uc
+
+# copy debian source package and binary package to the dist/ directory
+mv ~/build-guizero/*$DISTRO* $SCRIPTPATH/dist
+rm -rf ~/build-guizero
