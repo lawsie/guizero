@@ -1,6 +1,6 @@
-## gui zero
+## guizero
 
-Version 0.3.3 (7th June 2017)
+Version 0.4 (? 2017)
 
 ## Installing with pip
 
@@ -13,12 +13,11 @@ sudo pip3 install guizero
 ```bash
 pip install guizero
 ```
-[Help, I don't know how to install something with pip](http://catcatcode.com/blog/installing-python-packages-with-pip/)
+[Help, I don't know how to install something with pip](https://projects.raspberrypi.org/en/projects/using-pip-on-windows)
 
 **Upgrading**
 ```bash
-sudo pip3 install -U guizero (on Raspberry Pi)
-pip install guizero --upgrade (on Windows)
+sudo pip3 install guizero --upgrade
 ```
 
 # Mission statement
