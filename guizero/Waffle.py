@@ -4,11 +4,12 @@ from . import utilities as utils
     
 class Waffle(Frame):
 
-    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, remember=False, grid=None, align=None):    	
+    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, remember=False, grid=None, align=None, command=None):    	
 
     	# Description of this object (for friendly error messages)
         self.description = "[Waffle] object ("+str(height)+"x"+str(width)+")"
 
+        self.command = command
         self.height = height
         self.width = width
         self.dim = dim
@@ -58,6 +59,7 @@ class Waffle(Frame):
 
         # Pack the canvas into this Waffle object
         self.canvas.pack(fill=BOTH, expand=1)
+        self.canvas.bind("<Button-1>", self.clicked_on)
 
 
         # Pack this box into its layout 
@@ -124,5 +126,12 @@ class Waffle(Frame):
         else:
             return self.save_colors
 
-
-    
+    # Detect x,y coords of where the user clicked
+    def clicked_on(self,e):
+        canvas = e.widget
+        x = canvas.canvasx(e.x)
+        y = canvas.canvasy(e.y)
+        pixel_x = int(x/(self.dim+self.pad))
+        pixel_y = int(y/(self.dim+self.pad))
+        if self.command:
+            self.command(pixel_x,pixel_y)
