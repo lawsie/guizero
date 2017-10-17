@@ -10,14 +10,17 @@ class Text:
 
         # Save some of the config
         self.current_size = size
-        self.current_color = text_color if text_color is not None else color  # Font colour
-        self.bg_color = None #master.bg # Background colour set to master's bg color
+        if text_color is None:          # text_color overrides old color property
+            self.current_color = color
+        else:
+            self.current_color = text_color
+        self.bg_color = bg
         self.current_font = font
 
         self.text = str(text)
 
         # Create a tk Label object within this object
-        self.tk = Label(master, text=text, fg=color, font=(font, size), grid=None, align=None)
+        self.tk = Label(master, text=text, fg=self.text_color, bg=bg, font=(font, size), grid=None, align=None)
 
         # Pack this object
         try:
@@ -53,12 +56,12 @@ class Text:
     # The background color
     @property
     def bg(self):
-        return (self.current_color)
+        return (self.bg_color)
 
     @bg.setter
     def bg(self, color):
         self.tk.config(bg=color)
-        self.current_color = color
+        self.bg_color = color
 
     # The font face
     @property
