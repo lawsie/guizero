@@ -5,25 +5,44 @@ from . import utilities as utils
 # Only to be used as part of button group
 # unless you want to externally create a controlling variable StringVar()
 # Does NOT create an internal StringVar() as this is handled by the ButtonGroup class
-class RadioButton(Radiobutton):
+class RadioButton:
 
-    def __init__(self, master, text, value, variable, command=None, grid=None, align=None):  
-      
+    def __init__(self, master, text, value, variable, command=None, grid=None, align=None):
+
         self.description = "[RadioButton] object with option=\"" + str(text) + "\" value=\"" + str(value) + "\""
-        self.text = text
-        self.value = value        
-        
+        self._text = text
+        self._value = value
+
+        # `variable` is the externally passed StringVar keeping track of which
+        # option was selected. This class should not be instantiated by a user
+        # unless they know what they are doing.
         try:
-            super().__init__(master, text=text, value=value, variable=variable)
-            #utils.auto_pack(self, master, grid, align)
-        
-
+            self.tk = Radiobutton(master, text=self._text, value=self._value, variable=variable)
         except AttributeError:
-            utils.error_format( self.description + "\n" + 
-            "The first argument was a " + str(type(master)) +". First argument must be [ButtonGroup]")
+            utils.error_format( "Could not create " + self.description + "\n")
 
-        
 
-        
+    # PROPERTIES
+    # -----------------------------------
 
-   
+    # The value of this button
+    @property
+    def value(self):
+        return (self._value)
+
+    @value.setter
+    def value(self, value):
+        self._value = str(value)
+        self.tk.config(value=str(value))
+        self.description = "[RadioButton] object with option=\"" + self._text + "\" value=\"" + str(value) + "\""
+
+    # The text from this button
+    @property
+    def text(self):
+        return (self._text)
+
+    @text.setter
+    def text(self, text):
+        self._text = str(text)
+        self.tk.config(text=self._text)
+        self.description = "[RadioButton] object with option=\"" + str(text) + "\" value=\"" + self._value + "\""

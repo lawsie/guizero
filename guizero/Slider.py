@@ -19,7 +19,7 @@ class Slider:
 
         # Pack this object
         try:
-            utils.auto_pack(self.tk, master, grid, align)
+            utils.auto_pack(self, master, grid, align)
        	except AttributeError:
             utils.error_format( self.description + "\n" +
             "Could not add to interface - check first argument is [App] or [Box]")
