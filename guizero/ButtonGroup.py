@@ -110,9 +110,9 @@ class ButtonGroup:
     # Get selected value (e.g. 1, 2, 3)
     def get(self):
         return self.selected.get()
-        utils.deprecated("get() is deprecated. Please use the value property instead.")
+        utils.deprecated("ButtonGroup get() is deprecated. Please use the value property instead.")
 
     # Set which option is selected
     def set(self, value):
         self.selected.set(str(value))
-        utils.deprecated("set() is deprecated. Please use the value property instead.")
+        utils.deprecated("ButtonGroup set() is deprecated. Please use the value property instead.")

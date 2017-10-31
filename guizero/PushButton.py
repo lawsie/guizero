@@ -141,4 +141,4 @@ class PushButton:
     def set_text(self, text):
         self._text.set(str(text))
         self.description = "[Text] object with text \"" + str(text) + "\""
-        utils.deprecated("set_text() is deprecated. Please use the value property instead.")
+        utils.deprecated("PushButton set_text() is deprecated. Please use the value property instead.")

@@ -20,7 +20,7 @@ class Text:
         self.text = str(text)
 
         # Create a tk Label object within this object
-        self.tk = Label(master, text=text, fg=self.text_color, bg=bg, font=(font, size), grid=None, align=None)
+        self.tk = Label(master, text=text, fg=self.text_color, bg=bg, font=(font, size))
 
         # Pack this object
         try:
@@ -106,28 +106,28 @@ class Text:
     def color(self, color):
         self.current_color = color
         self.tk.config(fg=color)
-        utils.deprecated("color() is deprecated. Please use the text_color property instead.")
+        utils.deprecated("Text color() is deprecated. Please use the text_color property instead.")
 
     # Set the font
     def font_face(self, font):
         self.current_font = font
         self.tk.config(font=(self.current_font, self.current_size))
-        utils.deprecated("font_face() is deprecated. Please use font property instead.")
+        utils.deprecated("Text font_face() is deprecated. Please use font property instead.")
 
     # Set the font size
     def font_size(self, size):
         self.current_size = size
         self.tk.config(font=(self.current_font, self.current_size))
-        utils.deprecated("font_size() is deprecated. Please use the size property instead.")
+        utils.deprecated("Text font_size() is deprecated. Please use the size property instead.")
 
      # Returns the text
     def get(self):
         return self.text
-        utils.deprecated("get() is deprecated. Please use the value property instead.")
+        utils.deprecated("Text get() is deprecated. Please use the value property instead.")
 
     # Sets the text
     def set(self, text):
         self.text = str(text)
         self.tk.config(text=self.text)
         self.description = "[Text] object with text \"" + str(text) + "\""
-        utils.deprecated("set() is deprecated. Please use the value property instead.")
+        utils.deprecated("Text set() is deprecated. Please use the value property instead.")
