@@ -60,13 +60,16 @@ class CheckBox:
     # Return text associated with this checkbox
     def get_text(self):
         return self._text
+        utils.deprecated("CheckBox get_text() is deprecated. Please use the text property instead.")
 
     # Return the value (1 or 0) of the box
     def get_value(self):
         return self._value.get()
+        utils.deprecated("CheckBox get_value() is deprecated. Please use the value property instead.")
 
     # Change text
     def change_text(self, newtext):
         self._text = str(newtext)
         self.tk.config(text=self._text)
         self.description = "[CheckBox] object with text " + str(self._text)
+        utils.deprecated("CheckBox change_text() is deprecated. Please use the text property instead.")
