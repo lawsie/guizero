@@ -16,11 +16,8 @@ class RadioButton:
         # `variable` is the externally passed StringVar keeping track of which
         # option was selected. This class should not be instantiated by a user
         # unless they know what they are doing.
-        try:
-            self.tk = Radiobutton(master, text=self._text, value=self._value, variable=variable)
-        except AttributeError:
-            utils.error_format( "Could not create " + self.description + "\n")
-
+        self.tk = Radiobutton(master.tk, text=self._text, value=self._value, variable=variable)
+        
 
     # PROPERTIES
     # -----------------------------------

@@ -13,21 +13,21 @@ class Picture:
     def __init__(self, master, image, grid=None, align=None):
 
         # The image name as a string
-        self.image_name = str(image)
+        self._image_name = str(image)
 
         # Description of this object (for friendly error messages)
-        self.description = "[Picture] object \"" + self.image_name + "\""
+        self.description = "[Picture] object \"" + self._image_name + "\""
 
         # Instantiate label object which will contain image
-        self.tk = Label(master)
+        self.tk = Label(master.tk)
 
         try:
             img = PhotoImage(file=image)
-            self.image = img
-            self.tk.config(image=self.image)
+            self._image = img
+            self.tk.config(image=self._image)
 
         except:
-            self.tk.config(text="Image "+ self.image_name +" failed to load")
+            self.tk.config(text="Image "+ self._image_name +" failed to load")
             utils.error_format("Image import error - " + str(image) +" must be a GIF, check correct path")
 
         # Pack or grid depending on parent
@@ -38,16 +38,16 @@ class Picture:
     # Get the filename of the image
     @property
     def value(self):
-        return (self.image_name)
+        return (self._image_name)
 
     # Set the image to a given file
     @value.setter
     def value(self, image):
         try:
             img = PhotoImage(file=image)
-            self.image = img
-            self.tk.config(image=self.image)
-            self.image_name = str(image)
+            self._image = img
+            self.tk.config(image=self._image)
+            self._image_name = str(image)
             self.description = "[Picture] object \"" + str(image) + "\""
         except:
             utils.error_format("Image import error - " + str(image) +" must be a GIF, check correct path")
@@ -60,9 +60,9 @@ class Picture:
     def set(self, image):
         try:
             img = PhotoImage(file=image)
-            self.image = img
-            self.tk.config(image=self.image)
-            self.image_name = str(image)
+            self._image = img
+            self.tk.config(image=self._image)
+            self._image_name = str(image)
             self.description = "[Picture] object \"" + str(image) + "\""
         except:
             utils.error_format("Image import error - " + str(image) +" must be a GIF, check correct path")

@@ -13,7 +13,7 @@ class TextBox:
         self._text.set( str(text) )
 
         # Create a tk Label object within this object
-        self.tk = Entry(master, textvariable=self._text, width=width)
+        self.tk = Entry(master.tk, textvariable=self._text, width=width)
 
         # Pack or grid depending on parent
         utils.auto_pack(self, master, grid, align)
@@ -40,7 +40,7 @@ class TextBox:
 
     # Append text
     def append(self, text):
-        self.value = self.value + str(text) 
+        self.value = self.value + str(text)
         self.description = "[Text] object with text \"" + self.value + "\""
 
 
@@ -49,8 +49,10 @@ class TextBox:
     # Returns the text
     def get(self):
         return self._text.get()
+        utils.deprecated("TextBox get() is deprecated. Please use the value property instead.")
 
     # Sets the text
     def set(self, text):
         self._text.set( str(text) )
         self.description = "[Text] object with text \"" + str(text) + "\""
+        utils.deprecated("TextBox set() is deprecated. Please use the value property instead.")

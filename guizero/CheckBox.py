@@ -10,7 +10,7 @@ class CheckBox:
         self._value = IntVar()
 
         # Create a tk Checkbutton object within this object
-        self.tk = Checkbutton(master, text=text, variable=self._value)
+        self.tk = Checkbutton(master.tk, text=text, variable=self._value)
 
         # Add a command if there was one
         if command is not None:

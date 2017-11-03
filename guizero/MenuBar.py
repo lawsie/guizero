@@ -10,10 +10,10 @@ class MenuBar:
             utils.error_format("The [MenuBar] must have the [App] object as its master")
 
         # Create a tk Menu object within this object
-        self.tk = Menu(master)
+        self.tk = Menu(master.tk)
 
         # Keep track of submenu objects
-        self.sub_menus = []
+        self._sub_menus = []
 
         # Description of this object (for friendly error messages)
         self.description = "[MenuBar] object "
@@ -29,10 +29,10 @@ class MenuBar:
                 new_menu.add_command(label=menu_item[0], command=menu_item[1])
 
             # Append to the submenus list
-            self.sub_menus.append(new_menu)
+            self._sub_menus.append(new_menu)
 
             # Add to the menu bar
-            self.tk.add_cascade(label=toplevel[i], menu=self.sub_menus[i])
+            self.tk.add_cascade(label=toplevel[i], menu=self._sub_menus[i])
 
        	# Set this as the menu for the main App object
-       	master.config(menu=self.tk)
+       	master.tk.config(menu=self.tk)

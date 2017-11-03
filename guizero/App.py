@@ -2,38 +2,94 @@ from tkinter import Tk
 
 from . import utilities as utils
 
-class App(Tk):
+class App:
 
-    def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None):
+    def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None):
 
-        try:
-            super().__init__()
-        except:            
-            utils.error_format("Failed to initialise [App] object")
+        self.tk = Tk()
 
         # Initial setup
-        self.title( str(title) )
-        self.geometry(str(width)+"x"+str(height))
-        self.layout_manager = layout  		# Only behaves differently if equals "grid"
+        self.tk.title( str(title) )
+        self.tk.geometry(str(width)+"x"+str(height))
+        self._layout_manager = layout  # Only behaves differently for "grid"
 
-        if bgcolor is not None:
-            self.configure(background=str(bgcolor))
-    
-    
+        # bg overrides deprecated bgcolor
+        if bg is not None:
+            self.tk.configure(background=str(bg))
+        elif bgcolor is not None:
+            self.tk.configure(background=str(bgcolor))
+            utils.deprecated("App 'bgcolor' constructor argument is deprecated. Please use bg instead.")
+
+    # PROPERTIES
+    # -----------------------------------
+
+    # The title text
+    @property
+    def title(self):
+        return self.tk.title()
+
+    @title.setter
+    def title(self, text):
+        self.tk.title( str(text) )
+
+    # The background colour of the app
+    @property
+    def bg(self):
+        return self.tk.cget("background")
+
+    @bg.setter
+    def bg(self, color):
+        self.tk.configure(background=str(color))
+
+    # The height of the window
+    @property
+    def height(self):
+        self.tk.update()
+        return self.tk.winfo_height()
+
+    @height.setter
+    def height(self, height):
+        self.tk.update()
+        self.tk.geometry(str(self.tk.winfo_width())+"x"+str(height))
+
+    # The width of the window
+    @property
+    def width(self):
+        self.tk.update()
+        return self.tk.winfo_width()
+
+    @width.setter
+    def width(self, width):
+        self.tk.update()
+        self.tk.geometry(str(width)+"x"+str(self.tk.winfo_height()))
+
+
+    # METHODS
+    # --------------------------------------
+
     # Alias of mainloop with friendlier name
     def display(self):
-        super().mainloop()
+        self.tk.mainloop()
+
+    # Do `command` when the window is closed
+    def on_close(self, command):
+        self.tk.wm_protocol("WM_DELETE_WINDOW", command)
+
+    # Destroys the window and exits the program
+    def destroy(self):
+        self.tk.destroy()
+        exit()
+
+
+    # DEPRECATED METHODS
+    # ------------------------------------
 
     # Set the title of the window
     def set_title(self, title):
-        self.title( str(title) )
-
-    # do `command` on window close instruction
-    def on_close(self, command):
-        super().wm_protocol("WM_DELETE_WINDOW", command)
-
-    # Method destroy() is already in tkinter, will close app window
+        self.tk.title( str(title) )
+        utils.deprecated("App set_title() is deprecated. Please use the title property instead.")
 
     # Change the background colour
-    def bgcolor(self, bgcolor):
-        self.configure(background=str(bgcolor))
+    def bgcolor(self, color):
+        self.tk.configure(background=str(color))
+        utils.deprecated("App bgcolor() is deprecated. Please use the bg property instead.")

@@ -7,14 +7,14 @@ class PushButton:
 
         self._text = StringVar()
         self._text.set(text)
-        self.current_font = "Arial"
-        self.current_size = 11
+        self._current_font = "Arial"
+        self._current_size = 11
 
         # Description of this object (for friendly error messages)
         self.description = "[PushButton] object with text \"" + self._text.get() + "\""
 
         # Create a tk Button object within this object
-        self.tk = Button(master, textvariable=self._text)
+        self.tk = Button(master.tk, textvariable=self._text)
 
         # If the args LIST was not blank, convert to allow args
         if args is not None:
@@ -75,24 +75,24 @@ class PushButton:
     # Get the current font as a string
     @property
     def font(self):
-        return (self.current_font)
+        return (self._current_font)
 
     # Set the current font
     @font.setter
     def font(self, font):
-        self.current_font = font
-        self.tk.config(font=(self.current_font, self.current_size))
+        self._current_font = font
+        self.tk.config(font=(self._current_font, self._current_size))
 
     # Get the current font size as an integer
     @property
     def size(self):
-        return (self.current_size)
+        return (self._current_size)
 
     # Set the font size
     @size.setter
     def size(self, size):
-        self.current_size = int(size)
-        self.tk.config(font=(self.current_font, self.current_size))
+        self._current_size = int(size)
+        self.tk.config(font=(self._current_font, self._current_size))
 
     # METHODS
     # -------------------------------------------
@@ -113,8 +113,7 @@ class PushButton:
     def disable(self):
         self.tk.config(state=DISABLED)
 
-    # Toggle button state
-    def toggle_state(self):
+    def toggle(self):
         button_state = self.tk.cget("state")
         if button_state == "disabled":
             self.enable()
@@ -142,3 +141,12 @@ class PushButton:
         self._text.set(str(text))
         self.description = "[Text] object with text \"" + str(text) + "\""
         utils.deprecated("PushButton set_text() is deprecated. Please use the value property instead.")
+
+    # Toggle button state - renamed to just toggle
+    def toggle_state(self):
+        button_state = self.tk.cget("state")
+        if button_state == "disabled":
+            self.enable()
+        elif button_state == "normal":
+            self.disable()
+        utils.deprecated("PushButton toggle_state() is deprecated - renamed to toggle()")

@@ -15,7 +15,7 @@ class Slider:
         orient = HORIZONTAL if horizontal else VERTICAL
 
         # Create a tk Scale object within this object
-        self.tk = Scale(master, from_=start, to=end, orient=orient, command=command)
+        self.tk = Scale(master.tk, from_=start, to=end, orient=orient, command=command)
 
         # Pack this object
         try:

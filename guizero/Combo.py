@@ -6,10 +6,10 @@ class Combo:
     def __init__(self, master, options, selected=None, command=None, grid=None, align=None):
 
         # Maintain a list of options (as strings, to avoid problems comparing)
-        self.options = [str(x) for x in options]
+        self._options = [str(x) for x in options]
 
         # Description of this object (for friendly error messages)
-        self.description = "[Combo] object with options  " + str(self.options)
+        self.description = "[Combo] object with options  " + str(self._options)
 
         # Store currently selected item
         self._selected = StringVar()
@@ -27,10 +27,10 @@ class Combo:
         # If a command is specified, the function MUST take one positional argument
         # as it will be auto-given the current value of the Combo
         # You can only specify a command for a OptionMenu at init
-        self.command = command
+        self._command = command
 
         # Create a tk OptionMenu object within this object
-        self.tk = OptionMenu(master, self._selected, *self.options, command=self.command)
+        self.tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command)
 
         # Pack or grid self
         utils.auto_pack(self, master, grid, align)
@@ -45,7 +45,7 @@ class Combo:
 
     @value.setter
     def value(self, value):
-        if value in self.options:
+        if value in self._options:
             self._selected.set( str(value) )
         else:
             utils.error_format("Tried to set " + self.description + " to option \"" + str(value) + "\", which does not exist" )
@@ -67,8 +67,8 @@ class Combo:
     def add_option(self, option):
 
         # Add to the internal list
-        self.options.append( str(option) )
-        # self.children["menu"].add_command(label=option, command=self.command)
+        self._options.append( str(option) )
+        # self.children["menu"].add_command(label=option, command=self._command)
 
         # Delete all options
         menu = self.tk.children["menu"]
@@ -76,10 +76,10 @@ class Combo:
 
         # Re-add all options
         # This uses an internal tk method _setit which is a bit naughty
-        for item in self.options:
-            menu.add_command(label=item, command=_setit(self._selected, item, self.command))
+        for item in self._options:
+            menu.add_command(label=item, command=_setit(self._selected, item, self._command))
 
-        self.description = "[Combo] object with options  " + str(self.options)
+        self.description = "[Combo] object with options  " + str(self._options)
 
         # Set the new option as selected
         self._selected.set( str(option) )
@@ -87,7 +87,7 @@ class Combo:
 
     # Clear all options from the box
     def clear(self):
-        self.options = []
+        self._options = []
         self.tk.children["menu"].delete(0, END)
         self._selected.set("")
 
@@ -102,7 +102,7 @@ class Combo:
 
     # Sets currently selected option (if it exists in the list)
     def set(self, text):
-        if text in self.options:
+        if text in self._options:
             self._selected.set( str(text) )
         else:
             utils.error_format("Tried to set " + self.description + " to option \"" + str(text) + "\", which does not exist" )
