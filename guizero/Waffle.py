@@ -25,7 +25,7 @@ class Waffle:
         self._c_width = self._width*(self._pixel_size+self._pad)
 
         # Create a tk Frame object within this object which will be the waffle
-        self.tk = Frame(master)
+        self.tk = Frame(master.tk)
 
         # Create an internal canvas to draw the waffle on
         self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width)
