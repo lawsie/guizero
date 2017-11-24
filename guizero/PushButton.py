@@ -8,7 +8,7 @@ class PushButton:
         self._text = StringVar()
         self._text.set(text)
         self._current_font = "Arial"
-        self._current_size = 11
+        self._font_size = 11
 
         # Description of this object (for friendly error messages)
         self.description = "[PushButton] object with text \"" + self._text.get() + "\""
@@ -81,18 +81,39 @@ class PushButton:
     @font.setter
     def font(self, font):
         self._current_font = font
-        self.tk.config(font=(self._current_font, self._current_size))
+        self.tk.config(font=(self._current_font, self._font_size))
 
-    # Get the current font size as an integer
+    # Get the current text size as an integer
     @property
-    def size(self):
-        return (self._current_size)
+    def text_size(self):
+        return (self._font_size)
 
     # Set the font size
-    @size.setter
-    def size(self, size):
-        self._current_size = int(size)
-        self.tk.config(font=(self._current_font, self._current_size))
+    @text_size.setter
+    def text_size(self, size):
+        self._font_size = int(size)
+        self.tk.config(font=(self._current_font, self._font_size))
+
+    # Get the current height as an integer (does not include padding)
+    @property
+    def height(self):
+        return int(self.tk.cget("height"))
+
+    # Set the height
+    @height.setter
+    def height(self, height_px):
+        self.tk.config(height=int(height_px))
+
+    # Get the current width as an integer (does not include padding)
+    @property
+    def width(self):
+        return int(self.tk.cget("width"))
+
+    # Set the height
+    @width.setter
+    def width(self, width_px):
+        self.tk.config(width=int(width_px))
+
 
     # METHODS
     # -------------------------------------------
@@ -103,9 +124,7 @@ class PushButton:
             newcommand = utils.with_args(newcommand, *args)
         self.tk.config(command=newcommand)
 
-    # Contributed by jezdean
-    # -----------------------
-    # Enable Button
+    # Enable Button - contributed by jezdean
     def enable(self):
         self.tk.config(state=NORMAL)
 

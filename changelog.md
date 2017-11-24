@@ -27,7 +27,7 @@
 
 ## PushButton
 - `set_text()` method is now deprecated and has been replaced by the `value` property
-- New properties for `text_color`, `bg`, `font` and `size` – make your buttons look pretty!
+- New properties for `text_color`, `bg`, `font`, `text_size`, `height` and `width` – make your buttons look pretty!
 - New `icon()` method to set the icon of a button after it is created
 - `toggle_state()` method deprecated and renamed to `toggle()` for consistency
 
