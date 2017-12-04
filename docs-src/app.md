@@ -96,7 +96,7 @@ from guizero import App, PushButton
 def do_nothing():
     print("Nothing happened")
 
-app = App(tile="Keypad example", width=100, height=90, layout="grid")
+app = App(title="Keypad example", width=100, height=90, layout="grid")
 button1 = PushButton(app, command=do_nothing, text="1", grid=[0,0])
 button2 = PushButton(app, command=do_nothing, text="2", grid=[0,1])
 button3  = PushButton(app, command=do_nothing, text="3", grid=[0,2])
