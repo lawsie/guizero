@@ -1,7 +1,8 @@
 from tkinter import Checkbutton, IntVar
+from .Widget import _Widget
 from . import utilities as utils
 
-class CheckBox:
+class CheckBox(_Widget):
 
     def __init__(self, master, text, command=None, grid=None, align=None):
 

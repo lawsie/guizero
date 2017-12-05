@@ -1,11 +1,11 @@
 from tkinter import Frame, StringVar
-
+from .Widget import _Widget
 from . import utilities as utils
 from .Box import Box
 from .RadioButton import RadioButton
 
 
-class ButtonGroup:
+class ButtonGroup(_Widget):
 
     def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None):
 

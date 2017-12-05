@@ -1,7 +1,8 @@
 from tkinter import OptionMenu, StringVar, END, _setit
+from .Widget import _Widget
 from . import utilities as utils
 
-class Combo:
+class Combo(_Widget):
 
     def __init__(self, master, options, selected=None, command=None, grid=None, align=None):
 

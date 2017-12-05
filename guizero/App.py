@@ -1,8 +1,9 @@
 from tkinter import Tk
+from .Widget import _Widget
 
 from . import utilities as utils
 
-class App:
+class App(_Widget):
 
     def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None):
 
@@ -74,11 +75,6 @@ class App:
     # Do `command` when the window is closed
     def on_close(self, command):
         self.tk.wm_protocol("WM_DELETE_WINDOW", command)
-
-    # Destroys the window and exits the program
-    def destroy(self):
-        self.tk.destroy()
-        exit()
 
 
     # DEPRECATED METHODS

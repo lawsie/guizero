@@ -1,7 +1,8 @@
 from tkinter import Entry, StringVar, END
+from .Widget import _Widget
 from . import utilities as utils
 
-class TextBox:
+class TextBox(_Widget):
 
     def __init__(self, master, text="", width=10, grid=None, align=None):
 

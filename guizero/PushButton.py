@@ -1,7 +1,8 @@
 from tkinter import Button, PhotoImage, StringVar, DISABLED, NORMAL
+from .Widget import _Widget
 from . import utilities as utils
 
-class PushButton:
+class PushButton(_Widget):
 
     def __init__(self, master, command, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
 
@@ -125,12 +126,14 @@ class PushButton:
         self.tk.config(command=newcommand)
 
     # Enable Button - contributed by jezdean
+    """
     def enable(self):
         self.tk.config(state=NORMAL)
 
     # Disable Button
     def disable(self):
         self.tk.config(state=DISABLED)
+    """
 
     def toggle(self):
         button_state = self.tk.cget("state")

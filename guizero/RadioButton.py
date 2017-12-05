@@ -1,11 +1,11 @@
 from tkinter import Radiobutton
-
+from .Widget import _Widget
 from . import utilities as utils
 
 # Only to be used as part of button group
 # unless you want to externally create a controlling variable StringVar()
 # Does NOT create an internal StringVar() as this is handled by the ButtonGroup class
-class RadioButton:
+class RadioButton(_Widget):
 
     def __init__(self, master, text, value, variable, command=None, grid=None, align=None):
 
@@ -17,7 +17,7 @@ class RadioButton:
         # option was selected. This class should not be instantiated by a user
         # unless they know what they are doing.
         self.tk = Radiobutton(master.tk, text=self._text, value=self._value, variable=variable)
-        
+
 
     # PROPERTIES
     # -----------------------------------

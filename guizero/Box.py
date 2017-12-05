@@ -1,7 +1,8 @@
 from tkinter import Frame
+from .Widget import _Widget
 from . import utilities as utils
 
-class Box:
+class Box(_Widget):
 
     def __init__(self, master, layout="auto", grid=None, align=None):
 

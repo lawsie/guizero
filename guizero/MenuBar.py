@@ -1,8 +1,9 @@
 from tkinter import Menu
+from .Widget import _Widget
 from . import utilities as utils
 from .App import App
 
-class MenuBar:
+class MenuBar(_Widget):
 
     def __init__(self, master, toplevel, options):
 

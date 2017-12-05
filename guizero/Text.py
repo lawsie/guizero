@@ -1,7 +1,8 @@
 from tkinter import Label, StringVar
+from .Widget import _Widget
 from . import utilities as utils
 
-class Text:
+class Text(_Widget):
 
     def __init__(self, master, text="", size=12, color="black", text_color=None, bg=None, font="Helvetica", grid=None, align=None):
 
@@ -66,7 +67,7 @@ class Text:
     # The font face
     @property
     def font(self):
-        return (self.current_font)
+        return (self._current_font)
 
     @font.setter
     def font(self, font):
@@ -111,7 +112,7 @@ class Text:
     # Set the font
     def font_face(self, font):
         self._current_font = font
-        self.tk.config(font=(self._current_font, self.current_size))
+        self.tk.config(font=(self._current_font, self._current_size))
         utils.deprecated("Text font_face() is deprecated. Please use font property instead.")
 
     # Set the font size
@@ -122,12 +123,12 @@ class Text:
 
      # Returns the text
     def get(self):
-        return self.text
+        return self._text
         utils.deprecated("Text get() is deprecated. Please use the value property instead.")
 
     # Sets the text
     def set(self, text):
-        self.text = str(text)
-        self.tk.config(text=self.text)
+        self._text = str(text)
+        self.tk.config(text=self._text)
         self.description = "[Text] object with text \"" + str(text) + "\""
         utils.deprecated("Text set() is deprecated. Please use the value property instead.")

@@ -1,7 +1,8 @@
 from tkinter import Scale, HORIZONTAL, VERTICAL
+from .Widget import _Widget
 from . import utilities as utils
 
-class Slider:
+class Slider(_Widget):
 
     def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None):
 

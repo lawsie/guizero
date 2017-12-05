@@ -1,7 +1,8 @@
 from tkinter import Canvas, BOTH, Frame
+from .Widget import _Widget
 from . import utilities as utils
 
-class Waffle:
+class Waffle(_Widget):
 
     def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, remember=True, grid=None, align=None, command=None):
 
