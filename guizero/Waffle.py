@@ -15,10 +15,7 @@ class Waffle:
         self._pad = pad             # How much padding between pixels
         self._color = color        # Start color of the whole waffle
         self._dotty = dotty         # A dotty waffle will display circles
-        self._save_colors = []
-
-        # Set up a pixel array to remember the pixel colours if remember was True
-        self._save_colors = [[color for row in range(self._width)] for col in range(self._height)]
+        self._save_canvas = []      # Where the Waffle objects will be stored
 
         # Calculate how big this canvas will be
         self._c_height = self._width*(self._pixel_size+self._pad)
@@ -52,20 +49,26 @@ class Waffle:
         curry = self._pad
 
         for y in range(self._height):
+            row = []
             for x in range(self._width):
                 if self._dotty == False:
-                    self._canvas.create_rectangle(currx, curry, currx+self._pixel_size, curry+self._pixel_size, fill=color)
+                    obj = self._canvas.create_rectangle(currx, curry, currx+self._pixel_size, curry+self._pixel_size, fill=color)
                 else:
-                    self._canvas.create_oval(currx, curry, currx+self._pixel_size, curry+self._pixel_size, fill=color)
+                    obj = self._canvas.create_oval(currx, curry, currx+self._pixel_size, curry+self._pixel_size, fill=color)
                 currx = currx + self._pixel_size + self._pad
+                row.append(obj)
             curry = curry + self._pixel_size + self._pad
             currx = self._pad
+            self._save_canvas.append(row)
 
     # Sets the colour of the whole waffle
     def set_all(self, color):
-        self._color = str(color)
-        self._draw(self._color)
-        self._save_colors = [[self._color for row in range(self._width)] for col in range(self._height)]
+        self.color = str(color)
+        # Draw the pixels on the canvas
+        for y in range(self._height):
+            for x in range(self._width):
+                obj = self._save_canvas[y][x]
+                self._canvas.itemconfig(obj,fill=color)
 
     # Sets a single pixel
     def set_pixel(self, x, y, color):
@@ -74,23 +77,24 @@ class Waffle:
         elif y >= self._width:
             utils.error_format("The y value "+ str(y) + " is off the edge of the waffle")
         else:
-            locate_x = (self._pixel_size + self._pad) * int(x) + self._pad
-            locate_y = (self._pixel_size + self._pad) * int(y) + self._pad
-            if self._dotty == False:
-                self._canvas.create_rectangle(locate_x, locate_y, locate_x+self._pixel_size, locate_y+self._pixel_size, fill=color)
-            else:
-                self._canvas.create_oval(locate_x, locate_y, locate_x+self._pixel_size, locate_y+self._pixel_size, fill=color)
-
-            # Update the saved colours
-            self._save_colors[y][x] = color
+            obj = self._save_canvas[y][x]
+            self._canvas.itemconfig(obj,fill=color)
 
     # Returns the colour value of a pixel if set
     def get_pixel(self, x, y):
-        return self._save_colors[y][x]
+        obj = self._save_canvas[y][x]
+        return self._canvas.itemcget(obj,'fill')
 
     # Returns a 2D list of all colours in the waffle
     def get_all(self):
-        return self._save_colors
+        all_pixels = []
+        for y in range(self._height):
+            row = []
+            for x in range(self._width):
+                obj = self._save_canvas[y][x]
+                row.append(self._canvas.itemcget(obj,'fill'))
+            all_pixels.append(row)
+        return all_pixels
 
     # Internal use only
     # Detect x,y coords of where the user clicked
