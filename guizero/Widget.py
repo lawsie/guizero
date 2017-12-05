@@ -6,7 +6,7 @@ class _Widget:
     _callback = {}
 
     def _get_display_type(self):
-        if not tk.grid_info():
+        if not self.tk.grid_info():
             return "pack"
         return "grid"
 
