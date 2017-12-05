@@ -3,6 +3,7 @@
 - All classes rewritten with internal Tk objects rather than extending the Tk object, meaning you can access all Tk functionality as `Object.tk.tkmethod()`
 - Improves use of library with tab complete editors (e.g. ipython) – only the guizero properties and methods are listed so the list is shorter and more friendly
 - [Bug fix] Grid layout now lays items out properly. Previously the x and y axes were flipped. (Whoops!)
+- All classes now inherit from `_Widget`, adding a lot of functionality which can be accessed by all widgets.
 
 ## App
 - New constructor argument `bg` replaces deprecated `bgcolor` argument. If both are specified, `bg` overrides `bgcolor`.
@@ -45,3 +46,4 @@
 ## Waffle
 - All waffles will now have a memory. The `remember` constructor argument remains for backwards compatibility, but will always be True.
 - You can now click on a waffle, and specify a command to run when the waffle is clicked on. The function given as the command should take two arguments as it will be passed the x, y coordinates of the pixel that was clicked.
+- Changed implementation of the waffle so it should now be able to redraw more efficiently
