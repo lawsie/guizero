@@ -51,6 +51,6 @@ that would be helpful.
 Helping out
 -----------
 * All feedback is welcome.
-* If you feel the need to remove or change something, please discuss the issue first
+* If you feel the need to remove or change something, please discuss the issue first.
 * Be reasonable about test cases. Don't test something twice, 'just to be sure'.
-* Feel free to add comments to the code if something is unclear to you
+* Feel free to add comments to the code if something is unclear to you.
