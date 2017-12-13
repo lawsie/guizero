@@ -28,7 +28,7 @@ class _Widget:
 
     def enable(self):
         """Enable the widget."""
-        self.tk.configure(state="enabled")
+        self.tk.configure(state="normal")
 
     def focus(self):
         """Give focus to the widget."""
