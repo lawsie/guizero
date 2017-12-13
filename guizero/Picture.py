@@ -45,7 +45,7 @@ class Picture(_Widget):
     @value.setter
     def value(self, image):
         try:
-            img = PhotoImage(file=image)
+            img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
             self._image = img
             self.tk.config(image=self._image)
             self._image_name = str(image)
@@ -60,7 +60,7 @@ class Picture(_Widget):
     # Sets the image to something new
     def set(self, image):
         try:
-            img = PhotoImage(file=image)
+            img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
             self._image = img
             self.tk.config(image=self._image)
             self._image_name = str(image)
