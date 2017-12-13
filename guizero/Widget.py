@@ -12,11 +12,35 @@ class _Widget:
 
     def after(self, time, function):
         """Call `function` after `time` milliseconds."""
-        self.tk.after(time, function)
+        callback_id = self.tk.after(time, self._call_wrapper, time, function)
+        self._callback[function] = [callback_id, False]
 
+    def repeat(self, time, function):
+        """Repeat `function` every `time` milliseconds."""
+        callback_id = self.tk.after(time, self._call_wrapper, time, function)
+        self._callback[function] = [callback_id, True]
+        
     def cancel(self, function):
         """Cancel the scheduled `function` calls."""
-        self._callback[function] = False
+        if function in self._callback.keys():
+            callback_id = self._callback[function][0]
+            self.tk.after_cancel(callback_id)
+            self._callback.pop(function)
+        else:
+            utils.error_format("Could not cancel function - it doesnt exist, it may have already run")
+
+    def _call_wrapper(self, time, function):
+        """Fired by tk.after, gets the callback and either executes the function and cancels or repeats"""
+        # execute the function
+        function()
+        repeat = self._callback[function][1]
+        if repeat:
+            # setup the call back again and update the id
+            callback_id = self.tk.after(time, self._call_wrapper, time, function)
+            self._callback[function][0] = callback_id
+        else:
+            # remove it from the call back dictionary
+            self._callback.pop(function)
 
     def destroy(self):
         """Destroy the widget."""
@@ -41,19 +65,6 @@ class _Widget:
             self.tk.pack_forget()
         else:
             self.tk.grid_forget()
-
-    def repeat(self, time, function):
-        """Repeat `function` every `time` milliseconds."""
-        self._callback[function] = True
-
-        def _call_wrapper():
-            if self._callback[function]:
-                function()
-                self.tk.after(time, _call_wrapper)
-            else:
-                return
-
-        self.tk.after(time, _call_wrapper)
 
     def show(self):
         """Show the widget."""
