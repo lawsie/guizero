@@ -10,14 +10,14 @@ class _Widget:
             return "pack"
         return "grid"
 
-    def after(self, time, function):
+    def after(self, time, function, *args):
         """Call `function` after `time` milliseconds."""
-        callback_id = self.tk.after(time, self._call_wrapper, time, function)
+        callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
         self._callback[function] = [callback_id, False]
 
-    def repeat(self, time, function):
+    def repeat(self, time, function, *args):
         """Repeat `function` every `time` milliseconds."""
-        callback_id = self.tk.after(time, self._call_wrapper, time, function)
+        callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
         self._callback[function] = [callback_id, True]
         
     def cancel(self, function):
@@ -29,14 +29,14 @@ class _Widget:
         else:
             utils.error_format("Could not cancel function - it doesnt exist, it may have already run")
 
-    def _call_wrapper(self, time, function):
+    def _call_wrapper(self, time, function, *args):
         """Fired by tk.after, gets the callback and either executes the function and cancels or repeats"""
         # execute the function
-        function()
+        function(*args)
         repeat = self._callback[function][1]
         if repeat:
             # setup the call back again and update the id
-            callback_id = self.tk.after(time, self._call_wrapper, time, function)
+            callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
             self._callback[function][0] = callback_id
         else:
             # remove it from the call back dictionary
