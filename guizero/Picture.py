@@ -23,11 +23,11 @@ class Picture(_Widget):
         self.tk = Label(master.tk)
 
         try:
-            img = PhotoImage(file=image)
+            img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
             self._image = img
             self.tk.config(image=self._image)
 
-        except:
+        except tk.TclError:
             self.tk.config(text="Image "+ self._image_name +" failed to load")
             utils.error_format("Image import error - " + str(image) +" must be a GIF, check correct path")
 
