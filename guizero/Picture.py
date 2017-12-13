@@ -1,4 +1,4 @@
-from tkinter import Label, PhotoImage
+from tkinter import Label, PhotoImage, TclError
 from .Widget import _Widget
 from . import utilities as utils
 
@@ -27,7 +27,7 @@ class Picture(_Widget):
             self._image = img
             self.tk.config(image=self._image)
 
-        except tk.TclError:
+        except TclError:
             self.tk.config(text="Image "+ self._image_name +" failed to load")
             utils.error_format("Image import error - " + str(image) +" must be a GIF, check correct path")
 
