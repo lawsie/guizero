@@ -47,9 +47,9 @@ class ButtonGroup(_Widget):
 
             # Which way the buttons go
             if horizontal:
-                gridy += 1
-            else:
                 gridx += 1
+            else:
+                gridy += 1
 
         # Pack the whole button group
         utils.auto_pack(self, master, grid, align)
