@@ -20,7 +20,9 @@ class App(_Widget):
         elif bgcolor is not None:
             self.tk.configure(background=str(bgcolor))
             utils.deprecated("App 'bgcolor' constructor argument is deprecated. Please use bg instead.")
-
+       
+        self.tk.update()
+            
     # PROPERTIES
     # -----------------------------------
 
@@ -45,25 +47,22 @@ class App(_Widget):
     # The height of the window
     @property
     def height(self):
-        self.tk.update()
         return self.tk.winfo_height()
 
     @height.setter
     def height(self, height):
-        self.tk.update()
         self.tk.geometry(str(self.tk.winfo_width())+"x"+str(height))
+        self.tk.update()
 
     # The width of the window
     @property
     def width(self):
-        self.tk.update()
         return self.tk.winfo_width()
 
     @width.setter
     def width(self, width):
-        self.tk.update()
         self.tk.geometry(str(width)+"x"+str(self.tk.winfo_height()))
-
+        self.tk.update()
 
     # METHODS
     # --------------------------------------
