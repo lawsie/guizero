@@ -10,12 +10,12 @@ class _Widget:
             return "pack"
         return "grid"
 
-    def after(self, time, function, *args):
+    def after(self, time, function, args = []):
         """Call `function` after `time` milliseconds."""
         callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
         self._callback[function] = [callback_id, False]
 
-    def repeat(self, time, function, *args):
+    def repeat(self, time, function, args = []):
         """Repeat `function` every `time` milliseconds."""
         callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
         self._callback[function] = [callback_id, True]
