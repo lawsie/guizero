@@ -1,8 +1,8 @@
 from tkinter import Scale, HORIZONTAL, VERTICAL
-from .Widget import _Widget
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
-class Slider(_Widget):
+class Slider(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin):
 
     def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None):
 

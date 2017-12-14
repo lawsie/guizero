@@ -1,9 +1,9 @@
 from tkinter import Tk
-from .tkmixins import AfterRepeatCancelMixin, DestroyMixin, FocusMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
 
 from . import utilities as utils
 
-class App(AfterRepeatCancelMixin, DestroyMixin, FocusMixin):
+class App(ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin):
 
     def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None):
 

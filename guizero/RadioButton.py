@@ -1,11 +1,11 @@
 from tkinter import Radiobutton
-from .Widget import _Widget
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
 # Only to be used as part of button group
 # unless you want to externally create a controlling variable StringVar()
 # Does NOT create an internal StringVar() as this is handled by the ButtonGroup class
-class RadioButton(_Widget):
+class RadioButton(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin):
 
     def __init__(self, master, text, value, variable, command=None, grid=None, align=None):
 

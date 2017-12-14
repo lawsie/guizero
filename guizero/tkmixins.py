@@ -1,5 +1,5 @@
 
-class AfterRepeatCancelMixin():
+class ScheduleMixin():
     _callback = {}
     def after(self, time, function, args = []):
         """Call `function` after `time` milliseconds."""
@@ -38,7 +38,7 @@ class DestroyMixin():
         """Destroy the object."""
         self.tk.destroy()
 
-class EnableDisableMixin():    
+class EnableMixin():    
     def disable(self):
         """Disable the widget."""
         self.tk.configure(state="disabled")
@@ -52,7 +52,7 @@ class FocusMixin():
         """Give focus to the widget."""
         self.tk.focus_set()
 
-class ShowHideMixin():
+class DisplayMixin():
     _display_cache = {}
 
     def _get_display_type(self):
@@ -76,9 +76,8 @@ class ShowHideMixin():
         else:
             self.tk.grid(**self._display_cache)
 
-"""
-class _Widget:
+class ReprMixin:
 
     def __repr__(self):
         return self.description
-"""
+    
