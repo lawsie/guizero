@@ -1,18 +1,17 @@
 # PushButton
 
-(Extends the `Button` class from `tkinter`)
+(Contains a `tkinter.Button` object)
 
-### Purpose
-Display a button with text or an image, which calls a function when pressed
+`__init__.py(self, master, command, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None)`
 
-```
-class guizero.PushButton(master, command, args=None, text="Button", icon=None, pady=10,
-padx=10, grid=None, align=None)
-```
+### What is it?
+The `PushButton` object displays a button with text or an image, which calls a function when pressed.
 
-### Create a PushButton object
+![PushButton on Windows](images/pushbutton_windows.png)
 
-Create a basic PushButton object like this:
+### How do I make one?
+
+Create a `PushButton` object like this:
 
 ```python
 from guizero import App, PushButton
@@ -24,53 +23,53 @@ button = PushButton(app, command=do_nothing)
 app.display()
 ```
 
-The above code looks like this on Windows:
-![PushButton on Windows](images/pushbutton_windows.png)
+### Starting parameters
 
-
-When creating a PushButton object, you can specify the following parameters. (More information about how to specify parameters can be found in the ['How to...'](./howto/) section.)
+When you create a `PushButton` object you **must** specify `master` and `command` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `button = PushButton(app, command=do_nothing)`
 
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box   | - | Yes       | The container to which this widget belongs |
-| command | function name | None | Yes  | The name of a function to call when the button is pressed. |
-| args    | List  | None | No       | If you wish to pass any arguments to the function specified in the command paramter, you can specify them as a list |
-| text    | string   | "Button" | No       | The text to display on the button |
-| icon    | string   | None | No       | The path to a GIF image file to display on the button. If both an image and text are specified, the image will override the text. |
-| pady    | int   | 10 | No       | How much vertical padding to add between the text/icon and the edge of the button. |
-| padx    | int   | 10 | No      | How much horizontal padding to add between the text/icon and the edge of the button. |
-| grid   | List [int, int]   | None     | No         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
-| align   | string     | None     | No         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
-
-
+| command | function name | - | Yes  | The name of a function to call when the button is pressed. |
+| args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
+| text    | string   | "Button" | -       | The text to display on the button |
+| icon    | string   | None | -       | The path to a GIF image file to display on the button. If both an icon and text are specified, the image will override the text. |
+| pady    | int   | 10 | -       | How much vertical padding to add between the text/icon and the edge of the button. |
+| padx    | int   | 10 | -     | How much horizontal padding to add between the text/icon and the edge of the button. |
+| grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
+| align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 
 ### Methods
 
-You can call the following methods on your PushButton object
+You can call the following methods on a `PushButton` object, plus any of the [common methods](allwidgets.md).
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
-| change_command(newcommand, args)  | newcommand (function name), args (List)  | -          | Sets the function called when the button is pressed to the one specified as `newcommand`. You can optionally specify new `args` as a list. |
-| set_text(text)   | text (string)         | -         | Sets the text on the button to the string specified in `text`.  |
+| change_command(newcommand, args)  | newcommand (function name), args (list)  | -          | Sets the function called when the button is pressed to the one specified as `newcommand`. You can optionally specify new `args` as a list. |
+| icon(icon) | icon (string) | - |  Sets the image displayed on the button to the filename specified. If the image is in a different directory, you must specify the relative path. |
 | padding(padx, pady) | padx (int), pady(int) | - |  Sets the amount of x (horizontal) and y (vertical) padding between the text/icon and the edge of the button |
-| disable() | - | - |  Makes the button greyed out so you can't click on it |
-| enable() | - | - |  Makes the button clickable (opposite of disable) |
-| toggle_state() | - | - |  Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa |
+| toggle() | - | - |  Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa. |
+| _set_text(text)_   | _text (string)_         | -         | _Replaced by the `value` property_  |
+| _toggle_state()_ | - | - |  _Renamed to `toggle()`_ |
 
+Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
-### Examples
+### Properties
 
-**Creating a PushButton**
+You can set and get the following properties:
 
-The simplest way to create a PushButton object is as follows:
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| value         | string      | The text on the button  |
+| text_color    | string      | The colour of the text on the button  |
+| bg            | string      | The background colour of the button  |
+| font          | string      | The font of the text on the button  |
+| text_size     | int         | The size of the text on the button  |
+| height        | int         | The height of the button  |
+| width         | int         | The width of the button  |
 
-```python
-from guizero import App, PushButton
-def do_nothing():
-  print("Button was pressed")
+**NOTE:** The height and width are currently measured in 'characters' so if you change the font size, this will change the size of the button. This may change in a future version of guizero.
 
-app = App()
-button = PushButton(app, command=do_nothing)
-app.display()
+Refer to a property as `<name of widget>.property`. For example, if your `PushButton` object is called `button` you would write `button.value`.
 
-```
+You can **set** the property (for example `button.bg = "red"`) or **get** the value of the property to use (for example `print(button.bg)`).
