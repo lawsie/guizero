@@ -7,7 +7,7 @@ class MenuBar(ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin):
 
     def __init__(self, master, toplevel, options):
 
-        if type(master) is not App:
+        if not isinstance(master, App):
             utils.error_format("The [MenuBar] must have the [App] object as its master")
 
         # Create a tk Menu object within this object
@@ -20,8 +20,7 @@ class MenuBar(ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin):
         self.description = "[MenuBar] object "
 
         # Create all the top level menus
-       	for i in range(len(toplevel)):
-
+        for menu in toplevel:
             # Create this submenu
             new_menu = Menu(self.tk, tearoff=0)
 
