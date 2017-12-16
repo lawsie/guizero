@@ -20,7 +20,7 @@ class MenuBar(ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin):
         self.description = "[MenuBar] object "
 
         # Create all the top level menus
-        for menu in toplevel:
+        for i in range(len(toplevel)):
             # Create this submenu
             new_menu = Menu(self.tk, tearoff=0)
 
