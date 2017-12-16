@@ -1,9 +1,9 @@
 from tkinter import Menu
-from .Widget import _Widget
+from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
 from . import utilities as utils
 from .App import App
 
-class MenuBar(_Widget):
+class MenuBar(ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin):
 
     def __init__(self, master, toplevel, options):
 

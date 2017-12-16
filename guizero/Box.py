@@ -1,8 +1,8 @@
 from tkinter import Frame
-from .Widget import _Widget
+from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
-class Box(_Widget):
+class Box(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
 
     def __init__(self, master, layout="auto", grid=None, align=None):
 

@@ -1,8 +1,8 @@
 from tkinter import Button, PhotoImage, StringVar, DISABLED, NORMAL
-from .Widget import _Widget
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
-class PushButton(_Widget):
+class PushButton(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin):
 
     def __init__(self, master, command, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
 
