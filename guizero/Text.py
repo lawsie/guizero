@@ -1,8 +1,8 @@
 from tkinter import Label, StringVar
-from .Widget import _Widget
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
-class Text(_Widget):
+class Text(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin):
 
     def __init__(self, master, text="", size=12, color="black", text_color=None, bg=None, font="Helvetica", grid=None, align=None):
 

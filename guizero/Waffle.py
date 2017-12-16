@@ -1,8 +1,8 @@
 from tkinter import Canvas, BOTH, Frame
-from .Widget import _Widget
+from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
-class Waffle(_Widget):
+class Waffle(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
 
     def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, remember=True, grid=None, align=None, command=None):
 

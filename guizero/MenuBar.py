@@ -1,13 +1,13 @@
 from tkinter import Menu
-from .Widget import _Widget
+from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
 from . import utilities as utils
 from .App import App
 
-class MenuBar(_Widget):
+class MenuBar(ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin):
 
     def __init__(self, master, toplevel, options):
 
-        if type(master) is not App:
+        if not isinstance(master, App):
             utils.error_format("The [MenuBar] must have the [App] object as its master")
 
         # Create a tk Menu object within this object
@@ -20,8 +20,7 @@ class MenuBar(_Widget):
         self.description = "[MenuBar] object "
 
         # Create all the top level menus
-       	for i in range(len(toplevel)):
-
+        for i in range(len(toplevel)):
             # Create this submenu
             new_menu = Menu(self.tk, tearoff=0)
 

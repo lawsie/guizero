@@ -1,5 +1,5 @@
 from tkinter import Label, PhotoImage, TclError
-from .Widget import _Widget
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
 ## See if PIL is installed
@@ -9,7 +9,7 @@ from . import utilities as utils
 #    utils.error_format("You will only be able to display GIF images as you do not have the PIL library.")
 
 
-class Picture(_Widget):
+class Picture(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin):
 
     def __init__(self, master, image, grid=None, align=None):
 

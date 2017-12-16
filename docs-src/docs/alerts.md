@@ -72,8 +72,9 @@ If `No` is pressed, an error box will be displayed
 You can also use these functions in a *callback* (when you have to provide a function for another widget to call). Here is an example with a `PushButton` which pops up an `info` box when it is pressed.
 
 ```python
+from guizero import App, PushButton, info
 app = App()
-button = PushButton(app, info, ["Info", "You pressed the button"])
+button = PushButton(app, command=info, args=["Info", "You pressed the button"])
 app.display()
 ```
 
@@ -89,7 +90,8 @@ You can use a `yesno` box to check whether someone really wants to exit your app
 
 ```python
 from guizero import App, Text, yesno
-# Ask user if they really want to close the window
+
+# Ask the user if they really want to close the window
 def do_this_on_close():
     if yesno("Close", "Do you want to quit?"):
         app.destroy()
@@ -98,7 +100,7 @@ app = App()
 
 title = Text(app, text="blank app")
 
-# When user tries to close the window, execute do_this_on_close()
+# When the user tries to close the window, run the function do_this_on_close()
 app.on_close(do_this_on_close)
 
 app.display()

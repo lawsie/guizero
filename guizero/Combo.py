@@ -1,8 +1,8 @@
 from tkinter import OptionMenu, StringVar, END, _setit
-from .Widget import _Widget
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
-class Combo(_Widget):
+class Combo(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin):
 
     def __init__(self, master, options, selected=None, command=None, grid=None, align=None):
 

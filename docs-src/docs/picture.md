@@ -1,0 +1,61 @@
+# Picture
+
+(Contains a `tkinter.Label` object)
+
+`__init__.py(self, master, image, grid=None, align=None)`
+
+### What is it?
+The `Picture` object displays a GIF image
+
+![Picture on Windows](images/picture_windows.png)
+
+### How do I make one?
+
+Create a `Picture` object like this:
+
+```python
+from guizero import App, Picture
+app = App()
+picture = Picture(app, image="test.gif")
+app.display()
+```
+You must specify the correct path to the image. The image in the example is in the same directory as the program. If the image is in a different directory, specify a relative path, for example if the picture is in a subfolder called **images** you would write:
+
+```python
+picture = Picture(app, image="images/test.gif")
+```
+### Starting parameters
+
+When you create a `Picture` object you **must** specify `master` and `image` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `picture = Picture(app, image="test.gif")`
+
+| Parameter | Takes | Default | Compulsory | Description                         |
+| --------- | --------- | ------- | ---------- | -------------------------|
+| master    | App or Box   | - | Yes       | The container to which this widget belongs
+| image   | List    | -  | Yes         | The path to the image file you wish to display |
+| grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
+| align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
+
+
+
+### Methods
+
+You can call the following methods on a `Picture` object, plus any of the [common methods](allwidgets.md).
+
+| Method        | Takes     | Returns    | Description                |
+| ------------- | ------------- | ---------- | -------------------------- |
+| _set(image)_  | _image (string)_  |           | _Replaced by the `value` property_ |
+
+Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
+
+### Properties
+
+You can set and get the following properties:
+
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| value         | string      | The filename of the image  |
+
+
+Refer to a property as `<name of widget>.property`. For example, if your `Picture` object is called `picture` you would write `picture.value`.
+
+You can **set** the property (for example `picture.value = "star.gif"`) or **get** the value of the property to use (for example `print(picture.value)`).
