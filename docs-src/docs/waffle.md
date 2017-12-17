@@ -1,29 +1,26 @@
 # Waffle
 
-(Extends the `Frame` class from `tkinter`)
+(Contains a `tkinter.Frame` object)
 
-### Purpose
-Display an n*n grid of squares with custom dimensions and padding
+`__init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None)`
 
-```
-class guizero.Waffle(master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, remember=False, grid=None, align=None):    	
-```
+### What is it
+The `Waffle` object display an n*n grid of squares with custom dimensions and padding
 
-### Create a Waffle object
+![Waffle on Windows](images/waffle_windows.png)
 
-Create a basic Waffle object like this:
+### How do I make one?
+
+Create a `Waffle` object like this:
 
 ```python
+from guizero import App, Waffle
 app = App()
-my_waffle = Waffle(app)
+waffle = Waffle(app)
 app.display()
 ```
 
-The above code looks like this on Windows:
-![Waffle on Windows](images/waffle_windows.png)
-
-
-When creating a Waffle object, you can specify the following parameters. (More information about how to specify parameters can be found in the ['How to...'](./howto/) section.)
+When you create a `Waffle` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `waffle = Waffle(app, height=25)`
 
 | Parameter | Takes     | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
@@ -51,29 +48,31 @@ You can call the following methods on your Waffle object
 | get_all()     | - | List | IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the pixel colours in the grid as a 2D list. |
 | get_pixel(x, y)| x (int), y (int) | string |  IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid. |
 
+### Properties
+
+You can set and get the following properties:
+
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| pixel_size    | int         | The size of the one pixel  |
+| pad           | int         | The size of the padding between pixels   |
+| color         | int         | The color of the whole waffle |
+| dotty         | bool        | If `True` the waffle will display circles  |
+| height        | int         | The height of the waffle  |
+| width         | int         | The width of the waffle |
+
 ### Examples
-
-**Creating a Waffle**
-
-The simplest way to create a Waffle object is as follows:
-
-```python
-app = App()
-my_waffle = Waffle(app)
-app.display()
-```
 
 **Waffle with a memory**
 
-A Waffle can be given a memory, so that it remembers the colour of each pixel within it.
+A Waffle can remember the colour of each pixel within it.
 
 ```python
 from guizero import App, Waffle
 
 app = App()
 
-# Set the waffle to have a memory
-my_waffle = Waffle(app, remember=True)
+my_waffle = Waffle(app)
 
 my_waffle.set_pixel(2, 1, "red")
 

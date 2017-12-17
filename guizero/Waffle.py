@@ -108,6 +108,8 @@ class Waffle(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
         if self._command:
             self._command(pixel_x,pixel_y)
 
+    # PROPERTIES
+    # ----------------------------------
     @property
     def width(self):
         return self._width
