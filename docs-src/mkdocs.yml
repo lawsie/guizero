@@ -4,7 +4,6 @@ pages:
   - Installation: index.md
   - Using guizero:
       - Getting Started: start.md
-      - Common methods: allwidgets.md
       - Layouts: layout.md
       - Alerts: alerts.md
       - Using tkinter methods: usingtk.md

@@ -39,7 +39,7 @@ When you create a `Waffle` object you **must** specify `master` and you can spec
 
 ### Methods
 
-You can call the following methods on your Waffle object
+You can call the following methods on your Waffle object.
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
@@ -47,6 +47,13 @@ You can call the following methods on your Waffle object
 | set_pixel(x, y, color)   | x (int), y (int), color (string)     | -         | Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.  |
 | get_all()     | - | List | IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the pixel colours in the grid as a 2D list. |
 | get_pixel(x, y)| x (int), y (int) | string |  IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid. |
+| after(time, command)   | time (int), command (function name)   | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
+| repeat(time, command)  | time (int), command (function name)  | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
+| cancel(command)   | command (function name) | Cancels a scheduled call to `command`    |
+| destroy()   | -  | Destroys the widget    |
+| focus()  | -  | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
+| hide()  | -   | Hides the widget from view. This method will unpack the widget from the layout manager.   |
+| show()  | - | Displays the widget   |
 
 ### Properties
 
