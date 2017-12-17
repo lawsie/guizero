@@ -1,17 +1,17 @@
 # Text
 
-(Extends the `Label` class from `tkinter`)
+(Contains a `tkinter.Label` object)
 
-### Purpose
-Display non editable text in your app, such as for titles, labels and instructions.
+`__init__(self, master, text="", size=12, color="black", text_color=None, bg=None, font="Helvetica", grid=None, align=None)`
 
-```
-class guizero.Text(master, text="", size=12, color="black", font="Helvetica", grid=None, align=None)
-```
+### What is it?
+The `Text` object displays non editable text in your app, useful for titles, labels and instructions.
 
-### Create a Text object
+![Text on Windows](images/text_windows.png)
 
-Create a basic Text object like this:
+### How do I make one?
+
+Create a `Text` object like this:
 
 ```python
 from guizero import App, Text
@@ -20,8 +20,9 @@ text = Text(app, text="Hello World")
 app.display()
 ```
 
+### Starting parameters
 
-When creating a Text object, you can specify the following parameters. (More information about how to specify parameters can be found in the ['How to...'](./howto/) section.)
+When you create a `Text` object, you **must** specify a `master` and you can specify any of the the optional parameters. Specify parameters in the brackets, like this: `text = Text(app, text="hi")`
 
 | Parameter | Data type | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
@@ -36,38 +37,30 @@ When creating a Text object, you can specify the following parameters. (More inf
 
 ### Methods
 
-You can call the following methods on your Text object
+You can call the following methods on a `Text` object, plus any of the [common methods](allwidgets.md).
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
 | append(text)  | text (string) | -          | Adds the provided `text` to the end of the current text within the object |
 | clear()   | -             | -          | Clears the text            |
-| color(color) | color (string) | -      | Sets the colour of the text to the `color` provided. This can be a defined colour (e.g. "blue") or a hex format rgb colour (e.g. "#ff0000") |
-| font_face(font) | font (string) | - | Sets the font face to the `font` provided |
-| font_size(size) | size (int) | - |  Sets the font size to the `size` provided |
-| get() | - | string |  Returns a string containing the text from the object |
-| set(text) | text (string) | - |  Sets the text within the object to the `text` provided |
+| _color(color)_ | color (string) | -      | Sets the colour of the text to the `color` provided. This can be a defined colour (e.g. "blue") or a hex format rgb colour (e.g. "#ff0000") |
+| _font_face(font)_ | font (string) | - | Sets the font face to the `font` provided |
+| _font_size(size)_ | size (int) | - |  Sets the font size to the `size` provided |
+| _get()_ | - | string |  Returns a string containing the text from the object |
+| _set(text)_ | text (string) | - |  Sets the text within the object to the `text` provided |
 
-Call a method like this:
+Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
-```python
-from guizero import App, Text
-app = App()
-writing = Text(app, text="Hello world", color="red")
 
-# Call the font_size() method
-writing.font_size(20)   
-```
+### Properties
 
-### Examples
+You can set and get the following properties:
 
-**Creating text**
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| value         | string      | The text   |
+| text_color    | string      | The colour of the text  |
+| bg            | string      | The background colour  |
+| font          | string      | The font of the text  |
+| size          | int         | The size of the text  |
 
-The simplest way to create a text object is as follows:
-
-```python
-from guizero import App, Text
-app = App()
-mytext = Text(app, text="Hello world")
-app.display()
-```

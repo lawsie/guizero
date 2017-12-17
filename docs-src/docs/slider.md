@@ -23,7 +23,7 @@ app.display()
 
 ### Starting paramters
 
-When you create a `Slider` object, you **must** specify a `master` adn you can specify any of the the optional  parameters. Specify parameters in the brackets, like this: `slider = Slider(app, horizontal=False)`
+When you create a `Slider` object, you **must** specify a `master` and you can specify any of the the optional parameters. Specify parameters in the brackets, like this: `slider = Slider(app, horizontal=False)`
 
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
