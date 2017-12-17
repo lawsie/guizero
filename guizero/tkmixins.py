@@ -76,6 +76,23 @@ class DisplayMixin():
         else:
             self.tk.grid(**self._display_cache)
 
+class SizeMixin():
+    @property
+    def width(self):
+        return self.tk.width
+
+    @width.setter
+    def width(self, value):
+        self.tk.width = value
+
+    @property
+    def height(self):
+        return self.tk.height
+
+    @height.setter
+    def height(self, value):
+        self.tk.height = value
+
 class ReprMixin:
 
     def __repr__(self):

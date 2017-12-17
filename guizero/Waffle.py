@@ -1,8 +1,8 @@
 from tkinter import Canvas, BOTH, Frame
-from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, SizeMixin, ReprMixin
 from . import utilities as utils
 
-class Waffle(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
+class Waffle(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, SizeMixin, ReprMixin):
 
     def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, remember=True, grid=None, align=None, command=None):
 
@@ -107,3 +107,51 @@ class Waffle(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
         pixel_y = int(y/(self._pixel_size+self._pad))
         if self._command:
             self._command(pixel_x,pixel_y)
+
+    @property
+    def width(self):
+        return self._width
+
+    @width.setter
+    def width(self, value):
+        self._width = value
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter
+    def height(self, value):
+        self._height = value
+
+    @property
+    def pixel_size(self):
+        return self._pixel_size
+
+    @pixel_size.setter
+    def pixel_size(self, value):
+        self._pixel_size = value
+
+    @property
+    def pad(self):
+        return self._pad
+
+    @pad.setter
+    def pad(self, value):
+        self._pad = value
+
+    @property
+    def color(self):
+        return self._color
+
+    @color.setter
+    def color(self, value):
+        self._color = value
+
+    @property
+    def dotty(self):
+        return self._dotty
+
+    @dotty.setter
+    def dotty(self, value):
+        self._dotty = value
