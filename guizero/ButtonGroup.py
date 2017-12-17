@@ -8,17 +8,16 @@ from .RadioButton import RadioButton
 class ButtonGroup(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
 
     def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None):
-
-        self._selected = StringVar()
-
         # Set (using StringVar set() method) the selected option **number**
-        self._selected.set(selected)
+        
         self.description = "[ButtonGroup] object with selected option \"" + self._selected.get() + "\""
         self._options = []   # List of RadioButton objects
         self._layout_manager = "grid"
 
         # Create a Tk frame object to contain the RadioButton objects
         self.tk = Frame(master.tk)
+        self._selected = StringVar(master=self.tk.winfo_toplevel())
+        self._selected.set(selected)
 
         # Position the radio buttons in the Frame
         gridx = 0
@@ -95,10 +94,7 @@ class ButtonGroup(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMix
 
     # To help with debugging - return list of text/value pairs
     def get_group_as_list(self):
-        list_of_options = []
-        for option in self._options:
-            list_of_options.append([option.text, option.value])
-        return list_of_options
+        return [[option.text, option.value] for option in self._options]
 
     # DEPRECATED METHODS
     # -----------------------------------
