@@ -1,4 +1,4 @@
-from tkinter import Label, PhotoImage
+from tkinter import Label, PhotoImage, TclError
 from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
@@ -23,11 +23,11 @@ class Picture(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin
         self.tk = Label(master.tk)
 
         try:
-            img = PhotoImage(file=image)
+            img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
             self._image = img
             self.tk.config(image=self._image)
 
-        except:
+        except TclError:
             self.tk.config(text="Image "+ self._image_name +" failed to load")
             utils.error_format("Image import error - " + str(image) +" must be a GIF, check correct path")
 
@@ -45,7 +45,7 @@ class Picture(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin
     @value.setter
     def value(self, image):
         try:
-            img = PhotoImage(file=image)
+            img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
             self._image = img
             self.tk.config(image=self._image)
             self._image_name = str(image)
@@ -60,7 +60,7 @@ class Picture(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin
     # Sets the image to something new
     def set(self, image):
         try:
-            img = PhotoImage(file=image)
+            img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
             self._image = img
             self.tk.config(image=self._image)
             self._image_name = str(image)
