@@ -7,7 +7,7 @@ def read_sensor():
 
 
 def update_label():
-    text.set(read_sensor())
+    text.value = read_sensor()
     # recursive call
     text.after(1000, update_label)
 
