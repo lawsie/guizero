@@ -1,17 +1,18 @@
 # Slider
 
-(Extends the `Scale` class from `tkinter`)
+(Contains a `tkinter.Scale` object)
 
-### Purpose
-Display a slider which can be used to specify a value within a range
+`__init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None)`
 
-```
-class guizero.Slider(master, start=0, end=100, horizontal=True, command=None, grid=None, align=None)
-```
+### What is it?
+The `Slider` object displays a bar and selector which can be used to specify a value in a range.
 
-### Create a Slider object
+The above code looks like this on Windows:
+![Slider on Windows](images/slider_windows.png)
 
-Create a basic Slider object like this:
+### How do I make one?
+
+Create a `Slider` object like this:
 
 ```python
 from guizero import App, Slider
@@ -20,11 +21,9 @@ slider = Slider(app)
 app.display()
 ```
 
-The above code looks like this on Windows:
-![Combo on Windows](images/slider_windows.png)
+### Starting paramters
 
-
-When creating a Slider object, you can specify the following parameters. (More information about how to specify parameters can be found in the ['How to...'](./howto/) section.)
+When you create a `Slider` object, you **must** specify a `master` adn you can specify any of the the optional  parameters. Specify parameters in the brackets, like this: `slider = Slider(app, horizontal=False)`
 
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
@@ -36,30 +35,24 @@ When creating a Slider object, you can specify the following parameters. (More i
 | grid   | List [int, int]   | None     | No         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | align   | string     | None     | No         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 
-
-
 ### Methods
 
-You can call the following methods on your Slider object
+You can call the following methods on a `Slider` object, plus any of the [common methods](allwidgets.md).
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
 | add_command(command)  | command (function name)  | -          | Sets the function called when the slider value is changed to the function specified in `command` |
 
 
+### Properties
 
+You can set and get the following properties:
+
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| value         | string      | The text on the button  |
 
 ### Examples
-
-**Creating a Slider**
-
-The simplest way to create a Slider object is as follows:
-
-```python
-app = App()
-slider = Slider(app)
-app.display()
-```
 
 **Calling a function when the slider value changes**
 
@@ -72,7 +65,7 @@ This code has a slider and a text box, and the text box updates automatically to
 ```python
 from guizero import App, Slider, TextBox
 def slider_changed(slider_value):
-    textbox.set(slider_value)
+    textbox.value = slider_value
 
 app = App()
 slider = Slider(app, command=slider_changed)
