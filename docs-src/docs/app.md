@@ -44,11 +44,11 @@ You can call the following methods on an `App` object.
 | on_close(command)   | command (function name)         | -          | Calls the given function when the user tries to close the window.      |
 | _set_title(title)_   | _title (string)_         | -          | _Replaced by `title` property_        |
 | _bgcolor_   | _bgcolor (string)_       | -          | _Replaced by `bg` property_   |
-| after(time, command)   | time (int), command (function name)   | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
-| cancel(command)   | command (function name) | Cancels a scheduled call to `command`    |
-| destroy()   | -  | Destroys the widget    |
-| focus()  | -  | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
-| repeat(time, command)  | time (int), command (function name)  | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
+| after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
+| cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
+| destroy()   | -  | -          | Destroys the widget    |
+| focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
+| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 
 
 Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
