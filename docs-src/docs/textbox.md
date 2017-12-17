@@ -1,17 +1,17 @@
 # TextBox
 
-(Extends the `Entry` class from `tkinter`)
+(Contains a `tkinter.Entry` object)
 
-### Purpose
-Display a text box which the user can type in
+`__init__(self, master, text="", width=10, grid=None, align=None)`
 
-```
-class guizero.TextBox(master, text="", width=10, grid=None, align=None)
-```
+### What is it
+The `TextBox` object sisplay a text box which the user can type in.
 
-### Create a TextBox object
+![TextBox on Windows](images/textbox_windows.png)
 
-Create a basic TextBox object like this:
+### How do I make one?
+
+Create a `TextBox` object like this:
 
 ```python
 from guizero import App, TextBox
@@ -20,8 +20,9 @@ input_box = TextBox(app)
 app.display()
 ```
 
+### Starting parameters
 
-When creating a Text object, you can specify the following parameters. (More information about how to specify parameters can be found in the ['How to...'](./howto/) section.)
+When you create a `TextBox` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `textbox = TextBox(app, text="Please enter some text")`
 
 | Parameter | Data type | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
@@ -40,24 +41,24 @@ You can call the following methods on your TextBox object
 | ------------- | ------------- | ---------- | -------------------------- |
 | append(text)  | text (string) | -          | Adds the provided `text` to the end of the current text within the text box |
 | clear()   | -             | -          | Clears the textbox            |
-| get() | - | string |  Returns a string containing current contents of the textbox |
-| set(text) | text (string) | - |  Sets the text within the text box to the `text` provided |
+| _get()_ | - | string |  Returns a string containing current contents of the textbox |
+| _set(text)_ | text (string) | - |  Sets the text within the text box to the `text` provided |
 
-Call a method like this:
+Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
-```python
-app = App()
-input_box = TextBox(app, text="Type here")
+### Properties
 
-# Call the clear() method
-input_box.clear()  
-```
+You can set and get the following properties:
+
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| value         | string      | The text in the TextBox |
 
 ### Examples
 
-**Creating a TextBox**
+**Creating a TextBox with default text**
 
-The simplest way to create a TextBox  object is as follows:
+You can set the default text in a TextBox when it is created using the `text` parameter:
 
 ```python
 from guizero import App, TextBox
