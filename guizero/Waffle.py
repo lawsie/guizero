@@ -4,7 +4,7 @@ from . import utilities as utils
 
 class Waffle(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
 
-    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None):
+    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True):
 
     	# Description of this object (for friendly error messages)
         self.description = "[Waffle] object ("+str(height)+"x"+str(width)+")"
