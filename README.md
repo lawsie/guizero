@@ -56,8 +56,8 @@ If you have administrator rights to your computer and are connected to the inter
 
 ## Upgrading
 
-Raspberry Pi/Linux/Mac - `sudo pip3 install -U guizero`
-Windows - `pip install guizero --upgrade`
+- Raspberry Pi/Linux/Mac - `sudo pip3 install -U guizero`
+- Windows - `pip install guizero --upgrade`
 
 ## Mission statement
 The aim of guizero is to make the process of creating simple GUIs quick, accessible and understandable for children.
