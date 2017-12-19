@@ -54,7 +54,6 @@ class CheckBox(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixi
 
     def toggle(self):
         self.tk.toggle()
-        print("Toggling")
 
     # DEPRECATED METHODS
     # --------------------------------------------
