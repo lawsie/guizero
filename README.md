@@ -54,6 +54,10 @@ If you have administrator rights to your computer and are connected to the inter
 2. Install `tkinter` using your distribution's package manager, e.g. `sudo apt install python3-tk`
 3. Install guizero using pip by typing `sudo pip3 install guizero`
 
+## Upgrading
+
+Raspberry Pi/Linux/Mac - `sudo pip3 install -U guizero`
+Windows - `pip install guizero --upgrade`
 
 ## Mission statement
 The aim of guizero is to make the process of creating simple GUIs quick, accessible and understandable for children.
