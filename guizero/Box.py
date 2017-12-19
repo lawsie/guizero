@@ -1,21 +1,18 @@
 from tkinter import Frame
-
+from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
-    
-class Box(Frame):
 
-    def __init__(self, master, layout="auto", grid=None, align=None):    	
+class Box(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
+
+    def __init__(self, master, layout="auto", grid=None, align=None):
 
     	# Description of this object (for friendly error messages)
         self.description = "[Box] object (may also contain other objects)"
 
-        try:
-            super().__init__(master)
-        except AttributeError:
-            utils.error_format("Failed to initialise [Box] object")
+        self.tk = Frame(master.tk)
 
         # Store this object's layout manager
-        self.layout_manager = layout
-       
+        self._layout_manager = layout
+
         # Pack or grid depending on parent
         utils.auto_pack(self, master, grid, align)

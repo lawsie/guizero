@@ -2,8 +2,8 @@ from guizero import *
 
 # Functions you write that are called by widgets
 def donothing():
-	rockstar.set( name.get() + " " + pokemon.get() )
-	name_label.color("pink")
+	rockstar.value = name.value + " " + pokemon.value
+	name_label.color = "pink"
 
 
 # Initialise your app
@@ -20,8 +20,8 @@ menubar = MenuBar(app, ["File", "Edit"], [file_options, edit_options] )
 
 
 # You can configure columns/rows in the app to have a min width
-app.columnconfigure(1, minsize=200, pad=5)
-app.rowconfigure(1, pad=20)
+app.tk.columnconfigure(1, minsize=200, pad=5)
+app.tk.rowconfigure(1, pad=20)
 
 
 # Any inner component can have a grid [0,0] reference and an optional alignment (top, bottom, left, right)

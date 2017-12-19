@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Using tkinter methods - guizero</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Using tkinter methods";
+    var mkdocs_page_input_path = "usingtk.md";
+    var mkdocs_page_url = "/usingtk/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../about/" class="icon icon-home"> guizero</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Using guizero</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../start/">Getting Started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../layout/">Layouts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../alerts/">Alerts</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Using tkinter methods</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#using-tkinter-methods">Using tkinter methods</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#using-a-tkinter-method-on-a-guizero-object">Using a tkinter method on a guizero object</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../blocking/">Loops and sleeping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../resources/">Examples and resources</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Widgets</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../app/">App</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../box/">Box</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../buttongroup/">ButtonGroup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../checkbox/">CheckBox</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../combo/">Combo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../menubar/">MenuBar</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../picture/">Picture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pushbutton/">PushButton</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../slider/">Slider</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../text/">Text</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../textbox/">TextBox</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../waffle/">Waffle</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../about/">guizero</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../about/">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Using guizero &raquo;</li>
+        
+      
+    
+    <li>Using tkinter methods</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="using-tkinter-methods">Using tkinter methods</h2>
+<p>If you are an advanced user, you can still make use of any tkinter method which is not implemented in guizero.</p>
+<p>Each guizero widget itself contains a tk widget - you can find out which by looking on the guizero documentation page for the widget. For example, a guizero <code>TextBox</code> contains a tkinter <code>Entry</code> object. You can always access the internal object using the syntax <code>&lt;object_name&gt;.tk</code>.</p>
+<h3 id="using-a-tkinter-method-on-a-guizero-object">Using a tkinter method on a guizero object</h3>
+<p>In this example, we have guizero <code>App</code> and <code>TextBox</code> widgets.</p>
+<pre><code class="python">from guizero import App, TextBox
+app = App()
+name = TextBox(app)
+app.display()
+</code></pre>
+
+<p>You want to make the text in the box appear red, but you discover that at the moment this isn't possible in guizero. So instead, you access the internal tk widget directly using <code>&lt;object_name&gt;.tk</code> and then you call the tkinter method:</p>
+<pre><code class="python">from guizero import App, TextBox
+app = App()
+name = TextBox(app, text=&quot;Laura&quot;)
+name.tk.config(foreground=&quot;red&quot;)    # config() is a tkinter method
+app.display()
+</code></pre>
+
+<p>You can combine the use of <code>guizero</code> and <code>tkinter</code> seamlessly in a program, taking advantage of the simplified syntax of guizero whilst still being able to access the full range of functionality in tkinter if you need it.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../blocking/" class="btn btn-neutral float-right" title="Loops and sleeping">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../alerts/" class="btn btn-neutral" title="Alerts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../alerts/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../blocking/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

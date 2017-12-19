@@ -3,9 +3,9 @@ from guizero import *
 
 def set_color(value):
 	try:
-		rgb = '#%02x%02x%02x' % (red.get(), green.get(), blue.get())
-		coloured_text.set(rgb)
-		coloured_text.color(rgb)
+		rgb = '#%02x%02x%02x' % (red.value, green.value, blue.value)
+		coloured_text.value = rgb
+		coloured_text.text_color = rgb
 	except:
 		print("Something went wrong with setting colours")
 

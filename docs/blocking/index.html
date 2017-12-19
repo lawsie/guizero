@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Loops and sleeping - guizero</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Loops and sleeping";
+    var mkdocs_page_input_path = "blocking.md";
+    var mkdocs_page_url = "/blocking/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../about/" class="icon icon-home"> guizero</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Using guizero</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../start/">Getting Started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../layout/">Layouts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../alerts/">Alerts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../usingtk/">Using tkinter methods</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Loops and sleeping</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#loops-and-sleeping">Loops and sleeping</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#example">Example</a></li>
+        
+            <li><a class="toctree-l4" href="#solution">Solution</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../resources/">Examples and resources</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Widgets</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../app/">App</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../box/">Box</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../buttongroup/">ButtonGroup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../checkbox/">CheckBox</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../combo/">Combo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../menubar/">MenuBar</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../picture/">Picture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pushbutton/">PushButton</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../slider/">Slider</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../text/">Text</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../textbox/">TextBox</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../waffle/">Waffle</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../about/">guizero</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../about/">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Using guizero &raquo;</li>
+        
+      
+    
+    <li>Loops and sleeping</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="loops-and-sleeping">Loops and sleeping</h2>
+<p>You may be used to writing programs which contain loops or make use of the <code>sleep()</code> command, but find when you try to use these with guizero they cause your GUI to freeze. This is because guizero (in common with almost all GUIs) operates an <strong>event driven</strong> model of programming which may be different to the one you are familiar with.</p>
+<p>Your first guizero program might look a bit like this:</p>
+<pre><code class="python">from guizero import App
+app = App(&quot;Hello world&quot;)
+app.display()
+</code></pre>
+
+<p>The line of code <code>app.display()</code> doesn't just display the app - it enters an <strong>infinite event loop</strong> which is watching and waiting for events to happen on the GUI. Events include things like the user clicking on a button, moving a slider, typing in a text box etc. No code written after this line will ever execute because the event loop is infinite.</p>
+<h3 id="example">Example</h3>
+<p>Suppose you want a counter on your GUI to start counting up by 1 every second. You might be tempted to write a program like this:</p>
+<pre><code class="python">from guizero import App, Text
+from time import sleep
+
+app = App(&quot;Hello world&quot;)
+text = Text(app, text=&quot;1&quot;)
+while True:
+    text.value = int(text.value) + 1
+    sleep(1)
+app.display()
+</code></pre>
+
+<p>If you run this program, you'll see that this does not have the desired effect - your program crashes! This is because you have blocked the updating of your GUI in two ways:</p>
+<ol>
+<li>
+<p>The <code>sleep()</code> command - whilst your program is sleeping, the GUI will not update and you will not be able to click on anything.</p>
+</li>
+<li>
+<p>The <code>while</code> loop - once you enter this loop, your GUI will never update ever again and will probably crash.</p>
+</li>
+</ol>
+<h3 id="solution">Solution</h3>
+<p><strong>This behaviour is not a bug within guizero or tkinter.</strong></p>
+<p>You must write GUI based programs in a different way to the one you may be used to. If you want to repeatedly perform an action you would do it like this:</p>
+<ol>
+<li>
+<p>Write a function which performs the desired action (in this example <code>counter()</code>)</p>
+</li>
+<li>
+<p>Set a <strong>callback</strong> to that function. You can either schedule the same callback to occur repeatedly after a given number of milliseconds (in this example <code>1000</code>), or you can schedule it only once.</p>
+</li>
+</ol>
+<pre><code class="python">from guizero import App, Text
+
+# Action you would like to perform
+def counter():
+    text.value = int(text.value) + 1
+
+app = App(&quot;Hello world&quot;)
+text = Text(app, text=&quot;1&quot;)
+text.repeat(1000, counter)  # Schedule call to counter() every 1000ms
+app.display()
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../resources/" class="btn btn-neutral float-right" title="Examples and resources">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../usingtk/" class="btn btn-neutral" title="Using tkinter methods"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../usingtk/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../resources/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

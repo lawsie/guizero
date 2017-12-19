@@ -1,0 +1,25 @@
+site_name: guizero
+pages:
+  - About: about.md
+  - Installation: index.md
+  - Using guizero:
+      - Getting Started: start.md
+      - Layouts: layout.md
+      - Alerts: alerts.md
+      - Using tkinter methods: usingtk.md
+      - Loops and sleeping: blocking.md
+      - Examples and resources: resources.md
+  - Widgets:
+      - App: app.md
+      - Box: box.md
+      - ButtonGroup: buttongroup.md
+      - CheckBox: checkbox.md
+      - Combo: combo.md
+      - MenuBar: menubar.md
+      - Picture: picture.md
+      - PushButton: pushbutton.md
+      - Slider: slider.md
+      - Text: text.md
+      - TextBox: textbox.md
+      - Waffle: waffle.md
+theme: readthedocs

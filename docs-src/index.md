@@ -2,34 +2,52 @@
 
 guizero is designed to allow children to quickly and easily create GUIs for their programs.
 
-In educational settings (schools, libraries etc.), installation of extra programs and features may be difficult, so the setup process is designed to be as simple as possible. guizero only requires `tkinter` to be installed, and this is already bundled with most Python installations.
+If you can download and unzip a file, you can use guizero - **no special permissions or administrator rights are required**.
 
-The aim is for installation and getting started to be as simple as possible.
+guizero only requires `tkinter` to be installed, which is included with a standard Python installation on all platforms except Linux.
 
-### On Windows
-The easiest way to install guizero is to use **pip** (follow [this simple guide](http://www.catcatcode.com/blog/installing-python-packages-with-pip) to using pip).
+## Easy installation - all platforms
 
-Type the following at a command prompt:
+1. Go to the [Github repo](https://github.com/lawsie/guizero) for guizero
 
-```bash
-pip install guizero
-```
+2. Click the green "Clone or download" button and then "Download ZIP"
 
-### On Raspberry Pi
-Make sure your Raspberry Pi is connected to the internet, then open a terminal window and type the following:
+    ![Download the zip](images/download-zip.png)
 
-```bash
-sudo pip3 install guizero
-```
+3. Unzip the file
 
-# On Mac
-Open the terminal (you can search for it in the Launch Pad)
+4. Open the `guizero-master` folder, then copy the `guizero` folder and paste it into your home directory
 
-![Mac terminal](images/mac-terminal.png)
+    ![Copy the guizero folder](images/copy-guizero.png)
 
-Type in the command:
+5. That's it! When you write your guizero code, make sure you save it into your home directory.
 
-```bash
-sudo pip3 install guizero
-```
-![Mac install screenshot](images/mac-install.png)
+## Other installation methods
+
+If you have administrator rights and are connected to the internet, you can use pip to quickly install guizero.
+
+### Windows
+
+1. Make sure you have [pip](https://projects.raspberrypi.org/en/projects/using-pip-on-windows) installed.
+2. Open a command prompt
+3. Type `pip install guizero` and press Enter
+
+## Raspberry Pi
+
+1. Open a terminal window
+2. Type `sudo pip3 install guizero` and press Enter
+
+## On Mac
+1. Open a terminal (you can search for it in the Launch Pad)
+
+    ![Mac terminal](images/mac-terminal.png)
+
+2. Type `sudo pip3 install guizero`
+
+    ![Mac install screenshot](images/mac-install.png)
+
+## On Linux
+
+1. Open a terminal
+2. Install `tkinter` using your distribution's package manager, e.g. `sudo apt install python3-tk`
+3. Install guizero using pip by typing `sudo pip3 install guizero`

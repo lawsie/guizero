@@ -1,17 +1,17 @@
 # Text
 
-(Extends the `Label` class from `tkinter`)
+(Contains a `tkinter.Label` object)
 
-### Purpose
-Display non editable text in your app, such as for titles, labels and instructions.
+`__init__(self, master, text="", size=12, color="black", text_color=None, bg=None, font="Helvetica", grid=None, align=None)`
 
-```
-class guizero.Text(master, text="", size=12, color="black", font="Helvetica", grid=None, align=None)
-```
+### What is it?
+The `Text` object displays non editable text in your app, useful for titles, labels and instructions.
 
-### Create a Text object
+![Text on Windows](images/text_windows.png)
 
-Create a basic Text object like this:
+### How do I make one?
+
+Create a `Text` object like this:
 
 ```python
 from guizero import App, Text
@@ -20,54 +20,56 @@ text = Text(app, text="Hello World")
 app.display()
 ```
 
+### Starting parameters
 
-When creating a Text object, you can specify the following parameters. (More information about how to specify parameters can be found in the ['How to...'](./howto/) section.)
+When you create a `Text` object, you **must** specify a `master` and you can specify any of the the optional parameters. Specify parameters in the brackets, like this: `text = Text(app, text="hi")`
 
 | Parameter | Data type | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
-| master    | App or Box   | - | Yes       | The container to which this widget belongs
-| text   | string    | ""  | No         | The text you want to display |
-| size   | int    | 12     | No         | The font size of the text |
-| color   | string     | black     | No         | The colour of the text. Accepts some colour strings (e.g. `red`) and colours specified in hex format (e.g. `#0099ff`)  |
-| font   | string     | "Helvetica"     | No         | The font face that the text will be displayed in. Availability of fonts depends on which fonts are installed locally. |
-| grid   | List [int, int]   | None     | No         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
-| align   | string     | None    | No         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
+| master    | App or Box   | - | Yes       | The container to which this widget belongs |
+| align   | string     | None    | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
+| color   | string     | black     | -         | The colour of the text. Accepts some colour strings (e.g. `red`) and colours specified in hex format (e.g. `#0099ff`)  |
+| font   | string     | "Helvetica"     | -         | The font face that the text will be displayed in. Availability of fonts depends on which fonts are installed locally. |
+| grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
+| size   | int    | 12     | -         | The font size of the text |
+| text   | string    | ""  | -         | The text you want to display |
+
 
 
 ### Methods
 
-You can call the following methods on your Text object
+You can call the following methods on a `Text` object..
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
+| after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | append(text)  | text (string) | -          | Adds the provided `text` to the end of the current text within the object |
+| cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | clear()   | -             | -          | Clears the text            |
-| color(color) | color (string) | -      | Sets the colour of the text to the `color` provided. This can be a defined colour (e.g. "blue") or a hex format rgb colour (e.g. "#ff0000") |
-| font_face(font) | font (string) | - | Sets the font face to the `font` provided |
-| font_size(size) | size (int) | - |  Sets the font size to the `size` provided |
-| get() | - | string |  Returns a string containing the text from the object |
-| set(text) | text (string) | - |  Sets the text within the object to the `text` provided |
+| destroy()   | -  | -          | Destroys the widget    |
+| disable()  | - | -          | Disables the widget so that it is "greyed out" and cannot be interacted with   |
+| enable()  | -  | -          | Enables the widget   |
+| focus()  | -  | -          | Gives focus to the widget   |
+| hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
+| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
+| show()  | - | -          | Displays the widget if it was previously hidden   |
+| _color(color)_ | _color (string)_ | -      | _Replaced by `text_color` property_ |
+| _font_face(font)_ | font (string) | - | _Replaced by `font` property_ |
+| _font_size(size)_ | size (int) | - |  _Replaced by `size` property_ |
+| _get()_ | - | string |  _Replaced by `value` property_ |
+| _set(text)_ | text (string) | - |  _Replaced by `value` property_ |
 
-Call a method like this:
+Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
-```python
-from guizero import App, Text
-app = App()
-writing = Text(app, text="Hello world", color="red")
 
-# Call the font_size() method
-writing.font_size(20)   
-```
+### Properties
 
-### Examples
+You can set and get the following properties:
 
-**Creating text**
-
-The simplest way to create a text object is as follows:
-
-```python
-from guizero import App, Text
-app = App()
-mytext = Text(app, text="Hello world")
-app.display()
-```
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| bg            | string      | The background colour  |
+| font          | string      | The font of the text  |
+| size          | int         | The size of the text  |
+| text_color    | string      | The colour of the text  |
+| value         | string      | The text   |

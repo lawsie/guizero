@@ -136,3 +136,10 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+# Editor detritus
+*.vim
+*.swp
+tags
+.vscode
+.idea

@@ -1,17 +1,17 @@
 # MenuBar
 
-(Extends the `Menu` class from `tkinter`)
+(Contains a `tkinter.Menu` object)
 
-### Purpose
-Display a menu at the top of the screen, each option having a submenu
+`__init__(self, master, toplevel, options)`
 
-```
-class guizero.MenuBar(master, toplevel, options)
-```
+### What is it?
+The `MenuBar` object displays a menu at the top of the screen, with each menu option leading to a submenu.
 
-### Create a MenuBar object
+![MenuBar on Windows](images/menubar_windows.png)
 
-Create a basic MenuBar object like this:
+### How do I make one?
+
+Create a `MenuBar` object like this:
 
 ```python
 from guizero import App, MenuBar
@@ -29,10 +29,20 @@ menubar = MenuBar(app,
                       [ ["Edit option 1", edit_function], ["Edit option 2", edit_function] ]
                   ])
 app.display()
-
 ```
 
-The `toplevel` parameter should be a list of options you wish to display on the menu. In this example the toplevel options are File and Edit:
+
+### Starting parameters
+
+When you create a `MenuBar` object you **must** specify all of the parameters.
+
+| Parameter | Takes | Default | Compulsory | Description                         |
+| --------- | --------- | ------- | ---------- | -------------------------|
+| master    | App   | - | Yes       | The container to which this widget belongs
+| toplevel   | list    | -  | Yes         | A list of top level menu items |
+| options | 3D list | - | Yes   | A list of submenus, with each submenu being a list of options and each option being a text/command pair. See notes above for more details. |
+
+The `toplevel` parameter should be a list of options you wish to display on the menu. In the example, the `toplevel` options are File and Edit:
 
 ![Top level menu on Windows](images/toplevel_windows.png)
 
@@ -43,46 +53,22 @@ The menu item sub-sublists within `options` should contain pairs consisting of t
 ```python
 ["File option 1", file_function]
 ```
-Here is what this code looks like on Windows:
-
-![MenuBar on Windows](images/menubar_windows.png)
-
-
-When creating a MenuBar object, you must specify the following parameters. (More information about how to specify parameters can be found in the ['How to...'](./howto/) section.)
-
-| Parameter | Takes | Default | Compulsory | Description                         |
-| --------- | --------- | ------- | ---------- | -------------------------|
-| master    | App   | - | Yes       | The container to which this widget belongs
-| toplevel   | List    | -  | Yes         | A list of top level menu items |
-| options | 3D List | - | Yes   | A list of submenus, with each submenu being a list of options and each option being a text/command pair. See notes above for more details. |
 
 The MenuBar is never displayed on a grid so there are no grid or alignment parameters.
 
-
 ### Methods
 
-There are no methods for the MenuBar object
+You can call the following methods on an `MenuBar` object.
 
-### Examples
+| Method        | Takes     | Returns    | Description                |
+| ------------- | ------------- | ---------- | -------------------------- |
+| after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
+| cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
+| destroy()   | -  | -          | Destroys the widget    |
+| focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
+| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 
-**Creating a MenuBar**
 
-The simplest way to create a MenuBar object is as follows:
+### Properties
 
-```python
-from guizero import App, MenuBar
-def file_function():
-    print("File option")
-
-def edit_function():
-    print("Edit option")
-
-app = App()
-menubar = MenuBar(app,
-                  toplevel=["File", "Edit"],
-                  options=[
-                      [ ["File option 1", file_function], ["File option 2", file_function] ],
-                      [ ["Edit option 1", edit_function], ["Edit option 2", edit_function] ]
-                  ])
-app.display()
-```
+There are no properties for the `MenuBar` object
