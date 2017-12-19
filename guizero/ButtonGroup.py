@@ -9,15 +9,15 @@ class ButtonGroup(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMix
 
     def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None):
         # Set (using StringVar set() method) the selected option **number**
+        self.tk = Frame(master.tk)
+        self._selected = StringVar(master=self.tk.winfo_toplevel())
+        self._selected.set(selected)
         
         self.description = "[ButtonGroup] object with selected option \"" + self._selected.get() + "\""
         self._options = []   # List of RadioButton objects
         self._layout_manager = "grid"
 
         # Create a Tk frame object to contain the RadioButton objects
-        self.tk = Frame(master.tk)
-        self._selected = StringVar(master=self.tk.winfo_toplevel())
-        self._selected.set(selected)
 
         # Position the radio buttons in the Frame
         gridx = 0
