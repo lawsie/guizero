@@ -1,16 +1,17 @@
 # guizero 0.4 - What’s new?
 
 Thank you to everyone who has taken time to contribute code, suggest helpful improvements and report their use of the library. I am extremely grateful to the following people who have contributed pull requests since the last version:
-[bcroston](https://github.com/bcroston)), [bennuttall](https://github.com/bennuttall), [Coal0](https://github.com/Coal0),  [martinohanlon](https://github.com/martinohanlon), [scotty3785](https://github.com/scotty3785))
+[bcroston](https://github.com/bcroston), [bennuttall](https://github.com/bennuttall), [Coal0](https://github.com/Coal0),  [martinohanlon](https://github.com/martinohanlon) and  [scotty3785](https://github.com/scotty3785)
 
-I am also very pleased to announce that [martinohanlon](https://github.com/martinohanlon) has agreed to maintain guizero whilst I am on maternity leave, beginning December 2017.
+I am also very pleased to announce that [martinohanlon](https://github.com/martinohanlon) has very kindly agreed to maintain guizero whilst I am on maternity leave, beginning December 2017.
 
 ## General changes
 
 - All classes rewritten with internal Tk objects rather than extending the Tk object, meaning you can access all Tk functionality as `Object.tk.tkmethod()` (Credit for idea: [bennuttall](https://github.com/bennuttall))
-- Improved use of library with tab complete editors (e.g. ipython) – only the guizero properties and methods are listed so the list is shorter and more friendly
+- Improved use of library with tab complete editors (e.g. ipython) – only the guizero properties and methods are listed so the list is shorter and more friendly. (Credit for idea: [bennuttall](https://github.com/bennuttall))
 - [Bug fix] Grid layout now lays items out properly. Previously the x and y axes were flipped. (Whoops!) **This fix will cause apps with a grid layout to look different, but now behave correctly. You may need to update old code as a result of this change.**
-- All classes now inherit several mixins, adding 9 new common methods usable on most widgets - `after()`, `cancel()`, `destroy()`, `disable()`, `enable()`, `focus()`, `hide()`, `show()`, `repeat()`,  (Credit: [Coal0](https://github.com/Coal0) and [martinohanlon](https://github.com/martinohanlon))
+- All classes now inherit from mixins, adding 9 new common methods usable on most widgets - `after()`, `cancel()`, `destroy()`, `disable()`, `enable()`, `focus()`, `hide()`, `show()`, `repeat()`,  (Credit: [Coal0](https://github.com/Coal0) and [martinohanlon](https://github.com/martinohanlon))
+- The new `repeat()` method allows you to easily specify a repeated callback to a function, making it extremely easy to perform repetitive actions such as updating the GUI based on readings from a sensor.
 - Documentation and examples have been improved and updated
 
 ## App
