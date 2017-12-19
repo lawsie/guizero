@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.OptionMenu` object)
 
-`__init__.py(self, master, options, selected=None, command=None, grid=None, align=None)`
+`__init__(self, master, options, selected=None, command=None, grid=None, align=None)`
 
 ### What is it?
 The `Combo` object displays a drop down box allowing a single option to be selected from a list of options.
@@ -28,9 +28,10 @@ When you create a `Combo` object you **must** specify `master` and `options` and
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box   | - | Yes       | The container to which this widget belongs
 | options   | List    | -  | Yes         | A list of options to display |
+| align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | command | function name | None | -   | The name of a function to call when a different option is selected. This function MUST take one argument as it will be auto-given the current value of the Combo. **The command can only be specified when creating the `Combo` object and cannot be changed later.** |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
-| align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
+
 
 ### Methods
 
@@ -39,19 +40,24 @@ You can call the following methods on a `CheckBox` object.
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
 | add_option(option) | option (string) | - |  Adds a new item to the combo box with the value `option` |
-| clear() | - | - |  Removes all options from the Combo box |
-| select_default() | - | - |  Resets the combo box so that the first item is selected |
-| _get()_  | -  | _string_          | _Replaced by the `value` property_ |
-| _set(text)_   | _text (string)_         | -         | _Replaced by the `value` property_      |
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
-| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
+| clear() | - | - |  Removes all options from the Combo box |
 | destroy()   | -  | -          | Destroys the widget    |
 | disable()  | - | -          | Disables the widget so that it is "greyed out" and cannot be interacted with   |
 | enable()  | -  | -          | Enables the widget   |
-| focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
+| focus()  | -  | -          | Gives focus to the widget  |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
-| show()  | - | -          | Displays the widget   |
+| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
+| select_default() | - | - |  Resets the combo box so that the first item is selected |
+| show()  | - | -          | Displays the widget if it was previously hidden  |
+| _get()_  | -  | _string_          | _Replaced by the `value` property_ |
+| _set(text)_   | _text (string)_         | -         | _Replaced by the `value` property_      |
+
+
+
+
+
 
 Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 

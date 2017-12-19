@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Frame` object)
 
-`__init__.py(self, master, layout="auto", grid=None, align=None)`
+`__init__(self, master, layout="auto", grid=None, align=None)`
 
 ### What is it?
 The `Box` object is an invisible container which can contain other widgets. It is the only object other than `App` which can act as the `master` for other objects and can have its own layout manager.
@@ -39,12 +39,12 @@ You can call the following methods on a `Box` object.
 | Method        | Takes     | Returns    | Description                |
 | ------------- | --------- | ---------- | -------------------------- |
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
-| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | destroy()   | -  | -          | Destroys the widget    |
 | focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
-| show()  | - | -          | Displays the widget   |
+| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
+| show()  | - | -          | Displays the widget if it was previously hidden |
 
 
 ### Properties

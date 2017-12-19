@@ -1,4 +1,4 @@
-site_name: gui zero
+site_name: guizero
 pages:
   - About: about.md
   - Installation: index.md
@@ -7,6 +7,8 @@ pages:
       - Layouts: layout.md
       - Alerts: alerts.md
       - Using tkinter methods: usingtk.md
+      - Loops and sleeping: blocking.md
+      - Examples and resources: resources.md
   - Widgets:
       - App: app.md
       - Box: box.md

@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Menu` object)
 
-`__init__.py(self, master, toplevel, options)`
+`__init__(self, master, toplevel, options)`
 
 ### What is it?
 The `MenuBar` object displays a menu at the top of the screen, with each menu option leading to a submenu.
@@ -63,10 +63,11 @@ You can call the following methods on an `MenuBar` object.
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
-| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | destroy()   | -  | -          | Destroys the widget    |
 | focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
+| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
+
 
 ### Properties
 

@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Frame` object)
 
-`__init__.py(self, master, options, selected, horizontal=False, command=None, grid=None, align=None)`
+`__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None)`
 
 ### What is it?
 The `ButtonGroup` object displays a group of radio buttons, allowing the user to choose a single option.
@@ -30,7 +30,7 @@ When you create a `ButtonGroup` object you **must** specify `master`, `options` 
 | options   | list or 2D List   | -  | Yes         | Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. If a list is specified, the options will be automatically numbered with hidden values, beginning at 1. |
 | selected   | string    | -     | Yes       | The option that should be selected. If the options are specified as a list, the selected option should be the number of the desired option, beginning at 1. If a 2D list is specified, this should be the **hidden value** associated with one of the options. |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
-| command | function name | None | No   | The name of a function to call when the selected option changes. |
+| command | function name | None | -   | The name of a function to call when the selected option changes. |
 | grid   | list [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | horizontal   | boolean    | False     | -       | Whether the buttons stack vertically or horizontally. (Defaults to vertical)|
 
@@ -40,16 +40,17 @@ You can call the following methods on an `ButtonGroup` object.
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
-| get_group_as_list() | - | list |  Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging) |
-| _get()_  | -  | _string_          | _Replaced by `value` property_ |
-| _set(value)_   | _value (string)_            | -          | _Replaced by `value` property_        |
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
-| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | destroy()   | -  | -          | Destroys the widget    |
-| focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
+| focus()  | -  | -          | Gives focus to the widget   |
+| get_group_as_list() | - | list |  Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging) |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
-| show()  | - | -          | Displays the widget   |
+| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
+| show()  | - | -          | Displays the widget if it was previously hidden |
+| _get()_  | -  | _string_          | _Replaced by `value` property_ |
+| _set(value)_   | _value (string)_            | -          | _Replaced by `value` property_        |
+
 
 Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 

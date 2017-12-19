@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Tk` object)
 
-`__init__.py(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None)`
+`__init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None)`
 
 ### What is it?
 The `App` object is the basis of all GUIs created using guizero. It is the main window which contains all of the other widgets.
@@ -40,16 +40,15 @@ You can call the following methods on an `App` object.
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | --------- | ---------- | -------------------------- |
-| display()     |-          | -          | Displays the app on the screen. You **MUST** call this method at the end of your program to display the app on the screen. |
-| on_close(command)   | command (function name)         | -          | Calls the given function when the user tries to close the window.      |
-| _set_title(title)_   | _title (string)_         | -          | _Replaced by `title` property_        |
-| _bgcolor_   | _bgcolor (string)_       | -          | _Replaced by `bg` property_   |
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | destroy()   | -  | -          | Destroys the widget    |
-| focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
+| display()     |-          | -          | Displays the app on the screen. You **MUST** call this method at the end of your program to display the app on the screen. |
+| focus()  | -  | -          | Gives focus to the widget  |
+| on_close(command)   | command (function name)         | -          | Calls the given function when the user tries to close the window.      |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
-
+| _set_title(title)_   | _title (string)_         | -          | _Replaced by `title` property_        |
+| _bgcolor_   | _bgcolor (string)_       | -          | _Replaced by `bg` property_   |
 
 Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
@@ -59,10 +58,11 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
+| bg            | string      | The background colour of the window   |
+| height        | int         | The height of the window   |
 | title         | string      | The title of the window    |
 | width         | int         | The width of the window    |
-| height        | int         | The height of the window   |
-| bg            | string      | The background colour of the window   |
+
 
 Refer to a property as `<name of widget>.property`. For example, if your `App` object is called `app` you would write `app.title`.
 
