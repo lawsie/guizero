@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Alerts - guizero</title>
+  <title>Loops and sleeping - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Alerts";
-    var mkdocs_page_input_path = "alerts.md";
-    var mkdocs_page_url = "/alerts/";
+    var mkdocs_page_name = "Loops and sleeping";
+    var mkdocs_page_input_path = "blocking.md";
+    var mkdocs_page_url = "/blocking/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -69,33 +69,31 @@
                     
     <a class="" href="../layout/">Layouts</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Alerts</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#alerts">Alerts</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#using-alerts">Using alerts</a></li>
-        
-            <li><a class="toctree-l4" href="#purpose">Purpose</a></li>
-        
-            <li><a class="toctree-l4" href="#examples">Examples</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../alerts/">Alerts</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../usingtk/">Using tkinter methods</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../blocking/">Loops and sleeping</a>
+    <a class="current" href="./">Loops and sleeping</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#loops-and-sleeping">Loops and sleeping</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#example">Example</a></li>
+        
+            <li><a class="toctree-l4" href="#solution">Solution</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -185,7 +183,7 @@
         
       
     
-    <li>Alerts</li>
+    <li>Loops and sleeping</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -195,88 +193,58 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="alerts">Alerts</h1>
-<h3 id="using-alerts">Using alerts</h3>
-<p>To use the alerts you will need to import each one individually at the start of your program. For example:</p>
-<pre><code class="python">from guizero import warn, info
-</code></pre>
-
-<h3 id="purpose">Purpose</h3>
-<p>These functions pop up a box on the screen that displays a message. The functions available are:</p>
-<ul>
-<li><code>warn(title, text)</code> - popup box with a warning icon</li>
-<li><code>info(title, text)</code> - popup box with an information icon</li>
-<li><code>error(title, text)</code> - popup box with an error icon</li>
-<li><code>yesno(title, text)</code> - popup box with yes and no options. Pressing <code>Yes</code> returns <code>True</code> and pressing <code>No</code> returns <code>False</code>.</li>
-</ul>
-<p>All pop up boxes use the native display, so they will look different depending on your operating system.</p>
-<h3 id="examples">Examples</h3>
-<p><strong>Warning box</strong></p>
-<p>This will pop up a warning box with the title <code>"Uh oh!"</code> and the message <code>"You are almost out of biscuits!"</code>.</p>
-<pre><code class="python">from guizero import App, warn
-app = App(title=&quot;Biscuit monitor&quot;)
-warn(&quot;Uh oh!&quot;, &quot;You are almost out of biscuits!&quot;)
+                <h2 id="loops-and-sleeping">Loops and sleeping</h2>
+<p>You may be used to writing programs which contain loops or make use of the <code>sleep()</code> command, but find when you try to use these with guizero they cause your GUI to freeze. This is because guizero (in common with almost all GUIs) operates an <strong>event driven</strong> model of programming which may be different to the one you are familiar with.</p>
+<p>Your first guizero program might look a bit like this:</p>
+<pre><code class="python">from guizero import App
+app = App(&quot;Hello world&quot;)
 app.display()
 </code></pre>
 
-<p>On Windows, the box looks like this:</p>
-<p><img alt="Warning popup" src="../images/warning_windows.png" /></p>
-<p>The <code>info</code> and <code>error</code> boxes work in exactly the same way but will display different icons.</p>
-<p><strong>Yes/No box</strong></p>
-<p>When this function is called it returns a <strong>boolean</strong> value.</p>
-<ul>
-<li>If <code>Yes</code> was pressed, return <code>True</code></li>
-<li>If <code>No</code> was pressed, return <code>False</code></li>
-</ul>
-<p>You can store this value in a variable and test it:</p>
-<pre><code class="python">from guizero import App, yesno, info, error
-app = App(title=&quot;Snowman&quot;)
-build_a_snowman = yesno(&quot;A question...&quot;, &quot;Do you want to build a snowman?&quot;)
-if build_a_snowman == True:
-    info(&quot;Snowman&quot;, &quot;It doesn't have to be a snowman&quot;)
-else:
-    error(&quot;Snowman&quot;, &quot;Okay bye...&quot;)
+<p>The line of code <code>app.display()</code> doesn't just display the app - it enters an <strong>infinite event loop</strong> which is watching and waiting for events to happen on the GUI. Events include things like the user clicking on a button, moving a slider, typing in a text box etc. No code written after this line will ever execute because the event loop is infinite.</p>
+<h3 id="example">Example</h3>
+<p>Suppose you want a counter on your GUI to start counting up by 1 every second. You might be tempted to write a program like this:</p>
+<pre><code class="python">from guizero import App, Text
+from time import sleep
+
+app = App(&quot;Hello world&quot;)
+text = Text(app, text=&quot;1&quot;)
+while True:
+    text.value = int(text.value) + 1
+    sleep(1)
 app.display()
 </code></pre>
 
-<p>This code will first display the yes/no box</p>
-<p><img alt="Yes No popup" src="../images/yesno_windows.png" /></p>
-<p>If <code>Yes</code> is pressed, an information box will be displayed:</p>
-<p><img alt="Info popup" src="../images/info_windows.png" /></p>
-<p>If <code>No</code> is pressed, an error box will be displayed</p>
-<p><img alt="Info popup" src="../images/error_windows.png" /></p>
-<p><strong>Example: Using an alert as a callback</strong></p>
-<p>You can also use these functions in a <em>callback</em> (when you have to provide a function for another widget to call). Here is an example with a <code>PushButton</code> which pops up an <code>info</code> box when it is pressed.</p>
-<pre><code class="python">from guizero import App, PushButton, info
-app = App()
-button = PushButton(app, command=info, args=[&quot;Info&quot;, &quot;You pressed the button&quot;])
+<p>If you run this program, you'll see that this does not have the desired effect - your program crashes! This is because you have blocked the updating of your GUI in two ways:</p>
+<ol>
+<li>
+<p>The <code>sleep()</code> command - whilst your program is sleeping, the GUI will not update and you will not be able to click on anything.</p>
+</li>
+<li>
+<p>The <code>while</code> loop - once you enter this loop, your GUI will never update ever again and will probably crash.</p>
+</li>
+</ol>
+<h3 id="solution">Solution</h3>
+<p><strong>This behaviour is not a bug within guizero or tkinter.</strong></p>
+<p>You must write GUI based programs in a different way to the one you may be used to. If you want to repeatedly perform an action you would do it like this:</p>
+<ol>
+<li>
+<p>Write a function which performs the desired action (in this example <code>counter()</code>)</p>
+</li>
+<li>
+<p>Set a <strong>callback</strong> to that function. You can either schedule the same callback to occur repeatedly after a given number of milliseconds (in this example <code>1000</code>), or you can schedule it only once.</p>
+</li>
+</ol>
+<pre><code class="python">from guizero import App, Text
+
+# Action you would like to perform
+def counter():
+    text.value = int(text.value) + 1
+
+app = App(&quot;Hello world&quot;)
+text = Text(app, text=&quot;1&quot;)
+text.repeat(1000, counter)  # Schedule call to counter() every 1000ms
 app.display()
-</code></pre>
-
-<p>The arguments provided to the <code>PushButton</code> are:</p>
-<ul>
-<li>Where the button should be created (within the <code>app</code>)</li>
-<li>The name of the function to call when pressed (<code>info</code>)</li>
-<li>A list of the arguments to the function you are calling (values for the <code>title</code> and <code>message</code> arguments for the <code>info</code> function)</li>
-</ul>
-<p><strong>Example: Do you really want to close?</strong></p>
-<p>You can use a <code>yesno</code> box to check whether someone really wants to exit your app. If they click yes, the app is closed, if not, nothing happens and they can continue with what they were doing.</p>
-<pre><code class="python">from guizero import App, Text, yesno
-
-# Ask the user if they really want to close the window
-def do_this_on_close():
-    if yesno(&quot;Close&quot;, &quot;Do you want to quit?&quot;):
-        app.destroy()
-
-app = App()
-
-title = Text(app, text=&quot;blank app&quot;)
-
-# When the user tries to close the window, run the function do_this_on_close()
-app.on_close(do_this_on_close)
-
-app.display()
-
 </code></pre>
               
             </div>
@@ -285,10 +253,10 @@ app.display()
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../usingtk/" class="btn btn-neutral float-right" title="Using tkinter methods">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../resources/" class="btn btn-neutral float-right" title="Examples and resources">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../layout/" class="btn btn-neutral" title="Layouts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../usingtk/" class="btn btn-neutral" title="Using tkinter methods"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -314,10 +282,10 @@ app.display()
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../layout/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../usingtk/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../usingtk/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../resources/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

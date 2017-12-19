@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Alerts - guizero</title>
+  <title>Layouts - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Alerts";
-    var mkdocs_page_input_path = "alerts.md";
-    var mkdocs_page_url = "/alerts/";
+    var mkdocs_page_name = "Layouts";
+    var mkdocs_page_input_path = "layout.md";
+    var mkdocs_page_url = "/layout/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -65,29 +65,19 @@
                     
     <a class="" href="../start/">Getting Started</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../layout/">Layouts</a>
-                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Alerts</a>
+    <a class="current" href="./">Layouts</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#alerts">Alerts</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#using-alerts">Using alerts</a></li>
-        
-            <li><a class="toctree-l4" href="#purpose">Purpose</a></li>
-        
-            <li><a class="toctree-l4" href="#examples">Examples</a></li>
-        
-        </ul>
+    <li class="toctree-l3"><a href="#layouts">Layouts</a></li>
     
 
     </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../alerts/">Alerts</a>
                 </li>
                 <li class="">
                     
@@ -185,7 +175,7 @@
         
       
     
-    <li>Alerts</li>
+    <li>Layouts</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -195,88 +185,28 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="alerts">Alerts</h1>
-<h3 id="using-alerts">Using alerts</h3>
-<p>To use the alerts you will need to import each one individually at the start of your program. For example:</p>
-<pre><code class="python">from guizero import warn, info
+                <h2 id="layouts">Layouts</h2>
+<p>The <code>App</code> parameter <code>layout</code> allows you to specify whether the widgets in your app are placed automatically (<code>auto</code>), or whether you wish to position them yourself on a grid (<code>grid</code>). The default layout is <code>auto</code>.</p>
+<p>If you choose the <code>grid</code> layout, this means that when you create a widget (other than the <code>App</code> itself) you will need to pass the widget an extra parameter called <code>grid</code> which is a list containing <code>[x,y]</code> coordinates for where you want the widget to appear, like this:</p>
+<pre><code class="python">text = Text(app, text=&quot;Hello world&quot;, grid=[0,1])
 </code></pre>
 
-<h3 id="purpose">Purpose</h3>
-<p>These functions pop up a box on the screen that displays a message. The functions available are:</p>
-<ul>
-<li><code>warn(title, text)</code> - popup box with a warning icon</li>
-<li><code>info(title, text)</code> - popup box with an information icon</li>
-<li><code>error(title, text)</code> - popup box with an error icon</li>
-<li><code>yesno(title, text)</code> - popup box with yes and no options. Pressing <code>Yes</code> returns <code>True</code> and pressing <code>No</code> returns <code>False</code>.</li>
-</ul>
-<p>All pop up boxes use the native display, so they will look different depending on your operating system.</p>
-<h3 id="examples">Examples</h3>
-<p><strong>Warning box</strong></p>
-<p>This will pop up a warning box with the title <code>"Uh oh!"</code> and the message <code>"You are almost out of biscuits!"</code>.</p>
-<pre><code class="python">from guizero import App, warn
-app = App(title=&quot;Biscuit monitor&quot;)
-warn(&quot;Uh oh!&quot;, &quot;You are almost out of biscuits!&quot;)
+<p>There is no need to specify the width or height of the grid you want - it will expand depending on the coordinates you provide with each widget. However, grid cells containing no objects will have no height or width.</p>
+<p><strong>Using grid layout</strong></p>
+<p>You can lay components out in a grid and specify where they appear with grid layout.</p>
+<p><img alt="App title" src="../images/keypad_windows.png" /></p>
+<pre><code class="python">from guizero import App, PushButton
+def do_nothing():
+    print(&quot;Nothing happened&quot;)
+
+app = App(title=&quot;Keypad example&quot;, width=100, height=90, layout=&quot;grid&quot;)
+button1 = PushButton(app, command=do_nothing, text=&quot;1&quot;, grid=[0,0])
+button2 = PushButton(app, command=do_nothing, text=&quot;2&quot;, grid=[0,1])
+button3  = PushButton(app, command=do_nothing, text=&quot;3&quot;, grid=[0,2])
+button4  = PushButton(app, command=do_nothing, text=&quot;4&quot;, grid=[1,0])
+button5  = PushButton(app, command=do_nothing, text=&quot;5&quot;, grid=[1,1])
+button6  = PushButton(app, command=do_nothing, text=&quot;6&quot;, grid=[1,2])
 app.display()
-</code></pre>
-
-<p>On Windows, the box looks like this:</p>
-<p><img alt="Warning popup" src="../images/warning_windows.png" /></p>
-<p>The <code>info</code> and <code>error</code> boxes work in exactly the same way but will display different icons.</p>
-<p><strong>Yes/No box</strong></p>
-<p>When this function is called it returns a <strong>boolean</strong> value.</p>
-<ul>
-<li>If <code>Yes</code> was pressed, return <code>True</code></li>
-<li>If <code>No</code> was pressed, return <code>False</code></li>
-</ul>
-<p>You can store this value in a variable and test it:</p>
-<pre><code class="python">from guizero import App, yesno, info, error
-app = App(title=&quot;Snowman&quot;)
-build_a_snowman = yesno(&quot;A question...&quot;, &quot;Do you want to build a snowman?&quot;)
-if build_a_snowman == True:
-    info(&quot;Snowman&quot;, &quot;It doesn't have to be a snowman&quot;)
-else:
-    error(&quot;Snowman&quot;, &quot;Okay bye...&quot;)
-app.display()
-</code></pre>
-
-<p>This code will first display the yes/no box</p>
-<p><img alt="Yes No popup" src="../images/yesno_windows.png" /></p>
-<p>If <code>Yes</code> is pressed, an information box will be displayed:</p>
-<p><img alt="Info popup" src="../images/info_windows.png" /></p>
-<p>If <code>No</code> is pressed, an error box will be displayed</p>
-<p><img alt="Info popup" src="../images/error_windows.png" /></p>
-<p><strong>Example: Using an alert as a callback</strong></p>
-<p>You can also use these functions in a <em>callback</em> (when you have to provide a function for another widget to call). Here is an example with a <code>PushButton</code> which pops up an <code>info</code> box when it is pressed.</p>
-<pre><code class="python">from guizero import App, PushButton, info
-app = App()
-button = PushButton(app, command=info, args=[&quot;Info&quot;, &quot;You pressed the button&quot;])
-app.display()
-</code></pre>
-
-<p>The arguments provided to the <code>PushButton</code> are:</p>
-<ul>
-<li>Where the button should be created (within the <code>app</code>)</li>
-<li>The name of the function to call when pressed (<code>info</code>)</li>
-<li>A list of the arguments to the function you are calling (values for the <code>title</code> and <code>message</code> arguments for the <code>info</code> function)</li>
-</ul>
-<p><strong>Example: Do you really want to close?</strong></p>
-<p>You can use a <code>yesno</code> box to check whether someone really wants to exit your app. If they click yes, the app is closed, if not, nothing happens and they can continue with what they were doing.</p>
-<pre><code class="python">from guizero import App, Text, yesno
-
-# Ask the user if they really want to close the window
-def do_this_on_close():
-    if yesno(&quot;Close&quot;, &quot;Do you want to quit?&quot;):
-        app.destroy()
-
-app = App()
-
-title = Text(app, text=&quot;blank app&quot;)
-
-# When the user tries to close the window, run the function do_this_on_close()
-app.on_close(do_this_on_close)
-
-app.display()
-
 </code></pre>
               
             </div>
@@ -285,10 +215,10 @@ app.display()
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../usingtk/" class="btn btn-neutral float-right" title="Using tkinter methods">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../alerts/" class="btn btn-neutral float-right" title="Alerts">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../layout/" class="btn btn-neutral" title="Layouts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../start/" class="btn btn-neutral" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -314,10 +244,10 @@ app.display()
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../layout/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../start/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../usingtk/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../alerts/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

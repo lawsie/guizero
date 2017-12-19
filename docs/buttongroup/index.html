@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>ButtonGroup - gui zero</title>
+  <title>ButtonGroup - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -35,7 +35,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../about/" class="icon icon-home"> gui zero</a>
+        <a href="../about/" class="icon icon-home"> guizero</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -45,140 +45,125 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
 	<ul class="current">
+	  
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../about/">About</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="..">Installation</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Installation</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../howto/">How to...</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Using guizero</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../start/">Getting Started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../layout/">Layouts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../alerts/">Alerts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../usingtk/">Using tkinter methods</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../blocking/">Loops and sleeping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../resources/">Examples and resources</a>
+                </li>
+    </ul>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../start/">Getting Started</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../alerts/">Alerts</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../app/">App</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../box/">Box</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">ButtonGroup</a>
-        
-            <ul>
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Widgets</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../app/">App</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../box/">Box</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">ButtonGroup</a>
+    <ul class="subnav">
             
-                <li class="toctree-l3"><a href="#buttongroup">ButtonGroup</a></li>
-                
-                    <li><a class="toctree-l4" href="#purpose">Purpose</a></li>
-                
-                    <li><a class="toctree-l4" href="#create-a-buttongroup-object">Create a ButtonGroup object</a></li>
-                
-                    <li><a class="toctree-l4" href="#methods">Methods</a></li>
-                
-                    <li><a class="toctree-l4" href="#examples">Examples</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l3"><a href="#buttongroup">ButtonGroup</a></li>
+    
+        <ul>
         
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../checkbox/">CheckBox</a>
+            <li><a class="toctree-l4" href="#what-is-it">What is it?</a></li>
         
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../combo/">Combo</a>
+            <li><a class="toctree-l4" href="#how-do-i-make-one">How do I make one?</a></li>
         
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../menubar/">MenuBar</a>
+            <li><a class="toctree-l4" href="#starting-parameters">Starting parameters</a></li>
         
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../picture/">Picture</a>
+            <li><a class="toctree-l4" href="#methods">Methods</a></li>
         
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../pushbutton/">PushButton</a>
+            <li><a class="toctree-l4" href="#properties">Properties</a></li>
         
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../slider/">Slider</a>
+            <li><a class="toctree-l4" href="#examples">Examples</a></li>
         
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../text/">Text</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../textbox/">TextBox</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../waffle/">Waffle</a>
-        
-    </li>
-<li>
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../checkbox/">CheckBox</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../combo/">Combo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../menubar/">MenuBar</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../picture/">Picture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pushbutton/">PushButton</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../slider/">Slider</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../text/">Text</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../textbox/">TextBox</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../waffle/">Waffle</a>
+                </li>
+    </ul>
+	    </li>
           
         </ul>
       </div>
@@ -190,7 +175,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../about/">gui zero</a>
+        <a href="../about/">guizero</a>
       </nav>
 
       
@@ -200,6 +185,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../about/">Docs</a> &raquo;</li>
     
+      
+        
+          <li>Widgets &raquo;</li>
+        
       
     
     <li>ButtonGroup</li>
@@ -213,29 +202,21 @@
             <div class="section">
               
                 <h1 id="buttongroup">ButtonGroup</h1>
-<p>(Extends the <code>Frame</code> class from <code>tkinter</code>)</p>
-<h3 id="purpose">Purpose</h3>
-<p>Display a group of radio buttons to allow the user to choose an option</p>
-<pre><code>class guizero.ButtonGroup(master, options, horizontal=False, command=None, grid=None, align=None)
-</code></pre>
-
-<h3 id="create-a-buttongroup-object">Create a ButtonGroup object</h3>
-<p>Create a basic ButtonGroup object like this:</p>
+<p>(Contains a <code>tkinter.Frame</code> object)</p>
+<p><code>__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None)</code></p>
+<h3 id="what-is-it">What is it?</h3>
+<p>The <code>ButtonGroup</code> object displays a group of radio buttons, allowing the user to choose a single option.</p>
+<p><img alt="ButtonGroup" src="../images/buttongroup.png" /></p>
+<h3 id="how-do-i-make-one">How do I make one?</h3>
+<p>Create a <code>ButtonGroup</code> object like this:</p>
 <pre><code class="python">from guizero import App, ButtonGroup
 app = App()
-choice = ButtonGroup(app,
-                         options=[[&quot;cheese&quot;, 0],
-                          [&quot;ham&quot;, 1],
-                          [&quot;salad&quot;, 2]],
-                     selected=2)
+choice = ButtonGroup(app, options=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;], selected=1)
 app.display()
-
 </code></pre>
 
-<p>The <code>options</code> parameter takes a 2D list (a list of lists) of options to display. The numerical values in this example are hidden, but will be returned by the method <code>get()</code>. <strong>All items provided in the options list will be autmatically converted to strings when added to the ButtonGroup.</strong></p>
-<p>The code above will look like this on Windows:</p>
-<p><img alt="Windows ButtonGroup" src="../images/buttongroup_windows.png" /></p>
-<p>When creating a ButtonGroup object, you can specify the following parameters. (More information about how to specify parameters can be found in the <a href="../howto/">'How to...'</a> section.)</p>
+<h3 id="starting-parameters">Starting parameters</h3>
+<p>When you create a <code>ButtonGroup</code> object you <strong>must</strong> specify <code>master</code>, <code>options</code> and <code>selected</code> and you can specify any of the optional parameters. Specify parameters in the brackets like this: <code>choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)</code></p>
 <table>
 <thead>
 <tr>
@@ -256,50 +237,50 @@ app.display()
 </tr>
 <tr>
 <td>options</td>
-<td>2D List</td>
+<td>list or 2D List</td>
 <td>-</td>
 <td>Yes</td>
-<td>A two dimensional list of [text, value] pairs. The first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option.</td>
+<td>Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. If a list is specified, the options will be automatically numbered with hidden values, beginning at 1.</td>
 </tr>
 <tr>
 <td>selected</td>
 <td>string</td>
 <td>-</td>
 <td>Yes</td>
-<td>The option that is selected. This should be the <strong>hidden value</strong> and NOT the text.</td>
-</tr>
-<tr>
-<td>horizontal</td>
-<td>Boolean</td>
-<td>False</td>
-<td>No</td>
-<td>Whether the buttons stack vertically or horizontally. (Defaults to vertical.)</td>
-</tr>
-<tr>
-<td>command</td>
-<td>function name</td>
-<td>None</td>
-<td>No</td>
-<td>The name of a function to call when a different option is selected.</td>
-</tr>
-<tr>
-<td>grid</td>
-<td>List [int, int]</td>
-<td>None</td>
-<td>No</td>
-<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
+<td>The option that should be selected. If the options are specified as a list, the selected option should be the number of the desired option, beginning at 1. If a 2D list is specified, this should be the <strong>hidden value</strong> associated with one of the options.</td>
 </tr>
 <tr>
 <td>align</td>
 <td>string</td>
 <td>None</td>
-<td>No</td>
+<td>-</td>
 <td>Alignment of this widget within its grid location. Possible values: <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>. This parameter is only required if the <code>master</code> object has a grid layout.</td>
+</tr>
+<tr>
+<td>command</td>
+<td>function name</td>
+<td>None</td>
+<td>-</td>
+<td>The name of a function to call when the selected option changes.</td>
+</tr>
+<tr>
+<td>grid</td>
+<td>list [int, int]</td>
+<td>None</td>
+<td>-</td>
+<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
+</tr>
+<tr>
+<td>horizontal</td>
+<td>boolean</td>
+<td>False</td>
+<td>-</td>
+<td>Whether the buttons stack vertically or horizontally. (Defaults to vertical)</td>
 </tr>
 </tbody>
 </table>
 <h3 id="methods">Methods</h3>
-<p>You can call the following methods on your ButtonGroup object</p>
+<p>You can call the following methods on an <code>ButtonGroup</code> object.</p>
 <table>
 <thead>
 <tr>
@@ -311,35 +292,110 @@ app.display()
 </thead>
 <tbody>
 <tr>
-<td>get()</td>
+<td>after(time, command)</td>
+<td>time (int), command (function name)</td>
 <td>-</td>
-<td>string</td>
-<td>Returns the <strong>hidden value</strong> associated with the selected option (NOT the text associated with the option)</td>
+<td>Schedules a <strong>single</strong> call to <code>command</code> after <code>time</code> milliseconds. (To repeatedly call the same command, use <code>repeat()</code>)</td>
 </tr>
 <tr>
-<td>set(value)</td>
-<td>value (string)</td>
+<td>cancel(command)</td>
+<td>command (function name)</td>
 <td>-</td>
-<td>Sets the selected option to the option with the string <code>value</code> as its <strong>hidden value</strong></td>
+<td>Cancels a scheduled call to <code>command</code></td>
+</tr>
+<tr>
+<td>destroy()</td>
+<td>-</td>
+<td>-</td>
+<td>Destroys the widget</td>
+</tr>
+<tr>
+<td>focus()</td>
+<td>-</td>
+<td>-</td>
+<td>Gives focus to the widget</td>
 </tr>
 <tr>
 <td>get_group_as_list()</td>
 <td>-</td>
-<td>List</td>
+<td>list</td>
 <td>Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging)</td>
+</tr>
+<tr>
+<td>hide()</td>
+<td>-</td>
+<td>-</td>
+<td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
+</tr>
+<tr>
+<td>repeat(time, command)</td>
+<td>time (int), command (function name)</td>
+<td>-</td>
+<td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
+</tr>
+<tr>
+<td>show()</td>
+<td>-</td>
+<td>-</td>
+<td>Displays the widget if it was previously hidden</td>
+</tr>
+<tr>
+<td><em>get()</em></td>
+<td>-</td>
+<td><em>string</em></td>
+<td><em>Replaced by <code>value</code> property</em></td>
+</tr>
+<tr>
+<td><em>set(value)</em></td>
+<td><em>value (string)</em></td>
+<td>-</td>
+<td><em>Replaced by <code>value</code> property</em></td>
 </tr>
 </tbody>
 </table>
+<p>Parameters in <em>italics</em> will still work but are <strong>deprecated</strong> - this means you should stop using them because they may not work in future versions of guizero</p>
+<h3 id="properties">Properties</h3>
+<p>You can set and get the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>The hidden value associated with the currently selected option</td>
+</tr>
+<tr>
+<td>value_text</td>
+<td>string</td>
+<td>The text associated with the currently selected option</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>ButtonGroup</code> object is called <code>choice</code> you would write <code>choice.value</code>.</p>
+<p>You can <strong>set</strong> the property (for example <code>choice.value = "2"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(choice.value)</code>).</p>
 <h3 id="examples">Examples</h3>
-<p><strong>Creating a ButtonGroup</strong></p>
-<p>The simplest way to create a ButtonGroup object is as follows:</p>
-<pre><code class="python">app = App()
+<p><strong>Creating a ButtonGroup with a 2D list</strong></p>
+<p>If you want to create a ButtonGroup object with your own hidden values you can specify a 2D list of options:</p>
+<pre><code class="python">from guizero import App, ButtonGroup, Text
+
+def update_text():
+    what_is_selected.value = activities.value
+
+app = App()
 activities = ButtonGroup(app, options=[
                               [&quot;Roller Skating&quot;, &quot;skate&quot;],
                               [&quot;White water rafting&quot;, &quot;WWR&quot;],
                               [&quot;Mountain climbing&quot;, &quot;climb&quot;]
                             ],
-                            selected=&quot;skate&quot;)
+                            selected=&quot;skate&quot;, command=update_text)
+
+what_is_selected = Text(app, text=&quot;skate&quot;)
 app.display()
 </code></pre>
               
@@ -366,12 +422,12 @@ app.display()
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
     </section>
-    
+
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -385,7 +441,10 @@ app.display()
       
     </span>
 </div>
+    <script>var base_url = '..';</script>
     <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
 
 </body>
 </html>
