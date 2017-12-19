@@ -10,6 +10,8 @@ class PushButton(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMi
         self._text.set(text)
         self._current_font = "Arial"
         self._font_size = 11
+        self._value = 0
+        self._command = command
 
         # Description of this object (for friendly error messages)
         self.description = "[PushButton] object with text \"" + self._text.get() + "\""
@@ -19,10 +21,14 @@ class PushButton(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMi
 
         # If the args LIST was not blank, convert to allow args
         if args is not None:
-            command = utils.with_args(command, *args)
+            self._command = utils.with_args(self._command, *args)
 
-        # Add command and padding if necessary
-        self.tk.config(command=command, pady=pady, padx=padx)
+        # Add padding if necessary
+        self.tk.config(pady=pady, padx=padx)
+
+        # Setup events for press and release
+        self.tk.bind("<ButtonPress>", self._on_press)
+        self.tk.bind("<ButtonRelease>", self._on_release) 
 
         # Try to instantiate a picture
         if icon is not None:
@@ -42,14 +48,19 @@ class PushButton(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMi
 
     # PROPERTIES
     # ----------------------------------
-    # Get the text on the button
+    # Get the value of the button (pressed, released) 
     @property
     def value(self):
+        return self._value
+
+    # Get the text on the button
+    @property
+    def text(self):
         return (self._text.get())
 
     # Set the text on the button
-    @value.setter
-    def value(self, value):
+    @text.setter
+    def text(self, value):
         self._text.set(str(value))
         self.description = "[Text] object with text \"" + str(value) + "\""
 
@@ -118,22 +129,21 @@ class PushButton(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMi
 
     # METHODS
     # -------------------------------------------
-
+    # Internal use only
+    # Called when the button is pressed
+    def _on_press(self, event):
+        self._value = 1
+        
+    # Called when the button is released
+    def _on_release(self, event):
+        self._value = 0
+        self._command()
+        
     # Change command - needs the name of a function and optional args as a list
     def change_command(self, newcommand, args=None):
         if args is not None:
             newcommand = utils.with_args(newcommand, *args)
         self.tk.config(command=newcommand)
-
-    # Enable Button - contributed by jezdean
-    """
-    def enable(self):
-        self.tk.config(state=NORMAL)
-
-    # Disable Button
-    def disable(self):
-        self.tk.config(state=DISABLED)
-    """
 
     def toggle(self):
         button_state = self.tk.cget("state")
