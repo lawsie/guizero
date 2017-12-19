@@ -60,7 +60,7 @@ You can call the following methods on a `PushButton` object.
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden  |
 | toggle() | - | - |  Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa. |
-| _set_text(text)_   | _text (string)_         | -         | _Replaced by the `value` property_  |
+| _set_text(text)_   | _text (string)_         | -         | _Replaced by the `text` property_  |
 | _toggle_state()_ | - | - |  _Renamed to `toggle()`_ |
 
 
