@@ -70,7 +70,7 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | value         | int         | Returns 1 when the button is pressed, 0 if the button is released  |
-| value         | string      | The text on the button  |
+| text          | string      | The text on the button  |
 | text_color    | string      | The colour of the text on the button  |
 | bg            | string      | The background colour of the button  |
 | font          | string      | The font of the text on the button  |
