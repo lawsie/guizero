@@ -1,6 +1,6 @@
 # guizero
 
-Version 0.4 (19th December 2017)
+[Version 0.4](changelog.md) (19th December 2017)
 
 guizero is designed to allow children to quickly and easily create GUIs for their programs.
 
