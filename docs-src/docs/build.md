@@ -6,10 +6,10 @@ Notes on how to develop and deploy guizero (on Windows).
 
 ### Install Pre-requisites
 
-Install MkDocs
-
 ```
 pip install mkdocs
+pip install wheel
+pip install twine
 ```
 
 ### Python library
@@ -57,6 +57,23 @@ Build for deployment:
 cd guizero
 python setup.py sdist
 python setup.py bdist_wheel
+```
+
+Create .pypirc credentials:
+
+```
+cd %HOME%
+notepad .pypirc
+```
+
+```
+[distutils]
+index-servers =
+    pypi
+
+[pypi]
+username:
+password:
 ```
 
 Upload to pypi:
