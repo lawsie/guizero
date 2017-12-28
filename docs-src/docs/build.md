@@ -36,6 +36,12 @@ Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## Deploy
 
+### Prepare
+
+- Update version number in `setup.py`
+- Update 'changelog' in debian packages
+- Update 'changelog.md' in docs
+
 ### Python library
 
 Install locally:
@@ -72,5 +78,6 @@ mkdocs build
 Copy to `docs`:
 
 ```
-xcopy guizero/docs-src/site/* guizero/docs
+cd guizero
+xcopy docs-src\site\* docs /E
 ```

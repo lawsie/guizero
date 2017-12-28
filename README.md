@@ -1,30 +1,32 @@
 # guizero
 
-[Version 0.4](changelog.md) (19th December 2017)
+[Version 0.4.1](http://lawsie.github.io/guizero/changelog) (19th December 2017)
 
 guizero is designed to allow children to quickly and easily create GUIs for their programs.
 
-If you can download and unzip a file, you can use guizero - **no special permissions or administrator rights are required**.
+If you can download and unzip a file, you can [install guizero](#easy-installation) - **no special permissions or administrator rights are required**.
+
+If you have administrator rights and are connected to the internet, you can use [pip to quickly install guizero](#install-using-pip).
 
 guizero only requires `tkinter` to be installed, which is included with a standard Python installation on all platforms except Linux.
 
-## Easy installation - all platforms
+## Easy installation
 
 Use this installation method if you do not have access to a terminal or command prompt on your computer.
 
 1. Click the green "Clone or download" button and then "Download ZIP"
 
-    ![Download the zip](images/download-zip.png)
+    ![Download the zip](docs-src/docs/images/download-zip.png)
 
 2. Unzip the file
 
 3. Open the `guizero-master` folder, then copy the `guizero` folder and paste it into your home directory
 
-    ![Copy the guizero folder](images/copy-guizero.png)
+    ![Copy the guizero folder](docs-src/docs/images/copy-guizero.png)
 
 4. That's it! When you write your guizero code, make sure you save it into your home directory.
 
-## Other installation methods
+## Install using pip
 
 If you have administrator rights to your computer and are connected to the internet, you can use pip to quickly install guizero.
 
@@ -42,11 +44,11 @@ If you have administrator rights to your computer and are connected to the inter
 ### On Mac
 1. Open a terminal (you can search for it in the Launch Pad)
 
-    ![Mac terminal](images/mac-terminal.png)
+    ![Mac terminal](docs-src/docs/images/mac-terminal.png)
 
 2. Type `sudo pip3 install guizero`
 
-    ![Mac install screenshot](images/mac-install.png)
+    ![Mac install screenshot](docs-src/docs/images/mac-install.png)
 
 ### On Linux
 
