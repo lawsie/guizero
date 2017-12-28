@@ -143,3 +143,6 @@ fabric.properties
 tags
 .vscode
 .idea
+
+# MKDocs build
+site/

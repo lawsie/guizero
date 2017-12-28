@@ -4,7 +4,7 @@
     
     <url>
      <loc>/about/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -21,37 +21,37 @@
         
     <url>
      <loc>/start/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/layout/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/alerts/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/usingtk/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/blocking/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/resources/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -61,76 +61,84 @@
         
     <url>
      <loc>/app/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/box/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/buttongroup/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/checkbox/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/combo/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/menubar/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/picture/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/pushbutton/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/slider/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/text/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/textbox/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/waffle/</loc>
-     <lastmod>2017-12-19</lastmod>
+     <lastmod>2017-12-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
+    
+
+    
+    <url>
+     <loc>/changelog/</loc>
+     <lastmod>2017-12-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
     
 
 </urlset>

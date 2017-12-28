@@ -39,6 +39,18 @@ class DestroyMixin():
         self.tk.destroy()
 
 class EnableMixin():    
+    @property
+    def enabled(self):
+        button_state = self.tk.cget("state")
+        return button_state == "normal" or button_state == "active"
+
+    @enabled.setter
+    def enabled(self, value):
+        if value:
+            self.enable()
+        else:
+            self.disable()
+    
     def disable(self):
         """Disable the widget."""
         self.tk.configure(state="disabled")

@@ -9,28 +9,27 @@ def message1():
     app.after(2000, message2)
 
 def message2():
-    change_message("guizero uses events to make things happen")
-    app.after(2000, message3)
-
-def message3():
-    change_message("events are actions, like clicking a push button'")
-    app.after(2000, show_the_button)
+    message = "guizero uses events to make things happen\n" 
+    message += "events are actions, like clicking a push button\n"
+    message += "so...  create an event!"
+    change_message(message)
+    app.after(1000, show_the_button)
 
 def show_the_button():
-    change_message("create an event")
     button.show()
 
 def clicked_the_button():
     button.hide()
     change_message("well done, you created an event by clicking the button")
-    app.after(2000, message4)
+    app.after(2000, message3)
 
-def message4():
-    change_message("events are any action the user takes in your app")
-    app.after(2000, show_the_selection)
+def message3():
+    message = "events are any action the user takes in your app\n"
+    message += "choose carefully"
+    change_message(message)
+    app.after(1000, show_the_selection)
 
 def show_the_selection():
-    change_message("choose carefully")
     selection.show()
 
 def selection_chosen():

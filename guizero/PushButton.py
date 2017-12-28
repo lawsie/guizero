@@ -11,17 +11,13 @@ class PushButton(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMi
         self._current_font = "Arial"
         self._font_size = 11
         self._value = 0
-        self._command = command
-
+        self.change_command(command, args)
+        
         # Description of this object (for friendly error messages)
         self.description = "[PushButton] object with text \"" + self._text.get() + "\""
 
         # Create a tk Button object within this object
         self.tk = Button(master.tk, textvariable=self._text)
-
-        # If the args LIST was not blank, convert to allow args
-        if args is not None:
-            self._command = utils.with_args(self._command, *args)
 
         # Add padding if necessary
         self.tk.config(pady=pady, padx=padx)
@@ -37,7 +33,6 @@ class PushButton(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMi
                 self.tk.config(image=self._icon)
             except AttributeError:
                 utils.error_format("Image import error - image must be a gif, check correct path")
-
 
         # Pack or grid depending on parent
         try:
@@ -132,25 +127,22 @@ class PushButton(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMi
     # Internal use only
     # Called when the button is pressed
     def _on_press(self, event):
-        self._value = 1
+        if self.enabled:
+            self._value = 1
         
     # Called when the button is released
     def _on_release(self, event):
-        self._value = 0
-        self._command()
+        if self.enabled:
+            self._value = 0
+            self._command()
         
     # Change command - needs the name of a function and optional args as a list
     def change_command(self, newcommand, args=None):
-        if args is not None:
-            newcommand = utils.with_args(newcommand, *args)
-        self.tk.config(command=newcommand)
-
-    def toggle(self):
-        button_state = self.tk.cget("state")
-        if button_state == "disabled":
-            self.enable()
-        elif button_state == "normal":
-            self.disable()
+        if args is None:
+            self._command = newcommand
+        else:
+            # If the args LIST was not blank, allow args
+            self._command = utils.with_args(newcommand, *args)
 
     # Change padding
     def padding(self, padx, pady):
@@ -165,20 +157,17 @@ class PushButton(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMi
         except AttributeError:
             utils.error_format("Image import error - image must be a gif, check correct path")
 
+    def toggle(self):
+        self.enabled = not self.enabled
 
     # DEPRECATED
     # -------------------------------------------
     # Change text
     def set_text(self, text):
-        self._text.set(str(text))
-        self.description = "[Text] object with text \"" + str(text) + "\""
+        self.text = text
         utils.deprecated("PushButton set_text() is deprecated. Please use the value property instead.")
 
     # Toggle button state - renamed to just toggle
     def toggle_state(self):
-        button_state = self.tk.cget("state")
-        if button_state == "disabled":
-            self.enable()
-        elif button_state == "normal":
-            self.disable()
+        self.toggle()
         utils.deprecated("PushButton toggle_state() is deprecated - renamed to toggle()")

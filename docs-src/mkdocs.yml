@@ -22,4 +22,5 @@ pages:
       - Text: text.md
       - TextBox: textbox.md
       - Waffle: waffle.md
+  - Change log: changelog.md
 theme: readthedocs
