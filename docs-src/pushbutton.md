@@ -74,6 +74,7 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | bg            | string      | The background colour of the button  |
+| enabled       | boolean     | `True` if the widget is enabled |
 | font          | string      | The font of the text on the button  |
 | height        | int         | The height of the button  |
 | text          | string      | The text on the button  |

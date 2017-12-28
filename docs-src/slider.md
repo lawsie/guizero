@@ -59,6 +59,7 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
+| enabled       | boolean     | `True` if the widget is enabled |
 | value         | string      | The current value of the slider  |
 
 ### Examples

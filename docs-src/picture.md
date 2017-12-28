@@ -63,6 +63,7 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
+| enabled       | boolean     | `True` if the widget is enabled |
 | value         | string      | The filename of the image  |
 
 
