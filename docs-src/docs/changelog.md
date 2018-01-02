@@ -1,5 +1,14 @@
 # guizero
 
+## 0.4.2 - in dev
+
+Minor features, bug fixes and internal refactoring
+
+- added `xspan`, `yspan` to grid layout (Credit: [penguintutor](https://github.com/penguintutor))
+- fixed `show()` for widgets in a grid layout
+- added `master`, `grid`, `align` and `visible` properties to widgets
+- added `layout` property to containers
+
 ## 0.4.1 - 2017-12-28
 
 Bug fixes and deployment test
