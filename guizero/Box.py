@@ -1,10 +1,10 @@
 from tkinter import Frame
-from .mixins import MasterMixin, ContainerMixin
+from .mixins import WidgetMixin, ContainerMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
 class Box(
-    MasterMixin,
+    WidgetMixin,
     ContainerMixin, 
     ScheduleMixin, 
     DestroyMixin, 
@@ -15,6 +15,8 @@ class Box(
     def __init__(self, master, layout="auto", grid=None, align=None):
 
         self._master = master
+        self._grid = grid
+        self._align = align
 
     	# Description of this object (for friendly error messages)
         self.description = "[Box] object (may also contain other objects)"

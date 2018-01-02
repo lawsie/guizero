@@ -1,5 +1,5 @@
 from tkinter import Label, PhotoImage, TclError
-from .mixins import MasterMixin
+from .mixins import WidgetMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
@@ -11,7 +11,7 @@ from . import utilities as utils
 
 
 class Picture(
-    MasterMixin, 
+    WidgetMixin, 
     ScheduleMixin, 
     DestroyMixin, 
     EnableMixin, 
@@ -22,6 +22,8 @@ class Picture(
     def __init__(self, master, image, grid=None, align=None):
 
         self._master = master
+        self._grid = grid
+        self._align = align
 
         # The image name as a string
         self._image_name = str(image)

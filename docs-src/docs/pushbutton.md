@@ -73,9 +73,11 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
+| align         | string      | The alignment of this widget within its grid location |
 | bg            | string      | The background colour of the button  |
 | enabled       | boolean     | `True` if the widget is enabled |
 | font          | string      | The font of the text on the button  |
+| grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | height        | int         | The height of the button  |
 | master        | App or Box  | The container to which this widget belongs |
 | text          | string      | The text on the button  |

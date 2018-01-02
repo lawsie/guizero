@@ -1,10 +1,10 @@
 from tkinter import OptionMenu, StringVar, END, _setit
-from .mixins import MasterMixin
+from .mixins import WidgetMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
 class Combo(
-    MasterMixin,
+    WidgetMixin,
     ScheduleMixin, 
     DestroyMixin, 
     EnableMixin, 
@@ -15,6 +15,8 @@ class Combo(
     def __init__(self, master, options, selected=None, command=None, grid=None, align=None):
 
         self._master = master
+        self._grid = grid
+        self._align = align
 
         # Maintain a list of options (as strings, to avoid problems comparing)
         self._options = [str(x) for x in options]

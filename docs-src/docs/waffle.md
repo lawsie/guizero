@@ -61,8 +61,10 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
+| align         | string      | The alignment of this widget within its grid location |
 | color         | int         | The color of the whole waffle |
 | dotty         | bool        | If `True` the waffle will display circles  |
+| grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | height        | int         | The height of the waffle  |
 | master        | App or Box  | The container to which this widget belongs |
 | pad           | int         | The size of the padding between pixels   |

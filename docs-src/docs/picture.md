@@ -63,8 +63,10 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
-| master        | App or Box  | The container to which this widget belongs |
+| align         | string      | The alignment of this widget within its grid location |
 | enabled       | boolean     | `True` if the widget is enabled |
+| grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| master        | App or Box  | The container to which this widget belongs |
 | value         | string      | The filename of the image  |
 
 

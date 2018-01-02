@@ -1,5 +1,5 @@
 from tkinter import Radiobutton
-from .mixins import MasterMixin
+from .mixins import WidgetMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
@@ -7,7 +7,7 @@ from . import utilities as utils
 # unless you want to externally create a controlling variable StringVar()
 # Does NOT create an internal StringVar() as this is handled by the ButtonGroup class
 class RadioButton(
-    MasterMixin, 
+    WidgetMixin, 
     ScheduleMixin, 
     DestroyMixin, 
     EnableMixin, 
@@ -18,6 +18,8 @@ class RadioButton(
     def __init__(self, master, text, value, variable, command=None, grid=None, align=None):
 
         self._master = master
+        self._grid = grid
+        self._align = align
 
         self.description = "[RadioButton] object with option=\"" + str(text) + "\" value=\"" + str(value) + "\""
         self._text = text

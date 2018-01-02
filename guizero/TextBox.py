@@ -1,10 +1,10 @@
 from tkinter import Entry, StringVar, END
-from .mixins import MasterMixin
+from .mixins import WidgetMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
 class TextBox(
-    MasterMixin, 
+    WidgetMixin, 
     ScheduleMixin, 
     DestroyMixin, 
     EnableMixin, 
@@ -15,6 +15,8 @@ class TextBox(
     def __init__(self, master, text="", width=10, grid=None, align=None):
 
         self._master = master
+        self._grid = grid
+        self._align = align
 
         # Description of this object (for friendly error messages)
         self.description = "[TextBox] object with text \"" + str(text) + "\""
