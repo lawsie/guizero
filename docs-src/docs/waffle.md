@@ -64,6 +64,7 @@ You can set and get the following properties:
 | color         | int         | The color of the whole waffle |
 | dotty         | bool        | If `True` the waffle will display circles  |
 | height        | int         | The height of the waffle  |
+| master        | App or Box  | The container to which this widget belongs |
 | pad           | int         | The size of the padding between pixels   |
 | pixel_size    | int         | The size of the one pixel  |
 | width         | int         | The width of the waffle |

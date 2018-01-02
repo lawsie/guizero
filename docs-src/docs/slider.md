@@ -60,6 +60,7 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | enabled       | boolean     | `True` if the widget is enabled |
+| master        | App or Box  | The container to which this widget belongs |
 | value         | string      | The current value of the slider  |
 
 ### Examples

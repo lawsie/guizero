@@ -60,6 +60,7 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
+| master        | App or Box  | The container to which this widget belongs |
 | value         | string      | The hidden value associated with the currently selected option   |
 | value_text    | string        | The text associated with the currently selected option   |
 

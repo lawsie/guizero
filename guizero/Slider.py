@@ -1,13 +1,23 @@
 from tkinter import Scale, HORIZONTAL, VERTICAL
+from .mixins import MasterMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
-class Slider(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin):
+class Slider(
+    MasterMixin, 
+    ScheduleMixin, 
+    DestroyMixin, 
+    EnableMixin, 
+    FocusMixin, 
+    DisplayMixin, 
+    ReprMixin):
 
     def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None):
 
         # If you specify a command to the slider, it must take one argument as it will be given
         # the slider's current value
+
+        self._master = master
 
         # Description of this object (for friendly error messages)
         self.description = "[Slider] object from " + str(start) + " to " + str(end)

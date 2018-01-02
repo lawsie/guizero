@@ -49,7 +49,11 @@ You can call the following methods on a `Box` object.
 
 ### Properties
 
-There are no properties for the `Box` object.
+You can set and get the following properties:
+
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| master       | App     | The `App` object to which this box belongs |
 
 ### Examples
 

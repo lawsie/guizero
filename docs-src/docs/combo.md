@@ -67,6 +67,7 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
+| master        | App or Box  | The container to which this widget belongs |
 | enabled       | boolean     | `True` if the widget is enabled |
 | value         | string      | The text associated with the currently selected option  |
 

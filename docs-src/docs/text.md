@@ -71,6 +71,7 @@ You can set and get the following properties:
 | bg            | string      | The background colour  |
 | enabled       | boolean     | `True` if the widget is enabled |
 | font          | string      | The font of the text  |
+| master        | App or Box  | The container to which this widget belongs |
 | size          | int         | The size of the text  |
 | text_color    | string      | The colour of the text  |
 | value         | string      | The text   |

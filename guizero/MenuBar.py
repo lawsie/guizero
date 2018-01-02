@@ -1,11 +1,19 @@
 from tkinter import Menu
+from .mixins import MasterMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
 from . import utilities as utils
 from .App import App
 
-class MenuBar(ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin):
+class MenuBar(
+    MasterMixin, 
+    ScheduleMixin, 
+    DestroyMixin, 
+    FocusMixin, 
+    ReprMixin):
 
     def __init__(self, master, toplevel, options):
+
+        self._master = master
 
         if not isinstance(master, App):
             utils.error_format("The [MenuBar] must have the [App] object as its master")

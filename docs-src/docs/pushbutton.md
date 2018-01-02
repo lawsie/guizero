@@ -77,6 +77,7 @@ You can set and get the following properties:
 | enabled       | boolean     | `True` if the widget is enabled |
 | font          | string      | The font of the text on the button  |
 | height        | int         | The height of the button  |
+| master        | App or Box  | The container to which this widget belongs |
 | text          | string      | The text on the button  |
 | text_color    | string      | The colour of the text on the button  |
 | text_size     | int         | The size of the text on the button  |
