@@ -1,5 +1,5 @@
-from tkinter import 
-from mixins import ContainerMixin
+from tkinter import Tk
+from .mixins import ContainerMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
 
 from . import utilities as utils
