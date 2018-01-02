@@ -7,4 +7,11 @@ class MasterMixin():
         """
         return self._master
 
-    
+
+class ContainerMixin():
+    @property
+    def layout(self):
+        """
+        Returns the layout type used by this container.
+        """
+        return self._layout_manager

@@ -1,9 +1,15 @@
-from tkinter import Tk
+from tkinter import 
+from mixins import ContainerMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
 
 from . import utilities as utils
 
-class App(ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin):
+class App(
+    ContainerMixin,
+    ScheduleMixin, 
+    DestroyMixin, 
+    FocusMixin, 
+    ReprMixin):
 
     def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None):
 

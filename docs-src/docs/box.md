@@ -53,7 +53,8 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
-| master       | App     | The `App` object to which this box belongs |
+| layout        | string      | The layout being used by the Box (`"auto"`) or (`"grid"`) |
+| master        | App         | The `App` object to which this box belongs |
 
 ### Examples
 

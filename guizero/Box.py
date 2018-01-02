@@ -1,10 +1,11 @@
 from tkinter import Frame
-from .mixins import MasterMixin
+from .mixins import MasterMixin, ContainerMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
 class Box(
     MasterMixin,
+    ContainerMixin, 
     ScheduleMixin, 
     DestroyMixin, 
     FocusMixin, 
