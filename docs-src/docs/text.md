@@ -77,3 +77,4 @@ You can set and get the following properties:
 | size          | int         | The size of the text  |
 | text_color    | string      | The colour of the text  |
 | value         | string      | The text   |
+| visible       | boolean     | If this widget is visible |

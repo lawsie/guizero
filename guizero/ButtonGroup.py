@@ -19,6 +19,7 @@ class ButtonGroup(
         self._master = master
         self._grid = grid
         self._align = align
+        self._visible = True
 
         # Set (using StringVar set() method) the selected option **number**
         self.tk = Frame(master.tk)

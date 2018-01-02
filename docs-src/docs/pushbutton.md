@@ -84,6 +84,7 @@ You can set and get the following properties:
 | text_color    | string      | The colour of the text on the button  |
 | text_size     | int         | The size of the text on the button  |
 | value         | int         | Returns 1 when the button is pressed, 0 if the button is released  |
+| visible       | boolean     | If this widget is visible |
 | width         | int         | The width of the button  |
 
 **NOTE:** The height and width are currently measured in 'characters' so if you change the font size, this will change the size of the button. **This may change in a future version of guizero.**

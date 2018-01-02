@@ -69,7 +69,7 @@ You can set and get the following properties:
 | master        | App or Box  | The container to which this widget belongs |
 | text    | string        | The text associated with the checkbox   |
 | value         | int      | `1` if the CheckBox is ticked or `0` if it is not ticked   |
-
+| visible       | boolean     | If this widget is visible |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `CheckBox` object is called `checkbox` you would write `checkbox.value`.

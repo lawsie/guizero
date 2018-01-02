@@ -17,6 +17,7 @@ class CheckBox(
         self._master = master
         self._grid = grid
         self._align = align
+        self._visible = True
 
         self._text = str(text)
         self.description = "[CheckBox] object with text \"" + self._text + "\""

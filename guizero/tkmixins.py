@@ -66,17 +66,30 @@ class FocusMixin():
         self.tk.focus_set()
 
 class DisplayMixin():
+
+    @property
+    def visible(self):
+        return self._visible
     
+    @visible.setter
+    def visible(self, value):
+        if value:
+            self.show()
+        else:
+            self.hide()
+
     def hide(self):
         """Hide the widget."""
         if self.master.layout == "grid":
             self.tk.grid_forget()
         else:
             self.tk.pack_forget()
+        self._visible = False
 
     def show(self):
         """Show the widget."""
         utils.auto_pack(self, self.master, self.grid, self.align)
+        self._visible = True
 
 class SizeMixin():
     @property

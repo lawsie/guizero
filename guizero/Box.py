@@ -17,6 +17,7 @@ class Box(
         self._master = master
         self._grid = grid
         self._align = align
+        self._visible = True
 
     	# Description of this object (for friendly error messages)
         self.description = "[Box] object (may also contain other objects)"

@@ -17,6 +17,7 @@ class PushButton(
         self._master = master
         self._grid = grid
         self._align = align
+        self._visible = True
 
         self._text = StringVar()
         self._text.set(text)

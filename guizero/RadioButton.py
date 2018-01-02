@@ -20,6 +20,7 @@ class RadioButton(
         self._master = master
         self._grid = grid
         self._align = align
+        self._visible = True
 
         self.description = "[RadioButton] object with option=\"" + str(text) + "\" value=\"" + str(value) + "\""
         self._text = text

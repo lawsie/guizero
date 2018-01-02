@@ -70,6 +70,7 @@ You can set and get the following properties:
 | pad           | int         | The size of the padding between pixels   |
 | pixel_size    | int         | The size of the one pixel  |
 | width         | int         | The width of the waffle |
+| visible       | boolean     | If this widget is visible |
 
 ### Example
 

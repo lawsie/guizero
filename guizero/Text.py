@@ -17,6 +17,7 @@ class Text(
         self._master = master
         self._grid = grid
         self._align = align
+        self._visible = True
 
         # Description of this object (for friendly error messages)
         self.description = "[Text] object with text \"" + str(text) + "\""

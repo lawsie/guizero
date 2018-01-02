@@ -24,6 +24,7 @@ class Picture(
         self._master = master
         self._grid = grid
         self._align = align
+        self._visible = True
 
         # The image name as a string
         self._image_name = str(image)
