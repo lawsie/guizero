@@ -50,4 +50,4 @@ guizero only requires `tkinter` to be installed, which is included with a standa
 
 1. Open a terminal
 2. Install `tkinter` using your distribution's package manager, e.g. `sudo apt install python3-tk`
-3. Install guizero using pip by typing `sudo pip3 install guizero`
+3. Install guizero using pip by typing `pip3 install guizero` or `sudo pip3 install guizero` if you dont have superuser rights
