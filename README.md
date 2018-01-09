@@ -41,7 +41,7 @@ If you have administrator rights to your computer and are connected to the inter
 1. Open a terminal window
 2. Type `sudo pip3 install guizero` and press Enter
 
-### On Mac
+### Mac OS
 1. Open a terminal (you can search for it in the Launch Pad)
 
     ![Mac terminal](docs-src/docs/images/mac-terminal.png)
@@ -50,7 +50,7 @@ If you have administrator rights to your computer and are connected to the inter
 
     ![Mac install screenshot](docs-src/docs/images/mac-install.png)
 
-### On Linux
+### Linux
 
 1. Open a terminal
 2. Install `tkinter` using your distribution's package manager, e.g. `sudo apt install python3-tk`

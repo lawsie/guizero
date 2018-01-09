@@ -37,7 +37,7 @@ guizero only requires `tkinter` to be installed, which is included with a standa
 1. Open a terminal window
 2. Type `sudo pip3 install guizero` and press Enter
 
-## On Mac
+## Mac OS
 1. Open a terminal (you can search for it in the Launch Pad)
 
     ![Mac terminal](images/mac-terminal.png)
@@ -46,7 +46,7 @@ guizero only requires `tkinter` to be installed, which is included with a standa
 
     ![Mac install screenshot](images/mac-install.png)
 
-## On Linux
+## Linux
 
 1. Open a terminal
 2. Install `tkinter` using your distribution's package manager, e.g. `sudo apt install python3-tk`
