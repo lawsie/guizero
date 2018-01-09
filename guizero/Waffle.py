@@ -17,6 +17,7 @@ class Waffle(
         self._grid = grid
         self._align = align
         self._visible = True
+        self._enabled = True
 
     	# Description of this object (for friendly error messages)
         self.description = "[Waffle] object ("+str(height)+"x"+str(width)+")"
@@ -112,13 +113,31 @@ class Waffle(
     # Internal use only
     # Detect x,y coords of where the user clicked
     def _clicked_on(self,e):
-        canvas = e.widget
-        x = canvas.canvasx(e.x)
-        y = canvas.canvasy(e.y)
-        pixel_x = int(x/(self._pixel_size+self._pad))
-        pixel_y = int(y/(self._pixel_size+self._pad))
-        if self._command:
-            self._command(pixel_x,pixel_y)
+        # you can only click on the waffle if its enabled
+        if self._enabled:
+            canvas = e.widget
+            x = canvas.canvasx(e.x)
+            y = canvas.canvasy(e.y)
+            pixel_x = int(x/(self._pixel_size+self._pad))
+            pixel_y = int(y/(self._pixel_size+self._pad))
+            if self._command:
+                self._command(pixel_x,pixel_y)
+
+    @property
+    def enabled(self):
+        return self._enabled
+
+    @enabled.setter
+    def enabled(self, value):
+        self._enabled = value
+    
+    def disable(self):
+        """Disable the widget."""
+        self._enabled = False
+
+    def enable(self):
+        """Enable the widget."""
+        self._enabled = True
 
     # PROPERTIES
     # ----------------------------------
