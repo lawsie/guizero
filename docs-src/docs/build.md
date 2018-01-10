@@ -39,6 +39,7 @@ Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 ### Prepare
 
 - Update version number in `setup.py`
+- Update version number in `README.md`
 - Update 'changelog' in debian packages
 - Update 'changelog.md' in docs
 
