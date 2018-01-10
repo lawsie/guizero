@@ -1,6 +1,6 @@
 # guizero
 
-## 0.4.2 - 2017-01-10
+## 0.4.3 - 2017-01-10
 
 Minor features, bug fixes and internal refactoring
 
@@ -10,6 +10,7 @@ Minor features, bug fixes and internal refactoring
 - added `layout` property to containers
 - fixed Waffle `height` (Credit: [penguintutor](https://github.com/penguintutor))
 - minor doc updates
+- 0.4.2 was never released due to some pypi / wheel problems
 
 ## 0.4.1 - 2017-12-28
 

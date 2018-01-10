@@ -1,4 +1,4 @@
-guizero (0.4.2~stretch-1) unstable; urgency=low
+guizero (0.4.3~stretch-1) unstable; urgency=low
 
   * grid spanning
   * bug fixes
