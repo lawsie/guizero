@@ -206,11 +206,31 @@ def do_nothing():
 
 app = App(title=&quot;Keypad example&quot;, width=100, height=90, layout=&quot;grid&quot;)
 button1 = PushButton(app, command=do_nothing, text=&quot;1&quot;, grid=[0,0])
-button2 = PushButton(app, command=do_nothing, text=&quot;2&quot;, grid=[0,1])
-button3  = PushButton(app, command=do_nothing, text=&quot;3&quot;, grid=[0,2])
-button4  = PushButton(app, command=do_nothing, text=&quot;4&quot;, grid=[1,0])
+button2 = PushButton(app, command=do_nothing, text=&quot;2&quot;, grid=[1,0])
+button3  = PushButton(app, command=do_nothing, text=&quot;3&quot;, grid=[2,0])
+button4  = PushButton(app, command=do_nothing, text=&quot;4&quot;, grid=[0,1])
 button5  = PushButton(app, command=do_nothing, text=&quot;5&quot;, grid=[1,1])
-button6  = PushButton(app, command=do_nothing, text=&quot;6&quot;, grid=[1,2])
+button6  = PushButton(app, command=do_nothing, text=&quot;6&quot;, grid=[2,1])
+app.display()
+</code></pre>
+
+<p><strong>Spanning columns or rows</strong></p>
+<p>You can have a widget span multiple columns or rows by specifying those within the grid parameter. These are optional, but if specified both must be included using the format <code>[x,y,xspan,yspan]</code>.</p>
+<p>The example below shows text widget located at 0,1 spanning two columns (x) and one row (y):</p>
+<pre><code class="python">text = Text(app, text=&quot;Hello world&quot;, grid=[0,1,2,1])
+</code></pre>
+
+<p>This can be used to include widgets of different sizes arranged alongside each other.</p>
+<p><img alt="Grid layout images" src="../images/grid_images_rpi.png" /></p>
+<p>Assuming you have four appropriate image files then the code to create this is shown below.</p>
+<pre><code class="python">from guizero import App, Picture
+
+app = App(title=&quot;guizero grid span example&quot;, width=460, height=210, layout=&quot;grid&quot;)
+picture1 = Picture(app, image=&quot;std1.gif&quot;, grid=[0,0])
+picture2 = Picture(app, image=&quot;std2.gif&quot;, grid=[1,0])
+picture3 = Picture(app, image=&quot;tall1.gif&quot;, grid=[2,0,1,2])
+picture4 = Picture(app, image=&quot;wide1.gif&quot;, grid=[0,1,2,1])
+
 app.display()
 </code></pre>
               
