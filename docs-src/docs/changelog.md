@@ -8,7 +8,7 @@ Minor features, bug fixes and internal refactoring
 - fixed `show()` for widgets in a grid layout
 - added `master`, `grid`, `align` and `visible` properties to widgets
 - added `layout` property to containers
-- fixed Waffle `height` (Credit: [penguintutor](https://github.com/penguintutor))
+- fixed Waffle `height` (Credit: [scotty3785](https://github.com/scotty3785))
 - minor doc updates
 - 0.4.2 was never released due to some pypi / wheel problems
 
