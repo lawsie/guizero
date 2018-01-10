@@ -32,7 +32,7 @@ class Waffle(
         self._save_canvas = []      # Where the Waffle objects will be stored
 
         # Calculate how big this canvas will be
-        self._c_height = self._width*(self._pixel_size+self._pad)
+        self._c_height = self._height*(self._pixel_size+self._pad)
         self._c_width = self._width*(self._pixel_size+self._pad)
 
         # Create a tk Frame object within this object which will be the waffle
