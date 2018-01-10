@@ -71,4 +71,8 @@ You can call the following methods on an `MenuBar` object.
 
 ### Properties
 
-There are no properties for the `MenuBar` object
+You can set and get the following properties:
+
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| master       | App     | The `App` object to which this MenuBar belongs |

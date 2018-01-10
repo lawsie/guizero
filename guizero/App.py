@@ -1,15 +1,22 @@
 from tkinter import Tk
+from .mixins import ContainerMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
 
 from . import utilities as utils
 
-class App(ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin):
+class App(
+    ContainerMixin,
+    ScheduleMixin, 
+    DestroyMixin, 
+    FocusMixin, 
+    ReprMixin):
 
     def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None):
 
         self.tk = Tk()
 
         # Initial setup
+        self.description = "[App] object"
         self.tk.title( str(title) )
         self.tk.geometry(str(width)+"x"+str(height))
         self._layout_manager = layout  # Only behaves differently for "grid"

@@ -49,7 +49,16 @@ You can call the following methods on a `Box` object.
 
 ### Properties
 
-There are no properties for the `Box` object.
+You can set and get the following properties:
+
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| align         | string      | The alignment of this widget within its grid location |
+| grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| layout        | string      | The layout being used by the Box (`"auto"`) or (`"grid"`) |
+| master        | App         | The `App` object to which this box belongs |
+| visible       | boolean     | If this widget is visible |
+
 
 ### Examples
 

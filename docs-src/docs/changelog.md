@@ -1,5 +1,17 @@
 # guizero
 
+## 0.4.3 - 2017-01-10
+
+Minor features, bug fixes and internal refactoring
+
+- added `xspan`, `yspan` to grid layout (Credit: [penguintutor](https://github.com/penguintutor))
+- fixed `show()` for widgets in a grid layout
+- added `master`, `grid`, `align` and `visible` properties to widgets
+- added `layout` property to containers
+- fixed Waffle `height` (Credit: [penguintutor](https://github.com/penguintutor))
+- minor doc updates
+- 0.4.2 was never released due to some pypi / wheel problems
+
 ## 0.4.1 - 2017-12-28
 
 Bug fixes and deployment test

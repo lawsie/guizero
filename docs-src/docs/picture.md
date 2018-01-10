@@ -63,9 +63,12 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
+| align         | string      | The alignment of this widget within its grid location |
 | enabled       | boolean     | `True` if the widget is enabled |
+| grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| master        | App or Box  | The container to which this widget belongs |
 | value         | string      | The filename of the image  |
-
+| visible       | boolean     | If this widget is visible |
 
 Refer to a property as `<name of widget>.property`. For example, if your `Picture` object is called `picture` you would write `picture.value`.
 

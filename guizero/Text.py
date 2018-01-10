@@ -1,10 +1,23 @@
 from tkinter import Label, StringVar
+from .mixins import WidgetMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 
-class Text(ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin):
+class Text(
+    WidgetMixin, 
+    ScheduleMixin, 
+    DestroyMixin, 
+    EnableMixin, 
+    FocusMixin, 
+    DisplayMixin, 
+    ReprMixin):
 
     def __init__(self, master, text="", size=12, color="black", text_color=None, bg=None, font="Helvetica", grid=None, align=None):
+
+        self._master = master
+        self._grid = grid
+        self._align = align
+        self._visible = True
 
         # Description of this object (for friendly error messages)
         self.description = "[Text] object with text \"" + str(text) + "\""

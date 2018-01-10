@@ -1,10 +1,23 @@
 from tkinter import Canvas, BOTH, Frame
+from .mixins import WidgetMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, SizeMixin, ReprMixin
 from . import utilities as utils
 
-class Waffle(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
+class Waffle(
+    WidgetMixin, 
+    ScheduleMixin, 
+    DestroyMixin, 
+    FocusMixin, 
+    DisplayMixin, 
+    ReprMixin):
 
     def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True):
+
+        self._master = master
+        self._grid = grid
+        self._align = align
+        self._visible = True
+        self._enabled = True
 
     	# Description of this object (for friendly error messages)
         self.description = "[Waffle] object ("+str(height)+"x"+str(width)+")"
@@ -19,7 +32,7 @@ class Waffle(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
         self._save_canvas = []      # Where the Waffle objects will be stored
 
         # Calculate how big this canvas will be
-        self._c_height = self._width*(self._pixel_size+self._pad)
+        self._c_height = self._height*(self._pixel_size+self._pad)
         self._c_width = self._width*(self._pixel_size+self._pad)
 
         # Create a tk Frame object within this object which will be the waffle
@@ -100,13 +113,31 @@ class Waffle(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
     # Internal use only
     # Detect x,y coords of where the user clicked
     def _clicked_on(self,e):
-        canvas = e.widget
-        x = canvas.canvasx(e.x)
-        y = canvas.canvasy(e.y)
-        pixel_x = int(x/(self._pixel_size+self._pad))
-        pixel_y = int(y/(self._pixel_size+self._pad))
-        if self._command:
-            self._command(pixel_x,pixel_y)
+        # you can only click on the waffle if its enabled
+        if self._enabled:
+            canvas = e.widget
+            x = canvas.canvasx(e.x)
+            y = canvas.canvasy(e.y)
+            pixel_x = int(x/(self._pixel_size+self._pad))
+            pixel_y = int(y/(self._pixel_size+self._pad))
+            if self._command:
+                self._command(pixel_x,pixel_y)
+
+    @property
+    def enabled(self):
+        return self._enabled
+
+    @enabled.setter
+    def enabled(self, value):
+        self._enabled = value
+    
+    def disable(self):
+        """Disable the widget."""
+        self._enabled = False
+
+    def enable(self):
+        """Enable the widget."""
+        self._enabled = True
 
     # PROPERTIES
     # ----------------------------------

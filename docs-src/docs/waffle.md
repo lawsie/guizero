@@ -46,6 +46,8 @@ You can call the following methods on your Waffle object.
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | destroy()   | -  | -          | Destroys the widget    |
+| disable()  | - | -          | Disables the widget so that it cannot be interacted with   |
+| enable()  | -  | -          | Enables the widget   |
 | focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
 | get_all()     | - | List | IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the pixel colours in the grid as a 2D list. |
 | get_pixel(x, y)| x (int), y (int) | string |  IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid. |
@@ -61,12 +63,17 @@ You can set and get the following properties:
 
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
+| align         | string      | The alignment of this widget within its grid location |
 | color         | int         | The color of the whole waffle |
 | dotty         | bool        | If `True` the waffle will display circles  |
+| enabled       | boolean     | `True` if the widget is enabled |
+| grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | height        | int         | The height of the waffle  |
+| master        | App or Box  | The container to which this widget belongs |
 | pad           | int         | The size of the padding between pixels   |
 | pixel_size    | int         | The size of the one pixel  |
 | width         | int         | The width of the waffle |
+| visible       | boolean     | If this widget is visible |
 
 ### Example
 

@@ -1,13 +1,26 @@
 from tkinter import Frame, StringVar
+from .mixins import WidgetMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin
 from . import utilities as utils
 from .Box import Box
 from .RadioButton import RadioButton
 
 
-class ButtonGroup(ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin):
+class ButtonGroup(
+    WidgetMixin,
+    ScheduleMixin, 
+    DestroyMixin, 
+    FocusMixin, 
+    DisplayMixin, 
+    ReprMixin):
 
     def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None):
+        
+        self._master = master
+        self._grid = grid
+        self._align = align
+        self._visible = True
+
         # Set (using StringVar set() method) the selected option **number**
         self.tk = Frame(master.tk)
         self._selected = StringVar(master=self.tk.winfo_toplevel())

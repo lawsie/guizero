@@ -60,6 +60,7 @@ You can set and get the following properties:
 | ------------- | ----------- | -------------------------- |
 | bg            | string      | The background colour of the window   |
 | height        | int         | The height of the window   |
+| layout        | string      | The layout being used by the App (`"auto"`) or (`"grid"`) |
 | title         | string      | The title of the window    |
 | width         | int         | The width of the window    |
 
