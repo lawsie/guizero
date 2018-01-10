@@ -10,9 +10,19 @@ Notes on how to develop and deploy guizero (on Windows).
 pip install mkdocs
 pip install wheel
 pip install twine
+pip install virtualenv
 ```
 
 ### Python library
+
+Create a virtual environment (not essential, but a good idea!):
+
+```
+mkdir guizero-[versionno]
+virtualenv guizero-[versionno]
+cd guizero-[versionno]
+Scripts\activate
+```
 
 Checkout and install guizero for development:
 
