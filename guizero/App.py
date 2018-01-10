@@ -16,6 +16,7 @@ class App(
         self.tk = Tk()
 
         # Initial setup
+        self.description = "[App] object"
         self.tk.title( str(title) )
         self.tk.geometry(str(width)+"x"+str(height))
         self._layout_manager = layout  # Only behaves differently for "grid"
