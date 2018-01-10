@@ -1,4 +1,11 @@
-guizero (0.4.1~stretch-1) unstable; urgency=low
+guizero (0.4.2~stretch-1) unstable; urgency=low
+
+  * grid spanning
+  * bug fixes
+
+ -- Martin OHanlon <martin@ohanlonweb.com>  Thu, 10 Jan 2018 06:20:00 +0100
+ 
+ guizero (0.4.1~stretch-1) unstable; urgency=low
 
   * pushbutton bug fixes
 

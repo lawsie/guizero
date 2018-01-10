@@ -1,6 +1,6 @@
 # guizero
 
-## 0.4.2 - in dev
+## 0.4.2 - 2017-01-10
 
 Minor features, bug fixes and internal refactoring
 
@@ -8,6 +8,8 @@ Minor features, bug fixes and internal refactoring
 - fixed `show()` for widgets in a grid layout
 - added `master`, `grid`, `align` and `visible` properties to widgets
 - added `layout` property to containers
+- fixed Waffle `height` (Credit: [penguintutor](https://github.com/penguintutor))
+- minor doc updates
 
 ## 0.4.1 - 2017-12-28
 
