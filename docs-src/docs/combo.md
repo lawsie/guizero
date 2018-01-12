@@ -27,10 +27,12 @@ When you create a `Combo` object you **must** specify `master` and `options` and
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box   | - | Yes       | The container to which this widget belongs
+| selected  | string | None | No | The option to select by default
 | options   | List    | -  | Yes         | A list of options to display |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | command | function name | None | -   | The name of a function to call when a different option is selected. This function MUST take one argument as it will be auto-given the current value of the Combo. **The command can only be specified when creating the `Combo` object and cannot be changed later.** |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
+
 
 
 ### Methods
