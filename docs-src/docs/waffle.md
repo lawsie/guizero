@@ -27,6 +27,7 @@ When you create a `Waffle` object you **must** specify `master` and you can spec
 | master    | App or Box| -       | Yes        | The container to which this widget belongs |
 | align     | string     | None   | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | color     | string    | "white" | -         | The starting colour of all pixels on the waffle |
+| command | function name | None | -   | The name of a function to call when the waffle is clicked. This function MUST take two arguments as it will be auto-given the `x` and `y` co-ordinates of the pixel which was clicked.
 | dim       | int       | 20      | -         | How large one of the pixels on the waffle is |
 | dotty     | boolean   | False   | -         | Whether the pixels display as dots/circles (True) or squares (False) |
 | grid      | List [int, int]     | None       | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
