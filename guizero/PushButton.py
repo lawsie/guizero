@@ -12,7 +12,7 @@ class PushButton(
     DisplayMixin, 
     ReprMixin):
 
-    def __init__(self, master, command, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
+    def __init__(self, master, command=None, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
 
         self._master = master
         self._grid = grid
@@ -24,6 +24,10 @@ class PushButton(
         self._current_font = "Arial"
         self._font_size = 11
         self._value = 0
+
+        if command is None:
+            command = lambda: None
+            # Create a callable to act as a dummy callback function
         self.change_command(command, args)
         
         # Description of this object (for friendly error messages)
