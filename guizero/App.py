@@ -82,7 +82,20 @@ class App(
     def on_close(self, command):
         self.tk.wm_protocol("WM_DELETE_WINDOW", command)
 
+    # Do 'command' when the mouse is moved
+    
+    def on_mouse_move(self,command):
+        self.tk.bind('<Motion>',command)
 
+    # Do 'command' when a key is pressed
+    
+    def on_key_press(self,command):
+        self.tk.bind('<Key>',command)
+
+    # Do 'command' when mouse is clicked
+    
+    def on_mouse_click(self,command):
+        self.tk.bind('<Button-1>',command)
     # DEPRECATED METHODS
     # ------------------------------------
 
