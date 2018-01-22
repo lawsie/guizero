@@ -31,6 +31,7 @@ When you create a `ButtonGroup` object you **must** specify `master`, `options` 
 | selected   | string    | -     | Yes       | The option that should be selected. If the options are specified as a list, the selected option should be the number of the desired option, beginning at 1. If a 2D list is specified, this should be the **hidden value** associated with one of the options. |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | command | function name | None | -   | The name of a function to call when the selected option changes. |
+| args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
 | grid   | list [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | horizontal   | boolean    | False     | -       | Whether the buttons stack vertically or horizontally. (Defaults to vertical)|
 
@@ -48,6 +49,7 @@ You can call the following methods on an `ButtonGroup` object.
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden |
+| update_command(command, args =None)   | command (function name), args (_Optional_ List of arguments to be passed to command)   | -          | Updates the function to call when the selected option changes.  |
 | _get()_  | -  | _string_          | _Replaced by `value` property_ |
 | _set(value)_   | _value (string)_            | -          | _Replaced by `value` property_        |
 
