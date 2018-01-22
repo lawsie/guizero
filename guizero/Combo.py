@@ -44,7 +44,7 @@ class Combo(
         self._command = command
 
         # Create a tk OptionMenu object within this object
-        self.tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command)
+        self.tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command_callback)
 
         # Pack or grid self
         utils.auto_pack(self, master, grid, align)
@@ -91,7 +91,7 @@ class Combo(
         # Re-add all options
         # This uses an internal tk method _setit which is a bit naughty
         for item in self._options:
-            menu.add_command(label=item, command=_setit(self._selected, item, self._command))
+            menu.add_command(label=item, command=_setit(self._selected, item, self._command_callback))
 
         self.description = "[Combo] object with options  " + str(self._options)
 
@@ -105,6 +105,14 @@ class Combo(
         self.tk.children["menu"].delete(0, END)
         self._selected.set("")
 
+    def _command_callback(self, value):
+        args_expected = utils.no_args_expected(self._command)
+        if args_expected == 0:
+            self._command()
+        elif args_expected == 1:
+            self._command(value)
+        else:
+            utils.error_format("Combo command function must accept either 0 or 1 arguments.\nThe current command has {} arguments.".format(args_expected))
 
     # DEPRECATED METHODS
     # --------------------------------------------
