@@ -30,7 +30,7 @@ When you create a `PushButton` object you **must** specify `master` and `command
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box   | - | Yes       | The container to which this widget belongs |
-| command | function name | - | Yes  | The name of a function to call when the button is pressed. |
+| command | function name | None | -  | The name of a function to call when the button is pressed. |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |

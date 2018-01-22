@@ -1,5 +1,9 @@
 # guizero
 
+## 0.4.4 - tbc
+
+ - made PushButton command optional
+
 ## 0.4.3 - 2017-01-10
 
 Minor features, bug fixes and internal refactoring

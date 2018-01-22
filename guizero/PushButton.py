@@ -12,7 +12,7 @@ class PushButton(
     DisplayMixin, 
     ReprMixin):
 
-    def __init__(self, master, command, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
+    def __init__(self, master, command=None, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
 
         self._master = master
         self._grid = grid
@@ -151,11 +151,14 @@ class PushButton(
         
     # Change command - needs the name of a function and optional args as a list
     def change_command(self, newcommand, args=None):
-        if args is None:
-            self._command = newcommand
+        if newcommand is None:
+            self._command = lambda: None
         else:
-            # If the args LIST was not blank, allow args
-            self._command = utils.with_args(newcommand, *args)
+            if args is None:
+                self._command = newcommand
+            else:
+                # If the args LIST was not blank, allow args
+                self._command = utils.with_args(newcommand, *args)
 
     # Change padding
     def padding(self, padx, pady):
