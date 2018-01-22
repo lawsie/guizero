@@ -2,7 +2,9 @@
 
 ## 0.4.4 - tbc
 
- - made PushButton command optional
+- made PushButton command optional
+- Combo command functions can now have 0 arguments
+- Waffle command functions can now have 0 arguments
 
 ## 0.4.3 - 2017-01-10
 

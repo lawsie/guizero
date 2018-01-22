@@ -121,8 +121,14 @@ class Waffle(
             pixel_x = int(x/(self._pixel_size+self._pad))
             pixel_y = int(y/(self._pixel_size+self._pad))
             if self._command:
-                self._command(pixel_x,pixel_y)
-
+                args_expected = utils.no_args_expected(self._command)
+                if args_expected == 0:
+                    self._command()
+                elif args_expected == 2:
+                    self._command(pixel_x,pixel_y)
+                else:
+                    utils.error_format("Waffle command function must accept either 0 or 2 arguments.\nThe current command has {} arguments.".format(args_expected))
+                
     @property
     def enabled(self):
         return self._enabled
