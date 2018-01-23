@@ -6,5 +6,5 @@ def selected(value):
 app = App()
 combo = Combo(app, ["Nothing", "Something"], command = selected)
 combo.add_option("Everything")
-
+combo2 = Combo(app, ["hi", "bye"])
 app.display()

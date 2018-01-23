@@ -49,7 +49,6 @@ You can call the following methods on a `PushButton` object.
 | ------------- | ------------- | ---------- | -------------------------- |
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
-| change_command(newcommand, args)  | newcommand (function name), args (list)  | -          | Sets the function called when the button is pressed to the one specified as `newcommand`. You can optionally specify new `args` as a list. |
 | destroy()   | -  | -         |  Destroys the widget    |
 | disable()  | - | -         |  Disables the widget so that it is "greyed out" and cannot be interacted with   |
 | enable()  | -  | -         |  Enables the widget   |
@@ -60,6 +59,8 @@ You can call the following methods on a `PushButton` object.
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden  |
 | toggle() | - | - |  Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa. |
+| update_command(command, args =None)   | command (function name), args (_Optional_ List of arguments to be passed to command)   | -          | Updates the function to call when the button is pressed .  |
+| _change_command(newcommand, args)_  | _newcommand (function name), args (list)_  | -          | _Replaced by update_command function_ |
 | _set_text(text)_   | _text (string)_         | -         | _Replaced by the `text` property_  |
 | _toggle_state()_ | - | - |  _Renamed to `toggle()`_ |
 

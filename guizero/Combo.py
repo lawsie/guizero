@@ -37,14 +37,11 @@ class Combo(
             self._selected.set( str(selected) )
             self._default = str(selected)
 
-        # The command associated with this combo
-        # If a command is specified, the function MUST take one positional argument
-        # as it will be auto-given the current value of the Combo
-        # You can only specify a command for a OptionMenu at init
-        self._command = command
-
         # Create a tk OptionMenu object within this object
         self.tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command_callback)
+
+        # The command associated with this combo
+        self.update_command(command)
 
         # Pack or grid self
         utils.auto_pack(self, master, grid, align)
@@ -106,14 +103,21 @@ class Combo(
         self._selected.set("")
 
     def _command_callback(self, value):
-        args_expected = utils.no_args_expected(self._command)
-        if args_expected == 0:
-            self._command()
-        elif args_expected == 1:
-            self._command(value)
-        else:
-            utils.error_format("Combo command function must accept either 0 or 1 arguments.\nThe current command has {} arguments.".format(args_expected))
+        if self._command:
+            args_expected = utils.no_args_expected(self._command)
+            if args_expected == 0:
+                self._command()
+            elif args_expected == 1:
+                self._command(value)
+            else:
+                utils.error_format("Combo command function must accept either 0 or 1 arguments.\nThe current command has {} arguments.".format(args_expected))
 
+    def update_command(self, command):
+        if command is None:
+            self._command = lambda: None
+        else:
+            self._command = command
+            
     # DEPRECATED METHODS
     # --------------------------------------------
 

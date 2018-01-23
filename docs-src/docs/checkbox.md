@@ -30,6 +30,7 @@ When you create a `CheckBox` object you **must** specify `master` and `text` and
 | text   | string    | -  | Yes         | The text to display next to the check box |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | command | function name | None | -   | The name of a function to call when this checkbox is ticked/unticked |
+| args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 
 
@@ -49,6 +50,7 @@ You can call the following methods on a `CheckBox` object.
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden  |
 | toggle() | - | - |  Switches the `CheckBox` to the opposite of its current value. i.e. if it is ticked, untick it and vice versa |
+| update_command(command, args =None)   | command (function name), args (_Optional_ List of arguments to be passed to command)   | -          | Updates the function to call when the checkbox is ticked/unticked  |
 | _change_text(newtext)_ | _newtext (string)_ | - |  _Replaced by the `text` property_ |
 | _get_text()_  | -  | _string_          | _Replaced by the `text` property_ |
 | _get_value()_   | -         | _int_         | _Replaced by the `value` property_          |
