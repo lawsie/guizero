@@ -72,10 +72,13 @@ You can set and get the following properties:
 | ------------- | ----------- | -------------------------- |
 | align         | string      | The alignment of this widget within its grid location |
 | enabled       | boolean     | `True` if the widget is enabled |
+| font          | string      | The font of the text  |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | master        | App or Box  | The container to which this widget belongs |
 | value         | string      | The text associated with the currently selected option  |
 | visible       | boolean     | If this widget is visible |
+| text_size     | int         | The size of the text  |
+| text_color    | string      | The colour of the text  |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `Combo` object is called `combo` you would write `combo.value`.

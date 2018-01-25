@@ -1,6 +1,6 @@
 from tkinter import OptionMenu, StringVar, END, _setit
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ReprMixin
 from . import utilities as utils
 
 class Combo(
@@ -10,6 +10,7 @@ class Combo(
     EnableMixin, 
     FocusMixin, 
     DisplayMixin, 
+    TextMixin,
     ReprMixin):
 
     def __init__(self, master, options, selected=None, command=None, grid=None, align=None):
