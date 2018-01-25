@@ -31,14 +31,13 @@ When you create a `Combo` object you **must** specify `master` and `options` and
 | options   | List    | -  | Yes         | A list of options to display |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | command | function name | None | -   | The name of a function to call when a different option is selected. This function MUST take either zero or one argument, if the function takes one argument the current value of the Combo will be given. 
-| args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 
 
 
 ### Methods
 
-You can call the following methods on a `CheckBox` object.
+You can call the following methods on a `Combo` object.
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
@@ -54,7 +53,7 @@ You can call the following methods on a `CheckBox` object.
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | select_default() | - | - |  Resets the combo box so that the first item is selected |
 | show()  | - | -          | Displays the widget if it was previously hidden  |
-| update_command(command, args =None)   | command (function name), args (_Optional_ List of arguments to be passed to command)   | -          | Updates the function to call when a different option is selected.  |
+| update_command(command)   | command (function name)  | -          | Updates the function to call when a different option is selected.  |
 | _get()_  | -  | _string_          | _Replaced by the `value` property_ |
 | _set(text)_   | _text (string)_         | -         | _Replaced by the `value` property_      |
 

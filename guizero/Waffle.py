@@ -22,7 +22,7 @@ class Waffle(
     	# Description of this object (for friendly error messages)
         self.description = "[Waffle] object ("+str(height)+"x"+str(width)+")"
 
-        self._command = command
+        self.update_command(command)
         self._height = height       # How many pixels high
         self._width = width         # How many pixels wide
         self._pixel_size = dim      # Size of one pixel
@@ -128,7 +128,13 @@ class Waffle(
                     self._command(pixel_x,pixel_y)
                 else:
                     utils.error_format("Waffle command function must accept either 0 or 2 arguments.\nThe current command has {} arguments.".format(args_expected))
-                
+
+    def update_command(self, command):
+        if command is None:
+            self._command = lambda: None
+        else:
+            self._command = command
+
     @property
     def enabled(self):
         return self._enabled

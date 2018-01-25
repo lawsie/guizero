@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Button` object)
 
-`__init__(self, master, command, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None)`
+`__init__(self, master, command=None, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None)`
 
 ### What is it?
 The `PushButton` object displays a button with text or an image, which calls a function when pressed.
@@ -25,7 +25,7 @@ app.display()
 
 ### Starting parameters
 
-When you create a `PushButton` object you **must** specify `master` and `command` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `button = PushButton(app, command=do_nothing)`
+When you create a `PushButton` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `button = PushButton(app)`
 
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|

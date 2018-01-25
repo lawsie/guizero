@@ -57,6 +57,7 @@ You can call the following methods on your Waffle object.
 | set_all(color)     | color (string) | -          | Sets all pixels to the specified colour (allows hex code e.g. #0099ff or colour name e.g. "red") |
 | set_pixel(x, y, color)   | x (int), y (int), color (string)     | -         | Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.  |
 | show()  | - | -          | Displays the widget   |
+| update_command(command)   | command (function name)  | -          | Updates the function to call when the Waffle is clicked  |
 
 ### Properties
 

@@ -29,7 +29,9 @@ class Slider(
         orient = HORIZONTAL if horizontal else VERTICAL
 
         # Create a tk Scale object within this object
-        self.tk = Scale(master.tk, from_=start, to=end, orient=orient, command=command)
+        self.tk = Scale(master.tk, from_=start, to=end, orient=orient, command=self._command_callback)
+
+        self.update_command(command)
 
         # Pack this object
         try:
@@ -52,5 +54,26 @@ class Slider(
     # METHODS
     # ----------------
     # Calls the given function when the slider value is changed
+    
+    def _command_callback(self, value):
+        if self._command:
+            args_expected = utils.no_args_expected(self._command)
+            if args_expected == 0:
+                self._command()
+            elif args_expected == 1:
+                self._command(value)
+            else:
+                utils.error_format("Slider command function must accept either 0 or 1 arguments.\nThe current command has {} arguments.".format(args_expected))
+
+    def update_command(self, command):
+        if command is None:
+            self._command = lambda: None
+        else:
+            self._command = command
+
+    # DEPRECATED
+    # -------------------------------------------
+        
     def add_command(self, command):
-        self.tk.config(command=command)
+        self.update_command(command)
+        utils.deprecated("Slider add_command() is deprecated - renamed to update_command()")
