@@ -12,6 +12,11 @@
   - PushButton
   - Slider
   - Waffle
+- refactored text / font methods and added them to:
+  - PushButton
+  - Text
+  - TextBox
+  
 
 ## 0.4.3 - 2017-01-10
 

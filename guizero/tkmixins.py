@@ -102,7 +102,9 @@ class TextMixin():
 
     # Get the font object for this widget 
     def _get_font(self):
+        # get the font in use for the widget
         f = Font(self.tk, self.tk.cget("font"))
+        # configure() returns a dictionary of font attributes
         return f.configure()
 
     # Get the text colour as a string
