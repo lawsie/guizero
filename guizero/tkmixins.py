@@ -1,4 +1,6 @@
 from . import utilities as utils
+from tkinter.font import Font
+
 
 class ScheduleMixin():
     _callback = {}
@@ -34,10 +36,12 @@ class ScheduleMixin():
             # remove it from the call back dictionary
             self._callback.pop(function)
 
+
 class DestroyMixin():
     def destroy(self):
         """Destroy the object."""
         self.tk.destroy()
+
 
 class EnableMixin():    
     @property
@@ -60,10 +64,12 @@ class EnableMixin():
         """Enable the widget."""
         self.tk.configure(state="normal")
 
+
 class FocusMixin():
     def focus(self):
         """Give focus to the widget."""
         self.tk.focus_set()
+
 
 class DisplayMixin():
 
@@ -91,6 +97,47 @@ class DisplayMixin():
         utils.auto_pack(self, self.master, self.grid, self.align)
         self._visible = True
 
+
+class TextMixin():
+
+    # Get the font object for this widget 
+    def _get_font(self):
+        f = Font(self.tk, self.tk.cget("font"))
+        return f.configure()
+
+    # Get the text colour as a string
+    @property
+    def text_color(self):
+        return (self.tk.cget("fg"))
+
+    # Set the text colour
+    @text_color.setter
+    def text_color(self, color):
+        self.tk.config(fg=color)
+
+    # Get the current font as a string
+    @property
+    def font(self):
+        f = self._get_font()
+        return (f["family"])
+
+    # Set the current font
+    @font.setter
+    def font(self, font):
+        self.tk.config(font=(font, self.text_size))
+
+    # Get the current text size as an integer
+    @property
+    def text_size(self):
+        f = self._get_font()
+        return (f["size"])
+
+    # Set the font size
+    @text_size.setter
+    def text_size(self, size):
+        self.tk.config(font=(self.font, size))
+
+
 class SizeMixin():
     @property
     def width(self):
@@ -112,4 +159,3 @@ class ReprMixin:
 
     def __repr__(self):
         return self.description
-    

@@ -1,6 +1,6 @@
 from tkinter import Button, PhotoImage, StringVar, DISABLED, NORMAL
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ReprMixin
 from . import utilities as utils
 
 class PushButton(
@@ -9,7 +9,8 @@ class PushButton(
     DestroyMixin, 
     EnableMixin, 
     FocusMixin, 
-    DisplayMixin, 
+    DisplayMixin,
+    TextMixin, 
     ReprMixin):
 
     def __init__(self, master, command=None, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
@@ -21,8 +22,6 @@ class PushButton(
 
         self._text = StringVar()
         self._text.set(text)
-        self._current_font = "Arial"
-        self._font_size = 11
         self._value = 0
         self.update_command(command, args)
         
@@ -72,16 +71,6 @@ class PushButton(
         self._text.set(str(value))
         self.description = "[Text] object with text \"" + str(value) + "\""
 
-    # Get the text colour as a string
-    @property
-    def text_color(self):
-        return (self.tk.cget("fg"))
-
-    # Set the text colour
-    @text_color.setter
-    def text_color(self, color):
-        self.tk.config(fg=color)
-
     # Get the background colour as a string
     @property
     def bg(self):
@@ -91,28 +80,6 @@ class PushButton(
     @bg.setter
     def bg(self, color):
         self.tk.config(bg=color)
-
-    # Get the current font as a string
-    @property
-    def font(self):
-        return (self._current_font)
-
-    # Set the current font
-    @font.setter
-    def font(self, font):
-        self._current_font = font
-        self.tk.config(font=(self._current_font, self._font_size))
-
-    # Get the current text size as an integer
-    @property
-    def text_size(self):
-        return (self._font_size)
-
-    # Set the font size
-    @text_size.setter
-    def text_size(self, size):
-        self._font_size = int(size)
-        self.tk.config(font=(self._current_font, self._font_size))
 
     # Get the current height as an integer (does not include padding)
     @property
