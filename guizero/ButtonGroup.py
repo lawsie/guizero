@@ -14,7 +14,7 @@ class ButtonGroup(
     DisplayMixin, 
     ReprMixin):
 
-    def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None):
+    def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None):
         
         self._master = master
         self._grid = grid
@@ -47,10 +47,6 @@ class ButtonGroup(
             # Create a radio button object
             rbutton = RadioButton(self, text=str(button[0]), value=str(button[1]), variable=self._selected)
 
-            # Add a command if there was one
-            if command is not None:
-                rbutton.tk.config(command=command)
-
             # Add this radio button to the internal list
             self._options.append(rbutton)
 
@@ -62,6 +58,12 @@ class ButtonGroup(
                 gridx += 1
             else:
                 gridy += 1
+
+            # Set the callback
+            rbutton.tk.config(command=self._command_callback)
+
+        # Add a command if there was one
+        self.update_command(command, args)
 
         # Pack the whole button group
         utils.auto_pack(self, master, grid, align)
@@ -108,6 +110,18 @@ class ButtonGroup(
     # To help with debugging - return list of text/value pairs
     def get_group_as_list(self):
         return [[option.text, option.value] for option in self._options]
+
+    def update_command(self, command, args=None):
+        if command is None:
+            self._command = lambda: None
+        else:
+            if args is None:
+                self._command = command
+            else:
+                self._command = utils.with_args(command, *args)
+    
+    def _command_callback(self):
+        self._command()
 
     # DEPRECATED METHODS
     # -----------------------------------

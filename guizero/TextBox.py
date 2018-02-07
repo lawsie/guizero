@@ -1,6 +1,6 @@
 from tkinter import Entry, StringVar, END
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ReprMixin
 from . import utilities as utils
 
 class TextBox(
@@ -9,7 +9,8 @@ class TextBox(
     DestroyMixin, 
     EnableMixin, 
     FocusMixin, 
-    DisplayMixin, 
+    TextMixin,
+    DisplayMixin,
     ReprMixin):
 
     def __init__(self, master, text="", width=10, grid=None, align=None):

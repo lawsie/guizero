@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Button` object)
 
-`__init__(self, master, command, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None)`
+`__init__(self, master, command=None, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None)`
 
 ### What is it?
 The `PushButton` object displays a button with text or an image, which calls a function when pressed.
@@ -25,12 +25,12 @@ app.display()
 
 ### Starting parameters
 
-When you create a `PushButton` object you **must** specify `master` and `command` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `button = PushButton(app, command=do_nothing)`
+When you create a `PushButton` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `button = PushButton(app)`
 
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box   | - | Yes       | The container to which this widget belongs |
-| command | function name | - | Yes  | The name of a function to call when the button is pressed. |
+| command | function name | None | -  | The name of a function to call when the button is pressed. |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
@@ -49,7 +49,6 @@ You can call the following methods on a `PushButton` object.
 | ------------- | ------------- | ---------- | -------------------------- |
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
-| change_command(newcommand, args)  | newcommand (function name), args (list)  | -          | Sets the function called when the button is pressed to the one specified as `newcommand`. You can optionally specify new `args` as a list. |
 | destroy()   | -  | -         |  Destroys the widget    |
 | disable()  | - | -         |  Disables the widget so that it is "greyed out" and cannot be interacted with   |
 | enable()  | -  | -         |  Enables the widget   |
@@ -60,6 +59,8 @@ You can call the following methods on a `PushButton` object.
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden  |
 | toggle() | - | - |  Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa. |
+| update_command(command, args =None)   | command (function name), args (_Optional_ List of arguments to be passed to command)   | -          | Updates the function to call when the button is pressed .  |
+| _change_command(newcommand, args)_  | _newcommand (function name), args (list)_  | -          | _Replaced by update_command function_ |
 | _set_text(text)_   | _text (string)_         | -         | _Replaced by the `text` property_  |
 | _toggle_state()_ | - | - |  _Renamed to `toggle()`_ |
 
