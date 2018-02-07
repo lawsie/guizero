@@ -27,14 +27,15 @@ class ScheduleMixin():
         """Fired by tk.after, gets the callback and either executes the function and cancels or repeats"""
         # execute the function
         function(*args)
-        repeat = self._callback[function][1]
-        if repeat:
-            # setup the call back again and update the id
-            callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
-            self._callback[function][0] = callback_id
-        else:
-            # remove it from the call back dictionary
-            self._callback.pop(function)
+        if function in self._callback.keys():
+            repeat = self._callback[function][1]
+            if repeat:
+                # setup the call back again and update the id
+                callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
+                self._callback[function][0] = callback_id
+            else:
+                # remove it from the call back dictionary
+                self._callback.pop(function)
 
 
 class DestroyMixin():
