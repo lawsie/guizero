@@ -12,12 +12,14 @@
   - PushButton
   - Slider
   - Waffle
-- refactored text / font methods and added them to:
+- refactored text_color, text_size and font properties and added them to:
+  - ButtonGroup
+  - Combo
+  - CheckBox
   - PushButton
   - Text
   - TextBox
   
-
 ## 0.4.3 - 2017-01-10
 
 Minor features, bug fixes and internal refactoring

@@ -1,6 +1,6 @@
 from tkinter import Frame, StringVar
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, TextMixin, ReprMixin
 from . import utilities as utils
 from .Box import Box
 from .RadioButton import RadioButton
@@ -103,6 +103,39 @@ class ButtonGroup(
                 print( item.text )
                 return 0
         utils.error_format("Could not set value text - no matching option")
+
+    # Get the text colour as a string
+    @property
+    def text_color(self):
+        return self._options[0].text_color
+        
+    # Set the text colour
+    @text_color.setter
+    def text_color(self, color):
+        for item in self._options:
+            item.text_color = color
+
+    # Get the current font as a string
+    @property
+    def font(self):
+        return self._options[0].font
+
+    # Set the current font
+    @font.setter
+    def font(self, font):
+        for item in self._options:
+            item.font = font
+
+    # Get the current text size as an integer
+    @property
+    def text_size(self):
+        return self._options[0].text_size
+
+    # Set the font size
+    @text_size.setter
+    def text_size(self, size):
+        for item in self._options:
+            item.text_size = size
 
     # METHODS
     # -----------------------------------
