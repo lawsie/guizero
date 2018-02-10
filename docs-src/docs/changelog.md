@@ -26,9 +26,11 @@
   - Combo
   - Picture
   - PushButton
+  - Slider
   - Text
   - TextBox
-  
+ - contributors to this release [m4ddav3](https://github.com/m4ddav3) [Coal0](https://github.com/coal0) [lawsie](https://github.com/lawsie) [martinohanlon](https://github.com/martinohanlon) - :)
+
 ## 0.4.3 - 2017-01-10
 
 Minor features, bug fixes and internal refactoring
