@@ -1,6 +1,6 @@
 # guizero
 
-## 0.4.4 - tbc
+## 0.4.4 - 2018-02-12
 
 - made PushButton command optional
 - Combo command functions can now have 0 arguments
@@ -31,7 +31,7 @@
   - TextBox
  - contributors to this release [m4ddav3](https://github.com/m4ddav3) [Coal0](https://github.com/coal0) [lawsie](https://github.com/lawsie) [martinohanlon](https://github.com/martinohanlon) - :)
 
-## 0.4.3 - 2017-01-10
+## 0.4.3 - 2018-01-10
 
 Minor features, bug fixes and internal refactoring
 
