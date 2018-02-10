@@ -72,6 +72,16 @@ class ButtonGroup(
     # PROPERTIES
     # -----------------------------------
 
+    @property
+    def bg(self):
+        return (self.tk.cget("bg"))
+
+    @bg.setter
+    def bg(self, color):
+        self.tk.config(bg=color)
+        for item in self._options:
+            item.bg = color
+
     # Gets the selected value (1, 2, 3 etc.)
     @property
     def value(self):

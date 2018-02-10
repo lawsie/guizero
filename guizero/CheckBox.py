@@ -1,6 +1,6 @@
 from tkinter import Checkbutton, IntVar
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ColorMixin, ReprMixin
 from . import utilities as utils
 
 class CheckBox(
@@ -11,6 +11,7 @@ class CheckBox(
     FocusMixin, 
     DisplayMixin, 
     TextMixin,
+    ColorMixin,
     ReprMixin):
 
     def __init__(self, master, text, command=None, grid=None, align=None, args=None):

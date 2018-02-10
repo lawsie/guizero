@@ -19,6 +19,15 @@
   - PushButton
   - Text
   - TextBox
+- refactored bg (background) and added to:
+  - Box
+  - ButtonGroup
+  - CheckBox
+  - Combo
+  - Picture
+  - PushButton
+  - Text
+  - TextBox
   
 ## 0.4.3 - 2017-01-10
 
