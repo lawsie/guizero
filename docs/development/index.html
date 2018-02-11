@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Getting Started - guizero</title>
+  <title>Developing - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Getting Started";
-    var mkdocs_page_input_path = "start.md";
-    var mkdocs_page_url = "/start/";
+    var mkdocs_page_name = "Developing";
+    var mkdocs_page_input_path = "development.md";
+    var mkdocs_page_url = "/development/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -61,23 +61,9 @@
 		
     <span class="caption-text">Using guizero</span>
     <ul class="subnav">
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Getting Started</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#getting-started">Getting Started</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#hello-world">Hello World</a></li>
-        
-            <li><a class="toctree-l4" href="#adding-widgets">Adding widgets</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../start/">Getting Started</a>
                 </li>
                 <li class="">
                     
@@ -165,9 +151,25 @@
                     
     <a class="" href="../contributing/">Notes</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../development/">Developing</a>
+    <a class="current" href="./">Developing</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#development">Development</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#install-pre-requisites">Install Pre-requisites</a></li>
+        
+            <li><a class="toctree-l4" href="#python-library">Python library</a></li>
+        
+            <li><a class="toctree-l4" href="#documents">Documents</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -203,11 +205,11 @@
     
       
         
-          <li>Using guizero &raquo;</li>
+          <li>Contributing &raquo;</li>
         
       
     
-    <li>Getting Started</li>
+    <li>Developing</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -217,42 +219,44 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="getting-started">Getting Started</h1>
-<p>At the start of every guizero program, choose the widgets you need from the guizero library and import them:</p>
-<pre><code class="python">from guizero import App, PushButton, Slider
+                <h1 id="development">Development</h1>
+<p>Notes on how to develop guizero (on Windows).</p>
+<h2 id="install-pre-requisites">Install Pre-requisites</h2>
+<pre><code>pip install mkdocs
+pip install wheel
+pip install twine
+pip install virtualenv
 </code></pre>
 
-<p>You only need to import each widget once, and then you can use it in your program as many times as you like.</p>
-<h3 id="hello-world">Hello World</h3>
-<p>All guizero projects begin with a main window which is called an <code>App</code>. At the end of every guizero program you must tell the program to display the app you have just created.</p>
-<p>Let's create an app window with the title "Hello world":</p>
-<pre><code class="python">from guizero import App
-app = App(title=&quot;Hello world&quot;)
-app.display()
+<h2 id="python-library">Python library</h2>
+<p>Create a virtual environment (not essential, but a good idea!):</p>
+<pre><code>mkdir guizero-[versionno]
+virtualenv guizero-[versionno]
+cd guizero-[versionno]
 </code></pre>
 
-<p>Save and run the code - you've created your first guizero app!</p>
-<h3 id="adding-widgets">Adding widgets</h3>
-<p>Widgets are the things which appear on the GUI, such as text boxes, buttons, sliders and even plain old pieces of text.</p>
-<p><strong>All widgets</strong> go between the line of code to create the <code>App</code> and the <code>app.display()</code> line.</p>
-<pre><code class="python">from guizero import App, Text
-app = App(title=&quot;Hello world&quot;)
-message = Text(app, text=&quot;Welcome to the Hello world app!&quot;)
-app.display()
+<p>Active your virtual environment:</p>
+<pre><code>Scripts\activate
 </code></pre>
 
-<p><img alt="Hello world" src="../images/hello-world.png" /></p>
-<p>Let’s look at the <code>Text</code> widget code in a bit more detail:</p>
-<pre><code class="python">message = Text(app, text=&quot;Welcome to the Hello world app!&quot;)
+<p>Deactive your virtual environment:</p>
+<pre><code>Scripts\deactivate
 </code></pre>
 
-<ul>
-<li><code>message =</code> - The <code>Text</code> object has a name, just like any variable</li>
-<li><code>Text</code> - an <em>object</em> which creates a piece of text on the screen</li>
-<li><code>app</code> – This tells the <code>Text</code> where it will live. Most of the time your widgets will live directly inside the app.</li>
-<li><code>text="Welcome to the Hello world app!"</code> - The text to display</li>
-</ul>
-<p>And that's it! Now have a look on the documentation pages for the individual widgets to find out more about how to use them.</p>
+<p>Checkout and install guizero for development:</p>
+<pre><code>git clone https://github.com/lawsie/guizero
+cd guizero
+git checkout dev
+python setup.py develop
+</code></pre>
+
+<h2 id="documents">Documents</h2>
+<p>Test documents by serving up MkDocs:</p>
+<pre><code>cd guizero\docs-src
+mkdocs serve
+</code></pre>
+
+<p>Open <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> </p>
               
             </div>
           </div>
@@ -260,10 +264,10 @@ app.display()
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../layout/" class="btn btn-neutral float-right" title="Layouts">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../deployment/" class="btn btn-neutral float-right" title="Deploying">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../contributing/" class="btn btn-neutral" title="Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -289,10 +293,10 @@ app.display()
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../contributing/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../layout/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../deployment/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

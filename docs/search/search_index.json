@@ -621,6 +621,76 @@
             "title": "Example"
         },
         {
+            "location": "/contributing/",
+            "text": "Contributing\n\n\nContibutions are very welcome; be that changes, bug fixing, issue resolution or support.\n\n\nIssues\n\n\nAll issues should be raise on \ngithub.com/lawsie/guizero/issues\n\n\nCode\n\n\nWhen providing code changes please:\n\n\n\n\nuse the \ndev\n branch as the base for all changes\n\n\ncreate a single pull requests for each fix / addition\n\n\nfollow the existing coding style\n\n\nprovide documentation for all changes as markdown in \n/docs-src",
+            "title": "Notes"
+        },
+        {
+            "location": "/contributing/#contributing",
+            "text": "Contibutions are very welcome; be that changes, bug fixing, issue resolution or support.",
+            "title": "Contributing"
+        },
+        {
+            "location": "/contributing/#issues",
+            "text": "All issues should be raise on  github.com/lawsie/guizero/issues",
+            "title": "Issues"
+        },
+        {
+            "location": "/contributing/#code",
+            "text": "When providing code changes please:   use the  dev  branch as the base for all changes  create a single pull requests for each fix / addition  follow the existing coding style  provide documentation for all changes as markdown in  /docs-src",
+            "title": "Code"
+        },
+        {
+            "location": "/development/",
+            "text": "Development\n\n\nNotes on how to develop guizero (on Windows).\n\n\nInstall Pre-requisites\n\n\npip install mkdocs\npip install wheel\npip install twine\npip install virtualenv\n\n\n\n\nPython library\n\n\nCreate a virtual environment (not essential, but a good idea!):\n\n\nmkdir guizero-[versionno]\nvirtualenv guizero-[versionno]\ncd guizero-[versionno]\n\n\n\n\nActive your virtual environment:\n\n\nScripts\\activate\n\n\n\n\nDeactive your virtual environment:\n\n\nScripts\\deactivate\n\n\n\n\nCheckout and install guizero for development:\n\n\ngit clone https://github.com/lawsie/guizero\ncd guizero\ngit checkout dev\npython setup.py develop\n\n\n\n\nDocuments\n\n\nTest documents by serving up MkDocs:\n\n\ncd guizero\\docs-src\nmkdocs serve\n\n\n\n\nOpen \nhttp://127.0.0.1:8000/",
+            "title": "Developing"
+        },
+        {
+            "location": "/development/#development",
+            "text": "Notes on how to develop guizero (on Windows).",
+            "title": "Development"
+        },
+        {
+            "location": "/development/#install-pre-requisites",
+            "text": "pip install mkdocs\npip install wheel\npip install twine\npip install virtualenv",
+            "title": "Install Pre-requisites"
+        },
+        {
+            "location": "/development/#python-library",
+            "text": "Create a virtual environment (not essential, but a good idea!):  mkdir guizero-[versionno]\nvirtualenv guizero-[versionno]\ncd guizero-[versionno]  Active your virtual environment:  Scripts\\activate  Deactive your virtual environment:  Scripts\\deactivate  Checkout and install guizero for development:  git clone https://github.com/lawsie/guizero\ncd guizero\ngit checkout dev\npython setup.py develop",
+            "title": "Python library"
+        },
+        {
+            "location": "/development/#documents",
+            "text": "Test documents by serving up MkDocs:  cd guizero\\docs-src\nmkdocs serve  Open  http://127.0.0.1:8000/",
+            "title": "Documents"
+        },
+        {
+            "location": "/deployment/",
+            "text": "Deploy\n\n\nNotes on how to deploy guizero (on Windows).\n\n\nPrepare\n\n\n\n\nUpdate version number in \nsetup.py\n\n\nUpdate version number in \nREADME.md\n\n\nUpdate 'changelog' in debian packages\n\n\nUpdate 'changelog.md' in docs\n\n\n\n\nPython library\n\n\nInstall locally:\n\n\ncd guizero\npython setup.py install\n\n\n\n\nBuild for deployment:\n\n\ncd guizero\npython setup.py sdist\npython setup.py bdist_wheel\n\n\n\n\nCreate .pypirc credentials:\n\n\ncd %HOME%\nnotepad .pypirc\n\n\n\n\n[distutils]\nindex-servers =\n    pypi\n\n[pypi]\nusername:\npassword:\n\n\n\n\nUpload to pypi:\n\n\ncd guizero\ntwine upload dist/* --skip-existing\n\n\n\n\nDocuments\n\n\nBuild:\n\n\ncd guizero/docs-src\nmkdocs build\n\n\n\n\nCopy to \ndocs\n:\n\n\ncd guizero\nxcopy docs-src\\site\\* docs /E",
+            "title": "Deploying"
+        },
+        {
+            "location": "/deployment/#deploy",
+            "text": "Notes on how to deploy guizero (on Windows).",
+            "title": "Deploy"
+        },
+        {
+            "location": "/deployment/#prepare",
+            "text": "Update version number in  setup.py  Update version number in  README.md  Update 'changelog' in debian packages  Update 'changelog.md' in docs",
+            "title": "Prepare"
+        },
+        {
+            "location": "/deployment/#python-library",
+            "text": "Install locally:  cd guizero\npython setup.py install  Build for deployment:  cd guizero\npython setup.py sdist\npython setup.py bdist_wheel  Create .pypirc credentials:  cd %HOME%\nnotepad .pypirc  [distutils]\nindex-servers =\n    pypi\n\n[pypi]\nusername:\npassword:  Upload to pypi:  cd guizero\ntwine upload dist/* --skip-existing",
+            "title": "Python library"
+        },
+        {
+            "location": "/deployment/#documents",
+            "text": "Build:  cd guizero/docs-src\nmkdocs build  Copy to  docs :  cd guizero\nxcopy docs-src\\site\\* docs /E",
+            "title": "Documents"
+        },
+        {
             "location": "/changelog/",
             "text": "guizero\n\n\n0.4.4 - 2018-02-12\n\n\n\n\nmade PushButton command optional\n\n\nCombo command functions can now have 0 arguments\n\n\nWaffle command functions can now have 0 arguments\n\n\nrefactored command functions and added update_command to: \n\n\nButtonGroup\n\n\nCheckBox\n\n\nCombo\n\n\nPushButton\n\n\nSlider\n\n\nWaffle\n\n\n\n\n\n\nrefactored text_color, text_size and font properties and added them to:\n\n\nButtonGroup\n\n\nCombo\n\n\nCheckBox\n\n\nPushButton\n\n\nText\n\n\nTextBox\n\n\n\n\n\n\nrefactored bg (background) and added to:\n\n\nBox\n\n\nButtonGroup\n\n\nCheckBox\n\n\nCombo\n\n\nPicture\n\n\nPushButton\n\n\nSlider\n\n\nText\n\n\nTextBox\n\n\n\n\n\n\ncontributors to this release \nm4ddav3\n, \nCoal0\n, \nlawsie\n, \nmartinohanlon\n - :)\n\n\n\n\n0.4.3 - 2018-01-10\n\n\nMinor features, bug fixes and internal refactoring\n\n\n\n\nadded \nxspan\n, \nyspan\n to grid layout (Credit: \npenguintutor\n)\n\n\nfixed \nshow()\n for widgets in a grid layout\n\n\nadded \nmaster\n, \ngrid\n, \nalign\n and \nvisible\n properties to widgets\n\n\nadded \nlayout\n property to containers\n\n\nfixed Waffle \nheight\n (Credit: \nscotty3785\n)\n\n\nminor doc updates\n\n\n0.4.2 was never released due to some pypi / wheel problems\n\n\n\n\n0.4.1 - 2017-12-28\n\n\nBug fixes and deployment test\n\n\n\n\nPushButton bug fixes\n\n\nadded \nenabled\n property to widgets which support \nEnable\n / \nDisable\n\n\ndocumentation tidy up\n\n\nadded build notes to documentation\n\n\n\n\n0.4 - 2017-12-19\n\n\nThank you to everyone who has taken time to contribute code, suggest helpful improvements and report their use of the library. I am extremely grateful to the following people who have contributed pull requests since the last version:\n\nbcroston\n, \nbennuttall\n, \nCoal0\n,  \nmartinohanlon\n and  \nscotty3785\n\n\nI am also very pleased to announce that \nmartinohanlon\n has very kindly agreed to maintain guizero whilst I am on maternity leave, beginning December 2017.\n\n\nGeneral changes:\n\n\n\n\nAll classes rewritten with internal Tk objects rather than extending the Tk object, meaning you can access all Tk functionality as \nObject.tk.tkmethod()\n (Credit for idea: \nbennuttall\n)\n\n\nImproved use of library with tab complete editors (e.g. ipython) \u2013 only the guizero properties and methods are listed so the list is shorter and more friendly. (Credit for idea: \nbennuttall\n)\n\n\n[Bug fix] Grid layout now lays items out properly. Previously the x and y axes were flipped. (Whoops!) \nThis fix will cause apps with a grid layout to look different, but now behave correctly. You may need to update old code as a result of this change.\n\n\nAll classes now inherit from mixins, adding 9 new common methods usable on most widgets - \nafter()\n, \ncancel()\n, \ndestroy()\n, \ndisable()\n, \nenable()\n, \nfocus()\n, \nhide()\n, \nshow()\n, \nrepeat()\n,  (Credit: \nCoal0\n and \nmartinohanlon\n)\n\n\nThe new \nrepeat()\n method allows you to easily specify a repeated callback to a function, making it extremely easy to perform repetitive actions such as updating the GUI based on readings from a sensor.\n\n\nDocumentation and examples have been improved and updated\n\n\n\n\nApp:\n\n\n\n\nNew constructor argument \nbg\n replaces deprecated \nbgcolor\n argument. If both are specified, \nbg\n overrides \nbgcolor\n.\n\n\nset_title()\n and \nbgcolor()\n methods are now deprecated and have been replaced by \ntitle\n and \nbg\n properties\n\n\nNew additional properties \nwidth\n and \nheight\n\n\n\n\nButtonGroup:\n\n\n\n\nget()\n and \nset()\n methods are now deprecated and have been replaced by the \nvalue\n property\n\n\nNew \nvalue_text\n property to get the text associated with the selected option\n\n\n\n\nCheckBox:\n\n\n\n\nget_text()\n, \nget_value()\n and \nchange_text()\n methods are now deprecated and have been replaced by the \nvalue\n and \ntext\n properties\n\n\nNew \ntoggle()\n method added\n\n\n\n\nCombo:\n\n\n\n\nget()\n and \nset()\n methods are now deprecated and have been replaced by the \nvalue\n property\n\n\n[Bug fix] \nset_default()\n now correctly resets the combo back to its originally specified value, whether this was the first option or a specified option\n\n\n\n\nPicture:\n\n\n\n\nset()\n method is now deprecated and has been replaced by the \nvalue\n property\n\n\n\n\nPushButton:\n\n\n\n\nset_text()\n method is now deprecated and has been replaced by the \ntext\n property\n\n\nNew properties for \ntext_color\n, \nbg\n, \nfont\n, \ntext_size\n, \nheight\n and \nwidth\n \u2013 make your buttons look pretty!\n\n\nFind out whether a button is pressed (1) or released (0) with the new \nvalue\n property\n\n\nNew \nicon()\n method to set the icon of a button after it is created\n\n\ntoggle_state()\n method deprecated and renamed to \ntoggle()\n for consistency\n\n\n\n\nSlider:\n\n\n\n\nNew \nvalue\n property for getting and setting the value of the slider\n\n\n\n\nText:\n\n\n\n\nNew constructor arguments \ntext_color\n and \nbg\n\n\ncolor\n constructor argument now deprecated and replaced by \ntext_color\n. If both are specified, \ntext_color\n overrides \ncolor\n.\n\n\nget()\n, \nset()\n, \ncolor()\n, \nfont_face()\n and \nfont_size()\n methods are now deprecated, replaced by properties \nvalue\n, \ntext_color\n, \nbg\n, \nfont\n and \nsize\n\n\n\n\nTextBox:\n\n\n\n\nget()\n and \nset()\n methods now deprecated and replaced by \nvalue\n property\n\n\n\n\nWaffle:\n\n\n\n\nAll waffles will now have a memory. The \nremember\n constructor argument remains for backwards compatibility only \nand will be removed in a future release\n.\n\n\nYou can now click on a Waffle, and specify a command to run when the Waffle is clicked on. The function given as the command should take two arguments as it will be passed the x, y coordinates of the pixel that was clicked. (Credit: \nscotty3785\n)\n\n\nChanged internal implementation of the Waffle so it should now be able to redraw more efficiently. (Credit: \nscotty3785\n)",
             "title": "Change log"

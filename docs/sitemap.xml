@@ -134,6 +134,28 @@
     
 
     
+        
+    <url>
+     <loc>/contributing/</loc>
+     <lastmod>2018-02-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/development/</loc>
+     <lastmod>2018-02-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/deployment/</loc>
+     <lastmod>2018-02-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
     <url>
      <loc>/changelog/</loc>
      <lastmod>2018-02-11</lastmod>
