@@ -69,13 +69,17 @@ The aim of guizero is to make the process of creating simple GUIs quick, accessi
 * Abstracts away details children find hard (such as Tkinter StringVar() objects)
 * Accessible widget naming system to help children to build up a mental model
 * Flexible enough to be used for projects up to A-Level standard, yet accessible to primary school children
-* Comprehensive and accessible [documentation with examples](http://lawsie.github.io/guizero)
+* Comprehensive and accessible [documentation with examples](https://lawsie.github.io/guizero)
 * Helpful error messages
 
 ## Documentation
 
-[http://lawsie.github.io/guizero](http://lawsie.github.io/guizero)
+[lawsie.github.io/guizero](https://lawsie.github.io/guizero)
 
 ## Contributing
 
-Contributions are welcome - please create a pull request for each fix/addition. The documentation for the latest release is in /docs as HTML files. Please edit the .md files inside /docs-src/docs folder to add documentation for a new feature.
+Contributions are very welcome - please see [lawsie.github.io/guizero/contributing](https://lawsie.github.io/guizero/contributing) for notes, build and deployment instructions.
+
+## Issues
+
+All issues should be raise on [github.com/lawsie/guizero/issues](https://github.com/lawsie/guizero/issues)
