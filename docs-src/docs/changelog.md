@@ -6,30 +6,30 @@
 - Combo command functions can now have 0 arguments
 - Waffle command functions can now have 0 arguments
 - refactored command functions and added update_command to: 
-  - ButtonGroup
-  - CheckBox
-  - Combo
-  - PushButton
-  - Slider
-  - Waffle
+    - ButtonGroup
+    - CheckBox
+    - Combo
+    - PushButton
+    - Slider
+    - Waffle
 - refactored text_color, text_size and font properties and added them to:
-  - ButtonGroup
-  - Combo
-  - CheckBox
-  - PushButton
-  - Text
-  - TextBox
+    - ButtonGroup
+    - Combo
+    - CheckBox
+    - PushButton
+    - Text
+    - TextBox
 - refactored bg (background) and added to:
-  - Box
-  - ButtonGroup
-  - CheckBox
-  - Combo
-  - Picture
-  - PushButton
-  - Slider
-  - Text
-  - TextBox
- - contributors to this release [m4ddav3](https://github.com/m4ddav3) [Coal0](https://github.com/coal0) [lawsie](https://github.com/lawsie) [martinohanlon](https://github.com/martinohanlon) - :)
+    - Box
+    - ButtonGroup
+    - CheckBox
+    - Combo
+    - Picture
+    - PushButton
+    - Slider
+    - Text
+    - TextBox
+ - contributors to this release [m4ddav3](https://github.com/m4ddav3), [Coal0](https://github.com/coal0), [lawsie](https://github.com/lawsie), [martinohanlon](https://github.com/martinohanlon) - :)
 
 ## 0.4.3 - 2018-01-10
 

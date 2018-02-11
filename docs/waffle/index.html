@@ -252,6 +252,13 @@ app.display()
 <td>The starting colour of all pixels on the waffle</td>
 </tr>
 <tr>
+<td>command</td>
+<td>function name</td>
+<td>None</td>
+<td>-</td>
+<td>The name of a function to call when the waffle is clicked. This function MUST take either zero of two arguments, if the function takes two arguments the <code>x</code> and <code>y</code> co-ordinates of the pixel which was clicked will be given.</td>
+</tr>
+<tr>
 <td>dim</td>
 <td>int</td>
 <td>20</td>
@@ -392,6 +399,12 @@ app.display()
 <td>-</td>
 <td>-</td>
 <td>Displays the widget</td>
+</tr>
+<tr>
+<td>update_command(command)</td>
+<td>command (function name)</td>
+<td>-</td>
+<td>Updates the function to call when the Waffle is clicked</td>
 </tr>
 </tbody>
 </table>

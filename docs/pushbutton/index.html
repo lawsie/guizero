@@ -206,7 +206,7 @@
               
                 <h1 id="pushbutton">PushButton</h1>
 <p>(Contains a <code>tkinter.Button</code> object)</p>
-<p><code>__init__(self, master, command, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None)</code></p>
+<p><code>__init__(self, master, command=None, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>PushButton</code> object displays a button with text or an image, which calls a function when pressed.</p>
 <p><img alt="PushButton on Windows" src="../images/pushbutton_windows.png" /></p>
@@ -222,7 +222,7 @@ app.display()
 </code></pre>
 
 <h3 id="starting-parameters">Starting parameters</h3>
-<p>When you create a <code>PushButton</code> object you <strong>must</strong> specify <code>master</code> and <code>command</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>button = PushButton(app, command=do_nothing)</code></p>
+<p>When you create a <code>PushButton</code> object you <strong>must</strong> specify <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>button = PushButton(app)</code></p>
 <table>
 <thead>
 <tr>
@@ -244,8 +244,8 @@ app.display()
 <tr>
 <td>command</td>
 <td>function name</td>
+<td>None</td>
 <td>-</td>
-<td>Yes</td>
 <td>The name of a function to call when the button is pressed.</td>
 </tr>
 <tr>
@@ -324,12 +324,6 @@ app.display()
 <td>Cancels a scheduled call to <code>command</code></td>
 </tr>
 <tr>
-<td>change_command(newcommand, args)</td>
-<td>newcommand (function name), args (list)</td>
-<td>-</td>
-<td>Sets the function called when the button is pressed to the one specified as <code>newcommand</code>. You can optionally specify new <code>args</code> as a list.</td>
-</tr>
-<tr>
 <td>destroy()</td>
 <td>-</td>
 <td>-</td>
@@ -390,6 +384,18 @@ app.display()
 <td>Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa.</td>
 </tr>
 <tr>
+<td>update_command(command, args =None)</td>
+<td>command (function name), args (<em>Optional</em> List of arguments to be passed to command)</td>
+<td>-</td>
+<td>Updates the function to call when the button is pressed .</td>
+</tr>
+<tr>
+<td><em>change_command(newcommand, args)</em></td>
+<td><em>newcommand (function name), args (list)</em></td>
+<td>-</td>
+<td><em>Replaced by update_command function</em></td>
+</tr>
+<tr>
 <td><em>set_text(text)</em></td>
 <td><em>text (string)</em></td>
 <td>-</td>
@@ -423,7 +429,7 @@ app.display()
 <tr>
 <td>bg</td>
 <td>string</td>
-<td>The background colour of the button</td>
+<td>The background colour of the widget</td>
 </tr>
 <tr>
 <td>enabled</td>

@@ -208,7 +208,7 @@
               
                 <h1 id="buttongroup">ButtonGroup</h1>
 <p>(Contains a <code>tkinter.Frame</code> object)</p>
-<p><code>__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None)</code></p>
+<p><code>__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>ButtonGroup</code> object displays a group of radio buttons, allowing the user to choose a single option.</p>
 <p><img alt="ButtonGroup" src="../images/buttongroup.png" /></p>
@@ -267,6 +267,13 @@ app.display()
 <td>None</td>
 <td>-</td>
 <td>The name of a function to call when the selected option changes.</td>
+</tr>
+<tr>
+<td>args</td>
+<td>list</td>
+<td>None</td>
+<td>-</td>
+<td>If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list</td>
 </tr>
 <tr>
 <td>grid</td>
@@ -345,6 +352,12 @@ app.display()
 <td>Displays the widget if it was previously hidden</td>
 </tr>
 <tr>
+<td>update_command(command, args =None)</td>
+<td>command (function name), args (<em>Optional</em> List of arguments to be passed to command)</td>
+<td>-</td>
+<td>Updates the function to call when the selected option changes</td>
+</tr>
+<tr>
 <td><em>get()</em></td>
 <td>-</td>
 <td><em>string</em></td>
@@ -376,6 +389,16 @@ app.display()
 <td>The alignment of this widget within its grid location</td>
 </tr>
 <tr>
+<td>bg</td>
+<td>string</td>
+<td>The background colour of the widget</td>
+</tr>
+<tr>
+<td>font</td>
+<td>string</td>
+<td>The font of the text</td>
+</tr>
+<tr>
 <td>grid</td>
 <td>List</td>
 <td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid</td>
@@ -399,6 +422,16 @@ app.display()
 <td>visible</td>
 <td>boolean</td>
 <td>If this widget is visible</td>
+</tr>
+<tr>
+<td>text_size</td>
+<td>int</td>
+<td>The size of the text</td>
+</tr>
+<tr>
+<td>text_color</td>
+<td>string</td>
+<td>The colour of the text</td>
 </tr>
 </tbody>
 </table>
