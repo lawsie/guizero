@@ -5,5 +5,4 @@ def selected():
 
 app = App()
 choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1, command=selected)
-
 app.display()

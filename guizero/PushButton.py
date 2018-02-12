@@ -1,6 +1,6 @@
 from tkinter import Button, PhotoImage, StringVar, DISABLED, NORMAL
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ColorMixin, ReprMixin
 from . import utilities as utils
 
 class PushButton(
@@ -11,6 +11,7 @@ class PushButton(
     FocusMixin, 
     DisplayMixin,
     TextMixin, 
+    ColorMixin,
     ReprMixin):
 
     def __init__(self, master, command=None, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
@@ -70,16 +71,6 @@ class PushButton(
     def text(self, value):
         self._text.set(str(value))
         self.description = "[Text] object with text \"" + str(value) + "\""
-
-    # Get the background colour as a string
-    @property
-    def bg(self):
-        return (self.tk.cget("bg"))
-
-    # Set the background colour
-    @bg.setter
-    def bg(self, color):
-        self.tk.config(bg=color)
 
     # Get the current height as an integer (does not include padding)
     @property

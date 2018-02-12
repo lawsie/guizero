@@ -1,6 +1,6 @@
 from tkinter import Label, StringVar
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ColorMixin, ReprMixin
 from . import utilities as utils
 
 class Text(
@@ -11,6 +11,7 @@ class Text(
     FocusMixin, 
     DisplayMixin, 
     TextMixin,
+    ColorMixin,
     ReprMixin):
 
     def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None):
@@ -23,12 +24,14 @@ class Text(
         # Description of this object (for friendly error messages)
         self.description = "[Text] object with text \"" + str(text) + "\""
 
-        self._bg_color = bg
-        self._text = str(text)
-
         # Create a tk Label object within this object
         self.tk = Label(master.tk, text=text, fg=color, bg=bg, font=(font, size))
+
+        if bg:
+            self.bg = bg
         
+        self._text = str(text)
+
         # Pack this object
         try:
             utils.auto_pack(self, master, grid, align)
@@ -49,16 +52,6 @@ class Text(
         self.tk.config(text=value)
         self._text = str(value)
         self.description = "[Text] object with text \"" + str(value) + "\""
-
-    # The background color
-    @property
-    def bg(self):
-        return (self._bg_color)
-
-    @bg.setter
-    def bg(self, color):
-        self.tk.config(bg=color)
-        self._bg_color = color
 
     # The font size
     @property

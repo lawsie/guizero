@@ -22,5 +22,9 @@ pages:
       - Text: text.md
       - TextBox: textbox.md
       - Waffle: waffle.md
+  - Contributing: 
+      - Notes: contributing.md
+      - Developing: development.md
+      - Deploying: deployment.md
   - Change log: changelog.md
 theme: readthedocs

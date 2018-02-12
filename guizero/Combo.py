@@ -1,6 +1,6 @@
 from tkinter import OptionMenu, StringVar, END, _setit
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ColorMixin, ReprMixin
 from . import utilities as utils
 
 class Combo(
@@ -11,6 +11,7 @@ class Combo(
     FocusMixin, 
     DisplayMixin, 
     TextMixin,
+    ColorMixin,
     ReprMixin):
 
     def __init__(self, master, options, selected=None, command=None, grid=None, align=None):
@@ -61,7 +62,6 @@ class Combo(
             self._selected.set( str(value) )
         else:
             utils.error_format("Tried to set " + self.description + " to option \"" + str(value) + "\", which does not exist" )
-
 
     # METHODS
     # -------------------------------------------

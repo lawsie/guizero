@@ -141,6 +141,18 @@ class TextMixin():
         self.tk.config(font=(self.font, size))
 
 
+class ColorMixin():
+    # Get the background colour as a string
+    @property
+    def bg(self):
+        return (self.tk.cget("bg"))
+
+    # Set the background colour
+    @bg.setter
+    def bg(self, color):
+        self.tk.config(bg=color)
+
+
 class SizeMixin():
     @property
     def width(self):
