@@ -2,24 +2,24 @@
 
 ## 0.4.4 - 2018-02-12
 
-- made PushButton command optional
+- made PushButton `command` optional
 - Combo command functions can now have 0 arguments
 - Waffle command functions can now have 0 arguments
-- refactored command functions and added update_command to: 
+- refactored command functions and added `update_command` to: 
     - ButtonGroup
     - CheckBox
     - Combo
     - PushButton
     - Slider
     - Waffle
-- refactored text_color, text_size and font properties and added them to:
+- refactored `text_color`, `text_size` and `font` properties and added them to:
     - ButtonGroup
     - Combo
     - CheckBox
     - PushButton
     - Text
     - TextBox
-- refactored bg (background) and added to:
+- refactored `bg` (background) and added to:
     - Box
     - ButtonGroup
     - CheckBox

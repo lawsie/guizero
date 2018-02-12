@@ -21,16 +21,10 @@ virtualenv guizero-[versionno]
 cd guizero-[versionno]
 ```
 
-Active your virtual environment:
+Activate your virtual environment:
 
 ```
 Scripts\activate
-```
-
-Deactive your virtual environment:
-
-```
-Scripts\deactivate
 ```
 
 Checkout and install guizero for development:
@@ -42,7 +36,11 @@ git checkout dev
 python setup.py develop
 ```
 
+When you have finished your development, deactivate your virtual environment:
 
+```
+Scripts\deactivate
+```
 
 ## Documents
 
