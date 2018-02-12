@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/about/",
-            "text": "About\n\n\nWhat is guizero?\n\n\n\n\nIt is a Python 3 library for creating simple GUIs\n\n\nIt is a wrapper for the standard Tkinter library (included by default when Python is installed)\n\n\n\n\nAims\n\n\nThe aim of guizero is to make the process of creating simple GUIs quick, accessible and understandable for children.\n\n\n\n\nWorks with standard Python Tkinter GUI library (and no need to install other libraries)\n\n\nAbstracts away details children find difficult to understand (such as Tkinter StringVar() objects)\n\n\nAccessible widget naming system to help children to build up a mental model\n\n\nFlexible enough to be used for projects up to A-Level standard, yet accessible to primary school children\n\n\nComprehensive and accessible documentation with examples\n\n\nGenerates helpful additional error messages\n\n\n\n\nVersion\n\n\nguizero is currently version 0.4\n\n\nThere may be bugs and features may change and be updated.",
+            "text": "About\n\n\nWhat is guizero?\n\n\n\n\nIt is a Python 3 library for creating simple GUIs\n\n\nIt is a wrapper for the standard Tkinter library (included by default when Python is installed)\n\n\n\n\nAims\n\n\nThe aim of guizero is to make the process of creating simple GUIs quick, accessible and understandable for children.\n\n\n\n\nWorks with standard Python Tkinter GUI library (and no need to install other libraries)\n\n\nAbstracts away details children find difficult to understand (such as Tkinter StringVar() objects)\n\n\nAccessible widget naming system to help children to build up a mental model\n\n\nFlexible enough to be used for projects up to A-Level standard, yet accessible to primary school children\n\n\nComprehensive and accessible documentation with examples\n\n\nGenerates helpful additional error messages\n\n\n\n\nVersion\n\n\nguizero is currently \nversion 0.4.4\n\n\nThere may be bugs and features may change and be updated.",
             "title": "About"
         },
         {
@@ -22,7 +22,7 @@
         },
         {
             "location": "/about/#version",
-            "text": "guizero is currently version 0.4  There may be bugs and features may change and be updated.",
+            "text": "guizero is currently  version 0.4.4  There may be bugs and features may change and be updated.",
             "title": "Version"
         },
         {
@@ -667,7 +667,7 @@
         },
         {
             "location": "/deployment/",
-            "text": "Deploy\n\n\nNotes on how to deploy guizero (on Windows).\n\n\nPrepare\n\n\n\n\nUpdate version number in \nsetup.py\n\n\nUpdate version number in \nREADME.md\n\n\nUpdate 'changelog' in debian packages\n\n\nUpdate 'changelog.md' in docs\n\n\n\n\nPython library\n\n\nInstall locally:\n\n\ncd guizero\npython setup.py install\n\n\n\n\nBuild for deployment:\n\n\ncd guizero\npython setup.py sdist\npython setup.py bdist_wheel\n\n\n\n\nCreate .pypirc credentials:\n\n\ncd %HOME%\nnotepad .pypirc\n\n\n\n\n[distutils]\nindex-servers =\n    pypi\n\n[pypi]\nusername:\npassword:\n\n\n\n\nUpload to pypi:\n\n\ncd guizero\ntwine upload dist/* --skip-existing\n\n\n\n\nDocuments\n\n\nBuild:\n\n\ncd guizero/docs-src\nmkdocs build\n\n\n\n\nCopy to \ndocs\n:\n\n\ncd guizero\nxcopy docs-src\\site\\* docs /E",
+            "text": "Deploy\n\n\nNotes on how to deploy guizero (on Windows).\n\n\nPrepare\n\n\n\n\nUpdate version number in \nsetup.py\n\n\nUpdate version number in \nREADME.md\n\n\nUpdate version number in \ndocs-src\\docs\\about.md\n\n\nUpdate 'changelog' in debian packages\n\n\nUpdate 'changelog.md' in docs\n\n\n\n\nPython library\n\n\nInstall locally:\n\n\ncd guizero\npython setup.py install\n\n\n\n\nBuild for deployment:\n\n\ncd guizero\npython setup.py sdist\npython setup.py bdist_wheel\n\n\n\n\nCreate .pypirc credentials:\n\n\ncd %HOME%\nnotepad .pypirc\n\n\n\n\n[distutils]\nindex-servers =\n    pypi\n\n[pypi]\nusername:\npassword:\n\n\n\n\nUpload to pypi:\n\n\ncd guizero\ntwine upload dist/* --skip-existing\n\n\n\n\nDocuments\n\n\nBuild:\n\n\ncd guizero/docs-src\nmkdocs build\n\n\n\n\nCopy to \ndocs\n:\n\n\ncd guizero\nxcopy docs-src\\site\\* docs /E",
             "title": "Deploying"
         },
         {
@@ -677,7 +677,7 @@
         },
         {
             "location": "/deployment/#prepare",
-            "text": "Update version number in  setup.py  Update version number in  README.md  Update 'changelog' in debian packages  Update 'changelog.md' in docs",
+            "text": "Update version number in  setup.py  Update version number in  README.md  Update version number in  docs-src\\docs\\about.md  Update 'changelog' in debian packages  Update 'changelog.md' in docs",
             "title": "Prepare"
         },
         {
