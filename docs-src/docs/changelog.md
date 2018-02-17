@@ -1,5 +1,10 @@
 # guizero
 
+## 0.4.5 - tbc
+
+- colors can now be specified as either "red", "#ffffff", or (red, green, blue) 
+
+
 ## 0.4.4 - 2018-02-12
 
 - made PushButton `command` optional

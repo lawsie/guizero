@@ -23,9 +23,9 @@ class App(
 
         # bg overrides deprecated bgcolor
         if bg is not None:
-            self.tk.configure(background=str(bg))
+            self.bg = bg
         elif bgcolor is not None:
-            self.tk.configure(background=str(bgcolor))
+            self.bg = bgcolor
             utils.deprecated("App 'bgcolor' constructor argument is deprecated. Please use bg instead.")
        
         self.tk.update()
@@ -49,7 +49,7 @@ class App(
 
     @bg.setter
     def bg(self, color):
-        self.tk.configure(background=str(color))
+        self.tk.configure(background=utils.convert_color(color))
 
     # The height of the window
     @property
@@ -88,10 +88,10 @@ class App(
 
     # Set the title of the window
     def set_title(self, title):
-        self.tk.title( str(title) )
+        self.title = title
         utils.deprecated("App set_title() is deprecated. Please use the title property instead.")
 
     # Change the background colour
     def bgcolor(self, color):
-        self.tk.configure(background=str(color))
+        self.bg = color
         utils.deprecated("App bgcolor() is deprecated. Please use the bg property instead.")

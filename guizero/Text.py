@@ -25,7 +25,7 @@ class Text(
         self.description = "[Text] object with text \"" + str(text) + "\""
 
         # Create a tk Label object within this object
-        self.tk = Label(master.tk, text=text, fg=color, bg=bg, font=(font, size))
+        self.tk = Label(master.tk, text=text, fg=utils.convert_color(color), bg=utils.convert_color(bg), font=(font, size))
 
         if bg:
             self.bg = bg
@@ -83,20 +83,17 @@ class Text(
 
     # Sets the text colour
     def color(self, color):
-        self._current_color = color
-        self.tk.config(fg=color)
+        self.text_color = color
         utils.deprecated("Text color() is deprecated. Please use the text_color property instead.")
 
     # Set the font
     def font_face(self, font):
-        self._current_font = font
-        self.tk.config(font=(self._current_font, self._current_size))
+        self.font = font
         utils.deprecated("Text font_face() is deprecated. Please use font property instead.")
 
     # Set the font size
     def font_size(self, size):
-        self._current_size = size
-        self.tk.config(font=(self._current_font, self._current_size))
+        self.size = size 
         utils.deprecated("Text font_size() is deprecated. Please use the size property instead.")
 
      # Returns the text

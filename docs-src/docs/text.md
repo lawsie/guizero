@@ -28,7 +28,7 @@ When you create a `Text` object, you **must** specify a `master` and you can spe
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box   | - | Yes       | The container to which this widget belongs |
 | align   | string     | None    | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
-| color   | string     | black     | -         | The colour of the text. Accepts some colour strings (e.g. `red`) and colours specified in hex format (e.g. `#0099ff`)  |
+| color   | [color](colors.md)     | black     | -         | The colour of the text. Accepts some colour strings (e.g. `red`) and colours specified in hex format (e.g. `#0099ff`)  |
 | font   | string     | "Helvetica"     | -         | The font face that the text will be displayed in. Availability of fonts depends on which fonts are installed locally. |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | size   | int    | 12     | -         | The font size of the text |
@@ -69,12 +69,12 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | align         | string      | The alignment of this widget within its grid location |
-| bg            | string      | The background colour of the widget  |
+| bg            | [color](colors.md)      | The background colour of the widget  |
 | enabled       | boolean     | `True` if the widget is enabled |
 | font          | string      | The font of the text  |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | master        | App or Box  | The container to which this widget belongs |
 | size          | int         | The size of the text  |
-| text_color    | string      | The colour of the text  |
+| text_color    | [color](colors.md)      | The colour of the text  |
 | value         | string      | The text   |
 | visible       | boolean     | If this widget is visible |

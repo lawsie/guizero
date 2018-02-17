@@ -78,7 +78,7 @@ class ButtonGroup(
 
     @bg.setter
     def bg(self, color):
-        self.tk.config(bg=color)
+        self.tk.config(bg=utils.convert_color(color))
         for item in self._options:
             item.bg = color
 

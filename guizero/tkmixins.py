@@ -116,7 +116,7 @@ class TextMixin():
     # Set the text colour
     @text_color.setter
     def text_color(self, color):
-        self.tk.config(fg=color)
+        self.tk.config(fg=utils.convert_color(color))
 
     # Get the current font as a string
     @property
@@ -150,7 +150,7 @@ class ColorMixin():
     # Set the background colour
     @bg.setter
     def bg(self, color):
-        self.tk.config(bg=color)
+        self.tk.config(bg=utils.convert_color(color))
 
 
 class SizeMixin():

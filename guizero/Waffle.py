@@ -27,7 +27,7 @@ class Waffle(
         self._width = width         # How many pixels wide
         self._pixel_size = dim      # Size of one pixel
         self._pad = pad             # How much padding between pixels
-        self._color = color        # Start color of the whole waffle
+        self._color = utils.convert_color(color)        # Start color of the whole waffle
         self._dotty = dotty         # A dotty waffle will display circles
         self._save_canvas = []      # Where the Waffle objects will be stored
 
@@ -77,7 +77,7 @@ class Waffle(
 
     # Sets the colour of the whole waffle
     def set_all(self, color):
-        self.color = str(color)
+        self.color = utils.convert_color(color)
         # Draw the pixels on the canvas
         for y in range(self._height):
             for x in range(self._width):
@@ -86,6 +86,7 @@ class Waffle(
 
     # Sets a single pixel
     def set_pixel(self, x, y, color):
+        color = utils.convert_color(color)
         if x >= self._width:
             utils.error_format("The x value "+ str(x) + " is off the edge of the waffle")
         elif y >= self._width:
@@ -191,7 +192,7 @@ class Waffle(
 
     @color.setter
     def color(self, value):
-        self._color = value
+        self._color = utils.convert_color(value)
 
     @property
     def dotty(self):
