@@ -54,8 +54,8 @@ You can call the following methods on your Waffle object.
 | get_pixel(x, y)| x (int), y (int) | string |  IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid. |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
-| set_all(color)     | color (string) | -          | Sets all pixels to the specified colour (allows hex code e.g. #0099ff or colour name e.g. "red") |
-| set_pixel(x, y, color)   | x (int), y (int), color (string)     | -         | Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.  |
+| set_all(color)     | color ([color](colors.md)) | -          | Sets all pixels to the specified colour. |
+| set_pixel(x, y, color)   | x (int), y (int), color ([color](colors.md))     | -         | Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.  |
 | show()  | - | -          | Displays the widget   |
 | update_command(command)   | command (function name)  | -          | Updates the function to call when the Waffle is clicked  |
 
@@ -66,7 +66,7 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | align         | string      | The alignment of this widget within its grid location |
-| color         | int         | The color of the whole waffle |
+| color         | [color](colors.md)         | The color of the whole waffle |
 | dotty         | bool        | If `True` the waffle will display circles  |
 | enabled       | boolean     | `True` if the widget is enabled |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
