@@ -67,7 +67,7 @@ def deprecated(message):
     print("*** DEPRECATED: " + message)
 
 def convert_color(color):
-    # is the color something i.e. no None
+    # is the color something i.e. not None
     if color:
 
         # is the color a string
