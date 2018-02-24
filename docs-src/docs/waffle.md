@@ -27,6 +27,7 @@ When you create a `Waffle` object you **must** specify `master` and you can spec
 | master    | App or Box| -       | Yes        | The container to which this widget belongs |
 | align     | string     | None   | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | color     | string    | "white" | -         | The starting colour of all pixels on the waffle |
+| command | function name | None | -   | The name of a function to call when the waffle is clicked. This function MUST take either zero of two arguments, if the function takes two arguments the `x` and `y` co-ordinates of the pixel which was clicked will be given.
 | dim       | int       | 20      | -         | How large one of the pixels on the waffle is |
 | dotty     | boolean   | False   | -         | Whether the pixels display as dots/circles (True) or squares (False) |
 | grid      | List [int, int]     | None       | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
@@ -56,6 +57,7 @@ You can call the following methods on your Waffle object.
 | set_all(color)     | color (string) | -          | Sets all pixels to the specified colour (allows hex code e.g. #0099ff or colour name e.g. "red") |
 | set_pixel(x, y, color)   | x (int), y (int), color (string)     | -         | Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.  |
 | show()  | - | -          | Displays the widget   |
+| update_command(command)   | command (function name)  | -          | Updates the function to call when the Waffle is clicked  |
 
 ### Properties
 

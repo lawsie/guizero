@@ -1,6 +1,6 @@
 from tkinter import Label, PhotoImage, TclError
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ColorMixin, ReprMixin
 from . import utilities as utils
 
 ## See if PIL is installed
@@ -17,6 +17,7 @@ class Picture(
     EnableMixin, 
     FocusMixin, 
     DisplayMixin, 
+    ColorMixin,
     ReprMixin):
 
     def __init__(self, master, image, grid=None, align=None):

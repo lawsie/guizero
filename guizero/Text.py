@@ -1,6 +1,6 @@
 from tkinter import Label, StringVar
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ColorMixin, ReprMixin
 from . import utilities as utils
 
 class Text(
@@ -10,9 +10,11 @@ class Text(
     EnableMixin, 
     FocusMixin, 
     DisplayMixin, 
+    TextMixin,
+    ColorMixin,
     ReprMixin):
 
-    def __init__(self, master, text="", size=12, color="black", text_color=None, bg=None, font="Helvetica", grid=None, align=None):
+    def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None):
 
         self._master = master
         self._grid = grid
@@ -22,19 +24,13 @@ class Text(
         # Description of this object (for friendly error messages)
         self.description = "[Text] object with text \"" + str(text) + "\""
 
-        # Save some of the config
-        self._current_size = size
-        if text_color is None:          # text_color overrides old color property
-            self._current_color = color
-        else:
-            self._current_color = text_color
-        self._bg_color = bg
-        self._current_font = font
-
-        self._text = str(text)
-
         # Create a tk Label object within this object
-        self.tk = Label(master.tk, text=text, fg=self._current_color, bg=bg, font=(font, size))
+        self.tk = Label(master.tk, text=text, fg=color, bg=bg, font=(font, size))
+
+        if bg:
+            self.bg = bg
+        
+        self._text = str(text)
 
         # Pack this object
         try:
@@ -57,45 +53,14 @@ class Text(
         self._text = str(value)
         self.description = "[Text] object with text \"" + str(value) + "\""
 
-    # The text color
-    @property
-    def text_color(self):
-        return (self._current_color)
-
-    @text_color.setter
-    def text_color(self, color):
-        self.tk.config(fg=color)
-        self._current_color = color
-
-    # The background color
-    @property
-    def bg(self):
-        return (self._bg_color)
-
-    @bg.setter
-    def bg(self, color):
-        self.tk.config(bg=color)
-        self._bg_color = color
-
-    # The font face
-    @property
-    def font(self):
-        return (self._current_font)
-
-    @font.setter
-    def font(self, font):
-        self._current_font = font
-        self.tk.config(font=(self._current_font, self._current_size))
-
     # The font size
     @property
     def size(self):
-        return (self._current_size)
+        return self.text_size
 
     @size.setter
     def size(self, size):
-        self._current_size = size
-        self.tk.config(font=(self._current_font, self._current_size))
+        self.text_size = size
 
     # METHODS
     # -------------------------------------------

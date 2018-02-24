@@ -7,5 +7,5 @@ def message(msg):
     
 app = App()
 button = PushButton(app, command=pressed, text='Press me')
-button_with_args = PushButton(app, command=message, text='Say Hi', args=["hi"])
+button_with_args = PushButton(app, command=message, text='Say hi', args=["hi"])
 app.display()

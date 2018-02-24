@@ -1,6 +1,6 @@
 from tkinter import Checkbutton, IntVar
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ColorMixin, ReprMixin
 from . import utilities as utils
 
 class CheckBox(
@@ -10,9 +10,11 @@ class CheckBox(
     EnableMixin, 
     FocusMixin, 
     DisplayMixin, 
+    TextMixin,
+    ColorMixin,
     ReprMixin):
 
-    def __init__(self, master, text, command=None, grid=None, align=None):
+    def __init__(self, master, text, command=None, grid=None, align=None, args=None):
 
         self._master = master
         self._grid = grid
@@ -26,9 +28,9 @@ class CheckBox(
         # Create a tk Checkbutton object within this object
         self.tk = Checkbutton(master.tk, text=text, variable=self._value)
 
-        # Add a command if there was one
-        if command is not None:
-            self.tk.config(command=command)
+        # Set the command callback
+        self.tk.config(command=self._command_callback)
+        self.update_command(command, args)
 
         utils.auto_pack(self, master, grid, align)
 
@@ -68,6 +70,18 @@ class CheckBox(
     def toggle(self):
         self.tk.toggle()
 
+    def update_command(self, command, args=None):
+        if command is None:
+            self._command = lambda: None
+        else:
+            if args is None:
+                self._command = command
+            else:
+                self._command = utils.with_args(command, *args)
+    
+    def _command_callback(self):
+        self._command()
+        
     # DEPRECATED METHODS
     # --------------------------------------------
     # Return text associated with this checkbox

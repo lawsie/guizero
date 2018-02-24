@@ -1,3 +1,9 @@
+# this is to cater for Python 2, is it really needed? 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
+
 # Auto pack or grid position the element
 # INTERNAL ONLY
 def auto_pack(widget, master, grid, align):
@@ -45,6 +51,10 @@ def auto_pack(widget, master, grid, align):
 # without having to know what lambda does
 def with_args( func_name, *args):
     return lambda: func_name(*args)
+
+# Gets the number of args a function expects
+def no_args_expected(func_name):
+    return len(getfullargspec(func_name).args)
 
 # Format errors in a pretty way
 def error_format(error_message):

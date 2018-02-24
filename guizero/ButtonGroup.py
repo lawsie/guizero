@@ -1,6 +1,6 @@
 from tkinter import Frame, StringVar
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, TextMixin, ReprMixin
 from . import utilities as utils
 from .Box import Box
 from .RadioButton import RadioButton
@@ -14,7 +14,7 @@ class ButtonGroup(
     DisplayMixin, 
     ReprMixin):
 
-    def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None):
+    def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None):
         
         self._master = master
         self._grid = grid
@@ -47,10 +47,6 @@ class ButtonGroup(
             # Create a radio button object
             rbutton = RadioButton(self, text=str(button[0]), value=str(button[1]), variable=self._selected)
 
-            # Add a command if there was one
-            if command is not None:
-                rbutton.tk.config(command=command)
-
             # Add this radio button to the internal list
             self._options.append(rbutton)
 
@@ -63,12 +59,28 @@ class ButtonGroup(
             else:
                 gridy += 1
 
+            # Set the callback
+            rbutton.tk.config(command=self._command_callback)
+
+        # Add a command if there was one
+        self.update_command(command, args)
+
         # Pack the whole button group
         utils.auto_pack(self, master, grid, align)
 
 
     # PROPERTIES
     # -----------------------------------
+
+    @property
+    def bg(self):
+        return (self.tk.cget("bg"))
+
+    @bg.setter
+    def bg(self, color):
+        self.tk.config(bg=color)
+        for item in self._options:
+            item.bg = color
 
     # Gets the selected value (1, 2, 3 etc.)
     @property
@@ -102,12 +114,57 @@ class ButtonGroup(
                 return 0
         utils.error_format("Could not set value text - no matching option")
 
+    # Get the text colour as a string
+    @property
+    def text_color(self):
+        return self._options[0].text_color
+        
+    # Set the text colour
+    @text_color.setter
+    def text_color(self, color):
+        for item in self._options:
+            item.text_color = color
+
+    # Get the current font as a string
+    @property
+    def font(self):
+        return self._options[0].font
+
+    # Set the current font
+    @font.setter
+    def font(self, font):
+        for item in self._options:
+            item.font = font
+
+    # Get the current text size as an integer
+    @property
+    def text_size(self):
+        return self._options[0].text_size
+
+    # Set the font size
+    @text_size.setter
+    def text_size(self, size):
+        for item in self._options:
+            item.text_size = size
+
     # METHODS
     # -----------------------------------
 
     # To help with debugging - return list of text/value pairs
     def get_group_as_list(self):
         return [[option.text, option.value] for option in self._options]
+
+    def update_command(self, command, args=None):
+        if command is None:
+            self._command = lambda: None
+        else:
+            if args is None:
+                self._command = command
+            else:
+                self._command = utils.with_args(command, *args)
+    
+    def _command_callback(self):
+        self._command()
 
     # DEPRECATED METHODS
     # -----------------------------------

@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Checkbutton` object)
 
-`__init__(self, master, text, command=None, grid=None, align=None)`
+`__init__(self, master, text, command=None, grid=None, align=None, args=None)`
 
 ### What is it?
 The `CheckBox` object displays a check box to allow an option to be ticked or unticked
@@ -30,6 +30,7 @@ When you create a `CheckBox` object you **must** specify `master` and `text` and
 | text   | string    | -  | Yes         | The text to display next to the check box |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | command | function name | None | -   | The name of a function to call when this checkbox is ticked/unticked |
+| args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 
 
@@ -49,6 +50,7 @@ You can call the following methods on a `CheckBox` object.
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden  |
 | toggle() | - | - |  Switches the `CheckBox` to the opposite of its current value. i.e. if it is ticked, untick it and vice versa |
+| update_command(command, args =None)   | command (function name), args (_Optional_ List of arguments to be passed to command)   | -          | Updates the function to call when the checkbox is ticked/unticked  |
 | _change_text(newtext)_ | _newtext (string)_ | - |  _Replaced by the `text` property_ |
 | _get_text()_  | -  | _string_          | _Replaced by the `text` property_ |
 | _get_value()_   | -         | _int_         | _Replaced by the `value` property_          |
@@ -64,12 +66,16 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | align         | string      | The alignment of this widget within its grid location |
+| bg            | string      | The background colour of the widget  |
 | enabled       | boolean     | `True` if the widget is enabled |
+| font          | string      | The font of the text  |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | master        | App or Box  | The container to which this widget belongs |
 | text    | string        | The text associated with the checkbox   |
 | value         | int      | `1` if the CheckBox is ticked or `0` if it is not ticked   |
 | visible       | boolean     | If this widget is visible |
+| text_size     | int         | The size of the text  |
+| text_color    | string      | The colour of the text  |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `CheckBox` object is called `checkbox` you would write `checkbox.value`.
