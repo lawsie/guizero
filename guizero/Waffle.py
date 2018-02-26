@@ -257,6 +257,9 @@ class Waffle(
         self.set_all(self._color)
         self.dotty = self._dotty
 
+    def __getitem__(self, index):
+        return self._waffle_pixels[index]
+
 class WafflePixel():
     def __init__(self, x, y, canvas, canvas_x, canvas_y, size, dotty, color):
         self._x = x

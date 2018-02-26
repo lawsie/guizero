@@ -18,6 +18,7 @@ waffle.set_pixel(0,0,"blue")
 waffle.set_pixel(8,1,"#00ff00")
 waffle.set_pixel(3,4,"blue")
 waffle.pixel(1,2).dotty = True
+print(waffle[8,1].color)
 
 button = PushButton(app, command= waffle.reset)
 
