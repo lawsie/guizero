@@ -21,7 +21,7 @@ class Picture(
     ColorMixin,
     ReprMixin):
 
-    def __init__(self, master, image, grid=None, align=None):
+    def __init__(self, master, image=None, grid=None, align=None):
 
         self._master = master
         self._grid = grid
@@ -46,20 +46,20 @@ class Picture(
     # Set the image to a given file
     @value.setter
     def value(self, image):
-        self._image_path = str(image)
-        self.description = "[Picture] object \"" + self._image_path + "\""
+        self._image_path = image
+        self.description = "[Picture] object \"" + str(self._image_path) + "\""
+        if image:
+            try:
+                img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
 
-        try:
-            img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
-
-            # ok...  Unless self._image is set to img Picture doesnt work... I have no idea why! 
-            # There must be tkinter weirdness going on
-            self._image = img
-            
-            self.tk.config(image=img)
-            
-        except:
-            utils.error_format("Image import error - " + str(image) +" must be a GIF, check correct path")
+                # ok...  Unless self._image is set to img Picture doesnt work... I have no idea why! 
+                # There must be tkinter weirdness going on
+                self._image = img
+                
+                self.tk.config(image=img)
+                
+            except:
+                utils.error_format("Image import error - " + str(self._image_path) +" must be a GIF, check correct path")
 
     # DEPRECATED METHODS
     # --------------------------------------------
