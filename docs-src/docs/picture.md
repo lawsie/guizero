@@ -5,9 +5,11 @@
 `__init__(self, master, image, grid=None, align=None)`
 
 ### What is it?
-The `Picture` object displays a GIF image
+The `Picture` object displays an image.
 
 ![Picture on Windows](images/picture_windows.png)
+
+Windows & Linux support GIF and PNG file types, MacOS only supports GIF.
 
 ### How do I make one?
 
@@ -26,12 +28,12 @@ picture = Picture(app, image="images/test.gif")
 ```
 ### Starting parameters
 
-When you create a `Picture` object you **must** specify `master` and `image` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `picture = Picture(app, image="test.gif")`
+When you create a `Picture` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `picture = Picture(app, image="test.gif")`
 
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box   | - | Yes       | The container to which this widget belongs
-| image   | List    | -  | Yes         | The path to the image file you wish to display |
+| image   | List    | None  | No         | The path to the image file you wish to display |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 

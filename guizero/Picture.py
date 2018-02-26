@@ -3,6 +3,7 @@ from tkinter import Label, PhotoImage, TclError
 from .mixins import WidgetMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ColorMixin, ReprMixin
 from . import utilities as utils
+from .config import system_config
 
 ## See if PIL is installed
 #try:
@@ -59,7 +60,7 @@ class Picture(
                 self.tk.config(image=img)
                 
             except:
-                utils.error_format("Image import error - " + str(self._image_path) +" must be a GIF, check correct path")
+                utils.error_format("Image import error '{}' - check the file path and image type is {}".format(str(self._image_path),"/".join(system_config.supported_image_types)))
 
     # DEPRECATED METHODS
     # --------------------------------------------
