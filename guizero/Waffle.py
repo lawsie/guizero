@@ -29,23 +29,13 @@ class Waffle(
         self._pad = pad             # How much padding between pixels
         self._color = utils.convert_color(color)        # Start color of the whole waffle
         self._dotty = dotty         # A dotty waffle will display circles
-        self._save_canvas = []      # Where the Waffle objects will be stored
-
-        # Calculate how big this canvas will be
-        self._c_height = self._height*(self._pixel_size+self._pad)
-        self._c_width = self._width*(self._pixel_size+self._pad)
+        self._waffle_pixels = {}
+        self._canvas = None
 
         # Create a tk Frame object within this object which will be the waffle
         self.tk = Frame(master.tk)
 
-        # Create an internal canvas to draw the waffle on
-        self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width)
-
-        # Draw the pixels on the canvas
-        self._draw(self._color)
-
-        # Pack the canvas into this Waffle object
-        self._canvas.pack(fill=BOTH, expand=1)
+        self._create_waffle()
 
         # Bind the left mouse click to the canvas so we can click on the waffle
         self._canvas.bind("<Button-1>", self._clicked_on)
@@ -57,57 +47,96 @@ class Waffle(
     # -------------------------------------------
 
     # Internal use only
-    def _draw(self, color):
-        # Draw the pixels on the canvas
+    def _create_waffle(self):
+        self._create_canvas()
+        self._size_waffle()
+        self._draw_waffle()
+
+    def _create_canvas(self):
+        # if the canvas exists, clear it and destroy it
+        if self._canvas:
+            self._canvas.delete("all")
+            self._canvas.destroy()
+
+        #size the canvas
+        self._c_height = self._height*(self._pixel_size+self._pad)
+        self._c_width = self._width*(self._pixel_size+self._pad)
+
+        # create the canvas and pack it into the waffle frame
+        self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width)
+        self._canvas.pack(fill=BOTH, expand=1)
+
+    # sizes or resizes the waffle, maintaining the state of existing pixels
+    def _size_waffle(self):       
+        # create new pixels
+        new_waffle_pixels = {}
         currx = self._pad
         curry = self._pad
 
-        for y in range(self._height):
-            row = []
-            for x in range(self._width):
-                if self._dotty == False:
-                    obj = self._canvas.create_rectangle(currx, curry, currx+self._pixel_size, curry+self._pixel_size, fill=color)
+        for x in range(self._width):
+            for y in range(self._height):
+                if (x,y) in self._waffle_pixels.keys():
+                    # if pixel already exist, reuse it and update the values
+                    old_pixel = self._waffle_pixels[(x,y)]
+                    new_waffle_pixels[x,y] = WafflePixel(
+                        x, y, 
+                        self._canvas, currx, curry, 
+                        self._pixel_size, 
+                        old_pixel.dotty, 
+                        old_pixel.color)
                 else:
-                    obj = self._canvas.create_oval(currx, curry, currx+self._pixel_size, curry+self._pixel_size, fill=color)
-                currx = currx + self._pixel_size + self._pad
-                row.append(obj)
-            curry = curry + self._pixel_size + self._pad
-            currx = self._pad
-            self._save_canvas.append(row)
+                    # create a new celpixell
+                    new_waffle_pixels[x,y] = WafflePixel(
+                        x, y, 
+                        self._canvas, currx, curry, 
+                        self._pixel_size, 
+                        self._dotty, 
+                        self._color)
+
+                curry += self._pixel_size + self._pad
+
+            currx += self._pixel_size + self._pad
+            curry = self._pad
+                
+        self._waffle_pixels = new_waffle_pixels
+
+    def _draw_waffle(self):
+        currx = self._pad
+        curry = self._pad
+        # draw the waffle from the waffle_cells
+        for x in range(self._width):
+            for y in range(self._height):
+                cell = self._waffle_pixels[x,y]
+                #print("{}.{}".format(currx, curry))
+                cell.draw()
+                curry += cell.size + self._pad
+            
+            currx += cell.size + self._pad
+            curry = self._pad
 
     # Sets the colour of the whole waffle
     def set_all(self, color):
-        self.color = utils.convert_color(color)
-        # Draw the pixels on the canvas
-        for y in range(self._height):
-            for x in range(self._width):
-                obj = self._save_canvas[y][x]
-                self._canvas.itemconfig(obj,fill=color)
+        for x in range(self._width):
+            for y in range(self._height):
+                self._waffle_pixels[x,y].color = color
 
     # Sets a single pixel
     def set_pixel(self, x, y, color):
-        color = utils.convert_color(color)
-        if x >= self._width:
-            utils.error_format("The x value "+ str(x) + " is off the edge of the waffle")
-        elif y >= self._width:
-            utils.error_format("The y value "+ str(y) + " is off the edge of the waffle")
-        else:
-            obj = self._save_canvas[y][x]
-            self._canvas.itemconfig(obj,fill=color)
+        if self.pixel(x, y):
+            self._waffle_pixels[x,y].color = color
 
     # Returns the colour value of a pixel if set
     def get_pixel(self, x, y):
-        obj = self._save_canvas[y][x]
-        return self._canvas.itemcget(obj,'fill')
-
+        if self.pixel(x, y):
+            return self._waffle_pixels[x,y].color
+        
     # Returns a 2D list of all colours in the waffle
     def get_all(self):
         all_pixels = []
         for y in range(self._height):
             row = []
             for x in range(self._width):
-                obj = self._save_canvas[y][x]
-                row.append(self._canvas.itemcget(obj,'fill'))
+                row.append(self._waffle_pixels[x,y].color)
             all_pixels.append(row)
         return all_pixels
 
@@ -136,6 +165,15 @@ class Waffle(
         else:
             self._command = command
 
+    # Returns a WafflePixel object
+    def pixel(self, x, y):
+        if (x,y) in self._waffle_pixels.keys():
+            _pixel = self._waffle_pixels[x,y]
+        else:
+            utils.error_format("Pixel x={} y={} is off the edge of the waffle".format(x, y))
+            _pixel = None
+        return _pixel
+
     @property
     def enabled(self):
         return self._enabled
@@ -161,6 +199,7 @@ class Waffle(
     @width.setter
     def width(self, value):
         self._width = value
+        self._create_waffle()
 
     @property
     def height(self):
@@ -169,6 +208,7 @@ class Waffle(
     @height.setter
     def height(self, value):
         self._height = value
+        self._create_waffle()
 
     @property
     def pixel_size(self):
@@ -177,6 +217,7 @@ class Waffle(
     @pixel_size.setter
     def pixel_size(self, value):
         self._pixel_size = value
+        self._create_waffle()
 
     @property
     def pad(self):
@@ -185,6 +226,7 @@ class Waffle(
     @pad.setter
     def pad(self, value):
         self._pad = value
+        self._create_waffle()
 
     @property
     def color(self):
@@ -192,7 +234,12 @@ class Waffle(
 
     @color.setter
     def color(self, value):
+        old_color = self._color
         self._color = utils.convert_color(value)
+        for x in range(self._width):
+            for y in range(self._height):
+                if self._waffle_pixels[x,y].color == old_color:
+                    self._waffle_pixels[x,y].color = self._color
 
     @property
     def dotty(self):
@@ -201,3 +248,78 @@ class Waffle(
     @dotty.setter
     def dotty(self, value):
         self._dotty = value
+        for x in range(self._width):
+            for y in range(self._height):
+                self._waffle_pixels[x,y].dotty = self._dotty
+
+    def reset(self):
+        # reset all the colors and dottiness
+        self.set_all(self._color)
+        self.dotty = self._dotty
+
+class WafflePixel():
+    def __init__(self, x, y, canvas, canvas_x, canvas_y, size, dotty, color):
+        self._x = x
+        self._y = y
+        self._canvas = canvas
+        self._canvas_x = canvas_x
+        self._canvas_y = canvas_y
+        self._size = size
+        self._dotty = dotty
+        self._color = color
+        self._drawn_object = None
+
+    def draw(self):
+
+        # if the object has been drawn before delete it
+        if self._drawn_object:
+            self._canvas.delete(self._drawn_object)
+
+        if self._dotty == False:
+            self._drawn_object = self._canvas.create_rectangle(
+                self._canvas_x, self._canvas_y, 
+                self._canvas_x + self._size, self._canvas_y + self._size, 
+                fill=self._color)
+        else:
+            self._drawn_object = self._canvas.create_oval(
+                self._canvas_x, self._canvas_y, 
+                self._canvas_x + self._size, self._canvas_y + self._size, 
+                fill=self._color)
+
+    @property
+    def x(self):
+        return self._x
+
+    @property
+    def y(self):
+        return self._y
+
+    @property
+    def canvas_x(self):
+        return self._canvas_x
+
+    @property
+    def canvas_y(self):
+        return self._canvas_x
+
+    @property
+    def size(self):
+        return self._size
+    
+    @property
+    def color(self):
+        return self._color
+
+    @color.setter
+    def color(self, value):
+        self._color = utils.convert_color(value)
+        self._canvas.itemconfig(self._drawn_object,fill=self._color)
+
+    @property
+    def dotty(self):
+        return self._dotty
+
+    @dotty.setter
+    def dotty(self, value):
+        self._dotty = value
+        self.draw()
