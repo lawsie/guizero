@@ -20,7 +20,7 @@ class Waffle(
         self._enabled = True
 
     	# Description of this object (for friendly error messages)
-        self.description = "[Waffle] object ("+str(height)+"x"+str(width)+")"
+        self.description = "[Waffle] object ({}x{})".format(height, width)
 
         self.update_command(command)
         self._height = height       # How many pixels high
@@ -59,8 +59,8 @@ class Waffle(
             self._canvas.destroy()
 
         #size the canvas
-        self._c_height = self._height*(self._pixel_size+self._pad)
-        self._c_width = self._width*(self._pixel_size+self._pad)
+        self._c_height = self._height * (self._pixel_size + self._pad)
+        self._c_width = self._width * (self._pixel_size + self._pad)
 
         # create the canvas and pack it into the waffle frame
         self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width)
@@ -107,7 +107,6 @@ class Waffle(
         for x in range(self._width):
             for y in range(self._height):
                 cell = self._waffle_pixels[x,y]
-                #print("{}.{}".format(currx, curry))
                 cell.draw()
                 curry += cell.size + self._pad
             
@@ -148,8 +147,8 @@ class Waffle(
             canvas = e.widget
             x = canvas.canvasx(e.x)
             y = canvas.canvasy(e.y)
-            pixel_x = int(x/(self._pixel_size+self._pad))
-            pixel_y = int(y/(self._pixel_size+self._pad))
+            pixel_x = int(x / (self._pixel_size + self._pad))
+            pixel_y = int(y / (self._pixel_size + self._pad))
             if self._command:
                 args_expected = utils.no_args_expected(self._command)
                 if args_expected == 0:
@@ -316,7 +315,7 @@ class WafflePixel():
     @color.setter
     def color(self, value):
         self._color = utils.convert_color(value)
-        self._canvas.itemconfig(self._drawn_object,fill=self._color)
+        self._canvas.itemconfig(self._drawn_object, fill=self._color)
 
     @property
     def dotty(self):

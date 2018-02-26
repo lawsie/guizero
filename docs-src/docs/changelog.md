@@ -2,38 +2,43 @@
 
 ## 0.4.5 - tbc
 
-- colors can now be specified as either "red", "#ffffff", or (red, green, blue) 
-
+- colors can now be specified as either `"red"`, `"#ffffff"`, or `(red, green, blue)` 
+- change `Picture` `image` startup parameter to be optional
+- updated `Picture` and `PushButton` errors and docs to show that PNG and GIF images can be used in Windows & Linux
+- refactored `Waffle` resolving bugs that setting properties didnt change its appearance
+- changed waffle so you can reference a pixel using `waffle[x,y]`
+- added `text_color`, `text_size` and `font` properties to `Slider`
+- contributors to this release [Coal0](https://github.com/coal0), [martinohanlon](https://github.com/martinohanlon), [scotty3785](https://github.com/scotty3785) - :)
 
 ## 0.4.4 - 2018-02-12
 
-- made PushButton `command` optional
-- Combo command functions can now have 0 arguments
-- Waffle command functions can now have 0 arguments
+- made `PushButton` `command` optional
+- `Combo` command functions can now have 0 arguments
+- `Waffle` command functions can now have 0 arguments
 - refactored command functions and added `update_command` to: 
-    - ButtonGroup
-    - CheckBox
-    - Combo
-    - PushButton
-    - Slider
-    - Waffle
+    - `ButtonGroup`
+    - `CheckBox`
+    - `Combo`
+    - `PushButton`
+    - `Slider`
+    - `Waffle`
 - refactored `text_color`, `text_size` and `font` properties and added them to:
-    - ButtonGroup
-    - Combo
-    - CheckBox
-    - PushButton
-    - Text
-    - TextBox
+    - `ButtonGroup`
+    - `Combo`
+    - `CheckBox`
+    - `PushButton`
+    - `Text`
+    - `TextBox`
 - refactored `bg` (background) and added to:
-    - Box
-    - ButtonGroup
-    - CheckBox
-    - Combo
-    - Picture
-    - PushButton
-    - Slider
-    - Text
-    - TextBox
+    - `Box`
+    - `ButtonGroup`
+    - `CheckBox`
+    - `Combo`
+    - `Picture`
+    - `PushButton`
+    - `Slider`
+    - `Text`
+    - `TextBox`
  - contributors to this release [m4ddav3](https://github.com/m4ddav3), [Coal0](https://github.com/coal0), [lawsie](https://github.com/lawsie), [martinohanlon](https://github.com/martinohanlon) - :)
 
 ## 0.4.3 - 2018-01-10
@@ -44,7 +49,7 @@ Minor features, bug fixes and internal refactoring
 - fixed `show()` for widgets in a grid layout
 - added `master`, `grid`, `align` and `visible` properties to widgets
 - added `layout` property to containers
-- fixed Waffle `height` (Credit: [scotty3785](https://github.com/scotty3785))
+- fixed `Waffle` `height` (Credit: [scotty3785](https://github.com/scotty3785))
 - minor doc updates
 - 0.4.2 was never released due to some pypi / wheel problems
 
