@@ -2,6 +2,7 @@ from tkinter import Button, PhotoImage, StringVar, DISABLED, NORMAL
 from .mixins import WidgetMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ColorMixin, ReprMixin
 from . import utilities as utils
+from .config import system_config
 
 class PushButton(
     WidgetMixin, 
@@ -41,12 +42,8 @@ class PushButton(
 
         # Try to instantiate a picture
         if icon is not None:
-            try:
-                self._icon = PhotoImage(file=icon)
-                self.tk.config(image=self._icon)
-            except AttributeError:
-                utils.error_format("Image import error - image must be a gif, check correct path")
-
+            self.icon(icon)
+            
         # Pack or grid depending on parent
         try:
             utils.auto_pack(self, master, grid, align)
@@ -116,8 +113,8 @@ class PushButton(
             img = PhotoImage(file=icon)
             self._icon = img
             self.tk.config(image=img)
-        except AttributeError:
-            utils.error_format("Image import error - image must be a gif, check correct path")
+        except:
+            utils.error_format("Image import error '{}' - check the file path and image type is {}".format(str(icon),"/".join(system_config.supported_image_types)))
 
     def toggle(self):
         self.enabled = not self.enabled
