@@ -1,7 +1,40 @@
 from tkinter import Canvas, BOTH, Frame
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, SizeMixin, ReprMixin
+from .tkmixins import (
+    ScheduleMixin,
+    DestroyMixin,
+    FocusMixin,
+    DisplayMixin,
+    SizeMixin,
+    ReprMixin
+)
 from . import utilities as utils
+
+
+class Row:
+    """Acts like a list, but allows __setitem__ to modify the waffle pixels.
+    Pretty messy, but it does the job.
+    """
+
+    def __init__(self, waffle, row, row_value):
+        self._waffle = waffle
+        self._row = row
+        self._row_value = row_value
+    
+    def __repr__(self):
+        # Don't make this too complicated,
+        # pretend it's a list for simplicity sake
+        return repr(self._row_value)
+
+    def __str__(self):
+        return str(self._row_value)
+
+    def __getitem__(self, index):
+        return self._waffle.get_pixel(self._row, index)
+
+    def __setitem__(self, index, color):
+        self._waffle.set_pixel(self._row, index, color)
+
 
 class Waffle(
     WidgetMixin, 
@@ -11,7 +44,20 @@ class Waffle(
     DisplayMixin, 
     ReprMixin):
 
-    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True):
+    def __init__(
+            self,
+            master,
+            height=3,
+            width=3,
+            dim=20,
+            pad=5,
+            color="white",
+            dotty=False,
+            grid=None,
+            align=None,
+            command=None,
+            remember=True
+        ):
 
         self._master = master
         self._grid = grid
@@ -20,9 +66,9 @@ class Waffle(
         self._enabled = True
 
     	# Description of this object (for friendly error messages)
-        self.description = "[Waffle] object ("+str(height)+"x"+str(width)+")"
+        self.description = "[Waffle] object ({}x{})".format(height, width)
 
-        self.update_command(command)
+        self._command = command
         self._height = height       # How many pixels high
         self._width = width         # How many pixels wide
         self._pixel_size = dim      # Size of one pixel
@@ -32,8 +78,8 @@ class Waffle(
         self._save_canvas = []      # Where the Waffle objects will be stored
 
         # Calculate how big this canvas will be
-        self._c_height = self._height*(self._pixel_size+self._pad)
-        self._c_width = self._width*(self._pixel_size+self._pad)
+        self._c_height = self._height * (self._pixel_size + self._pad)
+        self._c_width = self._width * (self._pixel_size + self._pad)
 
         # Create a tk Frame object within this object which will be the waffle
         self.tk = Frame(master.tk)
@@ -65,10 +111,22 @@ class Waffle(
         for y in range(self._height):
             row = []
             for x in range(self._width):
-                if self._dotty == False:
-                    obj = self._canvas.create_rectangle(currx, curry, currx+self._pixel_size, curry+self._pixel_size, fill=color)
+                if not self._dotty:
+                    obj = self._canvas.create_rectangle(
+                        currx,
+                        curry,
+                        currx + self._pixel_size,
+                        curry + self._pixel_size, 
+                        fill=color
+                    )
                 else:
-                    obj = self._canvas.create_oval(currx, curry, currx+self._pixel_size, curry+self._pixel_size, fill=color)
+                    obj = self._canvas.create_oval(
+                        currx,
+                        curry,
+                        currx + self._pixel_size,
+                        curry + self._pixel_size, 
+                        fill=color
+                    )
                 currx = currx + self._pixel_size + self._pad
                 row.append(obj)
             curry = curry + self._pixel_size + self._pad
@@ -82,23 +140,27 @@ class Waffle(
         for y in range(self._height):
             for x in range(self._width):
                 obj = self._save_canvas[y][x]
-                self._canvas.itemconfig(obj,fill=color)
+                self._canvas.itemconfig(obj, fill=color)
 
     # Sets a single pixel
     def set_pixel(self, x, y, color):
         color = utils.convert_color(color)
         if x >= self._width:
-            utils.error_format("The x value "+ str(x) + " is off the edge of the waffle")
+            utils.error_format(
+                "The x value {} is off the edge of the waffle".format(x)
+            )
         elif y >= self._width:
-            utils.error_format("The y value "+ str(y) + " is off the edge of the waffle")
+            utils.error_format(
+                "The y value {} is off the edge of the waffle".format(y)
+            )
         else:
             obj = self._save_canvas[y][x]
-            self._canvas.itemconfig(obj,fill=color)
+            self._canvas.itemconfig(obj, fill=color)
 
     # Returns the colour value of a pixel if set
     def get_pixel(self, x, y):
         obj = self._save_canvas[y][x]
-        return self._canvas.itemcget(obj,'fill')
+        return self._canvas.itemcget(obj, "fill")
 
     # Returns a 2D list of all colours in the waffle
     def get_all(self):
@@ -107,34 +169,22 @@ class Waffle(
             row = []
             for x in range(self._width):
                 obj = self._save_canvas[y][x]
-                row.append(self._canvas.itemcget(obj,'fill'))
+                row.append(self._canvas.itemcget(obj, "fill"))
             all_pixels.append(row)
         return all_pixels
 
     # Internal use only
     # Detect x,y coords of where the user clicked
-    def _clicked_on(self,e):
+    def _clicked_on(self, e):
         # you can only click on the waffle if its enabled
         if self._enabled:
             canvas = e.widget
             x = canvas.canvasx(e.x)
             y = canvas.canvasy(e.y)
-            pixel_x = int(x/(self._pixel_size+self._pad))
-            pixel_y = int(y/(self._pixel_size+self._pad))
+            pixel_x = int(x / (self._pixel_size + self._pad))
+            pixel_y = int(y / (self._pixel_size + self._pad))
             if self._command:
-                args_expected = utils.no_args_expected(self._command)
-                if args_expected == 0:
-                    self._command()
-                elif args_expected == 2:
-                    self._command(pixel_x,pixel_y)
-                else:
-                    utils.error_format("Waffle command function must accept either 0 or 2 arguments.\nThe current command has {} arguments.".format(args_expected))
-
-    def update_command(self, command):
-        if command is None:
-            self._command = lambda: None
-        else:
-            self._command = command
+                self._command(pixel_x, pixel_y)
 
     @property
     def enabled(self):
@@ -143,14 +193,6 @@ class Waffle(
     @enabled.setter
     def enabled(self, value):
         self._enabled = value
-    
-    def disable(self):
-        """Disable the widget."""
-        self._enabled = False
-
-    def enable(self):
-        """Enable the widget."""
-        self._enabled = True
 
     # PROPERTIES
     # ----------------------------------
@@ -201,3 +243,6 @@ class Waffle(
     @dotty.setter
     def dotty(self, value):
         self._dotty = value
+
+    def __getitem__(self, index):
+        return Row(self, index, self._save_canvas[index])
