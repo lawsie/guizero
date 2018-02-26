@@ -3,12 +3,12 @@ from guizero import App, Waffle, PushButton
 def clicked(x,y):
     waffle.set_pixel(x,y,"red")
     print("{}.{}".format(x,y))
-    #print(waffle.get_all())
+    print(waffle.get_all())
     waffle.width = 5
     waffle.height = 5
-    #waffle.pixel_size = 50
-    #waffle.dotty = True
-    #waffle.pad = 25
+    waffle.pixel_size = 50
+    waffle.dotty = True
+    waffle.pad = 25
     waffle.color = "green"
     
 app = App()
