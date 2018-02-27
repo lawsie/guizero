@@ -25,7 +25,7 @@ When you create an `App` object you can specify any of the following parameters,
 
 | Parameter | Data type | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
-| bg    | [color](colors.md)    | None  | No         | The background colour of the app window. Takes a [color](color.md) value. |
+| bg    | [color](colors.md)    | None  | No         | The background colour of the app window. Takes a [color](colors.md) value. |
 | height    | int       | 500     | No         | The height of the window in pixels. |
 | layout    | string    | "auto"  | No         | Whether widgets pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
 | title     | string    | "guizero" | No       | The title displayed in the bar at the top of the window. |
