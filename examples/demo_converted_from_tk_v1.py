@@ -1,4 +1,5 @@
 # form converted from a tkinter example using 'Box'es for layout
+# http://www.dreamincode.net/forums/topic/371440-tkinter-overview-with-a-fixed-width-grid/
 
 from guizero import App, MenuBar, Text, TextBox, Combo, Slider, CheckBox, ButtonGroup, Box, PushButton, info, yesno
 
