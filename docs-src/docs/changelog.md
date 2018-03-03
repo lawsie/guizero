@@ -16,6 +16,7 @@
     - `Picture`
     - `Slider`
     - `Text`
+- added `width` property to:
     - `TextBox`
 - contributors to this release [Coal0](https://github.com/coal0), [martinohanlon](https://github.com/martinohanlon), [scotty3785](https://github.com/scotty3785) - :)
 
