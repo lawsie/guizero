@@ -8,6 +8,15 @@
 - refactored `Waffle` resolving bugs that setting properties didnt change its appearance
 - changed waffle so you can reference a pixel using `waffle[x,y]`
 - added `text_color`, `text_size` and `font` properties to `Slider`
+- added `width` and `height` properties to:
+    - `Box`
+    - `ButtonGroup`
+    - `CheckBox`
+    - `Combo`
+    - `Picture`
+    - `Slider`
+    - `Text`
+    - `TextBox`
 - contributors to this release [Coal0](https://github.com/coal0), [martinohanlon](https://github.com/martinohanlon), [scotty3785](https://github.com/scotty3785) - :)
 
 ## 0.4.4 - 2018-02-12

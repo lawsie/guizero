@@ -71,11 +71,11 @@ You can set and get the following properties:
 | dotty         | bool        | If `True` the waffle will display circles  |
 | enabled       | boolean     | `True` if the widget is enabled |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height        | int         | The height of the waffle  |
+| height        | [size](size.md)         | Sets the height of the widget |
 | master        | App or Box  | The container to which this widget belongs |
 | pad           | int         | The size of the padding between pixels   |
 | pixel_size    | int         | The size of the one pixel  |
-| width         | int         | The width of the waffle |
+| width         | [size](size.md)         | Sets the width of the widget |
 | visible       | boolean     | If this widget is visible |
 
 ### Example

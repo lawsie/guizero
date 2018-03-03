@@ -1,6 +1,14 @@
 from tkinter import Scale, HORIZONTAL, VERTICAL
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ColorMixin, TextMixin, ReprMixin
+from .tkmixins import (
+    ScheduleMixin, 
+    DestroyMixin, 
+    EnableMixin, 
+    FocusMixin, 
+    DisplayMixin, 
+    ColorMixin, 
+    TextMixin,
+    ReprMixin)
 from . import utilities as utils
 
 class Slider(
@@ -52,6 +60,23 @@ class Slider(
     @value.setter
     def value(self, value):
         self.tk.set(value)
+
+    @property
+    def width(self):
+        return self.tk.cget("length")
+
+    @width.setter
+    def width(self, value):
+        self.tk.config(length=value)
+
+    @property
+    def height(self):
+        return self.tk.cget("width")
+
+    @height.setter
+    def height(self, value):
+        self.tk.config(width=value)
+
 
     # METHODS
     # ----------------

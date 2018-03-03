@@ -1,6 +1,16 @@
 from tkinter import Label, StringVar
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ColorMixin, ReprMixin
+from .tkmixins import (
+    ScheduleMixin, 
+    DestroyMixin, 
+    EnableMixin, 
+    FocusMixin, 
+    DisplayMixin, 
+    TextMixin, 
+    ColorMixin, 
+    SizeMixin, 
+    ReprMixin)
+    
 from . import utilities as utils
 
 class Text(
@@ -12,6 +22,7 @@ class Text(
     DisplayMixin, 
     TextMixin,
     ColorMixin,
+    SizeMixin,
     ReprMixin):
 
     def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None):
@@ -62,6 +73,7 @@ class Text(
     def size(self, size):
         self.text_size = size
 
+        
     # METHODS
     # -------------------------------------------
 

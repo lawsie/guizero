@@ -1,5 +1,6 @@
 from . import utilities as utils
 from tkinter.font import Font
+from tkinter import TclError
 
 
 class ScheduleMixin():
@@ -156,19 +157,20 @@ class ColorMixin():
 class SizeMixin():
     @property
     def width(self):
-        return self.tk.width
+        return self.tk.cget("width")
 
     @width.setter
     def width(self, value):
-        self.tk.width = value
+        self.tk.config(width=value)
 
     @property
     def height(self):
-        return self.tk.height
+        return self.tk.cget("height")
 
     @height.setter
     def height(self, value):
-        self.tk.height = value
+        self.tk.config(height=value)
+
 
 class ReprMixin:
 

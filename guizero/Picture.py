@@ -1,7 +1,14 @@
 
 from tkinter import Label, PhotoImage, TclError
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, ColorMixin, ReprMixin
+from .tkmixins import (
+    ScheduleMixin, 
+    DestroyMixin, 
+    EnableMixin, 
+    FocusMixin, 
+    DisplayMixin, 
+    ColorMixin,
+    ReprMixin)
 from . import utilities as utils
 from .config import system_config
 
@@ -61,6 +68,22 @@ class Picture(
                 
             except:
                 utils.error_format("Image import error '{}' - check the file path and image type is {}".format(str(self._image_path),"/".join(system_config.supported_image_types)))
+
+    @property
+    def width(self):
+        return self._image.width()
+
+    @width.setter
+    def width(self, value):
+        self.tk.config(width=value)
+        
+    @property
+    def height(self):
+        return self._image.height()
+
+    @height.setter
+    def height(self, value):
+        self.tk.config(height=value)
 
     # DEPRECATED METHODS
     # --------------------------------------------

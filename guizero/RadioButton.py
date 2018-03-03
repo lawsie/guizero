@@ -1,6 +1,15 @@
 from tkinter import Radiobutton
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ColorMixin, ReprMixin
+from .tkmixins import (
+    ScheduleMixin, 
+    DestroyMixin, 
+    EnableMixin, 
+    FocusMixin, 
+    DisplayMixin, 
+    TextMixin, 
+    ColorMixin,
+    SizeMixin, 
+    ReprMixin)
 from . import utilities as utils
 
 # Only to be used as part of button group
@@ -15,6 +24,7 @@ class RadioButton(
     DisplayMixin, 
     TextMixin,
     ColorMixin,
+    SizeMixin,
     ReprMixin):
 
     def __init__(self, master, text, value, variable, command=None, grid=None, align=None):

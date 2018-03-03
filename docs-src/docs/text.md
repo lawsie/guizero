@@ -73,8 +73,11 @@ You can set and get the following properties:
 | enabled       | boolean     | `True` if the widget is enabled |
 | font          | string      | The font of the text  |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| height        | [size](size.md)         | Sets the height of the widget |
 | master        | App or Box  | The container to which this widget belongs |
 | size          | int         | The size of the text  |
 | text_color    | [color](colors.md)      | The colour of the text  |
 | value         | string      | The text   |
 | visible       | boolean     | If this widget is visible |
+| width         | [size](size.md)         | Sets the width of the widget |
+
