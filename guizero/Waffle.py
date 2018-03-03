@@ -108,9 +108,9 @@ class Waffle(
             for y in range(self._height):
                 cell = self._waffle_pixels[x,y]
                 cell.draw()
-                curry += cell.size + self._pad
+                curry += self._pixel_size + self._pad
             
-            currx += cell.size + self._pad
+            currx += self._pixel_size + self._pad
             curry = self._pad
 
     # Sets the colour of the whole waffle

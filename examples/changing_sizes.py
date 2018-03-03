@@ -8,7 +8,6 @@ text.height = 2
 
 text_box = TextBox(app, "some text")
 text_box.width = 50
-text_box.height = 2
 
 slider = Slider(app)
 slider.width = 300
@@ -36,8 +35,6 @@ button_group.height = 9
 button_group.bg = "darkgrey"
 
 box = Box(app)
-
-#box_text = Text(box, "some text in a box")
 
 box.width = 100
 box.height = 100    
