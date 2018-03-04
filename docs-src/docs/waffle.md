@@ -22,11 +22,11 @@ app.display()
 
 When you create a `Waffle` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `waffle = Waffle(app, height=25)`
 
-| Parameter | Takes     | Default | Compulsory | Description                         |
+| Parameter | Takes     | Default | Compulsory | Description              |
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box| -       | Yes        | The container to which this widget belongs |
 | align     | string     | None   | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
-| color     | string    | "white" | -         | The starting colour of all pixels on the waffle |
+| color     | [color](colors.md)    | "white" | -         | The default colour of pixels on the waffle |
 | command | function name | None | -   | The name of a function to call when the waffle is clicked. This function MUST take either zero of two arguments, if the function takes two arguments the `x` and `y` co-ordinates of the pixel which was clicked will be given.
 | dim       | int       | 20      | -         | How large one of the pixels on the waffle is |
 | dotty     | boolean   | False   | -         | Whether the pixels display as dots/circles (True) or squares (False) |
@@ -50,12 +50,13 @@ You can call the following methods on your Waffle object.
 | disable()  | - | -          | Disables the widget so that it cannot be interacted with   |
 | enable()  | -  | -          | Enables the widget   |
 | focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
-| get_all()     | - | List | IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the pixel colours in the grid as a 2D list. |
-| get_pixel(x, y)| x (int), y (int) | string |  IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid. |
+| get_all()     | - | List | Returns the pixel colours in the grid as a 2D list. |
+| get_pixel(x, y)| x (int), y (int) | string |  Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid. |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
+| pixel(x, y) | (int), y (int) | [WafflePixel](#wafflepixel) | Returns the pixel at the specified coordinates. 0,0 is the top left of the grid. `Waffle.pixel(x,y)` is the equivalent of `Waffle[x,y]` |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
-| set_all(color)     | color (string) | -          | Sets all pixels to the specified colour (allows hex code e.g. #0099ff or colour name e.g. "red") |
-| set_pixel(x, y, color)   | x (int), y (int), color (string)     | -         | Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.  |
+| set_all(color)     | color ([color](colors.md)) | -          | Sets all pixels to the specified colour. |
+| set_pixel(x, y, color)   | x (int), y (int), color ([color](colors.md))     | -         | Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.  |
 | show()  | - | -          | Displays the widget   |
 | update_command(command)   | command (function name)  | -          | Updates the function to call when the Waffle is clicked  |
 
@@ -66,15 +67,15 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | align         | string      | The alignment of this widget within its grid location |
-| color         | int         | The color of the whole waffle |
+| color         | [color](colors.md) | The default colour of pixels on the waffle |
 | dotty         | bool        | If `True` the waffle will display circles  |
 | enabled       | boolean     | `True` if the widget is enabled |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height        | int         | The height of the waffle  |
+| height        | [size](size.md)         | Sets the height of the widget |
 | master        | App or Box  | The container to which this widget belongs |
 | pad           | int         | The size of the padding between pixels   |
 | pixel_size    | int         | The size of the one pixel  |
-| width         | int         | The width of the waffle |
+| width         | [size](size.md)         | Sets the width of the widget |
 | visible       | boolean     | If this widget is visible |
 
 ### Example
@@ -98,5 +99,34 @@ print(my_waffle.get_pixel(2,1))
 print(my_waffle.get_pixel(1,1))
 
 app.display()
-
 ```
+
+## WafflePixel
+
+A WafflePixel object is returned by `Waffle.pixel(x,y)` and `Waffle[x,y]`.
+
+```python
+from guizero import App, Waffle
+
+app = App()
+
+my_waffle = Waffle(app)
+my_waffle.pixel(x,y).color = "red"
+my_waffle[x,y].dotty = True
+
+app.display()
+```
+
+### Properties
+
+You can set and get the following properties:
+
+| Method        | Data type   | Description                |
+| ------------- | ----------- | -------------------------- |
+| x             | int         | Returns the x position of the pixel on the widget|
+| x             | int         | Returns the y position of the pixel on the widget|
+| canvas_x      | int         | Returns the x position of the pixel on the canvas|
+| canvas_y      | int         | Returns the y position of the pixel on the canvas|
+| color         | [color](colors.md) | Sets or returns the color of the pixel |
+| dotty         | bool        | Set to `True` to make the pixel a circle |
+| size          | int         | Returns the size of the pixel in _display_ pixels |

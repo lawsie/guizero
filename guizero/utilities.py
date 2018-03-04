@@ -65,3 +65,53 @@ def error_format(error_message):
 
 def deprecated(message):
     print("*** DEPRECATED: " + message)
+
+def convert_color(color):
+    # is the color something i.e. not None
+    if color:
+
+        # is the color a string
+        if isinstance(color, str):
+            # strip the color of white space
+            color = color.strip()
+
+            # if it starts with a # check it is a valid color
+            if color[0] == "#":
+
+                # check its format
+                if len(color) != 7:
+                    raise ValueError("{} is not a valid # color, it must be in the format #ffffff.".format(color))
+                else:
+                    # split the color into its hex values
+                    hex_colors = (color[1:3], color[3:5], color[5:7])
+
+                    # check hex values are between 00 and ff
+                    for hex_color in hex_colors:
+                        try:
+                            int_color = int(hex_color, 16)
+                        except: 
+                            raise ValueError("{} is not a valid value, it must be hex 00 - ff".format(hex_color))
+
+                        if not (0 <= int_color <= 255):
+                            raise ValueError("{} is not a valid color value, it must be 00 - ff".format(hex_color))
+                        
+        # if the color is not a string, try and convert it
+        else:
+            # get the number of colors and check it is iterable
+            try:
+                no_of_colors = len(color)
+            except:
+                raise ValueError("A color must be a list or tuple of 3 values (red, green, blue)") 
+
+            if no_of_colors != 3:
+                raise ValueError("A color must contain 3 values (red, green, blue)")
+            
+            # check the color values are between 0 and 255
+            for c in color:
+                if not (0 <= c <= 255):
+                    raise ValueError("{} is not a valid color value, it must be 0 - 255")
+
+            # convert to #ffffff format
+            color = "#{:02x}{:02x}{:02x}".format(color[0], color[1], color[2])
+
+    return color

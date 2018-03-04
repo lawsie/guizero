@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Layouts - guizero</title>
+  <title>Colors - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Layouts";
-    var mkdocs_page_input_path = "layout.md";
-    var mkdocs_page_url = "/layout/";
+    var mkdocs_page_name = "Colors";
+    var mkdocs_page_input_path = "colors.md";
+    var mkdocs_page_url = "/colors/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -65,23 +65,33 @@
                     
     <a class="" href="../start/">Getting Started</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Layouts</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#layouts">Layouts</a></li>
-    
-
-    </ul>
+    <a class="" href="../layout/">Layouts</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../size/">Sizes</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../colors/">Colors</a>
+    <a class="current" href="./">Colors</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#colors-or-colours">Colors (or Colours)</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#color-names">Color names</a></li>
+        
+            <li><a class="toctree-l4" href="#rgb-hex-value">rgb hex value</a></li>
+        
+            <li><a class="toctree-l4" href="#rgb-list">rgb list</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -207,7 +217,7 @@
         
       
     
-    <li>Layouts</li>
+    <li>Colors</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -217,49 +227,59 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="layouts">Layouts</h2>
-<p>The <code>App</code> parameter <code>layout</code> allows you to specify whether the widgets in your app are placed automatically (<code>auto</code>), or whether you wish to position them yourself on a grid (<code>grid</code>). The default layout is <code>auto</code>.</p>
-<p>If you choose the <code>grid</code> layout, this means that when you create a widget (other than the <code>App</code> itself) you will need to pass the widget an extra parameter called <code>grid</code> which is a list containing <code>[x,y]</code> coordinates for where you want the widget to appear, like this:</p>
-<pre><code class="python">text = Text(app, text=&quot;Hello world&quot;, grid=[0,1])
+                <h2 id="colors-or-colours">Colors (or Colo<strong>u</strong>rs)</h2>
+<p>You can set colors in guizero using:</p>
+<ul>
+<li>the name of the color - <code>white</code></li>
+<li>a #rgb hex value - <code>#ffffff</code></li>
+<li>a list of rgb values - <code>(255,255,255)</code> </li>
+</ul>
+<p>Colors can be used as either starting parameters e.g. :</p>
+<pre><code class="python">app = App(bg = &quot;red&quot;)
+app = App(bg = &quot;#ff0000&quot;)
+app = App(bg = (255, 0, 0))
 </code></pre>
 
-<p>There is no need to specify the width or height of the grid you want - it will expand depending on the coordinates you provide with each widget. However, grid cells containing no objects will have no height or width.</p>
-<p><strong>Using grid layout</strong></p>
-<p>You can lay components out in a grid and specify where they appear with grid layout.</p>
-<p><img alt="App title" src="../images/keypad_windows.png" /></p>
-<pre><code class="python">from guizero import App, PushButton
-def do_nothing():
-    print(&quot;Nothing happened&quot;)
-
-app = App(title=&quot;Keypad example&quot;, width=100, height=90, layout=&quot;grid&quot;)
-button1 = PushButton(app, command=do_nothing, text=&quot;1&quot;, grid=[0,0])
-button2 = PushButton(app, command=do_nothing, text=&quot;2&quot;, grid=[1,0])
-button3  = PushButton(app, command=do_nothing, text=&quot;3&quot;, grid=[2,0])
-button4  = PushButton(app, command=do_nothing, text=&quot;4&quot;, grid=[0,1])
-button5  = PushButton(app, command=do_nothing, text=&quot;5&quot;, grid=[1,1])
-button6  = PushButton(app, command=do_nothing, text=&quot;6&quot;, grid=[2,1])
-app.display()
+<p>or as properties e.g. :</p>
+<pre><code class="python">text = Text(app, text = &quot;hi&quot;)
+text.text_color = &quot;green&quot;
+text.text_color = &quot;#00ff00&quot;
+text.text_color = (0, 255, 0)
 </code></pre>
 
-<p><strong>Spanning columns or rows</strong></p>
-<p>You can have a widget span multiple columns or rows by specifying those within the grid parameter. These are optional, but if specified both must be included using the format <code>[x,y,xspan,yspan]</code>.</p>
-<p>The example below shows text widget located at 0,1 spanning two columns (x) and one row (y):</p>
-<pre><code class="python">text = Text(app, text=&quot;Hello world&quot;, grid=[0,1,2,1])
-</code></pre>
-
-<p>This can be used to include widgets of different sizes arranged alongside each other.</p>
-<p><img alt="Grid layout images" src="../images/grid_images_rpi.png" /></p>
-<p>Assuming you have four appropriate image files then the code to create this is shown below.</p>
-<pre><code class="python">from guizero import App, Picture
-
-app = App(title=&quot;guizero grid span example&quot;, width=460, height=210, layout=&quot;grid&quot;)
-picture1 = Picture(app, image=&quot;std1.gif&quot;, grid=[0,0])
-picture2 = Picture(app, image=&quot;std2.gif&quot;, grid=[1,0])
-picture3 = Picture(app, image=&quot;tall1.gif&quot;, grid=[2,0,1,2])
-picture4 = Picture(app, image=&quot;wide1.gif&quot;, grid=[0,1,2,1])
-
-app.display()
-</code></pre>
+<h3 id="color-names">Color names</h3>
+<p>Color names can be given as strings e.g.</p>
+<ul>
+<li><code>white</code></li>
+<li><code>black</code></li>
+<li><code>red</code></li>
+<li><code>green</code></li>
+<li><code>blue</code></li>
+<li><code>yellow</code></li>
+</ul>
+<p>A complete list of color names is available at <a href="https://wiki.tcl.tk/37701">wiki.tcl.tk/37701</a></p>
+<h3 id="rgb-hex-value">rgb hex value</h3>
+<p>A rgb color value must start with a <code>#</code> and 6 characters following, 2 each for the red, green and blue value in hex. Each value must be <code>00</code> - <code>ff</code> e.g.</p>
+<ul>
+<li>white = <code>#ffffff</code></li>
+<li>black = <code>#000000</code></li>
+<li>red = <code>#ff0000</code></li>
+<li>green = <code>#00ff00</code></li>
+<li>blue = <code>#0000ff</code></li>
+<li>yellow = <code>#ffff00</code></li>
+</ul>
+<p>You can mix your own color by changing the red, green and blue values. </p>
+<p>There is a RGB calculator application at <a href="https://www.w3schools.com/colors/colors_rgb.asp">https://www.w3schools.com/colors/colors_rgb.asp</a> where you can create your own color and get the <code>#rrggbb</code> value.</p>
+<h3 id="rgb-list">rgb list</h3>
+<p>The <code>(red, green, blue)</code> list color, must have 3 elements in the order red, green, blue with values 0 - 255 e.g.</p>
+<ul>
+<li>white = (255, 255, 255)</li>
+<li>black = (0, 0, 0)</li>
+<li>red = (255, 0, 0)</li>
+<li>green = (0, 255, 0)</li>
+<li>blue = (0, 0, 255)</li>
+<li>yellow = (255, 255, 0)</li>
+</ul>
               
             </div>
           </div>
@@ -267,10 +287,10 @@ app.display()
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../size/" class="btn btn-neutral float-right" title="Sizes">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../alerts/" class="btn btn-neutral float-right" title="Alerts">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../start/" class="btn btn-neutral" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../size/" class="btn btn-neutral" title="Sizes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -296,10 +316,10 @@ app.display()
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../start/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../size/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../size/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../alerts/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

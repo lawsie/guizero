@@ -71,6 +71,14 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../size/">Sizes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colors/">Colors</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../alerts/">Alerts</a>
                 </li>
                 <li class="">
@@ -154,6 +162,8 @@
             <li><a class="toctree-l4" href="#properties">Properties</a></li>
         
             <li><a class="toctree-l4" href="#example">Example</a></li>
+        
+            <li><a class="toctree-l4" href="#wafflepixel">WafflePixel</a></li>
         
         </ul>
     
@@ -265,10 +275,10 @@ app.display()
 </tr>
 <tr>
 <td>color</td>
-<td>string</td>
+<td><a href="../colors/">color</a></td>
 <td>"white"</td>
 <td>-</td>
-<td>The starting colour of all pixels on the waffle</td>
+<td>The default colour of pixels on the waffle</td>
 </tr>
 <tr>
 <td>command</td>
@@ -381,19 +391,25 @@ app.display()
 <td>get_all()</td>
 <td>-</td>
 <td>List</td>
-<td>IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the pixel colours in the grid as a 2D list.</td>
+<td>Returns the pixel colours in the grid as a 2D list.</td>
 </tr>
 <tr>
 <td>get_pixel(x, y)</td>
 <td>x (int), y (int)</td>
 <td>string</td>
-<td>IMPORTANT: To use this function, you must set remember=True when you create the Waffle. Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid.</td>
+<td>Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid.</td>
 </tr>
 <tr>
 <td>hide()</td>
 <td>-</td>
 <td>-</td>
 <td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
+</tr>
+<tr>
+<td>pixel(x, y)</td>
+<td>(int), y (int)</td>
+<td><a href="#wafflepixel">WafflePixel</a></td>
+<td>Returns the pixel at the specified coordinates. 0,0 is the top left of the grid. <code>Waffle.pixel(x,y)</code> is the equivalent of <code>Waffle[x,y]</code></td>
 </tr>
 <tr>
 <td>repeat(time, command)</td>
@@ -403,13 +419,13 @@ app.display()
 </tr>
 <tr>
 <td>set_all(color)</td>
-<td>color (string)</td>
+<td>color (<a href="../colors/">color</a>)</td>
 <td>-</td>
-<td>Sets all pixels to the specified colour (allows hex code e.g. #0099ff or colour name e.g. "red")</td>
+<td>Sets all pixels to the specified colour.</td>
 </tr>
 <tr>
 <td>set_pixel(x, y, color)</td>
-<td>x (int), y (int), color (string)</td>
+<td>x (int), y (int), color (<a href="../colors/">color</a>)</td>
 <td>-</td>
 <td>Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.</td>
 </tr>
@@ -445,8 +461,8 @@ app.display()
 </tr>
 <tr>
 <td>color</td>
-<td>int</td>
-<td>The color of the whole waffle</td>
+<td><a href="../colors/">color</a></td>
+<td>The default colour of pixels on the waffle</td>
 </tr>
 <tr>
 <td>dotty</td>
@@ -465,8 +481,8 @@ app.display()
 </tr>
 <tr>
 <td>height</td>
-<td>int</td>
-<td>The height of the waffle</td>
+<td><a href="../size/">size</a></td>
+<td>Sets the height of the widget</td>
 </tr>
 <tr>
 <td>master</td>
@@ -485,8 +501,8 @@ app.display()
 </tr>
 <tr>
 <td>width</td>
-<td>int</td>
-<td>The width of the waffle</td>
+<td><a href="../size/">size</a></td>
+<td>Sets the width of the widget</td>
 </tr>
 <tr>
 <td>visible</td>
@@ -512,8 +528,69 @@ print(my_waffle.get_pixel(2,1))
 print(my_waffle.get_pixel(1,1))
 
 app.display()
-
 </code></pre>
+
+<h2 id="wafflepixel">WafflePixel</h2>
+<p>A WafflePixel object is returned by <code>Waffle.pixel(x,y)</code> and <code>Waffle[x,y]</code>.</p>
+<pre><code class="python">from guizero import App, Waffle
+
+app = App()
+
+my_waffle = Waffle(app)
+my_waffle.pixel(x,y).color = &quot;red&quot;
+my_waffle[x,y].dotty = True
+
+app.display()
+</code></pre>
+
+<h3 id="properties_1">Properties</h3>
+<p>You can set and get the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>int</td>
+<td>Returns the x position of the pixel on the widget</td>
+</tr>
+<tr>
+<td>x</td>
+<td>int</td>
+<td>Returns the y position of the pixel on the widget</td>
+</tr>
+<tr>
+<td>canvas_x</td>
+<td>int</td>
+<td>Returns the x position of the pixel on the canvas</td>
+</tr>
+<tr>
+<td>canvas_y</td>
+<td>int</td>
+<td>Returns the y position of the pixel on the canvas</td>
+</tr>
+<tr>
+<td>color</td>
+<td><a href="../colors/">color</a></td>
+<td>Sets or returns the color of the pixel</td>
+</tr>
+<tr>
+<td>dotty</td>
+<td>bool</td>
+<td>Set to <code>True</code> to make the pixel a circle</td>
+</tr>
+<tr>
+<td>size</td>
+<td>int</td>
+<td>Returns the size of the pixel in <em>display</em> pixels</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>

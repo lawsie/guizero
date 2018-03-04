@@ -54,12 +54,13 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | align         | string      | The alignment of this widget within its grid location |
-| bg            | string      | The background colour of the widget  |
+| bg            | [color](colors.md)      | The background colour of the widget  |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| height        | [size](size.md)         | Sets the height of the widget |
 | layout        | string      | The layout being used by the Box (`"auto"`) or (`"grid"`) |
 | master        | App         | The `App` object to which this box belongs |
 | visible       | boolean     | If this widget is visible |
-
+| width         | [size](size.md)         | Sets the width of the widget |
 
 ### Examples
 

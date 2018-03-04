@@ -1,6 +1,15 @@
 from tkinter import Entry, StringVar, END
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, EnableMixin, FocusMixin, DisplayMixin, TextMixin, ColorMixin, ReprMixin
+from .tkmixins import (
+    ScheduleMixin, 
+    DestroyMixin, 
+    EnableMixin, 
+    FocusMixin, 
+    DisplayMixin, 
+    TextMixin, 
+    ColorMixin, 
+    SizeMixin, 
+    ReprMixin)
 from . import utilities as utils
 
 class TextBox(
@@ -12,6 +21,7 @@ class TextBox(
     TextMixin,
     DisplayMixin,
     ColorMixin,
+    SizeMixin,
     ReprMixin):
 
     def __init__(self, master, text="", width=10, grid=None, align=None):
@@ -47,6 +57,14 @@ class TextBox(
         self._text.set( str(value) )
         self.description = "[Text] object with text \"" + str(value) + "\""
 
+    @property
+    def height(self):
+        utils.error_format("{} doesn't have a height".format(self.description))
+
+    @height.setter
+    def height(self, value):
+        utils.error_format("Cannot change height for {}".format(self.description))
+        
 
     # METHODS
     # -------------------------------------------

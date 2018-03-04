@@ -1,6 +1,13 @@
 from tkinter import Frame, StringVar
 from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, TextMixin, ReprMixin
+from .tkmixins import (
+    ScheduleMixin, 
+    DestroyMixin, 
+    FocusMixin, 
+    DisplayMixin, 
+    TextMixin,
+    SizeMixin, 
+    ReprMixin)
 from . import utilities as utils
 from .Box import Box
 from .RadioButton import RadioButton
@@ -12,6 +19,7 @@ class ButtonGroup(
     DestroyMixin, 
     FocusMixin, 
     DisplayMixin, 
+    SizeMixin,
     ReprMixin):
 
     def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None):
@@ -78,7 +86,7 @@ class ButtonGroup(
 
     @bg.setter
     def bg(self, color):
-        self.tk.config(bg=color)
+        self.tk.config(bg=utils.convert_color(color))
         for item in self._options:
             item.bg = color
 
@@ -146,6 +154,33 @@ class ButtonGroup(
     def text_size(self, size):
         for item in self._options:
             item.text_size = size
+
+    @property
+    def width(self):
+        return self._options[0].width
+
+    @width.setter
+    def width(self, value):
+        for item in self._options:
+            item.width = value
+        
+    @property
+    def height(self):
+        return self._options[0].height * len(self._options)
+
+    @height.setter
+    def height(self, value):
+        if value % len(self._options) != 0:
+            # if the height doesnt divide by the number of radio buttons give a warning
+            button_height = int(round(value / len(self._options)))
+            new_height = button_height * len(self._options)
+            utils.error_format("ButtonGroup height '{}' doesn't divide by the number of buttons '{}' setting height to '{}'.".format(value, len(self._options), new_height))
+        else:
+            button_height = int(value / len(self._options))
+
+        for item in self._options:
+            item.height = button_height
+        
 
     # METHODS
     # -----------------------------------

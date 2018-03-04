@@ -5,6 +5,8 @@ pages:
   - Using guizero:
       - Getting Started: start.md
       - Layouts: layout.md
+      - Sizes: size.md
+      - Colors: colors.md
       - Alerts: alerts.md
       - Using tkinter methods: usingtk.md
       - Loops and sleeping: blocking.md

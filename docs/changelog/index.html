@@ -71,6 +71,14 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../size/">Sizes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colors/">Colors</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../alerts/">Alerts</a>
                 </li>
                 <li class="">
@@ -171,6 +179,8 @@
     
         <ul>
         
+            <li><a class="toctree-l3" href="#045-2018-03-04">0.4.5 - 2018-03-04</a></li>
+        
             <li><a class="toctree-l3" href="#044-2018-02-12">0.4.4 - 2018-02-12</a></li>
         
             <li><a class="toctree-l3" href="#043-2018-01-10">0.4.3 - 2018-01-10</a></li>
@@ -218,39 +228,63 @@
             <div class="section">
               
                 <h1 id="guizero">guizero</h1>
+<h2 id="045-2018-03-04">0.4.5 - 2018-03-04</h2>
+<ul>
+<li>colors can now be specified as either <code>"red"</code>, <code>"#ffffff"</code>, or <code>(red, green, blue)</code> </li>
+<li>change <code>Picture</code> <code>image</code> startup parameter to be optional</li>
+<li>updated <code>Picture</code> and <code>PushButton</code> errors and docs to show that PNG and GIF images can be used in Windows &amp; Linux</li>
+<li>refactored <code>Waffle</code> resolving bugs that setting properties didnt change its appearance</li>
+<li>changed waffle so you can reference a pixel using <code>waffle[x,y]</code></li>
+<li>added <code>text_color</code>, <code>text_size</code> and <code>font</code> properties to <code>Slider</code></li>
+<li>added <code>width</code> and <code>height</code> properties to:<ul>
+<li><code>Box</code></li>
+<li><code>ButtonGroup</code></li>
+<li><code>CheckBox</code></li>
+<li><code>Combo</code></li>
+<li><code>Picture</code></li>
+<li><code>Slider</code></li>
+<li><code>Text</code></li>
+</ul>
+</li>
+<li>added <code>width</code> property to:<ul>
+<li><code>TextBox</code></li>
+</ul>
+</li>
+<li>contributors to this release <a href="https://github.com/coal0">Coal0</a>, <a href="https://github.com/martinohanlon">martinohanlon</a>, <a href="https://github.com/scotty3785">scotty3785</a> - :)</li>
+</ul>
 <h2 id="044-2018-02-12">0.4.4 - 2018-02-12</h2>
 <ul>
-<li>made PushButton <code>command</code> optional</li>
-<li>Combo command functions can now have 0 arguments</li>
-<li>Waffle command functions can now have 0 arguments</li>
+<li>made <code>PushButton</code> <code>command</code> optional</li>
+<li><code>Combo</code> command functions can now have 0 arguments</li>
+<li><code>Waffle</code> command functions can now have 0 arguments</li>
 <li>refactored command functions and added <code>update_command</code> to: <ul>
-<li>ButtonGroup</li>
-<li>CheckBox</li>
-<li>Combo</li>
-<li>PushButton</li>
-<li>Slider</li>
-<li>Waffle</li>
+<li><code>ButtonGroup</code></li>
+<li><code>CheckBox</code></li>
+<li><code>Combo</code></li>
+<li><code>PushButton</code></li>
+<li><code>Slider</code></li>
+<li><code>Waffle</code></li>
 </ul>
 </li>
 <li>refactored <code>text_color</code>, <code>text_size</code> and <code>font</code> properties and added them to:<ul>
-<li>ButtonGroup</li>
-<li>Combo</li>
-<li>CheckBox</li>
-<li>PushButton</li>
-<li>Text</li>
-<li>TextBox</li>
+<li><code>ButtonGroup</code></li>
+<li><code>Combo</code></li>
+<li><code>CheckBox</code></li>
+<li><code>PushButton</code></li>
+<li><code>Text</code></li>
+<li><code>TextBox</code></li>
 </ul>
 </li>
 <li>refactored <code>bg</code> (background) and added to:<ul>
-<li>Box</li>
-<li>ButtonGroup</li>
-<li>CheckBox</li>
-<li>Combo</li>
-<li>Picture</li>
-<li>PushButton</li>
-<li>Slider</li>
-<li>Text</li>
-<li>TextBox</li>
+<li><code>Box</code></li>
+<li><code>ButtonGroup</code></li>
+<li><code>CheckBox</code></li>
+<li><code>Combo</code></li>
+<li><code>Picture</code></li>
+<li><code>PushButton</code></li>
+<li><code>Slider</code></li>
+<li><code>Text</code></li>
+<li><code>TextBox</code></li>
 </ul>
 </li>
 <li>contributors to this release <a href="https://github.com/m4ddav3">m4ddav3</a>, <a href="https://github.com/coal0">Coal0</a>, <a href="https://github.com/lawsie">lawsie</a>, <a href="https://github.com/martinohanlon">martinohanlon</a> - :)</li>
@@ -262,7 +296,7 @@
 <li>fixed <code>show()</code> for widgets in a grid layout</li>
 <li>added <code>master</code>, <code>grid</code>, <code>align</code> and <code>visible</code> properties to widgets</li>
 <li>added <code>layout</code> property to containers</li>
-<li>fixed Waffle <code>height</code> (Credit: <a href="https://github.com/scotty3785">scotty3785</a>)</li>
+<li>fixed <code>Waffle</code> <code>height</code> (Credit: <a href="https://github.com/scotty3785">scotty3785</a>)</li>
 <li>minor doc updates</li>
 <li>0.4.2 was never released due to some pypi / wheel problems</li>
 </ul>
