@@ -6,9 +6,10 @@ Notes on how to deploy guizero (on Windows).
 
 - Update version number in `setup.py`
 - Update version number in `README.md`
+- Update release date in `README.md`
 - Update version number in `docs-src\docs\about.md`
-- Update 'changelog' in debian packages
-- Update 'changelog.md' in docs
+- Update `changelog` in debian packages
+- Update `changelog.md` in docs
 
 ## Python library
 
