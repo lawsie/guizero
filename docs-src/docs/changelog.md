@@ -1,6 +1,6 @@
 # guizero
 
-## 0.4.5 - tbc
+## 0.4.5 - 2018-03-04
 
 - colors can now be specified as either `"red"`, `"#ffffff"`, or `(red, green, blue)` 
 - change `Picture` `image` startup parameter to be optional
