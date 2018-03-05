@@ -1,5 +1,5 @@
 
-from tkinter import Label, PhotoImage, TclError
+from tkinter import Label
 from .mixins import WidgetMixin
 from .tkmixins import (
     ScheduleMixin, 
@@ -48,7 +48,6 @@ class Picture(
     def value(self, image):
         self._image_path = image
         self.description = "[Picture] object \"" + str(self._image_path) + "\""
-        #img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
         img = utils.open_image(image)
         if img:
             # ok...  Unless self._image is set to img Picture doesnt work... I have no idea why! 

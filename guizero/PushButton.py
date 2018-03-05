@@ -1,4 +1,4 @@
-from tkinter import Button, PhotoImage, StringVar, DISABLED, NORMAL
+from tkinter import Button, StringVar, DISABLED, NORMAL
 from .mixins import WidgetMixin
 from .tkmixins import (
     ScheduleMixin, 
