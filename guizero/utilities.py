@@ -4,9 +4,46 @@ try:
 except ImportError:
     from inspect import getargspec as getfullargspec
 
+try:
+    from PIL import Image, ImageTk
+    PIL_AVAILABLE = True
+except ImportError:
+    PIL_AVAILABLE = False
+
 from tkinter import PhotoImage, TclError
 
-from .config import system_config
+import sys
+
+# holds details about the configuration guizero is using
+class SystemConfig():
+
+    def __init__(self):
+        
+        self._platform = sys.platform
+        if self._platform.startswith("linux"):
+            self._platform = "linux"
+
+        if PIL_AVAILABLE:
+            self._supported_image_types = ["GIF", "PNG", "JPG"]
+        else:
+            self._supported_image_types = ["GIF", "PNG"]
+            if self._platform == "darwin":
+                #MacOS only supports GIF with PIL
+                self._supported_image_types = ["GIF"]
+
+    @property
+    def PIL_available(self):
+        return PIL_AVAILABLE
+
+    @property
+    def supported_image_types(self):
+        return self._supported_image_types
+
+    @property
+    def platform(self):
+        return self._platform
+
+system_config = SystemConfig()
 
 # Auto pack or grid position the element
 # INTERNAL ONLY
@@ -127,9 +164,7 @@ def open_image(image_path):
     try:
         img = PhotoImage(file=image_path)
     except TclError as e:
-        if system_config.PIL_available:
-            from PIL import Image, ImageTk
-
+        if system_config.PIL_available:            
             try:
                 pil_image = Image.open(image_path)
                 img = ImageTk.PhotoImage(pil_image)

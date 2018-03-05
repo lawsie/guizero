@@ -11,7 +11,6 @@ from .tkmixins import (
     SizeMixin, 
     ReprMixin)
 from . import utilities as utils
-from .config import system_config
 
 class PushButton(
     WidgetMixin, 
@@ -99,12 +98,10 @@ class PushButton(
 
     # Set the icon
     def icon(self, icon):
-        try:
-            img = PhotoImage(file=icon)
+        img = utils.open_image(icon)
+        if img:
             self._icon = img
             self.tk.config(image=img)
-        except:
-            utils.error_format("Image import error '{}' - check the file path and image type is {}".format(str(icon),"/".join(system_config.supported_image_types)))
 
     def toggle(self):
         self.enabled = not self.enabled
