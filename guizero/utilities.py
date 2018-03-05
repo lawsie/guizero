@@ -4,6 +4,10 @@ try:
 except ImportError:
     from inspect import getargspec as getfullargspec
 
+from tkinter import PhotoImage, TclError
+
+from .config import system_config
+
 # Auto pack or grid position the element
 # INTERNAL ONLY
 def auto_pack(widget, master, grid, align):
@@ -115,3 +119,24 @@ def convert_color(color):
             color = "#{:02x}{:02x}{:02x}".format(color[0], color[1], color[2])
 
     return color
+
+def open_image(image_path):
+
+    img = None
+
+    try:
+        img = PhotoImage(file=image_path)
+    except TclError as e:
+        if system_config.PIL_available:
+            from PIL import Image, ImageTk
+
+            try:
+                pil_image = Image.open(image_path)
+                img = ImageTk.PhotoImage(pil_image)
+            except:
+                pass
+    
+    if img is None:
+        error_format("Image import error '{}' - check the file path and image type is {}".format(str(image_path), "/".join(system_config.supported_image_types)))
+
+    return img

@@ -10,14 +10,6 @@ from .tkmixins import (
     ColorMixin,
     ReprMixin)
 from . import utilities as utils
-from .config import system_config
-
-## See if PIL is installed
-#try:
-#    from PIL import Image, ImageTk
-#except ImportError:
-#    utils.error_format("You will only be able to display GIF images as you do not have the PIL library.")
-
 
 class Picture(
     WidgetMixin, 
@@ -56,18 +48,14 @@ class Picture(
     def value(self, image):
         self._image_path = image
         self.description = "[Picture] object \"" + str(self._image_path) + "\""
-        if image:
-            try:
-                img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
-
-                # ok...  Unless self._image is set to img Picture doesnt work... I have no idea why! 
-                # There must be tkinter weirdness going on
-                self._image = img
-                
-                self.tk.config(image=img)
-                
-            except:
-                utils.error_format("Image import error '{}' - check the file path and image type is {}".format(str(self._image_path),"/".join(system_config.supported_image_types)))
+        #img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
+        img = utils.open_image(image)
+        if img:
+            # ok...  Unless self._image is set to img Picture doesnt work... I have no idea why! 
+            # There must be tkinter weirdness going on
+            self._image = img
+            
+            self.tk.config(image=img)    
 
     @property
     def width(self):
