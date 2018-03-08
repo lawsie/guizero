@@ -38,19 +38,34 @@ class Picture(
         # Pack or grid depending on parent
         utils.auto_pack(self, master, grid, align)
 
-    def _load_image(self):
-        img = utils.open_image(self._image_path, self._width, self._height)
+    def _load_image(self, image_path, width, height):
+        img = utils.open_image(image_path, width, height)
         if img:
-            self._width = img.width()
+            # the image was loaded
+            self._image_path = image_path
+            self.description = "[Picture] object \"" + str(self._image_path) + "\""
+        
+            #set the dimensions
+            if width is None:
+                self._width = img.width()
+            else: 
+                self._width = width
+            
+            if height is None:
+                self._height = img.height()
+            else:
+                self._height = height 
+
+            # put the image into the label 
+            self.tk.config(image=img)
             self.tk.config(width=self._width)
-            self._height = img.height()
             self.tk.config(height=self._height)
             
-            # ok...  Unless self._image is set to img Picture doesnt work... I have no idea why! 
-            # There must be tkinter weirdness going on
+            # The tk PhotoImage object needs to be referenced by an internal variable
+            # otherwise the garbage collector destroys it, even though it is referenced
+            # by the tk label widget.
             self._image = img
-            self.tk.config(image=img)
-        
+
     # PROPERTIES
     # ----------------------------------
     # Get the filename of the image
@@ -61,9 +76,7 @@ class Picture(
     # Set the image to a given file
     @value.setter
     def value(self, image):
-        self._image_path = image
-        self.description = "[Picture] object \"" + str(self._image_path) + "\""
-        self._load_image()
+        self._load_image(image, self._width, self._height)
 
     @property
     def width(self):
@@ -71,9 +84,7 @@ class Picture(
 
     @width.setter
     def width(self, value):
-        self._width = value
-        self.tk.config(width=value)
-        self._load_image()
+        self._load_image(self._image_path, value, self._height)
         
     @property
     def height(self):
@@ -81,9 +92,7 @@ class Picture(
 
     @height.setter
     def height(self, value):
-        self._height = value
-        self.tk.config(height=value)
-        self._load_image()
+        self._load_image(self._image_path, self._width, value)
 
     # DEPRECATED METHODS
     # --------------------------------------------

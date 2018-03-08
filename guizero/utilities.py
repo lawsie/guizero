@@ -161,25 +161,24 @@ def open_image(image_path, width = None, height = None):
 
     img = None
 
-    if system_config.PIL_available:            
-        pil_image = Image.open(image_path)
-        if width or height:
-            if width != pil_image.size[0] or height != pil_image.size[1]:
-                pil_image = pil_image.resize((width, height), Image.ANTIALIAS)
+    try:
+        if system_config.PIL_available:
+            pil_image = Image.open(image_path)
         
-        img = ImageTk.PhotoImage(pil_image)
-    else:
-        try:
+            if width or height:
+                if width != pil_image.size[0] or height != pil_image.size[1]:
+                    pil_image = pil_image.resize((width, height), Image.ANTIALIAS)
+            
+            img = ImageTk.PhotoImage(pil_image)
+        else:
             img = PhotoImage(file=image_path)
-        except TclError as e:
-            pass
-    
-    if img is None:
-        error_format("Image import error '{}' - check the file path and image type is {}".format(str(image_path), "/".join(system_config.supported_image_types)))
 
+    except Exception as e:
+        error_text = "Image import error - '{}'\n".format(e)
+        error_text += "Check the file path and image type is {}".format("/".join(system_config.supported_image_types))
+        error_format(error_text)
+        
     return img
-    
-    
 
     # try:
     #     img = PhotoImage(file=image_path)
