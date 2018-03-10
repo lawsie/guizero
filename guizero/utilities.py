@@ -199,3 +199,73 @@ def open_image(image_path, width = None, height = None):
     #     error_format("Image import error '{}' - check the file path and image type is {}".format(str(image_path), "/".join(system_config.supported_image_types)))
 
     # return img
+
+
+class GUIZeroImage():
+    def __init__(self, image_source):
+        self._image_source = image_source
+        self._pil_image = None
+        self._tk_image = None
+        self._width = None
+        self._height = None
+
+        # open the image
+        self._open_image(image_source)
+
+    @property
+    def image_source(self):
+        return self.image_source
+
+    @property
+    def tk_image(self):
+        return self._tk_image
+    
+    @property
+    def pil_image(self):
+        return self._pil_image
+    
+    @property
+    def width(self):
+        return self._width
+
+    @width.setter
+    def width(self, value):
+        self.resize(value, self._height)
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter
+    def height(self, value):
+        self.resize(self._width, value)
+
+    def _open_image(self, image_path):
+        img = None
+
+        try:
+            if system_config.PIL_available:
+                self._pil_image = Image.open(image_path)
+            
+                self._tk_image = ImageTk.PhotoImage(self._pil_image)
+            else:
+                self._tk_image = PhotoImage(file=image_path)
+
+            self._width = self._tk_image.width()
+            self._height = self._tk_image.height()
+
+        except Exception as e:
+            error_text = "Image import error - '{}'\n".format(e)
+            error_text += "Check the file path and image type is {}".format("/".join(system_config.supported_image_types))
+            error_format(error_text)
+
+    def resize(self, width, height):
+        if width != self._width or height != self._height:
+            self._width = width
+            self._height = height
+
+            if self._pil_image:
+                resized_image = self._pil_image.resize((width, height), Image.ANTIALIAS)
+                self._tk_image = ImageTk.PhotoImage(resized_image)
+            else:
+                error_format("Image resize - cannot scale image as PIL is not installed.")

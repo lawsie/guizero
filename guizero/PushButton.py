@@ -24,7 +24,7 @@ class PushButton(
     SizeMixin, 
     ReprMixin):
 
-    def __init__(self, master, command=None, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
+    def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None):
 
         self._master = master
         self._grid = grid
@@ -49,9 +49,12 @@ class PushButton(
         self.tk.bind("<ButtonPress>", self._on_press)
         self.tk.bind("<ButtonRelease>", self._on_release) 
 
-        # Try to instantiate a picture
-        if icon is not None:
-            self.icon(icon)
+        if image:
+            self.image = image
+            
+        if icon:
+            self.image = icon
+            utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
             
         # Pack or grid depending on parent
         try:
@@ -59,6 +62,20 @@ class PushButton(
         except AttributeError:
             utils.error_format( self.description + "\n" +
             "Could not add to interface - check first argument is [App] or [Box]")
+
+    def _load_image(self, image_source):
+        self._image = utils.GUIZeroImage(image_source)
+        self.tk.config(width=self._image.width)
+        self.tk.config(height=self._image.height)
+        self._update_tk_image()
+
+    def _resize_image(self):
+        if self._image:
+            self._image.resize(self.width, self.height)
+            self._update_tk_image()
+
+    def _update_tk_image(self):
+        self.tk.config(image=self._image.tk_image)
 
     # PROPERTIES
     # ----------------------------------
@@ -78,6 +95,31 @@ class PushButton(
         self._text.set(str(value))
         self.description = "[Text] object with text \"" + str(value) + "\""
 
+    @property
+    def image(self):
+        return self._image.image_source
+
+    @image.setter
+    def image(self, value):
+        self._load_image(value)
+
+    @property
+    def width(self):
+        return self.tk.cget("width")
+
+    @width.setter
+    def width(self, value):
+        self.tk.config(width=value)
+        self._resize_image()
+
+    @property
+    def height(self):
+        return self.tk.cget("height")
+
+    @height.setter
+    def height(self, value):
+        self.tk.config(height=value)
+        self._resize_image()
 
     # METHODS
     # -------------------------------------------
@@ -95,13 +137,6 @@ class PushButton(
     # Change padding
     def padding(self, padx, pady):
         self.tk.config(padx=padx, pady=pady)
-
-    # Set the icon
-    def icon(self, icon):
-        img = utils.open_image(icon)
-        if img:
-            self._icon = img
-            self.tk.config(image=img)
 
     def toggle(self):
         self.enabled = not self.enabled
@@ -134,3 +169,8 @@ class PushButton(
     def change_command(self, newcommand, args=None):
         self.update_command(newcommand, args)
         utils.deprecated("PushButton change_command() is deprecated - renamed to update_command()")
+
+    # Set the icon
+    def icon(self, icon):
+        self.image = icon
+        utils.deprecated("PushButton icon() is deprecated - use the image property instead.")

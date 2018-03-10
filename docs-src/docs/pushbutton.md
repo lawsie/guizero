@@ -34,7 +34,7 @@ When you create a `PushButton` object you **must** specify `master` and you can 
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
-| icon    | string   | None | -       | The path to a GIF image file to display on the button. If both an icon and text are specified, the image will override the text. |
+| image    | string   | None | -       | The path to a GIF image file to display on the button. If both an image and text are specified, the image will override the text. |
 | padx    | int   | 10 | -     | How much horizontal padding to add between the text/icon and the edge of the button. |
 | pady    | int   | 10 | -       | How much vertical padding to add between the text/icon and the edge of the button. |
 | text    | string   | "Button" | -       | The text to display on the button |
@@ -54,13 +54,14 @@ You can call the following methods on a `PushButton` object.
 | enable()  | -  | -         |  Enables the widget   |
 | focus()  | -  | -         |  Gives focus to the widget   |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
-| icon(icon) | icon (string) | - |  Sets the image displayed on the button to the filename specified. If the image is in a different directory, you must specify the relative path. |
+| image(image_source) | image_source (string) | - |  Sets the image displayed on the button to the filename specified. If the image is in a different directory, you must specify the relative path. |
 | padding(padx, pady) | padx (int), pady(int) | - |  Sets the amount of x (horizontal) and y (vertical) padding between the text/icon and the edge of the button |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden  |
 | toggle() | - | - |  Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa. |
 | update_command(command, args =None)   | command (function name), args (_Optional_ List of arguments to be passed to command)   | -          | Updates the function to call when the button is pressed .  |
 | _change_command(newcommand, args)_  | _newcommand (function name), args (list)_  | -          | _Replaced by update_command function_ |
+| _icon(icon)_ | _icon (string)_ | - |  _Sets the image displayed on the button to the filename specified. If the image is in a different directory, you must specify the relative path._ |
 | _set_text(text)_   | _text (string)_         | -         | _Replaced by the `text` property_  |
 | _toggle_state()_ | - | - |  _Renamed to `toggle()`_ |
 
