@@ -27,31 +27,44 @@ class Picture(
         self._grid = grid
         self._align = align
         self._visible = True
+        self._image_source = image
+        self._image = None
+        self._image_player = None
+        self._width = None
+        self._height = None
 
         # Instantiate label object which will contain image
         self.tk = Label(master.tk)
 
         # create the image
         if image:
-            self._load_image(image)
+            self._load_image()
 
         # Pack or grid depending on parent
         utils.auto_pack(self, master, grid, align)
 
-    def _load_image(self, image_source):
-        self._image = utils.GUIZeroImage(image_source)
+    def _load_image(self):
+        # stop any animation which might still be playing
+        if self._image_player:
+            self._image_player.stop()
+
+        # load the image and set its properties
+        self._image = utils.GUIZeroImage(self._image_source, self._width, self._height)
+
         self._width = self._image.width
         self._height = self._image.height
-        self._update_tk_image()
 
-    def _resize_image(self):
-        self._image.resize(self._width, self._height)
-        self._update_tk_image()
-
-    def _update_tk_image(self):
-        self.tk.config(image=self._image.tk_image)
+        # if its an animation, start it up
+        if self._image.animation:
+            self._image_player = utils.AnimationPlayer(self, self._image, self._update_tk_image)
+        else:
+            self._update_tk_image(self._image.tk_image)
+        
         self.tk.config(width=self._width)
         self.tk.config(height=self._height)
+        
+    def _update_tk_image(self, tk_image):
+        self.tk.config(image=tk_image)
 
     # PROPERTIES
     # ----------------------------------
@@ -63,7 +76,8 @@ class Picture(
     # Set the image to a given file
     @value.setter
     def value(self, image_source):
-        self._load_image(image_source)
+        self._image_source = image_source
+        self._load_image()
 
     @property
     def image(self):
@@ -81,7 +95,7 @@ class Picture(
     @width.setter
     def width(self, value):
         self._width = value
-        self._resize_image()
+        self._load_image()
         
     @property
     def height(self):
@@ -90,7 +104,7 @@ class Picture(
     @height.setter
     def height(self, value):
         self._height = value
-        self._resize_image()
+        self._load_image()
 
     # DEPRECATED METHODS
     # --------------------------------------------

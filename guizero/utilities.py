@@ -157,16 +157,21 @@ def convert_color(color):
 
     return color
 
+
 class GUIZeroImage():
-    def __init__(self, image_source):
+    def __init__(self, image_source, width, height):
         self._image_source = image_source
         self._pil_image = None
         self._tk_image = None
-        self._width = None
-        self._height = None
+        self._tk_frames = []
+        self._width = width
+        self._height = height
+        self._current_frame = 0
+        self._animation = False
+        self._animation_running = False
 
         # open the image
-        self._open_image(image_source)
+        self._setup_image()
 
     @property
     def image_source(self):
@@ -184,54 +189,138 @@ class GUIZeroImage():
     def width(self):
         return self._width
 
-    @width.setter
-    def width(self, value):
-        self.resize(value, self._height)
-
     @property
     def height(self):
         return self._height
 
-    @height.setter
-    def height(self, value):
-        self.resize(self._width, value)
+    @property
+    def animation(self):
+        return self._animation
 
-    def _open_image(self, image_source):
-        img = None
+    @property
+    def tk_frames(self):
+        return self._tk_frames
 
+    def _setup_image(self):
         try:
-            if system_config.PIL_available:
-                if isinstance(image_source, str):
-                    # the source is a string, so try and open as a path
-                    self._pil_image = Image.open(image_source)
+            # open image
+            self._open_image_source()
 
-                elif Image.isImageType(image_source):
-                    # the source is a PIL Image
-                    self._pil_image = image_source
+            # size image
+            self._size_image()
 
-                else:
-                    raise Exception("Image must be a file path or PIL.Image.")
-                    
-                self._tk_image = ImageTk.PhotoImage(self._pil_image)
-                
-            else:
-                self._tk_image = PhotoImage(file=image_source)
-
-            self._width = self._tk_image.width()
-            self._height = self._tk_image.height()
+            # open frames
+            self._open_image_frames()
 
         except Exception as e:
             error_text = "Image import error - '{}'\n".format(e)
             error_text += "Check the file path and image type is {}".format("/".join(system_config.supported_image_types))
             error_format(error_text)
 
-    def resize(self, width, height):
-        if width != self._width or height != self._height:
-            self._width = width
-            self._height = height
+    def _open_image_source(self):
+        if system_config.PIL_available:
+            if isinstance(self._image_source, str):
+                # the source is a string, so try and open as a path
+                self._pil_image = Image.open(self._image_source)
+                self._tk_image = ImageTk.PhotoImage(self._pil_image)
 
+            elif Image.isImageType(self._image_source):
+                # the source is a PIL Image
+                self._pil_image = self._image_source
+                self._tk_image = ImageTk.PhotoImage(self._pil_image)
+
+            elif isinstance(self._image_source, (PhotoImage, ImageTk.PhotoImage)):
+                self._tk_image = self._image_source
+
+            else:
+                raise Exception("Image must be a file path, PIL.Image or tkinter.PhotoImage")
+                        
+        else:
+            if isinstance(self._image_source, str):
+                self._tk_image = PhotoImage(file=self._image_source)
+
+            elif isinstance(self._image_source, PhotoImage):
+                self._tk_image = self._image_source
+
+            else:
+                raise Exception("Image must be a file path or tkinter.PhotoImage")
+
+    def _size_image(self):
+
+        # if there is no size, set it to the image width
+        if self._width is None:
+            self._width = self._tk_image.width()
+
+        if self._height is None:
+            self._height = self._tk_image.height()
+
+        # does it need resizing?
+        if self._width != self._tk_image.width() or self._height != self._tk_image.height():
             if self._pil_image:
-                resized_image = self._pil_image.resize((width, height), Image.ANTIALIAS)
+                resized_image = self._pil_image.resize((self._width, self._height), Image.ANTIALIAS)
                 self._tk_image = ImageTk.PhotoImage(resized_image)
             else:
-                error_format("Image resize - cannot scale image as PIL is not installed.")
+                error_format("Image resizing - cannot scale the image as PIL is not available.")
+
+    def _open_image_frames(self):
+        if self._pil_image:
+            frame_count = 0
+            try:
+                while True:
+                    self._pil_image.seek(frame_count)
+                    tk_frame = ImageTk.PhotoImage(self._pil_image.resize((self._width, self._height), Image.ANTIALIAS))
+
+                    try:
+                        delay = self._pil_image.info['duration']
+                    except:
+                        delay = 100
+
+                    self._tk_frames.append((tk_frame, delay))
+                    frame_count += 1
+                    
+            except EOFError as e:
+                # end of frames  
+                pass
+
+            if frame_count > 1:
+                self._animation = True
+
+
+class AnimationPlayer():
+    def __init__(self, master, guizero_image, update_image_callback):
+        self._master = master
+        self._guizero_image = guizero_image
+        self._update_image_callback = update_image_callback
+        self._current_frame = 0
+        self._running = False
+        self.start()
+
+    @property
+    def running(self):
+        return self._running
+
+    def start(self):
+        self._running = True
+        self._show_frame()
+
+    def stop(self):
+        self._running = False
+
+    def _show_frame(self):
+        if self.running:
+            # get the frame
+            frame_data = self._guizero_image.tk_frames[self._current_frame]
+            frame = frame_data[0]
+            delay = frame_data[1]
+
+            # give it to the call back
+            self._update_image_callback(frame)
+
+            # increment the frame
+            self._current_frame += 1
+            if self._current_frame == len(self._guizero_image.tk_frames):
+                self._current_frame = 0
+
+            # call again after the delay
+            self._master.after(delay, self._show_frame)
+
