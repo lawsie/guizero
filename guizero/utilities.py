@@ -234,4 +234,4 @@ class GUIZeroImage():
                 resized_image = self._pil_image.resize((width, height), Image.ANTIALIAS)
                 self._tk_image = ImageTk.PhotoImage(resized_image)
             else:
-                error_format("Image resize - cannot scale image as PIL is not installed or not being used.")
+                error_format("Image resize - cannot scale image as PIL is not installed.")
