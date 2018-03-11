@@ -5,7 +5,7 @@ def resize():
     button.height = height.value
 
 app = App()
-button = PushButton(app, icon="guizero.gif", command=info, args=["button", "you push the button"])
+button = PushButton(app, image="guizero.gif", command=info, args=["button", "you push the button"])
 
 width = Slider(app, start = 10, end = button.width, command = resize)
 width.value = button.width

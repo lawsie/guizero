@@ -157,50 +157,6 @@ def convert_color(color):
 
     return color
 
-def open_image(image_path, width = None, height = None):
-
-    img = None
-
-    try:
-        if system_config.PIL_available:
-            pil_image = Image.open(image_path)
-        
-            if width or height:
-                if width != pil_image.size[0] or height != pil_image.size[1]:
-                    pil_image = pil_image.resize((width, height), Image.ANTIALIAS)
-            
-            img = ImageTk.PhotoImage(pil_image)
-        else:
-            img = PhotoImage(file=image_path)
-
-    except Exception as e:
-        error_text = "Image import error - '{}'\n".format(e)
-        error_text += "Check the file path and image type is {}".format("/".join(system_config.supported_image_types))
-        error_format(error_text)
-        
-    return img
-
-    # try:
-    #     img = PhotoImage(file=image_path)
-    # except TclError as e:
-    #     if system_config.PIL_available:            
-    #         try:
-    #             pil_image = Image.open(image_path)
-    #             if width or height:
-    #                 if width != pil_image.size[0] or height != pil_image.size[1]:
-    #                     pil_image = pil_image.resize((width, height), Image.ANTIALIAS)
-                
-    #             img = ImageTk.PhotoImage(pil_image)
-
-    #         except:
-    #             pass
-        
-    # if img is None:
-    #     error_format("Image import error '{}' - check the file path and image type is {}".format(str(image_path), "/".join(system_config.supported_image_types)))
-
-    # return img
-
-
 class GUIZeroImage():
     def __init__(self, image_source):
         self._image_source = image_source
@@ -240,16 +196,26 @@ class GUIZeroImage():
     def height(self, value):
         self.resize(self._width, value)
 
-    def _open_image(self, image_path):
+    def _open_image(self, image_source):
         img = None
 
         try:
             if system_config.PIL_available:
-                self._pil_image = Image.open(image_path)
-            
+                if isinstance(image_source, str):
+                    # the source is a string, so try and open as a path
+                    self._pil_image = Image.open(image_source)
+
+                elif Image.isImageType(image_source):
+                    # the source is a PIL Image
+                    self._pil_image = image_source
+
+                else:
+                    raise Exception("Image must be a file path or PIL.Image.")
+                    
                 self._tk_image = ImageTk.PhotoImage(self._pil_image)
+                
             else:
-                self._tk_image = PhotoImage(file=image_path)
+                self._tk_image = PhotoImage(file=image_source)
 
             self._width = self._tk_image.width()
             self._height = self._tk_image.height()
@@ -268,4 +234,4 @@ class GUIZeroImage():
                 resized_image = self._pil_image.resize((width, height), Image.ANTIALIAS)
                 self._tk_image = ImageTk.PhotoImage(resized_image)
             else:
-                error_format("Image resize - cannot scale image as PIL is not installed.")
+                error_format("Image resize - cannot scale image as PIL is not installed or not being used.")
