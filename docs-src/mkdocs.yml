@@ -7,6 +7,7 @@ pages:
       - Layouts: layout.md
       - Sizes: size.md
       - Colors: colors.md
+      - Images: images.md
       - Alerts: alerts.md
       - Using tkinter methods: usingtk.md
       - Loops and sleeping: blocking.md
