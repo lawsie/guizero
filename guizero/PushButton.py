@@ -8,7 +8,6 @@ from .tkmixins import (
     DisplayMixin, 
     TextMixin, 
     ColorMixin, 
-    SizeMixin, 
     ReprMixin)
 from . import utilities as utils
 
@@ -21,7 +20,6 @@ class PushButton(
     DisplayMixin,
     TextMixin, 
     ColorMixin,
-    SizeMixin, 
     ReprMixin):
 
     def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None):
