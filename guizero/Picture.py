@@ -1,5 +1,5 @@
 
-from tkinter import Label, PhotoImage, TclError
+from tkinter import Label
 from .mixins import WidgetMixin
 from .tkmixins import (
     ScheduleMixin, 
@@ -10,14 +10,6 @@ from .tkmixins import (
     ColorMixin,
     ReprMixin)
 from . import utilities as utils
-from .config import system_config
-
-## See if PIL is installed
-#try:
-#    from PIL import Image, ImageTk
-#except ImportError:
-#    utils.error_format("You will only be able to display GIF images as you do not have the PIL library.")
-
 
 class Picture(
     WidgetMixin, 
@@ -35,55 +27,84 @@ class Picture(
         self._grid = grid
         self._align = align
         self._visible = True
+        self._image_source = image
+        self._image = None
+        self._image_player = None
+        self._width = None
+        self._height = None
 
         # Instantiate label object which will contain image
         self.tk = Label(master.tk)
 
-        self.value = image
+        # create the image
+        if image:
+            self._load_image()
 
         # Pack or grid depending on parent
         utils.auto_pack(self, master, grid, align)
+
+    def _load_image(self):
+        # stop any animation which might still be playing
+        if self._image_player:
+            self._image_player.stop()
+
+        # load the image and set its properties
+        self._image = utils.GUIZeroImage(self._image_source, self._width, self._height)
+
+        self._width = self._image.width
+        self._height = self._image.height
+
+        # if its an animation, start it up
+        if self._image.animation:
+            self._image_player = utils.AnimationPlayer(self, self._image, self._update_tk_image)
+        else:
+            self._update_tk_image(self._image.tk_image)
+        
+        self.tk.config(width=self._width)
+        self.tk.config(height=self._height)
+        
+    def _update_tk_image(self, tk_image):
+        self.tk.config(image=tk_image)
 
     # PROPERTIES
     # ----------------------------------
     # Get the filename of the image
     @property
     def value(self):
-        return (self._image_path)
+        return self._image.image_source
 
     # Set the image to a given file
     @value.setter
-    def value(self, image):
-        self._image_path = image
-        self.description = "[Picture] object \"" + str(self._image_path) + "\""
-        if image:
-            try:
-                img = PhotoImage(master=self.tk.winfo_toplevel(), file=image)
+    def value(self, image_source):
+        self._image_source = image_source
+        self._load_image()
 
-                # ok...  Unless self._image is set to img Picture doesnt work... I have no idea why! 
-                # There must be tkinter weirdness going on
-                self._image = img
-                
-                self.tk.config(image=img)
-                
-            except:
-                utils.error_format("Image import error '{}' - check the file path and image type is {}".format(str(self._image_path),"/".join(system_config.supported_image_types)))
+    @property
+    def image(self):
+        return self.value
+
+    # Set the image to a given file
+    @image.setter
+    def image(self, image_source):
+        self.value = image_source
 
     @property
     def width(self):
-        return self._image.width()
+        return self._width
 
     @width.setter
     def width(self, value):
-        self.tk.config(width=value)
+        self._width = value
+        self._load_image()
         
     @property
     def height(self):
-        return self._image.height()
+        return self._height
 
     @height.setter
     def height(self, value):
-        self.tk.config(height=value)
+        self._height = value
+        self._load_image()
 
     # DEPRECATED METHODS
     # --------------------------------------------
