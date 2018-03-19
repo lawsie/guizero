@@ -5,5 +5,6 @@ def selected():
     
 app = App()
 choice = ButtonGroup(app, options=["cheese", "ham", "salad"], command=selected)
+choice.value_text = "ham"
 #choice = ButtonGroup(app, options=[["cheese", "c"], ["ham", "h"], ["salad", "s"]], selected="h", command=selected)
 app.display()

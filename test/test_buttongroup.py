@@ -54,6 +54,10 @@ def test_getters_setters():
     assert b.value == "2"
     assert b.value_text == "bar"
 
+    b.value_text = "foo"
+    assert b.value == "1"
+    assert b.value_text == "foo"
+
     a.destroy()
 
 def test_command():

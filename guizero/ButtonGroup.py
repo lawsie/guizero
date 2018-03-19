@@ -136,18 +136,13 @@ class ButtonGroup(
                 return item.text
         return ""
 
-    # Wondering if this is really confusing. value_text is the text associated with the selected
-    # option. You can change it because it's useful to be able to *get* it, but maybe this is weird.
+    # Selects the option for the value_text provided
     @value_text.setter
     def value_text(self, value):
-        search = self._selected.get()    # Currently selected number
         for item in self._options:
-            if item.value == search:
-                item.text = str(value)
-                print( item.text )
-                return 0
-        utils.error_format("Could not set value text - no matching option")
-
+            if item.text == value:
+                self.value = item.value
+    
     # Get the text colour as a string
     @property
     def text_color(self):
