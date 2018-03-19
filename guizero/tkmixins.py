@@ -157,7 +157,7 @@ class ColorMixin():
 class SizeMixin():
     @property
     def width(self):
-        return self.tk.cget("width")
+        return int(self.tk.cget("width"))
 
     @width.setter
     def width(self, value):
@@ -165,7 +165,7 @@ class SizeMixin():
 
     @property
     def height(self):
-        return self.tk.cget("height")
+        return int(self.tk.cget("height"))
 
     @height.setter
     def height(self, value):

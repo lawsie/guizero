@@ -1,4 +1,3 @@
-
 from tkinter import Label
 from .mixins import WidgetMixin
 from .tkmixins import (
@@ -43,6 +42,8 @@ class Picture(
         # Pack or grid depending on parent
         utils.auto_pack(self, master, grid, align)
 
+        self.description = "[Picture] object"
+
     def _load_image(self):
         # stop any animation which might still be playing
         if self._image_player:
@@ -71,7 +72,10 @@ class Picture(
     # Get the filename of the image
     @property
     def value(self):
-        return self._image.image_source
+        if self._image:
+            return self._image.image_source
+        else:
+            return None
 
     # Set the image to a given file
     @value.setter

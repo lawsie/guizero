@@ -94,7 +94,7 @@ class GUIZeroImage():
         Returns the original source of the image, be that a file path, PIL or 
         Tk image object.
         """
-        return self.image_source
+        return self._image_source
 
     @property
     def tk_image(self):
@@ -115,14 +115,14 @@ class GUIZeroImage():
         """
         Returns the image width.
         """
-        return self._width
+        return int(self._width)
 
     @property
     def height(self):
         """
         Returns the image height.
         """
-        return self._height
+        return int(self._height)
 
     @property
     def animation(self):
