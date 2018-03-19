@@ -1,5 +1,6 @@
+import pytest
 from threading import Event
-from guizero import App, PushButton
+from guizero import App, PushButton, system_config
 from tkmixin_test import (
     schedule_after_test,
     schedule_repeat_test,
@@ -120,6 +121,58 @@ def test_toggle():
     assert b.enabled
     a.destroy()
     
+def test_picture_gif():
+    a = App()
+    b = PushButton(a, image="../examples/guizero.gif")
+    assert b.image == "../examples/guizero.gif"
+    assert b._image.tk_image is not None
+    a.destroy()
+
+@pytest.mark.skipif(system_config.PIL_available == False,
+                    reason="PIL not available")
+def test_picture_jpg():
+    a = App()
+    b = PushButton(a, image="../examples/guizero.jpg")
+    assert b.image == "../examples/guizero.jpg"
+    assert b._image.tk_image is not None
+    assert b._image.pil_image is not None
+    a.destroy()
+
+@pytest.mark.skipif(system_config.PIL_available == False,
+                    reason="PIL not available")
+def test_animated_picture():
+    a = App()
+    b = PushButton(a, image="../examples/guizero_flash.gif")
+    assert b.image == "../examples/guizero_flash.gif"
+    assert b._image.tk_image is not None
+    assert b._image.pil_image is not None
+    assert b._image.animation
+    assert b._image_player.running
+    a.destroy()
+
+def test_picture_tkobject():
+    from tkinter import PhotoImage
+    
+    a = App()
+    photo_image = PhotoImage(file="../examples/guizero.gif")
+    b = PushButton(a, image=photo_image)
+    assert b.image == photo_image
+    assert b._image.tk_image is not None
+    a.destroy()
+
+@pytest.mark.skipif(system_config.PIL_available == False,
+                    reason="PIL not available")
+def test_picture_pilobject():
+    from PIL import Image
+    
+    a = App()
+    pil_image = Image.open("../examples/guizero.gif")
+    b = PushButton(a, image=pil_image)
+    assert b.image == pil_image
+    assert b._image.tk_image is not None
+    assert b._image.pil_image is not None
+    a.destroy()
+
 def test_after_schedule():
     a = App()
     b = PushButton(a)
