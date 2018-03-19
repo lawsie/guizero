@@ -1,7 +1,7 @@
 import pytest
 from time import sleep
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.yield_fixture(autouse=True)
 def delay():
     # put a small delay in before every test,
     #  otherwise tkinter can get upset by the constant

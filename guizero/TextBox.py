@@ -70,7 +70,7 @@ class TextBox(
     # -------------------------------------------
     # Clear text box
     def clear(self):
-        self.tk.delete(0, END)
+        self.value = ""
 
     # Append text
     def append(self, text):
