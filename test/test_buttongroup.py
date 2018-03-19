@@ -147,12 +147,11 @@ def test_destroy():
     destroy_test(b)
     a.destroy()
 
-# ButtonGroup doesnt support enable
-# def test_enable():
-#     a = App()
-#     b = PushButton(a)
-#     enable_test(b)
-#     a.destroy()
+def test_enable():
+    a = App()
+    b = ButtonGroup(a, ["foo", "bar"])
+    enable_test(b)
+    a.destroy()
 
 def test_display():
     a = App()

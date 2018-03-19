@@ -44,6 +44,8 @@ You can call the following methods on an `ButtonGroup` object.
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | destroy()   | -  | -          | Destroys the widget    |
+| disable()  | - | -          | Disables the widget so that it is "greyed out" and cannot be interacted with   |
+| enable()  | -  | -          | Enables the widget   |
 | focus()  | -  | -          | Gives focus to the widget   |
 | get_group_as_list() | - | list |  Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging) |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
@@ -64,6 +66,7 @@ You can set and get the following properties:
 | ------------- | ----------- | -------------------------- |
 | align         | string      | The alignment of this widget within its grid location 
 | bg            | [color](colors.md)      | The background colour of the widget  |
+| enabled       | boolean     | `True` if the widget is enabled |
 | font          | string      | The font of the text  |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | height        | [size](size.md)         | Sets the height of the widget |

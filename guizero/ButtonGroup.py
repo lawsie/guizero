@@ -95,6 +95,27 @@ class ButtonGroup(
         for item in self._options:
             item.bg = color
 
+    @property
+    def enabled(self):
+        return self._options[0].enabled
+
+    @enabled.setter
+    def enabled(self, value):
+        if value:
+            self.enable()
+        else:
+            self.disable()
+    
+    def disable(self):
+        """Disable the widget."""
+        for item in self._options:
+            item.disable()
+
+    def enable(self):
+        """Enable the widget."""
+        for item in self._options:
+            item.enable()
+
     # Gets the selected value (1, 2, 3 etc.)
     @property
     def value(self):
