@@ -22,7 +22,7 @@ class ButtonGroup(
     SizeMixin,
     ReprMixin):
 
-    def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None):
+    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None):
         
         self._master = master
         self._grid = grid
@@ -32,7 +32,6 @@ class ButtonGroup(
         # Set (using StringVar set() method) the selected option **number**
         self.tk = Frame(master.tk)
         self._selected = StringVar(master=self.tk.winfo_toplevel())
-        self._selected.set(selected)
         
         self.description = "[ButtonGroup] object with selected option \"" + self._selected.get() + "\""
         self._options = []   # List of RadioButton objects
@@ -69,6 +68,12 @@ class ButtonGroup(
 
             # Set the callback
             rbutton.tk.config(command=self._command_callback)
+
+        # set the initial value
+        if selected is None:
+            self.value = self._options[0].value
+        else:
+            self.value = selected
 
         # Add a command if there was one
         self.update_command(command, args)
