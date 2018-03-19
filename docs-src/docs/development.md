@@ -5,10 +5,7 @@ Notes on how to develop guizero (on Windows).
 ## Install Pre-requisites
 
 ```
-pip install mkdocs
-pip install wheel
-pip install twine
-pip install virtualenv
+pip install mkdocs wheel twine virtualenv pytest
 ```
 
 ## Python library
@@ -41,6 +38,17 @@ When you have finished your development, deactivate your virtual environment:
 ```
 Scripts\deactivate
 ```
+
+## Tests
+
+To run the automated tests:
+
+```
+cd guizero\test
+pytest -v 
+```
+
+_Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesnt seem to like being initialised and destroyed hundreds of times. Just give it a re-run!_
 
 ## Documents
 

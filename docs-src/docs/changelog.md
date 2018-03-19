@@ -1,5 +1,16 @@
 # guizero
 
+## 0.5.0 - tbc
+
+- New image functionality introduced when PIL is installed:
+    - images can be passed as `Tk.PhotoImage` or `PIL.Image` objects as well as file paths
+    - more images types are supported
+    - animated images (gifs) are supported
+    - images are scaled when the size is changed
+- `ButtonGroup` - `selected` is now optional, `enabled` properties now supported, `value_text` fixed
+- Various minor bug fixes
+- Automated tests have been introduced
+
 ## 0.4.5 - 2018-03-04
 
 - colors can now be specified as either `"red"`, `"#ffffff"`, or `(red, green, blue)` 

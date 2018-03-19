@@ -14,3 +14,4 @@ When providing code changes please:
 - create a single pull requests for each fix / addition
 - follow the existing coding style
 - provide documentation for all changes as markdown in `/docs-src`
+- provide tests for all changes in `/test`
