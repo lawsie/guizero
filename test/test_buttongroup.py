@@ -1,5 +1,5 @@
 from threading import Event
-from guizero import App, PushButton
+from guizero import App, ButtonGroup
 from tkmixin_test import (
     schedule_after_test,
     schedule_repeat_test,
@@ -13,22 +13,25 @@ from tkmixin_test import (
 
 def test_default_values():
     a = App()
-    b = PushButton(a)
+    b = ButtonGroup(a, ["foo", "bar"], 1)
     assert b.master == a
-    assert b.text == "Button"
+    assert b.value == "1"
+    assert b.value_text == "foo"
     assert b.grid == None
     assert b.align == None
     a.destroy()
 
 def test_alt_values():
     a = App(layout = "grid")
-    b = PushButton(
+    b = ButtonGroup(
         a, 
-        text = "foo", 
+        ["foo", "bar"], 
+        2,
         grid = [0,1], 
         align = "top")
     
-    assert b.text == "foo"
+    assert b.value == "2"
+    assert b.value_text == "bar"
     assert b.grid[0] == 0
     assert b.grid[1] == 1
     assert b.align == "top"
@@ -36,10 +39,14 @@ def test_alt_values():
 
 def test_getters_setters():
     a = App()
-    b = PushButton(a, text = "foo")
-    assert b.text == "foo"
-    b.text = "bar"
-    assert b.text == "bar"
+    b = ButtonGroup(a, ["foo", "bar"], 1)
+    assert b.value == "1"
+    assert b.value_text == "foo"
+    
+    b.value = 2
+    assert b.value == "2"
+    assert b.value_text == "bar"
+
     a.destroy()
 
 def test_command():
@@ -47,11 +54,14 @@ def test_command():
     
     callback_event = Event()
     def callback():
+        assert b.value == "2"
+        assert b.value_text == "bar"
         callback_event.set()
 
-    b = PushButton(a, command = callback)
+    b = ButtonGroup(a, ["foo", "bar"], 1, command = callback)
+    
     assert not callback_event.is_set()
-    b.tk.invoke()
+    b._options[1].tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
@@ -62,11 +72,13 @@ def test_command_with_args():
     callback_event = Event()
     def callback(value):
         assert value == "foo"
+        assert b.value == "2"
+        assert b.value_text == "bar"
         callback_event.set()
 
-    b = PushButton(a, command = callback, args = ["foo"])
+    b = ButtonGroup(a, ["foo", "bar"], 1, command = callback, args = ["foo"])
     
-    b.tk.invoke()
+    b._options[1].tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
@@ -78,18 +90,18 @@ def test_update_command():
     def callback():
         callback_event.set()
 
-    b = PushButton(a)
+    b = ButtonGroup(a, ["foo", "bar"], 1)
     
-    b.tk.invoke()
+    b._options[1].tk.invoke()
     assert not callback_event.is_set()
     
     b.update_command(callback)
-    b.tk.invoke()
+    b._options[1].tk.invoke()
     assert callback_event.is_set()
     callback_event.clear()
 
     b.update_command(None)
-    b.tk.invoke()
+    b._options[1].tk.invoke()
     assert not callback_event.is_set()
     
     a.destroy()
@@ -102,68 +114,59 @@ def test_update_command_with_args():
         assert value == "foo"
         callback_event.set()
 
-    b = PushButton(a)
+    b = ButtonGroup(a, ["foo", "bar"], 1)
     
     b.update_command(callback, ["foo"])
-    b.tk.invoke()
+    b._options[1].tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
 
-def test_toggle():
-    a = App()
-    b = PushButton(a)
-    assert b.enabled
-    b.toggle()
-    assert not b.enabled
-    b.toggle()
-    assert b.enabled
-    a.destroy()
-    
 def test_after_schedule():
     a = App()
-    b = PushButton(a)
+    b = ButtonGroup(a, ["foo", "bar"], 1)
     schedule_after_test(a, b)
     a.destroy()
 
 def test_repeat_schedule():
     a = App()
-    b = PushButton(a)
+    b = ButtonGroup(a, ["foo", "bar"], 1)
     schedule_repeat_test(a, b)
     a.destroy()
 
 def test_destroy():
     a = App()
-    b = PushButton(a)
+    b = ButtonGroup(a, ["foo", "bar"], 1)
     destroy_test(b)
     a.destroy()
 
-def test_enable():
-    a = App()
-    b = PushButton(a)
-    enable_test(b)
-    a.destroy()
+# ButtonGroup doesnt support enable
+# def test_enable():
+#     a = App()
+#     b = PushButton(a)
+#     enable_test(b)
+#     a.destroy()
 
 def test_display():
     a = App()
-    b = PushButton(a)
+    b = ButtonGroup(a, ["foo", "bar"], 1)
     display_test(b)
     a.destroy()
 
 def test_text():
     a = App()
-    b = PushButton(a)
+    b = ButtonGroup(a, ["foo", "bar"], 1)
     text_test(b)
     a.destroy()
 
 def test_color():
     a = App()
-    b = PushButton(a)
+    b = ButtonGroup(a, ["foo", "bar"], 1)
     color_test(b)
     a.destroy()
 
 def test_size():
     a = App()
-    b = PushButton(a)
+    b = ButtonGroup(a, ["foo", "bar"], 1)
     size_text_test(b)
     a.destroy()

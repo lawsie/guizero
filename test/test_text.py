@@ -80,25 +80,19 @@ def test_repeat_schedule():
     schedule_repeat_test(a, t)
     a.destroy()
 
-def test_destroy_mixin():
+def test_destroy():
     a = App()
     t = Text(a)
     destroy_test(t)
     a.destroy()
 
-def test_enable_mixin():
+def test_enable():
     a = App()
     t = Text(a)
     enable_test(t)
     a.destroy()
 
-def test_display_mixin():
-    a = App()
-    t = Text(a)
-    display_test(t)
-    a.destroy()
-
-def test_display_mixin():
+def test_display():
     a = App()
     t = Text(a)
     display_test(t)

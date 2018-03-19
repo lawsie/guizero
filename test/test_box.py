@@ -37,13 +37,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, b)
     a.destroy()
 
-def test_destroy_mixin():
+def test_destroy():
     a = App()
     b = Box(a)
     destroy_test(b)
     a.destroy()
 
-def test_display_mixin():
+def test_display():
     a = App()
     b = Box(a)
     display_test(b)
