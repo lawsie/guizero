@@ -34,6 +34,7 @@ class PushButton(
         self._value = 0
         self._image_source = icon
         self._image_source = image
+        self._image = None
         self._image_height = None
         self._image_width = None
         self._image_player = None
@@ -54,10 +55,10 @@ class PushButton(
 
         if image:
             self._load_image()
-            
-        if icon:
-            self._load_image()
-            utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
+        else:
+            if icon:
+                self._load_image()
+                utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
             
         # Pack or grid depending on parent
         try:
