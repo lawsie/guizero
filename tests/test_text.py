@@ -30,7 +30,7 @@ def test_alt_values():
         size = 14, 
         color="green", 
         bg="red", 
-        font="courier new", 
+        font="Times New Roman", 
         grid = [0,1], 
         align="top")
 
@@ -41,7 +41,7 @@ def test_alt_values():
     assert t.size == 14
     assert t.text_color == "green"
     assert t.bg == "red"
-    assert t.font == "Courier New"
+    assert t.font == "Times New Roman"
     assert t.value == "foo"
     a.destroy()
 

@@ -5,7 +5,7 @@ Notes on how to develop guizero (on Windows).
 ## Install Pre-requisites
 
 ```
-pip install mkdocs wheel twine virtualenv pytest
+pip install mkdocs wheel twine virtualenv pytest pillow
 ```
 
 ## Python library
@@ -48,7 +48,9 @@ cd guizero\test
 pytest -v 
 ```
 
-_Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesnt seem to like being initialised and destroyed hundreds of times. Just give it a re-run!_
+_Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesnt seem to like being initialised and destroyed hundreds of times, I suspect a file locking issue as you dont see the problem on Linux. So sometimes you might get a test fail with an error like `This probably means that tk wasn't installed properly.`._
+
+_Just give it a re-run!_
 
 ## Documents
 
