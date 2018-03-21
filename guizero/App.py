@@ -1,4 +1,4 @@
-from tkinter import Tk
+from tkinter import Tk, Toplevel
 from .mixins import ContainerMixin
 from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
 
@@ -11,10 +11,17 @@ class App(
     FocusMixin, 
     ReprMixin):
 
+    _main_app = None
+
     def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None):
 
-        self.tk = Tk()
-
+        # If this is the first app to be created, create Tk
+        if App._main_app is None:
+            self.tk = Tk()
+            App._main_app = self
+        else:
+            self.tk = Toplevel(App._main_app.tk)
+        
         # Initial setup
         self.description = "[App] object"
         self.tk.title( str(title) )
