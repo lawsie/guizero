@@ -1,13 +1,12 @@
 from tkinter import Tk, Toplevel
 from .mixins import ContainerMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
+from .tkmixins import ScheduleMixin, FocusMixin, ReprMixin
 
 from . import utilities as utils
 
 class App(
     ContainerMixin,
-    ScheduleMixin, 
-    DestroyMixin, 
+    ScheduleMixin,
     FocusMixin, 
     ReprMixin):
 
@@ -89,6 +88,12 @@ class App(
     def on_close(self, command):
         self.tk.wm_protocol("WM_DELETE_WINDOW", command)
 
+    def destroy(self):
+        """Destroy the object."""
+        # if this is the main_app - set the _main_app class variable to `None`.
+        if self == App._main_app:
+            App._main_app = None
+        self.tk.destroy()
 
     # DEPRECATED METHODS
     # ------------------------------------
