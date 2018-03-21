@@ -14,6 +14,9 @@ from tkinter import PhotoImage, TclError
 
 import sys
 
+class GUIZeroException(Exception):
+    pass
+
 # holds details about the configuration guizero is using
 class SystemConfig():
     def __init__(self):
@@ -154,7 +157,7 @@ class GUIZeroImage():
         except Exception as e:
             error_text = "Image import error - '{}'\n".format(e)
             error_text += "Check the file path and image type is {}".format("/".join(system_config.supported_image_types))
-            error_format(error_text)
+            raise_error(error_text)
 
     def _open_image_source(self):
         if system_config.PIL_available:
@@ -341,12 +344,20 @@ def no_args_expected(func_name):
     return len(getfullargspec(func_name).args)
 
 # Format errors in a pretty way
-def error_format(error_message):
+def error_format(message):
     print("------------------------------------------------------------")
-    print("*** GUIZERO WARNING ***" )
-    print(error_message)
+    print("*** GUIZERO WARNING ***")
+    print(message)
     print("------------------------------------------------------------")
 
+# Raise error in a pretty way
+def raise_error(message):
+    error_message = "------------------------------------------------------------\n"
+    error_message += "*** GUIZERO ERROR ***\n"
+    error_message += message + "\n"
+    error_message += "------------------------------------------------------------\n"
+    raise GUIZeroException(message)
+    
 def deprecated(message):
     print("*** DEPRECATED: " + message)
 
