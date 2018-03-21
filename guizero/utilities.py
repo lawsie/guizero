@@ -352,11 +352,11 @@ def error_format(message):
 
 # Raise error in a pretty way
 def raise_error(message):
-    error_message = "------------------------------------------------------------\n"
+    error_message = "\n------------------------------------------------------------\n"
     error_message += "*** GUIZERO ERROR ***\n"
     error_message += message + "\n"
     error_message += "------------------------------------------------------------\n"
-    raise GUIZeroException(message)
+    raise GUIZeroException(error_message)
     
 def deprecated(message):
     print("*** DEPRECATED: " + message)
