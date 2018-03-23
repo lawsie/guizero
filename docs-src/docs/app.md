@@ -45,8 +45,10 @@ You can call the following methods on an `App` object.
 | destroy()   | -  | -          | Destroys the widget    |
 | display()     |-          | -          | Displays the app on the screen. You **MUST** call this method at the end of your program to display the app on the screen. |
 | focus()  | -  | -          | Gives focus to the widget  |
+| hide()  | -   | -          | Hides the app window from view.  |
 | on_close(command)   | command (function name)         | -          | Calls the given function when the user tries to close the window.      |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
+| show()  | - | -          | Displays the app window if it was previously hidden |
 | _set_title(title)_   | _title (string)_         | -          | _Replaced by `title` property_        |
 | _bgcolor_   | _bgcolor (string)_       | -          | _Replaced by `bg` property_   |
 
@@ -62,6 +64,7 @@ You can set and get the following properties:
 | height        | int         | The height of the window   |
 | layout        | string      | The layout being used by the App (`"auto"`) or (`"grid"`) |
 | title         | string      | The title of the window    |
+| visible       | boolean     | If the app is visible |
 | width         | int         | The width of the window    |
 
 

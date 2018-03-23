@@ -20,12 +20,14 @@ class App(
             App._main_app = self
         else:
             self.tk = Toplevel(App._main_app.tk)
+            utils.error_format("There should only be 1 guizero App, use Window to create multiple windows.")
         
         # Initial setup
         self.description = "[App] object"
         self.tk.title( str(title) )
         self.tk.geometry(str(width)+"x"+str(height))
         self._layout_manager = layout  # Only behaves differently for "grid"
+        self._visible = True
 
         # bg overrides deprecated bgcolor
         if bg is not None:
@@ -77,6 +79,17 @@ class App(
         self.tk.geometry(str(width)+"x"+str(self.tk.winfo_height()))
         self.tk.update()
 
+    @property
+    def visible(self):
+        return self._visible
+    
+    @visible.setter
+    def visible(self, value):
+        if value:
+            self.show()
+        else:
+            self.hide()
+
     # METHODS
     # --------------------------------------
 
@@ -94,6 +107,16 @@ class App(
         if self == App._main_app:
             App._main_app = None
         self.tk.destroy()
+
+    def hide(self):
+        """Hide the app."""
+        self.tk.withdraw()
+        self._visible = False
+
+    def show(self):
+        """Show the widget."""
+        self.tk.deiconify()
+        self._visible = True
 
     # DEPRECATED METHODS
     # ------------------------------------
