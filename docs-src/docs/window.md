@@ -7,7 +7,7 @@
 ### What is it?
 A `Window` object is how you create new windows in guizero.
 
-![App](images/window.png)
+![Window](images/window.png)
 
 ### How do I make one?
 
