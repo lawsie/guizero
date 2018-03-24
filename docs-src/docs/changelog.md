@@ -10,6 +10,9 @@
 - `ButtonGroup` - `selected` is now optional, `enabled` properties now supported, `value_text` fixed
 - Various minor bug fixes
 - Automated tests have been introduced
+- Fixed multiple `App` bug
+- Create `Window` class to support multi-window applications
+
 
 ## 0.4.5 - 2018-03-04
 

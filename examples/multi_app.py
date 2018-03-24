@@ -1,43 +1,20 @@
 from guizero import *
 
-def check1():
-    print("1 check box:",cb1.value)
-    print("1 text box:", tb1.value)
-    print("1 combo option:", combo1.value)
-
-def check2():
-    print("2 check box:",cb2.value)
-    print("2 text box:", tb2.value)
-    print("2 combo option:", combo2.value)
+# it is possible to create multiple apps
+# guizero will present a warning as you should use Window()
+# to create multi window applications
 
 def check(window):
-    print("window {} clicked".format(window))
-    print("1 - chk={} txt={} cmb={}".format(
-        cb1.value,
-        tb1.value,
-        combo1.value
-        ))
-    print("2 - chk={} txt={} cmb={}".format(
-        cb2.value,
-        tb2.value,
-        combo2.value
-        ))
+    print("app {} clicked".format(window))
+    print("1 - txt={} ".format(tb1.value))
+    print("2 - txt={} ".format(tb2.value))
 
+app1 = App(title="App 1")
+tb1 = TextBox(app1, grid=[0, 1])
+pb1 = PushButton(app1, command=check, args = [1])
 
-window1 = App(title="Window 1")
+app2 = App(title="App 2")
+tb2 = TextBox(app2, grid=[0, 1])
+pb2 = PushButton(app2, command=check, args = [2])
 
-cb1 = CheckBox(window1, text="X")
-tb1 = TextBox(window1, grid=[0, 1])
-combo1 = Combo(window1, options=["one", "two", "three"])
-pb1 = PushButton(window1, text="Click Here", command=check, args = [1])
-
-
-window2 = App(title="Window 2")
-
-cb2 = CheckBox(window2, text="X")
-tb2 = TextBox(window2, grid=[0, 1])
-combo2 = Combo(window2, options=["one", "two", "three"], command=check)
-
-pb2 = PushButton(window2, text="Click Here", command=check, args = [2])
-
-window1.display()
+app1.display()

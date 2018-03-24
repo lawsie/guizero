@@ -118,16 +118,3 @@ class Window(
         if self._modal:
             self.tk.grab_set()
         
-
-    # DEPRECATED METHODS
-    # ------------------------------------
-
-    # Set the title of the window
-    def set_title(self, title):
-        self.title = title
-        utils.deprecated("App set_title() is deprecated. Please use the title property instead.")
-
-    # Change the background colour
-    def bgcolor(self, color):
-        self.bg = color
-        utils.deprecated("App bgcolor() is deprecated. Please use the bg property instead.")
