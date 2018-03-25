@@ -12,7 +12,9 @@
 - Automated tests have been introduced
 - Fixed multiple `App` bug
 - Create `Window` class to support multi-window applications
+- Added `multiline` and `scrollbar` functionality to `TextBox`
 
+- contributors to this release [martinohanlon](https://github.com/martinohanlon), [scotty3785](https://github.com/scotty3785) - ta very much :)
 
 ## 0.4.5 - 2018-03-04
 
