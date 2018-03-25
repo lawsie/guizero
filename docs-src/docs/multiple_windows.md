@@ -1,18 +1,31 @@
 ## Multiple Windows
 
-A guizero application should only have have 1 [App](app.md) object, this is the main window and controller of your application.
+A guizero application should only have have 1 [App](app.md) object, this is the main window and controller of your program.
 
-If you want to create a 2nd (or 3rd, 4th, 5th, etc) window, your applications should use a [Window](window.md) object.
+If you want to create a 2nd (or 3rd, 4th, 5th) window, your program should use a [Window](window.md) object.
 
 ### A 2nd Window
 
-Creating a 2nd Window is easy and just like creating a widget you need to pass it the main app:
+Creating a 2nd Window is easy and just like creating a widget you need to pass it the App:
 
 ```python
 from guizero import App, Window
 
 app = App(title = "Main window")
 window = Window(app, title = "2nd window")
+
+app.display
+
+```
+
+Adding widgets to the 2nd window is the same as adding them to an app, by passing the same of the window:
+
+```python
+from guizero import App, Window, Text
+
+app = App(title = "Main window")
+window = Window(app, title = "2nd window")
+text = Text(window, text="text")
 
 app.display
 
