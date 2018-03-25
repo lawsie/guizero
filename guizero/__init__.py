@@ -23,3 +23,4 @@ from .Text import Text
 from .TextBox import TextBox
 from .PushButton import PushButton
 from .Waffle import Waffle
+from .Window import Window
