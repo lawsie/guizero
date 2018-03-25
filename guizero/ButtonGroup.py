@@ -22,21 +22,21 @@ class ButtonGroup(
     SizeMixin,
     ReprMixin):
 
-    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True):
+    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=True):
         
         self._master = master
         self._grid = grid
         self._align = align
 
-        # Set (using StringVar set() method) the selected option **number**
+
+        # Create a Tk frame object to contain the RadioButton objects
         self.tk = Frame(master.tk)
+        # Set (using StringVar set() method) the selected option **number**
         self._selected = StringVar(master=self.tk.winfo_toplevel())
         
         self.description = "[ButtonGroup] object with selected option \"" + self._selected.get() + "\""
         self._options = []   # List of RadioButton objects
         self._layout_manager = "grid"
-
-        # Create a Tk frame object to contain the RadioButton objects
 
         # Position the radio buttons in the Frame
         gridx = 0
@@ -78,6 +78,7 @@ class ButtonGroup(
         self.update_command(command, args)
 
         self.visible = visible
+        self.enabled = enabled
 
 
     # PROPERTIES

@@ -22,7 +22,7 @@ class PushButton(
     ColorMixin,
     ReprMixin):
 
-    def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None, visible=True):
+    def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None, visible=True, enabled=True):
 
         self._master = master
         self._grid = grid
@@ -60,6 +60,7 @@ class PushButton(
                 utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
 
         self.visible = visible
+        self.enabled = enabled
 
     def _load_image(self):
         # stop any animation which might still be playing

@@ -25,7 +25,7 @@ class Text(
     SizeMixin,
     ReprMixin):
 
-    def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None, visible=True):
+    def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None, visible=True, enabled=True):
 
         self._master = master
         self._grid = grid
@@ -43,6 +43,7 @@ class Text(
         self._text = str(text)
 
         self.visible = visible
+        self.enabled = enabled
 
     # PROPERTIES
     # ----------------------------------

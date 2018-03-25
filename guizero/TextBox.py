@@ -24,7 +24,7 @@ class TextBox(
     SizeMixin,
     ReprMixin):
 
-    def __init__(self, master, text="", width=10, grid=None, align=None, visible=True):
+    def __init__(self, master, text="", width=10, grid=None, align=None, visible=True, enabled=True):
 
         self._master = master
         self._grid = grid
@@ -41,6 +41,7 @@ class TextBox(
         self.tk = Entry(master.tk, textvariable=self._text, width=width)
 
         self.visible = visible
+        self.enabled = enabled
 
     # PROPERTIES
     # ----------------------------------

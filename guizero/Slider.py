@@ -22,7 +22,7 @@ class Slider(
     TextMixin,
     ReprMixin):
 
-    def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None, visible=True):
+    def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None, visible=True, enabled=True):
 
         # If you specify a command to the slider, it must take one argument as it will be given
         # the slider's current value
@@ -43,6 +43,7 @@ class Slider(
         self.update_command(command)
 
         self.visible = visible
+        self.enabled = enabled
 
     # PROPERTIES
     # ----------------

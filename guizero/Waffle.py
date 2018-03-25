@@ -11,12 +11,11 @@ class Waffle(
     DisplayMixin, 
     ReprMixin):
 
-    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True, visible=True):
+    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True, visible=True, enabled=True):
 
         self._master = master
         self._grid = grid
         self._align = align
-        self._enabled = True
 
     	# Description of this object (for friendly error messages)
         self.description = "[Waffle] object ({}x{})".format(height, width)
@@ -40,6 +39,7 @@ class Waffle(
         self._canvas.bind("<Button-1>", self._clicked_on)
 
         self.visible = visible
+        self.enabled = enabled
 
     # METHODS
     # -------------------------------------------

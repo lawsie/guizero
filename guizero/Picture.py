@@ -20,7 +20,7 @@ class Picture(
     ColorMixin,
     ReprMixin):
 
-    def __init__(self, master, image=None, grid=None, align=None, visible=True):
+    def __init__(self, master, image=None, grid=None, align=None, visible=True, enabled=True):
 
         self._master = master
         self._grid = grid
@@ -41,6 +41,7 @@ class Picture(
         self.description = "[Picture] object"
 
         self.visible = visible
+        self.enabled = enabled
 
     def _load_image(self):
         # stop any animation which might still be playing

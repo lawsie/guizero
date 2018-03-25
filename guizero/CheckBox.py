@@ -24,7 +24,7 @@ class CheckBox(
     SizeMixin,
     ReprMixin):
 
-    def __init__(self, master, text, command=None, grid=None, align=None, args=None, visible=True):
+    def __init__(self, master, text, command=None, grid=None, align=None, args=None, visible=True, enabled=True):
 
         self._master = master
         self._grid = grid
@@ -42,6 +42,7 @@ class CheckBox(
         self.update_command(command, args)
 
         self.visible = visible
+        self.enabled = enabled
 
     # PROPERTIES
     # ----------------------------------
