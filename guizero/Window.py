@@ -110,7 +110,6 @@ class Window(
             self.tk.grab_release()
 
     def show(self, wait = False):
-        print(wait)
         """Show the widget."""
         self.tk.deiconify()
         self._visible = True
