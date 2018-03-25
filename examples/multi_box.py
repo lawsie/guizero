@@ -9,7 +9,7 @@ def hide_all():
         screen.hide()
     
 
-app = App("Multi window app", layout="grid")
+app = App("Multi box app", layout="grid")
 
 # Create a blank list to hold all the different screens
 all_screens = []

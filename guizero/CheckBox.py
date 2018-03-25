@@ -24,12 +24,11 @@ class CheckBox(
     SizeMixin,
     ReprMixin):
 
-    def __init__(self, master, text, command=None, grid=None, align=None, args=None):
+    def __init__(self, master, text, command=None, grid=None, align=None, args=None, visible=True):
 
         self._master = master
         self._grid = grid
         self._align = align
-        self._visible = True
 
         self._text = str(text)
         self.description = "[CheckBox] object with text \"" + self._text + "\""
@@ -42,7 +41,7 @@ class CheckBox(
         self.tk.config(command=self._command_callback)
         self.update_command(command, args)
 
-        utils.auto_pack(self, master, grid, align)
+        self.visible = visible
 
     # PROPERTIES
     # ----------------------------------

@@ -24,12 +24,11 @@ class Combo(
     SizeMixin, 
     ReprMixin):
 
-    def __init__(self, master, options, selected=None, command=None, grid=None, align=None):
+    def __init__(self, master, options, selected=None, command=None, grid=None, align=None, visible=True):
 
         self._master = master
         self._grid = grid
         self._align = align
-        self._visible = True
 
         # Maintain a list of options (as strings, to avoid problems comparing)
         self._options = [str(x) for x in options]
@@ -55,9 +54,7 @@ class Combo(
         # The command associated with this combo
         self.update_command(command)
 
-        # Pack or grid self
-        utils.auto_pack(self, master, grid, align)
-
+        self.visible = visible
 
     # PROPERTIES
     # ----------------------------------

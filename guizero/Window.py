@@ -14,7 +14,7 @@ class Window(
 
     _main_app = None
 
-    def __init__(self, master, title="guizero", width=500, height=500, layout="auto", bg=None):
+    def __init__(self, master, title="guizero", width=500, height=500, layout="auto", bg=None, visible=True):
 
         self.tk = Toplevel(master.tk)
         
@@ -24,16 +24,17 @@ class Window(
         self.tk.title( str(title) )
         self.tk.geometry(str(width)+"x"+str(height))
         self._layout_manager = layout  # Only behaves differently for "grid"
-        self._visible = True
         self._on_close = None
         self._modal = False
-
+        
         self.bg = bg
 
         # Window manages delete_window otherwise if the X is used to close the window
         # it destroys it and it cant be shown again
         self.tk.wm_protocol("WM_DELETE_WINDOW", self._close_window)
-       
+        
+        self.visible = visible
+        
         self.tk.update()
         
     

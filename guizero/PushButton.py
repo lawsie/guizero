@@ -22,12 +22,11 @@ class PushButton(
     ColorMixin,
     ReprMixin):
 
-    def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None):
+    def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None, visible=True):
 
         self._master = master
         self._grid = grid
         self._align = align
-        self._visible = True
 
         self._text = StringVar()
         self._text.set(text)
@@ -59,13 +58,8 @@ class PushButton(
             if icon:
                 self._load_image()
                 utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
-            
-        # Pack or grid depending on parent
-        try:
-            utils.auto_pack(self, master, grid, align)
-        except AttributeError:
-            utils.error_format( self.description + "\n" +
-            "Could not add to interface - check first argument is [App] or [Box]")
+
+        self.visible = visible
 
     def _load_image(self):
         # stop any animation which might still be playing

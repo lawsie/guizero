@@ -20,12 +20,11 @@ class Picture(
     ColorMixin,
     ReprMixin):
 
-    def __init__(self, master, image=None, grid=None, align=None):
+    def __init__(self, master, image=None, grid=None, align=None, visible=True):
 
         self._master = master
         self._grid = grid
         self._align = align
-        self._visible = True
         self._image_source = image
         self._image = None
         self._image_player = None
@@ -39,10 +38,9 @@ class Picture(
         if image:
             self._load_image()
 
-        # Pack or grid depending on parent
-        utils.auto_pack(self, master, grid, align)
-
         self.description = "[Picture] object"
+
+        self.visible = visible
 
     def _load_image(self):
         # stop any animation which might still be playing

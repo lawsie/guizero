@@ -12,7 +12,7 @@ class App(
 
     _main_app = None
 
-    def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None):
+    def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True):
 
         # If this is the first app to be created, create Tk
         if App._main_app is None:
@@ -27,8 +27,7 @@ class App(
         self.tk.title( str(title) )
         self.tk.geometry(str(width)+"x"+str(height))
         self._layout_manager = layout  # Only behaves differently for "grid"
-        self._visible = True
-
+        
         # bg overrides deprecated bgcolor
         if bg is not None:
             self.bg = bg
@@ -36,6 +35,8 @@ class App(
             self.bg = bgcolor
             utils.deprecated("App 'bgcolor' constructor argument is deprecated. Please use bg instead.")
        
+        self.visible = visible
+
         self.tk.update()
             
     # PROPERTIES

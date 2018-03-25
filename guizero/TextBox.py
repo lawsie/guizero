@@ -24,12 +24,11 @@ class TextBox(
     SizeMixin,
     ReprMixin):
 
-    def __init__(self, master, text="", width=10, grid=None, align=None):
+    def __init__(self, master, text="", width=10, grid=None, align=None, visible=True):
 
         self._master = master
         self._grid = grid
         self._align = align
-        self._visible = True
 
         # Description of this object (for friendly error messages)
         self.description = "[TextBox] object with text \"" + str(text) + "\""
@@ -41,9 +40,7 @@ class TextBox(
         # Create a tk Label object within this object
         self.tk = Entry(master.tk, textvariable=self._text, width=width)
 
-        # Pack or grid depending on parent
-        utils.auto_pack(self, master, grid, align)
-
+        self.visible = visible
 
     # PROPERTIES
     # ----------------------------------

@@ -22,12 +22,11 @@ class ButtonGroup(
     SizeMixin,
     ReprMixin):
 
-    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None):
+    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True):
         
         self._master = master
         self._grid = grid
         self._align = align
-        self._visible = True
 
         # Set (using StringVar set() method) the selected option **number**
         self.tk = Frame(master.tk)
@@ -78,8 +77,7 @@ class ButtonGroup(
         # Add a command if there was one
         self.update_command(command, args)
 
-        # Pack the whole button group
-        utils.auto_pack(self, master, grid, align)
+        self.visible = visible
 
 
     # PROPERTIES

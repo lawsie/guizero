@@ -11,12 +11,11 @@ class Waffle(
     DisplayMixin, 
     ReprMixin):
 
-    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True):
+    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True, visible=True):
 
         self._master = master
         self._grid = grid
         self._align = align
-        self._visible = True
         self._enabled = True
 
     	# Description of this object (for friendly error messages)
@@ -40,8 +39,7 @@ class Waffle(
         # Bind the left mouse click to the canvas so we can click on the waffle
         self._canvas.bind("<Button-1>", self._clicked_on)
 
-        # Pack this box into its layout
-        utils.auto_pack(self, master, grid, align)
+        self.visible = visible
 
     # METHODS
     # -------------------------------------------
