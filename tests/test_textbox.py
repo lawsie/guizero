@@ -27,13 +27,15 @@ def test_alt_values():
         text="foo", 
         width = 20,
         grid = [0,1], 
-        align="top")
+        align="top",
+        multiline=True,
+        scrollbar=True)
 
     assert t.master == a
     assert t.grid[0] == 0
     assert t.grid[1] == 1
     assert t.align == "top"
-    assert t.value == "foo"
+    assert t.value == "foo\n"
     assert t.width == 20
     a.destroy()
 
@@ -105,4 +107,18 @@ def test_width():
     t = TextBox(a)
     t.width = 30
     assert t.width == 30
+    a.destroy()
+
+def test_height():
+    a = App()
+    
+    t1 = TextBox(a)
+    t1.height = 10
+    #cant change height of single line text box
+    assert t1.height == 1
+
+    t2 = TextBox(a, multiline=True)
+    t2.height = 10
+    assert t2.height == 10
+
     a.destroy()
