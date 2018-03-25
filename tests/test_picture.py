@@ -41,9 +41,9 @@ def test_getters_setters():
     p.image = "../examples/guizero.gif"
     assert p.image == "../examples/guizero.gif"
     assert p._image.tk_image is not None
-    p.width = "100"
+    p.width = 100
     assert p.width == 100
-    p.height = "100"
+    p.height = 100
     assert p.height == 100
 
     a.destroy()
