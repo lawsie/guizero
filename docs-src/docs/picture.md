@@ -37,7 +37,8 @@ When you create a `Picture` object you **must** specify `master` and you can spe
 | image   | string    | None  | -         | The file path, tkinter.PhotoImage or PIL.Image you wish to display |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
-
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
+| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
 
 
 

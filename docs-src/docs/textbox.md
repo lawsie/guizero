@@ -31,6 +31,8 @@ When you create a `TextBox` object you **must** specify `master` and you can spe
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | text   | string    | ""  | -         | Any text you wish to be pre-filled in the text box |
 | width   | int    | 10     | -         | The width of the text box|
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
+| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
 
 
 ### Methods

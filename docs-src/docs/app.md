@@ -30,6 +30,7 @@ When you create an `App` object you can specify any of the following parameters,
 | layout    | string    | "auto"  | No         | Whether widgets pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
 | title     | string    | "guizero" | No       | The title displayed in the bar at the top of the window. |
 | width     | int       | 500     | No         | The width of the window in pixels.  |
+| visible   | boolean   | True    | No         | If the App should be visible.  |
 | _bgcolor_    | _string_    | _None_  | _No_         | _Replaced by `bg` parameter_ |
 
 Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero

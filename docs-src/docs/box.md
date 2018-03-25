@@ -30,6 +30,7 @@ When you create a `Box` object you **must** specify a master, and you can specif
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | grid   | List    | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | layout   | string    | "auto"  | -         | Whether widgets *inside this box* pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
 
 
 ### Methods

@@ -20,6 +20,8 @@ waffle = Waffle(app)
 app.display()
 ```
 
+### Starting parameters
+
 When you create a `Waffle` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `waffle = Waffle(app, height=25)`
 
 | Parameter | Takes     | Default | Compulsory | Description              |
@@ -35,6 +37,9 @@ When you create a `Waffle` object you **must** specify `master` and you can spec
 | pad       | int       | 5       | -         | How much space is between the pixels on the waffle |
 | width     | int       | 3       | -         | How many pixels wide the waffle is |
 | _remember_  | _boolean_   | _True_   | -         | _No longer needed - all Waffles will now have a memory._ |
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
+| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+
 
 Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 

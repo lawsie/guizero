@@ -32,6 +32,8 @@ When you create a `CheckBox` object you **must** specify `master` and `text` and
 | command | function name | None | -   | The name of a function to call when this checkbox is ticked/unticked |
 | args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
+| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
 
 
 ### Methods

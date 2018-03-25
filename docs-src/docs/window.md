@@ -32,6 +32,7 @@ When you create a `Window` object you **must** specify a `master` and you can sp
 | layout    | string    | "auto"  | No         | Whether widgets pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
 | title     | string    | "guizero" | No       | The title displayed in the bar at the top of the window. |
 | width     | int       | 500     | No         | The width of the window in pixels.  |
+| visible   | boolean   | True    | No         | If the window should be visible.  |
 
 ### Methods
 
