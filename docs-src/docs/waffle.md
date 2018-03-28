@@ -39,6 +39,7 @@ When you create a `Waffle` object you **must** specify `master` and you can spec
 | _remember_  | _boolean_   | _True_   | -         | _No longer needed - all Waffles will now have a memory._ |
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
 | enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| bg    | [color](colors.md)    | None  | No         | The background colour of the waffle. Takes a [color](colors.md) value. |
 
 
 Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
@@ -72,6 +73,7 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | align         | string      | The alignment of this widget within its grid location |
+| bg            | [color](colors.md)      | The background colour of the widget  |
 | color         | [color](colors.md) | The default colour of pixels on the waffle |
 | dotty         | bool        | If `True` the waffle will display circles  |
 | enabled       | boolean     | `True` if the widget is enabled |

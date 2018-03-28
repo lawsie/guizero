@@ -13,6 +13,7 @@ def clicked(x,y):
     
 app = App()
 waffle = Waffle(app, command = clicked, height = 15, width = 15)
+waffle.bg=(255,255,0)
 waffle.set_all("red")
 waffle.set_pixel(0,0,"blue")
 waffle.set_pixel(8,1,"#00ff00")

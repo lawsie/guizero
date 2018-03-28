@@ -7,6 +7,7 @@ from tkmixin_test import (
     destroy_test,
     enable_test,
     display_test,
+    color_test
     )
 
 def test_default_values():
@@ -21,6 +22,7 @@ def test_default_values():
     assert w.pad == 5
     assert w.color == "white"
     assert w.dotty == False
+    assert w.bg == None
     a.destroy() 
 
 def test_alt_values():
@@ -35,6 +37,7 @@ def test_alt_values():
         grid = [0,1],
         align = "top",
         dotty = True,
+        bg = "green"
         )
     assert w.master == a
     assert w.grid[0] == 0
@@ -46,6 +49,7 @@ def test_alt_values():
     assert w.pad == 13
     assert w.color == "red"
     assert w.dotty == True
+    assert w.bg == "green"
     a.destroy() 
 
 def test_getters_setters():
@@ -245,4 +249,10 @@ def test_display():
     a = App()
     w = Waffle(a)
     display_test(w)
+    a.destroy()
+
+def test_color():
+    a = App()
+    w = Waffle(a)
+    color_test(w)
     a.destroy()
