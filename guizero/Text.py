@@ -25,12 +25,11 @@ class Text(
     SizeMixin,
     ReprMixin):
 
-    def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None):
+    def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None, visible=True, enabled=True):
 
         self._master = master
         self._grid = grid
         self._align = align
-        self._visible = True
 
         # Description of this object (for friendly error messages)
         self.description = "[Text] object with text \"" + str(text) + "\""
@@ -43,12 +42,8 @@ class Text(
         
         self._text = str(text)
 
-        # Pack this object
-        try:
-            utils.auto_pack(self, master, grid, align)
-       	except AttributeError:
-            utils.error_format( self.description + "\n" +
-            "Could not add to interface - check first argument is [App] or [Box]")
+        self.visible = visible
+        self.enabled = enabled
 
     # PROPERTIES
     # ----------------------------------

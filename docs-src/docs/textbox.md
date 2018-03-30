@@ -31,7 +31,10 @@ When you create a `TextBox` object you **must** specify `master` and you can spe
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | text   | string    | ""  | -         | Any text you wish to be pre-filled in the text box |
 | width   | int    | 10     | -         | The width of the text box|
-
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
+| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| multiline | boolean   | False   | No         | Create a multi-line text box.  |
+| scrollbar | boolean   | False   | No         | Add a vertical scrollbar to a multi-line text box  |
 
 ### Methods
 
@@ -84,4 +87,21 @@ from guizero import App, TextBox
 app = App()
 input_box = TextBox(app, text="Type here")
 app.display()
+```
+
+**Creating a multi-line TextBox**
+
+You can create a text box which is capable of capturing multiple lines of text by setting the `multiline` parameter to `True` and giving the textbox a `height`:
+
+```python
+from guizero import App, TextBox
+app = App()
+input_box = TextBox(app, text="Type lines here", height=10, multiline=True)
+app.display()
+```
+
+Multi-line text boxes can also be given a scrollbar by setting the `scrollbar` parameter to `True`:
+
+```python
+input_box = TextBox(app, text="Type lines here", height=10, multiline=True, scrollbar=True)
 ```

@@ -33,7 +33,8 @@ When you create a `Text` object, you **must** specify a `master` and you can spe
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | size   | int    | 12     | -         | The font size of the text |
 | text   | string    | ""  | -         | The text you want to display |
-
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
+| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
 
 
 ### Methods

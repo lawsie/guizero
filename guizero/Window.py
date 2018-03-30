@@ -1,44 +1,49 @@
 from tkinter import Tk, Toplevel
-from .mixins import ContainerMixin
-from .tkmixins import ScheduleMixin, FocusMixin, ReprMixin
+from .mixins import ContainerMixin, MasterMixin
+from .tkmixins import ScheduleMixin, FocusMixin, DestroyMixin, ReprMixin
 
 from . import utilities as utils
 
-class App(
+class Window(
     ContainerMixin,
+    MasterMixin,
     ScheduleMixin,
-    FocusMixin, 
+    FocusMixin,
+    DestroyMixin, 
     ReprMixin):
 
     _main_app = None
 
-    def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True):
+    def __init__(self, master, title="guizero", width=500, height=500, layout="auto", bg=None, visible=True):
 
-        # If this is the first app to be created, create Tk
-        if App._main_app is None:
-            self.tk = Tk()
-            App._main_app = self
-        else:
-            self.tk = Toplevel(App._main_app.tk)
-            utils.error_format("There should only be 1 guizero App, use Window to create multiple windows.")
+        self.tk = Toplevel(master.tk)
         
         # Initial setup
-        self.description = "[App] object"
+        self._master = master
+        self.description = "[Window] object"
         self.tk.title( str(title) )
         self.tk.geometry(str(width)+"x"+str(height))
         self._layout_manager = layout  # Only behaves differently for "grid"
+        self._on_close = None
+        self._modal = False
         
-        # bg overrides deprecated bgcolor
-        if bg is not None:
-            self.bg = bg
-        elif bgcolor is not None:
-            self.bg = bgcolor
-            utils.deprecated("App 'bgcolor' constructor argument is deprecated. Please use bg instead.")
-       
-        self.visible = visible
+        self.bg = bg
 
+        # Window manages delete_window otherwise if the X is used to close the window
+        # it destroys it and it cant be shown again
+        self.tk.wm_protocol("WM_DELETE_WINDOW", self._close_window)
+        
+        self.visible = visible
+        
         self.tk.update()
-            
+        
+    
+    def _close_window(self):
+        if self._on_close is None:
+            self.hide()
+        else:
+            self._on_close()
+
     # PROPERTIES
     # -----------------------------------
 
@@ -51,7 +56,7 @@ class App(
     def title(self, text):
         self.tk.title( str(text) )
 
-    # The background colour of the app
+    # The background colour of the window
     @property
     def bg(self):
         return self.tk.cget("background")
@@ -94,40 +99,22 @@ class App(
     # METHODS
     # --------------------------------------
 
-    # Alias of mainloop with friendlier name
-    def display(self):
-        self.tk.mainloop()
-
     # Do `command` when the window is closed
     def on_close(self, command):
-        self.tk.wm_protocol("WM_DELETE_WINDOW", command)
-
-    def destroy(self):
-        """Destroy the object."""
-        # if this is the main_app - set the _main_app class variable to `None`.
-        if self == App._main_app:
-            App._main_app = None
-        self.tk.destroy()
+        self._on_close = command
 
     def hide(self):
         """Hide the app."""
         self.tk.withdraw()
         self._visible = False
+        if self._modal:
+            self.tk.grab_release()
 
-    def show(self):
+    def show(self, wait = False):
         """Show the widget."""
         self.tk.deiconify()
         self._visible = True
-
-    # DEPRECATED METHODS
-    # ------------------------------------
-
-    # Set the title of the window
-    def set_title(self, title):
-        self.title = title
-        utils.deprecated("App set_title() is deprecated. Please use the title property instead.")
-
-    # Change the background colour
-    def bgcolor(self, color):
-        self.bg = color
-        utils.deprecated("App bgcolor() is deprecated. Please use the bg property instead.")
+        self._modal = wait
+        if self._modal:
+            self.tk.grab_set()
+        

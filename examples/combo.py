@@ -4,7 +4,7 @@ def selected(value):
     print(value)
 
 app = App()
-combo = Combo(app, ["Nothing", "Something"], command = selected)
+combo = Combo(app, ["Nothing", "Something"], command = selected, enabled=False)
 combo.add_option("Everything")
 combo2 = Combo(app, ["hi", "bye"])
 app.display()

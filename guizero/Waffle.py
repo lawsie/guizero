@@ -11,13 +11,11 @@ class Waffle(
     DisplayMixin, 
     ReprMixin):
 
-    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True):
+    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True, visible=True, enabled=True, bg=None):
 
         self._master = master
         self._grid = grid
         self._align = align
-        self._visible = True
-        self._enabled = True
 
     	# Description of this object (for friendly error messages)
         self.description = "[Waffle] object ({}x{})".format(height, width)
@@ -31,7 +29,8 @@ class Waffle(
         self._dotty = dotty         # A dotty waffle will display circles
         self._waffle_pixels = {}
         self._canvas = None
-
+        self._bg = utils.convert_color(bg)
+        
         # Create a tk Frame object within this object which will be the waffle
         self.tk = Frame(master.tk)
 
@@ -40,8 +39,8 @@ class Waffle(
         # Bind the left mouse click to the canvas so we can click on the waffle
         self._canvas.bind("<Button-1>", self._clicked_on)
 
-        # Pack this box into its layout
-        utils.auto_pack(self, master, grid, align)
+        self.visible = visible
+        self.enabled = enabled
 
     # METHODS
     # -------------------------------------------
@@ -66,8 +65,12 @@ class Waffle(
         self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width)
         self._canvas.pack(fill=BOTH, expand=1)
 
+        # fill the canvas background
+        if self._bg is not None:
+            self._canvas.create_rectangle(0, 0, self._c_height, self._c_width, fill=self._bg, outline=self._bg)
+
     # sizes or resizes the waffle, maintaining the state of existing pixels
-    def _size_waffle(self):       
+    def _size_waffle(self):
         # create new pixels
         new_waffle_pixels = {}
         currx = self._pad
@@ -250,6 +253,17 @@ class Waffle(
         for x in range(self._width):
             for y in range(self._height):
                 self._waffle_pixels[x,y].dotty = self._dotty
+
+    # Get the background colour
+    @property
+    def bg(self):
+        return (self._bg)
+
+    # Set the background colour
+    @bg.setter
+    def bg(self, color):
+        self._bg = utils.convert_color(color)
+        self._create_waffle()
 
     def reset(self):
         # reset all the colors and dottiness

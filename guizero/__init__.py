@@ -6,6 +6,7 @@ except ImportError:
     exit(1)
 
 from . import utilities as utils
+from .utilities import system_config
 from .alerts import *
 
 from .App import App
@@ -22,3 +23,4 @@ from .Text import Text
 from .TextBox import TextBox
 from .PushButton import PushButton
 from .Waffle import Waffle
+from .Window import Window

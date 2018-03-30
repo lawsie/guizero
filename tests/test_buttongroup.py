@@ -13,7 +13,7 @@ from tkmixin_test import (
 
 def test_default_values():
     a = App()
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     assert b.master == a
     assert b.value == "1"
     assert b.value_text == "foo"
@@ -37,15 +37,26 @@ def test_alt_values():
     assert b.align == "top"
     a.destroy()
 
+def test_2d_options_list():
+    a = App()
+    b = ButtonGroup(a, [["foo", "f"], ["bar", "b"]])
+    assert b.value == "f"
+    assert b.value_text == "foo"
+    a.destroy()
+
 def test_getters_setters():
     a = App()
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     assert b.value == "1"
     assert b.value_text == "foo"
     
     b.value = 2
     assert b.value == "2"
     assert b.value_text == "bar"
+
+    b.value_text = "foo"
+    assert b.value == "1"
+    assert b.value_text == "foo"
 
     a.destroy()
 
@@ -58,7 +69,7 @@ def test_command():
         assert b.value_text == "bar"
         callback_event.set()
 
-    b = ButtonGroup(a, ["foo", "bar"], 1, command = callback)
+    b = ButtonGroup(a, ["foo", "bar"], command = callback)
     
     assert not callback_event.is_set()
     b._options[1].tk.invoke()
@@ -76,7 +87,7 @@ def test_command_with_args():
         assert b.value_text == "bar"
         callback_event.set()
 
-    b = ButtonGroup(a, ["foo", "bar"], 1, command = callback, args = ["foo"])
+    b = ButtonGroup(a, ["foo", "bar"], command = callback, args = ["foo"])
     
     b._options[1].tk.invoke()
     assert callback_event.is_set()
@@ -90,7 +101,7 @@ def test_update_command():
     def callback():
         callback_event.set()
 
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     
     b._options[1].tk.invoke()
     assert not callback_event.is_set()
@@ -114,7 +125,7 @@ def test_update_command_with_args():
         assert value == "foo"
         callback_event.set()
 
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     
     b.update_command(callback, ["foo"])
     b._options[1].tk.invoke()
@@ -124,49 +135,48 @@ def test_update_command_with_args():
 
 def test_after_schedule():
     a = App()
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     schedule_after_test(a, b)
     a.destroy()
 
 def test_repeat_schedule():
     a = App()
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     schedule_repeat_test(a, b)
     a.destroy()
 
 def test_destroy():
     a = App()
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     destroy_test(b)
     a.destroy()
 
-# ButtonGroup doesnt support enable
-# def test_enable():
-#     a = App()
-#     b = PushButton(a)
-#     enable_test(b)
-#     a.destroy()
+def test_enable():
+    a = App()
+    b = ButtonGroup(a, ["foo", "bar"])
+    enable_test(b)
+    a.destroy()
 
 def test_display():
     a = App()
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     display_test(b)
     a.destroy()
 
 def test_text():
     a = App()
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     text_test(b)
     a.destroy()
 
 def test_color():
     a = App()
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     color_test(b)
     a.destroy()
 
 def test_size():
     a = App()
-    b = ButtonGroup(a, ["foo", "bar"], 1)
+    b = ButtonGroup(a, ["foo", "bar"])
     size_text_test(b)
     a.destroy()

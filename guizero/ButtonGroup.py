@@ -22,23 +22,21 @@ class ButtonGroup(
     SizeMixin,
     ReprMixin):
 
-    def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None):
+    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=True):
         
         self._master = master
         self._grid = grid
         self._align = align
-        self._visible = True
 
-        # Set (using StringVar set() method) the selected option **number**
+
+        # Create a Tk frame object to contain the RadioButton objects
         self.tk = Frame(master.tk)
+        # Set (using StringVar set() method) the selected option **number**
         self._selected = StringVar(master=self.tk.winfo_toplevel())
-        self._selected.set(selected)
         
         self.description = "[ButtonGroup] object with selected option \"" + self._selected.get() + "\""
         self._options = []   # List of RadioButton objects
         self._layout_manager = "grid"
-
-        # Create a Tk frame object to contain the RadioButton objects
 
         # Position the radio buttons in the Frame
         gridx = 0
@@ -70,11 +68,17 @@ class ButtonGroup(
             # Set the callback
             rbutton.tk.config(command=self._command_callback)
 
+        # set the initial value
+        if selected is None:
+            self.value = self._options[0].value
+        else:
+            self.value = selected
+
         # Add a command if there was one
         self.update_command(command, args)
 
-        # Pack the whole button group
-        utils.auto_pack(self, master, grid, align)
+        self.visible = visible
+        self.enabled = enabled
 
 
     # PROPERTIES
@@ -89,6 +93,27 @@ class ButtonGroup(
         self.tk.config(bg=utils.convert_color(color))
         for item in self._options:
             item.bg = color
+
+    @property
+    def enabled(self):
+        return self._options[0].enabled
+
+    @enabled.setter
+    def enabled(self, value):
+        if value:
+            self.enable()
+        else:
+            self.disable()
+    
+    def disable(self):
+        """Disable the widget."""
+        for item in self._options:
+            item.disable()
+
+    def enable(self):
+        """Enable the widget."""
+        for item in self._options:
+            item.enable()
 
     # Gets the selected value (1, 2, 3 etc.)
     @property
@@ -110,18 +135,13 @@ class ButtonGroup(
                 return item.text
         return ""
 
-    # Wondering if this is really confusing. value_text is the text associated with the selected
-    # option. You can change it because it's useful to be able to *get* it, but maybe this is weird.
+    # Selects the option for the value_text provided
     @value_text.setter
     def value_text(self, value):
-        search = self._selected.get()    # Currently selected number
         for item in self._options:
-            if item.value == search:
-                item.text = str(value)
-                print( item.text )
-                return 0
-        utils.error_format("Could not set value text - no matching option")
-
+            if item.text == value:
+                self.value = item.value
+    
     # Get the text colour as a string
     @property
     def text_color(self):
