@@ -1,26 +1,13 @@
 from tkinter import Canvas, BOTH, Frame
-from .mixins import WidgetMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, DisplayMixin, SizeMixin, ReprMixin
 from . import utilities as utils
+from .base import Widget
 
-class Waffle(
-    WidgetMixin, 
-    ScheduleMixin, 
-    DestroyMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    ReprMixin):
+class Waffle(Widget):
 
     def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True, visible=True, enabled=True, bg=None):
 
-        self._master = master
-        self._grid = grid
-        self._align = align
+        description = "[Waffle] object ({}x{})".format(height, width)
 
-    	# Description of this object (for friendly error messages)
-        self.description = "[Waffle] object ({}x{})".format(height, width)
-
-        self.update_command(command)
         self._height = height       # How many pixels high
         self._width = width         # How many pixels wide
         self._pixel_size = dim      # Size of one pixel
@@ -32,15 +19,16 @@ class Waffle(
         self._bg = utils.convert_color(bg)
         
         # Create a tk Frame object within this object which will be the waffle
-        self.tk = Frame(master.tk)
+        tk = Frame(master.tk)
+
+        super(Waffle, self).__init__(master, tk, description, grid, align, visible, enabled)
+
+        self.update_command(command)
 
         self._create_waffle()
 
         # Bind the left mouse click to the canvas so we can click on the waffle
         self._canvas.bind("<Button-1>", self._clicked_on)
-
-        self.visible = visible
-        self.enabled = enabled
 
     # METHODS
     # -------------------------------------------

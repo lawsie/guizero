@@ -1,30 +1,13 @@
 from tkinter import Label
-from .mixins import WidgetMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    ColorMixin,
-    ReprMixin)
 from . import utilities as utils
+from .base import Widget
 
-class Picture(
-    WidgetMixin, 
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    ColorMixin,
-    ReprMixin):
+class Picture(Widget):
 
     def __init__(self, master, image=None, grid=None, align=None, visible=True, enabled=True):
 
-        self._master = master
-        self._grid = grid
-        self._align = align
+        description = "[Picture] object"
+
         self._image_source = image
         self._image = None
         self._image_player = None
@@ -32,16 +15,13 @@ class Picture(
         self._height = None
 
         # Instantiate label object which will contain image
-        self.tk = Label(master.tk)
+        tk = Label(master.tk)
+
+        super(Picture, self).__init__(master, tk, description, grid, align, visible, enabled)
 
         # create the image
         if image:
             self._load_image()
-
-        self.description = "[Picture] object"
-
-        self.visible = visible
-        self.enabled = enabled
 
     def _load_image(self):
         # stop any animation which might still be playing

@@ -1,35 +1,13 @@
 from tkinter import Button, StringVar, DISABLED, NORMAL
-from .mixins import WidgetMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin, 
-    ColorMixin, 
-    ReprMixin)
 from . import utilities as utils
+from .base import TextWidget
 
-class PushButton(
-    WidgetMixin, 
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin,
-    TextMixin, 
-    ColorMixin,
-    ReprMixin):
+class PushButton(TextWidget):
 
     def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None, visible=True, enabled=True):
 
-        self._master = master
-        self._grid = grid
-        self._align = align
-
-        self._text = StringVar()
-        self._text.set(text)
+        description = "[PushButton] object with text \"" + text + "\""
+        
         self._value = 0
         self._image_source = icon
         self._image_source = image
@@ -37,14 +15,14 @@ class PushButton(
         self._image_height = None
         self._image_width = None
         self._image_player = None
-        self.update_command(command, args)
-        
-        # Description of this object (for friendly error messages)
-        self.description = "[PushButton] object with text \"" + self._text.get() + "\""
 
         # Create a tk Button object within this object
-        self.tk = Button(master.tk, textvariable=self._text, command=self._command_callback)
-
+        self._text = StringVar()
+        self._text.set(text)
+        tk = Button(master.tk, textvariable=self._text, command=self._command_callback)
+        
+        super(PushButton, self).__init__(master, tk, description, grid, align, visible, enabled)
+        
         # Add padding if necessary
         self.tk.config(pady=pady, padx=padx)
 
@@ -52,15 +30,14 @@ class PushButton(
         self.tk.bind("<ButtonPress>", self._on_press)
         self.tk.bind("<ButtonRelease>", self._on_release) 
 
+        self.update_command(command, args)
+
         if image:
             self._load_image()
         else:
             if icon:
                 self._load_image()
                 utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
-
-        self.visible = visible
-        self.enabled = enabled
 
     def _load_image(self):
         # stop any animation which might still be playing

@@ -8,11 +8,9 @@ modal_window = Window(app, title="modal window", visible=False)
 
 def open_modal():
     modal_window.show(True)
-    app.hide()
 
 def close_modal():
     modal_window.hide()
-    app.show()
 
 open_window_button = PushButton(app, text="Open window", command=window.show)
 open_modal_button = PushButton(app, text="Open modal window", command=open_modal)

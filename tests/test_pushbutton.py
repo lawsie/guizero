@@ -1,7 +1,7 @@
 import pytest
 from threading import Event
 from guizero import App, PushButton, system_config
-from tkmixin_test import (
+from common_test import (
     schedule_after_test,
     schedule_repeat_test,
     destroy_test,

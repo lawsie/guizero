@@ -13,6 +13,7 @@
 - Fixed multiple `App` bug
 - Create `Window` class to support multi-window applications
 - Added `multiline` and `scrollbar` functionality to `TextBox`
+- Refactored guizero to introduce a class hierarchy making guizero wide code easier to implement
 
 - contributors to this release [martinohanlon](https://github.com/martinohanlon), [scotty3785](https://github.com/scotty3785) - ta very much :)
 

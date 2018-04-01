@@ -1,41 +1,16 @@
 from tkinter import Entry, StringVar, Text, END
 from tkinter.scrolledtext import ScrolledText
-from .mixins import WidgetMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin, 
-    ColorMixin, 
-    SizeMixin, 
-    ReprMixin)
 from . import utilities as utils
+from .base import TextWidget
 
-class TextBox(
-    WidgetMixin, 
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    TextMixin,
-    DisplayMixin,
-    ColorMixin,
-    SizeMixin,
-    ReprMixin):
+class TextBox(TextWidget):
 
     def __init__(self, master, text="", width=10, height=1, grid=None, align=None, visible=True, enabled=True, multiline=False, scrollbar=False):
 
-        self._master = master
-        self._grid = grid
-        self._align = align
+        description = "[TextBox] object with text \"" + str(text) + "\""
 
         self._multiline = multiline
         self._height = height
-
-        # Description of this object (for friendly error messages)
-        self.description = "[TextBox] object with text \"" + str(text) + "\""
 
         # Set up controlling string variable
         self._text = StringVar()
@@ -44,15 +19,14 @@ class TextBox(
         # Create a tk object for the text box
         if multiline:
             if scrollbar:
-                self.tk = ScrolledText(master.tk, width=width, height=height)
+                tk = ScrolledText(master.tk, width=width, height=height)
             else:
-                self.tk = Text(master.tk, width=width, height=height)
-            self.tk.insert(END,self._text.get())
+                tk = Text(master.tk, width=width, height=height)
+            tk.insert(END,self._text.get())
         else:
-            self.tk = Entry(master.tk, textvariable=self._text, width=width)
+            tk = Entry(master.tk, textvariable=self._text, width=width)
 
-        self.visible = visible
-        self.enabled = enabled
+        super(TextBox, self).__init__(master, tk, description, grid, align, visible, enabled)
 
     # PROPERTIES
     # ----------------------------------

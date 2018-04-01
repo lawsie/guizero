@@ -1,7 +1,7 @@
 from guizero import App, Waffle
 from threading import Event
 from unittest.mock import MagicMock
-from tkmixin_test import (
+from common_test import (
     schedule_after_test,
     schedule_repeat_test,
     destroy_test,

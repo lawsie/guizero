@@ -1,6 +1,6 @@
 from threading import Event
 from guizero import App, ButtonGroup
-from tkmixin_test import (
+from common_test import (
     schedule_after_test,
     schedule_repeat_test,
     destroy_test,
