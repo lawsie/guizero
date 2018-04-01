@@ -1,42 +1,30 @@
 from tkinter import Frame, StringVar
-from .mixins import WidgetMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin,
-    SizeMixin, 
-    ReprMixin)
 from . import utilities as utils
-from .Box import Box
+from .base import ContainerWidget
+from .tkmixins import TextMixin
 from .RadioButton import RadioButton
 
-
 class ButtonGroup(
-    WidgetMixin,
-    ScheduleMixin, 
-    DestroyMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    SizeMixin,
-    ReprMixin):
+    ContainerWidget, 
+    TextMixin):
 
     def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=True):
         
-        self._master = master
-        self._grid = grid
-        self._align = align
+        description = "[ButtonGroup] object with selected option \"" + str(selected) + "\""
 
+        self._options = []   # List of RadioButton objects
+
+        # ButtonGroup uses "grid" internally to sort the RadioButtons
+        #self._layout_manager = "grid"
 
         # Create a Tk frame object to contain the RadioButton objects
-        self.tk = Frame(master.tk)
+        tk = Frame(master.tk)
+
         # Set (using StringVar set() method) the selected option **number**
-        self._selected = StringVar(master=self.tk.winfo_toplevel())
-        
-        self.description = "[ButtonGroup] object with selected option \"" + self._selected.get() + "\""
-        self._options = []   # List of RadioButton objects
-        self._layout_manager = "grid"
+        self._selected = StringVar(master=tk.winfo_toplevel())
+
+        # ButtonGroup uses "grid" internally to sort the RadioButtons
+        super(ButtonGroup, self).__init__(master, tk, description, "grid", grid, align, visible, enabled)
 
         # Position the radio buttons in the Frame
         gridx = 0
@@ -50,20 +38,25 @@ class ButtonGroup(
             if not isinstance(button, list):
                 button = [button, options.index(button)+1]
 
-            # Create a radio button object
-            rbutton = RadioButton(self, text=str(button[0]), value=str(button[1]), variable=self._selected)
-
-            # Add this radio button to the internal list
-            self._options.append(rbutton)
-
-            # Place on grid
-            utils.auto_pack(rbutton, self, [gridx, gridy], "left")
-
             # Which way the buttons go
             if horizontal:
                 gridx += 1
             else:
                 gridy += 1
+
+            # Create a radio button object
+            rbutton = RadioButton(
+                self, 
+                text=str(button[0]), 
+                value=str(button[1]), 
+                variable=self._selected, 
+                grid=[gridx, gridy],
+                align="left",
+                visible=visible, 
+                enabled=enabled)
+
+            # Add this radio button to the internal list
+            self._options.append(rbutton)
 
             # Set the callback
             rbutton.tk.config(command=self._command_callback)
@@ -77,12 +70,15 @@ class ButtonGroup(
         # Add a command if there was one
         self.update_command(command, args)
 
-        self.visible = visible
-        self.enabled = enabled
-
-
     # PROPERTIES
     # -----------------------------------
+
+    @property
+    def layout(self):
+        """
+        Returns the layout type used by this container.
+        """
+        return self._layout_manager
 
     @property
     def bg(self):

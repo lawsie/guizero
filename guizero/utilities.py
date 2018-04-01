@@ -335,7 +335,8 @@ def auto_pack(widget, master, grid, align):
                     # Place on grid
                     widget.tk.grid(row=grid[1], column=grid[0], columnspan=columnspan, rowspan=rowspan, sticky=align_this)
 
-    except AttributeError:
+    except AttributeError as e:
+        #print(e)
         error_format("{}\nCould not add to interface - check master is [App], [Window] or [Box]".format(widget.description))
 
 # Lambda-izer for making it easy to pass arguments with function calls

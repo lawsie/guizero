@@ -1,42 +1,38 @@
 from tkinter import Frame
-from .mixins import WidgetMixin, ContainerMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    ColorMixin, 
-    SizeMixin,
-    ReprMixin)
 from . import utilities as utils
+from .base import ContainerWidget
 
-class Box(
-    WidgetMixin,
-    ContainerMixin, 
-    ScheduleMixin, 
-    DestroyMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    ColorMixin,
-    SizeMixin,
-    ReprMixin):
+class Box(ContainerWidget):
 
     def __init__(self, master, layout="auto", grid=None, align=None, visible=True):
 
-        self._master = master
         self._grid = grid
         self._align = align
 
-    	# Description of this object (for friendly error messages)
-        self.description = "[Box] object (may also contain other objects)"
+        description = "[Box] object (may also contain other objects)"
         
-        self.tk = Frame(master.tk)
+        tk = Frame(master.tk)
 
-        # Store this object's layout manager
-        self._layout_manager = layout
-
-        # Pack or grid depending on parent
-        # utils.auto_pack(self, master, grid, align)
-
+        super(Box, self).__init__(master, tk, description, layout, grid, align, visible, True)
+        
         self.visible = visible
-        
+    
+    # Box enable / disable functions need implementing
+    @property
+    def enabled(self):
+        return True
+
+    @enabled.setter
+    def enabled(self, value):
+        if value:
+            self.enable()
+        else:
+            self.disable()
+    
+    def disable(self):
+        """Disable the widget."""
+        utils.error_format("A [Box] cannot be disabled")
+
+    def enable(self):
+        """Enable the widget."""
+        pass

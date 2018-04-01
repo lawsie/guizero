@@ -172,7 +172,18 @@ class SizeMixin():
         self.tk.config(height=value)
 
 
-class ReprMixin:
+class GridMixin():
 
-    def __repr__(self):
-        return self.description
+    @property
+    def grid(self):
+        """
+        Returns `[x,y]` coordinates of this widget.
+        """
+        return self._grid
+
+    @property
+    def align(self):
+        """
+        Returns the alignment of this widget within its grid location.
+        """
+        return self._align

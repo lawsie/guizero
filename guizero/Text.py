@@ -1,53 +1,23 @@
 from tkinter import Label, StringVar
-from .mixins import WidgetMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin, 
-    ColorMixin, 
-    SizeMixin, 
-    ReprMixin)
-    
 from . import utilities as utils
+from .base import TextWidget
 
-class Text(
-    WidgetMixin, 
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin,
-    ColorMixin,
-    SizeMixin,
-    ReprMixin):
+class Text(TextWidget):
 
     def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None, visible=True, enabled=True):
 
-        self._master = master
-        self._grid = grid
-        self._align = align
+        description = "[Text] object with text \"" + str(text) + "\""
+        
+        self._text = str(text)
+        tk = Label(master.tk, text=text, fg=utils.convert_color(color), bg=utils.convert_color(bg), font=(font, size))
 
-        # Description of this object (for friendly error messages)
-        self.description = "[Text] object with text \"" + str(text) + "\""
-
-        # Create a tk Label object within this object
-        self.tk = Label(master.tk, text=text, fg=utils.convert_color(color), bg=utils.convert_color(bg), font=(font, size))
+        super(Text, self).__init__(master, tk, description, grid, align, visible, enabled)
 
         if bg:
             self.bg = bg
         
-        self._text = str(text)
-
-        self.visible = visible
-        self.enabled = enabled
-
     # PROPERTIES
     # ----------------------------------
-
     # The text value
     @property
     def value(self):
