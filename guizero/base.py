@@ -13,6 +13,7 @@ from .tkmixins import (
     GridMixin)
 
 from . import utilities as utils
+from .event import EventManager
 
 class Base(
     ScheduleMixin,
@@ -27,6 +28,8 @@ class Base(
         self._tk = tk
         self._description = description
 
+        self._event_manager = EventManager(self._tk)
+        
     @property
     def master(self):
         """
@@ -54,6 +57,38 @@ class Base(
 
     def __repr__(self):
         return self.description
+
+    @property
+    def when_clicked(self):
+        return self._event_manager.get_event("<Button-1>")
+
+    @when_clicked.setter
+    def when_clicked(self, value):
+        self._event_manager.set_event("<Button-1>", value)
+
+    @property
+    def when_key_pressed(self):
+        return self._event_manager.get_event("<Key>")
+
+    @when_key_pressed.setter
+    def when_key_pressed(self, value):
+        self._event_manager.set_event("<Key>", value)
+
+    @property
+    def when_mouse_over(self):
+        return self._event_manager.get_event("<Enter>")
+
+    @when_mouse_over.setter
+    def when_mouse_over(self, value):
+        self._event_manager.set_event("<Enter>", value)
+
+    @property
+    def when_mouse_moved(self):
+        return self._event_manager.get_event("<Motion>")
+
+    @when_mouse_moved.setter
+    def when_mouse_moved(self, value):
+        self._event_manager.set_event("<Motion>", value)
 
 
 class Container(Base):
