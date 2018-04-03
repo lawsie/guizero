@@ -10,7 +10,8 @@ from .tkmixins import (
     TextMixin, 
     ColorMixin, 
     SizeMixin,
-    GridMixin)
+    GridMixin,
+    EventsMixin)
 
 from . import utilities as utils
 from .event import EventManager
@@ -18,7 +19,8 @@ from .event import EventManager
 class Base(
     ScheduleMixin,
     DestroyMixin,
-    FocusMixin):
+    FocusMixin,
+    EventsMixin):
 
     def __init__(self, master, tk, description):
         """

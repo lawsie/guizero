@@ -39,6 +39,7 @@ class EventData():
     def __gt__(self, other):
         return self.key > other
 
+
 class EventCallback():
 
     def __init__(self, widget, event, callback):

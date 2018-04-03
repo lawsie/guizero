@@ -192,20 +192,60 @@ class GridMixin():
 class EventsMixin():
 
     @property
-    def when_clicked(self):
+    def when_pressed(self):
         return self.events.get_event("<Button-1>")
 
-    @when_clicked.setter
-    def when_clicked(self, value):
+    @when_pressed.setter
+    def when_pressed(self, value):
         self.events.set_event("<Button-1>", value)
 
     @property
+    def when_left_button_pressed(self):
+        return self.events.get_event("<ButtonPress-1>")
+
+    @when_left_button_pressed.setter
+    def when_left_button_pressed(self, value):
+        self.events.set_event("<ButtonPress-1>", value)
+
+    @property
+    def when_left_button_released(self):
+        return self.events.get_event("<ButtonRelease-1>")
+
+    @when_left_button_released.setter
+    def when_left_button_released(self, value):
+        self.events.set_event("<ButtonRelease-1>", value)
+
+    @property
+    def when_right_button_pressed(self):
+        return self.events.get_event("<ButtonPress-3>")
+
+    @when_right_button_pressed.setter
+    def when_right_button_pressed(self, value):
+        self.events.set_event("<ButtonPress-3>", value)
+
+    @property
+    def when_right_button_released(self):
+        return self.events.get_event("<ButtonRelease-3>")
+
+    @when_right_button_released.setter
+    def when_right_button_released(self, value):
+        self.events.set_event("<ButtonRelease-3>", value)
+
+    @property
     def when_key_pressed(self):
-        return self.events.get_event("<Key>")
+        return self.events.get_event("<KeyPress>")
 
     @when_key_pressed.setter
     def when_key_pressed(self, value):
-        self.events.set_event("<Key>", value)
+        self.events.set_event("<KeyPress>", value)
+
+    @property
+    def when_key_released(self):
+        return self.events.get_event("<KeyRelease>")
+
+    @when_key_released.setter
+    def when_key_released(self, value):
+        self.events.set_event("<KeyRelease>", value)
 
     @property
     def when_mouse_over(self):

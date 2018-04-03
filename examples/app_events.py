@@ -32,6 +32,9 @@ def mouse_moved(e):
     print(e.mouse_x)
     print(e.key)
 
+def press():
+    print("press")
+
 def release():
     print("release")
 
@@ -39,11 +42,21 @@ app = App()
 text = Text(app, text="hi")
 text_box = TextBox(app)
 
-app.when_clicked = clicked
-app.when_key_pressed = key
-app.events.set_event("<KeyRelease>", release)
+#app.when_key_pressed = key
+#app.events.set_event("<KeyRelease>", release)
+# app.events.set_event("<ButtonPress-1>", press)
+# app.events.set_event("<ButtonRelease-1>", release)
 # app.when_mouse_over = mouse_over
 # app.when_mouse_moved = mouse_moved
+
+app.when_left_button_pressed = press
+app.when_left_button_released = release
+
+app.when_right_button_pressed = press
+app.when_right_button_released = release
+
+app.when_key_pressed = press
+app.when_key_released = release
 
 # text.when_clicked = clicked
 # text.when_key_pressed = key
