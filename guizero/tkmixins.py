@@ -187,3 +187,38 @@ class GridMixin():
         Returns the alignment of this widget within its grid location.
         """
         return self._align
+
+
+class EventsMixin():
+
+    @property
+    def when_clicked(self):
+        return self.events.get_event("<Button-1>")
+
+    @when_clicked.setter
+    def when_clicked(self, value):
+        self.events.set_event("<Button-1>", value)
+
+    @property
+    def when_key_pressed(self):
+        return self.events.get_event("<Key>")
+
+    @when_key_pressed.setter
+    def when_key_pressed(self, value):
+        self.events.set_event("<Key>", value)
+
+    @property
+    def when_mouse_over(self):
+        return self.events.get_event("<Enter>")
+
+    @when_mouse_over.setter
+    def when_mouse_over(self, value):
+        self.events.set_event("<Enter>", value)
+
+    @property
+    def when_mouse_moved(self):
+        return self.events.get_event("<Motion>")
+
+    @when_mouse_moved.setter
+    def when_mouse_moved(self, value):
+        self.events.set_event("<Motion>", value)

@@ -8,7 +8,7 @@ class App(BaseWindow):
 
     def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True):
         
-        description = "[App] oject"
+        description = "[App] object"
 
         # If this is the first app to be created, create Tk
         if App._main_app is None:

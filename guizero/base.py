@@ -28,7 +28,7 @@ class Base(
         self._tk = tk
         self._description = description
 
-        self._event_manager = EventManager(self._tk)
+        self._events = EventManager(self)
         
     @property
     def master(self):
@@ -59,36 +59,11 @@ class Base(
         return self.description
 
     @property
-    def when_clicked(self):
-        return self._event_manager.get_event("<Button-1>")
-
-    @when_clicked.setter
-    def when_clicked(self, value):
-        self._event_manager.set_event("<Button-1>", value)
-
-    @property
-    def when_key_pressed(self):
-        return self._event_manager.get_event("<Key>")
-
-    @when_key_pressed.setter
-    def when_key_pressed(self, value):
-        self._event_manager.set_event("<Key>", value)
-
-    @property
-    def when_mouse_over(self):
-        return self._event_manager.get_event("<Enter>")
-
-    @when_mouse_over.setter
-    def when_mouse_over(self, value):
-        self._event_manager.set_event("<Enter>", value)
-
-    @property
-    def when_mouse_moved(self):
-        return self._event_manager.get_event("<Motion>")
-
-    @when_mouse_moved.setter
-    def when_mouse_moved(self, value):
-        self._event_manager.set_event("<Motion>", value)
+    def events(self):
+        """
+        Returns the EventManager which can be used to set custom event handlers
+        """
+        return self._events
 
 
 class Container(Base):
