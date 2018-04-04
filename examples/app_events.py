@@ -57,10 +57,11 @@ app = App()
 text = Text(app, text="hi")
 text_box = TextBox(app)
 
-app.when_mouse_dragged = mouse_dragged
+app.when_clicked = clicked
+app.events.set_event("myclick", "<Button-1>", press)
 
-#app.when_key_pressed = key
-#app.events.set_event("<KeyRelease>", release)
+# app.when_key_pressed = key
+# app.events.set_event("<KeyRelease>", release)
 # app.events.set_event("<ButtonPress-1>", press)
 # app.events.set_event("<ButtonRelease-1>", release)
 # app.when_mouse_over = mouse_over

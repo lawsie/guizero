@@ -193,80 +193,80 @@ class EventsMixin():
 
     @property
     def when_clicked(self):
-        return self.events.get_event("<Button-1>")
+        return self.events.get_event("<when_clicked>")
 
     @when_clicked.setter
     def when_clicked(self, value):
-        self.events.set_event("<Button-1>", value)
+        self.events.set_event("<when_clicked>", "<Button-1>", value)
 
     @property
     def when_left_button_pressed(self):
-        return self.events.get_event("<ButtonPress-1>")
+        return self.events.get_event("<when_left_button_pressed>")
 
     @when_left_button_pressed.setter
     def when_left_button_pressed(self, value):
-        self.events.set_event("<ButtonPress-1>", value)
+        self.events.set_event("<when_left_button_pressed>", "<ButtonPress-1>", value)
 
     @property
     def when_left_button_released(self):
-        return self.events.get_event("<ButtonRelease-1>")
+        return self.events.get_event("<when_left_button_released>")
 
     @when_left_button_released.setter
     def when_left_button_released(self, value):
-        self.events.set_event("<ButtonRelease-1>", value)
+        self.events.set_event("<when_left_button_released>", "<ButtonRelease-1>", value)
 
     @property
     def when_right_button_pressed(self):
-        return self.events.get_event("<ButtonPress-3>")
+        return self.events.get_event("<when_right_button_pressed>")
 
     @when_right_button_pressed.setter
     def when_right_button_pressed(self, value):
-        self.events.set_event("<ButtonPress-3>", value)
+        self.events.set_event("<when_right_button_pressed>", "<ButtonPress-3>", value)
 
     @property
     def when_right_button_released(self):
-        return self.events.get_event("<ButtonRelease-3>")
+        return self.events.get_event("<when_right_button_released>")
 
     @when_right_button_released.setter
     def when_right_button_released(self, value):
-        self.events.set_event("<ButtonRelease-3>", value)
+        self.events.set_event("<when_right_button_released>", "<ButtonRelease-3>", value)
 
     @property
     def when_key_pressed(self):
-        return self.events.get_event("<KeyPress>")
+        return self.events.get_event("<when_key_pressed>")
 
     @when_key_pressed.setter
     def when_key_pressed(self, value):
-        self.events.set_event("<KeyPress>", value)
+        self.events.set_event("<when_key_pressed>", "<KeyPress>", value)
 
     @property
     def when_key_released(self):
-        return self.events.get_event("<KeyRelease>")
+        return self.events.get_event("<when_key_released>")
 
     @when_key_released.setter
     def when_key_released(self, value):
-        self.events.set_event("<KeyRelease>", value)
+        self.events.set_event("<when_key_released>", "<KeyRelease>", value)
 
     @property
     def when_mouse_over(self):
-        return self.events.get_event("<Enter>")
+        return self.events.get_event("<when_mouse_over>")
 
     @when_mouse_over.setter
     def when_mouse_over(self, value):
-        self.events.set_event("<Enter>", value)
+        self.events.set_event("<when_mouse_over>", "<Enter>", value)
 
     @property
     def when_mouse_moved(self):
-        return self.events.get_event("<Motion>")
+        return self.events.get_event("<when_mouse_moved>")
 
     @when_mouse_moved.setter
     def when_mouse_moved(self, value):
-        self.events.set_event("<Motion>", value)
+        self.events.set_event("<when_mouse_moved>", "<Motion>", value)
 
     @property
     def when_mouse_dragged(self):
-        return self.events.get_event("<B1-Motion>")
+        return self.events.get_event("<when_mouse_dragged>")
 
     @when_mouse_dragged.setter
     def when_mouse_dragged(self, value):
-        self.events.set_event("<B1-Motion>", value)
+        self.events.set_event("<when_mouse_dragged>", "<B1-Motion>", value)
