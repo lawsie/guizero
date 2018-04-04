@@ -74,8 +74,8 @@ class Container(Base):
         """
         An abstract class for a container which can hold other widgets
         """
-        self._layout_manager = layout
         super(Container, self).__init__(master, tk, description)
+        self._layout_manager = layout
 
     @property
     def layout(self):
@@ -91,7 +91,6 @@ class BaseWindow(Container):
         """
         Base class for objects which use windows (e.g. App and Window)
         """
-
         super(BaseWindow, self).__init__(master, tk, description, layout)
 
         # Initial setup

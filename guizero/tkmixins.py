@@ -192,11 +192,11 @@ class GridMixin():
 class EventsMixin():
 
     @property
-    def when_pressed(self):
+    def when_clicked(self):
         return self.events.get_event("<Button-1>")
 
-    @when_pressed.setter
-    def when_pressed(self, value):
+    @when_clicked.setter
+    def when_clicked(self, value):
         self.events.set_event("<Button-1>", value)
 
     @property
@@ -262,3 +262,11 @@ class EventsMixin():
     @when_mouse_moved.setter
     def when_mouse_moved(self, value):
         self.events.set_event("<Motion>", value)
+
+    @property
+    def when_mouse_dragged(self):
+        return self.events.get_event("<B1-Motion>")
+
+    @when_mouse_dragged.setter
+    def when_mouse_dragged(self, value):
+        self.events.set_event("<B1-Motion>", value)
