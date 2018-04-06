@@ -1,64 +1,55 @@
-from guizero import App, Text, TextBox
+from guizero import App, Text, TextBox, Slider, Waffle
+
+def print_event_data(e):
+    print(e.tk_event.type)
+    print(e.x)
+    print(e.y)
+    print(e.display_x)
+    print(e.display_y)
+    print(e.key)
 
 def clicked(e):
     print("clicked")
-    print(e.widget)
-    print(e.tk_event.type)
-    print(e.x)
-    print(e.y)
-    print(e.key)
-
+    print_event_data(e)
+    
 def key(e):
     print("key pressed")
-    print(e.widget)
-    print(e.tk_event.type)
-    print(e.x)
-    print(e.y)
-    print(e.display_x)
-    print(e.display_y)
-    print(e.key)
-
+    print_event_data(e)
+    
 def mouse_over(e):
     print("mouse over")
-    print(e.widget)
-    print(e.tk_event.type)
-    print(e.x)
-    print(e.y)
-    print(e.key)
-
+    print_event_data(e)
+    
 def mouse_moved(e):
     print("mouse moved")
-    print(e.widget)
-    print(e.tk_event.type)
-    print(e.x)
-    print(e.y)
-    print(e.display_x)
-    print(e.display_y)
-    print(e.key)
-
-
+    print_event_data(e)
+    
 def mouse_dragged(e):
     print("mouse dragged")
-    print(e.widget)
-    print(e.tk_event.type)
-    print(e.x)
-    print(e.y)
-    print(e.display_x)
-    print(e.display_y)
-    print(e.key)
-
+    print_event_data(e)
+    
 def press():
     print("press")
+    print_event_data(e)
 
 def release():
     print("release")
+    print_event_data(e)
 
 app = App()
 text = Text(app, text="hi")
+slider = Slider(app)
+waffle = Waffle(app)
+
 text_box = TextBox(app)
 
-app.when_clicked = clicked
-app.events.set_event("myclick", "<Button-1>", press)
+#slider.when_clicked = clicked
+waffle.when_clicked = clicked
+waffle.when_key_pressed = key
+
+# app.when_clicked = clicked
+# app.events.set_event("myclick", "<Button-1>", press)
+
 
 # app.when_key_pressed = key
 # app.events.set_event("<KeyRelease>", release)

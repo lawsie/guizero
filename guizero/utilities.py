@@ -346,7 +346,17 @@ def with_args( func_name, *args):
 
 # Gets the number of args a function expects
 def no_args_expected(func_name):
-    return len(getfullargspec(func_name).args)
+    args = getfullargspec(func_name).args
+    if len(args) > 0:
+        # if someone names the first arg of a class function to something 
+        # other than self, this will fail! or if they name the first argument
+        # of a non class function to self this will fail!
+        if args[0] == "self":
+            return len(args) - 1
+        else:
+            return len(args)
+    else:
+        return 0
 
 # Format errors in a pretty way
 def error_format(message):

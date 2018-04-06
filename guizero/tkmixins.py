@@ -197,7 +197,7 @@ class EventsMixin():
 
     @when_clicked.setter
     def when_clicked(self, value):
-        self.events.set_event("<when_clicked>", "<Button-1>", value)
+        self.events.set_event("<when_clicked>", "<ButtonPress-1>", value)
 
     @property
     def when_left_button_pressed(self):

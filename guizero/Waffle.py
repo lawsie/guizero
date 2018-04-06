@@ -1,6 +1,7 @@
 from tkinter import Canvas, BOTH, Frame
 from . import utilities as utils
 from .base import Widget
+from .event import EventManager
 
 class Waffle(Widget):
 
@@ -29,6 +30,9 @@ class Waffle(Widget):
 
         # Bind the left mouse click to the canvas so we can click on the waffle
         self._canvas.bind("<Button-1>", self._clicked_on)
+
+        #override the event manager so it uses the canvas not the frame
+        self._events = EventManager(self, self._canvas)
 
     # METHODS
     # -------------------------------------------

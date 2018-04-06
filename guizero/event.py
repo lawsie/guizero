@@ -12,47 +12,69 @@ class EventData():
 
     @property
     def widget(self):
+        """
+        The guizero widget which raised the event
+        """
         return self._widget
 
     @property
     def tk_event(self):
+        """
+        The tkinter event which was returned by the event
+        """
         return self._tk_event
 
     @property
     def key(self):
+        """
+        The key which was pressed and generated the event.  
+        """
         return self._tk_event.char
 
     @property
     def x(self):
+        """
+        The x position of the mouse relative to the upper left hand corner of the widget when the event occured.   
+        """
         return self._tk_event.x
 
     @property
     def y(self):
+        """
+        The y position of the mouse relative to the upper left hand corner of the widget when the event occured.   
+        """
         return self._tk_event.y
 
     @property
     def display_x(self):
+        """
+        The x position of the mouse relative to the upper left hand corner of the display when the event occured.   
+        """
         return self._tk_event.x_root
 
     @property
     def display_y(self):
+        """
+        The y position of the mouse relative to the upper left hand corner of the display when the event occured.   
+        """
         return self._tk_event.y_root
 
 
 class EventCallback():
 
-    def __init__(self, widget, tk_event):
+    def __init__(self, widget, tk, tk_event):
         """
         The EventCallback handles all the callbacks for a single tk event (e.g. <Button-1>) on a widget
 
         By using the EventCallback structure you can assign multiple callbacks to 1 tk event.
         """
         self._widget = widget
+        self._tk = tk
         self._tk_event = tk_event
         self._callbacks = {}
 
         # bind to the tk event
-        self._func_id = self._widget.tk.bind(tk_event, self._event_callback)
+        self._func_id = self._tk.bind(tk_event, self._event_callback)
         
     def _event_callback(self, tk_event):
         # the tk event has fired, run all the callbacks associated to this event
@@ -105,7 +127,7 @@ class EventCallback():
 
 class EventManager():
     
-    def __init__(self, widget):
+    def __init__(self, widget, tk):
         """
         The EventManager handles all the events and callbacks for a widget.
 
@@ -113,6 +135,7 @@ class EventManager():
         is how events are managed internally within guizero
         """
         self._widget = widget
+        self._tk = tk
         self._refs = {}
         self._event_callbacks = {}
 
@@ -133,7 +156,7 @@ class EventManager():
         """
         # has an EventCallback been created for this tk event
         if tk_event not in self._event_callbacks:
-            self._event_callbacks[tk_event] = EventCallback(self._widget, tk_event)
+            self._event_callbacks[tk_event] = EventCallback(self._widget, self._tk, tk_event)
             
         # assign this ref to this event callback
         self._refs[ref] = self._event_callbacks[tk_event]

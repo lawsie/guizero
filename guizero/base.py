@@ -30,7 +30,7 @@ class Base(
         self._tk = tk
         self._description = description
 
-        self._events = EventManager(self)
+        self._events = EventManager(self, tk)
         
     @property
     def master(self):
