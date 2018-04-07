@@ -1,4 +1,4 @@
-from guizero import App, Text, TextBox, Slider, Waffle
+from guizero import App, Box, Text, TextBox, Slider, Waffle, CheckBox, Combo, Picture
 
 def print_event_data(e):
     print(e.tk_event.type)
@@ -28,28 +28,63 @@ def mouse_dragged(e):
     print("mouse dragged")
     print_event_data(e)
     
-def press():
+def press(e):
     print("press")
     print_event_data(e)
+    e.widget.bg = "red"
 
-def release():
+def release(e):
     print("release")
     print_event_data(e)
+    e.widget.bg = "white"
 
 app = App()
-text = Text(app, text="hi")
-slider = Slider(app)
+box = Box(app)
+text = Text(box, text="events")
+slider = Slider(box)
+check = CheckBox(app, "check")
+combo = Combo(app, ["hi", "bye"])
+pic = Picture(app, image="guizero.gif")
 waffle = Waffle(app)
-
 text_box = TextBox(app)
 
+# slider.when_left_button_pressed = press
+# slider.when_left_button_released = release
+# slider.when_key_pressed = press
+# slider.when_key_released = release
+
+# check.when_left_button_pressed = press
+# check.when_left_button_released = release
+# check.when_key_pressed = press
+# check.when_key_released = release
+
+# box.when_left_button_pressed = press
+# box.when_left_button_released = release
+# box.when_key_pressed = press
+# box.when_key_released = release
+
+# pic.when_left_button_pressed = press
+# pic.when_left_button_released = release
+# pic.when_key_pressed = press
+# pic.when_key_released = release
+
+
+# combo.when_left_button_pressed = press
+# combo.when_left_button_released = release
+# combo.when_key_pressed = press
+# combo.when_key_released = release
+
+
 #slider.when_clicked = clicked
-waffle.when_clicked = clicked
-waffle.when_key_pressed = key
+#waffle.when_clicked = clicked
+# waffle.when_key_pressed = key
+
+#waffle.when_left_button_pressed = press
+waffle.when_left_button_released = release
+#waffle.when_mouse_over = mouse_over
 
 # app.when_clicked = clicked
 # app.events.set_event("myclick", "<Button-1>", press)
-
 
 # app.when_key_pressed = key
 # app.events.set_event("<KeyRelease>", release)

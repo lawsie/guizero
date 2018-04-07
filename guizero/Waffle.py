@@ -28,12 +28,13 @@ class Waffle(Widget):
 
         self._create_waffle()
 
-        # Bind the left mouse click to the canvas so we can click on the waffle
-        self._canvas.bind("<Button-1>", self._clicked_on)
-
         #override the event manager so it uses the canvas not the frame
         self._events = EventManager(self, self._canvas)
 
+        # Bind the left mouse click to the canvas so we can click on the waffle
+        self.events.set_event("<Waffle.ButtonPress-1>", "<ButtonPress-1>", self._clicked_on)
+        
+        
     # METHODS
     # -------------------------------------------
 
@@ -139,7 +140,7 @@ class Waffle(Widget):
     def _clicked_on(self,e):
         # you can only click on the waffle if its enabled
         if self._enabled:
-            canvas = e.widget
+            canvas = e.tk_event.widget
             x = canvas.canvasx(e.x)
             y = canvas.canvasy(e.y)
             pixel_x = int(x / (self._pixel_size + self._pad))
