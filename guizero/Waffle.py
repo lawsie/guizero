@@ -145,8 +145,6 @@ class Waffle(Widget):
         # you can only click on the waffle if its enabled
         if self._enabled:
             canvas = e.tk_event.widget
-            print(e.x)
-            print(e.y)
             x = canvas.canvasx(e.tk_event.x)
             y = canvas.canvasy(e.tk_event.y)
             pixel_x = int(x / (self._pixel_size + self._pad))
