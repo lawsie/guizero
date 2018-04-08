@@ -49,8 +49,11 @@ waffle = Waffle(app)
 text_box = TextBox(app)
 choice = ButtonGroup(app, options=["cheese", "ham", "salad"])
 
-choice.when_left_button_pressed = press
-choice.when_left_button_released = release
+text_box.when_mouse_enters = press
+text_box.when_mouse_leaves = release
+
+# choice.when_left_button_pressed = press
+# choice.when_left_button_released = release
 #choice._options[0].when_left_button_pressed = press
 
 # slider.when_left_button_pressed = press
@@ -84,9 +87,9 @@ choice.when_left_button_released = release
 # waffle.when_clicked = clicked
 # waffle.when_key_pressed = key
 
-waffle.when_left_button_pressed = press
-waffle.when_left_button_released = release
-# waffle.when_mouse_over = mouse_over
+# waffle.when_left_button_pressed = press
+# waffle.when_left_button_released = release
+# waffle.when_mouse_enters = mouse_over
 
 # app.when_clicked = clicked
 # app.events.set_event("myclick", "<Button-1>", press)
@@ -95,7 +98,7 @@ waffle.when_left_button_released = release
 # app.events.set_event("myref1", "<KeyRelease>", release)
 # app.events.set_event("myref2", "<ButtonPress-1>", press)
 # app.events.set_event("myref2", "<ButtonRelease-1>", release)
-# app.when_mouse_over = mouse_over
+# app.when_mouse_enters = mouse_over
 # app.when_mouse_moved = mouse_moved
 
 # app.when_left_button_pressed = press
@@ -109,12 +112,12 @@ waffle.when_left_button_released = release
 
 # text.when_clicked = clicked
 # text.when_key_pressed = key
-# text.when_mouse_over = mouse_over
+# text.when_mouse_enters = mouse_over
 # text.when_mouse_moved = mouse_moved
 
 # text_box.when_clicked = clicked
 # text_box.when_key_pressed = key
-# text_box.when_mouse_over = mouse_over
+# text_box.when_mouse_enters = mouse_over
 # text_box.when_mouse_moved = mouse_moved
 
 

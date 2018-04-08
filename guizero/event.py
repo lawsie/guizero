@@ -146,6 +146,7 @@ class EventCallback():
     def tk_event(self):
         return self._tk_event
 
+
 class EventManager():
     
     def __init__(self, widget, *tks):

@@ -248,17 +248,25 @@ class EventsMixin():
         self.events.set_event("<when_key_released>", "<KeyRelease>", value)
 
     @property
-    def when_mouse_over(self):
-        return self.events.get_event("<when_mouse_over>")
+    def when_mouse_enters(self):
+        return self.events.get_event("<when_mouse_enters>")
 
-    @when_mouse_over.setter
-    def when_mouse_over(self, value):
-        self.events.set_event("<when_mouse_over>", "<Enter>", value)
+    @when_mouse_enters.setter
+    def when_mouse_enters(self, value):
+        self.events.set_event("<when_mouse_enters>", "<Enter>", value)
+
+    @property
+    def when_mouse_leaves(self):
+        return self.events.get_event("<when_mouse_leaves>")
+
+    @when_mouse_leaves.setter
+    def when_mouse_leaves(self, value):
+        self.events.set_event("<when_mouse_leaves>", "<Leave>", value)
 
     @property
     def when_mouse_moved(self):
         return self.events.get_event("<when_mouse_moved>")
-
+    
     @when_mouse_moved.setter
     def when_mouse_moved(self, value):
         self.events.set_event("<when_mouse_moved>", "<Motion>", value)
