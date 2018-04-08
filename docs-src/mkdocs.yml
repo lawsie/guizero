@@ -5,13 +5,13 @@ pages:
   - Using guizero:
       - Getting started: start.md
       - Commands: commands.md
-      - Loops and sleeping: blocking.md
       - Multiple windows: multiple_windows.md
       - Layouts: layout.md
       - Alerts: alerts.md
       - Sizes: size.md
       - Colors: colors.md
       - Images: images.md
+      - Loops and sleeping: blocking.md
       - Events: events.md
       - Using tkinter methods: usingtk.md
       - Examples and resources: resources.md
