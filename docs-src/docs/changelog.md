@@ -14,7 +14,7 @@
 - Create `Window` class to support multi-window applications
 - Added `multiline` and `scrollbar` functionality to `TextBox`
 - Refactored guizero to introduce a class hierarchy making guizero wide code easier to implement
-- Added events to all widgets, this should be considered experimental at the moment:
+- Added the following events to all widgets, this should be considered experimental at the moment:
   - `when_clicked`
   - `when_left_button_pressed`
   - `when_left_button_released`

@@ -1,5 +1,7 @@
 ## Events
 
+_Warning - events are currently experimental, issues maybe experienced and the API may change._.
+
 Custom events can be added to guizero widgets to call functions when the user takes the following actions:
 - `when_clicked`
 - `when_left_button_pressed`
@@ -11,6 +13,8 @@ Custom events can be added to guizero widgets to call functions when the user ta
 - `when_mouse_enters`
 - `when_mouse_leaves`
 - `when_mouse_dragged`
+
+Events are set by assigning them to a function. 
 
 ### Example
 
@@ -35,5 +39,3 @@ text_box.when_mouse_leaves = lowlight
 
 app.display()
 ```
-
-_Warning - events are currently experimental and issues maybe experienced_.
