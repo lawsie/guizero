@@ -8,12 +8,12 @@ Custom events can be added to guizero widgets to call functions when the user ta
 - when the left mouse button is pressed - `when_left_button_pressed`
 - when the left mouse button is released - `when_left_button_released`
 - when the right mouse button is pressed - `when_right_button_pressed`
-- when the right mouse button is pressed - `when_right_button_released`
+- when the right mouse button is released - `when_right_button_released`
 - when a key is pressed - `when_key_pressed`
-- when a key is release - `when_key_released`
+- when a key is released - `when_key_released`
 - when the mouse enters a widget - `when_mouse_enters`
 - when the mouse leaves a widget - `when_mouse_leaves`
-- when the mouse is dragged - `when_mouse_dragged`
+- when the mouse is dragged across a widget - `when_mouse_dragged`
 
 Events are set by assigning them to a function:
 
@@ -41,7 +41,7 @@ The event data returned has:
 ```python
 def clicked(event_data):
     print("widget clicked = " + event_data.widget)
-    print("mouse position = " + event_data.x + " " + event_data.y)
+    print("mouse position = " + event_data.x + "." + event_data.y)
     
 widget.when_clicked = clicked
 ```
