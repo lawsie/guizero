@@ -3,7 +3,9 @@ from guizero import App, Window
 from common_test import (
     schedule_after_test,
     schedule_repeat_test,
-    display_test)
+    display_test,
+    events_test,
+    )
 
 def test_default_values():
     a = App()
@@ -52,4 +54,10 @@ def test_display():
     a = App()
     w = Window(a)
     display_test(w)
+    a.destroy()
+
+def test_events():
+    a = App()
+    w = Window(a)
+    events_test(w)
     a.destroy()

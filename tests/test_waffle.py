@@ -7,7 +7,8 @@ from common_test import (
     destroy_test,
     enable_test,
     display_test,
-    color_test
+    color_test,
+    events_test,
     )
 
 def test_default_values():
@@ -215,10 +216,11 @@ def mock_waffle_clicked(w):
     # you cant invoke a tk canvas - this is better than no tests!
     # create a mock event
     ev = MagicMock()
-    ev.widget = w._canvas
-    ev.x = 1
+    ev.widget = w
+    ev.tk_event.widget = w._canvas
+    ev.tk_event.x = 1
     # make sure the y is 1 pixel down
-    ev.y = 1 + w.pixel_size + w.pad
+    ev.tk_event.y = 1 + w.pixel_size + w.pad
     w._clicked_on(ev)
 
 def test_after_schedule():
@@ -255,4 +257,10 @@ def test_color():
     a = App()
     w = Waffle(a)
     color_test(w)
+    a.destroy()
+
+def test_events():
+    a = App()
+    w = Waffle(a)
+    events_test(w)
     a.destroy()

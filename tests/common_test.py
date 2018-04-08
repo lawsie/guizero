@@ -106,7 +106,8 @@ def events_test(widget):
         ("when_right_button_released", "<when_right_button_released>"),
         ("when_key_pressed", "<when_key_pressed>"),
         ("when_key_released", "<when_key_released>"),
-        ("when_mouse_over", "<when_mouse_over>"),
+        ("when_mouse_enters", "<when_mouse_enters>"),
+        ("when_mouse_leaves", "<when_mouse_leaves>"),
         ("when_mouse_dragged", "<when_mouse_dragged>"),
     )
 
