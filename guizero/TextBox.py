@@ -5,7 +5,7 @@ from .base import TextWidget
 
 class TextBox(TextWidget):
 
-    def __init__(self, master, text="", width=10, height=1, grid=None, align=None, visible=True, enabled=True, multiline=False, scrollbar=False):
+    def __init__(self, master, text="", width=10, height=1, grid=None, align=None, visible=True, enabled=True, multiline=False, scrollbar=False, command=None, agrs=None):
 
         description = "[TextBox] object with text \"" + str(text) + "\""
 
@@ -28,6 +28,11 @@ class TextBox(TextWidget):
 
         super(TextBox, self).__init__(master, tk, description, grid, align, visible, enabled)
 
+        self.update_command(command)
+
+        # Bind the key pressed event
+        self.events.set_event("<TextBox.KeyPress>", "<KeyPress>", self._key_pressed)
+        
     # PROPERTIES
     # ----------------------------------
     # The text value
@@ -61,6 +66,22 @@ class TextBox(TextWidget):
 
     # METHODS
     # -------------------------------------------
+    def _key_pressed(self, event):
+        if self._command:
+            args_expected = utils.no_args_expected(self._command)
+            if args_expected == 0:
+                self._command()
+            elif args_expected == 1:
+                self._command(event.key)
+            else:
+                utils.error_format("TextBox command function must accept either 0 or 1 arguments.\nThe current command has {} arguments.".format(args_expected))
+
+    def update_command(self, command):
+        if command is None:
+            self._command = lambda: None
+        else:
+            self._command = command
+    
     # Clear text box
     def clear(self):
         self.value = ""

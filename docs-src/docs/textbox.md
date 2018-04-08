@@ -35,6 +35,8 @@ When you create a `TextBox` object you **must** specify `master` and you can spe
 | enabled   | boolean   | True    | No         | If the widget should be enabled.  |
 | multiline | boolean   | False   | No         | Create a multi-line text box.  |
 | scrollbar | boolean   | False   | No         | Add a vertical scrollbar to a multi-line text box  |
+| command | function name | None | -   | The name of a function to call when the text is changed. This function MUST take either zero or one argument, if the function takes one argument the key which was added to the textbox will be returned. 
+
 
 ### Methods
 
@@ -53,6 +55,7 @@ You can call the following methods on your TextBox object.
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden   |
+| update_command(command)   | command (function name)  | -          | Updates the function to call when the text is changed.  |
 | _get()_ | - | _string_ |  _Replaced by `value` property_ |
 | _set(text)_ | _text (string)_ | - |  _Replaced by `value` property_ |
 
