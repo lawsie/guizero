@@ -9,6 +9,7 @@ from common_test import (
     text_test,
     color_test, 
     size_text_test,
+    events_test,
     )
 
 def test_default_values():
@@ -167,4 +168,10 @@ def test_size():
     a = App()
     s = Slider(a)
     size_text_test(s)
+    a.destroy()
+
+def test_events():
+    a = App()
+    s = Slider(a)
+    events_test(s)
     a.destroy()

@@ -1,6 +1,7 @@
 from tkinter import Canvas, BOTH, Frame
 from . import utilities as utils
 from .base import Widget
+from .event import EventManager
 
 class Waffle(Widget):
 
@@ -27,9 +28,13 @@ class Waffle(Widget):
 
         self._create_waffle()
 
-        # Bind the left mouse click to the canvas so we can click on the waffle
-        self._canvas.bind("<Button-1>", self._clicked_on)
+        #override the event manager so it uses the canvas not the frame
+        self._events = EventManager(self, self._canvas)
 
+        # Bind the left mouse click to the canvas so we can click on the waffle
+        self.events.set_event("<Waffle.ButtonPress-1>", "<ButtonPress-1>", self._clicked_on)
+        
+        
     # METHODS
     # -------------------------------------------
 
@@ -44,7 +49,7 @@ class Waffle(Widget):
         if self._canvas:
             self._canvas.delete("all")
             self._canvas.destroy()
-
+            
         #size the canvas
         self._c_height = self._height * (self._pixel_size + self._pad)
         self._c_width = self._width * (self._pixel_size + self._pad)
@@ -52,6 +57,10 @@ class Waffle(Widget):
         # create the canvas and pack it into the waffle frame
         self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width)
         self._canvas.pack(fill=BOTH, expand=1)
+
+        # rebind any events as they would have been lost when the canvas
+        # was destroyed
+        self.events.rebind_events(self._canvas)
 
         # fill the canvas background
         if self._bg is not None:
@@ -135,9 +144,9 @@ class Waffle(Widget):
     def _clicked_on(self,e):
         # you can only click on the waffle if its enabled
         if self._enabled:
-            canvas = e.widget
-            x = canvas.canvasx(e.x)
-            y = canvas.canvasy(e.y)
+            canvas = e.tk_event.widget
+            x = canvas.canvasx(e.tk_event.x)
+            y = canvas.canvasy(e.tk_event.y)
             pixel_x = int(x / (self._pixel_size + self._pad))
             pixel_y = int(y / (self._pixel_size + self._pad))
             if self._command:
@@ -188,8 +197,9 @@ class Waffle(Widget):
 
     @width.setter
     def width(self, value):
-        self._width = value
-        self._create_waffle()
+        if self._width != value:
+            self._width = value
+            self._create_waffle()
 
     @property
     def height(self):
@@ -197,8 +207,9 @@ class Waffle(Widget):
 
     @height.setter
     def height(self, value):
-        self._height = value
-        self._create_waffle()
+        if self._height != value:
+            self._height = value
+            self._create_waffle()
 
     @property
     def pixel_size(self):
@@ -206,8 +217,9 @@ class Waffle(Widget):
 
     @pixel_size.setter
     def pixel_size(self, value):
-        self._pixel_size = value
-        self._create_waffle()
+        if self._pixel_size != value:
+            self._pixel_size = value
+            self._create_waffle()
 
     @property
     def pad(self):
@@ -215,8 +227,9 @@ class Waffle(Widget):
 
     @pad.setter
     def pad(self, value):
-        self._pad = value
-        self._create_waffle()
+        if self._pad != value:
+            self._pad = value
+            self._create_waffle()
 
     @property
     def color(self):
@@ -250,8 +263,10 @@ class Waffle(Widget):
     # Set the background colour
     @bg.setter
     def bg(self, color):
-        self._bg = utils.convert_color(color)
-        self._create_waffle()
+        color = utils.convert_color(color)
+        if self._bg != color:
+            self._bg = color
+            self._create_waffle()
 
     def reset(self):
         # reset all the colors and dottiness

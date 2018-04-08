@@ -8,6 +8,7 @@ from common_test import (
     text_test,
     color_test, 
     size_text_test,
+    events_test,
     )
 
 def test_default_values():
@@ -121,4 +122,10 @@ def test_height():
     t2.height = 10
     assert t2.height == 10
 
+    a.destroy()
+
+def test_events():
+    a = App()
+    t = TextBox(a)
+    events_test(t)
     a.destroy()

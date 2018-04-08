@@ -10,6 +10,7 @@ from common_test import (
     text_test,
     color_test, 
     size_text_test,
+    events_test,
     )
 
 def test_default_values():
@@ -219,4 +220,10 @@ def test_size():
     a = App()
     b = PushButton(a)
     size_text_test(b)
+    a.destroy()
+
+def test_events():
+    a = App()
+    p = PushButton(a)
+    events_test(p)
     a.destroy()

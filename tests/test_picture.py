@@ -7,7 +7,8 @@ from common_test import (
     enable_test,
     display_test,
     text_test,
-    color_test
+    color_test,
+    events_test,
     )
 
 def test_default_values():
@@ -132,3 +133,8 @@ def test_color():
     color_test(p)
     a.destroy()
 
+def test_events():
+    a = App()
+    p = Picture(a)
+    events_test(p)
+    a.destroy()

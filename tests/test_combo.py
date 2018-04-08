@@ -9,6 +9,7 @@ from common_test import (
     text_test,
     color_test, 
     size_text_test,
+    events_test,
     )
 
 def test_default_values():
@@ -193,4 +194,10 @@ def test_size():
     a = App()
     c = Combo(a, ["foo", "bar"])
     size_text_test(c)
+    a.destroy()
+
+def test_events():
+    a = App()
+    c = Combo(a, ["foo", "bar"])
+    events_test(c)
     a.destroy()

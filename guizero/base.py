@@ -10,9 +10,11 @@ from .tkmixins import (
     TextMixin, 
     ColorMixin, 
     SizeMixin,
-    GridMixin)
+    GridMixin,
+    EventsMixin)
 
 from . import utilities as utils
+from .event import EventManager
 
 class Base(
     ScheduleMixin,
@@ -27,6 +29,8 @@ class Base(
         self._tk = tk
         self._description = description
 
+        self._events = EventManager(self, tk)
+        
     @property
     def master(self):
         """
@@ -55,15 +59,22 @@ class Base(
     def __repr__(self):
         return self.description
 
+    @property
+    def events(self):
+        """
+        Returns the EventManager which can be used to set custom event handlers
+        """
+        return self._events
 
-class Container(Base):
+
+class Container(Base, EventsMixin):
 
     def __init__(self, master, tk, description, layout):
         """
         An abstract class for a container which can hold other widgets
         """
-        self._layout_manager = layout
         super(Container, self).__init__(master, tk, description)
+        self._layout_manager = layout
 
     @property
     def layout(self):
@@ -79,7 +90,6 @@ class BaseWindow(Container):
         """
         Base class for objects which use windows (e.g. App and Window)
         """
-
         super(BaseWindow, self).__init__(master, tk, description, layout)
 
         # Initial setup
@@ -176,7 +186,8 @@ class Widget(
     DisplayMixin, 
     ColorMixin,
     SizeMixin,
-    GridMixin):
+    GridMixin,
+    EventsMixin):
 
     def __init__(self, master, tk, description, grid, align, visible, enabled):
         """

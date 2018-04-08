@@ -187,3 +187,94 @@ class GridMixin():
         Returns the alignment of this widget within its grid location.
         """
         return self._align
+
+
+class EventsMixin():
+
+    @property
+    def when_clicked(self):
+        return self.events.get_event("<when_clicked>")
+
+    @when_clicked.setter
+    def when_clicked(self, value):
+        self.events.set_event("<when_clicked>", "<ButtonPress-1>", value)
+
+    @property
+    def when_left_button_pressed(self):
+        return self.events.get_event("<when_left_button_pressed>")
+
+    @when_left_button_pressed.setter
+    def when_left_button_pressed(self, value):
+        self.events.set_event("<when_left_button_pressed>", "<ButtonPress-1>", value)
+
+    @property
+    def when_left_button_released(self):
+        return self.events.get_event("<when_left_button_released>")
+
+    @when_left_button_released.setter
+    def when_left_button_released(self, value):
+        self.events.set_event("<when_left_button_released>", "<ButtonRelease-1>", value)
+
+    @property
+    def when_right_button_pressed(self):
+        return self.events.get_event("<when_right_button_pressed>")
+
+    @when_right_button_pressed.setter
+    def when_right_button_pressed(self, value):
+        self.events.set_event("<when_right_button_pressed>", "<ButtonPress-3>", value)
+
+    @property
+    def when_right_button_released(self):
+        return self.events.get_event("<when_right_button_released>")
+
+    @when_right_button_released.setter
+    def when_right_button_released(self, value):
+        self.events.set_event("<when_right_button_released>", "<ButtonRelease-3>", value)
+
+    @property
+    def when_key_pressed(self):
+        return self.events.get_event("<when_key_pressed>")
+
+    @when_key_pressed.setter
+    def when_key_pressed(self, value):
+        self.events.set_event("<when_key_pressed>", "<KeyPress>", value)
+
+    @property
+    def when_key_released(self):
+        return self.events.get_event("<when_key_released>")
+
+    @when_key_released.setter
+    def when_key_released(self, value):
+        self.events.set_event("<when_key_released>", "<KeyRelease>", value)
+
+    @property
+    def when_mouse_enters(self):
+        return self.events.get_event("<when_mouse_enters>")
+
+    @when_mouse_enters.setter
+    def when_mouse_enters(self, value):
+        self.events.set_event("<when_mouse_enters>", "<Enter>", value)
+
+    @property
+    def when_mouse_leaves(self):
+        return self.events.get_event("<when_mouse_leaves>")
+
+    @when_mouse_leaves.setter
+    def when_mouse_leaves(self, value):
+        self.events.set_event("<when_mouse_leaves>", "<Leave>", value)
+
+    @property
+    def when_mouse_moved(self):
+        return self.events.get_event("<when_mouse_moved>")
+    
+    @when_mouse_moved.setter
+    def when_mouse_moved(self, value):
+        self.events.set_event("<when_mouse_moved>", "<Motion>", value)
+
+    @property
+    def when_mouse_dragged(self):
+        return self.events.get_event("<when_mouse_dragged>")
+
+    @when_mouse_dragged.setter
+    def when_mouse_dragged(self, value):
+        self.events.set_event("<when_mouse_dragged>", "<B1-Motion>", value)

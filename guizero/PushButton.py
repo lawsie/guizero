@@ -27,8 +27,8 @@ class PushButton(TextWidget):
         self.tk.config(pady=pady, padx=padx)
 
         # Setup events for press and release
-        self.tk.bind("<ButtonPress>", self._on_press)
-        self.tk.bind("<ButtonRelease>", self._on_release) 
+        self.events.set_event("<PushButton.ButtonPress-1>", "<ButtonPress-1>", self._on_press)
+        self.events.set_event("<PushButton.ButtonRelease-1>", "<ButtonRelease-1>", self._on_release)
 
         self.update_command(command, args)
 
