@@ -3,6 +3,7 @@ from . import utilities as utils
 from .base import ContainerWidget
 from .tkmixins import TextMixin
 from .RadioButton import RadioButton
+from .event import EventManager
 
 class ButtonGroup(
     ContainerWidget, 
@@ -13,9 +14,6 @@ class ButtonGroup(
         description = "[ButtonGroup] object with selected option \"" + str(selected) + "\""
 
         self._options = []   # List of RadioButton objects
-
-        # ButtonGroup uses "grid" internally to sort the RadioButtons
-        #self._layout_manager = "grid"
 
         # Create a Tk frame object to contain the RadioButton objects
         tk = Frame(master.tk)
@@ -69,6 +67,11 @@ class ButtonGroup(
 
         # Add a command if there was one
         self.update_command(command, args)
+
+        # override the event manager and associate the button group and the
+        # radio buttons to it
+        option_tks = [option.tk for option in self._options]
+        self._events = EventManager(self, self.tk, *option_tks)
 
     # PROPERTIES
     # -----------------------------------

@@ -5,7 +5,8 @@ class EventData():
     
     def __init__(self, widget, tk_event):
         """
-        The EventData class represents a single event and is passed back to the callback
+        The EventData class represents a single event and is passed back to
+        the callback
         """
         self._widget = widget
         self._tk_event = tk_event
@@ -34,47 +35,56 @@ class EventData():
     @property
     def x(self):
         """
-        The x position of the mouse relative to the upper left hand corner of the widget when the event occured.   
+        The x position of the mouse relative to the upper left hand corner of 
+        the widget when the event occured.   
         """
         return self._tk_event.x
 
     @property
     def y(self):
         """
-        The y position of the mouse relative to the upper left hand corner of the widget when the event occured.   
+        The y position of the mouse relative to the upper left hand corner of 
+        the widget when the event occured.   
         """
         return self._tk_event.y
 
     @property
     def display_x(self):
         """
-        The x position of the mouse relative to the upper left hand corner of the display when the event occured.   
+        The x position of the mouse relative to the upper left hand corner of 
+        the display when the event occured.   
         """
         return self._tk_event.x_root
 
     @property
     def display_y(self):
         """
-        The y position of the mouse relative to the upper left hand corner of the display when the event occured.   
+        The y position of the mouse relative to the upper left hand corner of 
+        the display when the event occured.   
         """
         return self._tk_event.y_root
 
 
 class EventCallback():
 
-    def __init__(self, widget, tk, tk_event):
+    def __init__(self, widget, tks, tk_event):
         """
-        The EventCallback handles all the callbacks for a single tk event (e.g. <Button-1>) on a widget
+        The EventCallback handles all the callbacks for a single tk event 
+        (e.g. <Button-1>) on a guizero widget.
 
-        By using the EventCallback structure you can assign multiple callbacks to 1 tk event.
+        By using the EventCallback structure you can assign multiple callbacks
+        to 1 tk event across multiple tk widgets.
         """
         self._widget = widget
-        self._tk = tk
+        self._tks = tks
         self._tk_event = tk_event
         self._callbacks = {}
+        self._func_ids = []
 
         # bind to the tk event
-        self._func_id = self._tk.bind(tk_event, self._event_callback)
+        for tk in self._tks:
+            func_id = tk.bind(tk_event, self._event_callback)
+            self._func_ids.append(func_id)
         
     def _event_callback(self, tk_event):
         # the tk event has fired, run all the callbacks associated to this event
@@ -127,15 +137,19 @@ class EventCallback():
 
 class EventManager():
     
-    def __init__(self, widget, tk):
+    def __init__(self, widget, *tks):
         """
-        The EventManager handles all the events and callbacks for a widget.
+        The EventManager handles all the events and callbacks for a guizero
+        widget.
 
         Every event created must be given a reference, this reference
-        is how events are managed internally within guizero
+        is how events are managed internally within guizero.
+
+        A guizero can contain many tk widgets, so all the tk ojects for this
+        guizero widget need to passed.
         """
         self._widget = widget
-        self._tk = tk
+        self._tks = tks
         self._refs = {}
         self._event_callbacks = {}
 
@@ -151,12 +165,12 @@ class EventManager():
 
     def set_event(self, ref, tk_event, callback):
         """
-        Sets a callback for this widget against a ref (reference) for a tk_event,
-        setting the callback to None will remove it.
+        Sets a callback for this widget against a ref (reference) for a 
+        tk_event, setting the callback to None will remove it.
         """
         # has an EventCallback been created for this tk event
         if tk_event not in self._event_callbacks:
-            self._event_callbacks[tk_event] = EventCallback(self._widget, self._tk, tk_event)
+            self._event_callbacks[tk_event] = EventCallback(self._widget, self._tks, tk_event)
             
         # assign this ref to this event callback
         self._refs[ref] = self._event_callbacks[tk_event]

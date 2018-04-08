@@ -19,8 +19,7 @@ from .event import EventManager
 class Base(
     ScheduleMixin,
     DestroyMixin,
-    FocusMixin,
-    EventsMixin):
+    FocusMixin):
 
     def __init__(self, master, tk, description):
         """
@@ -68,7 +67,7 @@ class Base(
         return self._events
 
 
-class Container(Base):
+class Container(Base, EventsMixin):
 
     def __init__(self, master, tk, description, layout):
         """
@@ -187,7 +186,8 @@ class Widget(
     DisplayMixin, 
     ColorMixin,
     SizeMixin,
-    GridMixin):
+    GridMixin,
+    EventsMixin):
 
     def __init__(self, master, tk, description, grid, align, visible, enabled):
         """

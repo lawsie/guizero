@@ -1,4 +1,4 @@
-from guizero import App, Box, Text, TextBox, Slider, Waffle, CheckBox, Combo, Picture
+from guizero import App, Box, Text, TextBox, Slider, Waffle, CheckBox, Combo, Picture, ButtonGroup
 
 def print_event_data(e):
     print(e.tk_event.type)
@@ -47,6 +47,11 @@ combo = Combo(app, ["hi", "bye"])
 pic = Picture(app, image="guizero.gif")
 waffle = Waffle(app)
 text_box = TextBox(app)
+choice = ButtonGroup(app, options=["cheese", "ham", "salad"])
+
+choice.when_left_button_pressed = press
+choice.when_left_button_released = release
+#choice._options[0].when_left_button_pressed = press
 
 # slider.when_left_button_pressed = press
 # slider.when_left_button_released = release
@@ -80,16 +85,16 @@ text_box = TextBox(app)
 # waffle.when_key_pressed = key
 
 #waffle.when_left_button_pressed = press
-waffle.when_left_button_released = release
+#waffle.when_left_button_released = release
 #waffle.when_mouse_over = mouse_over
 
 # app.when_clicked = clicked
 # app.events.set_event("myclick", "<Button-1>", press)
 
 # app.when_key_pressed = key
-# app.events.set_event("<KeyRelease>", release)
-# app.events.set_event("<ButtonPress-1>", press)
-# app.events.set_event("<ButtonRelease-1>", release)
+# app.events.set_event("myref1", "<KeyRelease>", release)
+# app.events.set_event("myref2", "<ButtonPress-1>", press)
+# app.events.set_event("myref2", "<ButtonRelease-1>", release)
 # app.when_mouse_over = mouse_over
 # app.when_mouse_moved = mouse_moved
 
