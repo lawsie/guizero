@@ -45,6 +45,7 @@ class Waffle(Widget):
         self._draw_waffle()
 
     def _create_canvas(self):
+        print("create canvas")
         # if the canvas exists, clear it and destroy it
         if self._canvas:
             self._canvas.delete("all")
@@ -199,8 +200,9 @@ class Waffle(Widget):
 
     @width.setter
     def width(self, value):
-        self._width = value
-        self._create_waffle()
+        if self._width != value:
+            self._width = value
+            self._create_waffle()
 
     @property
     def height(self):
@@ -208,8 +210,9 @@ class Waffle(Widget):
 
     @height.setter
     def height(self, value):
-        self._height = value
-        self._create_waffle()
+        if self._height != value:
+            self._height = value
+            self._create_waffle()
 
     @property
     def pixel_size(self):
@@ -217,8 +220,9 @@ class Waffle(Widget):
 
     @pixel_size.setter
     def pixel_size(self, value):
-        self._pixel_size = value
-        self._create_waffle()
+        if self._pixel_size != value:
+            self._pixel_size = value
+            self._create_waffle()
 
     @property
     def pad(self):
@@ -226,8 +230,9 @@ class Waffle(Widget):
 
     @pad.setter
     def pad(self, value):
-        self._pad = value
-        self._create_waffle()
+        if self._pad != value:
+            self._pad = value
+            self._create_waffle()
 
     @property
     def color(self):
@@ -261,8 +266,10 @@ class Waffle(Widget):
     # Set the background colour
     @bg.setter
     def bg(self, color):
-        self._bg = utils.convert_color(color)
-        self._create_waffle()
+        color = utils.convert_color(color)
+        if self._bg != color:
+            self._bg = color
+            self._create_waffle()
 
     def reset(self):
         # reset all the colors and dottiness
