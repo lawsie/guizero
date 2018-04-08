@@ -34,4 +34,5 @@ process is designed to be as simple as possible.""",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
     ],
+    install_requires=[pillow],
 )
