@@ -81,12 +81,12 @@ choice.when_left_button_released = release
 
 
 #slider.when_clicked = clicked
-#waffle.when_clicked = clicked
+# waffle.when_clicked = clicked
 # waffle.when_key_pressed = key
 
-#waffle.when_left_button_pressed = press
-#waffle.when_left_button_released = release
-#waffle.when_mouse_over = mouse_over
+waffle.when_left_button_pressed = press
+waffle.when_left_button_released = release
+# waffle.when_mouse_over = mouse_over
 
 # app.when_clicked = clicked
 # app.events.set_event("myclick", "<Button-1>", press)

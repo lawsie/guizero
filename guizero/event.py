@@ -127,6 +127,17 @@ class EventCallback():
         if ref in self._callbacks:
             del self._callbacks[ref]
 
+    def rebind(self, tks):
+        """
+        Rebinds the tk event, only used if a widget has been destroyed
+        and recreated.
+        """
+        self._tks = tks
+        for tk in self._tks:
+            tk.unbind_all(self._tk_event)
+            func_id = tk.bind(self._tk_event, self._event_callback)
+            self._func_ids.append(func_id)
+
     @property
     def widget(self):
         return self._widget
@@ -186,3 +197,10 @@ class EventManager():
         if ref in self._refs:
             self._refs[ref].remove_callback(ref)
         
+    def rebind_events(self, *tks):
+        """
+        Rebinds all the tk events, only used if a tk widget has been destroyed
+        and recreated.
+        """
+        for ref in self._refs:
+            self._refs[ref].rebind(tks)

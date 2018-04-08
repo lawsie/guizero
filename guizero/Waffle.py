@@ -49,7 +49,7 @@ class Waffle(Widget):
         if self._canvas:
             self._canvas.delete("all")
             self._canvas.destroy()
-
+            
         #size the canvas
         self._c_height = self._height * (self._pixel_size + self._pad)
         self._c_width = self._width * (self._pixel_size + self._pad)
@@ -57,6 +57,10 @@ class Waffle(Widget):
         # create the canvas and pack it into the waffle frame
         self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width)
         self._canvas.pack(fill=BOTH, expand=1)
+
+        # rebind any events as they would have been lost when the canvas
+        # was destroyed
+        self.events.rebind_events(self._canvas)
 
         # fill the canvas background
         if self._bg is not None:
