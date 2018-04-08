@@ -45,7 +45,6 @@ class Waffle(Widget):
         self._draw_waffle()
 
     def _create_canvas(self):
-        print("create canvas")
         # if the canvas exists, clear it and destroy it
         if self._canvas:
             self._canvas.delete("all")
