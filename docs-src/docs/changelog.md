@@ -1,20 +1,19 @@
 # guizero
 
-## 0.5.0 - tbc
+## 0.5.0 - 2018-04-10
 
+- v0.5.0 includes significant refactoring of the guizero code base and introduces many new features
 - New image functionality introduced when PIL is installed:
     - images can be passed as `Tk.PhotoImage` or `PIL.Image` objects as well as file paths
     - more images types are supported
     - animated images (gifs) are supported
     - images are scaled when the size is changed
 - `ButtonGroup` - `selected` is now optional, `enabled` properties now supported, `value_text` fixed
-- Various minor bug fixes
-- Automated tests have been introduced
 - Fixed multiple `App` bug
-- Create `Window` class to support multi-window applications
+- Created `Window` class to support multi-window applications
 - Added `multiline` and `scrollbar` functionality to `TextBox`
-- Refactored guizero to introduce a class hierarchy making guizero wide code easier to implement
-- Added the following events to all widgets, this should be considered experimental at the moment:
+- Refactored guizero to introduce a class hierarchy making guizero wide code changes easier to implement
+- Added the following events to all widgets, this should be considered experimental in this release:
     - `when_clicked`
     - `when_left_button_pressed`
     - `when_left_button_released`
@@ -25,7 +24,8 @@
     - `when_mouse_enters`
     - `when_mouse_leaves`
     - `when_mouse_dragged`
-
+- Various minor bug fixes
+- Automated tests have been introduced
 - contributors to this release [martinohanlon](https://github.com/martinohanlon), [scotty3785](https://github.com/scotty3785), [IDF31](https://github.com/IDF31), [drussell1974](https://github.com/drussell1974)  - ta very much :)
 
 ## 0.4.5 - 2018-03-04
