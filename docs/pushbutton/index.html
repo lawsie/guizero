@@ -63,11 +63,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../start/">Getting Started</a>
+    <a class="" href="../start/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../commands/">Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../multiple_windows/">Multiple windows</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../layout/">Layouts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../alerts/">Alerts</a>
                 </li>
                 <li class="">
                     
@@ -79,15 +91,19 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../alerts/">Alerts</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../usingtk/">Using tkinter methods</a>
+    <a class="" href="../images/">Images</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../blocking/">Loops and sleeping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../events/">Events</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../usingtk/">Using tkinter methods</a>
                 </li>
                 <li class="">
                     
@@ -168,6 +184,10 @@
                     
     <a class="" href="../waffle/">Waffle</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../window/">Window</a>
+                </li>
     </ul>
 	    </li>
           
@@ -233,7 +253,7 @@
               
                 <h1 id="pushbutton">PushButton</h1>
 <p>(Contains a <code>tkinter.Button</code> object)</p>
-<p><code>__init__(self, master, command=None, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None)</code></p>
+<p><code>__init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>PushButton</code> object displays a button with text or an image, which calls a function when pressed.</p>
 <p><img alt="PushButton on Windows" src="../images/pushbutton_windows.png" /></p>
@@ -297,11 +317,11 @@ app.display()
 <td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
 </tr>
 <tr>
-<td>icon</td>
+<td>image</td>
 <td>string</td>
 <td>None</td>
 <td>-</td>
-<td>The path to a GIF image file to display on the button. If both an icon and text are specified, the image will override the text.</td>
+<td>The file path, tkinter.PhotoImage or PIL.Image you wish to display. If both an image and text are specified, the image will override the text.</td>
 </tr>
 <tr>
 <td>padx</td>
@@ -323,6 +343,20 @@ app.display()
 <td>"Button"</td>
 <td>-</td>
 <td>The text to display on the button</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td>If the widget should be visible.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td>If the widget should be enabled.</td>
 </tr>
 </tbody>
 </table>
@@ -381,10 +415,10 @@ app.display()
 <td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
 </tr>
 <tr>
-<td>icon(icon)</td>
-<td>icon (string)</td>
+<td>image(image_source)</td>
+<td>image_source (string)</td>
 <td>-</td>
-<td>Sets the image displayed on the button to the filename specified. If the image is in a different directory, you must specify the relative path.</td>
+<td>The file path, tkinter.PhotoImage or PIL.Image you wish to display.</td>
 </tr>
 <tr>
 <td>padding(padx, pady)</td>
@@ -421,6 +455,12 @@ app.display()
 <td><em>newcommand (function name), args (list)</em></td>
 <td>-</td>
 <td><em>Replaced by update_command function</em></td>
+</tr>
+<tr>
+<td><em>icon(icon)</em></td>
+<td><em>icon (string)</em></td>
+<td>-</td>
+<td><em>The file path, tkinter.PhotoImage or PIL.Image you wish to display</em></td>
 </tr>
 <tr>
 <td><em>set_text(text)</em></td>
@@ -515,7 +555,6 @@ app.display()
 </tr>
 </tbody>
 </table>
-<p><strong>NOTE:</strong> The height and width are currently measured in 'characters' so if you change the font size, this will change the size of the button. <strong>This may change in a future version of guizero.</strong></p>
 <p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>PushButton</code> object is called <code>button</code> you would write <code>button.value</code>.</p>
 <p>You can <strong>set</strong> the property (for example <code>button.bg = "red"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(button.bg)</code>).</p>
               

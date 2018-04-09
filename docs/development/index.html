@@ -63,11 +63,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../start/">Getting Started</a>
+    <a class="" href="../start/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../commands/">Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../multiple_windows/">Multiple windows</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../layout/">Layouts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../alerts/">Alerts</a>
                 </li>
                 <li class="">
                     
@@ -79,15 +91,19 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../alerts/">Alerts</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../usingtk/">Using tkinter methods</a>
+    <a class="" href="../images/">Images</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../blocking/">Loops and sleeping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../events/">Events</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../usingtk/">Using tkinter methods</a>
                 </li>
                 <li class="">
                     
@@ -148,6 +164,10 @@
                     
     <a class="" href="../waffle/">Waffle</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../window/">Window</a>
+                </li>
     </ul>
 	    </li>
           
@@ -171,6 +191,8 @@
             <li><a class="toctree-l4" href="#install-pre-requisites">Install Pre-requisites</a></li>
         
             <li><a class="toctree-l4" href="#python-library">Python library</a></li>
+        
+            <li><a class="toctree-l4" href="#tests">Tests</a></li>
         
             <li><a class="toctree-l4" href="#documents">Documents</a></li>
         
@@ -230,10 +252,7 @@
                 <h1 id="development">Development</h1>
 <p>Notes on how to develop guizero (on Windows).</p>
 <h2 id="install-pre-requisites">Install Pre-requisites</h2>
-<pre><code>pip install mkdocs
-pip install wheel
-pip install twine
-pip install virtualenv
+<pre><code>pip install mkdocs wheel twine virtualenv pytest pillow
 </code></pre>
 
 <h2 id="python-library">Python library</h2>
@@ -258,6 +277,14 @@ python setup.py develop
 <pre><code>Scripts\deactivate
 </code></pre>
 
+<h2 id="tests">Tests</h2>
+<p>To run the automated tests:</p>
+<pre><code>cd guizero\test
+pytest -v 
+</code></pre>
+
+<p><em>Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesnt seem to like being initialised and destroyed hundreds of times, I suspect a file locking issue as you dont see the problem on Linux. So sometimes you might get a test fail with an error like <code>This probably means that tk wasn't installed properly.</code>.</em></p>
+<p><em>Just give it a re-run!</em></p>
 <h2 id="documents">Documents</h2>
 <p>Test documents by serving up MkDocs:</p>
 <pre><code>cd guizero\docs-src

@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Colors - guizero</title>
+  <title>Multiple windows - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Colors";
-    var mkdocs_page_input_path = "colors.md";
-    var mkdocs_page_url = "/colors/";
+    var mkdocs_page_name = "Multiple windows";
+    var mkdocs_page_input_path = "multiple_windows.md";
+    var mkdocs_page_url = "/multiple_windows/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -69,9 +69,25 @@
                     
     <a class="" href="../commands/">Commands</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../multiple_windows/">Multiple windows</a>
+    <a class="current" href="./">Multiple windows</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#multiple-windows">Multiple Windows</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#a-2nd-window">A 2nd Window</a></li>
+        
+            <li><a class="toctree-l4" href="#opening-and-closing-windows">Opening and closing windows</a></li>
+        
+            <li><a class="toctree-l4" href="#modal-windows">Modal windows</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -85,25 +101,9 @@
                     
     <a class="" href="../size/">Sizes</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Colors</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#colors-or-colours">Colors (or Colours)</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#color-names">Color names</a></li>
-        
-            <li><a class="toctree-l4" href="#rgb-hex-value">rgb hex value</a></li>
-        
-            <li><a class="toctree-l4" href="#rgb-list">rgb list</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../colors/">Colors</a>
                 </li>
                 <li class="">
                     
@@ -237,7 +237,7 @@
         
       
     
-    <li>Colors</li>
+    <li>Multiple windows</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -247,59 +247,60 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="colors-or-colours">Colors (or Colo<strong>u</strong>rs)</h2>
-<p>You can set colors in guizero using:</p>
-<ul>
-<li>the name of the color - <code>white</code></li>
-<li>a #rgb hex value - <code>#ffffff</code></li>
-<li>a list of rgb values - <code>(255,255,255)</code> </li>
-</ul>
-<p>Colors can be used as either starting parameters e.g. :</p>
-<pre><code class="python">app = App(bg = &quot;red&quot;)
-app = App(bg = &quot;#ff0000&quot;)
-app = App(bg = (255, 0, 0))
+                <h2 id="multiple-windows">Multiple Windows</h2>
+<p>A guizero application should only have have 1 <a href="../app/">App</a> object, this is the main window and controller of your program.</p>
+<p>If you want to create a 2nd (or 3rd, 4th, 5th) window, your program should use a <a href="../window/">Window</a> object.</p>
+<h3 id="a-2nd-window">A 2nd Window</h3>
+<p>Creating a 2nd Window is easy and just like creating a widget you need to pass it the App:</p>
+<pre><code class="python">from guizero import App, Window
+
+app = App(title = &quot;Main window&quot;)
+window = Window(app, title = &quot;2nd window&quot;)
+
+app.display
+
 </code></pre>
 
-<p>or as properties e.g. :</p>
-<pre><code class="python">text = Text(app, text = &quot;hi&quot;)
-text.text_color = &quot;green&quot;
-text.text_color = &quot;#00ff00&quot;
-text.text_color = (0, 255, 0)
+<p>Adding widgets to the 2nd window is the same as adding them to an app, by passing the same of the window:</p>
+<pre><code class="python">from guizero import App, Window, Text
+
+app = App(title = &quot;Main window&quot;)
+window = Window(app, title = &quot;2nd window&quot;)
+text = Text(window, text=&quot;text&quot;)
+
+app.display
+
 </code></pre>
 
-<h3 id="color-names">Color names</h3>
-<p>Color names can be given as strings e.g.</p>
-<ul>
-<li><code>white</code></li>
-<li><code>black</code></li>
-<li><code>red</code></li>
-<li><code>green</code></li>
-<li><code>blue</code></li>
-<li><code>yellow</code></li>
-</ul>
-<p>A complete list of color names is available at <a href="https://wiki.tcl.tk/37701">wiki.tcl.tk/37701</a></p>
-<h3 id="rgb-hex-value">rgb hex value</h3>
-<p>A rgb color value must start with a <code>#</code> and 6 characters following, 2 each for the red, green and blue value in hex. Each value must be <code>00</code> - <code>ff</code> e.g.</p>
-<ul>
-<li>white = <code>#ffffff</code></li>
-<li>black = <code>#000000</code></li>
-<li>red = <code>#ff0000</code></li>
-<li>green = <code>#00ff00</code></li>
-<li>blue = <code>#0000ff</code></li>
-<li>yellow = <code>#ffff00</code></li>
-</ul>
-<p>You can mix your own color by changing the red, green and blue values. </p>
-<p>There is a RGB calculator application at <a href="https://www.w3schools.com/colors/colors_rgb.asp">https://www.w3schools.com/colors/colors_rgb.asp</a> where you can create your own color and get the <code>#rrggbb</code> value.</p>
-<h3 id="rgb-list">rgb list</h3>
-<p>The <code>(red, green, blue)</code> list color, must have 3 elements in the order red, green, blue with values 0 - 255 e.g.</p>
-<ul>
-<li>white = (255, 255, 255)</li>
-<li>black = (0, 0, 0)</li>
-<li>red = (255, 0, 0)</li>
-<li>green = (0, 255, 0)</li>
-<li>blue = (0, 0, 255)</li>
-<li>yellow = (255, 255, 0)</li>
-</ul>
+<h3 id="opening-and-closing-windows">Opening and closing windows</h3>
+<p>When a <code>Window</code> object is created it is immediately displayed on the screen, you can control it using the <code>show()</code> and <code>hide()</code> methods.</p>
+<p>To make a window which is shown when a button on the <code>App</code> is clicked and closed when a button is clicked on the <code>Window</code>.</p>
+<pre><code class="python">from guizero import App, Window
+
+def open_window():
+    window.show()
+
+def close_window():
+    window.hide()
+
+app = App(title = &quot;Main window&quot;)
+
+window = Window(app, title = &quot;2nd window&quot;)
+window.hide()
+
+open_button = PushButton(app, text = &quot;Open&quot;, command = open_window)
+close_button = PushButton(window, text = &quot;Close&quot;, command = close_window)
+
+app.display
+</code></pre>
+
+<h3 id="modal-windows">Modal windows</h3>
+<p>When a window is opened using <code>show()</code> it is opening side by side with the main window, and both windows can be used at the same time </p>
+<p>To open a "modal" window which prevents the other windows in the applcation being used until it is closed you can pass <code>True</code> to the optional wait parameter of <code>show</code> - <code>show(wait = True)</code>.</p>
+<p>This will force all other windows to wait until this window is closed before they can be used.</p>
+<pre><code class="python">def open_window():
+    window.show(wait = True)
+</code></pre>
               
             </div>
           </div>
@@ -307,10 +308,10 @@ text.text_color = (0, 255, 0)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../images/" class="btn btn-neutral float-right" title="Images">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../layout/" class="btn btn-neutral float-right" title="Layouts">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../size/" class="btn btn-neutral" title="Sizes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../commands/" class="btn btn-neutral" title="Commands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -336,10 +337,10 @@ text.text_color = (0, 255, 0)
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../size/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../commands/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../images/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../layout/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

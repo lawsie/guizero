@@ -63,11 +63,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../start/">Getting Started</a>
+    <a class="" href="../start/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../commands/">Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../multiple_windows/">Multiple windows</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../layout/">Layouts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../alerts/">Alerts</a>
                 </li>
                 <li class="">
                     
@@ -79,15 +91,19 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../alerts/">Alerts</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../usingtk/">Using tkinter methods</a>
+    <a class="" href="../images/">Images</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../blocking/">Loops and sleeping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../events/">Events</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../usingtk/">Using tkinter methods</a>
                 </li>
                 <li class="">
                     
@@ -143,6 +159,8 @@
         
             <li><a class="toctree-l4" href="#properties">Properties</a></li>
         
+            <li><a class="toctree-l4" href="#image-types">Image types</a></li>
+        
         </ul>
     
 
@@ -167,6 +185,10 @@
                 <li class="">
                     
     <a class="" href="../waffle/">Waffle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../window/">Window</a>
                 </li>
     </ul>
 	    </li>
@@ -272,10 +294,10 @@ app.display()
 </tr>
 <tr>
 <td>image</td>
-<td>List</td>
+<td>string</td>
 <td>None</td>
-<td>No</td>
-<td>The path to the image file you wish to display</td>
+<td>-</td>
+<td>The file path, tkinter.PhotoImage or PIL.Image you wish to display</td>
 </tr>
 <tr>
 <td>align</td>
@@ -290,6 +312,20 @@ app.display()
 <td>None</td>
 <td>-</td>
 <td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td>If the widget should be visible.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td>If the widget should be enabled.</td>
 </tr>
 </tbody>
 </table>
@@ -405,6 +441,11 @@ app.display()
 <td>Sets the height of the widget</td>
 </tr>
 <tr>
+<td>image</td>
+<td>string</td>
+<td>The file path, tkinter.PhotoImage or PIL.Image you wish to display</td>
+</tr>
+<tr>
 <td>master</td>
 <td>App or Box</td>
 <td>The container to which this widget belongs</td>
@@ -412,7 +453,7 @@ app.display()
 <tr>
 <td>value</td>
 <td>string</td>
-<td>The filename of the image</td>
+<td>The file path, tkinter.PhotoImage or PIL.Image you wish to display</td>
 </tr>
 <tr>
 <td>visible</td>
@@ -428,6 +469,7 @@ app.display()
 </table>
 <p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>Picture</code> object is called <code>picture</code> you would write <code>picture.value</code>.</p>
 <p>You can <strong>set</strong> the property (for example <code>picture.value = "star.gif"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(picture.value)</code>).</p>
+<h3 id="image-types">Image types</h3>
               
             </div>
           </div>
