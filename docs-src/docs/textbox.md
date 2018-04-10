@@ -5,7 +5,7 @@
 `__init__(self, master, text="", width=10, grid=None, align=None)`
 
 ### What is it
-The `TextBox` object sisplay a text box which the user can type in.
+The `TextBox` object displays a text box which the user can type in.
 
 ![TextBox on Windows](images/textbox_windows.png)
 

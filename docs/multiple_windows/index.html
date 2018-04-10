@@ -257,7 +257,7 @@
 app = App(title = &quot;Main window&quot;)
 window = Window(app, title = &quot;2nd window&quot;)
 
-app.display
+app.display()
 
 </code></pre>
 
@@ -268,7 +268,7 @@ app = App(title = &quot;Main window&quot;)
 window = Window(app, title = &quot;2nd window&quot;)
 text = Text(window, text=&quot;text&quot;)
 
-app.display
+app.display()
 
 </code></pre>
 
@@ -291,11 +291,11 @@ window.hide()
 open_button = PushButton(app, text = &quot;Open&quot;, command = open_window)
 close_button = PushButton(window, text = &quot;Close&quot;, command = close_window)
 
-app.display
+app.display()
 </code></pre>
 
 <h3 id="modal-windows">Modal windows</h3>
-<p>When a window is opened using <code>show()</code> it is opening side by side with the main window, and both windows can be used at the same time </p>
+<p>When a window is opened using <code>show()</code> it is opening side by side with the main window, and both windows can be used at the same time</p>
 <p>To open a "modal" window which prevents the other windows in the applcation being used until it is closed you can pass <code>True</code> to the optional wait parameter of <code>show</code> - <code>show(wait = True)</code>.</p>
 <p>This will force all other windows to wait until this window is closed before they can be used.</p>
 <pre><code class="python">def open_window():
