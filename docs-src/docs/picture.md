@@ -84,3 +84,4 @@ You can **set** the property (for example `picture.value = "star.gif"`) or **get
 
 ### Image types
 
+Find out [which file types are supported](https://lawsie.github.io/guizero/images/) (dependent on platform and whether PIL is available).
