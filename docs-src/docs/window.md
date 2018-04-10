@@ -69,7 +69,7 @@ You can **set** the property (for example `window.title = "Hello world"`) or **g
 
 ### Examples
 
-**Creating an App object**
+**Creating a Window object**
 
 Create an `Window` object by calling the `Window()` constructor. You should give the object a name so you can refer to it later - in this case we have called it `window`. It is best to keep the name you give to your `Window` object quite short, as you will have to use it to tell other widgets where they should be stored.
 
