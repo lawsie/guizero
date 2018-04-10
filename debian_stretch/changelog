@@ -1,3 +1,14 @@
+guizero (0.5.0~stretch-1) unstable; urgency=low
+
+  * multiple window support
+  * new image functions
+  * multiline TextBox
+  * lots of bug fixes
+  * support for events
+  * major internal refactoring
+
+ -- Martin OHanlon <martin@ohanlonweb.com>  Mon, 10 Apr 2018 07:00:00 +0100
+
 guizero (0.4.5~stretch-1) unstable; urgency=low
 
   * colors can now be specified as either "red", "#ffffff", or (red, green, blue) 

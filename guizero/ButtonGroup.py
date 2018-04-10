@@ -1,44 +1,28 @@
 from tkinter import Frame, StringVar
-from .mixins import WidgetMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin,
-    SizeMixin, 
-    ReprMixin)
 from . import utilities as utils
-from .Box import Box
+from .base import ContainerWidget
+from .tkmixins import TextMixin
 from .RadioButton import RadioButton
-
+from .event import EventManager
 
 class ButtonGroup(
-    WidgetMixin,
-    ScheduleMixin, 
-    DestroyMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    SizeMixin,
-    ReprMixin):
+    ContainerWidget, 
+    TextMixin):
 
-    def __init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None):
+    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=True):
         
-        self._master = master
-        self._grid = grid
-        self._align = align
-        self._visible = True
+        description = "[ButtonGroup] object with selected option \"" + str(selected) + "\""
 
-        # Set (using StringVar set() method) the selected option **number**
-        self.tk = Frame(master.tk)
-        self._selected = StringVar(master=self.tk.winfo_toplevel())
-        self._selected.set(selected)
-        
-        self.description = "[ButtonGroup] object with selected option \"" + self._selected.get() + "\""
         self._options = []   # List of RadioButton objects
-        self._layout_manager = "grid"
 
         # Create a Tk frame object to contain the RadioButton objects
+        tk = Frame(master.tk)
+
+        # Set (using StringVar set() method) the selected option **number**
+        self._selected = StringVar(master=tk.winfo_toplevel())
+
+        # ButtonGroup uses "grid" internally to sort the RadioButtons
+        super(ButtonGroup, self).__init__(master, tk, description, "grid", grid, align, visible, enabled)
 
         # Position the radio buttons in the Frame
         gridx = 0
@@ -52,33 +36,52 @@ class ButtonGroup(
             if not isinstance(button, list):
                 button = [button, options.index(button)+1]
 
-            # Create a radio button object
-            rbutton = RadioButton(self, text=str(button[0]), value=str(button[1]), variable=self._selected)
-
-            # Add this radio button to the internal list
-            self._options.append(rbutton)
-
-            # Place on grid
-            utils.auto_pack(rbutton, self, [gridx, gridy], "left")
-
             # Which way the buttons go
             if horizontal:
                 gridx += 1
             else:
                 gridy += 1
 
+            # Create a radio button object
+            rbutton = RadioButton(
+                self, 
+                text=str(button[0]), 
+                value=str(button[1]), 
+                variable=self._selected, 
+                grid=[gridx, gridy],
+                align="left",
+                visible=visible, 
+                enabled=enabled)
+
+            # Add this radio button to the internal list
+            self._options.append(rbutton)
+
             # Set the callback
             rbutton.tk.config(command=self._command_callback)
+
+        # set the initial value
+        if selected is None:
+            self.value = self._options[0].value
+        else:
+            self.value = selected
 
         # Add a command if there was one
         self.update_command(command, args)
 
-        # Pack the whole button group
-        utils.auto_pack(self, master, grid, align)
-
+        # override the event manager and associate the button group and the
+        # radio buttons to it
+        option_tks = [option.tk for option in self._options]
+        self._events = EventManager(self, self.tk, *option_tks)
 
     # PROPERTIES
     # -----------------------------------
+
+    @property
+    def layout(self):
+        """
+        Returns the layout type used by this container.
+        """
+        return self._layout_manager
 
     @property
     def bg(self):
@@ -89,6 +92,27 @@ class ButtonGroup(
         self.tk.config(bg=utils.convert_color(color))
         for item in self._options:
             item.bg = color
+
+    @property
+    def enabled(self):
+        return self._options[0].enabled
+
+    @enabled.setter
+    def enabled(self, value):
+        if value:
+            self.enable()
+        else:
+            self.disable()
+    
+    def disable(self):
+        """Disable the widget."""
+        for item in self._options:
+            item.disable()
+
+    def enable(self):
+        """Enable the widget."""
+        for item in self._options:
+            item.enable()
 
     # Gets the selected value (1, 2, 3 etc.)
     @property
@@ -110,18 +134,13 @@ class ButtonGroup(
                 return item.text
         return ""
 
-    # Wondering if this is really confusing. value_text is the text associated with the selected
-    # option. You can change it because it's useful to be able to *get* it, but maybe this is weird.
+    # Selects the option for the value_text provided
     @value_text.setter
     def value_text(self, value):
-        search = self._selected.get()    # Currently selected number
         for item in self._options:
-            if item.value == search:
-                item.text = str(value)
-                print( item.text )
-                return 0
-        utils.error_format("Could not set value text - no matching option")
-
+            if item.text == value:
+                self.value = item.value
+    
     # Get the text colour as a string
     @property
     def text_color(self):

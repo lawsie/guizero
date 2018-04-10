@@ -1,7 +1,9 @@
 from guizero import App
-from tkmixin_test import (
+from common_test import (
     schedule_after_test,
-    schedule_repeat_test)
+    schedule_repeat_test,
+    display_test,
+    events_test)
 
 def test_default_values():
     a = App()
@@ -39,4 +41,14 @@ def test_after_schedule():
 def test_repeat_schedule():
     a = App()
     schedule_repeat_test(a, a)
+    a.destroy()
+
+def test_display():
+    a = App()
+    display_test(a)
+    a.destroy()
+
+def test_events():
+    a = App()
+    events_test(a)
     a.destroy()

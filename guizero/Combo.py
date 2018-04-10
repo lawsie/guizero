@@ -1,41 +1,15 @@
 from tkinter import OptionMenu, StringVar, END, _setit
-from .mixins import WidgetMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin, 
-    ColorMixin, 
-    SizeMixin,
-    ReprMixin)
 from . import utilities as utils
+from .base import TextWidget
 
-class Combo(
-    WidgetMixin,
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin,
-    ColorMixin,
-    SizeMixin, 
-    ReprMixin):
+class Combo(TextWidget):
 
-    def __init__(self, master, options, selected=None, command=None, grid=None, align=None):
-
-        self._master = master
-        self._grid = grid
-        self._align = align
-        self._visible = True
+    def __init__(self, master, options, selected=None, command=None, grid=None, align=None, visible=True, enabled=True):
 
         # Maintain a list of options (as strings, to avoid problems comparing)
         self._options = [str(x) for x in options]
 
-        # Description of this object (for friendly error messages)
-        self.description = "[Combo] object with options  " + str(self._options)
+        description = "[Combo] object with options  " + str(self._options)
 
         # Store currently selected item
         self._selected = StringVar()
@@ -50,14 +24,12 @@ class Combo(
             self._default = str(selected)
 
         # Create a tk OptionMenu object within this object
-        self.tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command_callback)
+        tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command_callback)
+
+        super(Combo, self).__init__(master, tk, description, grid, align, visible, enabled)
 
         # The command associated with this combo
         self.update_command(command)
-
-        # Pack or grid self
-        utils.auto_pack(self, master, grid, align)
-
 
     # PROPERTIES
     # ----------------------------------

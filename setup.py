@@ -9,7 +9,7 @@ if version_info.major != 3:
 
 setup(
     name="guizero",
-    version="0.4.5",
+    version="0.5.0",
     author="Laura Sach",
     author_email="laura.sach@raspberrypi.org",
     description="Python module to allow kids to easily create GUIs",
@@ -34,4 +34,5 @@ process is designed to be as simple as possible.""",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
     ],
+    install_requires=["pillow>=5"],
 )

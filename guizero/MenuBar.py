@@ -1,31 +1,26 @@
 from tkinter import Menu
-from .mixins import MasterMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
+from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin
 from . import utilities as utils
+from .base import Base
 from .App import App
+from .Window import Window
 
-class MenuBar(
-    MasterMixin, 
-    ScheduleMixin, 
-    DestroyMixin, 
-    FocusMixin, 
-    ReprMixin):
+class MenuBar(Base):
 
     def __init__(self, master, toplevel, options):
 
-        self._master = master
+        if not isinstance(master, (App, Window)):
+            utils.error_format("The [MenuBar] must have an [App] or [Window] object as its master")
 
-        if not isinstance(master, App):
-            utils.error_format("The [MenuBar] must have the [App] object as its master")
+        description = "[MenuBar] object "
 
         # Create a tk Menu object within this object
-        self.tk = Menu(master.tk)
+        tk = Menu(master.tk)
+
+        super(MenuBar, self).__init__(master, tk, description)
 
         # Keep track of submenu objects
         self._sub_menus = []
-
-        # Description of this object (for friendly error messages)
-        self.description = "[MenuBar] object "
 
         # Create all the top level menus
         for i in range(len(toplevel)):
@@ -42,5 +37,5 @@ class MenuBar(
             # Add to the menu bar
             self.tk.add_cascade(label=toplevel[i], menu=self._sub_menus[i])
 
-       	# Set this as the menu for the main App object
+       	# Set this as the menu for the master object
        	master.tk.config(menu=self.tk)

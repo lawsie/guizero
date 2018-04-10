@@ -1,48 +1,22 @@
 from tkinter import Checkbutton, IntVar
-from .mixins import WidgetMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin, 
-    ColorMixin, 
-    SizeMixin, 
-    ReprMixin)
 from . import utilities as utils
+from .base import TextWidget
 
-class CheckBox(
-    WidgetMixin,
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin,
-    ColorMixin,
-    SizeMixin,
-    ReprMixin):
+class CheckBox(TextWidget):
 
-    def __init__(self, master, text, command=None, grid=None, align=None, args=None):
-
-        self._master = master
-        self._grid = grid
-        self._align = align
-        self._visible = True
-
+    def __init__(self, master, text, command=None, grid=None, align=None, args=None, visible=True, enabled=True):
+        
+        description = "[CheckBox] object with text \"" + text + "\""
+        
         self._text = str(text)
-        self.description = "[CheckBox] object with text \"" + self._text + "\""
         self._value = IntVar()
-
-        # Create a tk Checkbutton object within this object
-        self.tk = Checkbutton(master.tk, text=text, variable=self._value)
+        tk = Checkbutton(master.tk, text=text, variable=self._value)
+        
+        super(CheckBox, self).__init__(master, tk, description, grid, align, visible, enabled)
 
         # Set the command callback
         self.tk.config(command=self._command_callback)
         self.update_command(command, args)
-
-        utils.auto_pack(self, master, grid, align)
 
     # PROPERTIES
     # ----------------------------------

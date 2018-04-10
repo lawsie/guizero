@@ -26,6 +26,7 @@ You must specify the correct path to the image. The image in the example is in t
 ```python
 picture = Picture(app, image="images/test.gif")
 ```
+
 ### Starting parameters
 
 When you create a `Picture` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `picture = Picture(app, image="test.gif")`
@@ -33,10 +34,11 @@ When you create a `Picture` object you **must** specify `master` and you can spe
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box   | - | Yes       | The container to which this widget belongs
-| image   | List    | None  | No         | The path to the image file you wish to display |
+| image   | string    | None  | -         | The file path, tkinter.PhotoImage or PIL.Image you wish to display |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
-
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
+| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
 
 
 
@@ -70,11 +72,15 @@ You can set and get the following properties:
 | enabled       | boolean     | `True` if the widget is enabled |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | height        | [size](size.md)         | Sets the height of the widget |
+| image         | string      | The file path, tkinter.PhotoImage or PIL.Image you wish to display |
 | master        | App or Box  | The container to which this widget belongs |
-| value         | string      | The filename of the image  |
+| value         | string      | The file path, tkinter.PhotoImage or PIL.Image you wish to display |
 | visible       | boolean     | If this widget is visible |
 | width         | [size](size.md)         | Sets the width of the widget |
 
 Refer to a property as `<name of widget>.property`. For example, if your `Picture` object is called `picture` you would write `picture.value`.
 
 You can **set** the property (for example `picture.value = "star.gif"`) or **get** the value of the property to use (for example `print(picture.value)`).
+
+### Image types
+

@@ -1,11 +1,12 @@
 from guizero import App, Box
-from tkmixin_test import (
+from common_test import (
     schedule_after_test,
     schedule_repeat_test,
     destroy_test,
     display_test, 
     color_test, 
-    size_pixel_test)
+    size_pixel_test,
+    events_test)
 
 def test_default_values():
     a = App()
@@ -59,4 +60,10 @@ def test_size():
     a = App()
     b = Box(a)
     size_pixel_test(b)
+    a.destroy()
+
+def test_events():
+    a = App()
+    b = Box(a)
+    events_test(b)
     a.destroy()

@@ -31,6 +31,11 @@ When you create a `TextBox` object you **must** specify `master` and you can spe
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | text   | string    | ""  | -         | Any text you wish to be pre-filled in the text box |
 | width   | int    | 10     | -         | The width of the text box|
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
+| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| multiline | boolean   | False   | No         | Create a multi-line text box.  |
+| scrollbar | boolean   | False   | No         | Add a vertical scrollbar to a multi-line text box  |
+| command | function name | None | -   | The name of a function to call when the text is changed. This function MUST take either zero or one argument, if the function takes one argument the key which was added to the textbox will be returned. 
 
 
 ### Methods
@@ -50,6 +55,7 @@ You can call the following methods on your TextBox object.
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden   |
+| update_command(command)   | command (function name)  | -          | Updates the function to call when the text is changed.  |
 | _get()_ | - | _string_ |  _Replaced by `value` property_ |
 | _set(text)_ | _text (string)_ | - |  _Replaced by `value` property_ |
 
@@ -84,4 +90,21 @@ from guizero import App, TextBox
 app = App()
 input_box = TextBox(app, text="Type here")
 app.display()
+```
+
+**Creating a multi-line TextBox**
+
+You can create a text box which is capable of capturing multiple lines of text by setting the `multiline` parameter to `True` and giving the textbox a `height`:
+
+```python
+from guizero import App, TextBox
+app = App()
+input_box = TextBox(app, text="Type lines here", height=10, multiline=True)
+app.display()
+```
+
+Multi-line text boxes can also be given a scrollbar by setting the `scrollbar` parameter to `True`:
+
+```python
+input_box = TextBox(app, text="Type lines here", height=10, multiline=True, scrollbar=True)
 ```

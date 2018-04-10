@@ -22,18 +22,20 @@ app.display()
 
 ### Starting parameters
 
-When you create a `ButtonGroup` object you **must** specify `master`, `options` and `selected` and you can specify any of the optional parameters. Specify parameters in the brackets like this: `choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)`
+When you create a `ButtonGroup` object you **must** specify `master` and `otions` and you can specify any of the optional parameters. Specify parameters in the brackets like this: `choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)`
 
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box   | - | Yes       | The container to which this widget belongs
 | options   | list or 2D List   | -  | Yes         | Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. If a list is specified, the options will be automatically numbered with hidden values, beginning at 1. |
-| selected   | string    | -     | Yes       | The option that should be selected. If the options are specified as a list, the selected option should be the number of the desired option, beginning at 1. If a 2D list is specified, this should be the **hidden value** associated with one of the options. |
+| selected   | string    | -     | -       | The option that should be selected, if a value isn't provided the first option will be selected. If the options are specified as a list, the selected option should be the number of the desired option, beginning at 1. If a 2D list is specified, this should be the **hidden value** associated with one of the options. |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | command | function name | None | -   | The name of a function to call when the selected option changes. |
 | args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
 | grid   | list [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | horizontal   | boolean    | False     | -       | Whether the buttons stack vertically or horizontally. (Defaults to vertical)|
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
+| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
 
 ### Methods
 
@@ -44,6 +46,8 @@ You can call the following methods on an `ButtonGroup` object.
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | destroy()   | -  | -          | Destroys the widget    |
+| disable()  | - | -          | Disables the widget so that it is "greyed out" and cannot be interacted with   |
+| enable()  | -  | -          | Enables the widget   |
 | focus()  | -  | -          | Gives focus to the widget   |
 | get_group_as_list() | - | list |  Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging) |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
@@ -64,6 +68,7 @@ You can set and get the following properties:
 | ------------- | ----------- | -------------------------- |
 | align         | string      | The alignment of this widget within its grid location 
 | bg            | [color](colors.md)      | The background colour of the widget  |
+| enabled       | boolean     | `True` if the widget is enabled |
 | font          | string      | The font of the text  |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | height        | [size](size.md)         | Sets the height of the widget |

@@ -63,11 +63,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../start/">Getting Started</a>
+    <a class="" href="../start/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../commands/">Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../multiple_windows/">Multiple windows</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../layout/">Layouts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../alerts/">Alerts</a>
                 </li>
                 <li class="">
                     
@@ -79,15 +91,19 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../alerts/">Alerts</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../usingtk/">Using tkinter methods</a>
+    <a class="" href="../images/">Images</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../blocking/">Loops and sleeping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../events/">Events</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../usingtk/">Using tkinter methods</a>
                 </li>
                 <li class="">
                     
@@ -148,6 +164,10 @@
                     
     <a class="" href="../waffle/">Waffle</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../window/">Window</a>
+                </li>
     </ul>
 	    </li>
           
@@ -178,6 +198,8 @@
     <li class="toctree-l2"><a href="#guizero">guizero</a></li>
     
         <ul>
+        
+            <li><a class="toctree-l3" href="#050-2018-04-10">0.5.0 - 2018-04-10</a></li>
         
             <li><a class="toctree-l3" href="#045-2018-03-04">0.4.5 - 2018-03-04</a></li>
         
@@ -228,6 +250,38 @@
             <div class="section">
               
                 <h1 id="guizero">guizero</h1>
+<h2 id="050-2018-04-10">0.5.0 - 2018-04-10</h2>
+<ul>
+<li>v0.5.0 includes significant refactoring of the guizero code base and introduces many new features</li>
+<li>New image functionality introduced when PIL is installed:<ul>
+<li>images can be passed as <code>Tk.PhotoImage</code> or <code>PIL.Image</code> objects as well as file paths</li>
+<li>more images types are supported</li>
+<li>animated images (gifs) are supported</li>
+<li>images are scaled when the size is changed</li>
+</ul>
+</li>
+<li><code>ButtonGroup</code> - <code>selected</code> is now optional, <code>enabled</code> properties now supported, <code>value_text</code> fixed</li>
+<li>Fixed multiple <code>App</code> bug</li>
+<li>Created <code>Window</code> class to support multi-window applications</li>
+<li>Added <code>multiline</code> and <code>scrollbar</code> functionality to <code>TextBox</code></li>
+<li>Refactored guizero to introduce a class hierarchy making guizero wide code changes easier to implement</li>
+<li>Added the following events to all widgets, this should be considered experimental in this release:<ul>
+<li><code>when_clicked</code></li>
+<li><code>when_left_button_pressed</code></li>
+<li><code>when_left_button_released</code></li>
+<li><code>when_right_button_pressed</code></li>
+<li><code>when_right_button_released</code></li>
+<li><code>when_key_pressed</code></li>
+<li><code>when_key_released</code></li>
+<li><code>when_mouse_enters</code></li>
+<li><code>when_mouse_leaves</code></li>
+<li><code>when_mouse_dragged</code></li>
+</ul>
+</li>
+<li>Various minor bug fixes</li>
+<li>Automated tests have been introduced</li>
+<li>contributors to this release <a href="https://github.com/martinohanlon">martinohanlon</a>, <a href="https://github.com/scotty3785">scotty3785</a>, <a href="https://github.com/IDF31">IDF31</a>, <a href="https://github.com/drussell1974">drussell1974</a>  - ta very much :)</li>
+</ul>
 <h2 id="045-2018-03-04">0.4.5 - 2018-03-04</h2>
 <ul>
 <li>colors can now be specified as either <code>"red"</code>, <code>"#ffffff"</code>, or <code>(red, green, blue)</code> </li>

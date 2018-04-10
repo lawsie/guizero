@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Window - guizero</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Window";
+    var mkdocs_page_input_path = "window.md";
+    var mkdocs_page_url = "/window/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../about/" class="icon icon-home"> guizero</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Using guizero</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../start/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../commands/">Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../multiple_windows/">Multiple windows</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../layout/">Layouts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../alerts/">Alerts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../size/">Sizes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../colors/">Colors</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../images/">Images</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../blocking/">Loops and sleeping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../events/">Events</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../usingtk/">Using tkinter methods</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../resources/">Examples and resources</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Widgets</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../app/">App</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../box/">Box</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../buttongroup/">ButtonGroup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../checkbox/">CheckBox</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../combo/">Combo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../menubar/">MenuBar</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../picture/">Picture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pushbutton/">PushButton</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../slider/">Slider</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../text/">Text</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../textbox/">TextBox</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../waffle/">Waffle</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Window</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#window">Window</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#what-is-it">What is it?</a></li>
+        
+            <li><a class="toctree-l4" href="#how-do-i-make-one">How do I make one?</a></li>
+        
+            <li><a class="toctree-l4" href="#starting-parameters">Starting parameters</a></li>
+        
+            <li><a class="toctree-l4" href="#methods">Methods</a></li>
+        
+            <li><a class="toctree-l4" href="#properties">Properties</a></li>
+        
+            <li><a class="toctree-l4" href="#examples">Examples</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Contributing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../contributing/">Notes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../development/">Developing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../deployment/">Deploying</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../changelog/">Change log</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../about/">guizero</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../about/">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Widgets &raquo;</li>
+        
+      
+    
+    <li>Window</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="window">Window</h1>
+<p>(Contains a <code>tkinter.TopLevel</code> object)</p>
+<p><code>__init__(self, master, title="guizero", width=500, height=500, layout="auto", bg=None):</code></p>
+<h3 id="what-is-it">What is it?</h3>
+<p>A <code>Window</code> object is how you create new windows in guizero.</p>
+<p><img alt="Window" src="../images/window.png" /></p>
+<h3 id="how-do-i-make-one">How do I make one?</h3>
+<p>Create an <code>Window</code> object like this:</p>
+<pre><code class="python">from guizero import App, Window
+app = App()
+window = Window(app)
+app.display()
+</code></pre>
+
+<h3 id="starting-parameters">Starting parameters</h3>
+<p>When you create a <code>Window</code> object you <strong>must</strong> specify a <code>master</code> and you can specify any of the the optional parameters. Specify parameters in the brackets like this: <code>window = Window(app, bg="red", height=200)</code></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Data type</th>
+<th>Default</th>
+<th>Compulsory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>master</td>
+<td>App</td>
+<td>-</td>
+<td>Yes</td>
+<td>The app to which the window belongs</td>
+</tr>
+<tr>
+<td>bg</td>
+<td><a href="../colors/">color</a></td>
+<td>None</td>
+<td>No</td>
+<td>The background colour of the window. Takes a <a href="../colors/">color</a> value.</td>
+</tr>
+<tr>
+<td>height</td>
+<td>int</td>
+<td>500</td>
+<td>No</td>
+<td>The height of the window in pixels.</td>
+</tr>
+<tr>
+<td>layout</td>
+<td>string</td>
+<td>"auto"</td>
+<td>No</td>
+<td>Whether widgets pack themselves (<code>"auto"</code>) or you specify their position on a grid (<code>"grid"</code>)</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>"guizero"</td>
+<td>No</td>
+<td>The title displayed in the bar at the top of the window.</td>
+</tr>
+<tr>
+<td>width</td>
+<td>int</td>
+<td>500</td>
+<td>No</td>
+<td>The width of the window in pixels.</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td>If the window should be visible.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods">Methods</h3>
+<p>You can call the following methods on a <code>Window</code> object.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Takes</th>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>after(time, command)</td>
+<td>time (int), command (function name)</td>
+<td>-</td>
+<td>Schedules a <strong>single</strong> call to <code>command</code> after <code>time</code> milliseconds. (To repeatedly call the same command, use <code>repeat()</code>)</td>
+</tr>
+<tr>
+<td>cancel(command)</td>
+<td>command (function name)</td>
+<td>-</td>
+<td>Cancels a scheduled call to <code>command</code></td>
+</tr>
+<tr>
+<td>destroy()</td>
+<td>-</td>
+<td>-</td>
+<td>Destroys the window</td>
+</tr>
+<tr>
+<td>focus()</td>
+<td>-</td>
+<td>-</td>
+<td>Gives focus to the window</td>
+</tr>
+<tr>
+<td>hide()</td>
+<td>-</td>
+<td>-</td>
+<td>Hides the window from view.</td>
+</tr>
+<tr>
+<td>on_close(command)</td>
+<td>command (function name)</td>
+<td>-</td>
+<td>Calls the given function when the user tries to close the window.</td>
+</tr>
+<tr>
+<td>repeat(time, command)</td>
+<td>time (int), command (function name)</td>
+<td>-</td>
+<td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
+</tr>
+<tr>
+<td>show(wait = False)</td>
+<td>-</td>
+<td>-</td>
+<td>Displays the window if it was previously hidden</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties">Properties</h3>
+<p>You can set and get the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bg</td>
+<td><a href="../colors/">color</a></td>
+<td>The background colour of the window</td>
+</tr>
+<tr>
+<td>height</td>
+<td>int</td>
+<td>The height of the window</td>
+</tr>
+<tr>
+<td>layout</td>
+<td>string</td>
+<td>The layout being used by the Window (<code>"auto"</code>) or (<code>"grid"</code>)</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>The title of the window</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td>If the window is visible</td>
+</tr>
+<tr>
+<td>width</td>
+<td>int</td>
+<td>The width of the window</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>Window</code> object is called <code>window</code> you would write <code>window.title</code>.</p>
+<p>You can <strong>set</strong> the property (for example <code>window.title = "Hello world"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(window.title)</code>).</p>
+<h3 id="examples">Examples</h3>
+<p><strong>Creating an App object</strong></p>
+<p>Create an <code>Window</code> object by calling the <code>Window()</code> constructor. You should give the object a name so you can refer to it later - in this case we have called it <code>window</code>. It is best to keep the name you give to your <code>Window</code> object quite short, as you will have to use it to tell other widgets where they should be stored.</p>
+<pre><code class="python">from guizero import App, Window
+app = App(title=&quot;My app&quot;, height=300, width=200)
+window = Window(title = &quot;2nd Window&quot;, height=300, width=200)
+app.display()
+</code></pre>
+
+<p><strong>Showing and hiding a Window</strong></p>
+<p><code>Window</code> objects can be shown and hidden using the <code>show()</code> and <code>hide()</code> methods:</p>
+<pre><code class="python">from guizero import App, Window, PushButton
+
+def open_window():
+    window_2.show()
+
+app = App(title=&quot;My app&quot;, height=300, width=200)
+window = Window(title = &quot;2nd Window&quot;, height=300, width=200)
+window.hide()
+
+open_button(app, text=&quot;open 2nd window&quot;, command=open_window)
+
+app.display()
+</code></pre>
+
+<p>If you want a <code>Window</code> to become the main window and stop all other windows responding until it is closed you can set the optional <code>wait</code> parameter to <code>True</code> when using <code>show</code>:</p>
+<pre><code class="python">def open_window():
+    window_2.show(wait = True)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../contributing/" class="btn btn-neutral float-right" title="Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../waffle/" class="btn btn-neutral" title="Waffle"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../waffle/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

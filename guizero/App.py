@@ -1,75 +1,44 @@
-from tkinter import Tk
-from .mixins import ContainerMixin
-from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin, ReprMixin
-
+from tkinter import Tk, Toplevel
+from .base import BaseWindow
 from . import utilities as utils
 
-class App(
-    ContainerMixin,
-    ScheduleMixin, 
-    DestroyMixin, 
-    FocusMixin, 
-    ReprMixin):
+class App(BaseWindow):
 
-    def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None):
+    _main_app = None
 
-        self.tk = Tk()
+    def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True):
+        
+        description = "[App] object"
 
-        # Initial setup
-        self.description = "[App] object"
-        self.tk.title( str(title) )
-        self.tk.geometry(str(width)+"x"+str(height))
-        self._layout_manager = layout  # Only behaves differently for "grid"
-
+        # If this is the first app to be created, create Tk
+        if App._main_app is None:
+            tk = Tk()
+            App._main_app = self
+        else:
+            tk = Toplevel(App._main_app.tk)
+            utils.error_format("There should only be 1 guizero App, use Window to create multiple windows.")
+                
         # bg overrides deprecated bgcolor
-        if bg is not None:
-            self.bg = bg
-        elif bgcolor is not None:
-            self.bg = bgcolor
+        if bgcolor is not None:
+            bg = bgcolor
             utils.deprecated("App 'bgcolor' constructor argument is deprecated. Please use bg instead.")
        
-        self.tk.update()
-            
-    # PROPERTIES
-    # -----------------------------------
+        super(App, self).__init__(
+            None, 
+            tk,
+            description,
+            title,
+            width,
+            height,
+            layout,
+            bg, 
+            visible)
 
-    # The title text
-    @property
-    def title(self):
-        return self.tk.title()
-
-    @title.setter
-    def title(self, text):
-        self.tk.title( str(text) )
-
-    # The background colour of the app
-    @property
-    def bg(self):
-        return self.tk.cget("background")
-
-    @bg.setter
-    def bg(self, color):
-        self.tk.configure(background=utils.convert_color(color))
-
-    # The height of the window
-    @property
-    def height(self):
-        return self.tk.winfo_height()
-
-    @height.setter
-    def height(self, height):
-        self.tk.geometry(str(self.tk.winfo_width())+"x"+str(height))
-        self.tk.update()
-
-    # The width of the window
-    @property
-    def width(self):
-        return self.tk.winfo_width()
-
-    @width.setter
-    def width(self, width):
-        self.tk.geometry(str(width)+"x"+str(self.tk.winfo_height()))
-        self.tk.update()
+    def _close_window(self):
+        if self._on_close is None:
+            self.destroy()
+        else:
+            self._on_close()
 
     # METHODS
     # --------------------------------------
@@ -78,10 +47,22 @@ class App(
     def display(self):
         self.tk.mainloop()
 
-    # Do `command` when the window is closed
-    def on_close(self, command):
-        self.tk.wm_protocol("WM_DELETE_WINDOW", command)
+    def destroy(self):
+        """Destroy the object."""
+        # if this is the main_app - set the _main_app class variable to `None`.
+        if self == App._main_app:
+            App._main_app = None
+        self.tk.destroy()
 
+    def hide(self):
+        """Hide the app."""
+        self.tk.withdraw()
+        self._visible = False
+
+    def show(self):
+        """Show the widget."""
+        self.tk.deiconify()
+        self._visible = True
 
     # DEPRECATED METHODS
     # ------------------------------------

@@ -5,5 +5,4 @@ def checked():
 
 app = App()
 check = CheckBox(app, "check this", command=checked)
-check.update_command(None)
 app.display()

@@ -1,54 +1,22 @@
 from tkinter import Scale, HORIZONTAL, VERTICAL
-from .mixins import WidgetMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    ColorMixin, 
-    TextMixin,
-    ReprMixin)
 from . import utilities as utils
+from .base import TextWidget
 
-class Slider(
-    WidgetMixin, 
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    ColorMixin,
-    TextMixin,
-    ReprMixin):
+class Slider(TextWidget):
 
-    def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None):
+    def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None, visible=True, enabled=True):
 
-        # If you specify a command to the slider, it must take one argument as it will be given
-        # the slider's current value
-
-        self._master = master
-        self._grid = grid
-        self._align = align
-        self._visible = True
-
-        # Description of this object (for friendly error messages)
-        self.description = "[Slider] object from " + str(start) + " to " + str(end)
+        description = "[Slider] object from " + str(start) + " to " + str(end)
 
         # Set the direction
         orient = HORIZONTAL if horizontal else VERTICAL
 
         # Create a tk Scale object within this object
-        self.tk = Scale(master.tk, from_=start, to=end, orient=orient, command=self._command_callback)
+        tk = Scale(master.tk, from_=start, to=end, orient=orient, command=self._command_callback)
+
+        super(Slider, self).__init__(master, tk, description, grid, align, visible, enabled)
 
         self.update_command(command)
-
-        # Pack this object
-        try:
-            utils.auto_pack(self, master, grid, align)
-       	except AttributeError:
-            utils.error_format( self.description + "\n" +
-            "Could not add to interface - check first argument is [App] or [Box]")
 
     # PROPERTIES
     # ----------------

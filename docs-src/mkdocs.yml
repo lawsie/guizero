@@ -3,13 +3,17 @@ pages:
   - About: about.md
   - Installation: index.md
   - Using guizero:
-      - Getting Started: start.md
+      - Getting started: start.md
+      - Commands: commands.md
+      - Multiple windows: multiple_windows.md
       - Layouts: layout.md
+      - Alerts: alerts.md
       - Sizes: size.md
       - Colors: colors.md
-      - Alerts: alerts.md
-      - Using tkinter methods: usingtk.md
+      - Images: images.md
       - Loops and sleeping: blocking.md
+      - Events: events.md
+      - Using tkinter methods: usingtk.md
       - Examples and resources: resources.md
   - Widgets:
       - App: app.md
@@ -24,6 +28,7 @@ pages:
       - Text: text.md
       - TextBox: textbox.md
       - Waffle: waffle.md
+      - Window: window.md
   - Contributing: 
       - Notes: contributing.md
       - Developing: development.md

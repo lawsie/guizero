@@ -1,65 +1,65 @@
-from tkinter import Button, PhotoImage, StringVar, DISABLED, NORMAL
-from .mixins import WidgetMixin
-from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin, 
-    ColorMixin, 
-    SizeMixin, 
-    ReprMixin)
+from tkinter import Button, StringVar, DISABLED, NORMAL
 from . import utilities as utils
-from .config import system_config
+from .base import TextWidget
 
-class PushButton(
-    WidgetMixin, 
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin,
-    TextMixin, 
-    ColorMixin,
-    SizeMixin, 
-    ReprMixin):
+class PushButton(TextWidget):
 
-    def __init__(self, master, command=None, args=None, text="Button", icon=None, pady=10, padx=10, grid=None, align=None):
+    def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None, visible=True, enabled=True):
 
-        self._master = master
-        self._grid = grid
-        self._align = align
-        self._visible = True
-
-        self._text = StringVar()
-        self._text.set(text)
-        self._value = 0
-        self.update_command(command, args)
+        description = "[PushButton] object with text \"" + text + "\""
         
-        # Description of this object (for friendly error messages)
-        self.description = "[PushButton] object with text \"" + self._text.get() + "\""
+        self._value = 0
+        self._image_source = icon
+        self._image_source = image
+        self._image = None
+        self._image_height = None
+        self._image_width = None
+        self._image_player = None
 
         # Create a tk Button object within this object
-        self.tk = Button(master.tk, textvariable=self._text, command=self._command_callback)
-
+        self._text = StringVar()
+        self._text.set(text)
+        tk = Button(master.tk, textvariable=self._text, command=self._command_callback)
+        
+        super(PushButton, self).__init__(master, tk, description, grid, align, visible, enabled)
+        
         # Add padding if necessary
         self.tk.config(pady=pady, padx=padx)
 
         # Setup events for press and release
-        self.tk.bind("<ButtonPress>", self._on_press)
-        self.tk.bind("<ButtonRelease>", self._on_release) 
+        self.events.set_event("<PushButton.ButtonPress-1>", "<ButtonPress-1>", self._on_press)
+        self.events.set_event("<PushButton.ButtonRelease-1>", "<ButtonRelease-1>", self._on_release)
 
-        # Try to instantiate a picture
-        if icon is not None:
-            self.icon(icon)
-            
-        # Pack or grid depending on parent
-        try:
-            utils.auto_pack(self, master, grid, align)
-        except AttributeError:
-            utils.error_format( self.description + "\n" +
-            "Could not add to interface - check first argument is [App] or [Box]")
+        self.update_command(command, args)
+
+        if image:
+            self._load_image()
+        else:
+            if icon:
+                self._load_image()
+                utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
+
+    def _load_image(self):
+        # stop any animation which might still be playing
+        if self._image_player:
+            self._image_player.stop()
+
+        self._image = utils.GUIZeroImage(self._image_source, self._image_width, self._image_height)
+
+        self._image_width = self._image.width
+        self._image_height = self._image.height
+
+        # if its an animation, start it up
+        if self._image.animation:
+            self._image_player = utils.AnimationPlayer(self, self._image, self._update_tk_image)
+        else:
+            self._update_tk_image(self._image.tk_image)
+
+        self.tk.config(width=self._image.width)
+        self.tk.config(height=self._image.height)
+
+    def _update_tk_image(self, tk_image):
+        self.tk.config(image=tk_image)
 
     # PROPERTIES
     # ----------------------------------
@@ -79,6 +79,36 @@ class PushButton(
         self._text.set(str(value))
         self.description = "[Text] object with text \"" + str(value) + "\""
 
+    @property
+    def image(self):
+        return self._image.image_source
+
+    @image.setter
+    def image(self, value):
+        self._image_source = value
+        self._load_image()
+
+    @property
+    def width(self):
+        return self.tk.cget("width")
+
+    @width.setter
+    def width(self, value):
+        if self._image:
+            self._image_width = value
+            self._load_image()
+        self.tk.config(width=value)
+        
+    @property
+    def height(self):
+        return self.tk.cget("height")
+
+    @height.setter
+    def height(self, value):
+        if self._image:
+            self._image_height = value
+            self._load_image()
+        self.tk.config(height=value)
 
     # METHODS
     # -------------------------------------------
@@ -96,15 +126,6 @@ class PushButton(
     # Change padding
     def padding(self, padx, pady):
         self.tk.config(padx=padx, pady=pady)
-
-    # Set the icon
-    def icon(self, icon):
-        try:
-            img = PhotoImage(file=icon)
-            self._icon = img
-            self.tk.config(image=img)
-        except:
-            utils.error_format("Image import error '{}' - check the file path and image type is {}".format(str(icon),"/".join(system_config.supported_image_types)))
 
     def toggle(self):
         self.enabled = not self.enabled
@@ -137,3 +158,8 @@ class PushButton(
     def change_command(self, newcommand, args=None):
         self.update_command(newcommand, args)
         utils.deprecated("PushButton change_command() is deprecated - renamed to update_command()")
+
+    # Set the icon
+    def icon(self, icon):
+        self.image = icon
+        utils.deprecated("PushButton icon() is deprecated - use the image property instead.")

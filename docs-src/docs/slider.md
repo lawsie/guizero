@@ -34,6 +34,8 @@ When you create a `Slider` object, you **must** specify a `master` and you can s
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | horizontal | Boolean | True | -   | Whether you wish to display your slider horizontally or vertically (defaults to horizontal) |
 | start   | int    | 0  | -         | The smallest value selectable on the slider |
+| visible   | boolean   | True    | No         | If the widget should be visible.  |
+| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
 
 
 ### Methods

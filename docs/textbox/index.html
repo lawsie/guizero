@@ -63,11 +63,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../start/">Getting Started</a>
+    <a class="" href="../start/">Getting started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../commands/">Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../multiple_windows/">Multiple windows</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../layout/">Layouts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../alerts/">Alerts</a>
                 </li>
                 <li class="">
                     
@@ -79,15 +91,19 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../alerts/">Alerts</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../usingtk/">Using tkinter methods</a>
+    <a class="" href="../images/">Images</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../blocking/">Loops and sleeping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../events/">Events</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../usingtk/">Using tkinter methods</a>
                 </li>
                 <li class="">
                     
@@ -169,6 +185,10 @@
                 <li class="">
                     
     <a class="" href="../waffle/">Waffle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../window/">Window</a>
                 </li>
     </ul>
 	    </li>
@@ -295,6 +315,41 @@ app.display()
 <td>-</td>
 <td>The width of the text box</td>
 </tr>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td>If the widget should be visible.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td>If the widget should be enabled.</td>
+</tr>
+<tr>
+<td>multiline</td>
+<td>boolean</td>
+<td>False</td>
+<td>No</td>
+<td>Create a multi-line text box.</td>
+</tr>
+<tr>
+<td>scrollbar</td>
+<td>boolean</td>
+<td>False</td>
+<td>No</td>
+<td>Add a vertical scrollbar to a multi-line text box</td>
+</tr>
+<tr>
+<td>command</td>
+<td>function name</td>
+<td>None</td>
+<td>-</td>
+<td>The name of a function to call when the text is changed. This function MUST take either zero or one argument, if the function takes one argument the key which was added to the textbox will be returned.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="methods">Methods</h3>
@@ -374,6 +429,12 @@ app.display()
 <td>-</td>
 <td>-</td>
 <td>Displays the widget if it was previously hidden</td>
+</tr>
+<tr>
+<td>update_command(command)</td>
+<td>command (function name)</td>
+<td>-</td>
+<td>Updates the function to call when the text is changed.</td>
 </tr>
 <tr>
 <td><em>get()</em></td>
@@ -465,6 +526,18 @@ app.display()
 app = App()
 input_box = TextBox(app, text=&quot;Type here&quot;)
 app.display()
+</code></pre>
+
+<p><strong>Creating a multi-line TextBox</strong></p>
+<p>You can create a text box which is capable of capturing multiple lines of text by setting the <code>multiline</code> parameter to <code>True</code> and giving the textbox a <code>height</code>:</p>
+<pre><code class="python">from guizero import App, TextBox
+app = App()
+input_box = TextBox(app, text=&quot;Type lines here&quot;, height=10, multiline=True)
+app.display()
+</code></pre>
+
+<p>Multi-line text boxes can also be given a scrollbar by setting the <code>scrollbar</code> parameter to <code>True</code>:</p>
+<pre><code class="python">input_box = TextBox(app, text=&quot;Type lines here&quot;, height=10, multiline=True, scrollbar=True)
 </code></pre>
               
             </div>

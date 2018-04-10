@@ -1,6 +1,6 @@
 from threading import Event
 from guizero import App, CheckBox
-from tkmixin_test import (
+from common_test import (
     schedule_after_test,
     schedule_repeat_test,
     destroy_test,
@@ -9,6 +9,7 @@ from tkmixin_test import (
     text_test,
     color_test, 
     size_text_test,
+    events_test,
     )
 
 def test_default_values():
@@ -174,4 +175,10 @@ def test_size():
     a = App()
     c = CheckBox(a, "foo")
     size_text_test(c)
+    a.destroy()
+
+def test_events():
+    a = App()
+    c = CheckBox(a, "foo")
+    events_test(c)
     a.destroy()
