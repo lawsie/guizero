@@ -102,6 +102,11 @@ class DisplayMixin():
 
 class TextMixin():
 
+    FG_KEYS = [
+        "fg",
+        "activeforeground",
+    ] 
+
     # Get the font object for this widget 
     def _get_font(self):
         # get the font in use for the widget
@@ -117,7 +122,12 @@ class TextMixin():
     # Set the text colour
     @text_color.setter
     def text_color(self, color):
-        self.tk.config(fg=utils.convert_color(color))
+        for key in self.FG_KEYS:
+            # only set the key if it exists
+            if key in self.tk.keys():
+                self.tk[key] = utils.convert_color(color)
+    
+        #self.tk.config(fg=utils.convert_color(color))
 
     # Get the current font as a string
     @property
@@ -143,6 +153,15 @@ class TextMixin():
 
 
 class ColorMixin():
+
+    # these are the widget keys which will get set when the background is changed 
+    BG_KEYS = [
+        "bg",
+        "activebackground",
+        "selectcolor",
+        "troughcolor",
+    ] 
+
     # Get the background colour as a string
     @property
     def bg(self):
@@ -151,8 +170,11 @@ class ColorMixin():
     # Set the background colour
     @bg.setter
     def bg(self, color):
-        self.tk.config(bg=utils.convert_color(color))
-
+        for key in self.BG_KEYS:
+            # only set the key if it exists
+            if key in self.tk.keys():
+                self.tk[key] = utils.convert_color(color)
+             
 
 class SizeMixin():
     @property
