@@ -194,21 +194,6 @@ class BaseWindow(Container):
     def title(self, text):
         self.tk.title( str(text) )
 
-    # The background colour of the window
-    # @property
-    # def bg(self):
-    #     """
-    #     Sets or returns the background color of the window.
-    #     """
-    #     return self.tk.cget("background")
-
-    # @bg.setter
-    # def bg(self, value):
-    #     self.tk["bg"] = utils.convert_color(value)
-    #     #self.tk.configure(background=utils.convert_color(value))
-    #     for child in self.children:
-    #         child.bg = value
-
     # The height of the window
     @property
     def height(self):
@@ -310,20 +295,4 @@ class ContainerWidget(
         self._align = align
         self.visible = visible
         self.enabled = enabled
-
-    # @property
-    # def bg(self):
-    #     """
-    #     Set or return the background.
-
-    #     Setting the background of a container, also sets the bg of all 
-    #     the widgets it contains.
-    #     """
-    #     return super(Container, self.__class__).bg.fget(self)
-
-    # @bg.setter
-    # def bg(self, value):
-    #     super(Container, self.__class__).bg.fset(self, value)
-    #     for child in self.children:
-    #         child.bg = value
 
