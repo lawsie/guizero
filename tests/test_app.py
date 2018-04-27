@@ -1,4 +1,4 @@
-from guizero import App
+from guizero import App, Text
 from common_test import (
     schedule_after_test,
     schedule_repeat_test,
@@ -51,4 +51,22 @@ def test_display():
 def test_events():
     a = App()
     events_test(a)
+    a.destroy()
+
+def test_cascading_properties():
+    a = App()
+    t = Text(a)
+    a.bg = "red"
+    a.text_color = "purple"
+    assert t.bg == "red"
+    assert t.text_color == "purple"
+    a.destroy()
+
+def test_inherited_properties():
+    a = App()
+    a.bg = "red"
+    a.text_color = "purple"
+    t = Text(a)
+    assert t.bg == "red"
+    assert t.text_color == "purple"
     a.destroy()

@@ -45,6 +45,16 @@ class Combo(TextWidget):
         else:
             utils.error_format("Tried to set " + self.description + " to option \"" + str(value) + "\", which does not exist" )
 
+    # todo sort out the combo menu
+    # @property
+    # def bg(self):
+    #     return super(Combo, self.__class__).bg.fget(self)
+        
+    # @bg.setter
+    # def bg(self, value):
+    #     super(Combo, self.__class__).bg.fset(self, value)
+    #     self.tk["menu"]["bg"] = utils.convert_color(value)
+
     # METHODS
     # -------------------------------------------
 

@@ -28,9 +28,16 @@ class Base(
         self._master = master
         self._tk = tk
         self._description = description
-
+        self._children = []
         self._events = EventManager(self, tk)
-        
+
+        # check the master
+        if self.master is not None:
+            if isinstance(master, Container):
+                self.master._add_child(self)
+            else:
+                utils.raise_error("{}\nMaster is not an [App], [Window] or [Box]".format(description))
+            
     @property
     def master(self):
         """
@@ -66,8 +73,35 @@ class Base(
         """
         return self._events
 
+    @property
+    def children(self):
+        """
+        Returns a list of children widgets
+        """
+        return self._children
 
-class Container(Base, EventsMixin):
+    def _add_child(self, child):
+        """
+        Associates a child widget with this widget.
+
+        Child widgets are used to cascaded to properties (e.g. bg)
+        """
+        self.children.append(child)
+
+    def _remove_child(self, child):
+        """
+        Removes a child widgets association with this widget.
+        """
+        self.children.remove(child)
+
+    def destroy(self):
+        """Destroy the object."""
+        if self.master is not None:
+            self.master._remove_child(self)
+        self.tk.destroy()
+
+
+class Container(Base, ColorMixin, EventsMixin):
 
     def __init__(self, master, tk, description, layout):
         """
@@ -75,6 +109,12 @@ class Container(Base, EventsMixin):
         """
         super(Container, self).__init__(master, tk, description)
         self._layout_manager = layout
+        self._text_color = None
+
+        # inherit from master
+        if self.master is not None:
+            self.bg = master.bg
+            self.text_color = master.text_color
 
     @property
     def layout(self):
@@ -82,6 +122,40 @@ class Container(Base, EventsMixin):
         Returns the layout type used by this container.
         """
         return self._layout_manager
+
+    @property
+    def bg(self):
+        """
+        Sets or returns the background color of the container.
+        """
+        return super(Container, self.__class__).bg.fget(self)
+
+    @bg.setter
+    def bg(self, value):
+        super(Container, self.__class__).bg.fset(self, utils.convert_color(value))
+        # cascade bg to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, Widget)):
+                child.bg = self.bg
+
+    @property
+    def text_color(self):
+        """
+        Sets and returns the text color to be used by the widgets 
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default text color
+        """
+        return self._text_color
+
+    @text_color.setter
+    def text_color(self, value):
+        self._text_color = utils.convert_color(value)
+        # cascade text color to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_color = self.text_color
 
 
 class BaseWindow(Container):
@@ -121,16 +195,19 @@ class BaseWindow(Container):
         self.tk.title( str(text) )
 
     # The background colour of the window
-    @property
-    def bg(self):
-        """
-        Sets or returns the background color of the window.
-        """
-        return self.tk.cget("background")
+    # @property
+    # def bg(self):
+    #     """
+    #     Sets or returns the background color of the window.
+    #     """
+    #     return self.tk.cget("background")
 
-    @bg.setter
-    def bg(self, color):
-        self.tk.configure(background=utils.convert_color(color))
+    # @bg.setter
+    # def bg(self, value):
+    #     self.tk["bg"] = utils.convert_color(value)
+    #     #self.tk.configure(background=utils.convert_color(value))
+    #     for child in self.children:
+    #         child.bg = value
 
     # The height of the window
     @property
@@ -199,6 +276,9 @@ class Widget(
         self.visible = visible
         self.enabled = enabled
 
+        # inherit from master
+        self.bg = master.bg
+
 
 class TextWidget(
     Widget,
@@ -210,12 +290,14 @@ class TextWidget(
         """    
         super(TextWidget, self).__init__(master, tk, description, grid, align, visible, enabled)
 
+        #inherit from master
+        self.text_color = master.text_color
+
 
 class ContainerWidget(
     Container,
     EnableMixin, 
-    DisplayMixin, 
-    ColorMixin,
+    DisplayMixin,
     SizeMixin,
     GridMixin):
 
@@ -228,4 +310,20 @@ class ContainerWidget(
         self._align = align
         self.visible = visible
         self.enabled = enabled
+
+    # @property
+    # def bg(self):
+    #     """
+    #     Set or return the background.
+
+    #     Setting the background of a container, also sets the bg of all 
+    #     the widgets it contains.
+    #     """
+    #     return super(Container, self.__class__).bg.fget(self)
+
+    # @bg.setter
+    # def bg(self, value):
+    #     super(Container, self.__class__).bg.fset(self, value)
+    #     for child in self.children:
+    #         child.bg = value
 

@@ -167,3 +167,22 @@ def mock_event(widget, ref, key, x, y, display_x, display_y):
     
     # call the event callback
     event_callback._event_callback(tk_event)
+
+def cascaded_properties_test(container, widget, text):
+    container.bg = "red"
+    assert widget.bg == "red"
+
+    if text:
+        container.text_color = "purple"
+        assert widget.text_color == "purple"
+
+def inherited_properties_test(container, widget_create, text):
+    container.bg = "red"
+    if text:
+        container.text_color = "purple"
+    
+    w = widget_create()
+
+    assert w.bg == "red"
+    if text:
+        assert w.text_color == "purple"

@@ -84,16 +84,6 @@ class ButtonGroup(
         return self._layout_manager
 
     @property
-    def bg(self):
-        return (self.tk.cget("bg"))
-
-    @bg.setter
-    def bg(self, color):
-        self.tk.config(bg=utils.convert_color(color))
-        for item in self._options:
-            item.bg = color
-
-    @property
     def enabled(self):
         return self._options[0].enabled
 
@@ -141,17 +131,6 @@ class ButtonGroup(
             if item.text == value:
                 self.value = item.value
     
-    # Get the text colour as a string
-    @property
-    def text_color(self):
-        return self._options[0].text_color
-        
-    # Set the text colour
-    @text_color.setter
-    def text_color(self, color):
-        for item in self._options:
-            item.text_color = color
-
     # Get the current font as a string
     @property
     def font(self):

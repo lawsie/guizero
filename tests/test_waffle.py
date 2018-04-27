@@ -9,6 +9,8 @@ from common_test import (
     display_test,
     color_test,
     events_test,
+    cascaded_properties_test,
+    inherited_properties_test
     )
 
 def test_default_values():
@@ -23,7 +25,6 @@ def test_default_values():
     assert w.pad == 5
     assert w.color == "white"
     assert w.dotty == False
-    assert w.bg == None
     a.destroy() 
 
 def test_alt_values():
@@ -263,4 +264,15 @@ def test_events():
     a = App()
     w = Waffle(a)
     events_test(w)
+    a.destroy()
+
+def test_cascaded_properties():
+    a = App()
+    w = Waffle(a)
+    cascaded_properties_test(a, w, False)
+    a.destroy()
+
+def test_inherited_properties():
+    a = App()
+    inherited_properties_test(a, lambda: Waffle(a), False)
     a.destroy()

@@ -10,6 +10,8 @@ from common_test import (
     color_test, 
     size_text_test,
     events_test,
+    cascaded_properties_test,
+    inherited_properties_test
     )
 
 def test_default_values():
@@ -186,4 +188,15 @@ def test_events():
     a = App()
     b = ButtonGroup(a, ["foo", "bar"])
     events_test(b)
+    a.destroy()
+
+def test_cascaded_properties():
+    a = App()
+    b = ButtonGroup(a, ["foo", "bar"])
+    cascaded_properties_test(a, b, True)
+    a.destroy()
+
+def test_inherited_properties():
+    a = App()
+    inherited_properties_test(a, lambda: ButtonGroup(a, ["foo", "bar"]), True)
     a.destroy()
