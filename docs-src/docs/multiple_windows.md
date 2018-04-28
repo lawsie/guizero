@@ -18,7 +18,7 @@ app.display()
 
 ```
 
-Adding widgets to the 2nd window is the same as adding them to an app, by passing the same of the window:
+Adding widgets to the 2nd window is the same as adding them to an app, by passing the name of the window:
 
 ```python
 from guizero import App, Window, Text
