@@ -53,11 +53,11 @@ class Waffle(Widget):
             self._canvas.destroy()
             
         #size the canvas
-        self._c_height = self._height * (self._pixel_size + self._pad)
-        self._c_width = self._width * (self._pixel_size + self._pad)
+        self._c_height = (self._height * (self._pixel_size + self._pad)) + (self._pad * 2)
+        self._c_width = self._width * (self._pixel_size + self._pad) + (self._pad * 2)
 
         # create the canvas and pack it into the waffle frame
-        self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width)
+        self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width, bd=0, highlightthickness=0)
         self._canvas.pack(fill=BOTH, expand=1)
 
         # rebind any events as they would have been lost when the canvas
@@ -65,7 +65,7 @@ class Waffle(Widget):
         self.events.rebind_events(self._canvas)
 
         # fill the canvas background
-        self._canvas.create_rectangle(0, 0, self._c_height, self._c_width, fill=self.bg, outline=self.bg)
+        self._canvas.create_rectangle(0, 0, self._c_width, self._c_height, fill=self.bg, outline=self.bg)
 
     # sizes or resizes the waffle, maintaining the state of existing pixels
     def _size_waffle(self):
