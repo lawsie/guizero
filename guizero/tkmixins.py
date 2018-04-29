@@ -138,7 +138,8 @@ class TextMixin():
     # Set the current font
     @font.setter
     def font(self, font):
-        self.tk.config(font=(font, self.text_size))
+        if font is not None:
+            self.tk.config(font=(font, self.text_size))
 
     # Get the current text size as an integer
     @property
@@ -149,7 +150,8 @@ class TextMixin():
     # Set the font size
     @text_size.setter
     def text_size(self, size):
-        self.tk.config(font=(self.font, size))
+        if size is not None:
+            self.tk.config(font=(self.font, size))
 
 
 class ColorMixin():

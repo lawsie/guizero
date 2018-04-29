@@ -14,6 +14,8 @@ class ButtonGroup(
         description = "[ButtonGroup] object with selected option \"" + str(selected) + "\""
 
         self._options = []   # List of RadioButton objects
+        self._text_size = None
+        self._font = None
 
         # Create a Tk frame object to contain the RadioButton objects
         tk = Frame(master.tk)
@@ -77,13 +79,6 @@ class ButtonGroup(
     # -----------------------------------
 
     @property
-    def layout(self):
-        """
-        Returns the layout type used by this container.
-        """
-        return self._layout_manager
-
-    @property
     def enabled(self):
         return self._options[0].enabled
 
@@ -131,31 +126,24 @@ class ButtonGroup(
             if item.text == value:
                 self.value = item.value
     
-    # Get the current font as a string
-    @property
-    def font(self):
-        return self._options[0].font
+    # # Get the current font as a string
+    # @property
+    # def font(self):
+    #     return self._font
 
-    # Set the current font
-    @font.setter
-    def font(self, font):
-        for item in self._options:
-            item.font = font
-
-    # Get the current text size as an integer
-    @property
-    def text_size(self):
-        return self._options[0].text_size
-
-    # Set the font size
-    @text_size.setter
-    def text_size(self, size):
-        for item in self._options:
-            item.text_size = size
+    # # Set the current font
+    # @font.setter
+    # def font(self, font):
+    #     self._font = font
+    #     for item in self._options:
+    #         item.font = font
+    #         # set it to the font of the option so you get the 'tk font'
+    #         self._font = item.font
 
     @property
     def width(self):
-        return self._options[0].width
+        if len(self._options) > 0:
+            return self._options[0].width
 
     @width.setter
     def width(self, value):
@@ -164,7 +152,8 @@ class ButtonGroup(
         
     @property
     def height(self):
-        return self._options[0].height * len(self._options)
+        if len(self._options) > 0:
+            return self._options[0].height * len(self._options)
 
     @height.setter
     def height(self, value):
@@ -210,3 +199,4 @@ class ButtonGroup(
     def set(self, value):
         self._selected.set(str(value))
         utils.deprecated("ButtonGroup set() is deprecated. Please use the value property instead.")
+    

@@ -83,7 +83,7 @@ def size_text_test(widget):
     assert widget.height == 10
     
 def text_test(widget):
-    widget.font = "times new roman"
+    widget.font = "Times New Roman"
     assert widget.font == "Times New Roman"
     
     widget.text_color = "red"
@@ -175,14 +175,18 @@ def cascaded_properties_test(container, widget, text):
     if text:
         container.text_color = "purple"
         assert widget.text_color == "purple"
+        container.text_size = 16
+        assert widget.text_size == 16
 
 def inherited_properties_test(container, widget_create, text):
     container.bg = "red"
     if text:
         container.text_color = "purple"
+        container.text_size = 16
     
     w = widget_create()
 
     assert w.bg == "red"
     if text:
         assert w.text_color == "purple"
+        assert w.text_size == 16

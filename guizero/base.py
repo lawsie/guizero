@@ -28,7 +28,6 @@ class Base(
         self._master = master
         self._tk = tk
         self._description = description
-        self._children = []
         self._events = EventManager(self, tk)
 
         # check the master
@@ -73,27 +72,6 @@ class Base(
         """
         return self._events
 
-    @property
-    def children(self):
-        """
-        Returns a list of children widgets
-        """
-        return self._children
-
-    def _add_child(self, child):
-        """
-        Associates a child widget with this widget.
-
-        Child widgets are used to cascaded to properties (e.g. bg)
-        """
-        self.children.append(child)
-
-    def _remove_child(self, child):
-        """
-        Removes a child widgets association with this widget.
-        """
-        self.children.remove(child)
-
     def destroy(self):
         """Destroy the object."""
         if self.master is not None:
@@ -108,13 +86,18 @@ class Container(Base, ColorMixin, EventsMixin):
         An abstract class for a container which can hold other widgets
         """
         super(Container, self).__init__(master, tk, description)
+        self._children = []
         self._layout_manager = layout
         self._text_color = None
+        self._text_size = None
+        self._font = None
 
         # inherit from master
         if self.master is not None:
             self.bg = master.bg
             self.text_color = master.text_color
+            self.text_size = master.text_size
+            self.font = master.font
 
     @property
     def layout(self):
@@ -157,12 +140,71 @@ class Container(Base, ColorMixin, EventsMixin):
             if isinstance(child, (Container, TextWidget)):
                 child.text_color = self.text_color
 
+    @property
+    def text_size(self):
+        """
+        Sets and returns the text size to be used by the widgets 
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default text size
+        """
+        return self._text_size
+
+    @text_size.setter
+    def text_size(self, value):
+        self._text_size = value
+        # cascade text color to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_size = self.text_size
+
+    @property
+    def font(self):
+        """
+        Sets and returns the font to be used by the widgets 
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default font
+        """
+        return self._font
+
+    @font.setter
+    def font(self, value):
+        self._font = value
+        # cascade text color to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.font = self.font
+
+    @property
+    def children(self):
+        """
+        Returns a list of children widgets
+        """
+        return self._children
+
+    def _add_child(self, child):
+        """
+        Associates a child widget with this widget.
+
+        Child widgets are used to cascaded to properties (e.g. bg)
+        """
+        self.children.append(child)
+
+    def _remove_child(self, child):
+        """
+        Removes a child widgets association with this widget.
+        """
+        self.children.remove(child)
+
 
 class BaseWindow(Container):
 
     def __init__(self, master, tk, description, title, width, height, layout, bg, visible):
         """
-        Base class for objects which use windows (e.g. App and Window)
+        Base class for objects which use windows e.g. `App` and `Window`
         """
         super(BaseWindow, self).__init__(master, tk, description, layout)
 
@@ -253,7 +295,7 @@ class Widget(
 
     def __init__(self, master, tk, description, grid, align, visible, enabled):
         """
-        The base class for a widget which is an interactable component.
+        The base class for a widget which is an interactable component e.g. `Picture`
         """
         super(Widget, self).__init__(master,tk, description)
         self._grid = grid
@@ -271,12 +313,14 @@ class TextWidget(
 
     def __init__(self, master, tk, description, grid, align, visible, enabled):
         """
-        The base class for a widget which contains or has text
+        The base class for a widget which contains or has text e.g. ``Text`, `PushButton`
         """    
         super(TextWidget, self).__init__(master, tk, description, grid, align, visible, enabled)
 
         #inherit from master
         self.text_color = master.text_color
+        self.text_size = master.text_size
+        self.font = master.font
 
 
 class ContainerWidget(
@@ -288,7 +332,7 @@ class ContainerWidget(
 
     def __init__(self, master, tk, description, layout, grid, align, visible, enabled):
         """
-        The base class for a widget which is also a container.
+        The base class for a widget which is also a container e.g. `Box`, `ButtonGroup`
         """
         super(ContainerWidget, self).__init__(master,tk, description, layout)
         self._grid = grid
