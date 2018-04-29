@@ -56,9 +56,12 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | bg            | [color](colors.md)      | The background colour of the window   |
+| font          | string      | The font of the text widgets should use |
 | height        | int         | The height of the window   |
 | layout        | string      | The layout being used by the Window (`"auto"`) or (`"grid"`) |
 | title         | string      | The title of the window    |
+| text_size     | int         | The size of the text widgets should use |
+| text_color    | [color](colors.md)      | The colour of the text widgets should use  |
 | visible       | boolean     | If the window is visible |
 | width         | int         | The width of the window    |
 

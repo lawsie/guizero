@@ -60,7 +60,7 @@ class App(BaseWindow):
         self._visible = False
 
     def show(self):
-        """Show the widget."""
+        """Show the app."""
         self.tk.deiconify()
         self._visible = True
 
