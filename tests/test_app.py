@@ -3,7 +3,10 @@ from common_test import (
     schedule_after_test,
     schedule_repeat_test,
     display_test,
-    events_test)
+    events_test,
+    cascading_enable_test,
+    cascading_properties_test,
+    inheriting_properties_test)
 
 def test_default_values():
     a = App()
@@ -48,6 +51,12 @@ def test_display():
     display_test(a)
     a.destroy()
 
+def test_enable():
+    a = App()
+    t = Text(a)
+    cascading_enable_test(a)
+    a.destroy()
+
 def test_events():
     a = App()
     events_test(a)
@@ -55,42 +64,10 @@ def test_events():
 
 def test_cascading_properties():
     a = App()
-    t = Text(a)
-    p = Picture(a)
-
-    a.bg = "red"
-    a.text_color = "purple"
-    a.text_size = 16
-    a.font = "Times New Roman"
-
-    assert t.bg == "red"
-    assert t.text_color == "purple"
-    assert t.text_size == 16
-    assert t.font == "Times New Roman"
-    assert p.bg == "red"
-
-    # test that destroying widgets removes them as children
-    p.destroy()
-    a.bg = "green"
-    assert t.bg == "green"
-
+    cascading_properties_test(a)
     a.destroy()
 
-def test_inherited_properties():
+def test_inheriting_properties():
     a = App()
-
-    a.bg = "red"
-    a.text_color = "purple"
-    a.text_size = 16
-    a.font = "Times New Roman"
-
-    t = Text(a)
-    assert t.bg == "red"
-    assert t.text_color == "purple"
-    assert t.text_size == 16
-    assert t.font == "Times New Roman"
-
-    p = Picture(a)
-    assert p.bg == "red"
-
+    inheriting_properties_test(a)
     a.destroy()

@@ -4,7 +4,7 @@ from .base import TextWidget
 
 class Text(TextWidget):
 
-    def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None, visible=True, enabled=True):
+    def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None, visible=True, enabled=None):
 
         description = "[Text] object with text \"" + str(text) + "\""
         

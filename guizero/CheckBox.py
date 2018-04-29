@@ -4,7 +4,7 @@ from .base import TextWidget
 
 class CheckBox(TextWidget):
 
-    def __init__(self, master, text, command=None, grid=None, align=None, args=None, visible=True, enabled=True):
+    def __init__(self, master, text, command=None, grid=None, align=None, args=None, visible=True, enabled=None):
         
         description = "[CheckBox] object with text \"" + text + "\""
         

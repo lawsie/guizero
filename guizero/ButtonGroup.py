@@ -9,7 +9,7 @@ class ButtonGroup(
     ContainerWidget, 
     TextMixin):
 
-    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=True):
+    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None):
         
         description = "[ButtonGroup] object with selected option \"" + str(selected) + "\""
 
@@ -78,27 +78,6 @@ class ButtonGroup(
     # PROPERTIES
     # -----------------------------------
 
-    @property
-    def enabled(self):
-        return self._options[0].enabled
-
-    @enabled.setter
-    def enabled(self, value):
-        if value:
-            self.enable()
-        else:
-            self.disable()
-    
-    def disable(self):
-        """Disable the widget."""
-        for item in self._options:
-            item.disable()
-
-    def enable(self):
-        """Enable the widget."""
-        for item in self._options:
-            item.enable()
-
     # Gets the selected value (1, 2, 3 etc.)
     @property
     def value(self):
@@ -126,20 +105,6 @@ class ButtonGroup(
             if item.text == value:
                 self.value = item.value
     
-    # # Get the current font as a string
-    # @property
-    # def font(self):
-    #     return self._font
-
-    # # Set the current font
-    # @font.setter
-    # def font(self, font):
-    #     self._font = font
-    #     for item in self._options:
-    #         item.font = font
-    #         # set it to the font of the option so you get the 'tk font'
-    #         self._font = item.font
-
     @property
     def width(self):
         if len(self._options) > 0:

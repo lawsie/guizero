@@ -91,6 +91,7 @@ class Container(Base, ColorMixin, EventsMixin):
         self._text_color = None
         self._text_size = None
         self._font = None
+        self._enabled = True
 
         # inherit from master
         if self.master is not None:
@@ -199,6 +200,41 @@ class Container(Base, ColorMixin, EventsMixin):
         """
         self.children.remove(child)
 
+    @property
+    def enabled(self):
+        """
+        Sets or Returns the enabled status of this container.
+
+        Setting the property will change the enabled status of all
+        widgets in this container
+        """
+        return self._enabled
+
+    @enabled.setter
+    def enabled(self, value):
+        if value:
+            self.enable()
+        else:
+            self.disable()
+    
+    def disable(self):
+        """
+        Disable all the widgets in this container
+        """
+        self._enabled = False
+        for child in self.children:
+            if isinstance(child, (Container, Widget)):
+                child.disable()
+
+    def enable(self):
+        """
+        Enable all the widgets in this container
+        """
+        self._enabled = True
+        for child in self.children:
+            if isinstance(child, (Container, Widget)):
+                child.enable()
+
 
 class BaseWindow(Container):
 
@@ -305,6 +341,10 @@ class Widget(
 
         # inherit from master
         self.bg = master.bg
+        if enabled is None:
+            self.enabled = master.enabled
+        else:
+            self.enabled = enabled
 
 
 class TextWidget(
@@ -321,7 +361,7 @@ class TextWidget(
         self.text_color = master.text_color
         self.text_size = master.text_size
         self.font = master.font
-
+        
 
 class ContainerWidget(
     Container,
@@ -338,5 +378,9 @@ class ContainerWidget(
         self._grid = grid
         self._align = align
         self.visible = visible
-        self.enabled = enabled
 
+        #inherit from master
+        if enabled is None:
+            self.enabled = master.enabled
+        else:
+            self.enabled = enabled

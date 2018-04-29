@@ -4,7 +4,7 @@ from .base import Widget
 
 class Picture(Widget):
 
-    def __init__(self, master, image=None, grid=None, align=None, visible=True, enabled=True):
+    def __init__(self, master, image=None, grid=None, align=None, visible=True, enabled=None):
 
         description = "[Picture] object"
 

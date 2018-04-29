@@ -5,6 +5,9 @@ from common_test import (
     schedule_repeat_test,
     display_test,
     events_test,
+    cascading_enable_test,
+    cascading_properties_test,
+    inheriting_properties_test
     )
 
 def test_default_values():
@@ -56,6 +59,14 @@ def test_display():
     display_test(w)
     a.destroy()
 
+def test_enable():
+    a = App()
+    w = Window(a)
+    t = Text(w)
+    cascading_enable_test(a)
+    cascading_enable_test(w)
+    a.destroy()
+
 def test_events():
     a = App()
     w = Window(a)
@@ -65,67 +76,11 @@ def test_events():
 def test_cascading_properties():
     a = App()
     w = Window(a)
-    t = Text(w)
-
-    a.bg = "red"
-    a.text_color = "purple"
-    a.text_size = 16
-    a.font = "Times New Roman"
-    
-    assert w.bg == "red"
-    assert w.text_color == "purple"
-    assert w.text_size == 16
-    assert w.font == "Times New Roman"
-    
-    assert t.bg == "red"
-    assert t.text_color == "purple"
-    assert t.text_size == 16
-    assert t.font == "Times New Roman"
-    
-    w.bg = "green"
-    w.text_color = "yellow"
-    w.text_size = 18
-    w.font = "Courier New"
-
-    assert a.bg == "red"
-    assert a.text_color == "purple"
-    assert a.text_size == 16
-    assert a.font == "Times New Roman"
-
-    assert w.bg == "green"
-    assert w.text_color == "yellow"
-    assert w.text_size == 18
-    assert w.font == "Courier New"
-    
-    assert t.bg == "green"
-    assert t.text_color == "yellow"
-    assert t.text_size == 18
-    assert t.font == "Courier New"
-    
+    cascading_properties_test(w)
     a.destroy()
 
-def test_inherited_properties():
+def test_inheriting_properties():
     a = App()
-    a.bg = "red"
-    a.text_color = "purple"
-    a.text_size = 16
-    a.font = "Times New Roman"
-    
     w = Window(a)
-    assert w.bg == "red"
-    assert w.text_color == "purple"
-    assert w.text_size == 16
-    assert w.font == "Times New Roman"
-    
-    w.bg = "green"
-    w.text_color = "yellow"
-    w.text_size = 18
-    w.font = "Courier New"
-    
-    t = Text(w)
-    assert t.bg == "green"
-    assert t.text_color == "yellow"
-    assert t.text_size == 18
-    assert t.font == "Courier New"
-    
+    inheriting_properties_test(w)
     a.destroy()

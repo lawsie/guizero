@@ -48,8 +48,8 @@ class DestroyMixin():
 class EnableMixin():    
     @property
     def enabled(self):
-        button_state = self.tk.cget("state")
-        return button_state == "normal" or button_state == "active"
+        state = self.tk.cget("state")
+        return state == "normal" or state == "active"
 
     @enabled.setter
     def enabled(self, value):

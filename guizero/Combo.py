@@ -4,7 +4,7 @@ from .base import TextWidget
 
 class Combo(TextWidget):
 
-    def __init__(self, master, options, selected=None, command=None, grid=None, align=None, visible=True, enabled=True):
+    def __init__(self, master, options, selected=None, command=None, grid=None, align=None, visible=True, enabled=None):
 
         # Maintain a list of options (as strings, to avoid problems comparing)
         self._options = [str(x) for x in options]
