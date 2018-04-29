@@ -33,7 +33,7 @@ When you create a `CheckBox` object you **must** specify `master` and `text` and
 | args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 
 
 ### Methods

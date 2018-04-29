@@ -34,7 +34,7 @@ When you create a `Text` object, you **must** specify a `master` and you can spe
 | size   | int    | 12     | -         | The font size of the text |
 | text   | string    | ""  | -         | The text you want to display |
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 
 
 ### Methods

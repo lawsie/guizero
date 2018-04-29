@@ -33,7 +33,7 @@ When you create a `Combo` object you **must** specify `master` and `options` and
 | command | function name | None | -   | The name of a function to call when a different option is selected. This function MUST take either zero or one argument, if the function takes one argument the current value of the Combo will be given. 
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 
 
 

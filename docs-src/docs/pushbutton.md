@@ -39,7 +39,7 @@ When you create a `PushButton` object you **must** specify `master` and you can 
 | pady    | int   | 10 | -       | How much vertical padding to add between the text/icon and the edge of the button. |
 | text    | string   | "Button" | -       | The text to display on the button |
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 
 
 ### Methods

@@ -35,7 +35,7 @@ When you create a `Slider` object, you **must** specify a `master` and you can s
 | horizontal | Boolean | True | -   | Whether you wish to display your slider horizontally or vertically (defaults to horizontal) |
 | start   | int    | 0  | -         | The smallest value selectable on the slider |
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 
 
 ### Methods

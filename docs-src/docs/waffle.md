@@ -38,7 +38,7 @@ When you create a `Waffle` object you **must** specify `master` and you can spec
 | width     | int       | 3       | -         | How many pixels wide the waffle is |
 | _remember_  | _boolean_   | _True_   | -         | _No longer needed - all Waffles will now have a memory._ |
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 | bg    | [color](colors.md)    | None  | No         | The background colour of the waffle. Takes a [color](colors.md) value. |
 
 

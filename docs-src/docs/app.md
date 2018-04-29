@@ -45,7 +45,9 @@ You can call the following methods on an `App` object.
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | destroy()   | -  | -          | Destroys the widget    |
+| disable()  | - | -          | Disables all the widgets in the app so that they cannot be interacted with   |
 | display()     |-          | -          | Displays the app on the screen. You **MUST** call this method at the end of your program to display the app on the screen. |
+| enable()  | -  | -          | Enables all the widgets in the app   |
 | focus()  | -  | -          | Gives focus to the widget  |
 | hide()  | -   | -          | Hides the app window from view.  |
 | on_close(command)   | command (function name)         | -          | Calls the given function when the user tries to close the window.      |
@@ -63,6 +65,7 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | bg            | [color](colors.md)      | The background colour of the window   |
+| enabled       | boolean     | `True` if the app is enabled |
 | height        | int         | The height of the window   |
 | layout        | string      | The layout being used by the App (`"auto"`) or (`"grid"`) |
 | title         | string      | The title of the window    |
