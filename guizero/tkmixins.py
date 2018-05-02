@@ -162,7 +162,7 @@ class ColorMixin():
         "activebackground",
         "selectcolor",
         "troughcolor",
-    ] 
+    ]
 
     # Get the background colour as a string
     @property

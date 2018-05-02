@@ -88,6 +88,7 @@ class Container(Base, ColorMixin, EventsMixin):
         super(Container, self).__init__(master, tk, description)
         self._children = []
         self._layout_manager = layout
+        self._bg = None
         self._text_color = None
         self._text_size = None
         self._font = None
@@ -112,10 +113,11 @@ class Container(Base, ColorMixin, EventsMixin):
         """
         Sets or returns the background color of the container.
         """
-        return super(Container, self.__class__).bg.fget(self)
+        return self._bg
 
     @bg.setter
     def bg(self, value):
+        self._bg = value
         super(Container, self.__class__).bg.fset(self, utils.convert_color(value))
         # cascade bg to child widgets
         for child in self.children:
