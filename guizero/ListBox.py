@@ -7,6 +7,37 @@ class ListBox(TextWidget):
     def __init__(self, master, items=None, selected=None, command=None, grid=None, align=None, visible=True, enabled=None, multiselect=False):
         """
         Creates a ListBox
+
+        :param Container master:
+            The Container (App, Box, etc) the ListBox will belong too.
+
+        :param List items:
+            A list of strings to populate the ListBox, defaults to `None`.
+
+        :param string selected:
+            The item in the ListBox to select, defaults to `None`. 
+
+        :param callback command:
+            The callback function to call when the ListBox changes,
+            defaults to `None`.
+
+        :param List grid:
+            Grid co-ordinates for the widget, required if the master layout
+            is 'grid', defaults to `None`.
+
+        :param string align:
+            How to align the widget within the grid, defaults to None.
+
+        :param bool visible:
+            If the widget should be visible, defaults to `True`.
+
+        :param bool enabled:
+            If the widget should be enabled, defaults to `None`. If `None`
+            the value is inherited from the master.
+
+        :param bool multiselect:
+            If ListBox should allow multiple items to be selected, defaults
+            to `False`.
         """
 
         description = "[ListBox] object"
@@ -24,12 +55,14 @@ class ListBox(TextWidget):
 
         super(ListBox, self).__init__(master, tk, description, grid, align, visible, enabled)
 
+        self.events.set_event("<ListBox.ListboxSelect>", "<<ListboxSelect>>", self._command_callback)
+
         # Select the selected items
         if selected is not None:
             self.value = selected
 
         # The command associated with this combo
-        #self.update_command(command)
+        self.update_command(command)
 
     @property
     def value(self):
@@ -67,19 +100,26 @@ class ListBox(TextWidget):
         """
         Insert a new `item` at `index`
         """
-        pass
+        self.tk.insert(index, item)
 
     def append(self, item):
         """
         Appends a new `item` to the end of the ListBox.
         """
-        pass
+        self.tk.insert(END, item)
 
     def remove(self, item):
         """
-        Removes an `item` from the ListBox.
+        Removes the first `item` from the ListBox.
+
+        Returns `True` if an item was removed.
         """
-        pass
+        for index in range(len(self.items)):
+            if item == self.items[index]:
+                self.tk.delete(index)
+                return True
+
+        return False
 
     def clear(self):
         """
@@ -93,3 +133,31 @@ class ListBox(TextWidget):
         Returns a list of items in the ListBox 
         """
         return [self.tk.get(index) for index in range(self.tk.size())]
+
+    def _command_callback(self):
+        if self._command:
+            args_expected = utils.no_args_expected(self._command)
+            if args_expected == 0:
+                self._command()
+            elif args_expected == 1:
+                self._command(self.value)
+            else:
+                utils.error_format("Combo command function must accept either 0 or 1 arguments.\nThe current command has {} arguments.".format(args_expected))
+
+    def update_command(self, command):
+        """
+        Updates the callback command which is called when the ListBox
+        changes. 
+        
+        Setting to `None` stops the callback.
+
+        :param callback command:
+            The callback function to call, it can ccept 0 or 1 parameters.
+
+            If it accepts 1 parameter the `value` of the ListBox will be 
+            passed.
+        """
+        if command is None:
+            self._command = lambda: None
+        else:
+            self._command = command
