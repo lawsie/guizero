@@ -77,6 +77,9 @@ class DisplayMixin():
 
     @property
     def visible(self):
+        """
+        Sets or returns whether the widget is visible.
+        """
         return self._visible
     
     @visible.setter
@@ -117,6 +120,9 @@ class TextMixin():
     # Get the text colour as a string
     @property
     def text_color(self):
+        """
+        Sets or returns the text color of the widget.
+        """
         return (self.tk.cget("fg"))
 
     # Set the text colour
@@ -132,6 +138,9 @@ class TextMixin():
     # Get the current font as a string
     @property
     def font(self):
+        """
+        Set or returns the font the widget is using.
+        """
         f = self._get_font()
         return (f["family"])
 
@@ -144,6 +153,9 @@ class TextMixin():
     # Get the current text size as an integer
     @property
     def text_size(self):
+        """
+        Sets or returns the text size of the widget.
+        """
         f = self._get_font()
         return (f["size"])
 
@@ -167,6 +179,9 @@ class ColorMixin():
     # Get the background colour as a string
     @property
     def bg(self):
+        """
+        Sets the background color of the widget.
+        """
         return (self.tk.cget("bg"))
 
     # Set the background colour
@@ -181,6 +196,9 @@ class ColorMixin():
 class SizeMixin():
     @property
     def width(self):
+        """
+        Sets or returns the width of the widget.
+        """
         return int(self.tk.cget("width"))
 
     @width.setter
@@ -189,6 +207,9 @@ class SizeMixin():
 
     @property
     def height(self):
+        """
+        Sets or returns the height of the widget.
+        """
         return int(self.tk.cget("height"))
 
     @height.setter
@@ -217,6 +238,9 @@ class EventsMixin():
 
     @property
     def when_clicked(self):
+        """
+        Sets or returns the function called when the widget is clicked. 
+        """
         return self.events.get_event("<when_clicked>")
 
     @when_clicked.setter
@@ -225,6 +249,10 @@ class EventsMixin():
 
     @property
     def when_left_button_pressed(self):
+        """
+        Sets or returns the function called when the left mouse button is 
+        pressed. 
+        """
         return self.events.get_event("<when_left_button_pressed>")
 
     @when_left_button_pressed.setter
@@ -233,6 +261,10 @@ class EventsMixin():
 
     @property
     def when_left_button_released(self):
+        """
+        Sets or returns the function called when the left mouse button is 
+        released. 
+        """
         return self.events.get_event("<when_left_button_released>")
 
     @when_left_button_released.setter
@@ -241,6 +273,10 @@ class EventsMixin():
 
     @property
     def when_right_button_pressed(self):
+        """
+        Sets or returns the function called when the right mouse button is 
+        pressed. 
+        """
         return self.events.get_event("<when_right_button_pressed>")
 
     @when_right_button_pressed.setter
@@ -249,6 +285,10 @@ class EventsMixin():
 
     @property
     def when_right_button_released(self):
+        """
+        Sets or returns the function called when the right mouse button is 
+        released. 
+        """
         return self.events.get_event("<when_right_button_released>")
 
     @when_right_button_released.setter
@@ -257,6 +297,9 @@ class EventsMixin():
 
     @property
     def when_key_pressed(self):
+        """
+        Sets or returns the function called when a key is pressed. 
+        """
         return self.events.get_event("<when_key_pressed>")
 
     @when_key_pressed.setter
@@ -265,6 +308,9 @@ class EventsMixin():
 
     @property
     def when_key_released(self):
+        """
+        Sets or returns the function called when a key is released. 
+        """
         return self.events.get_event("<when_key_released>")
 
     @when_key_released.setter
@@ -273,6 +319,10 @@ class EventsMixin():
 
     @property
     def when_mouse_enters(self):
+        """
+        Sets or returns the function called when the mouse pointer enters
+        the widget. 
+        """
         return self.events.get_event("<when_mouse_enters>")
 
     @when_mouse_enters.setter
@@ -281,6 +331,10 @@ class EventsMixin():
 
     @property
     def when_mouse_leaves(self):
+        """
+        Sets or returns the function called when the mouse pointer leaves
+        the widget. 
+        """
         return self.events.get_event("<when_mouse_leaves>")
 
     @when_mouse_leaves.setter
@@ -289,6 +343,9 @@ class EventsMixin():
 
     @property
     def when_mouse_moved(self):
+        """
+        Sets or returns the function called when the mouse pointers moves.
+        """
         return self.events.get_event("<when_mouse_moved>")
     
     @when_mouse_moved.setter
@@ -297,6 +354,10 @@ class EventsMixin():
 
     @property
     def when_mouse_dragged(self):
+        """
+        Sets or returns the function called when the mouse pointer is dragged
+        (moved with the left button pressed).
+        """
         return self.events.get_event("<when_mouse_dragged>")
 
     @when_mouse_dragged.setter
