@@ -137,123 +137,125 @@ def test_command():
 
     a.destroy()
 
-# def test_command_with_parameter():
-#     a = App()
+def test_command_with_parameter():
+    a = App()
     
-#     callback_event = Event()
-#     def callback(value):
-#         assert value == "foo"
-#         callback_event.set()
+    callback_event = Event()
+    def callback(value):
+        assert value == "bar"
+        callback_event.set()
 
-#     l = ListBox(a, ["foo", "bar"], command = callback)
-#     assert not callback_event.is_set()
+    l = ListBox(a, ["foo", "bar"], command = callback)
+    l.value = "bar"
+    assert not callback_event.is_set()
 
-#     l._command_callback(l.value)
-#     assert callback_event.is_set()
+    l._command_callback()
+    assert callback_event.is_set()
 
-#     a.destroy()
+    a.destroy()
     
-# def test_update_command():
-#     a = App()
+def test_update_command():
+    a = App()
     
-#     callback_event = Event()
-#     def callback():
-#         callback_event.set()
+    callback_event = Event()
+    def callback():
+        callback_event.set()
 
-#     l = ListBox(a, ["foo", "bar"])
+    l = ListBox(a, ["foo", "bar"])
     
-#     l._command_callback(l.value)
-#     assert not callback_event.is_set()
+    l._command_callback()
+    assert not callback_event.is_set()
     
-#     l.update_command(callback)
-#     l._command_callback(l.value)
-#     assert callback_event.is_set()
-#     callback_event.clear()
+    l.update_command(callback)
+    l._command_callback()
+    assert callback_event.is_set()
+    callback_event.clear()
 
-#     l.update_command(None)
-#     l._command_callback(l.value)
-#     assert not callback_event.is_set()
+    l.update_command(None)
+    l._command_callback()
+    assert not callback_event.is_set()
     
-#     a.destroy()
+    a.destroy()
 
-# def test_update_command_with_parameter():
-#     a = App()
+def test_update_command_with_parameter():
+    a = App()
     
-#     callback_event = Event()
-#     def callback(value):
-#         assert l.value == "foo"
-#         callback_event.set()
+    callback_event = Event()
+    def callback(value):
+        assert l.value == "foo"
+        callback_event.set()
 
-#     l = ListBox(a, ["foo", "bar"])
+    l = ListBox(a, ["foo", "bar"])
+    l.value = "foo"
     
-#     l.update_command(callback)
+    l.update_command(callback)
 
-#     l._command_callback(l.value)
-#     assert callback_event.is_set()
+    l._command_callback()
+    assert callback_event.is_set()
 
-#     a.destroy()
+    a.destroy()
     
-# def test_after_schedule():
-#     a = App()
-#     l = ListBox(a, ["foo", "bar"])
-#     schedule_after_test(a, c)
-#     a.destroy()
+def test_after_schedule():
+    a = App()
+    l = ListBox(a, ["foo", "bar"])
+    schedule_after_test(a, l)
+    a.destroy()
 
-# def test_repeat_schedule():
-#     a = App()
-#     l = ListBox(a, ["foo", "bar"])
-#     schedule_repeat_test(a, c)
-#     a.destroy()
+def test_repeat_schedule():
+    a = App()
+    l = ListBox(a, ["foo", "bar"])
+    schedule_repeat_test(a, l)
+    a.destroy()
 
-# def test_destroy():
-#     a = App()
-#     l = ListBox(a, ["foo", "bar"])
-#     destroy_test(c)
-#     a.destroy()
+def test_destroy():
+    a = App()
+    l = ListBox(a, ["foo", "bar"])
+    destroy_test(l)
+    a.destroy()
 
-# def test_enable():
-#     a = App()
-#     l = ListBox(a, ["foo", "bar"])
-#     enable_test(c)
-#     a.destroy()
+def test_enable():
+    a = App()
+    l = ListBox(a, ["foo", "bar"])
+    enable_test(l)
+    a.destroy()
 
-# def test_display():
-#     a = App()
-#     l = ListBox(a, ["foo", "bar"])
-#     display_test(c)
-#     a.destroy()
+def test_display():
+    a = App()
+    l = ListBox(a, ["foo", "bar"])
+    display_test(l)
+    a.destroy()
 
-# def test_text():
-#     a = App()
-#     l = ListBox(a, ["foo", "bar"])
-#     text_test(c)
-#     a.destroy()
+def test_text():
+    a = App()
+    l = ListBox(a, ["foo", "bar"])
+    text_test(l)
+    a.destroy()
 
-# def test_color():
-#     a = App()
-#     l = ListBox(a, ["foo", "bar"])
-#     color_test(c)
-#     a.destroy()
+def test_color():
+    a = App()
+    l = ListBox(a, ["foo", "bar"])
+    color_test(l)
+    a.destroy()
 
-# def test_size():
-#     a = App()
-#     l = ListBox(a, ["foo", "bar"])
-#     size_text_test(c)
-#     a.destroy()
+def test_size():
+    a = App()
+    l = ListBox(a, ["foo", "bar"])
+    size_text_test(l)
+    a.destroy()
 
-# def test_events():
-#     a = App()
-#     l = ListBox(a, ["foo", "bar"])
-#     events_test(c)
-#     a.destroy()
+def test_events():
+    a = App()
+    l = ListBox(a, ["foo", "bar"])
+    events_test(l)
+    a.destroy()
 
-# def test_cascaded_properties():
-#     a = App()
-#     l = ListBox(a, ["foo", "bar"])
-#     cascaded_properties_test(a, c, True)
-#     a.destroy()
+def test_cascaded_properties():
+    a = App()
+    l = ListBox(a, ["foo", "bar"])
+    cascaded_properties_test(a, l, True)
+    a.destroy()
 
-# def test_inherited_properties():
-#     a = App()
-#     inherited_properties_test(a, lambda: Combo(a, ["foo", "bar"]), True)
-#     a.destroy()
+def test_inherited_properties():
+    a = App()
+    inherited_properties_test(a, lambda: ListBox(a, ["foo", "bar"]), True)
+    a.destroy()
