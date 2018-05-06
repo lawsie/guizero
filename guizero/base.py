@@ -374,7 +374,7 @@ class ContainerWidget(
 
     def __init__(self, master, tk, description, layout, grid, align, visible, enabled):
         """
-        The base class for a widget which is also a container e.g. `Box`, `ButtonGroup`
+        The base class for a widget which is also a container e.g. `Box` 
         """
         super(ContainerWidget, self).__init__(master,tk, description, layout)
         self._grid = grid
@@ -386,3 +386,14 @@ class ContainerWidget(
             self.enabled = master.enabled
         else:
             self.enabled = enabled
+
+class ContainerTextWidget(
+    ContainerWidget, 
+    TextMixin):
+
+    def __init__(self, master, tk, description, layout, grid, align, visible, enabled):
+        """
+        The base class for a widget which is also a container and contains text 
+        e.g. `ButtonGroup`
+        """
+        super(ContainerTextWidget, self).__init__(master, tk, description, layout, grid, align, visible, enabled)

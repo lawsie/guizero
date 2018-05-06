@@ -142,7 +142,7 @@ class ListBox(TextWidget):
             elif args_expected == 1:
                 self._command(self.value)
             else:
-                utils.error_format("Combo command function must accept either 0 or 1 arguments.\nThe current command has {} arguments.".format(args_expected))
+                utils.error_format("ListBox command function must accept either 0 or 1 arguments.\nThe current command has {} arguments.".format(args_expected))
 
     def update_command(self, command):
         """

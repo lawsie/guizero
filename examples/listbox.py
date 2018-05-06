@@ -9,8 +9,18 @@ def show_list():
 
 a = App()
 
-listbox = ListBox(a, items=["one", "two", "three", "four", "three", "five"], selected="one", command=changed)
-mlistbox = ListBox(a, items=["six", "seven", "eight", "nine", "ten"], multiselect=True, selected=["ten", "nine"], command=changed)
+listbox = ListBox(
+    a, 
+    items=["one", "two", "three", "four", "three", "five", "six", "seven", "eight", "nine", "ten"], 
+    selected="one", 
+    command=changed)
+mlistbox = ListBox(
+    a, 
+    items=["ah", "bee", "see", "dee", "ei"], 
+    multiselect=True, 
+    selected=["see", "ei"], 
+    command=changed)
+
 b = PushButton(a, text="show values", command=show_list)
 t = Text(a)
 
