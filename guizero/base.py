@@ -117,8 +117,8 @@ class Container(Base, ColorMixin, EventsMixin):
 
     @bg.setter
     def bg(self, value):
-        self._bg = value
-        super(Container, self.__class__).bg.fset(self, utils.convert_color(value))
+        self._bg = utils.convert_color(value)
+        super(Container, self.__class__).bg.fset(self, self._bg)
         # cascade bg to child widgets
         for child in self.children:
             if isinstance(child, (Container, Widget)):
