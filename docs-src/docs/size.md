@@ -25,6 +25,7 @@ slider.height = 30
 | [ButtonGroup](buttongroup.md)   | Characters  | The height of a ButtonGroup must divide by the number of buttons in it |
 | [CheckBox](checkbox.md)      | Characters  | |
 | [Combo](combo.md)         | Characters  | |
+| [ListBox](listbox.md)         | Characters  | |
 | [Picture](picture.md)       | Pixels      | The image wont scale to the size of the Picture |
 | [PushButton](pushbutton.md)    | Characters  | PushButton's are sized in Characters, unless they contain an icon in which case they are sized in Pixels |
 | [Slider](slider.md)        | Pixels      | |

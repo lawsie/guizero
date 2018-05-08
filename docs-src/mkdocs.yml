@@ -21,6 +21,7 @@ pages:
       - ButtonGroup: buttongroup.md
       - CheckBox: checkbox.md
       - Combo: combo.md
+      - ListBox: listbox.md
       - MenuBar: menubar.md
       - Picture: picture.md
       - PushButton: pushbutton.md
