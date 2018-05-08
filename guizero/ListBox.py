@@ -114,8 +114,10 @@ class ListBox(ContainerTextWidget):
 
         `None` if 0 items are selected.
 
-        If the ListBox is a `multiselect`, `value` is a tuple of items selected, 
-        if not `value` is a single integer.
+        If the ListBox is a not `multiselect`, `value` is the item selected.
+
+        If the ListBox is a `multiselect`, `value` is a list of items 
+        selected.
         """
         return self._listbox.value
 
