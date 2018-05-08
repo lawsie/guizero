@@ -24,7 +24,7 @@ def test_default_values():
     assert l.align == None
     assert l.visible == True
     assert l.enabled == True
-    assert l._multiselect == False
+    assert l._listbox._multiselect == False
     a.destroy()
 
 def test_alt_values():
@@ -58,6 +58,7 @@ def test_multi_alt_values():
     assert l.grid[0] == 0
     assert l.grid[1] == 1
     assert l.align == "top"
+    assert l._listbox._multiselect == True
     a.destroy()
 
 def test_getters_setters():
@@ -132,7 +133,7 @@ def test_command():
     l = ListBox(a, ["foo", "bar"], command = callback)
     assert not callback_event.is_set()
     
-    l._command_callback()
+    l._listbox._command_callback()
     assert callback_event.is_set()
 
     a.destroy()
@@ -149,7 +150,7 @@ def test_command_with_parameter():
     l.value = "bar"
     assert not callback_event.is_set()
 
-    l._command_callback()
+    l._listbox._command_callback()
     assert callback_event.is_set()
 
     a.destroy()
@@ -163,16 +164,16 @@ def test_update_command():
 
     l = ListBox(a, ["foo", "bar"])
     
-    l._command_callback()
+    l._listbox._command_callback()
     assert not callback_event.is_set()
     
     l.update_command(callback)
-    l._command_callback()
+    l._listbox._command_callback()
     assert callback_event.is_set()
     callback_event.clear()
 
     l.update_command(None)
-    l._command_callback()
+    l._listbox._command_callback()
     assert not callback_event.is_set()
     
     a.destroy()
@@ -190,7 +191,7 @@ def test_update_command_with_parameter():
     
     l.update_command(callback)
 
-    l._command_callback()
+    l._listbox._command_callback()
     assert callback_event.is_set()
 
     a.destroy()

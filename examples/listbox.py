@@ -7,13 +7,18 @@ def changed(value):
 def show_list():
     t.value = listbox.value + " " + str(mlistbox.value)
 
+def key_pressed(data):
+    print(data)
+
 a = App()
 
 listbox = ListBox(
     a, 
-    items=["one", "two", "three", "four", "three", "five", "six", "seven", "eight", "nine", "ten"], 
+    items=["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven"], 
     selected="one", 
-    command=changed)
+    command=changed,
+    scrollbar=True)
+
 mlistbox = ListBox(
     a, 
     items=["ah", "bee", "see", "dee", "ei"], 
