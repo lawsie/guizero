@@ -1,32 +1,29 @@
-from guizero import App, PushButton, ListBox, Text
-from tkinter import Listbox, END, MULTIPLE, EXTENDED
+from guizero import App, ListBox, Text
 
-def changed(value):
-    t.value = value
+def change_color(value):
+    t.text_color = value
 
-def show_list():
-    t.value = listbox.value + " " + str(mlistbox.value)
-
-def key_pressed(data):
-    print(data)
+def update_text():
+    if mlistbox.value is None:
+        t.value = "Its a ListBox"
+    else:
+        t.value = "Its a " + " ".join(mlistbox.value) + " ListBox"
 
 a = App()
 
+t = Text(a, text="Its a ListBox", color="black")
+
 listbox = ListBox(
     a, 
-    items=["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven"], 
-    selected="one", 
-    command=changed,
+    items=["red", "green", "blue", "yellow", "purple", "turquoise", "pink", "orange", "black", "brown", "cyan"], 
+    selected="black", 
+    command=change_color,
     scrollbar=True)
 
 mlistbox = ListBox(
     a, 
-    items=["ah", "bee", "see", "dee", "ei"], 
+    items=["really", "slightly", "brilliant", "interesting", "but", "and", "rubbish", "stupid"], 
     multiselect=True, 
-    selected=["see", "ei"], 
-    command=changed)
-
-b = PushButton(a, text="show values", command=show_list)
-t = Text(a)
+    command=update_text)
 
 a.display()
