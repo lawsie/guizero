@@ -8,8 +8,10 @@
     - `text_size`
     - `font`
     - `enabled`
+- Introduced `ListBox`
 - Bug fixes relating to `bg` and `text_color` causing widgets to change colour when selected
 - Minor bug fixes with `CheckBox`, `Waffle` and `Combo`
+- Documentation fixes and updates
 
 ## 0.5.0 - 2018-04-10
 
