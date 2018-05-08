@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.TopLevel` object)
 
-`__init__(self, master, title="guizero", width=500, height=500, layout="auto", bg=None):`
+`__init__(self, master, title="guizero", width=500, height=500, layout="auto", bg=None, visible=True):`
 
 ### What is it?
 A `Window` object is how you create new windows in guizero.

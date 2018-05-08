@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Label` object)
 
-`__init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None)`
+`__init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None, visible=True, enabled=None)`
 
 ### What is it?
 The `Text` object displays non editable text in your app, useful for titles, labels and instructions.

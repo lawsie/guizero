@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Button` object)
 
-`__init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None)`
+`__init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, visible=True, enabled=None)`
 
 ### What is it?
 The `PushButton` object displays a button with text or an image, which calls a function when pressed.

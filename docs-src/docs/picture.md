@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Label` object)
 
-`__init__(self, master, image, grid=None, align=None)`
+`__init__(self, master, image=None, grid=None, align=None, visible=True, enabled=None)`
 
 ### What is it?
 The `Picture` object displays an image.

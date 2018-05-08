@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Entry` object)
 
-`__init__(self, master, text="", width=10, grid=None, align=None)`
+`__init__(self, master, text="", width=10, height=1, grid=None, align=None, visible=True, enabled=None, multiline=False, scrollbar=False, command=None)`
 
 ### What is it
 The `TextBox` object displays a text box which the user can type in.
