@@ -61,7 +61,7 @@ app.display()
 
 When a window is opened using `show()` it is opening side by side with the main window, and both windows can be used at the same time
 
-To open a "modal" window which prevents the other windows in the applcation being used until it is closed you can pass `True` to the optional wait parameter of `show` - `show(wait = True)`.
+To open a "modal" window which prevents the other windows in the applcation being used until it is closed you can pass `True` to the optional `wait` parameter of `show` - `show(wait = True)`.
 
 This will force all other windows to wait until this window is closed before they can be used.
 
