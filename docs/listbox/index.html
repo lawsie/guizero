@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>PushButton - guizero</title>
+  <title>ListBox - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "PushButton";
-    var mkdocs_page_input_path = "pushbutton.md";
-    var mkdocs_page_url = "/pushbutton/";
+    var mkdocs_page_name = "ListBox";
+    var mkdocs_page_input_path = "listbox.md";
+    var mkdocs_page_url = "/listbox/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -136,24 +136,12 @@
                     
     <a class="" href="../combo/">Combo</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../listbox/">ListBox</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../menubar/">MenuBar</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../picture/">Picture</a>
-                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">PushButton</a>
+    <a class="current" href="./">ListBox</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#pushbutton">PushButton</a></li>
+    <li class="toctree-l3"><a href="#listbox">ListBox</a></li>
     
         <ul>
         
@@ -167,10 +155,24 @@
         
             <li><a class="toctree-l4" href="#properties">Properties</a></li>
         
+            <li><a class="toctree-l4" href="#examples">Examples</a></li>
+        
         </ul>
     
 
     </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../menubar/">MenuBar</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../picture/">Picture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pushbutton/">PushButton</a>
                 </li>
                 <li class="">
                     
@@ -245,7 +247,7 @@
         
       
     
-    <li>PushButton</li>
+    <li>ListBox</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -255,25 +257,23 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="pushbutton">PushButton</h1>
-<p>(Contains a <code>tkinter.Button</code> object)</p>
-<p><code>__init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, visible=True, enabled=None)</code></p>
+                <h1 id="listbox">ListBox</h1>
+<p>(Contains a <code>tkinter.Listbox</code> object)</p>
+<p><code>__init__(self, master, items=None, selected=None, command=None, grid=None, align=None, visible=True, enabled=None, multiselect=False, scrollbar=False)</code></p>
 <h3 id="what-is-it">What is it?</h3>
-<p>The <code>PushButton</code> object displays a button with text or an image, which calls a function when pressed.</p>
-<p><img alt="PushButton on Windows" src="../images/pushbutton_windows.png" /></p>
+<p>The <code>ListBox</code> object displays a list of items from which either single or multiple items can be selected.</p>
+<p><img alt="ListBox on Windows" src="../images/listbox_windows.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
-<p>Create a <code>PushButton</code> object like this:</p>
-<pre><code class="python">from guizero import App, PushButton
-def do_nothing():
-  print(&quot;Button was pressed&quot;)
-
+<p>Create a <code>ListBox</code> object like this:</p>
+<pre><code class="python">from guizero import App, ListBox
 app = App()
-button = PushButton(app, command=do_nothing)
+listbox = ListBox(app, items=[&quot;Beef&quot;, &quot;Chicken&quot;, &quot;Fish&quot;, &quot;Vegetarian&quot;])
 app.display()
 </code></pre>
 
 <h3 id="starting-parameters">Starting parameters</h3>
-<p>When you create a <code>PushButton</code> object you <strong>must</strong> specify <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>button = PushButton(app)</code></p>
+<p>When you create a <code>ListBox</code> object you <strong>must</strong> specify <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>listbox = ListBox(app, items=["Beef", "Chicken", "Fish", "Vegetarian"])</code></p>
+<p>If you want the <code>ListBox</code> to allow multiple items to be selected you must set the <code>multiselect</code> optional parameter to <code>True</code>: <code>listbox = ListBox(app, multiselect=True)</code></p>
 <table>
 <thead>
 <tr>
@@ -293,11 +293,18 @@ app.display()
 <td>The container to which this widget belongs</td>
 </tr>
 <tr>
-<td>command</td>
-<td>function name</td>
+<td>selected</td>
+<td>string or List</td>
 <td>None</td>
+<td>No</td>
+<td>The item or items to select by default</td>
+</tr>
+<tr>
+<td>items</td>
+<td>List</td>
 <td>-</td>
-<td>The name of a function to call when the button is pressed.</td>
+<td>Yes</td>
+<td>A list of items to display</td>
 </tr>
 <tr>
 <td>align</td>
@@ -307,11 +314,11 @@ app.display()
 <td>Alignment of this widget within its grid location. Possible values: <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>. This parameter is only required if the <code>master</code> object has a grid layout.</td>
 </tr>
 <tr>
-<td>args</td>
-<td>list</td>
+<td>command</td>
+<td>function name</td>
 <td>None</td>
 <td>-</td>
-<td>If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list</td>
+<td>The name of a function to call when a different option is selected. This function MUST take either zero or one argument, if the function takes one argument the current value of the ListBox will be given.</td>
 </tr>
 <tr>
 <td>grid</td>
@@ -319,34 +326,6 @@ app.display()
 <td>None</td>
 <td>-</td>
 <td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
-</tr>
-<tr>
-<td>image</td>
-<td>string</td>
-<td>None</td>
-<td>-</td>
-<td>The file path, tkinter.PhotoImage or PIL.Image you wish to display. If both an image and text are specified, the image will override the text.</td>
-</tr>
-<tr>
-<td>padx</td>
-<td>int</td>
-<td>10</td>
-<td>-</td>
-<td>How much horizontal padding to add between the text/icon and the edge of the button.</td>
-</tr>
-<tr>
-<td>pady</td>
-<td>int</td>
-<td>10</td>
-<td>-</td>
-<td>How much vertical padding to add between the text/icon and the edge of the button.</td>
-</tr>
-<tr>
-<td>text</td>
-<td>string</td>
-<td>"Button"</td>
-<td>-</td>
-<td>The text to display on the button</td>
 </tr>
 <tr>
 <td>visible</td>
@@ -362,10 +341,24 @@ app.display()
 <td>No</td>
 <td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
 </tr>
+<tr>
+<td>multiselect</td>
+<td>boolean</td>
+<td>False</td>
+<td>No</td>
+<td>If the widget should allow multiple items to be selected.</td>
+</tr>
+<tr>
+<td>scrollbar</td>
+<td>boolean</td>
+<td>False</td>
+<td>No</td>
+<td>If the widget should have a verticle scrollbar.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="methods">Methods</h3>
-<p>You can call the following methods on a <code>PushButton</code> object.</p>
+<p>You can call the following methods on a <code>ListBox</code> object.</p>
 <table>
 <thead>
 <tr>
@@ -383,10 +376,22 @@ app.display()
 <td>Schedules a <strong>single</strong> call to <code>command</code> after <code>time</code> milliseconds. (To repeatedly call the same command, use <code>repeat()</code>)</td>
 </tr>
 <tr>
+<td>append(item)</td>
+<td>item (string)</td>
+<td>-</td>
+<td>Appends a new <code>item</code> to the end of the ListBox.</td>
+</tr>
+<tr>
 <td>cancel(command)</td>
 <td>command (function name)</td>
 <td>-</td>
 <td>Cancels a scheduled call to <code>command</code></td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>-</td>
+<td>-</td>
+<td>Clears all the items in a ListBox</td>
 </tr>
 <tr>
 <td>destroy()</td>
@@ -419,16 +424,16 @@ app.display()
 <td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
 </tr>
 <tr>
-<td>image(image_source)</td>
-<td>image_source (string)</td>
+<td>insert(item, index)</td>
+<td>item (string), index (int)</td>
 <td>-</td>
-<td>The file path, tkinter.PhotoImage or PIL.Image you wish to display.</td>
+<td>Insert a new <code>item</code> at <code>index</code></td>
 </tr>
 <tr>
-<td>padding(padx, pady)</td>
-<td>padx (int), pady(int)</td>
-<td>-</td>
-<td>Sets the amount of x (horizontal) and y (vertical) padding between the text/icon and the edge of the button</td>
+<td>remove(item)</td>
+<td>item (string)</td>
+<td>Boolean</td>
+<td>Removes the first <code>item</code> from the ListBox. Returns <code>True</code> if an item was removed.</td>
 </tr>
 <tr>
 <td>repeat(time, command)</td>
@@ -443,44 +448,13 @@ app.display()
 <td>Displays the widget if it was previously hidden</td>
 </tr>
 <tr>
-<td>toggle()</td>
+<td>update_command(command)</td>
+<td>command (function name)</td>
 <td>-</td>
-<td>-</td>
-<td>Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa.</td>
-</tr>
-<tr>
-<td>update_command(command, args =None)</td>
-<td>command (function name), args (<em>Optional</em> List of arguments to be passed to command)</td>
-<td>-</td>
-<td>Updates the function to call when the button is pressed .</td>
-</tr>
-<tr>
-<td><em>change_command(newcommand, args)</em></td>
-<td><em>newcommand (function name), args (list)</em></td>
-<td>-</td>
-<td><em>Replaced by update_command function</em></td>
-</tr>
-<tr>
-<td><em>icon(icon)</em></td>
-<td><em>icon (string)</em></td>
-<td>-</td>
-<td><em>The file path, tkinter.PhotoImage or PIL.Image you wish to display</em></td>
-</tr>
-<tr>
-<td><em>set_text(text)</em></td>
-<td><em>text (string)</em></td>
-<td>-</td>
-<td><em>Replaced by the <code>text</code> property</em></td>
-</tr>
-<tr>
-<td><em>toggle_state()</em></td>
-<td>-</td>
-<td>-</td>
-<td><em>Renamed to <code>toggle()</code></em></td>
+<td>Updates the function to call when a different option is selected.</td>
 </tr>
 </tbody>
 </table>
-<p>Methods in <em>italics</em> will still work but are <strong>deprecated</strong> - this means you should stop using them because they may not work in future versions of guizero</p>
 <h3 id="properties">Properties</h3>
 <p>You can set and get the following properties:</p>
 <table>
@@ -510,7 +484,7 @@ app.display()
 <tr>
 <td>font</td>
 <td>string</td>
-<td>The font of the text on the button</td>
+<td>The font of the text</td>
 </tr>
 <tr>
 <td>grid</td>
@@ -523,29 +497,19 @@ app.display()
 <td>Sets the height of the widget</td>
 </tr>
 <tr>
+<td>items</td>
+<td>List</td>
+<td>Returns a list of items in the ListBox</td>
+</tr>
+<tr>
 <td>master</td>
 <td>App or Box</td>
 <td>The container to which this widget belongs</td>
 </tr>
 <tr>
-<td>text</td>
-<td>string</td>
-<td>The text on the button</td>
-</tr>
-<tr>
-<td>text_color</td>
-<td><a href="../colors/">color</a></td>
-<td>The colour of the text on the button</td>
-</tr>
-<tr>
-<td>text_size</td>
-<td>int</td>
-<td>The size of the text on the button</td>
-</tr>
-<tr>
 <td>value</td>
-<td>int</td>
-<td>Returns 1 when the button is pressed, 0 if the button is released</td>
+<td>string</td>
+<td>Sets or returns the items selected in a ListBox. Returns <code>None</code> if 0 items are selected. If the ListBox is a not <code>multiselect</code>, <code>value</code> is the item selected, if the ListBox is a <code>multiselect</code>, <code>value</code> is a list of items selected.</td>
 </tr>
 <tr>
 <td>visible</td>
@@ -557,10 +521,43 @@ app.display()
 <td><a href="../size/">size</a></td>
 <td>Sets the width of the widget</td>
 </tr>
+<tr>
+<td>text_size</td>
+<td>int</td>
+<td>The size of the text</td>
+</tr>
+<tr>
+<td>text_color</td>
+<td><a href="../colors/">color</a></td>
+<td>The colour of the text</td>
+</tr>
 </tbody>
 </table>
-<p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>PushButton</code> object is called <code>button</code> you would write <code>button.value</code>.</p>
-<p>You can <strong>set</strong> the property (for example <code>button.bg = "red"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(button.bg)</code>).</p>
+<p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>ListBox</code> object is called <code>listbox</code> you would write <code>listbox.value</code>.</p>
+<p>You can <strong>set</strong> the property (for example <code>listbox.value = "Chicken"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(listbox.value)</code>).</p>
+<h3 id="examples">Examples</h3>
+<p><strong> Select a text color from a ListBox </strong></p>
+<p>When an item in the ListBox is selected a function will be called to change the color of the text.</p>
+<pre><code class="python">from guizero import App, ListBox, Text
+
+def change_color(value):
+    t.text_color = value
+
+a = App()
+
+t = Text(a, text=&quot;Its a ListBox&quot;, color=&quot;black&quot;)
+
+listbox = ListBox(
+    a, 
+    items=[&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;yellow&quot;, &quot;purple&quot;, &quot;turquoise&quot;, &quot;pink&quot;, &quot;orange&quot;, &quot;black&quot;, &quot;brown&quot;, &quot;cyan&quot;], 
+    selected=&quot;black&quot;, 
+    command=change_color,
+    scrollbar=True)
+
+a.display()
+</code></pre>
+
+<p><img alt="A list of colors" src="../images/listbox_color_changer_windows.png" /></p>
               
             </div>
           </div>
@@ -568,10 +565,10 @@ app.display()
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../slider/" class="btn btn-neutral float-right" title="Slider">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../menubar/" class="btn btn-neutral float-right" title="MenuBar">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../picture/" class="btn btn-neutral" title="Picture"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../combo/" class="btn btn-neutral" title="Combo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -597,10 +594,10 @@ app.display()
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../picture/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../combo/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../slider/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../menubar/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

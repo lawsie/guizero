@@ -160,6 +160,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -255,7 +259,7 @@
               
                 <h1 id="combo">Combo</h1>
 <p>(Contains a <code>tkinter.OptionMenu</code> object)</p>
-<p><code>__init__(self, master, options, selected=None, command=None, grid=None, align=None)</code></p>
+<p><code>__init__(self, master, options, selected=None, command=None, grid=None, align=None, visible=True, enabled=None)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>Combo</code> object displays a drop down box allowing a single option to be selected from a list of options.</p>
 <p><img alt="Combo on Windows" src="../images/combo_windows.png" /></p>
@@ -332,9 +336,9 @@ app.display()
 <tr>
 <td>enabled</td>
 <td>boolean</td>
-<td>True</td>
+<td>None</td>
 <td>No</td>
-<td>If the widget should be enabled.</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
 </tr>
 </tbody>
 </table>
@@ -543,7 +547,7 @@ app.display()
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../menubar/" class="btn btn-neutral float-right" title="MenuBar">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../listbox/" class="btn btn-neutral float-right" title="ListBox">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../checkbox/" class="btn btn-neutral" title="CheckBox"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -575,7 +579,7 @@ app.display()
         <span><a href="../checkbox/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../menubar/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../listbox/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

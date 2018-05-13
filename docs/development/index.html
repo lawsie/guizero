@@ -138,6 +138,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -188,7 +192,9 @@
     
         <ul>
         
-            <li><a class="toctree-l4" href="#install-pre-requisites">Install Pre-requisites</a></li>
+            <li><a class="toctree-l4" href="#upgrade-pip">Upgrade pip</a></li>
+        
+            <li><a class="toctree-l4" href="#install-upgrade-pre-requisites">Install / Upgrade Pre-requisites</a></li>
         
             <li><a class="toctree-l4" href="#python-library">Python library</a></li>
         
@@ -251,8 +257,12 @@
               
                 <h1 id="development">Development</h1>
 <p>Notes on how to develop guizero (on Windows).</p>
-<h2 id="install-pre-requisites">Install Pre-requisites</h2>
-<pre><code>pip install mkdocs wheel twine virtualenv pytest pillow
+<h2 id="upgrade-pip">Upgrade pip</h2>
+<pre><code>python.exe -m pip install pip --upgrade
+</code></pre>
+
+<h2 id="install-upgrade-pre-requisites">Install / Upgrade Pre-requisites</h2>
+<pre><code>pip install mkdocs wheel twine virtualenv pytest pillow --upgrade
 </code></pre>
 
 <h2 id="python-library">Python library</h2>
@@ -283,8 +293,11 @@ python setup.py develop
 pytest -v 
 </code></pre>
 
-<p><em>Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesnt seem to like being initialised and destroyed hundreds of times, I suspect a file locking issue as you dont see the problem on Linux. So sometimes you might get a test fail with an error like <code>This probably means that tk wasn't installed properly.</code>.</em></p>
-<p><em>Just give it a re-run!</em></p>
+<p>If running the tests inside a virtual environment you will need to install pytest in that virtual enviroment.</p>
+<pre><code>pip install pytest
+</code></pre>
+
+<p><em>Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesnt seem to like being initialised and destroyed hundreds of times, I suspect a file locking issue as you dont see the problem on Linux. So sometimes you might get a test fail with an error like <code>This probably means that tk wasn't installed properly.</code>. Just give it a re-run!</em></p>
 <h2 id="documents">Documents</h2>
 <p>Test documents by serving up MkDocs:</p>
 <pre><code>cd guizero\docs-src

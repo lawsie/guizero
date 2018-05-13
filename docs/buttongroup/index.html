@@ -160,6 +160,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -255,7 +259,7 @@
               
                 <h1 id="buttongroup">ButtonGroup</h1>
 <p>(Contains a <code>tkinter.Frame</code> object)</p>
-<p><code>__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None)</code></p>
+<p><code>__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>ButtonGroup</code> object displays a group of radio buttons, allowing the user to choose a single option.</p>
 <p><img alt="ButtonGroup" src="../images/buttongroup.png" /></p>
@@ -346,9 +350,9 @@ app.display()
 <tr>
 <td>enabled</td>
 <td>boolean</td>
-<td>True</td>
+<td>None</td>
 <td>No</td>
-<td>If the widget should be enabled.</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
 </tr>
 </tbody>
 </table>

@@ -160,6 +160,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -255,7 +259,7 @@
               
                 <h1 id="app">App</h1>
 <p>(Contains a <code>tkinter.Tk</code> object)</p>
-<p><code>__init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None)</code></p>
+<p><code>__init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>App</code> object is the basis of all GUIs created using guizero. It is the main window which contains all of the other widgets.</p>
 <p><img alt="App" src="../images/app.png" /></p>
@@ -284,7 +288,14 @@ app.display()
 <td><a href="../colors/">color</a></td>
 <td>None</td>
 <td>No</td>
-<td>The background colour of the app window. Takes a <a href="../colors/">color</a> value.</td>
+<td>The background colour of the app window and widgets inside it. Takes a <a href="../colors/">color</a> value.</td>
+</tr>
+<tr>
+<td>font</td>
+<td>string</td>
+<td>The font of the text widgets should use</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>height</td>
@@ -362,10 +373,22 @@ app.display()
 <td>Destroys the widget</td>
 </tr>
 <tr>
+<td>disable()</td>
+<td>-</td>
+<td>-</td>
+<td>Disables all the widgets in the app so that they cannot be interacted with</td>
+</tr>
+<tr>
 <td>display()</td>
 <td>-</td>
 <td>-</td>
 <td>Displays the app on the screen. You <strong>MUST</strong> call this method at the end of your program to display the app on the screen.</td>
+</tr>
+<tr>
+<td>enable()</td>
+<td>-</td>
+<td>-</td>
+<td>Enables all the widgets in the app</td>
 </tr>
 <tr>
 <td>focus()</td>
@@ -429,6 +452,11 @@ app.display()
 <td>The background colour of the window</td>
 </tr>
 <tr>
+<td>enabled</td>
+<td>boolean</td>
+<td><code>True</code> if the app is enabled</td>
+</tr>
+<tr>
 <td>height</td>
 <td>int</td>
 <td>The height of the window</td>
@@ -442,6 +470,16 @@ app.display()
 <td>title</td>
 <td>string</td>
 <td>The title of the window</td>
+</tr>
+<tr>
+<td>text_size</td>
+<td>int</td>
+<td>The size of the text widgets should use</td>
+</tr>
+<tr>
+<td>text_color</td>
+<td><a href="../colors/">color</a></td>
+<td>The colour of the text widgets should use</td>
 </tr>
 <tr>
 <td>visible</td>

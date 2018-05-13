@@ -160,6 +160,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -255,7 +259,7 @@
               
                 <h1 id="box">Box</h1>
 <p>(Contains a <code>tkinter.Frame</code> object)</p>
-<p><code>__init__(self, master, layout="auto", grid=None, align=None)</code></p>
+<p><code>__init__(self, master, layout="auto", grid=None, align=None, visible=True, enabled=None)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>Box</code> object is an invisible container which can contain other widgets. It is the only object other than <code>App</code> which can act as the <code>master</code> for other objects and can have its own layout manager.</p>
 <p>You can use the <code>Box</code> object to group other objects within your GUI.</p>
@@ -315,6 +319,13 @@ app.display()
 <td>No</td>
 <td>If the widget should be visible.</td>
 </tr>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td>None</td>
+<td>No</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
+</tr>
 </tbody>
 </table>
 <h3 id="methods">Methods</h3>
@@ -342,10 +353,22 @@ app.display()
 <td>Cancels a scheduled call to <code>command</code></td>
 </tr>
 <tr>
+<td>disable()</td>
+<td>-</td>
+<td>-</td>
+<td>Disables all the widgets in the box so that they cannot be interacted with</td>
+</tr>
+<tr>
 <td>destroy()</td>
 <td>-</td>
 <td>-</td>
 <td>Destroys the widget</td>
+</tr>
+<tr>
+<td>enable()</td>
+<td>-</td>
+<td>-</td>
+<td>Enables all the widgets in the box</td>
 </tr>
 <tr>
 <td>focus()</td>
@@ -395,9 +418,19 @@ app.display()
 <td>The background colour of the widget</td>
 </tr>
 <tr>
+<td>enabled</td>
+<td>boolean</td>
+<td><code>True</code> if the box is enabled</td>
+</tr>
+<tr>
 <td>grid</td>
 <td>List</td>
 <td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid</td>
+</tr>
+<tr>
+<td>font</td>
+<td>string</td>
+<td>The font of the text widgets should use</td>
 </tr>
 <tr>
 <td>height</td>
@@ -413,6 +446,16 @@ app.display()
 <td>master</td>
 <td>App</td>
 <td>The <code>App</code> object to which this box belongs</td>
+</tr>
+<tr>
+<td>text_size</td>
+<td>int</td>
+<td>The size of the text widgets should use</td>
+</tr>
+<tr>
+<td>text_color</td>
+<td><a href="../colors/">color</a></td>
+<td>The colour of the text widgets should use</td>
 </tr>
 <tr>
 <td>visible</td>
