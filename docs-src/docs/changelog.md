@@ -1,6 +1,6 @@
 # guizero
 
-## 0.5.1 - tbc
+## 0.5.1 - 14 May 2018
 
 - App, Window, Box now support the following properties and will cascade them to widgets within them:
     - `bg`

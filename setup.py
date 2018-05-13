@@ -37,7 +37,7 @@ app.display()
 
 setup(
     name="guizero",
-    version="0.5.0",
+    version="0.5.1",
     author="Laura Sach",
     author_email="laura.sach@raspberrypi.org",
     description="Python module to allow learners to easily create GUIs",
