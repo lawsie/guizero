@@ -1,5 +1,19 @@
 # guizero
 
+## 0.5.1 - 14 May 2018
+
+- App, Window, Box now support the following properties and will cascade them to widgets within them:
+    - `bg`
+    - `text_color`
+    - `text_size`
+    - `font`
+    - `enabled`
+- Introduced `ListBox`
+- Bug fixes relating to `bg` and `text_color` causing widgets to change colour when selected
+- Minor bug fixes with `CheckBox`, `Waffle` and `Combo`
+- Documentation fixes and updates
+- contributors to this release [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [Harlekuin](https://github.com/Harlekuin)
+
 ## 0.5.0 - 2018-04-10
 
 - v0.5.0 includes significant refactoring of the guizero code base and introduces many new features

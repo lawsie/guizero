@@ -5,9 +5,12 @@ from .event import EventManager
 
 class Waffle(Widget):
 
-    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True, visible=True, enabled=True, bg=None):
+    def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True, visible=True, enabled=None, bg=None):
 
         description = "[Waffle] object ({}x{})".format(height, width)
+        
+        # Create a tk Frame object within this object which will be the waffle
+        tk = Frame(master.tk)
 
         self._height = height       # How many pixels high
         self._width = width         # How many pixels wide
@@ -17,12 +20,11 @@ class Waffle(Widget):
         self._dotty = dotty         # A dotty waffle will display circles
         self._waffle_pixels = {}
         self._canvas = None
-        self._bg = utils.convert_color(bg)
-        
-        # Create a tk Frame object within this object which will be the waffle
-        tk = Frame(master.tk)
 
         super(Waffle, self).__init__(master, tk, description, grid, align, visible, enabled)
+
+        if bg is not None:
+            self.bg = bg
 
         self.update_command(command)
 
@@ -51,11 +53,11 @@ class Waffle(Widget):
             self._canvas.destroy()
             
         #size the canvas
-        self._c_height = self._height * (self._pixel_size + self._pad)
-        self._c_width = self._width * (self._pixel_size + self._pad)
+        self._c_height = (self._height * (self._pixel_size + self._pad)) + (self._pad * 2)
+        self._c_width = self._width * (self._pixel_size + self._pad) + (self._pad * 2)
 
         # create the canvas and pack it into the waffle frame
-        self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width)
+        self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width, bd=0, highlightthickness=0)
         self._canvas.pack(fill=BOTH, expand=1)
 
         # rebind any events as they would have been lost when the canvas
@@ -63,8 +65,7 @@ class Waffle(Widget):
         self.events.rebind_events(self._canvas)
 
         # fill the canvas background
-        if self._bg is not None:
-            self._canvas.create_rectangle(0, 0, self._c_height, self._c_width, fill=self._bg, outline=self._bg)
+        self._canvas.create_rectangle(0, 0, self._c_width, self._c_height, fill=self.bg, outline=self.bg)
 
     # sizes or resizes the waffle, maintaining the state of existing pixels
     def _size_waffle(self):
@@ -258,14 +259,16 @@ class Waffle(Widget):
     # Get the background colour
     @property
     def bg(self):
-        return (self._bg)
+        return super(Waffle, self.__class__).bg.fget(self)
 
     # Set the background colour
     @bg.setter
-    def bg(self, color):
-        color = utils.convert_color(color)
-        if self._bg != color:
-            self._bg = color
+    def bg(self, value):
+        # only change the color if we need too as it requires 
+        # redrawing the canvas
+        if self.bg != value:
+            value = utils.convert_color(value)
+            super(Waffle, self.__class__).bg.fset(self, value)
             self._create_waffle()
 
     def reset(self):

@@ -4,7 +4,7 @@ from .base import TextWidget
 
 class PushButton(TextWidget):
 
-    def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None, visible=True, enabled=True):
+    def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None, visible=True, enabled=None):
 
         description = "[PushButton] object with text \"" + text + "\""
         

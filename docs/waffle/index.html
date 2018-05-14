@@ -138,6 +138,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -257,7 +261,7 @@
               
                 <h1 id="waffle">Waffle</h1>
 <p>(Contains a <code>tkinter.Frame</code> object)</p>
-<p><code>__init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None)</code></p>
+<p><code>__init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, visible=True, enabled=None, bg=None)</code></p>
 <h3 id="what-is-it">What is it</h3>
 <p>The <code>Waffle</code> object display an n*n grid of squares with custom dimensions and padding</p>
 <p><img alt="Waffle on Windows" src="../images/waffle_windows.png" /></p>
@@ -369,9 +373,9 @@ app.display()
 <tr>
 <td>enabled</td>
 <td>boolean</td>
-<td>True</td>
+<td>None</td>
 <td>No</td>
-<td>If the widget should be enabled.</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
 </tr>
 <tr>
 <td>bg</td>

@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Frame` object)
 
-`__init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None)`
+`__init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, visible=True, enabled=None, bg=None)`
 
 ### What is it
 The `Waffle` object display an n*n grid of squares with custom dimensions and padding
@@ -38,7 +38,7 @@ When you create a `Waffle` object you **must** specify `master` and you can spec
 | width     | int       | 3       | -         | How many pixels wide the waffle is |
 | _remember_  | _boolean_   | _True_   | -         | _No longer needed - all Waffles will now have a memory._ |
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 | bg    | [color](colors.md)    | None  | No         | The background colour of the waffle. Takes a [color](colors.md) value. |
 
 

@@ -1,4 +1,4 @@
-from guizero import App, Box
+from guizero import App, Box, Text
 from common_test import (
     schedule_after_test,
     schedule_repeat_test,
@@ -6,7 +6,11 @@ from common_test import (
     display_test, 
     color_test, 
     size_pixel_test,
-    events_test)
+    events_test,
+    cascading_enable_test,
+    cascading_properties_test,
+    inheriting_properties_test
+    )
 
 def test_default_values():
     a = App()
@@ -62,8 +66,28 @@ def test_size():
     size_pixel_test(b)
     a.destroy()
 
+def test_enable():
+    a = App()
+    b = Box(a)
+    t = Text(b)
+    cascading_enable_test(a)
+    cascading_enable_test(b)
+    a.destroy()
+
 def test_events():
     a = App()
     b = Box(a)
     events_test(b)
+    a.destroy()
+
+def test_cascading_properties():
+    a = App()
+    b = Box(a)
+    cascading_properties_test(b)
+    a.destroy()
+
+def test_inheriting_properties():
+    a = App()
+    b = Box(a)
+    inheriting_properties_test(b)
     a.destroy()

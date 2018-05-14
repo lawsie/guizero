@@ -7,7 +7,7 @@ from .base import TextWidget
 # Does NOT create an internal StringVar() as this is handled by the ButtonGroup class
 class RadioButton(TextWidget):
 
-    def __init__(self, master, text, value, variable, command=None, grid=None, align=None, visible=True, enabled=True):
+    def __init__(self, master, text, value, variable, command=None, grid=None, align=None, visible=True, enabled=None):
 
         description = "[RadioButton] object with option=\"" + str(text) + "\" value=\"" + str(value) + "\""
         self._text = text

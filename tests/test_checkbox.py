@@ -10,6 +10,8 @@ from common_test import (
     color_test, 
     size_text_test,
     events_test,
+    cascaded_properties_test,
+    inherited_properties_test
     )
 
 def test_default_values():
@@ -181,4 +183,15 @@ def test_events():
     a = App()
     c = CheckBox(a, "foo")
     events_test(c)
+    a.destroy()
+
+def test_cascaded_properties():
+    a = App()
+    c = CheckBox(a, "foo")
+    cascaded_properties_test(a, c, True)
+    a.destroy()
+
+def test_inherited_properties():
+    a = App()
+    inherited_properties_test(a, lambda: CheckBox(a, "foo"), True)
     a.destroy()

@@ -9,11 +9,13 @@ class ButtonGroup(
     ContainerWidget, 
     TextMixin):
 
-    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=True):
+    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None):
         
         description = "[ButtonGroup] object with selected option \"" + str(selected) + "\""
 
         self._options = []   # List of RadioButton objects
+        self._text_size = None
+        self._font = None
 
         # Create a Tk frame object to contain the RadioButton objects
         tk = Frame(master.tk)
@@ -76,44 +78,6 @@ class ButtonGroup(
     # PROPERTIES
     # -----------------------------------
 
-    @property
-    def layout(self):
-        """
-        Returns the layout type used by this container.
-        """
-        return self._layout_manager
-
-    @property
-    def bg(self):
-        return (self.tk.cget("bg"))
-
-    @bg.setter
-    def bg(self, color):
-        self.tk.config(bg=utils.convert_color(color))
-        for item in self._options:
-            item.bg = color
-
-    @property
-    def enabled(self):
-        return self._options[0].enabled
-
-    @enabled.setter
-    def enabled(self, value):
-        if value:
-            self.enable()
-        else:
-            self.disable()
-    
-    def disable(self):
-        """Disable the widget."""
-        for item in self._options:
-            item.disable()
-
-    def enable(self):
-        """Enable the widget."""
-        for item in self._options:
-            item.enable()
-
     # Gets the selected value (1, 2, 3 etc.)
     @property
     def value(self):
@@ -141,42 +105,10 @@ class ButtonGroup(
             if item.text == value:
                 self.value = item.value
     
-    # Get the text colour as a string
-    @property
-    def text_color(self):
-        return self._options[0].text_color
-        
-    # Set the text colour
-    @text_color.setter
-    def text_color(self, color):
-        for item in self._options:
-            item.text_color = color
-
-    # Get the current font as a string
-    @property
-    def font(self):
-        return self._options[0].font
-
-    # Set the current font
-    @font.setter
-    def font(self, font):
-        for item in self._options:
-            item.font = font
-
-    # Get the current text size as an integer
-    @property
-    def text_size(self):
-        return self._options[0].text_size
-
-    # Set the font size
-    @text_size.setter
-    def text_size(self, size):
-        for item in self._options:
-            item.text_size = size
-
     @property
     def width(self):
-        return self._options[0].width
+        if len(self._options) > 0:
+            return self._options[0].width
 
     @width.setter
     def width(self, value):
@@ -185,7 +117,8 @@ class ButtonGroup(
         
     @property
     def height(self):
-        return self._options[0].height * len(self._options)
+        if len(self._options) > 0:
+            return self._options[0].height * len(self._options)
 
     @height.setter
     def height(self, value):
@@ -231,3 +164,4 @@ class ButtonGroup(
     def set(self, value):
         self._selected.set(str(value))
         utils.deprecated("ButtonGroup set() is deprecated. Please use the value property instead.")
+    

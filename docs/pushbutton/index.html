@@ -138,6 +138,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -253,7 +257,7 @@
               
                 <h1 id="pushbutton">PushButton</h1>
 <p>(Contains a <code>tkinter.Button</code> object)</p>
-<p><code>__init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None)</code></p>
+<p><code>__init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, visible=True, enabled=None)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>PushButton</code> object displays a button with text or an image, which calls a function when pressed.</p>
 <p><img alt="PushButton on Windows" src="../images/pushbutton_windows.png" /></p>
@@ -354,9 +358,9 @@ app.display()
 <tr>
 <td>enabled</td>
 <td>boolean</td>
-<td>True</td>
+<td>None</td>
 <td>No</td>
-<td>If the widget should be enabled.</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
 </tr>
 </tbody>
 </table>

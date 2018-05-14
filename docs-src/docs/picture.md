@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Label` object)
 
-`__init__(self, master, image, grid=None, align=None)`
+`__init__(self, master, image=None, grid=None, align=None, visible=True, enabled=None)`
 
 ### What is it?
 The `Picture` object displays an image.
@@ -38,7 +38,7 @@ When you create a `Picture` object you **must** specify `master` and you can spe
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 
 
 

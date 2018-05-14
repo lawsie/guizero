@@ -5,7 +5,7 @@ from .base import TextWidget
 
 class TextBox(TextWidget):
 
-    def __init__(self, master, text="", width=10, height=1, grid=None, align=None, visible=True, enabled=True, multiline=False, scrollbar=False, command=None, agrs=None):
+    def __init__(self, master, text="", width=10, height=1, grid=None, align=None, visible=True, enabled=None, multiline=False, scrollbar=False, command=None):
 
         description = "[TextBox] object with text \"" + str(text) + "\""
 

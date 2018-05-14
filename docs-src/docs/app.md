@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Tk` object)
 
-`__init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None)`
+`__init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True)`
 
 ### What is it?
 The `App` object is the basis of all GUIs created using guizero. It is the main window which contains all of the other widgets.
@@ -25,7 +25,8 @@ When you create an `App` object you can specify any of the following parameters,
 
 | Parameter | Data type | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
-| bg    | [color](colors.md)    | None  | No         | The background colour of the app window. Takes a [color](colors.md) value. |
+| bg    | [color](colors.md)    | None  | No         | The background colour of the app window and widgets inside it. Takes a [color](colors.md) value. |
+| font      | string    | The font of the text widgets should use |
 | height    | int       | 500     | No         | The height of the window in pixels. |
 | layout    | string    | "auto"  | No         | Whether widgets pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
 | title     | string    | "guizero" | No       | The title displayed in the bar at the top of the window. |
@@ -44,7 +45,9 @@ You can call the following methods on an `App` object.
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | destroy()   | -  | -          | Destroys the widget    |
+| disable()  | - | -          | Disables all the widgets in the app so that they cannot be interacted with   |
 | display()     |-          | -          | Displays the app on the screen. You **MUST** call this method at the end of your program to display the app on the screen. |
+| enable()  | -  | -          | Enables all the widgets in the app   |
 | focus()  | -  | -          | Gives focus to the widget  |
 | hide()  | -   | -          | Hides the app window from view.  |
 | on_close(command)   | command (function name)         | -          | Calls the given function when the user tries to close the window.      |
@@ -62,9 +65,12 @@ You can set and get the following properties:
 | Method        | Data type   | Description                |
 | ------------- | ----------- | -------------------------- |
 | bg            | [color](colors.md)      | The background colour of the window   |
+| enabled       | boolean     | `True` if the app is enabled |
 | height        | int         | The height of the window   |
 | layout        | string      | The layout being used by the App (`"auto"`) or (`"grid"`) |
 | title         | string      | The title of the window    |
+| text_size     | int         | The size of the text widgets should use |
+| text_color    | [color](colors.md)      | The colour of the text widgets should use  |
 | visible       | boolean     | If the app is visible |
 | width         | int         | The width of the window    |
 

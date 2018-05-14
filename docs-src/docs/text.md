@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Label` object)
 
-`__init__(self, master, text="", size=12, color="black", text_color=None, bg=None, font="Helvetica", grid=None, align=None)`
+`__init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None, visible=True, enabled=None)`
 
 ### What is it?
 The `Text` object displays non editable text in your app, useful for titles, labels and instructions.
@@ -34,7 +34,7 @@ When you create a `Text` object, you **must** specify a `master` and you can spe
 | size   | int    | 12     | -         | The font size of the text |
 | text   | string    | ""  | -         | The text you want to display |
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 
 
 ### Methods

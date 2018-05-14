@@ -9,6 +9,8 @@ from common_test import (
     text_test,
     color_test,
     events_test,
+    cascaded_properties_test,
+    inherited_properties_test
     )
 
 def test_default_values():
@@ -137,4 +139,15 @@ def test_events():
     a = App()
     p = Picture(a)
     events_test(p)
+    a.destroy()
+
+def test_cascaded_properties():
+    a = App()
+    p = Picture(a)
+    cascaded_properties_test(a, p, False)
+    a.destroy()
+
+def test_inherited_properties():
+    a = App()
+    inherited_properties_test(a, lambda: Picture(a), False)
     a.destroy()

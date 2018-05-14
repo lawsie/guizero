@@ -154,6 +154,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -261,7 +265,7 @@ app.display()
 
 </code></pre>
 
-<p>Adding widgets to the 2nd window is the same as adding them to an app, by passing the same of the window:</p>
+<p>Adding widgets to the 2nd window is the same as adding them to an app, by passing the name of the window:</p>
 <pre><code class="python">from guizero import App, Window, Text
 
 app = App(title = &quot;Main window&quot;)
@@ -296,7 +300,7 @@ app.display()
 
 <h3 id="modal-windows">Modal windows</h3>
 <p>When a window is opened using <code>show()</code> it is opening side by side with the main window, and both windows can be used at the same time</p>
-<p>To open a "modal" window which prevents the other windows in the applcation being used until it is closed you can pass <code>True</code> to the optional wait parameter of <code>show</code> - <code>show(wait = True)</code>.</p>
+<p>To open a "modal" window which prevents the other windows in the applcation being used until it is closed you can pass <code>True</code> to the optional <code>wait</code> parameter of <code>show</code> - <code>show(wait = True)</code>.</p>
 <p>This will force all other windows to wait until this window is closed before they can be used.</p>
 <pre><code class="python">def open_window():
     window.show(wait = True)

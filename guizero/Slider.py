@@ -4,7 +4,7 @@ from .base import TextWidget
 
 class Slider(TextWidget):
 
-    def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None, visible=True, enabled=True):
+    def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None, visible=True, enabled=None):
 
         description = "[Slider] object from " + str(start) + " to " + str(end)
 

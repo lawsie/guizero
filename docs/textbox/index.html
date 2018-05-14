@@ -138,6 +138,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -255,7 +259,7 @@
               
                 <h1 id="textbox">TextBox</h1>
 <p>(Contains a <code>tkinter.Entry</code> object)</p>
-<p><code>__init__(self, master, text="", width=10, grid=None, align=None)</code></p>
+<p><code>__init__(self, master, text="", width=10, height=1, grid=None, align=None, visible=True, enabled=None, multiline=False, scrollbar=False, command=None)</code></p>
 <h3 id="what-is-it">What is it</h3>
 <p>The <code>TextBox</code> object displays a text box which the user can type in.</p>
 <p><img alt="TextBox on Windows" src="../images/textbox_windows.png" /></p>
@@ -325,9 +329,9 @@ app.display()
 <tr>
 <td>enabled</td>
 <td>boolean</td>
-<td>True</td>
+<td>None</td>
 <td>No</td>
-<td>If the widget should be enabled.</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
 </tr>
 <tr>
 <td>multiline</td>

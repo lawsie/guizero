@@ -138,6 +138,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -255,7 +259,7 @@
               
                 <h1 id="window">Window</h1>
 <p>(Contains a <code>tkinter.TopLevel</code> object)</p>
-<p><code>__init__(self, master, title="guizero", width=500, height=500, layout="auto", bg=None):</code></p>
+<p><code>__init__(self, master, title="guizero", width=500, height=500, layout="auto", bg=None, visible=True):</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>A <code>Window</code> object is how you create new windows in guizero.</p>
 <p><img alt="Window" src="../images/window.png" /></p>
@@ -356,10 +360,22 @@ app.display()
 <td>Cancels a scheduled call to <code>command</code></td>
 </tr>
 <tr>
+<td>disable()</td>
+<td>-</td>
+<td>-</td>
+<td>Disables all the widgets in the window so that they cannot be interacted with</td>
+</tr>
+<tr>
 <td>destroy()</td>
 <td>-</td>
 <td>-</td>
-<td>Destroys the window</td>
+<td>Destroys the windows</td>
+</tr>
+<tr>
+<td>enable()</td>
+<td>-</td>
+<td>-</td>
+<td>Enables all the widgets in the window</td>
 </tr>
 <tr>
 <td>focus()</td>
@@ -410,6 +426,16 @@ app.display()
 <td>The background colour of the window</td>
 </tr>
 <tr>
+<td>enabled</td>
+<td>boolean</td>
+<td><code>True</code> if the window is enabled</td>
+</tr>
+<tr>
+<td>font</td>
+<td>string</td>
+<td>The font of the text widgets should use</td>
+</tr>
+<tr>
 <td>height</td>
 <td>int</td>
 <td>The height of the window</td>
@@ -423,6 +449,16 @@ app.display()
 <td>title</td>
 <td>string</td>
 <td>The title of the window</td>
+</tr>
+<tr>
+<td>text_size</td>
+<td>int</td>
+<td>The size of the text widgets should use</td>
+</tr>
+<tr>
+<td>text_color</td>
+<td><a href="../colors/">color</a></td>
+<td>The colour of the text widgets should use</td>
 </tr>
 <tr>
 <td>visible</td>

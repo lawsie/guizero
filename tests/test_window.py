@@ -1,10 +1,13 @@
 from threading import Event
-from guizero import App, Window
+from guizero import App, Window, Text
 from common_test import (
     schedule_after_test,
     schedule_repeat_test,
     display_test,
     events_test,
+    cascading_enable_test,
+    cascading_properties_test,
+    inheriting_properties_test
     )
 
 def test_default_values():
@@ -56,8 +59,28 @@ def test_display():
     display_test(w)
     a.destroy()
 
+def test_enable():
+    a = App()
+    w = Window(a)
+    t = Text(w)
+    cascading_enable_test(a)
+    cascading_enable_test(w)
+    a.destroy()
+
 def test_events():
     a = App()
     w = Window(a)
     events_test(w)
+    a.destroy()
+
+def test_cascading_properties():
+    a = App()
+    w = Window(a)
+    cascading_properties_test(w)
+    a.destroy()
+
+def test_inheriting_properties():
+    a = App()
+    w = Window(a)
+    inheriting_properties_test(w)
     a.destroy()

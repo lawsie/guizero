@@ -1,10 +1,26 @@
 from tkinter import OptionMenu, StringVar, END, _setit
 from . import utilities as utils
 from .base import TextWidget
+from .tkmixins import ColorMixin, TextMixin
+
+
+class ComboMenu(ColorMixin, TextMixin):
+
+    def __init__(self, tk):
+        """
+        Internal class for managing the little menu which pops up when the 
+        combo box is opened
+        """
+        self._tk = tk
+        
+    @property
+    def tk(self):
+        return self._tk
+
 
 class Combo(TextWidget):
 
-    def __init__(self, master, options, selected=None, command=None, grid=None, align=None, visible=True, enabled=True):
+    def __init__(self, master, options, selected=None, command=None, grid=None, align=None, visible=True, enabled=None):
 
         # Maintain a list of options (as strings, to avoid problems comparing)
         self._options = [str(x) for x in options]
@@ -26,6 +42,12 @@ class Combo(TextWidget):
         # Create a tk OptionMenu object within this object
         tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command_callback)
 
+        # Remove the thick highlight when the bg is a different color
+        tk["highlightthickness"] = 0
+
+        # Create the combo menu object
+        self._combo_menu = ComboMenu(tk["menu"])
+
         super(Combo, self).__init__(master, tk, description, grid, align, visible, enabled)
 
         # The command associated with this combo
@@ -44,6 +66,43 @@ class Combo(TextWidget):
             self._selected.set( str(value) )
         else:
             utils.error_format("Tried to set " + self.description + " to option \"" + str(value) + "\", which does not exist" )
+
+    @property
+    def bg(self):
+        return super(Combo, self.__class__).bg.fget(self)
+        
+    @bg.setter
+    def bg(self, value):
+        super(Combo, self.__class__).bg.fset(self, value)
+        self._combo_menu.bg = value
+
+    @property
+    def text_color(self):
+        return super(Combo, self.__class__).text_color.fget(self)
+        
+    @text_color.setter
+    def text_color(self, value):
+        super(Combo, self.__class__).text_color.fset(self, value)
+        self._combo_menu.text_color = value
+
+    @property
+    def text_size(self):
+        return super(Combo, self.__class__).text_size.fget(self)
+        
+    @text_size.setter
+    def text_size(self, value):
+        super(Combo, self.__class__).text_size.fset(self, value)
+        self._combo_menu.text_size = value
+    
+    @property
+    def font(self):
+        return super(Combo, self.__class__).font.fget(self)
+        
+    @font.setter
+    def font(self, value):
+        super(Combo, self.__class__).font.fset(self, value)
+        self._combo_menu.font = value
+
 
     # METHODS
     # -------------------------------------------
@@ -116,3 +175,5 @@ class Combo(TextWidget):
         else:
             utils.error_format("Tried to set " + self.description + " to option \"" + str(text) + "\", which does not exist" )
         utils.deprecated("Combo set() is deprecated. Please use the value property instead.")
+
+

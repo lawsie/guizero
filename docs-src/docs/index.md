@@ -1,6 +1,6 @@
 # Installation
 
-guizero is designed to allow children to quickly and easily create GUIs for their programs.
+guizero is designed to allow new learners to quickly and easily create GUIs for their programs.
 
 If you can download and unzip a file, you can [install guizero](#easy-installation) - **no special permissions or administrator rights are required**.
 

@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Entry` object)
 
-`__init__(self, master, text="", width=10, grid=None, align=None)`
+`__init__(self, master, text="", width=10, height=1, grid=None, align=None, visible=True, enabled=None, multiline=False, scrollbar=False, command=None)`
 
 ### What is it
 The `TextBox` object displays a text box which the user can type in.
@@ -32,7 +32,7 @@ When you create a `TextBox` object you **must** specify `master` and you can spe
 | text   | string    | ""  | -         | Any text you wish to be pre-filled in the text box |
 | width   | int    | 10     | -         | The width of the text box|
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 | multiline | boolean   | False   | No         | Create a multi-line text box.  |
 | scrollbar | boolean   | False   | No         | Add a vertical scrollbar to a multi-line text box  |
 | command | function name | None | -   | The name of a function to call when the text is changed. This function MUST take either zero or one argument, if the function takes one argument the key which was added to the textbox will be returned. 

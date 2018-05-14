@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Frame` object)
 
-`__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None)`
+`__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None)`
 
 ### What is it?
 The `ButtonGroup` object displays a group of radio buttons, allowing the user to choose a single option.
@@ -35,7 +35,7 @@ When you create a `ButtonGroup` object you **must** specify `master` and `otions
 | grid   | list [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | horizontal   | boolean    | False     | -       | Whether the buttons stack vertically or horizontally. (Defaults to vertical)|
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | True    | No         | If the widget should be enabled.  |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 
 ### Methods
 

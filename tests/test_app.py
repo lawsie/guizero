@@ -1,9 +1,12 @@
-from guizero import App
+from guizero import App, Text, Picture
 from common_test import (
     schedule_after_test,
     schedule_repeat_test,
     display_test,
-    events_test)
+    events_test,
+    cascading_enable_test,
+    cascading_properties_test,
+    inheriting_properties_test)
 
 def test_default_values():
     a = App()
@@ -48,7 +51,23 @@ def test_display():
     display_test(a)
     a.destroy()
 
+def test_enable():
+    a = App()
+    t = Text(a)
+    cascading_enable_test(a)
+    a.destroy()
+
 def test_events():
     a = App()
     events_test(a)
+    a.destroy()
+
+def test_cascading_properties():
+    a = App()
+    cascading_properties_test(a)
+    a.destroy()
+
+def test_inheriting_properties():
+    a = App()
+    inheriting_properties_test(a)
     a.destroy()

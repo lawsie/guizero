@@ -160,6 +160,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class="">
@@ -255,7 +259,7 @@
               
                 <h1 id="checkbox">CheckBox</h1>
 <p>(Contains a <code>tkinter.Checkbutton</code> object)</p>
-<p><code>__init__(self, master, text, command=None, grid=None, align=None, args=None)</code></p>
+<p><code>__init__(self, master, text, command=None, grid=None, align=None, args=None, visible=True, enabled=None)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>CheckBox</code> object displays a check box to allow an option to be ticked or unticked</p>
 <p><img alt="Checkbox on Windows" src="../images/checkbox_windows.png" /></p>
@@ -332,9 +336,9 @@ app.display()
 <tr>
 <td>enabled</td>
 <td>boolean</td>
-<td>True</td>
+<td>None</td>
 <td>No</td>
-<td>If the widget should be enabled.</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
 </tr>
 </tbody>
 </table>

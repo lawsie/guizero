@@ -1,6 +1,7 @@
 from threading import Event
 from time import sleep
 from unittest.mock import MagicMock
+from guizero import Text, Picture
 
 def schedule_after_test(app, widget):
     callback_event = Event()
@@ -83,7 +84,7 @@ def size_text_test(widget):
     assert widget.height == 10
     
 def text_test(widget):
-    widget.font = "times new roman"
+    widget.font = "Times New Roman"
     assert widget.font == "Times New Roman"
     
     widget.text_color = "red"
@@ -167,3 +168,96 @@ def mock_event(widget, ref, key, x, y, display_x, display_y):
     
     # call the event callback
     event_callback._event_callback(tk_event)
+
+def cascaded_properties_test(container, widget, text):
+    container.bg = "red"
+    container.enabled = False
+    assert widget.bg == "red"
+    assert not widget.enabled 
+
+    if text:
+        container.text_color = "purple"
+        assert widget.text_color == "purple"
+        container.text_size = 16
+        assert widget.text_size == 16
+
+def inherited_properties_test(container, widget_create, text):
+    container.bg = "red"
+    container.enabled = False
+    if text:
+        container.text_color = "purple"
+        container.text_size = 16
+    
+    w = widget_create()
+
+    assert w.bg == "red"
+    assert not container.enabled
+    if text:
+        assert w.text_color == "purple"
+        assert w.text_size == 16
+
+def cascading_enable_test(container):
+
+    def check_children(container, test_value):
+        for child in container.children:
+            assert child.enabled == test_value
+
+    assert container.enabled
+    check_children(container, True)
+
+    container.enabled = False
+    assert not container.enabled
+    check_children(container, False)
+    
+    container.enabled = True
+    assert container.enabled
+    check_children(container, True)
+    
+    container.disable()
+    assert not container.enabled
+    check_children(container, False)
+    
+    container.enable()
+    assert container.enabled
+    check_children(container, True)
+
+def cascading_properties_test(container):
+    t = Text(container)
+    p = Picture(container)
+
+    container.bg = "red"
+    container.text_color = "purple"
+    container.text_size = 16
+    container.font = "Times New Roman"
+    container.enabled = False
+
+    assert t.bg == "red"
+    assert t.text_color == "purple"
+    assert t.text_size == 16
+    assert t.font == "Times New Roman"
+    assert t.enabled == False
+    assert p.bg == "red"
+    assert p.enabled == False
+    
+    # test that destroying widgets removes them as children
+    p.destroy()
+    container.bg = "green"
+    assert t.bg == "green"
+
+def inheriting_properties_test(container):
+    container.bg = "red"
+    container.text_color = "purple"
+    container.text_size = 16
+    container.font = "Times New Roman"
+    container.enabled = False
+
+    t = Text(container)
+    assert t.bg == "red"
+    assert t.text_color == "purple"
+    assert t.text_size == 16
+    assert t.font == "Times New Roman"
+    assert not t.enabled
+
+    p = Picture(container)
+    assert p.bg == "red"
+    assert not p.enabled

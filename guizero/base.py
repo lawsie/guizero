@@ -28,9 +28,15 @@ class Base(
         self._master = master
         self._tk = tk
         self._description = description
-
         self._events = EventManager(self, tk)
-        
+
+        # check the master
+        if self.master is not None:
+            if isinstance(master, Container):
+                self.master._add_child(self)
+            else:
+                utils.raise_error("{}\nMaster is not an [App], [Window] or [Box]".format(description))
+            
     @property
     def master(self):
         """
@@ -66,15 +72,34 @@ class Base(
         """
         return self._events
 
+    def destroy(self):
+        """Destroy the object."""
+        if self.master is not None:
+            self.master._remove_child(self)
+        self.tk.destroy()
 
-class Container(Base, EventsMixin):
+
+class Container(Base, ColorMixin, EventsMixin):
 
     def __init__(self, master, tk, description, layout):
         """
         An abstract class for a container which can hold other widgets
         """
         super(Container, self).__init__(master, tk, description)
+        self._children = []
         self._layout_manager = layout
+        self._bg = None
+        self._text_color = None
+        self._text_size = None
+        self._font = None
+        self._enabled = True
+
+        # inherit from master
+        if self.master is not None:
+            self.bg = master.bg
+            self.text_color = master.text_color
+            self.text_size = master.text_size
+            self.font = master.font
 
     @property
     def layout(self):
@@ -83,12 +108,141 @@ class Container(Base, EventsMixin):
         """
         return self._layout_manager
 
+    @property
+    def bg(self):
+        """
+        Sets or returns the background color of the container.
+        """
+        return self._bg
+
+    @bg.setter
+    def bg(self, value):
+        self._bg = utils.convert_color(value)
+        super(Container, self.__class__).bg.fset(self, self._bg)
+        # cascade bg to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, Widget)):
+                child.bg = self.bg
+
+    @property
+    def text_color(self):
+        """
+        Sets and returns the text color to be used by the widgets 
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default text color
+        """
+        return self._text_color
+
+    @text_color.setter
+    def text_color(self, value):
+        self._text_color = utils.convert_color(value)
+        # cascade text color to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_color = self.text_color
+
+    @property
+    def text_size(self):
+        """
+        Sets and returns the text size to be used by the widgets 
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default text size
+        """
+        return self._text_size
+
+    @text_size.setter
+    def text_size(self, value):
+        self._text_size = value
+        # cascade text color to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_size = self.text_size
+
+    @property
+    def font(self):
+        """
+        Sets and returns the font to be used by the widgets 
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default font
+        """
+        return self._font
+
+    @font.setter
+    def font(self, value):
+        self._font = value
+        # cascade text color to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.font = self.font
+
+    @property
+    def children(self):
+        """
+        Returns a list of children widgets
+        """
+        return self._children
+
+    def _add_child(self, child):
+        """
+        Associates a child widget with this widget.
+
+        Child widgets are used to cascaded to properties (e.g. bg)
+        """
+        self.children.append(child)
+
+    def _remove_child(self, child):
+        """
+        Removes a child widgets association with this widget.
+        """
+        self.children.remove(child)
+
+    @property
+    def enabled(self):
+        """
+        Sets or Returns the enabled status of this container.
+
+        Setting the property will change the enabled status of all
+        widgets in this container
+        """
+        return self._enabled
+
+    @enabled.setter
+    def enabled(self, value):
+        if value:
+            self.enable()
+        else:
+            self.disable()
+    
+    def disable(self):
+        """
+        Disable all the widgets in this container
+        """
+        self._enabled = False
+        for child in self.children:
+            if isinstance(child, (Container, Widget)):
+                child.disable()
+
+    def enable(self):
+        """
+        Enable all the widgets in this container
+        """
+        self._enabled = True
+        for child in self.children:
+            if isinstance(child, (Container, Widget)):
+                child.enable()
+
 
 class BaseWindow(Container):
 
     def __init__(self, master, tk, description, title, width, height, layout, bg, visible):
         """
-        Base class for objects which use windows (e.g. App and Window)
+        Base class for objects which use windows e.g. `App` and `Window`
         """
         super(BaseWindow, self).__init__(master, tk, description, layout)
 
@@ -119,18 +273,6 @@ class BaseWindow(Container):
     @title.setter
     def title(self, text):
         self.tk.title( str(text) )
-
-    # The background colour of the window
-    @property
-    def bg(self):
-        """
-        Sets or returns the background color of the window.
-        """
-        return self.tk.cget("background")
-
-    @bg.setter
-    def bg(self, color):
-        self.tk.configure(background=utils.convert_color(color))
 
     # The height of the window
     @property
@@ -191,13 +333,20 @@ class Widget(
 
     def __init__(self, master, tk, description, grid, align, visible, enabled):
         """
-        The base class for a widget which is an interactable component.
+        The base class for a widget which is an interactable component e.g. `Picture`
         """
         super(Widget, self).__init__(master,tk, description)
         self._grid = grid
         self._align = align
         self.visible = visible
         self.enabled = enabled
+
+        # inherit from master
+        self.bg = master.bg
+        if enabled is None:
+            self.enabled = master.enabled
+        else:
+            self.enabled = enabled
 
 
 class TextWidget(
@@ -206,26 +355,45 @@ class TextWidget(
 
     def __init__(self, master, tk, description, grid, align, visible, enabled):
         """
-        The base class for a widget which contains or has text
+        The base class for a widget which contains or has text e.g. ``Text`, `PushButton`
         """    
         super(TextWidget, self).__init__(master, tk, description, grid, align, visible, enabled)
 
+        #inherit from master
+        self.text_color = master.text_color
+        self.text_size = master.text_size
+        self.font = master.font
+        
 
 class ContainerWidget(
     Container,
     EnableMixin, 
-    DisplayMixin, 
-    ColorMixin,
+    DisplayMixin,
     SizeMixin,
     GridMixin):
 
     def __init__(self, master, tk, description, layout, grid, align, visible, enabled):
         """
-        The base class for a widget which is also a container.
+        The base class for a widget which is also a container e.g. `Box` 
         """
         super(ContainerWidget, self).__init__(master,tk, description, layout)
         self._grid = grid
         self._align = align
         self.visible = visible
-        self.enabled = enabled
 
+        #inherit from master
+        if enabled is None:
+            self.enabled = master.enabled
+        else:
+            self.enabled = enabled
+
+class ContainerTextWidget(
+    ContainerWidget, 
+    TextMixin):
+
+    def __init__(self, master, tk, description, layout, grid, align, visible, enabled):
+        """
+        The base class for a widget which is also a container and contains text 
+        e.g. `ButtonGroup`
+        """
+        super(ContainerTextWidget, self).__init__(master, tk, description, layout, grid, align, visible, enabled)

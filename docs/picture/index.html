@@ -138,6 +138,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../listbox/">ListBox</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../menubar/">MenuBar</a>
                 </li>
                 <li class=" current">
@@ -255,7 +259,7 @@
               
                 <h1 id="picture">Picture</h1>
 <p>(Contains a <code>tkinter.Label</code> object)</p>
-<p><code>__init__(self, master, image, grid=None, align=None)</code></p>
+<p><code>__init__(self, master, image=None, grid=None, align=None, visible=True, enabled=None)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>Picture</code> object displays an image.</p>
 <p><img alt="Picture on Windows" src="../images/picture_windows.png" /></p>
@@ -323,9 +327,9 @@ app.display()
 <tr>
 <td>enabled</td>
 <td>boolean</td>
-<td>True</td>
+<td>None</td>
 <td>No</td>
-<td>If the widget should be enabled.</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
 </tr>
 </tbody>
 </table>

@@ -1,5 +1,9 @@
 # Alerts
 
+Alerts are pop-up windows which can be used to interupt the user by asking question or providing information.
+
+![Alert popup](images/alert_info_windows.png)
+
 ### Using alerts
 To use the alerts you will need to import each one individually at the start of your program. For example:
 
