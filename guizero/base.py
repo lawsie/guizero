@@ -321,6 +321,22 @@ class BaseWindow(Container):
     def on_close(self, command):
         self._on_close = command  
 
+    def hide(self):
+        """Hide the window."""
+        self.tk.withdraw()
+        self._visible = False
+
+    def show(self):
+        """Show the window."""
+        self.tk.deiconify()
+        self._visible = True
+
+    def _close_window(self):
+        if self._on_close is None:
+            self.destroy()
+        else:
+            self._on_close()
+            
 
 class Widget(
     Base,
