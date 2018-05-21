@@ -48,7 +48,7 @@ class DestroyMixin():
 class EnableMixin():    
     @property
     def enabled(self):
-        state = self.tk.cget("state")
+        state = self._get_tk_config("state")
         return state == "normal" or state == "active"
 
     @enabled.setter
@@ -60,12 +60,12 @@ class EnableMixin():
     
     def disable(self):
         """Disable the widget."""
-        self.tk.configure(state="disabled")
-
+        self._set_tk_config("state", "disabled")
+        
     def enable(self):
         """Enable the widget."""
-        self.tk.configure(state="normal")
-
+        self._set_tk_config("state", "normal")
+        
 
 class FocusMixin():
     def focus(self):
@@ -123,18 +123,13 @@ class TextMixin():
         """
         Sets or returns the text color of the widget.
         """
-        return (self.tk.cget("fg"))
-
+        return self._get_tk_config("fg")
+        
     # Set the text colour
     @text_color.setter
     def text_color(self, color):
-        for key in self.FG_KEYS:
-            # only set the key if it exists
-            if key in self.tk.keys():
-                self.tk[key] = utils.convert_color(color)
-    
-        #self.tk.config(fg=utils.convert_color(color))
-
+        self._set_tk_config(self.FG_KEYS, utils.convert_color(color))
+        
     # Get the current font as a string
     @property
     def font(self):
@@ -187,10 +182,11 @@ class ColorMixin():
     # Set the background colour
     @bg.setter
     def bg(self, color):
-        for key in self.BG_KEYS:
-            # only set the key if it exists
-            if key in self.tk.keys():
-                self.tk[key] = utils.convert_color(color)
+        self._set_tk_config(self.BG_KEYS, utils.convert_color(color))
+        # for key in self.BG_KEYS:
+        #     # only set the key if it exists
+        #     if key in self.tk.keys():
+        #         self.tk[key] = utils.convert_color(color)
              
 
 class SizeMixin():

@@ -1,11 +1,11 @@
 from tkinter import Menu
 from .tkmixins import ScheduleMixin, DestroyMixin, FocusMixin
 from . import utilities as utils
-from .base import Base
+from .base import Component
 from .App import App
 from .Window import Window
 
-class MenuBar(Base):
+class MenuBar(Component):
 
     def __init__(self, master, toplevel, options):
 

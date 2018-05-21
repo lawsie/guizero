@@ -1,5 +1,5 @@
 """
-Abstract classes for guizero
+Abstract classes for guizero.
 """
 from .tkmixins import (
     ScheduleMixin, 
@@ -16,27 +16,90 @@ from .tkmixins import (
 from . import utilities as utils
 from .event import EventManager
 
-class Base(
+
+class Base():
+
+    def __init__(self, tk):
+        """
+        The base class for all components in guizero.
+        """
+        self._tk = tk
+        self._tk_defaults = {}
+        
+        # store the tk widgets default keys
+        for key in self.tk.keys():
+            self._tk_defaults[key] = self.tk[key]
+            
+    @property
+    def tk(self):
+        """
+        Returns the tk widget.
+        """
+        return self._tk
+
+    def _get_tk_config(self, key):
+        """
+        Gets the config from the widget's tk object.
+
+        :param string key:
+            The tk config key. 
+        """
+        return self.tk[key]
+
+        # if the key exists return it
+        # if key in self.tk.keys():
+        #     return self.tk[key]
+        # else:
+        #     return None
+
+    def _set_tk_config(self, keys, value):
+        """
+        Gets the config from the widget's tk object
+
+        :param string/List keys:
+            The tk config key or a list of tk keys.
+
+        :param variable value:
+            The value to set.
+        """
+
+        # if a single key is passed, convert to list
+        if isinstance(keys, str):
+            keys = [keys]
+
+        # loop through all the keys
+        for key in keys:
+            if key in self.tk.keys():
+                if value is None:
+                    # reset to default
+                    self.tk[key] = self._tk_defaults[key]
+                else:
+                    self.tk[key] = value
+
+
+class Component(
+    Base,
     ScheduleMixin,
     DestroyMixin,
     FocusMixin):
 
     def __init__(self, master, tk, description):
         """
-        The base class for all components in guizero
-        """    
+        An abstract class for a component in guizero.
+        """ 
+        super(Component, self).__init__(tk)
+
         self._master = master
-        self._tk = tk
         self._description = description
         self._events = EventManager(self, tk)
-
+        
         # check the master
         if self.master is not None:
             if isinstance(master, Container):
                 self.master._add_child(self)
             else:
                 utils.raise_error("{}\nMaster is not an [App], [Window] or [Box]".format(description))
-            
+
     @property
     def master(self):
         """
@@ -45,16 +108,9 @@ class Base(
         return self._master
 
     @property
-    def tk(self):
-        """
-        Returns the tk widget.
-        """
-        return self._tk
-
-    @property
     def description(self):
         """
-        Sets and returns the description for the widget
+        Sets and returns the description for the widget.
         """
         return self._description
 
@@ -68,22 +124,26 @@ class Base(
     @property
     def events(self):
         """
-        Returns the EventManager which can be used to set custom event handlers
+        Returns the EventManager which can be used to set custom event handlers.
         """
         return self._events
 
     def destroy(self):
-        """Destroy the object."""
+        """
+        Destroy the tk widget.
+        """
+        # if this widget has a master remove the it from the master
         if self.master is not None:
             self.master._remove_child(self)
+
         self.tk.destroy()
 
 
-class Container(Base, ColorMixin, EventsMixin):
+class Container(Component, ColorMixin, EventsMixin):
 
     def __init__(self, master, tk, description, layout):
         """
-        An abstract class for a container which can hold other widgets
+        An abstract class for a container which can hold other widgets.
         """
         super(Container, self).__init__(master, tk, description)
         self._children = []
@@ -336,10 +396,10 @@ class BaseWindow(Container):
             self.destroy()
         else:
             self._on_close()
-            
+
 
 class Widget(
-    Base,
+    Component,
     EnableMixin, 
     DisplayMixin, 
     ColorMixin,
