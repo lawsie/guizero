@@ -37,20 +37,20 @@ class Base():
         """
         return self._tk
 
-    def _get_tk_config(self, key):
+    def _get_tk_config(self, key, default=False):
         """
         Gets the config from the widget's tk object.
 
         :param string key:
-            The tk config key. 
-        """
-        return self.tk[key]
+            The tk config key.
 
-        # if the key exists return it
-        # if key in self.tk.keys():
-        #     return self.tk[key]
-        # else:
-        #     return None
+        :param bool default:
+            Returns the default value for this key. Defaults to `False`.
+        """
+        if default:
+            return self._tk_defaults[key]
+        else:
+            return self.tk[key]
 
     def _set_tk_config(self, keys, value):
         """
@@ -60,7 +60,8 @@ class Base():
             The tk config key or a list of tk keys.
 
         :param variable value:
-            The value to set.
+            The value to set. If the value is `None`, the config value will be
+            reset to its default.
         """
 
         # if a single key is passed, convert to list
