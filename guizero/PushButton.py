@@ -55,8 +55,9 @@ class PushButton(TextWidget):
         else:
             self._update_tk_image(self._image.tk_image)
 
-        self.tk.config(width=self._image.width)
-        self.tk.config(height=self._image.height)
+        # set the width and height of the widget to match the image
+        super(PushButton, self.__class__).width.fset(self, self._image.width)
+        super(PushButton, self.__class__).height.fset(self, self._image.height)
 
     def _update_tk_image(self, tk_image):
         self.tk.config(image=tk_image)
@@ -90,26 +91,28 @@ class PushButton(TextWidget):
 
     @property
     def width(self):
-        return self.tk.cget("width")
-
+        return super(PushButton, self.__class__).width.fget(self)
+        
     @width.setter
     def width(self, value):
         if self._image:
             self._image_width = value
             self._load_image()
-        self.tk.config(width=value)
+        else:
+            super(PushButton, self.__class__).width.fset(self, value)
         
     @property
     def height(self):
-        return self.tk.cget("height")
+        return super(PushButton, self.__class__).height.fget(self)
 
     @height.setter
     def height(self, value):
         if self._image:
             self._image_height = value
             self._load_image()
-        self.tk.config(height=value)
-
+        else:
+            super(PushButton, self.__class__).height.fset(self, value)
+        
     # METHODS
     # -------------------------------------------
     # Internal use only

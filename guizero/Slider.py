@@ -31,19 +31,19 @@ class Slider(TextWidget):
 
     @property
     def width(self):
-        return self.tk.cget("length")
+        return self._get_tk_config("length")
 
     @width.setter
     def width(self, value):
-        self.tk.config(length=value)
+        self._set_tk_config("length", value)
 
     @property
     def height(self):
-        return self.tk.cget("width")
+        return self._get_tk_config("width")
 
     @height.setter
     def height(self, value):
-        self.tk.config(width=value)
+        self._set_tk_config("width", value)
 
 
     # METHODS
