@@ -142,6 +142,11 @@ class TextMixin():
     # Set the current font
     @font.setter
     def font(self, font):
+        if font is None:
+            # get the font from the default font
+            f = self._get_font(default = True)
+            font = f["family"]
+
         self._set_tk_config("font", (font, self.text_size))
         
     # Get the current text size as an integer
