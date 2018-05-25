@@ -37,6 +37,9 @@ class Base():
         """
         return self._tk
 
+    def _has_tk_config(self, key):
+        return key in self.tk.keys
+
     def _get_tk_config(self, key, default=False):
         """
         Gets the config from the widget's tk object.
@@ -183,7 +186,7 @@ class Container(Component, ColorMixin, EventsMixin):
         # cascade bg to child widgets
         for child in self.children:
             if isinstance(child, (Container, Widget)):
-                child.bg = self.bg
+                child.bg = self._bg
 
     @property
     def text_color(self):
