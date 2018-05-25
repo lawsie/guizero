@@ -64,38 +64,64 @@ def display_test(widget):
     assert widget.visible
     
 def color_test(widget):
+    default = widget.bg
     widget.bg = "red"
     assert widget.bg == "red"
     widget.bg = "#ff0000"
     assert widget.bg == "#ff0000"
     widget.bg = (255, 0, 0)
     assert widget.bg == "#ff0000"
+    widget.bg = None
+    assert widget.bg == default
     
 def size_pixel_test(widget):
+    default = widget.width
     widget.width = 666
     assert widget.width == 666
+    widget.width = None
+    assert widget.width == default
+    
+    default = widget.height
     widget.height = 666
     assert widget.height == 666
+    widget.height = None
+    assert widget.height == default
 
 def size_text_test(widget):
+    default = widget.width
     widget.width = 30
     assert widget.width == 30
+    widget.width = None
+    assert widget.width == default
+
+    default = widget.height
     widget.height = 10
     assert widget.height == 10
+    widget.height = None
+    assert widget.height == default
     
 def text_test(widget):
+    default = widget.font
     widget.font = "Times New Roman"
     assert widget.font == "Times New Roman"
+    widget.font = None
+    assert widget.font == default
     
+    default = widget.text_color
     widget.text_color = "red"
     assert widget.text_color == "red"
     widget.text_color = "#ff0000"
     assert widget.text_color == "#ff0000"
     widget.text_color = (255, 0, 0)
     assert widget.text_color == "#ff0000"
+    widget.text_color = None
+    assert widget.text_color == default
 
+    default = widget.text_size
     widget.text_size = 16
     assert widget.text_size == 16
+    widget.text_size = None
+    assert widget.text_size == default
     
 def events_test(widget):
 

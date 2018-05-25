@@ -1,21 +1,17 @@
 from tkinter import OptionMenu, StringVar, END, _setit
 from . import utilities as utils
-from .base import TextWidget
+from .base import Base, TextWidget
 from .tkmixins import ColorMixin, TextMixin
 
 
-class ComboMenu(ColorMixin, TextMixin):
+class ComboMenu(Base, ColorMixin, TextMixin):
 
     def __init__(self, tk):
         """
         Internal class for managing the little menu which pops up when the 
         combo box is opened
         """
-        self._tk = tk
-        
-    @property
-    def tk(self):
-        return self._tk
+        super(ComboMenu, self).__init__(tk)
 
 
 class Combo(TextWidget):

@@ -48,7 +48,7 @@ class DestroyMixin():
 class EnableMixin():    
     @property
     def enabled(self):
-        state = self.tk.cget("state")
+        state = self._get_tk_config("state")
         return state == "normal" or state == "active"
 
     @enabled.setter
@@ -60,12 +60,12 @@ class EnableMixin():
     
     def disable(self):
         """Disable the widget."""
-        self.tk.configure(state="disabled")
-
+        self._set_tk_config("state", "disabled")
+        
     def enable(self):
         """Enable the widget."""
-        self.tk.configure(state="normal")
-
+        self._set_tk_config("state", "normal")
+        
 
 class FocusMixin():
     def focus(self):
@@ -111,9 +111,9 @@ class TextMixin():
     ] 
 
     # Get the font object for this widget 
-    def _get_font(self):
+    def _get_font(self, default = False):
         # get the font in use for the widget
-        f = Font(self.tk, self.tk.cget("font"))
+        f = Font(self.tk, self._get_tk_config("font", default=default))
         # configure() returns a dictionary of font attributes
         return f.configure()
 
@@ -123,18 +123,13 @@ class TextMixin():
         """
         Sets or returns the text color of the widget.
         """
-        return (self.tk.cget("fg"))
-
+        return self._get_tk_config("fg")
+        
     # Set the text colour
     @text_color.setter
     def text_color(self, color):
-        for key in self.FG_KEYS:
-            # only set the key if it exists
-            if key in self.tk.keys():
-                self.tk[key] = utils.convert_color(color)
-    
-        #self.tk.config(fg=utils.convert_color(color))
-
+        self._set_tk_config(self.FG_KEYS, utils.convert_color(color))
+        
     # Get the current font as a string
     @property
     def font(self):
@@ -147,9 +142,13 @@ class TextMixin():
     # Set the current font
     @font.setter
     def font(self, font):
-        if font is not None:
-            self.tk.config(font=(font, self.text_size))
+        if font is None:
+            # get the font from the default font
+            f = self._get_font(default = True)
+            font = f["family"]
 
+        self._set_tk_config("font", (font, self.text_size))
+        
     # Get the current text size as an integer
     @property
     def text_size(self):
@@ -162,8 +161,12 @@ class TextMixin():
     # Set the font size
     @text_size.setter
     def text_size(self, size):
-        if size is not None:
-            self.tk.config(font=(self.font, size))
+        if size is None:
+            # get the size from the default font
+            f = self._get_font(default = True)
+            size = f["size"]
+
+        self._set_tk_config("font", (self.font, size))
 
 
 class ColorMixin():
@@ -182,15 +185,12 @@ class ColorMixin():
         """
         Sets the background color of the widget.
         """
-        return (self.tk.cget("bg"))
+        return self._get_tk_config("bg")
 
     # Set the background colour
     @bg.setter
     def bg(self, color):
-        for key in self.BG_KEYS:
-            # only set the key if it exists
-            if key in self.tk.keys():
-                self.tk[key] = utils.convert_color(color)
+        self._set_tk_config(self.BG_KEYS, utils.convert_color(color))
              
 
 class SizeMixin():
@@ -199,23 +199,23 @@ class SizeMixin():
         """
         Sets or returns the width of the widget.
         """
-        return int(self.tk.cget("width"))
+        return int(self._get_tk_config("width"))
 
     @width.setter
     def width(self, value):
-        self.tk.config(width=value)
+        self._set_tk_config("width", value)
 
     @property
     def height(self):
         """
         Sets or returns the height of the widget.
         """
-        return int(self.tk.cget("height"))
+        return int(self._get_tk_config("height"))
 
     @height.setter
     def height(self, value):
-        self.tk.config(height=value)
-
+        self._set_tk_config("height", value)
+        
 
 class GridMixin():
 

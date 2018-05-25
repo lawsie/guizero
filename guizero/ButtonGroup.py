@@ -122,13 +122,18 @@ class ButtonGroup(
 
     @height.setter
     def height(self, value):
-        if value % len(self._options) != 0:
-            # if the height doesnt divide by the number of radio buttons give a warning
-            button_height = int(round(value / len(self._options)))
-            new_height = button_height * len(self._options)
-            utils.error_format("ButtonGroup height '{}' doesn't divide by the number of buttons '{}' setting height to '{}'.".format(value, len(self._options), new_height))
+        
+        # work out the height of a button
+        if value is None:
+            button_height = None
         else:
-            button_height = int(value / len(self._options))
+            if value % len(self._options) != 0:
+                # if the height doesnt divide by the number of radio buttons give a warning
+                button_height = int(round(value / len(self._options)))
+                new_height = button_height * len(self._options)
+                utils.error_format("ButtonGroup height '{}' doesn't divide by the number of buttons '{}' setting height to '{}'.".format(value, len(self._options), new_height))
+            else:
+                button_height = int(value / len(self._options))
 
         for item in self._options:
             item.height = button_height
