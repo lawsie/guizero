@@ -51,20 +51,15 @@ class Combo(TextWidget):
         # Maintain a list of options (as strings, to avoid problems comparing)
         self._options = [str(x) for x in options]
 
+        # A Combo in tkinter must have at least 1 option, otherwise it errors
+        if len(self._options) == 0:
+            utils.raise_error("[Combo] object cannot have 0 options.")
+
         description = "[Combo] object with options  " + str(self._options)
 
         # Store currently selected item
         self._selected = StringVar()
-
-        # Set the first item in the list as default
-        if selected is None and len(options) > 0:
-            self._selected.set( str(options[0]) )
-            self._default = str(options[0])
-
-        else:
-            self._selected.set( str(selected) )
-            self._default = str(selected)
-
+        
         # Create a tk OptionMenu object within this object
         tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command_callback)
 
@@ -75,6 +70,14 @@ class Combo(TextWidget):
         self._combo_menu = ComboMenu(tk["menu"])
 
         super(Combo, self).__init__(master, tk, description, grid, align, visible, enabled)
+
+        # Set the selected item
+        if selected is None:
+            self.value = self._options[0]
+        else:
+            self.value = selected
+        
+        self._default = self.value
 
         # The command associated with this combo
         self.update_command(command)
@@ -91,9 +94,8 @@ class Combo(TextWidget):
 
     @value.setter
     def value(self, value):
-        if value in self._options:
-            self._selected.set( str(value) )
-        else:
+        value = str(value)
+        if not self._set_option(value):
             utils.error_format("Tried to set " + self.description + " to option \"" + str(value) + "\", which does not exist" )
 
     @property
@@ -161,11 +163,9 @@ class Combo(TextWidget):
         Resets the combo box to the original "selected" value from the 
         constructor (or the first value if no selected value was specified).
         """
-        try:
-            self._selected.set( self._default )
-        except IndexError:
+        if not self._set_option(self._default):
             utils.error_format( self.description + "\n" +
-            "There are no options in the [Combo] box to be selected")
+            "Unable to select default option as doesnt exists in Combo")
 
     def append(self, option):
         """
@@ -200,37 +200,57 @@ class Combo(TextWidget):
             The option to remove from the Combo. 
         """
         if option in self._options:
-            self._options.remove(option)
-            self._refresh_options()
+            if len(self._options) == 1:
+                # this is the last option in the list so cleat it
+                self.clear()
+            else:
+                self._options.remove(option)
+                self._refresh_options()
+                # have we just removed the selected option?
+                # if so set it to the first option
+                if option == self.value:
+                    self._set_option(self._options[0])
             return True
         else:
             return False
-
-    def _refresh_options(self):
-        # save which option was selected
-        selected = self.value
-
-        menu = self.tk.children["menu"]
-        menu.delete(0, END)
-
-        # Re-add all options
-        # This uses an internal tk method _setit which is a bit naughty
-        for item in self._options:
-            menu.add_command(label=item, command=_setit(self._selected, item, self._command_callback))
-
-        self.description = "[Combo] object with options  " + str(self._options)
-
-        # set the option
-        self._selected.set(selected)
-
+    
     # Clear all options from the box
     def clear(self):
         """
         Clears all the options in a Combo
         """
         self._options = []
-        self.tk.children["menu"].delete(0, END)
+        self._combo_menu.tk.delete(0, END)
         self._selected.set("")
+
+    def _refresh_options(self):
+        # save which option was selected
+        selected = self.value
+
+        self._combo_menu.tk.delete(0, END)
+
+        # Re-add all options
+        # This uses an internal tk method _setit which is a bit naughty
+        for item in self._options:
+            self._combo_menu.tk.add_command(label=item, command=_setit(self._selected, item, self._command_callback))
+
+        self.description = "[Combo] object with options  " + str(self._options)
+
+        # set the option which was previously selected
+        self._set_option(selected)
+    
+    def _set_option(self, value):
+        """
+        Sets a single option in the Combo, returning True if it was able too.
+        """
+        if len(self._options) > 0:
+            if value in self._options:    
+                self._selected.set(value)
+                return True
+            else:
+                return False
+        else:
+            return False
 
     def _command_callback(self, value):
         if self._command:
@@ -297,4 +317,4 @@ class Combo(TextWidget):
         # Set the new option as selected
         self._selected.set( str(option) )
 
-        utils.deprecated("Combo add_option() is deprecated. Please use append() or insert() instead.")
+        utils.deprecated("Combo add_option() is deprecated. Please use append() instead.")
