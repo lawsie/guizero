@@ -60,6 +60,36 @@ def test_select_default():
 
     a.destroy()
 
+def test_append():
+    a = App()
+    c = Combo(a, ["foo", "bar"])
+    
+    assert c.options == ["foo", "bar"]
+    c.append("car")
+    assert c.options == ["foo", "bar", "car"]
+
+    a.destroy()
+
+def test_insert():
+    a = App()
+    c = Combo(a, ["foo", "bar"])
+    
+    assert c.options == ["foo", "bar"]
+    c.insert(1, "car")
+    assert c.options == ["foo", "car", "bar"]
+
+    a.destroy()
+
+def test_remove():
+    a = App()
+    c = Combo(a, ["foo", "bar", "foo"])
+    
+    assert c.options == ["foo", "bar", "foo"]
+    c.remove("foo")
+    assert c.options == ["bar", "foo"]
+
+    a.destroy()
+
 def test_add_option():
     a = App()
     c = Combo(a, ["foo", "bar"])
