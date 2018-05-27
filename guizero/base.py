@@ -85,7 +85,9 @@ class Component(
     Base,
     ScheduleMixin,
     DestroyMixin,
-    FocusMixin):
+    FocusMixin,
+    ColorMixin,
+    EventsMixin):
 
     def __init__(self, master, tk, description):
         """
@@ -143,7 +145,7 @@ class Component(
         self.tk.destroy()
 
 
-class Container(Component, ColorMixin, EventsMixin):
+class Container(Component):
 
     def __init__(self, master, tk, description, layout):
         """
@@ -406,10 +408,8 @@ class Widget(
     Component,
     EnableMixin, 
     DisplayMixin, 
-    ColorMixin,
     SizeMixin,
-    GridMixin,
-    EventsMixin):
+    GridMixin):
 
     def __init__(self, master, tk, description, grid, align, visible, enabled):
         """
