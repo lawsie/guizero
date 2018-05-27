@@ -299,22 +299,7 @@ class Combo(TextWidget):
     # Add an option to the combo
     def add_option(self, option):
 
-        # Add to the internal list
-        self._options.append( str(option) )
-        # self.children["menu"].add_command(label=option, command=self._command)
-
-        # Delete all options
-        menu = self.tk.children["menu"]
-        menu.delete(0, 'end')
-
-        # Re-add all options
-        # This uses an internal tk method _setit which is a bit naughty
-        for item in self._options:
-            menu.add_command(label=item, command=_setit(self._selected, item, self._command_callback))
-
-        self.description = "[Combo] object with options  " + str(self._options)
-
-        # Set the new option as selected
-        self._selected.set( str(option) )
+        self.append(option)
+        self.value = option
 
         utils.deprecated("Combo add_option() is deprecated. Please use append() instead.")
