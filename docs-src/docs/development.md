@@ -60,7 +60,7 @@ If running the tests inside a virtual environment you will need to install pytes
 pip install pytest
 ```
 
-_Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesnt seem to like being initialised and destroyed hundreds of times, I suspect a file locking issue as you dont see the problem on Linux. So sometimes you might get a test fail with an error like `This probably means that tk wasn't installed properly.`. Just give it a re-run!_
+_Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesnt seem to like being initialised and destroyed hundreds of times, I suspect a file locking issue as you dont see the problem on Linux. So sometimes you might get a test fail with an error like `This probably means that tk wasn't installed properly.`. Just re-run the last failed errors! `pytest --lf -v`_
 
 ## Documents
 

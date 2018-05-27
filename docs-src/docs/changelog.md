@@ -1,5 +1,13 @@
 # guizero
 
+## 0.5.2 - tbc
+
+- A widgets properties `bg`, `text_color`, `text_size`, `font`, `width`, `height` can be restored by to their default by setting them to `None`
+- Slider is now sized properly when orientated vertically
+- Combo support for `append`, `insert`, `remove` and depreciated `add_option`
+- Refactoring of class hierarchy
+- Various bug fixes
+
 ## 0.5.1 - 14 May 2018
 
 - App, Window, Box now support the following properties and will cascade them to widgets within them:
