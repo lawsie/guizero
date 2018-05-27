@@ -31,6 +31,7 @@ When you create a `TextBox` object you **must** specify `master` and you can spe
 | grid   | List [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
 | text   | string    | ""  | -         | Any text you wish to be pre-filled in the text box |
 | width   | int    | 10     | -         | The width of the text box|
+| height   | int    | 1     | -         | The height of the text box, only effective if `multiline` is `True`|
 | visible   | boolean   | True    | No         | If the widget should be visible.  |
 | enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 | multiline | boolean   | False   | No         | Create a multi-line text box.  |
@@ -72,6 +73,7 @@ You can set and get the following properties:
 | enabled       | boolean     | `True` if the widget is enabled |
 | font          | string      | The font of the text  |
 | grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| height        | [size](size.md)         | Sets the height of the widget |
 | master        | App or Box  | The container to which this widget belongs |
 | value         | string      | The text in the TextBox |
 | visible       | boolean     | If this widget is visible |
