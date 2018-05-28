@@ -59,7 +59,7 @@ You can set and get the following properties:
 | ------------- | ----------- | -------------------------- |
 | bg            | [color](colors.md)      | The background colour of the window   |
 | enabled       | boolean     | `True` if the window is enabled |
-| font          | string      | The font of the text widgets should use |
+| font          | string      | The font that widgets should use |
 | height        | int         | The height of the window   |
 | layout        | string      | The layout being used by the Window (`"auto"`) or (`"grid"`) |
 | title         | string      | The title of the window    |

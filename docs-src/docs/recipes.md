@@ -55,3 +55,49 @@ pic = Picture(app, image="myimage.gif")
 app.display()
 ```
 
+## Toggle 2 buttons
+
+Have 2 buttons, **start** and **stop** with them changing the `enabled` state of each other.
+
+```python
+from guizero import App, PushButton
+
+def start():
+    start_button.disable()
+    stop_button.enable()
+
+def stop():
+    start_button.enable()
+    stop_button.disable()
+
+app = App()
+start_button = PushButton(app, command=start, text="start")
+stop_button = PushButton(app, command=stop, text="stop", enabled=False)
+app.display()
+``` 
+
+## Scale an image
+
+Display an image on the screen with 2 sliders, 1 for height and 1 for width.
+
+```python
+from guizero import App, Slider, Picture
+
+def resize():
+    picture.width = width.value
+    picture.height = height.value
+    
+app = App(layout="grid")
+
+picture = Picture(app, image="image.gif", grid=[0,1])
+
+width = Slider(app, command=resize, grid=[0,0], start=1, end=picture.width)
+width.width = picture.width
+width.value = picture.width
+
+height = Slider(app, command=resize, horizontal=False, grid=[1,1], start=1, end=picture.height)
+height.height = picture.height
+height.value = picture.height
+
+app.display()
+```

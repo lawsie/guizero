@@ -2,13 +2,15 @@
 
 Notes on how to develop guizero (on Windows).
 
-## Upgrade pip
+## Setup
+
+Upgrade pip:
 
 ```
 python.exe -m pip install pip --upgrade
 ```
 
-## Install / Upgrade Pre-requisites
+Install / upgrade pre-requisites:
 
 ```
 pip install mkdocs wheel twine virtualenv pytest pillow --upgrade
@@ -19,7 +21,6 @@ pip install mkdocs wheel twine virtualenv pytest pillow --upgrade
 Create a virtual environment (not essential, but a good idea!):
 
 ```
-mkdir guizero-[versionno]
 virtualenv guizero-[versionno]
 cd guizero-[versionno]
 ```

@@ -1,4 +1,5 @@
 from guizero import App, MenuBar
+
 def file_open():
     print("Open")
 
@@ -22,4 +23,5 @@ menubar = MenuBar(app,
                       [ ["Open", file_open], ["Exit", file_exit] ],
                       [ ["Copy", edit_copy], ["Cut", edit_cut], ["Paste", edit_paste] ]
                   ])
+
 app.display()
