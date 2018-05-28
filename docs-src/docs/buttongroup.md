@@ -27,8 +27,8 @@ When you create a `ButtonGroup` object you **must** specify `master` and `otions
 | Parameter | Takes | Default | Compulsory | Description                         |
 | --------- | --------- | ------- | ---------- | -------------------------|
 | master    | App or Box   | - | Yes       | The container to which this widget belongs
-| options   | list or 2D List   | -  | Yes         | Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. If a list is specified, the options will be automatically numbered with hidden values, beginning at 1. |
-| selected   | string    | -     | -       | The option that should be selected, if a value isn't provided the first option will be selected. If the options are specified as a list, the selected option should be the number of the desired option, beginning at 1. If a 2D list is specified, this should be the **hidden value** associated with one of the options. |
+| options   | list or 2D List   | -  | Yes         | Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option.  |
+| selected   | string    | -     | -       | The option that should be selected, if a value isn't provided the first option will be selected.  |
 | align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
 | command | function name | None | -   | The name of a function to call when the selected option changes. |
 | args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
@@ -43,6 +43,7 @@ You can call the following methods on an `ButtonGroup` object.
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
+| append(option)  | item (string)   | -          | Appends a new `option` to the end of the ButtonGroup. |
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | destroy()   | -  | -          | Destroys the widget    |
@@ -51,6 +52,8 @@ You can call the following methods on an `ButtonGroup` object.
 | focus()  | -  | -          | Gives focus to the widget   |
 | get_group_as_list() | - | list |  Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging) |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
+| insert(option, index)  | item (string), index (int)   | -          | Insert a new `option` in the ButtonGroup at `index` |
+| remove(option)  | item (string)   | Boolean          | Removes the first `option` from the ButtonGroup. Returns `True` if an item was removed. |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden |
 | update_command(command, args =None)   | command (function name), args (_Optional_ List of arguments to be passed to command)   | -          | Updates the function to call when the selected option changes  |

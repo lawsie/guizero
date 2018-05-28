@@ -43,8 +43,7 @@ You can call the following methods on a `Combo` object.
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
-
-| append(item)  | item (string)   | -          | Appends a new `item` to the end of the ListBox. |
+| append(option)  | item (string)   | -          | Appends a new `option` to the end of the Combo. |
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | clear() | - | - |  Removes all options from the Combo box |
@@ -53,8 +52,8 @@ You can call the following methods on a `Combo` object.
 | enable()  | -  | -          | Enables the widget   |
 | focus()  | -  | -          | Gives focus to the widget  |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
-| insert(item, index)  | item (string), index (int)   | -          | Insert a new `item` at `index` |
-| remove(item)  | item (string)   | Boolean          | Removes the first `item` from the ListBox. Returns `True` if an item was removed. |
+| insert(option, index)  | item (string), index (int)   | -          | Insert a new `option` in the Combo at `index` |
+| remove(option)  | item (string)   | Boolean          | Removes the first `option` from the Combo. Returns `True` if an item was removed. |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | select_default() | - | - |  Resets the combo box so that the first item is selected |
 | show()  | - | -          | Displays the widget if it was previously hidden  |

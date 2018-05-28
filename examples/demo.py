@@ -34,7 +34,7 @@ def show_the_selection():
 
 def selection_chosen():
     selection.hide()
-    if selection.value == "1":
+    if selection.value == "choose me":
         info("well done", "you chose wisely")
         goodbye()
     else:

@@ -105,6 +105,7 @@ def test_clear():
     c = Combo(a, ["foo", "bar"])
 
     c.clear()
+    assert len(c.options) == 0
     assert c.value == ""
 
     a.destroy()

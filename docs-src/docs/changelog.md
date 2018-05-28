@@ -1,12 +1,13 @@
 # guizero
 
 ## 0.5.2 - tbc
-
-- A widgets properties `bg`, `text_color`, `text_size`, `font`, `width`, `height` can be restored by to their default by setting them to `None`
-- Slider is now sized properly when orientated vertically
-- Combo support for `append`, `insert`, `remove` and depreciated `add_option`
-- Refactoring of class hierarchy
+- Major refactoring of ButtonGroup, if no hidden values are specified, `ButtonGroup.value` now returns the text value not a generate string number [#178](https://github.com/lawsie/guizero/issues/178)
+- A widgets properties `bg`, `text_color`, `text_size`, `font`, `width`, `height` can be restored by to their default by setting them to `None` [#181](https://github.com/lawsie/guizero/issues/181)
+- Slider is now sized properly when orientated vertically [#186](https://github.com/lawsie/guizero/issues/186)
+- `Combo` and `ButtonGroup` support for `append`, `insert`, `remove` and depreciated `add_option` [#180](https://github.com/lawsie/guizero/issues/180)
+- Refactoring of class hierarchy 
 - Various bug fixes
+- contributors [martinohanlon](https://github.com/martinohanlon)
 
 ## 0.5.1 - 14 May 2018
 
