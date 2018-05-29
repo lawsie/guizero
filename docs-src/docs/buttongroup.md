@@ -16,7 +16,7 @@ Create a `ButtonGroup` object like this:
 ```python
 from guizero import App, ButtonGroup
 app = App()
-choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)
+choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected="cheese")
 app.display()
 ```
 
