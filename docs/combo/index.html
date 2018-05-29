@@ -355,10 +355,10 @@ app.display()
 </thead>
 <tbody>
 <tr>
-<td>add_option(option)</td>
-<td>option (string)</td>
+<td>append(option)</td>
+<td>item (string)</td>
 <td>-</td>
-<td>Adds a new item to the combo box with the value <code>option</code></td>
+<td>Appends a new <code>option</code> to the end of the Combo.</td>
 </tr>
 <tr>
 <td>after(time, command)</td>
@@ -409,6 +409,18 @@ app.display()
 <td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
 </tr>
 <tr>
+<td>insert(option, index)</td>
+<td>item (string), index (int)</td>
+<td>-</td>
+<td>Insert a new <code>option</code> in the Combo at <code>index</code></td>
+</tr>
+<tr>
+<td>remove(option)</td>
+<td>item (string)</td>
+<td>Boolean</td>
+<td>Removes the first <code>option</code> from the Combo. Returns <code>True</code> if an item was removed.</td>
+</tr>
+<tr>
 <td>repeat(time, command)</td>
 <td>time (int), command (function name)</td>
 <td>-</td>
@@ -431,6 +443,12 @@ app.display()
 <td>command (function name)</td>
 <td>-</td>
 <td>Updates the function to call when a different option is selected.</td>
+</tr>
+<tr>
+<td><em>add_option(option)</em></td>
+<td><em>option (string)</em></td>
+<td>-</td>
+<td><em>Adds a new item to the combo box with the value <code>option</code></em></td>
 </tr>
 <tr>
 <td><em>get()</em></td>

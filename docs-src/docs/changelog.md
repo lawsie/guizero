@@ -1,6 +1,6 @@
 # guizero
 
-## 0.5.2 - tbc
+## 0.5.2 - 2018-06-01
 - Refactoring of `ButtonGroup`, including API breaking change - if no hidden values are specified, `ButtonGroup.value` now returns the text value not a generate string number [#178](https://github.com/lawsie/guizero/issues/178)
 - A widgets properties `bg`, `text_color`, `text_size`, `font`, `width`, `height` can be restored by to their default by setting them to `None` [#181](https://github.com/lawsie/guizero/issues/181)
 - Slider is now sized properly when orientated vertically [#186](https://github.com/lawsie/guizero/issues/186)
@@ -9,7 +9,7 @@
 - Various bug fixes
 - contributors [martinohanlon](https://github.com/martinohanlon)
 
-## 0.5.1 - 14 May 2018
+## 0.5.1 - 2018-05-14
 
 - `App`, `Window`, `Box` now support the following properties and will cascade them to widgets within them:
     - `bg`

@@ -203,7 +203,9 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#051-14-may-2018">0.5.1 - 14 May 2018</a></li>
+            <li><a class="toctree-l3" href="#052-2018-06-01">0.5.2 - 2018-06-01</a></li>
+        
+            <li><a class="toctree-l3" href="#051-2018-05-14">0.5.1 - 2018-05-14</a></li>
         
             <li><a class="toctree-l3" href="#050-2018-04-10">0.5.0 - 2018-04-10</a></li>
         
@@ -256,9 +258,19 @@
             <div class="section">
               
                 <h1 id="guizero">guizero</h1>
-<h2 id="051-14-may-2018">0.5.1 - 14 May 2018</h2>
+<h2 id="052-2018-06-01">0.5.2 - 2018-06-01</h2>
 <ul>
-<li>App, Window, Box now support the following properties and will cascade them to widgets within them:<ul>
+<li>Refactoring of <code>ButtonGroup</code>, including API breaking change - if no hidden values are specified, <code>ButtonGroup.value</code> now returns the text value not a generate string number <a href="https://github.com/lawsie/guizero/issues/178">#178</a></li>
+<li>A widgets properties <code>bg</code>, <code>text_color</code>, <code>text_size</code>, <code>font</code>, <code>width</code>, <code>height</code> can be restored by to their default by setting them to <code>None</code> <a href="https://github.com/lawsie/guizero/issues/181">#181</a></li>
+<li>Slider is now sized properly when orientated vertically <a href="https://github.com/lawsie/guizero/issues/186">#186</a></li>
+<li><code>Combo</code> and <code>ButtonGroup</code> now support <code>append</code>, <code>insert</code>, <code>remove</code>, <code>clear</code> and depreciated <code>add_option</code> <a href="https://github.com/lawsie/guizero/issues/180">#180</a></li>
+<li>Refactoring of class hierarchy </li>
+<li>Various bug fixes</li>
+<li>contributors <a href="https://github.com/martinohanlon">martinohanlon</a></li>
+</ul>
+<h2 id="051-2018-05-14">0.5.1 - 2018-05-14</h2>
+<ul>
+<li><code>App</code>, <code>Window</code>, <code>Box</code> now support the following properties and will cascade them to widgets within them:<ul>
 <li><code>bg</code></li>
 <li><code>text_color</code></li>
 <li><code>text_size</code></li>

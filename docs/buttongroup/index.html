@@ -267,7 +267,7 @@
 <p>Create a <code>ButtonGroup</code> object like this:</p>
 <pre><code class="python">from guizero import App, ButtonGroup
 app = App()
-choice = ButtonGroup(app, options=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;], selected=1)
+choice = ButtonGroup(app, options=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;], selected=&quot;cheese&quot;)
 app.display()
 </code></pre>
 
@@ -296,14 +296,14 @@ app.display()
 <td>list or 2D List</td>
 <td>-</td>
 <td>Yes</td>
-<td>Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. If a list is specified, the options will be automatically numbered with hidden values, beginning at 1.</td>
+<td>Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option.</td>
 </tr>
 <tr>
 <td>selected</td>
 <td>string</td>
 <td>-</td>
 <td>-</td>
-<td>The option that should be selected, if a value isn't provided the first option will be selected. If the options are specified as a list, the selected option should be the number of the desired option, beginning at 1. If a 2D list is specified, this should be the <strong>hidden value</strong> associated with one of the options.</td>
+<td>The option that should be selected, if a value isn't provided the first option will be selected.</td>
 </tr>
 <tr>
 <td>align</td>
@@ -369,6 +369,12 @@ app.display()
 </thead>
 <tbody>
 <tr>
+<td>append(option)</td>
+<td>item (string)</td>
+<td>-</td>
+<td>Appends a new <code>option</code> to the end of the ButtonGroup.</td>
+</tr>
+<tr>
 <td>after(time, command)</td>
 <td>time (int), command (function name)</td>
 <td>-</td>
@@ -415,6 +421,18 @@ app.display()
 <td>-</td>
 <td>-</td>
 <td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
+</tr>
+<tr>
+<td>insert(option, index)</td>
+<td>item (string), index (int)</td>
+<td>-</td>
+<td>Insert a new <code>option</code> in the ButtonGroup at <code>index</code></td>
+</tr>
+<tr>
+<td>remove(option)</td>
+<td>item (string)</td>
+<td>Boolean</td>
+<td>Removes the first <code>option</code> from the ButtonGroup. Returns <code>True</code> if an item was removed.</td>
 </tr>
 <tr>
 <td>repeat(time, command)</td>
