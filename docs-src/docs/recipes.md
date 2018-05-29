@@ -76,6 +76,34 @@ stop_button = PushButton(app, command=stop, text="stop", enabled=False)
 app.display()
 ``` 
 
+## Change your apps appearance
+
+Your app doesn't have to use the standard colors and text, let your user pick the background and text color from 2 combo's.
+
+```python
+from guizero import App, Combo, Text
+
+def update_bg():
+    app.bg = bg_combo.value
+
+def update_text():
+    app.text_color = text_combo.value
+
+colors = ["black", "white", "red", "green", "blue"]
+
+app = App()
+app.bg = "black"
+app.text_color = "white"
+
+title1 = Text(app, text="Background color")
+bg_combo = Combo(app, options=colors, selected=app.bg, command=update_bg)
+
+title2 = Text(app, text="Text color")
+text_combo = Combo(app, options=colors, selected=app.text_color, command=update_text)
+
+app.display()
+```
+
 ## Scale an image
 
 Display an image on the screen with 2 sliders, 1 for height and 1 for width.
