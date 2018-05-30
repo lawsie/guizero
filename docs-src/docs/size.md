@@ -26,8 +26,9 @@ slider.height = 30
 | [CheckBox](checkbox.md)      | Characters  | |
 | [Combo](combo.md)         | Characters  | |
 | [ListBox](listbox.md)         | Characters  | |
-| [Picture](picture.md)       | Pixels      | The image wont scale to the size of the Picture |
-| [PushButton](pushbutton.md)    | Characters  | PushButton's are sized in Characters, unless they contain an icon in which case they are sized in Pixels |
+| [Picture](picture.md)       | Pixels      | See [Images](images.md) for more information  |
+| [PushButton](pushbutton.md)    | Characters  | |
+| [PushButton](pushbutton.md) with image    | Pixels  | PushButton's which have images are sized in pixels |
 | [Slider](slider.md)        | Pixels      | |
 | [Text](text.md)          | Characters  | |
 | [TextBox](textbox.md)       | Characters  | Only a TextBox's width can be set |

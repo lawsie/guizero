@@ -56,7 +56,7 @@ You can call the following methods on a `ListBox` object.
 | enable()  | -  | -          | Enables the widget   |
 | focus()  | -  | -          | Gives focus to the widget  |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
-| insert(item, index)  | item (string), index (int)   | -          | Insert a new `item` at `index` |
+| insert(item, index)  | item (string), index (int)   | -          | Insert a new `item` in the ListBox at `index` |
 | remove(item)  | item (string)   | Boolean          | Removes the first `item` from the ListBox. Returns `True` if an item was removed. |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | show()  | - | -          | Displays the widget if it was previously hidden  |

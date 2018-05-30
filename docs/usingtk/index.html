@@ -254,15 +254,15 @@
 <p>In this example, we have guizero <code>App</code> and <code>TextBox</code> widgets.</p>
 <pre><code class="python">from guizero import App, TextBox
 app = App()
-name = TextBox(app)
+name = TextBox(app, text=&quot;Laura&quot;)
 app.display()
 </code></pre>
 
-<p>You want to make the text in the box appear red, but you discover that at the moment this isn't possible in guizero. So instead, you access the internal tk widget directly using <code>&lt;object_name&gt;.tk</code> and then you call the tkinter method:</p>
+<p>You want to make the mouse cursor change when you are over the text box, but you discover that at the moment this isn't possible in guizero. So instead, you access the internal tk widget directly using <code>&lt;object_name&gt;.tk</code> and then you call the tkinter method:</p>
 <pre><code class="python">from guizero import App, TextBox
 app = App()
 name = TextBox(app, text=&quot;Laura&quot;)
-name.tk.config(foreground=&quot;red&quot;)    # config() is a tkinter method
+name.tk.config(cursor=&quot;target&quot;)    # config() is a tkinter method
 app.display()
 </code></pre>
 

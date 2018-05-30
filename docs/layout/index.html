@@ -244,7 +244,8 @@
                 <h2 id="layouts">Layouts</h2>
 <p>The <code>App</code> parameter <code>layout</code> allows you to specify whether the widgets in your app are placed automatically (<code>auto</code>), or whether you wish to position them yourself on a grid (<code>grid</code>). The default layout is <code>auto</code>.</p>
 <p>If you choose the <code>grid</code> layout, this means that when you create a widget (other than the <code>App</code> itself) you will need to pass the widget an extra parameter called <code>grid</code> which is a list containing <code>[x,y]</code> coordinates for where you want the widget to appear, like this:</p>
-<pre><code class="python">text = Text(app, text=&quot;Hello world&quot;, grid=[0,1])
+<pre><code class="python">app = App(layout=&quot;grid&quot;)
+text = Text(app, text=&quot;Hello world&quot;, grid=[0,1])
 </code></pre>
 
 <p>There is no need to specify the width or height of the grid you want - it will expand depending on the coordinates you provide with each widget. However, grid cells containing no objects will have no height or width.</p>

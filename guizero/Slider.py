@@ -9,6 +9,7 @@ class Slider(TextWidget):
         description = "[Slider] object from " + str(start) + " to " + str(end)
 
         # Set the direction
+        self._horizontal = horizontal
         orient = HORIZONTAL if horizontal else VERTICAL
 
         # Create a tk Scale object within this object
@@ -31,20 +32,31 @@ class Slider(TextWidget):
 
     @property
     def width(self):
-        return self._get_tk_config("length")
+        if self._horizontal:
+            return self._get_tk_config("length")
+        else:
+            return self._get_tk_config("width")
 
     @width.setter
     def width(self, value):
-        self._set_tk_config("length", value)
+        if self._horizontal:
+            self._set_tk_config("length", value)
+        else:
+            self._set_tk_config("width", value)
 
     @property
     def height(self):
-        return self._get_tk_config("width")
+        if self._horizontal:
+            return self._get_tk_config("width")
+        else:
+            return self._get_tk_config("length")
 
     @height.setter
     def height(self, value):
-        self._set_tk_config("width", value)
-
+        if self._horizontal:
+            self._set_tk_config("width", value)
+        else:
+            self._set_tk_config("length", value)
 
     # METHODS
     # ----------------
