@@ -11,8 +11,8 @@ Creating a 2nd Window is easy and just like creating a widget you need to pass i
 ```python
 from guizero import App, Window
 
-app = App(title = "Main window")
-window = Window(app, title = "2nd window")
+app = App(title="Main window")
+window = Window(app, title="2nd window")
 
 app.display()
 
@@ -23,8 +23,8 @@ Adding widgets to the 2nd window is the same as adding them to an app, by passin
 ```python
 from guizero import App, Window, Text
 
-app = App(title = "Main window")
-window = Window(app, title = "2nd window")
+app = App(title="Main window")
+window = Window(app, title="2nd window")
 text = Text(window, text="text")
 
 app.display()
@@ -46,13 +46,13 @@ def open_window():
 def close_window():
     window.hide()
 
-app = App(title = "Main window")
+app = App(title="Main window")
 
-window = Window(app, title = "2nd window")
+window = Window(app, title="2nd window")
 window.hide()
 
-open_button = PushButton(app, text = "Open", command = open_window)
-close_button = PushButton(window, text = "Close", command = close_window)
+open_button = PushButton(app, text="Open", command=open_window)
+close_button = PushButton(window, text="Close", command=close_window)
 
 app.display()
 ```
@@ -61,11 +61,11 @@ app.display()
 
 When a window is opened using `show()` it is opening side by side with the main window, and both windows can be used at the same time
 
-To open a "modal" window which prevents the other windows in the applcation being used until it is closed you can pass `True` to the optional `wait` parameter of `show` - `show(wait = True)`.
+To open a "modal" window which prevents the other windows in the applcation being used until it is closed you can pass `True` to the optional `wait` parameter of `show` e.g. `window.show(wait=True)`.
 
 This will force all other windows to wait until this window is closed before they can be used.
 
 ```python
 def open_window():
-    window.show(wait = True)
+    window.show(wait=True)
 ```

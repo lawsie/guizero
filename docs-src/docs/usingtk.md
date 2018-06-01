@@ -11,17 +11,17 @@ In this example, we have guizero `App` and `TextBox` widgets.
 ```python
 from guizero import App, TextBox
 app = App()
-name = TextBox(app)
+name = TextBox(app, text="Laura")
 app.display()
 ```
 
-You want to make the text in the box appear red, but you discover that at the moment this isn't possible in guizero. So instead, you access the internal tk widget directly using `<object_name>.tk` and then you call the tkinter method:
+You want to make the mouse cursor change when you are over the text box, but you discover that at the moment this isn't possible in guizero. So instead, you access the internal tk widget directly using `<object_name>.tk` and then you call the tkinter method:
 
 ```python
 from guizero import App, TextBox
 app = App()
 name = TextBox(app, text="Laura")
-name.tk.config(foreground="red")    # config() is a tkinter method
+name.tk.config(cursor="target")    # config() is a tkinter method
 app.display()
 ```
 

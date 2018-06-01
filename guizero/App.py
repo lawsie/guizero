@@ -34,12 +34,6 @@ class App(BaseWindow):
             bg, 
             visible)
 
-    def _close_window(self):
-        if self._on_close is None:
-            self.destroy()
-        else:
-            self._on_close()
-
     # METHODS
     # --------------------------------------
 
@@ -53,16 +47,6 @@ class App(BaseWindow):
         if self == App._main_app:
             App._main_app = None
         self.tk.destroy()
-
-    def hide(self):
-        """Hide the app."""
-        self.tk.withdraw()
-        self._visible = False
-
-    def show(self):
-        """Show the app."""
-        self.tk.deiconify()
-        self._visible = True
 
     # DEPRECATED METHODS
     # ------------------------------------

@@ -5,6 +5,7 @@ The `App` parameter `layout` allows you to specify whether the widgets in your a
 If you choose the `grid` layout, this means that when you create a widget (other than the `App` itself) you will need to pass the widget an extra parameter called `grid` which is a list containing `[x,y]` coordinates for where you want the widget to appear, like this:
 
 ```python
+app = App(layout="grid")
 text = Text(app, text="Hello world", grid=[0,1])
 ```
 

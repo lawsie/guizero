@@ -43,7 +43,7 @@ You can call the following methods on a `Combo` object.
 
 | Method        | Takes     | Returns    | Description                |
 | ------------- | ------------- | ---------- | -------------------------- |
-| add_option(option) | option (string) | - |  Adds a new item to the combo box with the value `option` |
+| append(option)  | item (string)   | -          | Appends a new `option` to the end of the Combo. |
 | after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
 | cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
 | clear() | - | - |  Removes all options from the Combo box |
@@ -52,10 +52,13 @@ You can call the following methods on a `Combo` object.
 | enable()  | -  | -          | Enables the widget   |
 | focus()  | -  | -          | Gives focus to the widget  |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
+| insert(option, index)  | item (string), index (int)   | -          | Insert a new `option` in the Combo at `index` |
+| remove(option)  | item (string)   | Boolean          | Removes the first `option` from the Combo. Returns `True` if an item was removed. |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | select_default() | - | - |  Resets the combo box so that the first item is selected |
 | show()  | - | -          | Displays the widget if it was previously hidden  |
 | update_command(command)   | command (function name)  | -          | Updates the function to call when a different option is selected.  |
+| _add_option(option)_ | _option (string)_ | - |  _Adds a new item to the combo box with the value `option`_ |
 | _get()_  | -  | _string_          | _Replaced by the `value` property_ |
 | _set(text)_   | _text (string)_         | -         | _Replaced by the `value` property_      |
 

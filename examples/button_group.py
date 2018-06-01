@@ -4,10 +4,9 @@ def selected():
     print(choice.value)
     
 app = App()
-app.bg = "green"
 choice = ButtonGroup(app, options=["cheese", "ham", "salad"], command=selected)
 
-# ButtonGroup values are integers, if you want use specific values you can specify them on the constructor
+# You want use specific values for the button group by passing them as a 2d list.
 # choice = ButtonGroup(app, options=[["cheese", "c"], ["ham", "h"], ["salad", "s"]], selected="h", command=selected)
 
 app.display()

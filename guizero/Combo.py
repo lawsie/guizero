@@ -1,44 +1,65 @@
 from tkinter import OptionMenu, StringVar, END, _setit
 from . import utilities as utils
-from .base import TextWidget
+from .base import Base, TextWidget
 from .tkmixins import ColorMixin, TextMixin
 
 
-class ComboMenu(ColorMixin, TextMixin):
+class ComboMenu(Base, ColorMixin, TextMixin):
 
     def __init__(self, tk):
         """
         Internal class for managing the little menu which pops up when the 
         combo box is opened
         """
-        self._tk = tk
-        
-    @property
-    def tk(self):
-        return self._tk
+        super(ComboMenu, self).__init__(tk)
 
 
 class Combo(TextWidget):
 
     def __init__(self, master, options, selected=None, command=None, grid=None, align=None, visible=True, enabled=None):
+        """
+        Creates a Combo
+
+        :param Container master:
+            The Container (App, Box, etc) the Combo will belong too.
+
+        :param List option:
+            A list of strings to populate the Combo.
+
+        :param string selected:
+            The item in the Combo to select, defaults to `None`. 
+
+        :param callback command:
+            The callback function to call when the Combo changes,
+            defaults to `None`.
+
+        :param List grid:
+            Grid co-ordinates for the widget, required if the master layout
+            is 'grid', defaults to `None`.
+
+        :param string align:
+            How to align the widget within the grid, defaults to None.
+
+        :param bool visible:
+            If the widget should be visible, defaults to `True`.
+
+        :param bool enabled:
+            If the widget should be enabled, defaults to `None`. If `None`
+            the value is inherited from the master.
+        """
 
         # Maintain a list of options (as strings, to avoid problems comparing)
         self._options = [str(x) for x in options]
+
+        # A Combo in tkinter must have at least 1 option, otherwise it errors
+        if len(self._options) == 0:
+            utils.raise_error("[Combo] object cannot have 0 options.")
 
         description = "[Combo] object with options  " + str(self._options)
 
         # Store currently selected item
         self._selected = StringVar()
-
-        # Set the first item in the list as default
-        if selected is None and len(options) > 0:
-            self._selected.set( str(options[0]) )
-            self._default = str(options[0])
-
-        else:
-            self._selected.set( str(selected) )
-            self._default = str(selected)
-
+        
         # Create a tk OptionMenu object within this object
         tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command_callback)
 
@@ -50,6 +71,14 @@ class Combo(TextWidget):
 
         super(Combo, self).__init__(master, tk, description, grid, align, visible, enabled)
 
+        # Set the selected item
+        if selected is None:
+            self.value = self._options[0]
+        else:
+            self.value = selected
+        
+        self._default = self.value
+
         # The command associated with this combo
         self.update_command(command)
 
@@ -58,17 +87,22 @@ class Combo(TextWidget):
     # The selected text value
     @property
     def value(self):
+        """
+        Sets or returns the option selected in a Combo.
+        """
         return self._selected.get()
 
     @value.setter
     def value(self, value):
-        if value in self._options:
-            self._selected.set( str(value) )
-        else:
+        value = str(value)
+        if not self._set_option(value):
             utils.error_format("Tried to set " + self.description + " to option \"" + str(value) + "\", which does not exist" )
 
     @property
     def bg(self):
+        """
+        Sets or returns the background color of the widget.
+        """
         return super(Combo, self.__class__).bg.fget(self)
         
     @bg.setter
@@ -78,6 +112,9 @@ class Combo(TextWidget):
 
     @property
     def text_color(self):
+        """
+        Sets or returns the text color used by the widget.
+        """
         return super(Combo, self.__class__).text_color.fget(self)
         
     @text_color.setter
@@ -87,6 +124,9 @@ class Combo(TextWidget):
 
     @property
     def text_size(self):
+        """
+        Sets or returns the text size used by the widget.
+        """
         return super(Combo, self.__class__).text_size.fget(self)
         
     @text_size.setter
@@ -96,6 +136,9 @@ class Combo(TextWidget):
     
     @property
     def font(self):
+        """
+        Sets or returns the font used by the widget.
+        """
         return super(Combo, self.__class__).font.fget(self)
         
     @font.setter
@@ -103,6 +146,12 @@ class Combo(TextWidget):
         super(Combo, self.__class__).font.fset(self, value)
         self._combo_menu.font = value
 
+    @property
+    def options(self):
+        """
+        Returns a list of options in the Combo 
+        """
+        return self._options
 
     # METHODS
     # -------------------------------------------
@@ -110,39 +159,98 @@ class Combo(TextWidget):
     # Resets the combo box to the original "selected" value from the constructor
     # (or the first value if no selected value was specified)
     def select_default(self):
-        try:
-            self._selected.set( self._default )
-        except IndexError:
+        """
+        Resets the combo box to the original "selected" value from the 
+        constructor (or the first value if no selected value was specified).
+        """
+        if not self._set_option(self._default):
             utils.error_format( self.description + "\n" +
-            "There are no options in the [Combo] box to be selected")
+            "Unable to select default option as doesnt exists in Combo")
 
-    # Add an option to the combo
-    def add_option(self, option):
+    def append(self, option):
+        """
+        Appends a new `option` to the end of the Combo.
 
-        # Add to the internal list
-        self._options.append( str(option) )
-        # self.children["menu"].add_command(label=option, command=self._command)
+        :param string option:
+            The option to append to the Combo. 
+        """
+        self._options.append(str(option))
+        self._refresh_options()
 
-        # Delete all options
-        menu = self.tk.children["menu"]
-        menu.delete(0, 'end')
+    def insert(self, index, option):
+        """
+        Insert a new `option` in the Combo at `index`.
+
+        :param int option:
+            The index of where to insert the option. 
+
+        :param string option:
+            The option to insert into to the Combo. 
+        """
+        self._options.insert(index, str(option))
+        self._refresh_options()
+
+    def remove(self, option):
+        """
+        Removes the first `option` from the Combo.
+
+        Returns `True` if an item was removed.
+
+        :param string option:
+            The option to remove from the Combo. 
+        """
+        if option in self._options:
+            if len(self._options) == 1:
+                # this is the last option in the list so cleat it
+                self.clear()
+            else:
+                self._options.remove(option)
+                self._refresh_options()
+                # have we just removed the selected option?
+                # if so set it to the first option
+                if option == self.value:
+                    self._set_option(self._options[0])
+            return True
+        else:
+            return False
+    
+    # Clear all options from the box
+    def clear(self):
+        """
+        Clears all the options in a Combo
+        """
+        self._options = []
+        self._combo_menu.tk.delete(0, END)
+        self._selected.set("")
+
+    def _refresh_options(self):
+        # save which option was selected
+        selected = self.value
+
+        self._combo_menu.tk.delete(0, END)
 
         # Re-add all options
         # This uses an internal tk method _setit which is a bit naughty
         for item in self._options:
-            menu.add_command(label=item, command=_setit(self._selected, item, self._command_callback))
+            self._combo_menu.tk.add_command(label=item, command=_setit(self._selected, item, self._command_callback))
 
         self.description = "[Combo] object with options  " + str(self._options)
 
-        # Set the new option as selected
-        self._selected.set( str(option) )
-
-
-    # Clear all options from the box
-    def clear(self):
-        self._options = []
-        self.tk.children["menu"].delete(0, END)
-        self._selected.set("")
+        # set the option which was previously selected
+        self._set_option(selected)
+    
+    def _set_option(self, value):
+        """
+        Sets a single option in the Combo, returning True if it was able too.
+        """
+        if len(self._options) > 0:
+            if value in self._options:    
+                self._selected.set(value)
+                return True
+            else:
+                return False
+        else:
+            return False
 
     def _command_callback(self, value):
         if self._command:
@@ -155,6 +263,18 @@ class Combo(TextWidget):
                 utils.error_format("Combo command function must accept either 0 or 1 arguments.\nThe current command has {} arguments.".format(args_expected))
 
     def update_command(self, command):
+        """
+        Updates the callback command which is called when the Combo
+        changes. 
+        
+        Setting to `None` stops the callback.
+
+        :param callback command:
+            The callback function to call, it can ccept 0 or 1 parameters.
+
+            If it accepts 1 parameter the `value` of the Combo will be 
+            passed.
+        """
         if command is None:
             self._command = lambda: None
         else:
@@ -176,4 +296,10 @@ class Combo(TextWidget):
             utils.error_format("Tried to set " + self.description + " to option \"" + str(text) + "\", which does not exist" )
         utils.deprecated("Combo set() is deprecated. Please use the value property instead.")
 
+    # Add an option to the combo
+    def add_option(self, option):
 
+        self.append(option)
+        self.value = option
+
+        utils.deprecated("Combo add_option() is deprecated. Please use append() instead.")

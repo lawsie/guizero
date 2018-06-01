@@ -23,6 +23,8 @@ text.text_color = "#00ff00"
 text.text_color = (0, 255, 0)
 ```
 
+If a color is set using a list of rgb values (`(255,255,255)`) it will be returned as an #rgb hex value (`#ffffff`)
+
 ### Color names
 
 Color names can be given as strings e.g.
