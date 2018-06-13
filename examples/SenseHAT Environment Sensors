@@ -1,11 +1,15 @@
 #An example showing how to use sensor data, here with the SenseHAT (or SenseHAT emulator)
 #Refer to RaspberryPi forums Teaching and learning resources : https://www.raspberrypi.org/forums/viewtopic.php?f=49&t=202386 for some talk using it.
+#compass added for show, but commented as it will not work if just enabled
 
 from guizero import *
 from sense_hat import SenseHat
 #from sense_emu import SenseHat   #use this instead of sense_hat if you don't have a SenseHAT, but are using Raspbian/x86 Desktop
 
 sense=SenseHat()
+
+SENSOR_ENVIRONMENT_UPDATE_FREQUENCY = 1000  #time in milliseconds (ms)
+SENSOR_IMU_UPDATE_FREQUENCY = 100
 
 def read_temp_sensor():
     return round(sense.get_temperature(),1)
@@ -18,7 +22,7 @@ def read_pressure_sensor():
 
 
 def update_environment_sensors():
-    count_text.value=int(count_text.value)+1
+    count_text.value=int(count_text.value)+1    #used to debug, i.e. check it is actually incrementing
     
     temperature_text.value = read_temp_sensor(),"°C"
     humidity_text.value = read_humidity_sensor(),"%"
@@ -78,7 +82,6 @@ if __name__ == '__main__':
     
     #IMU box
     
-
     IMU_title_orient_yaw = Text(app, "Yaw", grid=[1, 5])
     IMU_title_orient_pitch = Text(app, "Pitch", grid=[2, 5])
     IMU_title_orient_roll = Text(app, "Roll", grid=[3, 5])
@@ -114,8 +117,8 @@ if __name__ == '__main__':
     # end of objects
     
     
-    app.repeat(1000, update_environment_sensors)
-    app.repeat(100, update_IMU_sensors)
+    app.repeat(SENSOR_ENVIRONMENT_UPDATE_FREQUENCY, update_environment_sensors)
+    app.repeat(SENSOR_IMU_UPDATE_FREQUENCY, update_IMU_sensors)
     
     app.display()
 
