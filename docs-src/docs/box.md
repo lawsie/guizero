@@ -24,51 +24,51 @@ app.display()
 
 When you create a `Box` object you **must** specify a master, and you can specify any of the optional parameters. Specify parameters in the brackets like this: `box = Box(app, layout="grid")`
 
-| Parameter | Data type | Default | Compulsory | Description                         |
-| --------- | --------- | ------- | ---------- | -------------------------|
-| master    | App    | - | Yes       | The `App` object to which this box belongs
-| align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
-| grid   | List    | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
-| layout   | string    | "auto"  | -         | Whether widgets *inside this box* pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
-| visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
+| Parameter | Data type | Default | Compulsory | Description                                                                                                                                                                             |
+|-----------|-----------|---------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| master    | App       | -       | Yes        | The `App` object to which this box belongs                                                                                                                                              |
+| align     | string    | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout. |
+| grid      | List      | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                           |
+| layout    | string    | "auto"  | -          | Whether widgets *inside this box* pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`)                                                                         |
+| visible   | boolean   | True    | No         | If the widget should be visible.                                                                                                                                                        |
+| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
 
 
 ### Methods
 
 You can call the following methods on a `Box` object.
 
-| Method        | Takes     | Returns    | Description                |
-| ------------- | --------- | ---------- | -------------------------- |
-| after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
-| cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
-| disable()  | - | -          | Disables all the widgets in the box so that they cannot be interacted with   |
-| destroy()   | -  | -          | Destroys the widget    |
-| enable()  | -  | -          | Enables all the widgets in the box   |
-| focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
-| hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
-| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
-| show()  | - | -          | Displays the widget if it was previously hidden |
+| Method                | Takes                               | Returns | Description                                                                                                                                                    |
+|-----------------------|-------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| after(time, command)  | time (int), command (function name) | -       | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
+| cancel(command)       | command (function name)             | -       | Cancels a scheduled call to `command`                                                                                                                          |
+| disable()             | -                                   | -       | Disables all the widgets in the box so that they cannot be interacted with                                                                                     |
+| destroy()             | -                                   | -       | Destroys the widget                                                                                                                                            |
+| enable()              | -                                   | -       | Enables all the widgets in the box                                                                                                                             |
+| focus()               | -                                   | -       | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)                                                                      |
+| hide()                | -                                   | -       | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
+| repeat(time, command) | time (int), command (function name) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| show()                | -                                   | -       | Displays the widget if it was previously hidden                                                                                                                |
 
 
 ### Properties
 
 You can set and get the following properties:
 
-| Method        | Data type   | Description                |
-| ------------- | ----------- | -------------------------- |
-| align         | string      | The alignment of this widget within its grid location |
-| bg            | [color](colors.md)      | The background colour of the widget  |
-| enabled       | boolean     | `True` if the box is enabled |
-| grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| font          | string      | The font that widgets should use |
-| height        | [size](size.md)         | Sets the height of the widget |
-| layout        | string      | The layout being used by the Box (`"auto"`) or (`"grid"`) |
-| master        | App         | The `App` object to which this box belongs |
-| text_size     | int         | The size of the text widgets should use |
-| text_color    | [color](colors.md)      | The colour of the text widgets should use  |
-| visible       | boolean     | If this widget is visible |
-| width         | [size](size.md)         | Sets the width of the widget |
+| Method     | Data type          | Description                                                                                           |
+|------------|--------------------|-------------------------------------------------------------------------------------------------------|
+| align      | string             | The alignment of this widget within its grid location                                                 |
+| bg         | [color](colors.md) | The background colour of the widget                                                                   |
+| enabled    | boolean            | `True` if the box is enabled                                                                          |
+| grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| font       | string             | The font that widgets should use                                                                      |
+| height     | [size](size.md)    | Sets the height of the widget                                                                         |
+| layout     | string             | The layout being used by the Box (`"auto"`) or (`"grid"`)                                             |
+| master     | App                | The `App` object to which this box belongs                                                            |
+| text_size  | int                | The size of the text widgets should use                                                               |
+| text_color | [color](colors.md) | The colour of the text widgets should use                                                             |
+| visible    | boolean            | If this widget is visible                                                                             |
+| width      | [size](size.md)    | Sets the width of the widget                                                                          |
 
 ### Examples
 

@@ -26,12 +26,12 @@ from guizero import system_config
 print(system_config.supported_image_types)
 ```
 
-| Operating System | PIL NOT available | PIL available |
-| - | - | - |
-| Windows | GIF, PNG | GIF, Animated GIF, BMP, ICO, PNG, JPG, TIF |
-| MacOS | GIF | GIF, Animated GIF, BMP, ICO, PNG, JPG, TIF |
-| Linux | GIF, PNG | GIF, Animated GIF, BMP, ICO, PNG, JPG, TIF |
-| Raspbian | GIF, PNG | GIF, Animated GIF, BMP, ICO, PNG, JPG, TIF |
+| Operating System | PIL NOT available | PIL available                              |
+|------------------|-------------------|--------------------------------------------|
+| Windows          | GIF, PNG          | GIF, Animated GIF, BMP, ICO, PNG, JPG, TIF |
+| MacOS            | GIF               | GIF, Animated GIF, BMP, ICO, PNG, JPG, TIF |
+| Linux            | GIF, PNG          | GIF, Animated GIF, BMP, ICO, PNG, JPG, TIF |
+| Raspbian         | GIF, PNG          | GIF, Animated GIF, BMP, ICO, PNG, JPG, TIF |
 
 ### Resizing
 
