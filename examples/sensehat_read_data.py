@@ -1,10 +1,10 @@
-#An example showing how to use sensor data, here with the SenseHAT (or SenseHAT emulator)
-#Refer to RaspberryPi forums Teaching and learning resources : https://www.raspberrypi.org/forums/viewtopic.php?f=49&t=202386 for some talk using it.
-#compass added for show, but commented as it will not work if just enabled
+# An example showing how to use sensor data, here with the SenseHAT (or SenseHAT emulator)
+# Refer to RaspberryPi forums Teaching and learning resources : https://www.raspberrypi.org/forums/viewtopic.php?f=49&t=202386 for some talk using it.
+# compass added for show, but commented as it will not work if just enabled
 
 from guizero import *
 from sense_hat import SenseHat
-#from sense_emu import SenseHat   #use this instead of sense_hat if you don't have a SenseHAT, but are using Raspbian/x86 Desktop
+# from sense_emu import SenseHat   #use this instead of sense_hat if you don't have a SenseHAT, but are using Raspbian/x86 Desktop
 
 sense=SenseHat()
 
@@ -34,9 +34,7 @@ def update_IMU_sensors():
     mag_x,mag_y,mag_z = sense.get_compass_raw().values()
     acc_x,acc_y,acc_z = sense.get_accelerometer_raw().values()
     gyro_x,gyro_y,gyro_z = sense.get_gyroscope_raw().values()
-    #north = sense.get_compass()
-
-
+    
     IMU_orient_yaw_text.value = round(orient_yaw,1)    
     IMU_orient_pitch_text.value = round(orient_pitch,1)
     IMU_orient_roll_text.value = round(orient_roll,1)
@@ -53,19 +51,12 @@ def update_IMU_sensors():
     IMU_gyro_y_text.value = round(gyro_y,1)
     IMU_gyro_z_text.value = round(gyro_z,1)
     
-    #IMU_compass_text.value = round(north,1)
     
-    
-    
-##-------##
-
 if __name__ == '__main__':
     app = App(title="Sensor Display!",
               height=230,
               width=420,
               layout='grid')
-    
-    #start of objects
     
     title_count = Text(app, "count 'debug':", grid=[0, 0])
     count_text = Text(app, "1", grid=[1, 0])    
@@ -113,9 +104,6 @@ if __name__ == '__main__':
     
     IMU_title_compass = Text(app, "Compass North Bearing", grid=[0, 13])
     IMU_compass_text = Text(app, "xx", grid=[1, 13])
-    
-    # end of objects
-    
     
     app.repeat(SENSOR_ENVIRONMENT_UPDATE_FREQUENCY, update_environment_sensors)
     app.repeat(SENSOR_IMU_UPDATE_FREQUENCY, update_IMU_sensors)
