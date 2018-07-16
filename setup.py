@@ -14,7 +14,7 @@ __author__ = "Laura Sach"
 __author_email__ = 'laura.sach@raspberrypi.org'
 __license__ = 'BSD'
 __url__ = 'https://github.com/lawsie/guizero'
-__requires__ = ["pillow>=5"]
+__requires__ = ["pillow>=4.3.0"]
 __keywords__ = [
     "GUI",
     "guizero",
