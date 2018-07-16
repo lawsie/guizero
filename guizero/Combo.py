@@ -77,7 +77,7 @@ class Combo(TextWidget):
         else:
             self.value = selected
         
-        self._default = self.value
+        self._default = selected
 
         # The command associated with this combo
         self.update_command(command)
@@ -163,9 +163,17 @@ class Combo(TextWidget):
         Resets the combo box to the original "selected" value from the 
         constructor (or the first value if no selected value was specified).
         """
-        if not self._set_option(self._default):
-            utils.error_format( self.description + "\n" +
-            "Unable to select default option as doesnt exists in Combo")
+        if self._default is None:
+            if len(self._options) > 0:
+                self._set_option(self._options[0])
+            else:
+                utils.error_format(self.description + "\n" +
+                "Unable to select default option as the Combo is empty")
+                    
+        else:
+            if not self._set_option(self._default):
+                utils.error_format( self.description + "\n" +
+                "Unable to select default option as it doesnt exists in the Combo")
 
     def append(self, option):
         """
@@ -201,7 +209,7 @@ class Combo(TextWidget):
         """
         if option in self._options:
             if len(self._options) == 1:
-                # this is the last option in the list so cleat it
+                # this is the last option in the list so clear it
                 self.clear()
             else:
                 self._options.remove(option)
