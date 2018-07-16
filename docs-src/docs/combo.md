@@ -52,7 +52,7 @@ You can call the following methods on a `Combo` object.
 | enable()  | -  | -          | Enables the widget   |
 | focus()  | -  | -          | Gives focus to the widget  |
 | hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
-| insert(option, index)  | item (string), index (int)   | -          | Insert a new `option` in the Combo at `index` |
+| insert(index, option)  | index (int), item (string)    | -          | Insert a new `option` in the Combo at `index` |
 | remove(option)  | item (string)   | Boolean          | Removes the first `option` from the Combo. Returns `True` if an item was removed. |
 | repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
 | select_default() | - | - |  Resets the combo box so that the first item is selected |
