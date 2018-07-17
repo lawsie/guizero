@@ -38,7 +38,7 @@ class Base():
         return self._tk
 
     def _has_tk_config(self, key):
-        return key in self.tk.keys
+        return key in self.tk.keys()
 
     def _get_tk_config(self, key, default=False):
         """
