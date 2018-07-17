@@ -38,6 +38,18 @@ def test_alt_values():
     assert c.align == "top"
     a.destroy()
 
+def test_no_options():
+    a = App()
+    c = Combo(a)
+    
+    assert c.value == ""
+    assert len(c.options) == 0
+
+    c.append("foo")
+    assert c.value == "foo"
+
+    a.destroy()
+
 def test_getters_setters():
     a = App()
     c = Combo(a, ["foo", "bar"])

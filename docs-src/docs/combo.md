@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.OptionMenu` object)
 
-`__init__(self, master, options, selected=None, command=None, grid=None, align=None, visible=True, enabled=None)`
+`__init__(self, master, options=[], selected=None, command=None, grid=None, align=None, visible=True, enabled=None)`
 
 ### What is it?
 The `Combo` object displays a drop down box allowing a single option to be selected from a list of options.
@@ -22,13 +22,13 @@ app.display()
 
 ### Starting parameters
 
-When you create a `Combo` object you **must** specify `master` and `options` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `combo = Combo(app, options=["Beef", "Chicken", "Fish", "Vegetarian"])`
+When you create a `Combo` object you **must** specify a `master`  and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `combo = Combo(app, options=["Beef", "Chicken", "Fish", "Vegetarian"])`
 
 | Parameter | Takes           | Default | Compulsory | Description                                                                                                                                                                                               |
 |-----------|-----------------|---------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | master    | App or Box      | -       | Yes        | The container to which this widget belongs                                                                                                                                                                |
+| options   | List            | []      | No         | A list of options to display                                                                                                                                                                              |
 | selected  | string          | None    | No         | The option to select by default                                                                                                                                                                           |
-| options   | List            | -       | Yes        | A list of options to display                                                                                                                                                                              |
 | align     | string          | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.                   |
 | command   | function name   | None    | -          | The name of a function to call when a different option is selected. This function MUST take either zero or one argument, if the function takes one argument the current value of the Combo will be given. |
 | grid      | List [int, int] | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                                             |
@@ -62,12 +62,9 @@ You can call the following methods on a `Combo` object.
 | _get()_                 | -                                   | _string_ | _Replaced by the `value` property_                                                                                                                             |
 | _set(text)_             | _text (string)_                     | -        | _Replaced by the `value` property_                                                                                                                             |
 
-
-
-
-
-
 Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
+
+
 
 ### Properties
 
@@ -97,7 +94,7 @@ You can **set** the property (for example `combo.value = "Chicken"`) or **get** 
 
 **Calling a function when the value selected changes**
 
-You can call a function when the selected value in a `Combo` object changes. This must be set up at the time you create the `Combo` object and cannot be defined later. The function you call **MUST** take a minimum of one argument as it will automatically be passed a string containing the currently selected value from the `Combo` object.
+You can call a function when the selected value in a `Combo` object changes. The function you call can take either zero or one argument, if the function takes one argument it will automatically be passed a string containing the currently selected value from the `Combo` object.
 
 ```python
 from guizero import App, Text, Combo
