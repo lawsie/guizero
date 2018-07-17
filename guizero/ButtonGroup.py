@@ -9,7 +9,7 @@ class ButtonGroup(
     ContainerWidget, 
     TextMixin):
 
-    def __init__(self, master, options, selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None):
+    def __init__(self, master, options=[], selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None):
         """
         Creates a ButtonGroup
 
@@ -18,7 +18,8 @@ class ButtonGroup(
 
         :param List option:
             A list of options to append to the ButtonGroup. If a 2D list is
-            specified, the first element is the text, the second is the value.
+            specified, the first element is the text, the second is the value,
+            defaults to an empty list.
 
         :param string selected:
             The item in the ButtonGroup to select, defaults to `None`. 

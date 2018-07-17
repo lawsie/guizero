@@ -22,12 +22,12 @@ app.display()
 
 ### Starting parameters
 
-When you create a `ButtonGroup` object you **must** specify `master` and `otions` and you can specify any of the optional parameters. Specify parameters in the brackets like this: `choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)`
+When you create a `ButtonGroup` object you **must** specify a `master` and you can specify any of the optional parameters. Specify parameters in the brackets like this: `choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)`
 
 | Parameter  | Takes           | Default | Compulsory | Description                                                                                                                                                                                                          |
 |------------|-----------------|---------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | master     | App or Box      | -       | Yes        | The container to which this widget belongs                                                                                                                                                                           |
-| options    | list or 2D List | -       | Yes        | Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. |
+| options    | list or 2D List | -       | No         | Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. |
 | selected   | string          | -       | -          | The option that should be selected, if a value isn't provided the first option will be selected.                                                                                                                     |
 | align      | string          | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.                              |
 | command    | function name   | None    | -          | The name of a function to call when the selected option changes.                                                                                                                                                     |
