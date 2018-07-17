@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Frame` object)
 
-`__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None)`
+`__init__(self, master, options=[], selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None)`
 
 ### What is it?
 The `ButtonGroup` object displays a group of radio buttons, allowing the user to choose a single option.
