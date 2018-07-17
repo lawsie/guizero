@@ -114,6 +114,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../recipes/">Recipes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <span class="caption-text">Widgets</span>
     <ul class="subnav">
                 <li class="">
@@ -259,7 +264,7 @@
               
                 <h1 id="buttongroup">ButtonGroup</h1>
 <p>(Contains a <code>tkinter.Frame</code> object)</p>
-<p><code>__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None)</code></p>
+<p><code>__init__(self, master, options=[], selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None)</code></p>
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>ButtonGroup</code> object displays a group of radio buttons, allowing the user to choose a single option.</p>
 <p><img alt="ButtonGroup" src="../images/buttongroup.png" /></p>
@@ -272,7 +277,7 @@ app.display()
 </code></pre>
 
 <h3 id="starting-parameters">Starting parameters</h3>
-<p>When you create a <code>ButtonGroup</code> object you <strong>must</strong> specify <code>master</code> and <code>otions</code> and you can specify any of the optional parameters. Specify parameters in the brackets like this: <code>choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)</code></p>
+<p>When you create a <code>ButtonGroup</code> object you <strong>must</strong> specify a <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets like this: <code>choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)</code></p>
 <table>
 <thead>
 <tr>
@@ -295,7 +300,7 @@ app.display()
 <td>options</td>
 <td>list or 2D List</td>
 <td>-</td>
-<td>Yes</td>
+<td>No</td>
 <td>Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option.</td>
 </tr>
 <tr>
@@ -423,8 +428,8 @@ app.display()
 <td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
 </tr>
 <tr>
-<td>insert(option, index)</td>
-<td>item (string), index (int)</td>
+<td>insert(index, option)</td>
+<td>index (int), option (string)</td>
 <td>-</td>
 <td>Insert a new <code>option</code> in the ButtonGroup at <code>index</code></td>
 </tr>
