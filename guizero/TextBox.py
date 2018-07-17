@@ -19,7 +19,7 @@ class TextBox(TextWidget):
         # Create a tk object for the text box
         if multiline:
             if scrollbar:
-                tk = ScrolledText(master.tk, width=width, height=height)
+                tk = ScrolledText(master.tk, width=width, height=height, wrap="word")
             else:
                 tk = Text(master.tk, width=width, height=height)
             tk.insert(END,self._text.get())
