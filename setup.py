@@ -1,5 +1,8 @@
 import os
-from setuptools import setup, find_packages
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from distutils.core import setup, find_packages
 
 ## This is a Python 3 package only
 from sys import version_info
