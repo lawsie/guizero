@@ -38,6 +38,18 @@ def test_alt_values():
     assert c.align == "top"
     a.destroy()
 
+def test_no_options():
+    a = App()
+    c = Combo(a)
+    
+    assert c.value == ""
+    assert len(c.options) == 0
+
+    c.append("foo")
+    assert c.value == "foo"
+
+    a.destroy()
+
 def test_getters_setters():
     a = App()
     c = Combo(a, ["foo", "bar"])
@@ -50,13 +62,20 @@ def test_getters_setters():
 
 def test_select_default():
     a = App()
-    c = Combo(a, ["foo", "bar"], selected="bar")
+    c1 = Combo(a, ["foo", "bar"], selected="bar")
+    c2 = Combo(a, ["foo", "bar"])
     
-    assert c.value == "bar"
-    c.value = "foo"
-    assert c.value == "foo"
-    c.select_default()
-    assert c.value == "bar"
+    assert c1.value == "bar"
+    c1.value = "foo"
+    assert c1.value == "foo"
+    c1.select_default()
+    assert c1.value == "bar"
+
+    assert c2.value == "foo"
+    c2.value = "bar"
+    assert c2.value == "bar"
+    c2.select_default()
+    assert c2.value == "foo"
 
     a.destroy()
 

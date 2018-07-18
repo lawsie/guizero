@@ -36,6 +36,12 @@ def test_getters_setters():
     assert a.width == 666
     a.destroy()
 
+def test_update():
+    a = App()
+    # just testing it doesnt fail
+    a.update()
+    a.destroy()
+
 def test_after_schedule():
     a = App()
     schedule_after_test(a, a)

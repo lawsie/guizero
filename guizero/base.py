@@ -403,6 +403,9 @@ class BaseWindow(Container):
         else:
             self._on_close()
 
+    def update(self):
+        self.tk.update()
+
 
 class Widget(
     Component,

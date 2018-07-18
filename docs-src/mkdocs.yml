@@ -15,6 +15,7 @@ pages:
       - Events: events.md
       - Using tkinter methods: usingtk.md
       - Examples and resources: resources.md
+  - Recipes: recipes.md
   - Widgets:
       - App: app.md
       - Box: box.md

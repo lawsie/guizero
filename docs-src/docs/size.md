@@ -19,17 +19,17 @@ slider.width = 300
 slider.height = 30  
 ```
 
-| Widget        | Characters or Pixels | Notes |
-| ------------- | ----------- | ------------- |
-| [Box](box.md)           | Pixels      | The size only takes affect if the Box is empty, if the Box contains any widgets it will size to the widgets inside it |
-| [ButtonGroup](buttongroup.md)   | Characters  | The height of a ButtonGroup must divide by the number of buttons in it |
-| [CheckBox](checkbox.md)      | Characters  | |
-| [Combo](combo.md)         | Characters  | |
-| [ListBox](listbox.md)         | Characters  | |
-| [Picture](picture.md)       | Pixels      | See [Images](images.md) for more information  |
-| [PushButton](pushbutton.md)    | Characters  | |
-| [PushButton](pushbutton.md) with image    | Pixels  | PushButton's which have images are sized in pixels |
-| [Slider](slider.md)        | Pixels      | |
-| [Text](text.md)          | Characters  | |
-| [TextBox](textbox.md)       | Characters  | Only a TextBox's width can be set |
-| [Waffle](waffle.md)        | Pixels      | |
+| Widget                                 | Characters or Pixels | Notes                                                                                                                 |
+|----------------------------------------|----------------------|-----------------------------------------------------------------------------------------------------------------------|
+| [Box](box.md)                          | Pixels               | The size only takes affect if the Box is empty, if the Box contains any widgets it will size to the widgets inside it |
+| [ButtonGroup](buttongroup.md)          | Characters           | The height of a ButtonGroup must divide by the number of buttons in it                                                |
+| [CheckBox](checkbox.md)                | Characters           |                                                                                                                       |
+| [Combo](combo.md)                      | Characters           |                                                                                                                       |
+| [ListBox](listbox.md)                  | Characters           |                                                                                                                       |
+| [Picture](picture.md)                  | Pixels               | See [Images](images.md) for more information                                                                          |
+| [PushButton](pushbutton.md)            | Characters           |                                                                                                                       |
+| [PushButton](pushbutton.md) with image | Pixels               | PushButton's which have images are sized in pixels                                                                    |
+| [Slider](slider.md)                    | Pixels               |                                                                                                                       |
+| [Text](text.md)                        | Characters           |                                                                                                                       |
+| [TextBox](textbox.md)                  | Characters           | Only a TextBox's width can be set                                                                                     |
+| [Waffle](waffle.md)                    | Pixels               |                                                                                                                       |

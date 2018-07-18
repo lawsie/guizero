@@ -36,11 +36,11 @@ app.display()
 
 When you create a `MenuBar` object you **must** specify all of the parameters.
 
-| Parameter | Takes | Default | Compulsory | Description                         |
-| --------- | --------- | ------- | ---------- | -------------------------|
-| master    | App   | - | Yes       | The container to which this widget belongs
-| toplevel   | list    | -  | Yes         | A list of top level menu items |
-| options | 3D list | - | Yes   | A list of submenus, with each submenu being a list of options and each option being a text/command pair. See notes above for more details. |
+| Parameter | Takes   | Default | Compulsory | Description                                                                                                                                |
+|-----------|---------|---------|------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| master    | App     | -       | Yes        | The container to which this widget belongs                                                                                                 |
+| toplevel  | list    | -       | Yes        | A list of top level menu items                                                                                                             |
+| options   | 3D list | -       | Yes        | A list of submenus, with each submenu being a list of options and each option being a text/command pair. See notes above for more details. |
 
 The `toplevel` parameter should be a list of options you wish to display on the menu. In the example, the `toplevel` options are File and Edit:
 
@@ -60,19 +60,19 @@ The MenuBar is never displayed on a grid so there are no grid or alignment param
 
 You can call the following methods on an `MenuBar` object.
 
-| Method        | Takes     | Returns    | Description                |
-| ------------- | ------------- | ---------- | -------------------------- |
-| after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
-| cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
-| destroy()   | -  | -          | Destroys the widget    |
-| focus()  | -  | -          | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)  |
-| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
+| Method                | Takes                               | Returns | Description                                                                                                                                                    |
+|-----------------------|-------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| after(time, command)  | time (int), command (function name) | -       | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
+| cancel(command)       | command (function name)             | -       | Cancels a scheduled call to `command`                                                                                                                          |
+| destroy()             | -                                   | -       | Destroys the widget                                                                                                                                            |
+| focus()               | -                                   | -       | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)                                                                      |
+| repeat(time, command) | time (int), command (function name) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
 
 
 ### Properties
 
 You can set and get the following properties:
 
-| Method        | Data type   | Description                |
-| ------------- | ----------- | -------------------------- |
-| master       | App     | The `App` object to which this MenuBar belongs |
+| Method | Data type | Description                                    |
+|--------|-----------|------------------------------------------------|
+| master | App       | The `App` object to which this MenuBar belongs |
