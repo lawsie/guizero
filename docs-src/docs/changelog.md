@@ -1,5 +1,13 @@
 # guizero
 
+## 0.5.3 - 2018-07-18
+- Various bug fixes
+- wrapping multiline `TextBox` data
+- `ButtonGroup`, `ComboBox` now allow 0 options at init
+- Minimum pillow version is now 4.3.0
+- `update` method added to `Add` and `Window`
+- contributors [martinohanlon](https://github.com/martinohanlon), [scotty3785](https://github.com/scotty3785), [MrYsLab](https://github.com/MrYsLab), [bsimmo](https://github.com/bsimmo)
+
 ## 0.5.2 - 2018-06-01
 - Refactoring of `ButtonGroup`, including API breaking change - if no hidden values are specified, `ButtonGroup.value` now returns the text value not a generate string number [#178](https://github.com/lawsie/guizero/issues/178)
 - A widgets properties `bg`, `text_color`, `text_size`, `font`, `width`, `height` can be restored by to their default by setting them to `None` [#181](https://github.com/lawsie/guizero/issues/181)

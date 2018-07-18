@@ -38,7 +38,7 @@ class Base():
         return self._tk
 
     def _has_tk_config(self, key):
-        return key in self.tk.keys
+        return key in self.tk.keys()
 
     def _get_tk_config(self, key, default=False):
         """
@@ -402,6 +402,9 @@ class BaseWindow(Container):
             self.destroy()
         else:
             self._on_close()
+
+    def update(self):
+        self.tk.update()
 
 
 class Widget(

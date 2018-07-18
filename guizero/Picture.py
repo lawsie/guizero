@@ -20,29 +20,30 @@ class Picture(Widget):
         super(Picture, self).__init__(master, tk, description, grid, align, visible, enabled)
 
         # create the image
-        if image:
-            self._load_image()
+        self._load_image()
 
     def _load_image(self):
-        # stop any animation which might still be playing
-        if self._image_player:
-            self._image_player.stop()
+        if self._image_source is not None:
 
-        # load the image and set its properties
-        self._image = utils.GUIZeroImage(self._image_source, self._width, self._height)
+            # stop any animation which might still be playing
+            if self._image_player:
+                self._image_player.stop()
 
-        self._width = self._image.width
-        self._height = self._image.height
+            # load the image and set its properties
+            self._image = utils.GUIZeroImage(self._image_source, self._width, self._height)
 
-        # if its an animation, start it up
-        if self._image.animation:
-            self._image_player = utils.AnimationPlayer(self, self._image, self._update_tk_image)
-        else:
-            self._update_tk_image(self._image.tk_image)
-        
-        self.tk.config(width=self._width)
-        self.tk.config(height=self._height)
-        
+            self._width = self._image.width
+            self._height = self._image.height
+
+            # if its an animation, start it up
+            if self._image.animation:
+                self._image_player = utils.AnimationPlayer(self, self._image, self._update_tk_image)
+            else:
+                self._update_tk_image(self._image.tk_image)
+            
+            self.tk.config(width=self._width)
+            self.tk.config(height=self._height)
+            
     def _update_tk_image(self, tk_image):
         self.tk.config(image=tk_image)
 

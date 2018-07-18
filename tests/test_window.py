@@ -39,7 +39,14 @@ def test_getters_setters():
     assert w.height == 666
     w.width = 666
     assert w.width == 666
-    w.destroy()
+    a.destroy()
+
+def test_update():
+    a = App()
+    w = Window(a)
+    # just testing it doesnt fail
+    w.update()
+    a.destroy()
 
 def test_after_schedule():
     a = App()

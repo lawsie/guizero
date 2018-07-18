@@ -2,7 +2,7 @@
 
 (Contains a `tkinter.Frame` object)
 
-`__init__(self, master, options, selected, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None)`
+`__init__(self, master, options=[], selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None)`
 
 ### What is it?
 The `ButtonGroup` object displays a group of radio buttons, allowing the user to choose a single option.
@@ -22,43 +22,43 @@ app.display()
 
 ### Starting parameters
 
-When you create a `ButtonGroup` object you **must** specify `master` and `otions` and you can specify any of the optional parameters. Specify parameters in the brackets like this: `choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)`
+When you create a `ButtonGroup` object you **must** specify a `master` and you can specify any of the optional parameters. Specify parameters in the brackets like this: `choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)`
 
-| Parameter | Takes | Default | Compulsory | Description                         |
-| --------- | --------- | ------- | ---------- | -------------------------|
-| master    | App or Box   | - | Yes       | The container to which this widget belongs
-| options   | list or 2D List   | -  | Yes         | Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option.  |
-| selected   | string    | -     | -       | The option that should be selected, if a value isn't provided the first option will be selected.  |
-| align   | string     | None     | -         | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.  |
-| command | function name | None | -   | The name of a function to call when the selected option changes. |
-| args    | list  | None | -       | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
-| grid   | list [int, int]   | None     | -         | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout. |
-| horizontal   | boolean    | False     | -       | Whether the buttons stack vertically or horizontally. (Defaults to vertical)|
-| visible   | boolean   | True    | No         | If the widget should be visible.  |
-| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
+| Parameter  | Takes           | Default | Compulsory | Description                                                                                                                                                                                                          |
+|------------|-----------------|---------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| master     | App or Box      | -       | Yes        | The container to which this widget belongs                                                                                                                                                                           |
+| options    | list or 2D List | -       | No         | Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. |
+| selected   | string          | -       | -          | The option that should be selected, if a value isn't provided the first option will be selected.                                                                                                                     |
+| align      | string          | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.                              |
+| command    | function name   | None    | -          | The name of a function to call when the selected option changes.                                                                                                                                                     |
+| args       | list            | None    | -          | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list                                                                                                 |
+| grid       | list [int, int] | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                                                        |
+| horizontal | boolean         | False   | -          | Whether the buttons stack vertically or horizontally. (Defaults to vertical)                                                                                                                                         |
+| visible    | boolean         | True    | No         | If the widget should be visible.                                                                                                                                                                                     |
+| enabled    | boolean         | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                                                      |
 
 ### Methods
 
 You can call the following methods on an `ButtonGroup` object.
 
-| Method        | Takes     | Returns    | Description                |
-| ------------- | ------------- | ---------- | -------------------------- |
-| append(option)  | item (string)   | -          | Appends a new `option` to the end of the ButtonGroup. |
-| after(time, command)   | time (int), command (function name)   | -          | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)  |
-| cancel(command)   | command (function name) | -          | Cancels a scheduled call to `command`    |
-| destroy()   | -  | -          | Destroys the widget    |
-| disable()  | - | -          | Disables the widget so that it is "greyed out" and cannot be interacted with   |
-| enable()  | -  | -          | Enables the widget   |
-| focus()  | -  | -          | Gives focus to the widget   |
-| get_group_as_list() | - | list |  Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging) |
-| hide()  | -   | -          | Hides the widget from view. This method will unpack the widget from the layout manager.   |
-| insert(option, index)  | item (string), index (int)   | -          | Insert a new `option` in the ButtonGroup at `index` |
-| remove(option)  | item (string)   | Boolean          | Removes the first `option` from the ButtonGroup. Returns `True` if an item was removed. |
-| repeat(time, command)  | time (int), command (function name)  | -          | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.   |
-| show()  | - | -          | Displays the widget if it was previously hidden |
-| update_command(command, args =None)   | command (function name), args (_Optional_ List of arguments to be passed to command)   | -          | Updates the function to call when the selected option changes  |
-| _get()_  | -  | _string_          | _Replaced by `value` property_ |
-| _set(value)_   | _value (string)_            | -          | _Replaced by `value` property_        |
+| Method                              | Takes                                                                                | Returns  | Description                                                                                                                                                    |
+|-------------------------------------|--------------------------------------------------------------------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| append(option)                      | item (string)                                                                        | -        | Appends a new `option` to the end of the ButtonGroup.                                                                                                          |
+| after(time, command)                | time (int), command (function name)                                                  | -        | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
+| cancel(command)                     | command (function name)                                                              | -        | Cancels a scheduled call to `command`                                                                                                                          |
+| destroy()                           | -                                                                                    | -        | Destroys the widget                                                                                                                                            |
+| disable()                           | -                                                                                    | -        | Disables the widget so that it is "greyed out" and cannot be interacted with                                                                                   |
+| enable()                            | -                                                                                    | -        | Enables the widget                                                                                                                                             |
+| focus()                             | -                                                                                    | -        | Gives focus to the widget                                                                                                                                      |
+| get_group_as_list()                 | -                                                                                    | list     | Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging)                                                       |
+| hide()                              | -                                                                                    | -        | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
+| insert(index, option)               | index (int), option (string)                                                         | -        | Insert a new `option` in the ButtonGroup at `index`                                                                                                            |
+| remove(option)                      | item (string)                                                                        | Boolean  | Removes the first `option` from the ButtonGroup. Returns `True` if an item was removed.                                                                        |
+| repeat(time, command)               | time (int), command (function name)                                                  | -        | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| show()                              | -                                                                                    | -        | Displays the widget if it was previously hidden                                                                                                                |
+| update_command(command, args =None) | command (function name), args (_Optional_ List of arguments to be passed to command) | -        | Updates the function to call when the selected option changes                                                                                                  |
+| _get()_                             | -                                                                                    | _string_ | _Replaced by `value` property_                                                                                                                                 |
+| _set(value)_                        | _value (string)_                                                                     | -        | _Replaced by `value` property_                                                                                                                                 |
 
 
 Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
@@ -67,21 +67,21 @@ Parameters in _italics_ will still work but are **deprecated** - this means you 
 
 You can set and get the following properties:
 
-| Method        | Data type   | Description                |
-| ------------- | ----------- | -------------------------- |
-| align         | string      | The alignment of this widget within its grid location 
-| bg            | [color](colors.md)      | The background colour of the widget  |
-| enabled       | boolean     | `True` if the widget is enabled |
-| font          | string      | The font of the text  |
-| grid          | List        | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height        | [size](size.md)         | Sets the height of the widget |
-| master        | App or Box  | The container to which this widget belongs |
-| value         | string      | The hidden value associated with the currently selected option   |
-| value_text    | string      | The text associated with the currently selected option   |
-| visible       | boolean     | If this widget is visible |
-| width         | [size](size.md)         | Sets the width of the widget |
-| text_size     | int         | The size of the text  |
-| text_color    | [color](colors.md)      | The colour of the text  |
+| Method     | Data type          | Description                                                                                           |
+|------------|--------------------|-------------------------------------------------------------------------------------------------------|
+| align      | string             | The alignment of this widget within its grid location                                                 |
+| bg         | [color](colors.md) | The background colour of the widget                                                                   |
+| enabled    | boolean            | `True` if the widget is enabled                                                                       |
+| font       | string             | The font of the text                                                                                  |
+| grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| height     | [size](size.md)    | Sets the height of the widget                                                                         |
+| master     | App or Box         | The container to which this widget belongs                                                            |
+| value      | string             | The hidden value associated with the currently selected option                                        |
+| value_text | string             | The text associated with the currently selected option                                                |
+| visible    | boolean            | If this widget is visible                                                                             |
+| width      | [size](size.md)    | Sets the width of the widget                                                                          |
+| text_size  | int                | The size of the text                                                                                  |
+| text_color | [color](colors.md) | The colour of the text                                                                                |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `ButtonGroup` object is called `choice` you would write `choice.value`.

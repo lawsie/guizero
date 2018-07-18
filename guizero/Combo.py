@@ -16,7 +16,7 @@ class ComboMenu(Base, ColorMixin, TextMixin):
 
 class Combo(TextWidget):
 
-    def __init__(self, master, options, selected=None, command=None, grid=None, align=None, visible=True, enabled=None):
+    def __init__(self, master, options=[], selected=None, command=None, grid=None, align=None, visible=True, enabled=None):
         """
         Creates a Combo
 
@@ -24,7 +24,7 @@ class Combo(TextWidget):
             The Container (App, Box, etc) the Combo will belong too.
 
         :param List option:
-            A list of strings to populate the Combo.
+            A list of strings to populate the Combo, defaults to an empty list.
 
         :param string selected:
             The item in the Combo to select, defaults to `None`. 
@@ -51,33 +51,33 @@ class Combo(TextWidget):
         # Maintain a list of options (as strings, to avoid problems comparing)
         self._options = [str(x) for x in options]
 
-        # A Combo in tkinter must have at least 1 option, otherwise it errors
-        if len(self._options) == 0:
-            utils.raise_error("[Combo] object cannot have 0 options.")
-
         description = "[Combo] object with options  " + str(self._options)
 
         # Store currently selected item
         self._selected = StringVar()
         
         # Create a tk OptionMenu object within this object
-        tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command_callback)
-
-        # Remove the thick highlight when the bg is a different color
-        tk["highlightthickness"] = 0
+        if len(self._options) == 0:
+            tk = OptionMenu(master.tk, self._selected, None, command=self._command_callback)
+        else:
+            tk = OptionMenu(master.tk, self._selected, *self._options, command=self._command_callback)
 
         # Create the combo menu object
         self._combo_menu = ComboMenu(tk["menu"])
 
         super(Combo, self).__init__(master, tk, description, grid, align, visible, enabled)
 
+        # Remove the thick highlight when the bg is a different color
+        self._set_tk_config("highlightthickness", 0)
+
         # Set the selected item
         if selected is None:
-            self.value = self._options[0]
+            # set the first option
+            self._set_option_by_index(0)
         else:
-            self.value = selected
+            self._set_option(selected)
         
-        self._default = self.value
+        self._default = selected
 
         # The command associated with this combo
         self.update_command(command)
@@ -163,9 +163,15 @@ class Combo(TextWidget):
         Resets the combo box to the original "selected" value from the 
         constructor (or the first value if no selected value was specified).
         """
-        if not self._set_option(self._default):
-            utils.error_format( self.description + "\n" +
-            "Unable to select default option as doesnt exists in Combo")
+        if self._default is None:
+            if not self._set_option_by_index(0):
+                utils.error_format(self.description + "\n" +
+                "Unable to select default option as the Combo is empty")
+                    
+        else:
+            if not self._set_option(self._default):
+                utils.error_format( self.description + "\n" +
+                "Unable to select default option as it doesnt exists in the Combo")
 
     def append(self, option):
         """
@@ -174,8 +180,7 @@ class Combo(TextWidget):
         :param string option:
             The option to append to the Combo. 
         """
-        self._options.append(str(option))
-        self._refresh_options()
+        self.insert(len(self._options), option)
 
     def insert(self, index, option):
         """
@@ -187,7 +192,12 @@ class Combo(TextWidget):
         :param string option:
             The option to insert into to the Combo. 
         """
-        self._options.insert(index, str(option))
+        option = str(option)
+        self._options.insert(index, option)
+        # if this is the first option, set it.
+        if len(self._options) == 1:
+            self.value = option
+
         self._refresh_options()
 
     def remove(self, option):
@@ -201,7 +211,7 @@ class Combo(TextWidget):
         """
         if option in self._options:
             if len(self._options) == 1:
-                # this is the last option in the list so cleat it
+                # this is the last option in the list so clear it
                 self.clear()
             else:
                 self._options.remove(option)
@@ -249,6 +259,15 @@ class Combo(TextWidget):
                 return True
             else:
                 return False
+        else:
+            return False
+
+    def _set_option_by_index(self, index):
+        """
+        Sets a single option in the Combo by its index, returning True if it was able too.
+        """
+        if index < len(self._options) - 1:
+            self._selected.set(self._options[index])
         else:
             return False
 

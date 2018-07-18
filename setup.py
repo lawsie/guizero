@@ -7,6 +7,29 @@ if version_info.major != 3:
     print("This package will only work with Python 3. \n"
           "If you already have Python 3 installed try 'pip3 install guizero'.")
 
+__project__ = 'guizero'
+__desc__ = 'Python module to allow learners to easily create GUIs'
+__version__ = '0.5.3'
+__author__ = "Laura Sach"
+__author_email__ = 'laura.sach@raspberrypi.org'
+__license__ = 'BSD'
+__url__ = 'https://github.com/lawsie/guizero'
+__requires__ = ["pillow>=4.3.0"]
+__keywords__ = [
+    "GUI",
+    "guizero",
+    "interface",
+]
+__classifiers__ = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Topic :: Education",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Education",
+    "Intended Audience :: Education",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+]
 __long_description__ = """# guizero
 
 guizero is designed to allow new learners to quickly and easily create GUIs for their programs.
@@ -36,30 +59,17 @@ app.display()
 """
 
 setup(
-    name="guizero",
-    version="0.5.2",
-    author="Laura Sach",
-    author_email="laura.sach@raspberrypi.org",
-    description="Python module to allow learners to easily create GUIs",
+    name=__project__,
+    version=__version__,
+    author=__author__,
+    author_email=__author_email__,
+    description=__desc__,
     long_description=__long_description__,
     long_description_content_type='text/markdown',
-    license="BSD",
-    keywords=[
-        "GUI",
-        "guizero",
-        "interface",
-    ],
-    url="https://github.com/lawsie/guizero",
+    license=__license__,
+    keywords=__keywords__,
+    url=__url__,
     packages=find_packages(),
-    classifiers=[
-        "Development Status :: 4 - Beta",
-        "Programming Language :: Python :: 3",
-        "Topic :: Education",
-        "Topic :: Software Development :: User Interfaces",
-        "Topic :: Education",
-        "Intended Audience :: Education",
-        "Intended Audience :: Developers",
-        "License :: OSI Approved :: BSD License",
-    ],
-    install_requires=["pillow>=5"],
+    classifiers=__classifiers__,
+    install_requires=__requires__,
 )
