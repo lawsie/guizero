@@ -502,7 +502,7 @@ def open_window():
     window_2.show()
 
 app = App(title=&quot;My app&quot;, height=300, width=200)
-window = Window(title = &quot;2nd Window&quot;, height=300, width=200)
+window = Window(app, title = &quot;2nd Window&quot;, height=300, width=200)
 window.hide()
 
 open_button(app, text=&quot;open 2nd window&quot;, command=open_window)

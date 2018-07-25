@@ -99,7 +99,7 @@ def open_window():
     window_2.show()
 
 app = App(title="My app", height=300, width=200)
-window = Window(title = "2nd Window", height=300, width=200)
+window = Window(app, title = "2nd Window", height=300, width=200)
 window.hide()
 
 open_button(app, text="open 2nd window", command=open_window)
