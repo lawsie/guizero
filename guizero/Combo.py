@@ -171,7 +171,7 @@ class Combo(TextWidget):
         else:
             if not self._set_option(self._default):
                 utils.error_format( self.description + "\n" +
-                "Unable to select default option as it doesnt exists in the Combo")
+                "Unable to select default option as it doesnt exist in the Combo")
 
     def append(self, option):
         """
@@ -268,6 +268,7 @@ class Combo(TextWidget):
         """
         if index < len(self._options) - 1:
             self._selected.set(self._options[index])
+            return True
         else:
             return False
 
