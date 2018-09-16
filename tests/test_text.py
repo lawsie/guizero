@@ -23,7 +23,7 @@ def test_default_values():
     assert t.align == None
     assert t.size == 12
     assert t.text_color == "black"
-    assert t.font == ("Arial" or "Nimbus Sans L") 
+    assert (t.font == "Arial" or t.font == "Nimbus Sans L") 
     assert t.value == ""
     a.destroy() 
 
