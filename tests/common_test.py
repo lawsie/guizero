@@ -3,7 +3,8 @@ from time import sleep
 from unittest.mock import MagicMock
 from guizero import Text, Picture
 
-TEST_FONT = "Courier New"
+SET_FONT = "Times New Roman"
+TEST_FONTS = ["Times New Roman", "Liberation Serif"]
 
 def schedule_after_test(app, widget):
     callback_event = Event()
@@ -104,8 +105,8 @@ def size_text_test(widget):
     
 def text_test(widget):
     default = widget.font
-    widget.font = TEST_FONT
-    assert widget.font == TEST_FONT
+    widget.font = SET_FONT
+    assert widget.font in TEST_FONTS
     widget.font = None
     assert widget.font == default
     
@@ -256,13 +257,13 @@ def cascading_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
-    container.font = TEST_FONT
+    container.font = SET_FONT
     container.enabled = False
 
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
-    assert t.font == TEST_FONT
+    assert t.font in TEST_FONTS
     assert t.enabled == False
     assert p.bg == "red"
     assert p.enabled == False
@@ -276,14 +277,14 @@ def inheriting_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
-    container.font = TEST_FONT
+    container.font = SET_FONT
     container.enabled = False
 
     t = Text(container)
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
-    assert t.font == TEST_FONT
+    assert t.font in TEST_FONTS
     assert not t.enabled
 
     p = Picture(container)
