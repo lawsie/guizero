@@ -455,7 +455,7 @@ class ContainerWidget(
     SizeMixin,
     GridMixin):
 
-    def __init__(self, master, tk, description, layout, grid, align, visible, enabled):
+    def __init__(self, master, tk, description, layout, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is also a container e.g. `Box` 
         """
@@ -474,9 +474,9 @@ class ContainerTextWidget(
     ContainerWidget, 
     TextMixin):
 
-    def __init__(self, master, tk, description, layout, grid, align, visible, enabled):
+    def __init__(self, master, tk, description, layout, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is also a container and contains text 
         e.g. `ButtonGroup`
         """
-        super(ContainerTextWidget, self).__init__(master, tk, description, layout, grid, align, visible, enabled)
+        super(ContainerTextWidget, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
