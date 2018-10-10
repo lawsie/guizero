@@ -414,7 +414,7 @@ class Widget(
     SizeMixin,
     GridMixin):
 
-    def __init__(self, master, tk, description, grid, align, visible, enabled):
+    def __init__(self, master, tk, description, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is an interactable component e.g. `Picture`
         """
@@ -431,16 +431,18 @@ class Widget(
         else:
             self.enabled = enabled
 
+        self.resize(width, height)
+
 
 class TextWidget(
     Widget,
     TextMixin):
 
-    def __init__(self, master, tk, description, grid, align, visible, enabled):
+    def __init__(self, master, tk, description, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which contains or has text e.g. ``Text`, `PushButton`
         """    
-        super(TextWidget, self).__init__(master, tk, description, grid, align, visible, enabled)
+        super(TextWidget, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         #inherit from master
         self.text_color = master.text_color

@@ -35,7 +35,9 @@ def test_alt_values():
         bg="red", 
         font="Times New Roman", 
         grid = [0,1], 
-        align="top")
+        align="top",
+        width = 10,
+        height = 11)
 
     assert t.master == a
     assert t.grid[0] == 0
@@ -46,6 +48,8 @@ def test_alt_values():
     assert t.bg == "red"
     assert t.font == "Times New Roman"
     assert t.value == "foo"
+    assert t.width == 10
+    assert t.height == 11
     a.destroy()
 
 def test_getters_setters():

@@ -4,14 +4,27 @@ from .base import TextWidget
 
 class Text(TextWidget):
 
-    def __init__(self, master, text="", size=12, color="black", bg=None, font="Helvetica", grid=None, align=None, visible=True, enabled=None):
+    def __init__(
+        self, 
+        master, 
+        text="", 
+        size=12, 
+        color="black", 
+        bg=None, 
+        font="Helvetica", 
+        grid=None, 
+        align=None, 
+        visible=True, 
+        enabled=None, 
+        width=None, 
+        height=None):
 
         description = "[Text] object with text \"" + str(text) + "\""
         
         self._text = str(text)
         tk = Label(master.tk, text=text, fg=utils.convert_color(color), bg=utils.convert_color(bg), font=(font, size))
 
-        super(Text, self).__init__(master, tk, description, grid, align, visible, enabled)
+        super(Text, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         if bg:
             self.bg = bg

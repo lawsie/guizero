@@ -36,6 +36,8 @@ When you create a `Slider` object, you **must** specify a `master` and you can s
 | start      | int             | 0       | -          | The smallest value selectable on the slider                                                                                                                                             |
 | visible    | boolean         | True    | No         | If the widget should be visible.                                                                                                                                                        |
 | enabled    | boolean         | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
+| width      | [size](size.md) | None    | No         | Sets the width of the widget                                                                                                                                                            |
+| height     | [size](size.md) | None    | No         | Sets the height of the widget                                                                                                                                                           |
 
 
 ### Methods
@@ -53,6 +55,7 @@ You can call the following methods on a `Slider` object.
 | focus()                             | -                                   | -       | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)                                                                      |
 | hide()                              | -                                   | -       | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
 | repeat(time, command)               | time (int), command (function name) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| resize(width, height)               | width (int), height (int)           | -       | Sets the width and height of the widget                                                                                                                        |
 | show()                              | -                                   | -       | Displays the widget if it was previously hidden                                                                                                                |
 | update_command(command)             | command (function name)             | -       | Updates the function to call when the slider value is changed                                                                                                  |
 | _add_command(command)_              | _command (function name)_           | -       | _Sets the function called when the slider value is changed to_                                                                                                 |

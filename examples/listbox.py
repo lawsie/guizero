@@ -26,7 +26,4 @@ mlistbox = ListBox(
     multiselect=True, 
     command=update_text)
 
-listbox.height = 20
-listbox.width = 20
-
 a.display()

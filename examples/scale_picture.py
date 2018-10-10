@@ -1,8 +1,7 @@
 from guizero import App, Slider, Picture
 
 def resize():
-    picture.width = width.value
-    picture.height = height.value
+    picture.resize(width.value, height.value)
     
 app = App(layout="grid", width=550, height=200)
 

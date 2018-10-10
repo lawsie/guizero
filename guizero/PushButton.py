@@ -3,8 +3,22 @@ from . import utilities as utils
 from .base import TextWidget
 
 class PushButton(TextWidget):
-
-    def __init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, icon=None, visible=True, enabled=None):
+    def __init__(
+        self, 
+        master, 
+        command=None,
+        args=None, 
+        text="Button", 
+        image=None, 
+        pady=10, 
+        padx=10, 
+        grid=None, 
+        align=None, 
+        icon=None, 
+        visible=True, 
+        enabled=None, 
+        width=None, 
+        height=None):
 
         description = "[PushButton] object with text \"" + text + "\""
         
@@ -21,7 +35,7 @@ class PushButton(TextWidget):
         self._text.set(text)
         tk = Button(master.tk, textvariable=self._text, command=self._command_callback)
         
-        super(PushButton, self).__init__(master, tk, description, grid, align, visible, enabled)
+        super(PushButton, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
         
         # Add padding if necessary
         self.tk.config(pady=pady, padx=padx)

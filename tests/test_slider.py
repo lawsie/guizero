@@ -33,7 +33,9 @@ def test_alt_values():
         end=20,
         horizontal=False,
         grid = [0,1], 
-        align = "top")
+        align = "top",
+        width=10,
+        height=11)
     
     assert s.tk.cget("from") == 10
     assert s.tk.cget("to") == 20
@@ -41,6 +43,8 @@ def test_alt_values():
     assert s.grid[0] == 0
     assert s.grid[1] == 1
     assert s.align == "top"
+    assert s.width == 10
+    assert s.height == 11
     a.destroy()
 
 def test_getters_setters():

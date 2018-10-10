@@ -4,7 +4,7 @@ from .base import Widget
 
 class Picture(Widget):
 
-    def __init__(self, master, image=None, grid=None, align=None, visible=True, enabled=None):
+    def __init__(self, master, image=None, grid=None, align=None, visible=True, enabled=None, width=None, height=None):
 
         description = "[Picture] object"
 
@@ -17,7 +17,7 @@ class Picture(Widget):
         # Instantiate label object which will contain image
         tk = Label(master.tk)
 
-        super(Picture, self).__init__(master, tk, description, grid, align, visible, enabled)
+        super(Picture, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         # create the image
         self._load_image()
@@ -78,8 +78,7 @@ class Picture(Widget):
 
     @width.setter
     def width(self, value):
-        self._width = value
-        self._load_image()
+        self.resize(value, self._height)
         
     @property
     def height(self):
@@ -87,7 +86,11 @@ class Picture(Widget):
 
     @height.setter
     def height(self, value):
-        self._height = value
+        self.resize(self._width, value)
+
+    def resize(self, width, height):
+        self._width = width
+        self._height = height
         self._load_image()
 
     # DEPRECATED METHODS

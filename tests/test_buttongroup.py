@@ -31,13 +31,17 @@ def test_alt_values():
         ["foo", "bar"], 
         "bar",
         grid = [0,1], 
-        align = "top")
+        align = "top",
+        width=11,
+        height=10)
     
     assert b.value == "bar"
     assert b.value_text == "bar"
     assert b.grid[0] == 0
     assert b.grid[1] == 1
     assert b.align == "top"
+    assert b.width == 11
+    assert b.height == 10
     a.destroy()
 
 def test_2d_options_list():

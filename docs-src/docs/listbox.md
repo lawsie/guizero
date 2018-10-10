@@ -60,7 +60,7 @@ You can call the following methods on a `ListBox` object.
 | insert(index, item)     | index (int), item (string)          | -       | Insert a new `item` in the ListBox at `index`                                                                                                                  |
 | remove(item)            | item (string)                       | Boolean | Removes the first `item` from the ListBox. Returns `True` if an item was removed.                                                                              |
 | repeat(time, command)   | time (int), command (function name) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
-| resize(width, height)   | width (int), height (function name) | -       | Sets the width and height of the widget                                                                                                                        |
+| resize(width, height)   | width (int), height (int)           | -       | Sets the width and height of the widget                                                                                                                        |
 | show()                  | -                                   | -       | Displays the widget if it was previously hidden                                                                                                                |
 | update_command(command) | command (function name)             | -       | Updates the function to call when a different option is selected.                                                                                              |
 

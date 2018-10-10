@@ -23,11 +23,13 @@ def test_default_values():
 
 def test_alt_values():
     a = App(layout = "grid")
-    b = Box(a, layout="grid", grid=[0,1], align="top")
+    b = Box(a, layout="grid", grid=[0,1], align="top", width=10, height=11)
     assert b.layout == "grid"
     assert b.grid[0] == 0
     assert b.grid[1] == 1
     assert b.align == "top"
+    assert b.width == 10
+    assert b.height == 11
     a.destroy()
 
 def test_after_schedule():

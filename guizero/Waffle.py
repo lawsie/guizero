@@ -21,14 +21,12 @@ class Waffle(Widget):
         self._waffle_pixels = {}
         self._canvas = None
 
-        super(Waffle, self).__init__(master, tk, description, grid, align, visible, enabled)
+        super(Waffle, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         if bg is not None:
             self.bg = bg
 
         self.update_command(command)
-
-        self._create_waffle()
 
         #override the event manager so it uses the canvas not the frame
         self._events = EventManager(self, self._canvas)
@@ -198,9 +196,7 @@ class Waffle(Widget):
 
     @width.setter
     def width(self, value):
-        if self._width != value:
-            self._width = value
-            self._create_waffle()
+        self.resize(value, self.height)
 
     @property
     def height(self):
@@ -208,8 +204,12 @@ class Waffle(Widget):
 
     @height.setter
     def height(self, value):
-        if self._height != value:
-            self._height = value
+        self.resize(self.width, value)
+
+    def resize(self, width, height):
+        if self._width != width or self._height != height:
+            self._width = width
+            self._height = height
             self._create_waffle()
 
     @property

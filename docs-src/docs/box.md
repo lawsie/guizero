@@ -50,7 +50,7 @@ You can call the following methods on a `Box` object.
 | focus()               | -                                   | -       | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)                                                                      |
 | hide()                | -                                   | -       | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
 | repeat(time, command) | time (int), command (function name) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
-| resize(width, height) | width (int), height (function name) | -       | Sets the width and height of the widget                                                                                                                        |
+| resize(width, height) | width (int), height (int)           | -       | Sets the width and height of the widget                                                                                                                        |
 | show()                | -                                   | -       | Displays the widget if it was previously hidden                                                                                                                |
 
 
