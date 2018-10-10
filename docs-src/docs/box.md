@@ -24,14 +24,16 @@ app.display()
 
 When you create a `Box` object you **must** specify a master, and you can specify any of the optional parameters. Specify parameters in the brackets like this: `box = Box(app, layout="grid")`
 
-| Parameter | Data type | Default | Compulsory | Description                                                                                                                                                                             |
-|-----------|-----------|---------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| master    | App       | -       | Yes        | The `App` object to which this box belongs                                                                                                                                              |
-| align     | string    | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout. |
-| grid      | List      | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                           |
-| layout    | string    | "auto"  | -          | Whether widgets *inside this box* pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`)                                                                         |
-| visible   | boolean   | True    | No         | If the widget should be visible.                                                                                                                                                        |
-| enabled   | boolean   | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
+| Parameter | Data type       | Default | Compulsory | Description                                                                                                                                                                             |
+|-----------|-----------------|---------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| master    | App             | -       | Yes        | The `App` object to which this box belongs                                                                                                                                              |
+| align     | string          | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout. |
+| grid      | List            | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                           |
+| layout    | string          | "auto"  | -          | Whether widgets *inside this box* pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`)                                                                         |
+| visible   | boolean         | True    | No         | If the widget should be visible.                                                                                                                                                        |
+| enabled   | boolean         | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
+| width     | [size](size.md) | None    | No         | Sets the width of the widget                                                                                                                                                            |
+| height    | [size](size.md) | None    | No         | Sets the height of the widget                                                                                                                                                           |
 
 
 ### Methods
@@ -48,6 +50,7 @@ You can call the following methods on a `Box` object.
 | focus()               | -                                   | -       | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)                                                                      |
 | hide()                | -                                   | -       | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
 | repeat(time, command) | time (int), command (function name) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| resize(width, height) | width (int), height (function name) | -       | Sets the width and height of the widget                                                                                                                        |
 | show()                | -                                   | -       | Displays the widget if it was previously hidden                                                                                                                |
 
 

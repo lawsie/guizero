@@ -38,7 +38,8 @@ If you want the `ListBox` to allow multiple items to be selected you must set th
 | enabled     | boolean         | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                                             |
 | multiselect | boolean         | False   | No         | If the widget should allow multiple items to be selected.                                                                                                                                                   |
 | scrollbar   | boolean         | False   | No         | If the widget should have a verticle scrollbar.                                                                                                                                                             |
-
+| width       | [size](size.md) | None    | No         | Sets the width of the widget                                                                                                                                                                                |
+| height      | [size](size.md) | None    | No         | Sets the height of the widget                                                                                                                                                                               |
 
 
 ### Methods
@@ -59,6 +60,7 @@ You can call the following methods on a `ListBox` object.
 | insert(index, item)     | index (int), item (string)          | -       | Insert a new `item` in the ListBox at `index`                                                                                                                  |
 | remove(item)            | item (string)                       | Boolean | Removes the first `item` from the ListBox. Returns `True` if an item was removed.                                                                              |
 | repeat(time, command)   | time (int), command (function name) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| resize(width, height)   | width (int), height (function name) | -       | Sets the width and height of the widget                                                                                                                        |
 | show()                  | -                                   | -       | Displays the widget if it was previously hidden                                                                                                                |
 | update_command(command) | command (function name)             | -       | Updates the function to call when a different option is selected.                                                                                              |
 

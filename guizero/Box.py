@@ -82,6 +82,6 @@ class Box(ContainerWidget):
         elif width > 0 and height > 0:
             self.tk.pack_propagate(False)
         else:
-            utils.error_format("You must specify a width and height for a Box")
+            utils.error_format("You must specify a width and a height for a Box")
 
         super(Box, self).resize(width, height)
