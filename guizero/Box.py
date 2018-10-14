@@ -95,7 +95,7 @@ class Box(ContainerWidget):
         `True` or value > 1 sets a border
 
         """
-        return self._get_tk_config("highlightthickness", 0)
+        return self._get_tk_config("highlightthickness")
 
     @border.setter
     def border(self, value):

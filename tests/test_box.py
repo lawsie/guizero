@@ -32,6 +32,31 @@ def test_alt_values():
     assert b.height == 11
     a.destroy()
 
+def test_border():
+    a = App()
+    b = Box(a)
+    assert not b.border
+    assert b.border == 0
+    
+    b.border = True
+    assert b.border
+    assert b.border == 1
+    assert b._get_tk_config("highlightbackground") == "black"
+    
+    b.border = False
+    assert not b.border
+    
+    b.border = 10
+    assert b.border
+    assert b.border == 10
+    
+    b.set_border(11, "red")
+    assert b.border
+    assert b.border == 11
+    assert b._get_tk_config("highlightbackground") == "red"
+    a.destroy()
+
+
 def test_after_schedule():
     a = App()
     b = Box(a)
