@@ -52,7 +52,7 @@ class Box(ContainerWidget):
 
         self._grid = grid
         self._align = align
-
+        
         description = "[Box] object (may also contain other objects)"
         
         tk = Frame(master.tk)
@@ -85,3 +85,31 @@ class Box(ContainerWidget):
             utils.error_format("You must specify a width and a height for a Box")
 
         super(Box, self).resize(width, height)
+
+    @property
+    def border(self):
+        """
+        Sets or returns the border thickness. 
+        
+        `0` or `False` is no border.
+        `True` or value > 1 sets a border
+
+        """
+        return self._get_tk_config("highlightthickness", 0)
+
+    @border.setter
+    def border(self, value):
+        self.set_border(value, "black")
+        
+    def set_border(self, thickness, color="black"):
+        """
+        Sets the border thickness and color.
+
+        :param int thickness:
+            The thickenss of the border.
+
+        :param str color:
+            The color of the border.
+        """
+        self._set_tk_config("highlightthickness", thickness)
+        self._set_tk_config("highlightbackground", utils.convert_color(color))
