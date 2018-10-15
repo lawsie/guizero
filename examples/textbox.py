@@ -9,7 +9,7 @@ def key_pressed(key):
 
 app = App()
 text = Text(app, text="Enter your name")
-textbox = TextBox(app)
+textbox = TextBox(app, width=40)
 textbox.update_command(key_pressed)
 button = PushButton(app, text="Hi", command=go)
 app.display()

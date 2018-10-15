@@ -4,7 +4,7 @@ from .base import TextWidget
 
 class Slider(TextWidget):
 
-    def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None, visible=True, enabled=None):
+    def __init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None, visible=True, enabled=None, width=None, height=None):
 
         description = "[Slider] object from " + str(start) + " to " + str(end)
 
@@ -15,7 +15,7 @@ class Slider(TextWidget):
         # Create a tk Scale object within this object
         tk = Scale(master.tk, from_=start, to=end, orient=orient, command=self._command_callback)
 
-        super(Slider, self).__init__(master, tk, description, grid, align, visible, enabled)
+        super(Slider, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         self.update_command(command)
 
@@ -57,6 +57,10 @@ class Slider(TextWidget):
             self._set_tk_config("width", value)
         else:
             self._set_tk_config("length", value)
+
+    def resize(self, width, height):
+        self.width = width
+        self.height = height
 
     # METHODS
     # ----------------

@@ -36,7 +36,7 @@ class EventData():
     def x(self):
         """
         The x position of the mouse relative to the upper left hand corner of 
-        the widget when the event occured.   
+        the widget when the event occurred.   
         """
         return self._tk_event.x
 
@@ -44,7 +44,7 @@ class EventData():
     def y(self):
         """
         The y position of the mouse relative to the upper left hand corner of 
-        the widget when the event occured.   
+        the widget when the event occurred.   
         """
         return self._tk_event.y
 
@@ -52,7 +52,7 @@ class EventData():
     def display_x(self):
         """
         The x position of the mouse relative to the upper left hand corner of 
-        the display when the event occured.   
+        the display when the event occurred.   
         """
         return self._tk_event.x_root
 
@@ -60,7 +60,7 @@ class EventData():
     def display_y(self):
         """
         The y position of the mouse relative to the upper left hand corner of 
-        the display when the event occured.   
+        the display when the event occurred.   
         """
         return self._tk_event.y_root
 
@@ -157,8 +157,8 @@ class EventManager():
         Every event created must be given a reference, this reference
         is how events are managed internally within guizero.
 
-        A guizero can contain many tk widgets, so all the tk ojects for this
-        guizero widget need to passed.
+        A guizero widget can contain many tk widgets, so all the tk objects 
+        for this guizero widget need to passed.
         """
         self._widget = widget
         self._tks = tks

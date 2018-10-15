@@ -16,7 +16,18 @@ class ComboMenu(Base, ColorMixin, TextMixin):
 
 class Combo(TextWidget):
 
-    def __init__(self, master, options=[], selected=None, command=None, grid=None, align=None, visible=True, enabled=None):
+    def __init__(
+        self, 
+        master, 
+        options=[], 
+        selected=None, 
+        command=None, 
+        grid=None, 
+        align=None, 
+        visible=True, 
+        enabled=None, 
+        width=None, 
+        height=None):
         """
         Creates a Combo
 
@@ -46,6 +57,14 @@ class Combo(TextWidget):
         :param bool enabled:
             If the widget should be enabled, defaults to `None`. If `None`
             the value is inherited from the master.
+
+        :param int width:
+            The starting width of the widget. Defaults to `None` and will auto
+            size. 
+
+        :param int height:
+            The starting height of the widget. Defaults to `None` and will auto
+            size.
         """
 
         # Maintain a list of options (as strings, to avoid problems comparing)
@@ -65,7 +84,7 @@ class Combo(TextWidget):
         # Create the combo menu object
         self._combo_menu = ComboMenu(tk["menu"])
 
-        super(Combo, self).__init__(master, tk, description, grid, align, visible, enabled)
+        super(Combo, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         # Remove the thick highlight when the bg is a different color
         self._set_tk_config("highlightthickness", 0)
@@ -290,7 +309,7 @@ class Combo(TextWidget):
         Setting to `None` stops the callback.
 
         :param callback command:
-            The callback function to call, it can ccept 0 or 1 parameters.
+            The callback function to call, it can accept 0 or 1 parameters.
 
             If it accepts 1 parameter the `value` of the Combo will be 
             passed.
