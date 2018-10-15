@@ -1,5 +1,12 @@
 # guizero
 
+## 0.5.4 - 2018-10-16
+- Fixed `Box` to size properly
+- Added `border` to `Box`
+- Added `width` and `height` to widget constructor
+- Added `resize` method to all widgets
+- Minor bug fixes
+
 ## 0.5.3 - 2018-07-18
 - Various bug fixes
 - wrapping multiline `TextBox` data

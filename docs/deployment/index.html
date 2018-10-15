@@ -207,6 +207,8 @@
         
             <li><a class="toctree-l4" href="#documents">Documents</a></li>
         
+            <li><a class="toctree-l4" href="#promote-and-tag-release-on-github">Promote and tag release on github</a></li>
+        
         </ul>
     
 
@@ -279,20 +281,6 @@ python setup.py sdist
 python setup.py bdist_wheel
 </code></pre>
 
-<p>Create .pypirc credentials:</p>
-<pre><code>cd %HOME%
-notepad .pypirc
-</code></pre>
-
-<pre><code>[distutils]
-index-servers =
-    pypi
-
-[pypi]
-username:
-password:
-</code></pre>
-
 <p>Upload to pypi:</p>
 <pre><code>cd guizero
 twine upload dist/* --skip-existing
@@ -308,6 +296,10 @@ mkdocs build
 <pre><code>cd guizero
 xcopy docs-src\site\* docs /E
 </code></pre>
+
+<h2 id="promote-and-tag-release-on-github">Promote and tag release on github</h2>
+<p>Push all changes to <code>master</code>.</p>
+<p>Create a new release on github named <code>0.0.0</code>. </p>
               
             </div>
           </div>

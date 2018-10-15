@@ -73,13 +73,13 @@ class TextBox(TextWidget):
         
     def resize(self, width, height):
         self._set_tk_config("width", width)
-        print(height)
         if height is not None:
             if self._multiline:
                 self._height = height
                 self.tk.config(height=height)
             else:
-                utils.error_format("Cannot change the height of a single line TextBox{}".format(self.description))
+                if height > 1:
+                    utils.error_format("Cannot change the height of a single line TextBox{}".format(self.description))
             
     # METHODS
     # -------------------------------------------
