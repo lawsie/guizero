@@ -22,7 +22,9 @@ class ListBox(ContainerTextWidget):
         visible=True, 
         enabled=None, 
         multiselect=False, 
-        scrollbar=False):
+        scrollbar=False,
+        width=None,
+        height=None):
         """
         Creates a ListBox
 
@@ -65,9 +67,10 @@ class ListBox(ContainerTextWidget):
 
         tk = Frame(master.tk)
 
-        super(ListBox, self).__init__(master, tk, description, "auto", grid, align, visible, enabled)
+        super(ListBox, self).__init__(master, tk, description, "auto", grid, align, visible, enabled, width, height)
 
-        self._listbox = ListBoxWidget(self, items, selected, command, None, None, visible, enabled, multiselect)
+        self._listbox = ListBoxWidget(self, items, selected, command, None, None, visible, enabled, multiselect, width, height)
+
         #self._listbox.tk.config(width=300)
 
         if scrollbar:
@@ -83,29 +86,20 @@ class ListBox(ContainerTextWidget):
         # override the event manager to associate it to the list box and not the frame
         self._events = EventManager(self, self._listbox.tk)
 
-    @property
-    def width(self):
-        """
-        Sets or returns the width of the widget.
-        """
-        return super(ListBox, self.__class__).width.fget(self)
+        self.resize(width, height)
 
-    @width.setter
-    def width(self, value):
-        super(ListBox, self.__class__).width.fset(self, value)
-        self._listbox.width = value
-
-    @property
-    def height(self):
+    def resize(self, width, height):
         """
-        Sets or returns the height of the widget.
-        """
-        return super(ListBox, self.__class__).height.fget(self)
+        Resizes the widget.
 
-    @height.setter
-    def height(self, value):
-        super(ListBox, self.__class__).height.fset(self, value)
-        self._listbox.height = value
+        :param int width:
+            The width of the widget.
+
+        :param int height:
+            The height of the widget.
+        """
+        super(ListBox, self).resize(width, height)
+        self._listbox.resize(width, height)
 
     @property
     def value(self):
@@ -175,7 +169,7 @@ class ListBox(ContainerTextWidget):
 
 class ListBoxWidget(TextWidget):
 
-    def __init__(self, master, items=None, selected=None, command=None, grid=None, align=None, visible=True, enabled=None, multiselect=False):
+    def __init__(self, master, items=None, selected=None, command=None, grid=None, align=None, visible=True, enabled=None, multiselect=False, width=None, height=None):
 
         description = "[ListBox] object"
         self._multiselect = multiselect
@@ -190,7 +184,7 @@ class ListBoxWidget(TextWidget):
             for item in items:
                 tk.insert(END, item)
 
-        super(ListBoxWidget, self).__init__(master, tk, description, None, None, visible, enabled)
+        super(ListBoxWidget, self).__init__(master, tk, description, None, None, visible, enabled, width, height)
 
         self.events.set_event("<ListBox.ListboxSelect>", "<<ListboxSelect>>", self._command_callback)
 

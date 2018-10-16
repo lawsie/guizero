@@ -28,23 +28,6 @@ python setup.py sdist
 python setup.py bdist_wheel
 ```
 
-Create .pypirc credentials:
-
-```
-cd %HOME%
-notepad .pypirc
-```
-
-```
-[distutils]
-index-servers =
-    pypi
-
-[pypi]
-username:
-password:
-```
-
 Upload to pypi:
 
 ```
@@ -67,3 +50,9 @@ Copy to `docs`:
 cd guizero
 xcopy docs-src\site\* docs /E
 ```
+
+## Promote and tag release on github
+
+Push all changes to `master`.
+
+Create a new release on github named `0.0.0`. 

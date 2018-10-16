@@ -2,12 +2,11 @@ from guizero import App, Box, Waffle, Slider, Text
 
 def change_dim(slider):
     print("Changing size to {}x{} ".format(g_width.value, g_height.value))
-    grid.width = g_width.value
-    grid.height = g_height.value
-
+    grid.resize(g_width.value, g_height.value)
+    
 app = App("Changing size")
 
-grid = Waffle(app, width=4, height=4)
+grid = Waffle(app)
 
 controls = Box(app, layout = "grid")
 

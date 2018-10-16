@@ -28,12 +28,16 @@ def test_alt_values():
         a,
         image = "../examples/guizero.gif",
         grid = [0,1], 
-        align = "top")
+        align = "top",
+        width = 10,
+        height = 11)
     assert p.image == "../examples/guizero.gif"
     assert p._image.tk_image is not None
     assert p.grid[0] == 0
     assert p.grid[1] == 1
     assert p.align == "top"
+    assert p.width == 10
+    assert p.height == 11
     a.destroy()
 
 def test_getters_setters():

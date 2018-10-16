@@ -30,12 +30,16 @@ def test_alt_values():
         ["foo", "bar"],
         selected = "bar",
         grid = [0,1], 
-        align = "top")
+        align = "top",
+        width=10,
+        height=11)
     
     assert c.value == "bar"
     assert c.grid[0] == 0
     assert c.grid[1] == 1
     assert c.align == "top"
+    assert c.width == 10
+    assert c.height == 11
     a.destroy()
 
 def test_no_options():

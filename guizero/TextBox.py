@@ -5,7 +5,19 @@ from .base import TextWidget
 
 class TextBox(TextWidget):
 
-    def __init__(self, master, text="", width=10, height=1, grid=None, align=None, visible=True, enabled=None, multiline=False, scrollbar=False, command=None):
+    def __init__(
+        self, 
+        master, 
+        text="", 
+        width=10, 
+        height=1, 
+        grid=None, 
+        align=None, 
+        visible=True, 
+        enabled=None, 
+        multiline=False, 
+        scrollbar=False, 
+        command=None):
 
         description = "[TextBox] object with text \"" + str(text) + "\""
 
@@ -26,7 +38,7 @@ class TextBox(TextWidget):
         else:
             tk = Entry(master.tk, textvariable=self._text, width=width)
 
-        super(TextBox, self).__init__(master, tk, description, grid, align, visible, enabled)
+        super(TextBox, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         self.update_command(command)
 
@@ -57,13 +69,18 @@ class TextBox(TextWidget):
 
     @height.setter
     def height(self, value):
-        if self._multiline:
-            self._height = value
-            self.tk.config(height=value)
-        else:
-            utils.error_format("Cannot change the height of a single line TextBox{}".format(self.description))
+        self.resize(self.width, value)
         
-
+    def resize(self, width, height):
+        self._set_tk_config("width", width)
+        if height is not None:
+            if self._multiline:
+                self._height = height
+                self.tk.config(height=height)
+            else:
+                if height > 1:
+                    utils.error_format("Cannot change the height of a single line TextBox{}".format(self.description))
+            
     # METHODS
     # -------------------------------------------
     def _key_pressed(self, event):

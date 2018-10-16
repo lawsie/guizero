@@ -1,15 +1,26 @@
 from tkinter import Frame, StringVar
 from . import utilities as utils
-from .base import ContainerWidget
+from .base import ContainerTextWidget
 from .tkmixins import TextMixin
 from .RadioButton import RadioButton
 from .event import EventManager
 
-class ButtonGroup(
-    ContainerWidget, 
-    TextMixin):
+class ButtonGroup(ContainerTextWidget):
 
-    def __init__(self, master, options=[], selected=None, horizontal=False, command=None, grid=None, align=None, args=None, visible=True, enabled=None):
+    def __init__(
+        self, 
+        master, 
+        options=[], 
+        selected=None, 
+        horizontal=False, 
+        command=None, 
+        grid=None, 
+        align=None, 
+        args=None, 
+        visible=True, 
+        enabled=None, 
+        width=None, 
+        height=None):
         """
         Creates a ButtonGroup
 
@@ -49,6 +60,14 @@ class ButtonGroup(
         :param bool enabled:
             If the widget should be enabled, defaults to `None`. If `None`
             the value is inherited from the master.
+
+        :param int width:
+            The starting width of the widget. Defaults to `None` and will auto
+            size. 
+
+        :param int height:
+            The starting height of the widget. Defaults to `None` and will auto
+            size. 
         """
         
         description = "[ButtonGroup] object with selected option \"" + str(selected) + "\""
@@ -65,7 +84,7 @@ class ButtonGroup(
         self._selected = StringVar(master=tk.winfo_toplevel())
 
         # ButtonGroup uses "grid" internally to sort the RadioButtons
-        super(ButtonGroup, self).__init__(master, tk, description, "grid", grid, align, visible, enabled)
+        super(ButtonGroup, self).__init__(master, tk, description, "grid", grid, align, visible, enabled, width, height)
 
         # Loop through the list given and setup the options
         self._options = []
@@ -87,6 +106,9 @@ class ButtonGroup(
         # radio buttons to it
         option_tks = [option.tk for option in self._rbuttons]
         self._events = EventManager(self, self.tk, *option_tks)
+
+        # now the ButtonGroup is populate it, size it
+        self.resize(width, height)
 
     def _parse_option(self, option):
         # If only a 1D  was provided, use the text value as a key
@@ -191,20 +213,37 @@ class ButtonGroup(
     @height.setter
     def height(self, value):
         
-        # work out the height of a button
-        if value is None:
-            button_height = None
-        else:
-            if value % len(self._rbuttons) != 0:
-                # if the height doesnt divide by the number of radio buttons give a warning
-                button_height = int(round(value / len(self._rbuttons)))
-                new_height = button_height * len(self._rbuttons)
-                utils.error_format("ButtonGroup height '{}' doesn't divide by the number of buttons '{}' setting height to '{}'.".format(value, len(self._rbuttons), new_height))
+        if len(self._rbuttons) > 0:
+            # work out the height of a button
+            if value is None:
+                button_height = None
             else:
-                button_height = int(value / len(self._rbuttons))
+                if value > 0:
+                    if value % len(self._rbuttons) != 0:
+                        # if the height doesnt divide by the number of radio buttons give a warning
+                        button_height = int(round(value / len(self._rbuttons)))
+                        new_height = button_height * len(self._rbuttons)
+                        utils.error_format("ButtonGroup height '{}' doesn't divide by the number of buttons '{}' setting height to '{}'.".format(value, len(self._rbuttons), new_height))
+                    else:
+                        button_height = int(value / len(self._rbuttons))
+                else:
+                    button_height = None
 
-        for item in self._rbuttons:
-            item.height = button_height
+            for item in self._rbuttons:
+                item.height = button_height
+
+    def resize(self, width, height):
+        """
+        Resizes the widget.
+
+        :param int width:
+            The width of the widget.
+
+        :param int height:
+            The height of the widget.
+        """
+        self.width = width
+        self.height = height
     
     @property
     def options(self):

@@ -34,13 +34,18 @@ def test_alt_values():
         ["foo", "bar"],
         selected = "bar",
         grid = [0,1], 
-        align = "top")
+        align = "top",
+        width=10,
+        height=11)
     
     assert l.value == "bar"
     assert l.items == ["foo", "bar"]
     assert l.grid[0] == 0
     assert l.grid[1] == 1
     assert l.align == "top"
+    assert l.width == 10
+    assert l.height == 11
+    
     a.destroy()
 
 def test_multi_alt_values():

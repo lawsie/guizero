@@ -203,7 +203,7 @@ class SizeMixin():
 
     @width.setter
     def width(self, value):
-        self._set_tk_config("width", value)
+        self.resize(value, self.height)
 
     @property
     def height(self):
@@ -214,9 +214,21 @@ class SizeMixin():
 
     @height.setter
     def height(self, value):
-        self._set_tk_config("height", value)
-        
+        self.resize(self.width, value)
 
+    def resize(self, width, height):
+        """
+        Resizes the widget.
+
+        :param int width:
+            The width of the widget.
+
+        :param int height:
+            The height of the widget.
+        """
+        self._set_tk_config("width", width)
+        self._set_tk_config("height", height)
+    
 class GridMixin():
 
     @property
