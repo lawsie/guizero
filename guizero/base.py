@@ -2,13 +2,13 @@
 Abstract classes for guizero.
 """
 from .tkmixins import (
-    ScheduleMixin, 
-    DestroyMixin, 
-    EnableMixin, 
-    FocusMixin, 
-    DisplayMixin, 
-    TextMixin, 
-    ColorMixin, 
+    ScheduleMixin,
+    DestroyMixin,
+    EnableMixin,
+    FocusMixin,
+    DisplayMixin,
+    TextMixin,
+    ColorMixin,
     SizeMixin,
     GridMixin,
     EventsMixin)
@@ -25,11 +25,11 @@ class Base():
         """
         self._tk = tk
         self._tk_defaults = {}
-        
+
         # store the tk widgets default keys
         for key in self.tk.keys():
             self._tk_defaults[key] = self.tk[key]
-            
+
     @property
     def tk(self):
         """
@@ -92,13 +92,13 @@ class Component(
     def __init__(self, master, tk, description):
         """
         An abstract class for a component in guizero.
-        """ 
+        """
         super(Component, self).__init__(tk)
 
         self._master = master
         self._description = description
         self._events = EventManager(self, tk)
-        
+
         # check the master
         if self.master is not None:
             if isinstance(master, Container):
@@ -193,7 +193,7 @@ class Container(Component):
     @property
     def text_color(self):
         """
-        Sets and returns the text color to be used by the widgets 
+        Sets and returns the text color to be used by the widgets
         in the container.
 
         If set to None (the default) any widgets added to this container
@@ -212,7 +212,7 @@ class Container(Component):
     @property
     def text_size(self):
         """
-        Sets and returns the text size to be used by the widgets 
+        Sets and returns the text size to be used by the widgets
         in the container.
 
         If set to None (the default) any widgets added to this container
@@ -231,7 +231,7 @@ class Container(Component):
     @property
     def font(self):
         """
-        Sets and returns the font to be used by the widgets 
+        Sets and returns the font to be used by the widgets
         in the container.
 
         If set to None (the default) any widgets added to this container
@@ -284,7 +284,7 @@ class Container(Component):
             self.enable()
         else:
             self.disable()
-    
+
     def disable(self):
         """
         Disable all the widgets in this container
@@ -322,9 +322,9 @@ class BaseWindow(Container):
         self.tk.wm_protocol("WM_DELETE_WINDOW", self._close_window)
 
         self.visible = visible
-        
+
         self.tk.update()
-    
+
     # PROPERTIES
     # -----------------------------------
 
@@ -372,7 +372,7 @@ class BaseWindow(Container):
         Sets or returns the visibility of the window
         """
         return self._visible
-    
+
     @visible.setter
     def visible(self, value):
         if value:
@@ -385,7 +385,7 @@ class BaseWindow(Container):
 
     # Do `command` when the window is closed
     def on_close(self, command):
-        self._on_close = command  
+        self._on_close = command
 
     def hide(self):
         """Hide the window."""
@@ -406,11 +406,20 @@ class BaseWindow(Container):
     def update(self):
         self.tk.update()
 
+    def full_screen(self, keybind="<Escape>"):
+        """Make this window full screen and bind the Escape key (or given key) to exit full screen mode"""
+        self.tk.attributes("-fullscreen", True)
+        self.tk.bind(keybind, self.windowed)
+
+    def windowed(self, e):    # In the jungle, the mighty jungle...
+        """Change from full screen to windowed mode"""
+        self.tk.attributes("-fullscreen", False)
+
 
 class Widget(
     Component,
-    EnableMixin, 
-    DisplayMixin, 
+    EnableMixin,
+    DisplayMixin,
     SizeMixin,
     GridMixin):
 
@@ -441,25 +450,25 @@ class TextWidget(
     def __init__(self, master, tk, description, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which contains or has text e.g. ``Text`, `PushButton`
-        """    
+        """
         super(TextWidget, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         #inherit from master
         self.text_color = master.text_color
         self.text_size = master.text_size
         self.font = master.font
-        
+
 
 class ContainerWidget(
     Container,
-    EnableMixin, 
+    EnableMixin,
     DisplayMixin,
     SizeMixin,
     GridMixin):
 
     def __init__(self, master, tk, description, layout, grid, align, visible, enabled, width, height):
         """
-        The base class for a widget which is also a container e.g. `Box` 
+        The base class for a widget which is also a container e.g. `Box`
         """
         super(ContainerWidget, self).__init__(master,tk, description, layout)
         self._grid = grid
@@ -473,12 +482,12 @@ class ContainerWidget(
             self.enabled = enabled
 
 class ContainerTextWidget(
-    ContainerWidget, 
+    ContainerWidget,
     TextMixin):
 
     def __init__(self, master, tk, description, layout, grid, align, visible, enabled, width, height):
         """
-        The base class for a widget which is also a container and contains text 
+        The base class for a widget which is also a container and contains text
         e.g. `ButtonGroup`
         """
         super(ContainerTextWidget, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
