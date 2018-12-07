@@ -8,7 +8,7 @@ class App(BaseWindow):
     _main_app = None
 
     def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True):
-        
+
         description = "[App] object"
 
         # If this is the first app to be created, create Tk
@@ -18,21 +18,21 @@ class App(BaseWindow):
         else:
             tk = Toplevel(App._main_app.tk)
             utils.error_format("There should only be 1 guizero App, use Window to create multiple windows.")
-                
+
         # bg overrides deprecated bgcolor
         if bgcolor is not None:
             bg = bgcolor
             utils.deprecated("App 'bgcolor' constructor argument is deprecated. Please use bg instead.")
-       
+
         super(App, self).__init__(
-            None, 
+            None,
             tk,
             description,
             title,
             width,
             height,
             layout,
-            bg, 
+            bg,
             visible)
 
     # METHODS
@@ -41,19 +41,22 @@ class App(BaseWindow):
 
     def display(self):
         """
-        Alias of tkinter mainloop with friendlier name.
+        Display the window.
 
         :return:
-            Nothing.
+            None.
         """
         self.tk.mainloop()
 
     def destroy(self):
         """
-        Destroy the object.
+        Destroy and close the App.
 
         :return:
-            Nothing.
+            None.
+
+         :note:
+            Once destroyed an App can no longer be used.
         """
         # if this is the main_app - set the _main_app class variable to `None`.
         if self == App._main_app:

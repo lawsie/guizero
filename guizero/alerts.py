@@ -4,42 +4,42 @@ from tkinter import messagebox
 
 def warn(title, text):
     """
-    Alert type warning.
+    Display a warning message box.
 
     :param string title:
-        String with the title to be apply.
+        The title to be displayed on the box.
     :param string text:
-        String with the text to be displayed.
+        The text to be displayed on the box.
     :return:
-        Nothing.
+        None.
     """
     messagebox.showwarning(title, text)
 
 
 def info(title, text):
     """
-    Alert type info
+    Display an info message box.
 
     :param string title:
-        String with the title to be apply.
+        The title to be displayed on the box.
     :param string text:
-        String with the text to be displayed.
+        The text to be displayed on the box.
     :return:
-        Nothing.
+        None.
     """
     messagebox.showinfo(title, text)
 
 
 def error(title, text):
     """
-    Alert type error
+    Display an error message box.
 
     :param string title:
-        String with the title to be apply.
+        The title to be displayed on the box.
     :param string text:
-        String with the text to be displayed.
+        The text to be displayed on the box.
     :return:
-        Nothing.
+        None.
     """
     messagebox.showerror(title, text)
 
@@ -49,10 +49,10 @@ def yesno(title, text):
     Alert type yes or no
 
     :param string title:
-        String with the title to be apply.
+        The title to be displayed on the box.
     :param string text:
-        String with the text to be displayed.
+        The text to be displayed on the box.
     :return:
-        Nothing.
+        True if 'yes', False if 'no'
     """
     return messagebox.askyesno(title, text)
