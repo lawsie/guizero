@@ -14,16 +14,16 @@ a = App()
 t = Text(a, text="Its a ListBox", color="black")
 
 listbox = ListBox(
-    a, 
-    items=["red", "green", "blue", "yellow", "purple", "turquoise", "pink", "orange", "black", "brown", "cyan"], 
-    selected="black", 
+    a,
+    items=["red", "green", "blue", "yellow", "purple", "turquoise", "pink", "orange", "black", "brown", "cyan"],
+    selected="black",
     command=change_color,
     scrollbar=True)
 
 mlistbox = ListBox(
-    a, 
-    items=["really", "slightly", "brilliant", "interesting", "but", "and", "rubbish", "stupid"], 
-    multiselect=True, 
+    a,
+    items=["really", "slightly", "brilliant", "interesting", "but", "and", "rubbish", "stupid"],
+    multiselect=True,
     command=update_text)
 
 a.display()

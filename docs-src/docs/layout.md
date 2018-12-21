@@ -59,4 +59,3 @@ picture4 = Picture(app, image="wide1.gif", grid=[0,1,2,1])
 
 app.display()
 ```
-

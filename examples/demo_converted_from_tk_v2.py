@@ -13,10 +13,10 @@ def exit_function():
 
 def edit_function():
     print("Edit option")
-    
+
 def do_salaryScale(slider_value):
     salaryLabel.value = "Salary : "+str(slider_value)
-    
+
 def do_fullTimeCheckBox():
     if fullTimeCheckBox.value == 1:
         app.title=("Simple Window (full-time)")
@@ -25,14 +25,14 @@ def do_fullTimeCheckBox():
 
 def do_jobButtonGroup():
     jobTitleLabel.value = jobButtonGroup.value_text
-    
+
 def do_okPushButton():
     info("Information", "Thank you!")
 
 def do_closePushButton():
     if yesno("Exit?", "Exit program?") == True:
         app.destroy()
-        
+
 menubar = MenuBar(app,
                   toplevel=["File"],
                   options=[

@@ -7,7 +7,7 @@ def switch_screen(switch_to):
 def hide_all():
     for screen in all_screens:
         screen.hide()
-    
+
 
 app = App("Multi box app", layout="grid")
 

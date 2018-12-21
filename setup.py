@@ -43,7 +43,7 @@ If you can download and unzip a file, you can [install guizero](https://lawsie.g
 If you have administrator rights and are connected to the internet, you can use [pip to quickly install guizero](#install-using-pip).
 
 guizero only requires `tkinter` to be installed, which is included with a standard Python installation on all platforms except Linux.
-A python module to allow learners to easily create GUIs. guizero is designed to be used by new learners. 
+A python module to allow learners to easily create GUIs. guizero is designed to be used by new learners.
 
 ## Use
 

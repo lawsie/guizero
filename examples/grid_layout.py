@@ -12,14 +12,14 @@ def hide():
     b10.hide()
     b11.hide()
     b_bottom.hide()
-    
+
 def show():
     b00.show()
     b01.show()
     b10.show()
     b11.show()
     b_bottom.show()
-    
+
 app = App(layout="grid")
 
 b00 = PushButton(app, print_pos, text="0,0", args=[0,0], grid=[0,0])

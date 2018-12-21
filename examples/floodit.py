@@ -8,7 +8,7 @@ b_height = 14
 moves_limit = 25
 
 
-# Set up the palette 
+# Set up the palette
 def init_palette():
     [palette.set_pixel(colours.index(c), 0, c) for c in colours]
 
@@ -54,7 +54,7 @@ def win_check():
         win_text.value = "No more moves left!"
         reset.visible = True
         palette.disable()
-   
+
 # Reset the board and remove the win text/reset button
 def reset_board():
     reset.visible = False
@@ -65,7 +65,7 @@ def reset_board():
     palette.enable()
 
 
-    
+
 # Set up the game board
 app = App("Flood it")
 

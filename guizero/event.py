@@ -2,7 +2,7 @@ from . import utilities as utils
 
 
 class EventData():
-    
+
     def __init__(self, widget, tk_event):
         """
         The EventData class represents a single event and is passed back to
@@ -28,39 +28,39 @@ class EventData():
     @property
     def key(self):
         """
-        The key which was pressed and generated the event.  
+        The key which was pressed and generated the event.
         """
         return self._tk_event.char
 
     @property
     def x(self):
         """
-        The x position of the mouse relative to the upper left hand corner of 
-        the widget when the event occurred.   
+        The x position of the mouse relative to the upper left hand corner of
+        the widget when the event occurred.
         """
         return self._tk_event.x
 
     @property
     def y(self):
         """
-        The y position of the mouse relative to the upper left hand corner of 
-        the widget when the event occurred.   
+        The y position of the mouse relative to the upper left hand corner of
+        the widget when the event occurred.
         """
         return self._tk_event.y
 
     @property
     def display_x(self):
         """
-        The x position of the mouse relative to the upper left hand corner of 
-        the display when the event occurred.   
+        The x position of the mouse relative to the upper left hand corner of
+        the display when the event occurred.
         """
         return self._tk_event.x_root
 
     @property
     def display_y(self):
         """
-        The y position of the mouse relative to the upper left hand corner of 
-        the display when the event occurred.   
+        The y position of the mouse relative to the upper left hand corner of
+        the display when the event occurred.
         """
         return self._tk_event.y_root
 
@@ -69,7 +69,7 @@ class EventCallback():
 
     def __init__(self, widget, tks, tk_event):
         """
-        The EventCallback handles all the callbacks for a single tk event 
+        The EventCallback handles all the callbacks for a single tk event
         (e.g. <Button-1>) on a guizero widget.
 
         By using the EventCallback structure you can assign multiple callbacks
@@ -85,7 +85,7 @@ class EventCallback():
         for tk in self._tks:
             func_id = tk.bind(tk_event, self._event_callback)
             self._func_ids.append(func_id)
-        
+
     def _event_callback(self, tk_event):
         # the tk event has fired, run all the callbacks associated to this event
         for ref in self._callbacks:
@@ -98,11 +98,11 @@ class EventCallback():
             elif args_expected == 1:
                 callback(EventData(self._widget, tk_event))
             else:
-                utils.error_format("An event callback function must accept either 0 or 1 arguments.\nThe current callback has {} arguments.".format(args_expected))    
-        
+                utils.error_format("An event callback function must accept either 0 or 1 arguments.\nThe current callback has {} arguments.".format(args_expected))
+
     def get_callback(self, ref):
         """
-        Returns the callback for a ref (reference) 
+        Returns the callback for a ref (reference)
         """
         if ref in self._callbacks:
             return self._callbacks[ref]
@@ -148,7 +148,7 @@ class EventCallback():
 
 
 class EventManager():
-    
+
     def __init__(self, widget, *tks):
         """
         The EventManager handles all the events and callbacks for a guizero
@@ -157,7 +157,7 @@ class EventManager():
         Every event created must be given a reference, this reference
         is how events are managed internally within guizero.
 
-        A guizero widget can contain many tk widgets, so all the tk objects 
+        A guizero widget can contain many tk widgets, so all the tk objects
         for this guizero widget need to passed.
         """
         self._widget = widget
@@ -167,7 +167,7 @@ class EventManager():
 
     def get_event(self, ref):
         """
-        Returns the event callback for a ref (reference) 
+        Returns the event callback for a ref (reference)
         """
         # is this reference one which has been setup?
         if ref in self._refs:
@@ -177,19 +177,19 @@ class EventManager():
 
     def set_event(self, ref, tk_event, callback):
         """
-        Sets a callback for this widget against a ref (reference) for a 
+        Sets a callback for this widget against a ref (reference) for a
         tk_event, setting the callback to None will remove it.
         """
         # has an EventCallback been created for this tk event
         if tk_event not in self._event_callbacks:
             self._event_callbacks[tk_event] = EventCallback(self._widget, self._tks, tk_event)
-            
+
         # assign this ref to this event callback
         self._refs[ref] = self._event_callbacks[tk_event]
 
         # set up the callback
         self._refs[ref].set_callback(ref, callback)
-        
+
     def remove_event(self, ref):
         """
         Removes an event for a ref (reference),
@@ -197,7 +197,7 @@ class EventManager():
         # is this reference one which has been setup?
         if ref in self._refs:
             self._refs[ref].remove_callback(ref)
-        
+
     def rebind_events(self, *tks):
         """
         Rebinds all the tk events, only used if a tk widget has been destroyed

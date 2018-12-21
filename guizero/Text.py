@@ -5,22 +5,22 @@ from .base import TextWidget
 class Text(TextWidget):
 
     def __init__(
-        self, 
-        master, 
-        text="", 
-        size=12, 
-        color="black", 
-        bg=None, 
-        font="Helvetica", 
-        grid=None, 
-        align=None, 
-        visible=True, 
-        enabled=None, 
-        width=None, 
+        self,
+        master,
+        text="",
+        size=12,
+        color="black",
+        bg=None,
+        font="Helvetica",
+        grid=None,
+        align=None,
+        visible=True,
+        enabled=None,
+        width=None,
         height=None):
 
         description = "[Text] object with text \"" + str(text) + "\""
-        
+
         self._text = str(text)
         tk = Label(master.tk, text=text, fg=utils.convert_color(color), bg=utils.convert_color(bg), font=(font, size))
 
@@ -28,7 +28,7 @@ class Text(TextWidget):
 
         if bg:
             self.bg = bg
-        
+
     # PROPERTIES
     # ----------------------------------
     # The text value
@@ -51,7 +51,7 @@ class Text(TextWidget):
     def size(self, size):
         self.text_size = size
 
-        
+
     # METHODS
     # -------------------------------------------
 
@@ -83,7 +83,7 @@ class Text(TextWidget):
 
     # Set the font size
     def font_size(self, size):
-        self.size = size 
+        self.size = size
         utils.deprecated("Text font_size() is deprecated. Please use the size property instead.")
 
      # Returns the text

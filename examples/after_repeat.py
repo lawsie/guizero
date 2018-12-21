@@ -5,7 +5,7 @@ def welcome():
 
 def hi():
     print("Hi")
-    
+
 def message(my_message):
     print(my_message)
 
@@ -18,7 +18,7 @@ def cancel_hi():
 
 app = App()
 
-# create some buttons 
+# create some buttons
 hi_button = PushButton(app, cancel_hi, text="Stop hi")
 what_button = PushButton(app, whatever, text="Whatever")
 

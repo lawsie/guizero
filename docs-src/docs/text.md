@@ -84,4 +84,3 @@ You can set and get the following properties:
 | value      | string             | The text                                                                                              |
 | visible    | boolean            | If this widget is visible                                                                             |
 | width      | [size](size.md)    | Sets the width of the widget                                                                          |
-

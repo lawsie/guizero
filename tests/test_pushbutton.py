@@ -8,7 +8,7 @@ from common_test import (
     enable_test,
     display_test,
     text_test,
-    color_test, 
+    color_test,
     size_text_test,
     events_test,
     cascaded_properties_test,
@@ -27,13 +27,13 @@ def test_default_values():
 def test_alt_values():
     a = App(layout = "grid")
     b = PushButton(
-        a, 
-        text = "foo", 
-        grid = [0,1], 
+        a,
+        text = "foo",
+        grid = [0,1],
         align = "top",
         width = 10,
         height = 11)
-    
+
     assert b.text == "foo"
     assert b.grid[0] == 0
     assert b.grid[1] == 1
@@ -52,7 +52,7 @@ def test_getters_setters():
 
 def test_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
@@ -66,31 +66,31 @@ def test_command():
 
 def test_command_with_args():
     a = App()
-    
+
     callback_event = Event()
     def callback(value):
         assert value == "foo"
         callback_event.set()
 
     b = PushButton(a, command = callback, args = ["foo"])
-    
+
     b.tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
-    
+
 def test_update_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
 
     b = PushButton(a)
-    
+
     b.tk.invoke()
     assert not callback_event.is_set()
-    
+
     b.update_command(callback)
     b.tk.invoke()
     assert callback_event.is_set()
@@ -99,19 +99,19 @@ def test_update_command():
     b.update_command(None)
     b.tk.invoke()
     assert not callback_event.is_set()
-    
+
     a.destroy()
 
 def test_update_command_with_args():
     a = App()
-    
+
     callback_event = Event()
     def callback(value):
         assert value == "foo"
         callback_event.set()
 
     b = PushButton(a)
-    
+
     b.update_command(callback, ["foo"])
     b.tk.invoke()
     assert callback_event.is_set()
@@ -127,7 +127,7 @@ def test_toggle():
     b.toggle()
     assert b.enabled
     a.destroy()
-    
+
 def test_picture_gif():
     a = App()
     b = PushButton(a, image="../examples/guizero.gif")
@@ -159,7 +159,7 @@ def test_animated_picture():
 
 def test_picture_tkobject():
     from tkinter import PhotoImage
-    
+
     a = App()
     photo_image = PhotoImage(file="../examples/guizero.gif")
     b = PushButton(a, image=photo_image)
@@ -171,7 +171,7 @@ def test_picture_tkobject():
                     reason="PIL not available")
 def test_picture_pilobject():
     from PIL import Image
-    
+
     a = App()
     pil_image = Image.open("../examples/guizero.gif")
     b = PushButton(a, image=pil_image)

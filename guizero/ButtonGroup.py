@@ -8,18 +8,18 @@ from .event import EventManager
 class ButtonGroup(ContainerTextWidget):
 
     def __init__(
-        self, 
-        master, 
-        options=[], 
-        selected=None, 
-        horizontal=False, 
-        command=None, 
-        grid=None, 
-        align=None, 
-        args=None, 
-        visible=True, 
-        enabled=None, 
-        width=None, 
+        self,
+        master,
+        options=[],
+        selected=None,
+        horizontal=False,
+        command=None,
+        grid=None,
+        align=None,
+        args=None,
+        visible=True,
+        enabled=None,
+        width=None,
         height=None):
         """
         Creates a ButtonGroup
@@ -33,11 +33,11 @@ class ButtonGroup(ContainerTextWidget):
             defaults to an empty list.
 
         :param string selected:
-            The item in the ButtonGroup to select, defaults to `None`. 
+            The item in the ButtonGroup to select, defaults to `None`.
 
         :param string horizontal:
-            If the ButtonGroup is to be displayed horizontally, defaults to 
-            `True`. 
+            If the ButtonGroup is to be displayed horizontally, defaults to
+            `True`.
 
         :param callback command:
             The callback function to call when the ButtonGroup changes,
@@ -51,7 +51,7 @@ class ButtonGroup(ContainerTextWidget):
             How to align the widget within the grid, defaults to None.
 
         :param callback args:
-            A list of arguments to pass to the widgets `command`, defaults to 
+            A list of arguments to pass to the widgets `command`, defaults to
             `None`.
 
         :param bool visible:
@@ -63,13 +63,13 @@ class ButtonGroup(ContainerTextWidget):
 
         :param int width:
             The starting width of the widget. Defaults to `None` and will auto
-            size. 
+            size.
 
         :param int height:
             The starting height of the widget. Defaults to `None` and will auto
-            size. 
+            size.
         """
-        
+
         description = "[ButtonGroup] object with selected option \"" + str(selected) + "\""
 
         self._rbuttons = []   # List of RadioButton objects
@@ -92,7 +92,7 @@ class ButtonGroup(ContainerTextWidget):
             self._options.append(self._parse_option(option))
 
         self._refresh_options()
-        
+
         # set the initial value
         if selected is None and len(self._options) > 0:
             self.value = self._options[0][1]
@@ -135,13 +135,13 @@ class ButtonGroup(ContainerTextWidget):
 
             # Create a radio button object
             rbutton = RadioButton(
-                self, 
-                text=str(button[0]), 
-                value=str(button[1]), 
-                variable=self._selected, 
+                self,
+                text=str(button[0]),
+                value=str(button[1]),
+                variable=self._selected,
                 grid=[gridx, gridy],
                 align="left",
-                visible=self.visible, 
+                visible=self.visible,
                 enabled=self.enabled)
 
             # Add this radio button to the internal list
@@ -149,7 +149,7 @@ class ButtonGroup(ContainerTextWidget):
 
             # Set the callback
             rbutton.tk.config(command=self._command_callback)
-    
+
 
     # PROPERTIES
     # -----------------------------------
@@ -186,7 +186,7 @@ class ButtonGroup(ContainerTextWidget):
         for item in self._rbuttons:
             if item.text == value:
                 self.value = item.value
-    
+
     @property
     def width(self):
         """
@@ -199,7 +199,7 @@ class ButtonGroup(ContainerTextWidget):
     def width(self, value):
         for item in self._rbuttons:
             item.width = value
-        
+
     @property
     def height(self):
         """
@@ -212,7 +212,7 @@ class ButtonGroup(ContainerTextWidget):
 
     @height.setter
     def height(self, value):
-        
+
         if len(self._rbuttons) > 0:
             # work out the height of a button
             if value is None:
@@ -244,11 +244,11 @@ class ButtonGroup(ContainerTextWidget):
         """
         self.width = width
         self.height = height
-    
+
     @property
     def options(self):
         """
-        Returns a list of options in the ButtonGroup 
+        Returns a list of options in the ButtonGroup
         """
         return self._options
 
@@ -271,7 +271,7 @@ class ButtonGroup(ContainerTextWidget):
         Insert a new `option` in the ButtonGroup at `index`.
 
         :param int option:
-            The index of where to insert the option. 
+            The index of where to insert the option.
 
         :param string/List option:
             The option to append to the ButtonGroup. If a 2D list is specified,
@@ -287,7 +287,7 @@ class ButtonGroup(ContainerTextWidget):
         Returns `True` if an item was removed.
 
         :param string option:
-            The value of the option to remove from the ButtonGroup. 
+            The value of the option to remove from the ButtonGroup.
         """
         for existing_option in self._options:
             if existing_option[1] == option:
@@ -311,15 +311,15 @@ class ButtonGroup(ContainerTextWidget):
     def update_command(self, command, args=None):
         """
         Updates the callback command which is called when the ButtonGroup
-        changes. 
-        
+        changes.
+
         Setting to `None` stops the callback.
 
         :param callback command:
             The callback function to call.
 
         :param callback args:
-            A list of arguments to pass to the widgets `command`, defaults to 
+            A list of arguments to pass to the widgets `command`, defaults to
             `None`.
         """
         if command is None:
@@ -329,7 +329,7 @@ class ButtonGroup(ContainerTextWidget):
                 self._command = command
             else:
                 self._command = utils.with_args(command, *args)
-    
+
     def _command_callback(self):
         self._command()
 
@@ -344,4 +344,3 @@ class ButtonGroup(ContainerTextWidget):
     def set(self, value):
         self._selected.set(str(value))
         utils.deprecated("ButtonGroup set() is deprecated. Please use the value property instead.")
-    

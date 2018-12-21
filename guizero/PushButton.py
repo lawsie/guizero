@@ -4,24 +4,24 @@ from .base import TextWidget
 
 class PushButton(TextWidget):
     def __init__(
-        self, 
-        master, 
+        self,
+        master,
         command=None,
-        args=None, 
-        text="Button", 
-        image=None, 
-        pady=10, 
-        padx=10, 
-        grid=None, 
-        align=None, 
-        icon=None, 
-        visible=True, 
-        enabled=None, 
-        width=None, 
+        args=None,
+        text="Button",
+        image=None,
+        pady=10,
+        padx=10,
+        grid=None,
+        align=None,
+        icon=None,
+        visible=True,
+        enabled=None,
+        width=None,
         height=None):
 
         description = "[PushButton] object with text \"" + text + "\""
-        
+
         self._value = 0
         self._image_source = icon
         self._image_source = image
@@ -34,9 +34,9 @@ class PushButton(TextWidget):
         self._text = StringVar()
         self._text.set(text)
         tk = Button(master.tk, textvariable=self._text, command=self._command_callback)
-        
+
         super(PushButton, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
-        
+
         # Add padding if necessary
         self.tk.config(pady=pady, padx=padx)
 
@@ -78,7 +78,7 @@ class PushButton(TextWidget):
 
     # PROPERTIES
     # ----------------------------------
-    # Get the value of the button (pressed, released) 
+    # Get the value of the button (pressed, released)
     @property
     def value(self):
         return self._value
@@ -106,7 +106,7 @@ class PushButton(TextWidget):
     @property
     def width(self):
         return super(PushButton, self.__class__).width.fget(self)
-        
+
     @width.setter
     def width(self, value):
         if self._image:
@@ -114,7 +114,7 @@ class PushButton(TextWidget):
             self._load_image()
         else:
             super(PushButton, self.__class__).width.fset(self, value)
-        
+
     @property
     def height(self):
         return super(PushButton, self.__class__).height.fget(self)
@@ -126,7 +126,7 @@ class PushButton(TextWidget):
             self._load_image()
         else:
             super(PushButton, self.__class__).height.fset(self, value)
-        
+
     # METHODS
     # -------------------------------------------
     # Internal use only
@@ -134,12 +134,12 @@ class PushButton(TextWidget):
     def _on_press(self, event):
         if self.enabled:
             self._value = 1
-        
+
     # Called when the button is released
     def _on_release(self, event):
         if self.enabled:
             self._value = 0
-        
+
     # Change padding
     def padding(self, padx, pady):
         self.tk.config(padx=padx, pady=pady)

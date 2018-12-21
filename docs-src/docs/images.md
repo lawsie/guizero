@@ -40,4 +40,3 @@ When the size of a widget is changed the image will be changed to fit the widget
 ### Animated GIFs
 
 If `PIL` is installed guizero supports displaying animated GIFs, if not, the GIF will be displayed as a static image.
-

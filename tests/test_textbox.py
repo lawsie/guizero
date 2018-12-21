@@ -6,7 +6,7 @@ from common_test import (
     enable_test,
     display_test,
     text_test,
-    color_test, 
+    color_test,
     size_text_test,
     events_test,
     cascaded_properties_test,
@@ -21,15 +21,15 @@ def test_default_values():
     assert t.align == None
     assert t.width == 10
     assert t.value == ""
-    a.destroy() 
+    a.destroy()
 
 def test_alt_values():
     a = App(layout = "grid")
     t = TextBox(
-        a, 
-        text="foo", 
+        a,
+        text="foo",
         width = 20,
-        grid = [0,1], 
+        grid = [0,1],
         align="top",
         multiline=True,
         scrollbar=True)
@@ -114,7 +114,7 @@ def test_width():
 
 def test_height():
     a = App()
-    
+
     t1 = TextBox(a)
     t1.height = 10
     #cant change height of single line text box

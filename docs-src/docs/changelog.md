@@ -206,4 +206,3 @@ Waffle:
 - All waffles will now have a memory. The `remember` constructor argument remains for backwards compatibility only **and will be removed in a future release**.
 - You can now click on a Waffle, and specify a command to run when the Waffle is clicked on. The function given as the command should take two arguments as it will be passed the x, y coordinates of the pixel that was clicked. (Credit: [scotty3785](https://github.com/scotty3785))
 - Changed internal implementation of the Waffle so it should now be able to redraw more efficiently. (Credit: [scotty3785](https://github.com/scotty3785))
-

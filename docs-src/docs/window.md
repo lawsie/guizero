@@ -113,4 +113,3 @@ If you want a `Window` to become the main window and stop all other windows resp
 def open_window():
     window_2.show(wait = True)
 ```
-

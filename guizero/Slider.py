@@ -65,7 +65,7 @@ class Slider(TextWidget):
     # METHODS
     # ----------------
     # Calls the given function when the slider value is changed
-    
+
     def _command_callback(self, value):
         if self._command:
             args_expected = utils.no_args_expected(self._command)
@@ -84,7 +84,7 @@ class Slider(TextWidget):
 
     # DEPRECATED
     # -------------------------------------------
-        
+
     def add_command(self, command):
         self.update_command(command)
         utils.deprecated("Slider add_command() is deprecated - renamed to update_command()")

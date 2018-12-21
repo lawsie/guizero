@@ -25,12 +25,12 @@ def test_default_values():
     assert w.pad == 5
     assert w.color == "white"
     assert w.dotty == False
-    a.destroy() 
+    a.destroy()
 
 def test_alt_values():
     a = App(layout = "grid")
     w = Waffle(
-        a, 
+        a,
         height = 10,
         width = 11,
         dim = 12,
@@ -52,7 +52,7 @@ def test_alt_values():
     assert w.color == "red"
     assert w.dotty == True
     assert w.bg == "green"
-    a.destroy() 
+    a.destroy()
 
 def test_getters_setters():
     a = App()
@@ -82,7 +82,7 @@ def test_set_get_all():
     w.set_all("red")
     # turn 2d list into 1d list
     pixels = chain.from_iterable(zip(*w.get_all()))
-    
+
     count = 0
     for pixel in pixels:
         assert pixel == "red"
@@ -130,7 +130,7 @@ def test_reset():
     w.reset()
 
     pixels = chain.from_iterable(zip(*w.get_all()))
-    
+
     count = 0
     for pixel in pixels:
         assert pixel == w.color
@@ -142,7 +142,7 @@ def test_reset():
 
 def test_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
@@ -158,7 +158,7 @@ def test_command():
 
 def test_command_with_parameters():
     a = App()
-    
+
     callback_event = Event()
     def callback(x, y):
         assert x == 0
@@ -176,16 +176,16 @@ def test_command_with_parameters():
 
 def test_update_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
 
     w = Waffle(a)
-    
+
     mock_waffle_clicked(w)
     assert not callback_event.is_set()
-    
+
     w.update_command(callback)
     mock_waffle_clicked(w)
     assert callback_event.is_set()
@@ -194,12 +194,12 @@ def test_update_command():
     w.update_command(None)
     mock_waffle_clicked(w)
     assert not callback_event.is_set()
-    
+
     a.destroy()
 
 def test_update_command_with_parameters():
     a = App()
-    
+
     callback_event = Event()
     def callback(x, y):
         assert x == 0
@@ -207,7 +207,7 @@ def test_update_command_with_parameters():
         callback_event.set()
 
     w = Waffle(a)
-    
+
     w.update_command(callback)
 
     mock_waffle_clicked(w)

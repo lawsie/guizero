@@ -5,7 +5,7 @@ def go():
     alerts.info("hi", "hi " + textbox.value)
 
 def key_pressed(key):
-    print("key pressed {}".format(key))    
+    print("key pressed {}".format(key))
 
 app = App()
 text = Text(app, text="Enter your name")

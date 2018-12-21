@@ -32,7 +32,7 @@ def destroy_test(widget):
     assert widget.tk.winfo_exists()
     widget.destroy()
     assert not widget.tk.winfo_exists()
-    
+
 def enable_test(widget):
     assert widget.enabled
     widget.enabled = False
@@ -44,13 +44,13 @@ def enable_test(widget):
     widget.enable()
     assert widget.enabled
 
-# doesn't work under pytest, app always returns None from focus_get() run 
+# doesn't work under pytest, app always returns None from focus_get() run
 # direct from Python it works fine.
 def focus_test(app, widget):
-    app.focus()    
+    app.focus()
     app.tk.update()
     assert app.tk.focus_get() == app.tk
-    
+
     widget.focus()
     app.tk.update()
     assert app.tk.focus_get() == widget.tk
@@ -65,7 +65,7 @@ def display_test(widget):
     assert not widget.visible
     widget.show()
     assert widget.visible
-    
+
 def color_test(widget):
     default = widget.bg
     widget.bg = "red"
@@ -76,14 +76,14 @@ def color_test(widget):
     assert widget.bg == "#ff0000"
     widget.bg = None
     assert widget.bg == default
-    
+
 def size_pixel_test(widget):
     default = widget.width
     widget.width = 666
     assert widget.width == 666
     widget.width = None
     assert widget.width == default
-    
+
     default = widget.height
     widget.height = 666
     assert widget.height == 666
@@ -102,14 +102,14 @@ def size_text_test(widget):
     assert widget.height == 10
     widget.height = None
     assert widget.height == default
-    
+
 def text_test(widget):
     default = widget.font
     widget.font = SET_FONT
     assert widget.font in TEST_FONTS
     widget.font = None
     assert widget.font == default
-    
+
     default = widget.text_color
     widget.text_color = "red"
     assert widget.text_color == "red"
@@ -125,7 +125,7 @@ def text_test(widget):
     assert widget.text_size == 16
     widget.text_size = None
     assert widget.text_size == default
-    
+
 def events_test(widget):
 
     events_to_test = (
@@ -181,12 +181,12 @@ def events_test(widget):
         assert not callback_with_param_event.is_set()
 
 def mock_event(widget, ref, key, x, y, display_x, display_y):
-    # you cant invoke a tk event so we will mock it 
+    # you cant invoke a tk event so we will mock it
     # create a mock event
 
     # get the event callback
     event_callback = widget.events._refs[ref]
-    
+
     # mock a tk event
     tk_event = MagicMock()
     tk_event.char = key
@@ -194,7 +194,7 @@ def mock_event(widget, ref, key, x, y, display_x, display_y):
     tk_event.y = y
     tk_event.x_root = display_x
     tk_event.y_root = display_y
-    
+
     # call the event callback
     event_callback._event_callback(tk_event)
 
@@ -202,7 +202,7 @@ def cascaded_properties_test(container, widget, text):
     container.bg = "red"
     container.enabled = False
     assert widget.bg == "red"
-    assert not widget.enabled 
+    assert not widget.enabled
 
     if text:
         container.text_color = "purple"
@@ -216,7 +216,7 @@ def inherited_properties_test(container, widget_create, text):
     if text:
         container.text_color = "purple"
         container.text_size = 16
-    
+
     w = widget_create()
 
     assert w.bg == "red"
@@ -237,15 +237,15 @@ def cascading_enable_test(container):
     container.enabled = False
     assert not container.enabled
     check_children(container, False)
-    
+
     container.enabled = True
     assert container.enabled
     check_children(container, True)
-    
+
     container.disable()
     assert not container.enabled
     check_children(container, False)
-    
+
     container.enable()
     assert container.enabled
     check_children(container, True)
@@ -267,7 +267,7 @@ def cascading_properties_test(container):
     assert t.enabled == False
     assert p.bg == "red"
     assert p.enabled == False
-    
+
     # test that destroying widgets removes them as children
     p.destroy()
     container.bg = "green"

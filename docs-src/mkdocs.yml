@@ -31,7 +31,7 @@ pages:
       - TextBox: textbox.md
       - Waffle: waffle.md
       - Window: window.md
-  - Contributing: 
+  - Contributing:
       - Notes: contributing.md
       - Developing: development.md
       - Deploying: deployment.md
