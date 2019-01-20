@@ -91,17 +91,13 @@ class DisplayMixin():
 
     def hide(self):
         """Hide the widget."""
-        if self.master.layout == "grid":
-            self.tk.grid_forget()
-        else:
-            self.tk.pack_forget()
         self._visible = False
+        self.master.display_widgets()
 
     def show(self):
         """Show the widget."""
-        utils.auto_pack(self, self.master, self.grid, self.align)
         self._visible = True
-
+        self.master.display_widgets()
 
 class TextMixin():
 
