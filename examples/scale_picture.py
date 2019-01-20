@@ -2,7 +2,7 @@ from guizero import App, Slider, Picture
 
 def resize():
     picture.resize(width.value, height.value)
-    
+
 app = App(layout="grid", width=550, height=200)
 
 picture = Picture(app, image="guizero.gif", grid=[0,1])

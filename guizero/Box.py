@@ -5,14 +5,14 @@ from .base import ContainerWidget
 class Box(ContainerWidget):
 
     def __init__(
-        self, 
-        master, 
-        layout="auto", 
-        grid=None, 
-        align=None, 
-        visible=True, 
-        enabled=None, 
-        width=None, 
+        self,
+        master,
+        layout="auto",
+        grid=None,
+        align=None,
+        visible=True,
+        enabled=None,
+        width=None,
         height=None):
         """
         Creates a Box
@@ -31,7 +31,7 @@ class Box(ContainerWidget):
             How to align the widget within the grid, defaults to `None`.
 
         :param callback args:
-            A list of arguments to pass to the widgets `command`, defaults to 
+            A list of arguments to pass to the widgets `command`, defaults to
             `None`.
 
         :param bool visible:
@@ -52,15 +52,15 @@ class Box(ContainerWidget):
 
         self._grid = grid
         self._align = align
-        
+
         description = "[Box] object (may also contain other objects)"
-        
+
         tk = Frame(master.tk)
 
         super(Box, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
 
         self.resize(width, height)
-            
+
     def resize(self, width, height):
         """
         Resizes the widget.
@@ -73,7 +73,7 @@ class Box(ContainerWidget):
         """
         if width is None:
             width = 0
-        
+
         if height is None:
             height = 0
 
@@ -89,8 +89,8 @@ class Box(ContainerWidget):
     @property
     def border(self):
         """
-        Sets or returns the border thickness. 
-        
+        Sets or returns the border thickness.
+
         `0` or `False` is no border.
         `True` or value > 1 sets a border
 
@@ -100,7 +100,7 @@ class Box(ContainerWidget):
     @border.setter
     def border(self, value):
         self.set_border(value, "black")
-        
+
     def set_border(self, thickness, color="black"):
         """
         Sets the border thickness and color.

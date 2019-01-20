@@ -6,7 +6,7 @@ from common_test import (
     enable_test,
     display_test,
     text_test,
-    color_test, 
+    color_test,
     size_text_test,
     events_test,
     cascaded_properties_test,
@@ -23,20 +23,20 @@ def test_default_values():
     assert t.align == None
     assert t.size == 12
     assert t.text_color == "black"
-    assert (t.font == "Arial" or t.font == "Nimbus Sans L") 
+    assert (t.font == "Arial" or t.font == "Nimbus Sans L")
     assert t.value == ""
-    a.destroy() 
+    a.destroy()
 
 def test_alt_values():
     a = App(layout = "grid")
     t = Text(
-        a, 
-        text="foo", 
-        size = 14, 
-        color="green", 
-        bg="red", 
-        font=SET_FONT, 
-        grid = [0,1], 
+        a,
+        text="foo",
+        size = 14,
+        color="green",
+        bg="red",
+        font=SET_FONT,
+        grid = [0,1],
         align="top",
         width = 10,
         height = 11)

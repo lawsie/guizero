@@ -20,7 +20,7 @@ def test_initial_values():
             [ ["foo1", callback], ["foo2", callback] ],
             [ ["bar1", callback], ["bar2", callback] ]
         ])
-   
+
     assert m.master == a
 
     assert not callback_event.is_set()
@@ -28,5 +28,5 @@ def test_initial_values():
     # menu invoke doesnt work...
     # m.tk.invoke(0)
     # assert callback_event.is_set()
-   
-    a.destroy() 
+
+    a.destroy()

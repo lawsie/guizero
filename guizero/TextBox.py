@@ -6,17 +6,17 @@ from .base import TextWidget
 class TextBox(TextWidget):
 
     def __init__(
-        self, 
-        master, 
-        text="", 
-        width=10, 
-        height=1, 
-        grid=None, 
-        align=None, 
-        visible=True, 
-        enabled=None, 
-        multiline=False, 
-        scrollbar=False, 
+        self,
+        master,
+        text="",
+        width=10,
+        height=1,
+        grid=None,
+        align=None,
+        visible=True,
+        enabled=None,
+        multiline=False,
+        scrollbar=False,
         command=None):
 
         description = "[TextBox] object with text \"" + str(text) + "\""
@@ -44,7 +44,7 @@ class TextBox(TextWidget):
 
         # Bind the key pressed event
         self.events.set_event("<TextBox.KeyPress>", "<KeyPress>", self._key_pressed)
-        
+
     # PROPERTIES
     # ----------------------------------
     # The text value
@@ -70,7 +70,7 @@ class TextBox(TextWidget):
     @height.setter
     def height(self, value):
         self.resize(self.width, value)
-        
+
     def resize(self, width, height):
         self._set_tk_config("width", width)
         if height is not None:
@@ -80,7 +80,7 @@ class TextBox(TextWidget):
             else:
                 if height > 1:
                     utils.error_format("Cannot change the height of a single line TextBox{}".format(self.description))
-            
+
     # METHODS
     # -------------------------------------------
     def _key_pressed(self, event):
@@ -98,7 +98,7 @@ class TextBox(TextWidget):
             self._command = lambda: None
         else:
             self._command = command
-    
+
     # Clear text box
     def clear(self):
         self.value = ""

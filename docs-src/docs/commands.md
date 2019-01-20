@@ -19,4 +19,3 @@ text = Text(app)
 button = PushButton(app, command=say_hello)
 app.display()
 ```
-

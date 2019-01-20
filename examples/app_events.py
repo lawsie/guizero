@@ -18,7 +18,7 @@ def mouse_enters(e):
     e.widget.bg = "lightblue"
 
 def mouse_leaves(e):
-    e.widget.bg = "white" 
+    e.widget.bg = "white"
 
 def right_pressed():
     waffle.set_pixel(0,0,"green")

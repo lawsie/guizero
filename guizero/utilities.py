@@ -1,4 +1,4 @@
-# this is to cater for Python 2, is it really needed? 
+# this is to cater for Python 2, is it really needed?
 try:
     from inspect import getfullargspec
 except ImportError:
@@ -45,7 +45,7 @@ class SystemConfig():
     @property
     def supported_image_types(self):
         """
-        Returns a list of images types supported by this system 
+        Returns a list of images types supported by this system
         e.g. ('GIF', 'PNG', 'JPG')
         """
         return self._supported_image_types
@@ -63,16 +63,16 @@ system_config = SystemConfig()
 class GUIZeroImage():
     def __init__(self, image_source, width, height):
         """
-        GUIZeroImage manages an "image" for guizero widgets, parsing its 
+        GUIZeroImage manages an "image" for guizero widgets, parsing its
         contents, sizing it accordingly and managing environment.
 
-        :param string image_source: 
-            The source of the image, a file path, PIL or 
+        :param string image_source:
+            The source of the image, a file path, PIL or
             Tk image object.
 
         :param int width:
             The required width of the image, set to `None`, to keep the
-            original image width 
+            original image width
 
         :param int height:
             The required height of the image, set to `None`, to keep the
@@ -94,7 +94,7 @@ class GUIZeroImage():
     @property
     def image_source(self):
         """
-        Returns the original source of the image, be that a file path, PIL or 
+        Returns the original source of the image, be that a file path, PIL or
         Tk image object.
         """
         return self._image_source
@@ -105,14 +105,14 @@ class GUIZeroImage():
         Returns the Tk PhotoImage object.
         """
         return self._tk_image
-    
+
     @property
     def pil_image(self):
         """
         Returns the PIL Image object.
         """
         return self._pil_image
-    
+
     @property
     def width(self):
         """
@@ -176,7 +176,7 @@ class GUIZeroImage():
 
             else:
                 raise Exception("Image must be a file path, PIL.Image or tkinter.PhotoImage")
-                        
+
         else:
             if isinstance(self._image_source, str):
                 self._tk_image = PhotoImage(file=self._image_source)
@@ -219,9 +219,9 @@ class GUIZeroImage():
 
                     self._tk_frames.append((tk_frame, delay))
                     frame_count += 1
-                    
+
             except EOFError as e:
-                # end of frames  
+                # end of frames
                 pass
 
             if frame_count > 1:
@@ -231,10 +231,10 @@ class GUIZeroImage():
 class AnimationPlayer():
     def __init__(self, master, guizero_image, update_image_callback):
         """
-        AnimationPlayer manages the playing of a animated gif for guizero 
+        AnimationPlayer manages the playing of a animated gif for guizero
         widgets.
-        
-        :param Widget master: 
+
+        :param Widget master:
             The widget which is displaying the animation.
 
         :param GUIZeroImage guizero_image:
@@ -317,7 +317,7 @@ def auto_pack(widget, master, grid, align):
                 if len(grid) > 2:
                     columnspan = grid[2]
                     rowspan = grid[3]
-                
+
                 # If no alignment, just place in grid with center align default
                 if align is None:
                     widget.tk.grid(row=grid[1], column=grid[0], columnspan=columnspan, rowspan=rowspan)
@@ -348,7 +348,7 @@ def with_args( func_name, *args):
 def no_args_expected(func_name):
     args = getfullargspec(func_name).args
     if len(args) > 0:
-        # if someone names the first arg of a class function to something 
+        # if someone names the first arg of a class function to something
         # other than self, this will fail! or if they name the first argument
         # of a non class function to self this will fail!
         if args[0] == "self":
@@ -372,7 +372,7 @@ def raise_error(message):
     error_message += message + "\n"
     error_message += "------------------------------------------------------------\n"
     raise GUIZeroException(error_message)
-    
+
 def deprecated(message):
     print("*** DEPRECATED: " + message)
 
@@ -398,23 +398,23 @@ def convert_color(color):
                     for hex_color in hex_colors:
                         try:
                             int_color = int(hex_color, 16)
-                        except: 
+                        except:
                             raise ValueError("{} is not a valid value, it must be hex 00 - ff".format(hex_color))
 
                         if not (0 <= int_color <= 255):
                             raise ValueError("{} is not a valid color value, it must be 00 - ff".format(hex_color))
-                        
+
         # if the color is not a string, try and convert it
         else:
             # get the number of colors and check it is iterable
             try:
                 no_of_colors = len(color)
             except:
-                raise ValueError("A color must be a list or tuple of 3 values (red, green, blue)") 
+                raise ValueError("A color must be a list or tuple of 3 values (red, green, blue)")
 
             if no_of_colors != 3:
                 raise ValueError("A color must contain 3 values (red, green, blue)")
-            
+
             # check the color values are between 0 and 255
             for c in color:
                 if not (0 <= c <= 255):

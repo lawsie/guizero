@@ -8,7 +8,7 @@ class ComboMenu(Base, ColorMixin, TextMixin):
 
     def __init__(self, tk):
         """
-        Internal class for managing the little menu which pops up when the 
+        Internal class for managing the little menu which pops up when the
         combo box is opened
         """
         super(ComboMenu, self).__init__(tk)
@@ -17,16 +17,16 @@ class ComboMenu(Base, ColorMixin, TextMixin):
 class Combo(TextWidget):
 
     def __init__(
-        self, 
-        master, 
-        options=[], 
-        selected=None, 
-        command=None, 
-        grid=None, 
-        align=None, 
-        visible=True, 
-        enabled=None, 
-        width=None, 
+        self,
+        master,
+        options=[],
+        selected=None,
+        command=None,
+        grid=None,
+        align=None,
+        visible=True,
+        enabled=None,
+        width=None,
         height=None):
         """
         Creates a Combo
@@ -38,7 +38,7 @@ class Combo(TextWidget):
             A list of strings to populate the Combo, defaults to an empty list.
 
         :param string selected:
-            The item in the Combo to select, defaults to `None`. 
+            The item in the Combo to select, defaults to `None`.
 
         :param callback command:
             The callback function to call when the Combo changes,
@@ -60,7 +60,7 @@ class Combo(TextWidget):
 
         :param int width:
             The starting width of the widget. Defaults to `None` and will auto
-            size. 
+            size.
 
         :param int height:
             The starting height of the widget. Defaults to `None` and will auto
@@ -74,7 +74,7 @@ class Combo(TextWidget):
 
         # Store currently selected item
         self._selected = StringVar()
-        
+
         # Create a tk OptionMenu object within this object
         if len(self._options) == 0:
             tk = OptionMenu(master.tk, self._selected, None, command=self._command_callback)
@@ -95,7 +95,7 @@ class Combo(TextWidget):
             self._set_option_by_index(0)
         else:
             self._set_option(selected)
-        
+
         self._default = selected
 
         # The command associated with this combo
@@ -123,7 +123,7 @@ class Combo(TextWidget):
         Sets or returns the background color of the widget.
         """
         return super(Combo, self.__class__).bg.fget(self)
-        
+
     @bg.setter
     def bg(self, value):
         super(Combo, self.__class__).bg.fset(self, value)
@@ -135,7 +135,7 @@ class Combo(TextWidget):
         Sets or returns the text color used by the widget.
         """
         return super(Combo, self.__class__).text_color.fget(self)
-        
+
     @text_color.setter
     def text_color(self, value):
         super(Combo, self.__class__).text_color.fset(self, value)
@@ -147,19 +147,19 @@ class Combo(TextWidget):
         Sets or returns the text size used by the widget.
         """
         return super(Combo, self.__class__).text_size.fget(self)
-        
+
     @text_size.setter
     def text_size(self, value):
         super(Combo, self.__class__).text_size.fset(self, value)
         self._combo_menu.text_size = value
-    
+
     @property
     def font(self):
         """
         Sets or returns the font used by the widget.
         """
         return super(Combo, self.__class__).font.fget(self)
-        
+
     @font.setter
     def font(self, value):
         super(Combo, self.__class__).font.fset(self, value)
@@ -168,7 +168,7 @@ class Combo(TextWidget):
     @property
     def options(self):
         """
-        Returns a list of options in the Combo 
+        Returns a list of options in the Combo
         """
         return self._options
 
@@ -179,14 +179,14 @@ class Combo(TextWidget):
     # (or the first value if no selected value was specified)
     def select_default(self):
         """
-        Resets the combo box to the original "selected" value from the 
+        Resets the combo box to the original "selected" value from the
         constructor (or the first value if no selected value was specified).
         """
         if self._default is None:
             if not self._set_option_by_index(0):
                 utils.error_format(self.description + "\n" +
                 "Unable to select default option as the Combo is empty")
-                    
+
         else:
             if not self._set_option(self._default):
                 utils.error_format( self.description + "\n" +
@@ -197,7 +197,7 @@ class Combo(TextWidget):
         Appends a new `option` to the end of the Combo.
 
         :param string option:
-            The option to append to the Combo. 
+            The option to append to the Combo.
         """
         self.insert(len(self._options), option)
 
@@ -206,10 +206,10 @@ class Combo(TextWidget):
         Insert a new `option` in the Combo at `index`.
 
         :param int option:
-            The index of where to insert the option. 
+            The index of where to insert the option.
 
         :param string option:
-            The option to insert into to the Combo. 
+            The option to insert into to the Combo.
         """
         option = str(option)
         self._options.insert(index, option)
@@ -226,7 +226,7 @@ class Combo(TextWidget):
         Returns `True` if an item was removed.
 
         :param string option:
-            The option to remove from the Combo. 
+            The option to remove from the Combo.
         """
         if option in self._options:
             if len(self._options) == 1:
@@ -242,7 +242,7 @@ class Combo(TextWidget):
             return True
         else:
             return False
-    
+
     # Clear all options from the box
     def clear(self):
         """
@@ -267,13 +267,13 @@ class Combo(TextWidget):
 
         # set the option which was previously selected
         self._set_option(selected)
-    
+
     def _set_option(self, value):
         """
         Sets a single option in the Combo, returning True if it was able too.
         """
         if len(self._options) > 0:
-            if value in self._options:    
+            if value in self._options:
                 self._selected.set(value)
                 return True
             else:
@@ -304,21 +304,21 @@ class Combo(TextWidget):
     def update_command(self, command):
         """
         Updates the callback command which is called when the Combo
-        changes. 
-        
+        changes.
+
         Setting to `None` stops the callback.
 
         :param callback command:
             The callback function to call, it can accept 0 or 1 parameters.
 
-            If it accepts 1 parameter the `value` of the Combo will be 
+            If it accepts 1 parameter the `value` of the Combo will be
             passed.
         """
         if command is None:
             self._command = lambda: None
         else:
             self._command = command
-            
+
     # DEPRECATED METHODS
     # --------------------------------------------
 

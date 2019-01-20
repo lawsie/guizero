@@ -4,7 +4,7 @@ def pressed():
 
 def message(msg):
     print(msg)
-    
+
 app = App()
 button = PushButton(app, command=pressed, text='Press me')
 print(button.width)

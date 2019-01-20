@@ -7,7 +7,7 @@ from common_test import (
     enable_test,
     display_test,
     text_test,
-    color_test, 
+    color_test,
     size_text_test,
     events_test,
     cascaded_properties_test,
@@ -27,14 +27,14 @@ def test_default_values():
 def test_alt_values():
     a = App(layout = "grid")
     b = ButtonGroup(
-        a, 
-        ["foo", "bar"], 
+        a,
+        ["foo", "bar"],
         "bar",
-        grid = [0,1], 
+        grid = [0,1],
         align = "top",
         width=11,
         height=10)
-    
+
     assert b.value == "bar"
     assert b.value_text == "bar"
     assert b.grid[0] == 0
@@ -56,7 +56,7 @@ def test_getters_setters():
     b = ButtonGroup(a, ["foo", ["bar", "b"]])
     assert b.value == "foo"
     assert b.value_text == "foo"
-    
+
     b.value = "b"
     assert b.value == "b"
     assert b.value_text == "bar"
@@ -70,12 +70,12 @@ def test_getters_setters():
 def test_append():
     a = App()
     b = ButtonGroup(a, [["foo", "f"], ["bar", "b"]])
-    
+
     assert b.options == [["foo", "f"], ["bar", "b"]]
 
     b.append("car")
     assert b.options == [["foo", "f"], ["bar", "b"], ["car", "car"]]
-    
+
     b.append(["lah", "l"])
     assert b.options == [["foo", "f"], ["bar", "b"], ["car", "car"], ["lah", "l"]]
 
@@ -84,25 +84,25 @@ def test_append():
 def test_insert():
     a = App()
     b = ButtonGroup(a, [["foo", "f"], ["bar", "b"]])
-    
+
     assert b.options == [["foo", "f"], ["bar", "b"]]
-    
+
     b.insert(1, "car")
     assert b.options == [["foo", "f"], ["car", "car"], ["bar", "b"]]
-    
+
     b.insert(2, ["lah", "l"])
     assert b.options == [["foo", "f"], ["car", "car"], ["lah", "l"], ["bar", "b"]]
-    
+
     a.destroy()
 
 def test_remove():
     a = App()
     b = ButtonGroup(a, [["foo", "f"], ["bar", "b"], ["car", "c"]])
-    
+
     assert b.options == [["foo", "f"], ["bar", "b"], ["car", "c"]]
     b.remove("f")
     assert b.options == [["bar", "b"], ["car", "c"]]
-    
+
     a.destroy()
 
 def test_clear():
@@ -117,7 +117,7 @@ def test_clear():
 
 def test_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         assert b.value == "bar"
@@ -125,7 +125,7 @@ def test_command():
         callback_event.set()
 
     b = ButtonGroup(a, ["foo", "bar"], command = callback)
-    
+
     assert not callback_event.is_set()
     b._rbuttons[1].tk.invoke()
     assert callback_event.is_set()
@@ -134,7 +134,7 @@ def test_command():
 
 def test_command_with_args():
     a = App()
-    
+
     callback_event = Event()
     def callback(value):
         assert value == "foo"
@@ -143,24 +143,24 @@ def test_command_with_args():
         callback_event.set()
 
     b = ButtonGroup(a, ["foo", "bar"], command = callback, args = ["foo"])
-    
+
     b._rbuttons[1].tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
-    
+
 def test_update_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
 
     b = ButtonGroup(a, ["foo", "bar"])
-    
+
     b._rbuttons[1].tk.invoke()
     assert not callback_event.is_set()
-    
+
     b.update_command(callback)
     b._rbuttons[1].tk.invoke()
     assert callback_event.is_set()
@@ -169,19 +169,19 @@ def test_update_command():
     b.update_command(None)
     b._rbuttons[1].tk.invoke()
     assert not callback_event.is_set()
-    
+
     a.destroy()
 
 def test_update_command_with_args():
     a = App()
-    
+
     callback_event = Event()
     def callback(value):
         assert value == "foo"
         callback_event.set()
 
     b = ButtonGroup(a, ["foo", "bar"])
-    
+
     b.update_command(callback, ["foo"])
     b._rbuttons[1].tk.invoke()
     assert callback_event.is_set()

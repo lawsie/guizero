@@ -27,7 +27,7 @@ def test_alt_values():
     p = Picture(
         a,
         image = "../examples/guizero.gif",
-        grid = [0,1], 
+        grid = [0,1],
         align = "top",
         width = 10,
         height = 11)
@@ -43,7 +43,7 @@ def test_alt_values():
 def test_getters_setters():
     a = App()
     p = Picture(a)
-    
+
     assert p.image == None
     p.image = "../examples/guizero.gif"
     assert p.image == "../examples/guizero.gif"
@@ -60,7 +60,7 @@ def test_getters_setters():
 def test_jpg():
     a = App()
     p = Picture(a, image = "../examples/guizero.jpg")
-    
+
     assert p.image == "../examples/guizero.jpg"
     assert p._image.tk_image is not None
     assert p._image.pil_image is not None
@@ -72,7 +72,7 @@ def test_jpg():
 def test_animated_picture():
     a = App()
     p = Picture(a, image = "../examples/guizero_flash.gif")
-    
+
     assert p._image.tk_image is not None
     assert p._image.pil_image is not None
     assert p._image.animation
@@ -82,7 +82,7 @@ def test_animated_picture():
 
 def test_picture_tkobject():
     from tkinter import PhotoImage
-    
+
     a = App()
     photo_image = PhotoImage(file="../examples/guizero.gif")
     p = Picture(a, image=photo_image)
@@ -94,7 +94,7 @@ def test_picture_tkobject():
                     reason="PIL not available")
 def test_picture_pilobject():
     from PIL import Image
-    
+
     a = App()
     pil_image = Image.open("../examples/guizero.gif")
     p = Picture(a, image=pil_image)

@@ -40,10 +40,10 @@ class Picture(Widget):
                 self._image_player = utils.AnimationPlayer(self, self._image, self._update_tk_image)
             else:
                 self._update_tk_image(self._image.tk_image)
-            
+
             self.tk.config(width=self._width)
             self.tk.config(height=self._height)
-            
+
     def _update_tk_image(self, tk_image):
         self.tk.config(image=tk_image)
 
@@ -79,7 +79,7 @@ class Picture(Widget):
     @width.setter
     def width(self, value):
         self.resize(value, self._height)
-        
+
     @property
     def height(self):
         return self._height

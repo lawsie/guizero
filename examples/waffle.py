@@ -10,7 +10,7 @@ def clicked(x,y):
     waffle.dotty = True
     waffle.pad = 25
     waffle.color = "green"
-    
+
 app = App()
 waffle = Waffle(app, command = clicked, height = 15, width = 15)
 waffle.bg=(255,255,0)
