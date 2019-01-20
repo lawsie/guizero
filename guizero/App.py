@@ -2,6 +2,7 @@ from tkinter import Tk, Toplevel
 from .base import BaseWindow
 from . import utilities as utils
 
+
 class App(BaseWindow):
 
     _main_app = None
@@ -37,12 +38,26 @@ class App(BaseWindow):
     # METHODS
     # --------------------------------------
 
-    # Alias of mainloop with friendlier name
+
     def display(self):
+        """
+        Display the window.
+
+        :return:
+            None.
+        """
         self.tk.mainloop()
 
     def destroy(self):
-        """Destroy the object."""
+        """
+        Destroy and close the App.
+
+        :return:
+            None.
+
+         :note:
+            Once destroyed an App can no longer be used.
+        """
         # if this is the main_app - set the _main_app class variable to `None`.
         if self == App._main_app:
             App._main_app = None

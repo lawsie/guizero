@@ -21,7 +21,13 @@ class Base():
 
     def __init__(self, tk):
         """
-        The base class for all components in guizero.
+        Base class for all components in guizero.
+
+        :param tk:
+            Top level widget instance of Tkinter which usually is the main window of the application
+
+        :return:
+            None.
         """
         self._tk = tk
         self._tk_defaults = {}
@@ -34,10 +40,21 @@ class Base():
     def tk(self):
         """
         Returns the tk widget.
+
+        :return:
+            tk widget
         """
         return self._tk
 
     def _has_tk_config(self, key):
+        """
+        Checks whether the key is configured or not.
+
+        :param key: Key
+
+        :return:
+            Keys in tk.keys
+        """
         return key in self.tk.keys()
 
     def _get_tk_config(self, key, default=False):
@@ -110,6 +127,9 @@ class Component(
     def master(self):
         """
         Returns the master (container) of this widget, or `None` if it doesn't have one.
+
+        :return:
+            Master container of widget, 'None' if it doesn't exists.
         """
         return self._master
 
