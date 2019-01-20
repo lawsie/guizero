@@ -306,43 +306,48 @@ class Container(Component):
                 if self.layout != "grid":
                     self._pack_widget(child)
                 else:
-                    utils.auto_pack(child, self, child.grid, child.align)
+                    self._grid_widget(child)
 
     def _pack_widget(self, widget):
         widget.tk.pack()
 
     def _grid_widget(self, widget):
-        # If they failed to specify grid coords
-        # Can have 2 values (just coords) or 4 values (coords and col/rowspan)
-        if grid is None or type(grid) is not list or (len(grid) != 2 and len(grid) != 4):
-            error_format(widget.description + " will not be displayed because it has a missing or " +
-            "incorrect grid reference. The format should be grid=[x, y] or grid=[x, y, columnspan, rowspan].")
+        align = widget.align
 
+        # If they failed to specify grid coords
+        if widget.grid is None:
+            utils.error_format("{} will not be displayed because it has a missing grid reference.".format(widget.description))
+        elif type(widget.grid) is not list:
+            utils.error_format("{} will not be displayed because the grid reference is not a list.".format(widget.description))
+        # Can have 2 values (just coords) or 4 values (coords and col/rowspan)
+        elif (len(widget.grid) != 2 and len(widget.grid) != 4):
+            utils.error_format("{} will not be displayed because the grid reference should be either grid=[x, y] or grid=[x, y, columnspan, rowspan].".format(widget.description))
         else:
             # if we have col span and row span then use them, otherwise default to 1 for both
             columnspan = 1
             rowspan = 1
             # Just check we have more than 2 as we have already checked it's a multiple of two previously
-            if len(grid) > 2:
-                columnspan = grid[2]
-                rowspan = grid[3]
+            if len(widget.grid) > 2:
+                columnspan = widget.grid[2]
+                rowspan = widget.grid[3]
 
             # If no alignment, just place in grid with center align default
             if align is None:
-                widget.tk.grid(row=grid[1], column=grid[0], columnspan=columnspan, rowspan=rowspan)
+                widget.tk.grid(row=widget.grid[1], column=widget.grid[0], columnspan=columnspan, rowspan=rowspan)
             else:
                 # Conversion to child friendly specifications (diags?)
                 directions = {"top": "N", "bottom": "S", "left": "W", "right": "E"}
-                align_this = "W" # Default to align left if they didn't specify something valid
+                # Default to align left if they didn't specify something valid
+                align_this = "W" 
 
                 try:
                     align_this = directions[align]
                 except KeyError:
-                    error_format("Invalid align value ('"+ str(align) +"') for " + widget.description +
+                    utils.error_format("Invalid align value ('"+ str(align) +"') for " + widget.description +
                     "\nShould be: top, bottom, left or right")
 
                 # Place on grid
-                widget.tk.grid(row=grid[1], column=grid[0], columnspan=columnspan, rowspan=rowspan, sticky=align_this)
+                widget.tk.grid(row=widget.grid[1], column=widget.grid[0], columnspan=columnspan, rowspan=rowspan, sticky=align_this)
 
     @property
     def enabled(self):
