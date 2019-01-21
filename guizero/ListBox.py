@@ -160,7 +160,7 @@ class ListBox(ContainerTextWidget):
         Setting to `None` stops the callback.
 
         :param callback command:
-            The callback function to call, it can ccept 0 or 1 parameters.
+            The callback function to call, it can accept 0 or 1 parameters.
 
             If it accepts 1 parameter the `value` of the ListBox will be
             passed.
