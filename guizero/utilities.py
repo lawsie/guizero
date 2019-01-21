@@ -53,7 +53,7 @@ class SystemConfig():
     @property
     def platform(self):
         """
-        Returns the current platform ("lunux", "darwin", "win32")
+        Returns the current platform ("linux", "darwin", "win32")
         """
         return self._platform
 
