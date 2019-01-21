@@ -225,7 +225,7 @@ class SizeMixin():
         self._set_tk_config("width", width)
         self._set_tk_config("height", height)
 
-class GridMixin():
+class LayoutMixin():
 
     @property
     def grid(self):

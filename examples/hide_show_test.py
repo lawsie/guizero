@@ -23,18 +23,20 @@ def show(widget):
 
 a = App()
 b = Box(a, layout="grid")
+b.border = True
 
 t1 = Text(a, text="1")
 t2 = Text(a, text="2")
 t3 = Text(a, text="3")
 
-ta = Text(b, text="a", grid=[0,0])
-tb = Text(b, text="b", grid=[1,0])
-tc = Text(b, text="c", grid=[2,0])
+ta = Text(b, text="aa", grid=[0,0], align="left")
+tb = Text(b, text="bbb", grid=[1,0])
+tc = Text(b, text="cccc", grid=[2,0])
+tc = Text(b, text="ddddd", grid=[0,1])
 
 pbb = Box(a, layout="grid")
 
-b1h = PushButton(pbb, text="hide 1", grid=[0,1], align="sdfsd", command=hide, args=[t1])
+b1h = PushButton(pbb, text="hide 1", grid=[0,1], command=hide, args=[t1])
 b1s = PushButton(pbb, text="show 1", grid=[1,1], command=show, args=[t1])
 b2h = PushButton(pbb, text="hide 2", grid=[2,1], command=hide, args=[t2])
 b2s = PushButton(pbb, text="show 2", grid=[3,1], command=show, args=[t2])

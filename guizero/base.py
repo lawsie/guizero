@@ -10,7 +10,7 @@ from .tkmixins import (
     TextMixin,
     ColorMixin,
     SizeMixin,
-    GridMixin,
+    LayoutMixin,
     EventsMixin)
 
 from . import utilities as utils
@@ -292,16 +292,21 @@ class Container(Component):
         """
         Displays all the widgets associated with this Container.
 
-        Should be called when the widgets need to be "re-packed".
+        Should be called when the widgets need to be "re-packed/gridded".
         """
         from . import utilities as utils
+        # All widgets are removed and then recreated to ensure the order they 
+        # were created is the order they are displayed.
+
         for child in self.children:
-            # forget all the widgets
-            if self.layout == "grid":
-                child.tk.grid_forget()
-            else:
+
+            # forget the widget
+            if self.layout != "grid":
                 child.tk.pack_forget()
-            # display the widgets
+            else:
+                child.tk.grid_forget()
+            
+            # display the widget
             if child.visible:
                 if self.layout != "grid":
                     self._pack_widget(child)
@@ -309,11 +314,20 @@ class Container(Component):
                     self._grid_widget(child)
 
     def _pack_widget(self, widget):
-        widget.tk.pack()
+        pack_params={}
+
+        if widget.align is not None:
+            if widget.align in ["top", "bottom", "left", "right"]:
+                pack_params["side"] = widget.align
+            else:
+                utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
+                    widget.align,
+                    widget.description
+                ))
+
+        widget.tk.pack(**pack_params)
 
     def _grid_widget(self, widget):
-        align = widget.align
-
         # If they failed to specify grid coords
         if widget.grid is None:
             utils.error_format("{} will not be displayed because it has a missing grid reference.".format(widget.description))
@@ -323,31 +337,27 @@ class Container(Component):
         elif (len(widget.grid) != 2 and len(widget.grid) != 4):
             utils.error_format("{} will not be displayed because the grid reference should be either grid=[x, y] or grid=[x, y, columnspan, rowspan].".format(widget.description))
         else:
-            # if we have col span and row span then use them, otherwise default to 1 for both
-            columnspan = 1
-            rowspan = 1
+            grid_params = {
+                "column": widget.grid[0],
+                "row": widget.grid[1]
+            }
+
             # Just check we have more than 2 as we have already checked it's a multiple of two previously
             if len(widget.grid) > 2:
-                columnspan = widget.grid[2]
-                rowspan = widget.grid[3]
+                grid_params["columnspan"] = widget.grid[2]
+                grid_params["rowspan"] = widget.grid[3]
 
-            # If no alignment, just place in grid with center align default
-            if align is None:
-                widget.tk.grid(row=widget.grid[1], column=widget.grid[0], columnspan=columnspan, rowspan=rowspan)
-            else:
-                # Conversion to child friendly specifications (diags?)
+            if widget.align is not None:
                 directions = {"top": "N", "bottom": "S", "left": "W", "right": "E"}
-                # Default to align left if they didn't specify something valid
-                align_this = "W" 
+                if widget.align in directions.keys():
+                    grid_params["sticky"] = directions[widget.align]
+                else:
+                    utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
+                    widget.align,
+                    widget.description
+                ))
 
-                try:
-                    align_this = directions[align]
-                except KeyError:
-                    utils.error_format("Invalid align value ('"+ str(align) +"') for " + widget.description +
-                    "\nShould be: top, bottom, left or right")
-
-                # Place on grid
-                widget.tk.grid(row=widget.grid[1], column=widget.grid[0], columnspan=columnspan, rowspan=rowspan, sticky=align_this)
+            widget.tk.grid(**grid_params)
 
     @property
     def enabled(self):
@@ -493,7 +503,7 @@ class Widget(
     EnableMixin,
     DisplayMixin,
     SizeMixin,
-    GridMixin):
+    LayoutMixin):
 
     def __init__(self, master, tk, description, grid, align, visible, enabled, width, height):
         """
@@ -536,7 +546,7 @@ class ContainerWidget(
     EnableMixin,
     DisplayMixin,
     SizeMixin,
-    GridMixin):
+    LayoutMixin):
 
     def __init__(self, master, tk, description, layout, grid, align, visible, enabled, width, height):
         """

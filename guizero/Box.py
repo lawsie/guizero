@@ -77,10 +77,14 @@ class Box(ContainerWidget):
         if height is None:
             height = 0
 
+        propagate_function = self.tk.pack_propagate
+        if self.layout == "grid":
+            propagate_function = self.tk.grid_propagate
+
         if width == 0 and height == 0:
-            self.tk.pack_propagate(True)
+            propagate_function(True)
         elif width > 0 and height > 0:
-            self.tk.pack_propagate(False)
+            propagate_function(False)
         else:
             utils.error_format("You must specify a width and a height for a Box")
 
