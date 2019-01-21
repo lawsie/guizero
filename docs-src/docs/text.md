@@ -31,7 +31,7 @@ When you create a `Text` object, you **must** specify a `master` and you can spe
 | color     | [color](colors.md) | black       | -          | The colour of the text. Accepts some colour strings (e.g. `red`) and colours specified in hex format (e.g. `#0099ff`)                                                                   |
 | font      | string             | "Helvetica" | -          | The font face that the text will be displayed in. Availability of fonts depends on which fonts are installed locally.                                                                   |
 | grid      | List [int, int]    | None        | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                           |
-| size      | int                | 12          | -          | The font size of the text                                                                                                                                                               |
+| text_size | int                | 12          | -          | The font size of the text                                                                                                                                                               |
 | text      | string             | ""          | -          | The text you want to display                                                                                                                                                            |
 | visible   | boolean            | True        | No         | If the widget should be visible.                                                                                                                                                        |
 | enabled   | boolean            | None        | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
@@ -79,7 +79,7 @@ You can set and get the following properties:
 | grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | height     | [size](size.md)    | Sets the height of the widget                                                                         |
 | master     | App or Box         | The container to which this widget belongs                                                            |
-| size       | int                | The size of the text                                                                                  |
+| text_size  | int                | The size of the text                                                                                  |
 | text_color | [color](colors.md) | The colour of the text                                                                                |
 | value      | string             | The text                                                                                              |
 | visible    | boolean            | If this widget is visible                                                                             |

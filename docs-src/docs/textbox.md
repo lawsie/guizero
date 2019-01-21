@@ -79,7 +79,7 @@ You can set and get the following properties:
 | value      | string             | The text in the TextBox                                                                               |
 | visible    | boolean            | If this widget is visible                                                                             |
 | width      | [size](size.md)    | Sets the width of the widget                                                                          |
-| size       | int                | The size of the text                                                                                  |
+| text_size  | int                | The size of the text                                                                                  |
 | text_color | [color](colors.md) | The colour of the text                                                                                |
 
 ### Examples
