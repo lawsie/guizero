@@ -99,6 +99,7 @@ class DisplayMixin():
         self._visible = True
         self.master.display_widgets()
 
+
 class TextMixin():
 
     FG_KEYS = [
@@ -195,7 +196,7 @@ class SizeMixin():
         """
         Sets or returns the width of the widget.
         """
-        return int(self._get_tk_config("width"))
+        return self._width
 
     @width.setter
     def width(self, value):
@@ -206,7 +207,7 @@ class SizeMixin():
         """
         Sets or returns the height of the widget.
         """
-        return int(self._get_tk_config("height"))
+        return self._height
 
     @height.setter
     def height(self, value):
@@ -222,8 +223,11 @@ class SizeMixin():
         :param int height:
             The height of the widget.
         """
+        self._width = width
+        self._height = height
         self._set_tk_config("width", width)
         self._set_tk_config("height", height)
+
 
 class LayoutMixin():
 

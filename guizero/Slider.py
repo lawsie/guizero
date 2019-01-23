@@ -30,37 +30,15 @@ class Slider(TextWidget):
     def value(self, value):
         self.tk.set(value)
 
-    @property
-    def width(self):
-        if self._horizontal:
-            return self._get_tk_config("length")
-        else:
-            return self._get_tk_config("width")
-
-    @width.setter
-    def width(self, value):
-        if self._horizontal:
-            self._set_tk_config("length", value)
-        else:
-            self._set_tk_config("width", value)
-
-    @property
-    def height(self):
-        if self._horizontal:
-            return self._get_tk_config("width")
-        else:
-            return self._get_tk_config("length")
-
-    @height.setter
-    def height(self, value):
-        if self._horizontal:
-            self._set_tk_config("width", value)
-        else:
-            self._set_tk_config("length", value)
-
     def resize(self, width, height):
-        self.width = width
-        self.height = height
+        self._width = width
+        self._height = height
+        if self._horizontal:
+            self._set_tk_config("length", width)
+            self._set_tk_config("width", height)
+        else:
+            self._set_tk_config("width", width)
+            self._set_tk_config("length", height)           
 
     # METHODS
     # ----------------

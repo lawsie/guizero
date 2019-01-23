@@ -11,8 +11,6 @@ class Picture(Widget):
         self._image_source = image
         self._image = None
         self._image_player = None
-        self._width = None
-        self._height = None
 
         # Instantiate label object which will contain image
         tk = Label(master.tk)
@@ -71,22 +69,6 @@ class Picture(Widget):
     @image.setter
     def image(self, image_source):
         self.value = image_source
-
-    @property
-    def width(self):
-        return self._width
-
-    @width.setter
-    def width(self, value):
-        self.resize(value, self._height)
-
-    @property
-    def height(self):
-        return self._height
-
-    @height.setter
-    def height(self, value):
-        self.resize(self._width, value)
 
     def resize(self, width, height):
         self._width = width

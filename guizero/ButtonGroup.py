@@ -197,8 +197,7 @@ class ButtonGroup(ContainerTextWidget):
 
     @width.setter
     def width(self, value):
-        for item in self._rbuttons:
-            item.width = value
+        self.resize(value, self._height)
 
     @property
     def height(self):
@@ -212,25 +211,7 @@ class ButtonGroup(ContainerTextWidget):
 
     @height.setter
     def height(self, value):
-
-        if len(self._rbuttons) > 0:
-            # work out the height of a button
-            if value is None:
-                button_height = None
-            else:
-                if value > 0:
-                    if value % len(self._rbuttons) != 0:
-                        # if the height doesnt divide by the number of radio buttons give a warning
-                        button_height = int(round(value / len(self._rbuttons)))
-                        new_height = button_height * len(self._rbuttons)
-                        utils.error_format("ButtonGroup height '{}' doesn't divide by the number of buttons '{}' setting height to '{}'.".format(value, len(self._rbuttons), new_height))
-                    else:
-                        button_height = int(value / len(self._rbuttons))
-                else:
-                    button_height = None
-
-            for item in self._rbuttons:
-                item.height = button_height
+        self.resize(self._width, value)
 
     def resize(self, width, height):
         """
@@ -242,8 +223,32 @@ class ButtonGroup(ContainerTextWidget):
         :param int height:
             The height of the widget.
         """
-        self.width = width
-        self.height = height
+        self._width = width
+        self._height = height
+
+        # update width
+        for item in self._rbuttons:
+            item.width = width
+
+        # update height
+        if len(self._rbuttons) > 0:
+            # work out the height of a button
+            if height is None:
+                button_height = None
+            else:
+                if height > 0:
+                    if height % len(self._rbuttons) != 0:
+                        # if the height doesnt divide by the number of radio buttons give a warning
+                        button_height = int(round(height / len(self._rbuttons)))
+                        new_height = button_height * len(self._rbuttons)
+                        utils.error_format("ButtonGroup height '{}' doesn't divide by the number of buttons '{}' setting height to '{}'.".format(height, len(self._rbuttons), new_height))
+                    else:
+                        button_height = int(height / len(self._rbuttons))
+                else:
+                    button_height = None
+
+            for item in self._rbuttons:
+                item.height = button_height
 
     @property
     def options(self):

@@ -22,7 +22,6 @@ class TextBox(TextWidget):
         description = "[TextBox] object with text \"" + str(text) + "\""
 
         self._multiline = multiline
-        self._height = height
 
         # Set up controlling string variable
         self._text = StringVar()
@@ -62,14 +61,6 @@ class TextBox(TextWidget):
             self.tk.delete(1.0,END)
             self.tk.insert(END,self._text.get())
         self.description = "[TextBox] object with text \"" + str(value) + "\""
-
-    @property
-    def height(self):
-        return self._height
-
-    @height.setter
-    def height(self, value):
-        self.resize(self.width, value)
 
     def resize(self, width, height):
         self._set_tk_config("width", width)

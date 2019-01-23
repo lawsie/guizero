@@ -512,6 +512,8 @@ class Widget(
         super(Widget, self).__init__(master,tk, description)
         self._grid = grid
         self._align = align
+        self._width = width
+        self._height = height
         self.visible = visible
         self.enabled = enabled
 
@@ -555,6 +557,8 @@ class ContainerWidget(
         super(ContainerWidget, self).__init__(master,tk, description, layout)
         self._grid = grid
         self._align = align
+        self._width = width
+        self._height = height
         self.visible = visible
 
         #inherit from master
