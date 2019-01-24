@@ -200,7 +200,7 @@ class SizeMixin():
 
     @width.setter
     def width(self, value):
-        self.resize(value, self.height)
+        self.resize(value, self._height)
 
     @property
     def height(self):
@@ -211,7 +211,7 @@ class SizeMixin():
 
     @height.setter
     def height(self, value):
-        self.resize(self.width, value)
+        self.resize(self._width, value)
 
     def resize(self, width, height):
         """
