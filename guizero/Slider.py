@@ -31,19 +31,31 @@ class Slider(TextWidget):
         self.tk.set(value)
 
     def resize(self, width, height):
+        self._set_width(width)
+        self._set_height(height)
+        if width == "fill" or height == "fill":
+            self.master.display_widgets()
+    
+    def _set_width(self, width):
         self._width = width
+        if width != "fill":
+            if self._horizontal:
+                self._set_tk_config("length", width)
+            else:
+                self._set_tk_config("width", width)
+    
+    def _set_height(self, height):
         self._height = height
-        if self._horizontal:
-            self._set_tk_config("length", width)
-            self._set_tk_config("width", height)
-        else:
-            self._set_tk_config("width", width)
-            self._set_tk_config("length", height)           
+        if height != "fill":
+            if self._horizontal:
+                self._set_tk_config("width", height)
+            else:
+                self._set_tk_config("length", height)
+
 
     # METHODS
     # ----------------
     # Calls the given function when the slider value is changed
-
     def _command_callback(self, value):
         if self._command:
             args_expected = utils.no_args_expected(self._command)

@@ -40,6 +40,9 @@ class Waffle(Widget):
 
     # Internal use only
     def _create_waffle(self):
+        if self._height == "fill" or self._width == "fill":
+            utils.raise_error("{}\nCannot use 'fill' for width and height.".format(self.description))
+            
         self._create_canvas()
         self._size_waffle()
         self._draw_waffle()

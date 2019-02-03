@@ -21,6 +21,9 @@ class Picture(Widget):
         self._load_image()
 
     def _load_image(self):
+        if self._height == "fill" or self._width == "fill":
+            utils.raise_error("{}\nCannot use 'fill' for width and height.".format(self.description))
+
         if self._image_source is not None:
 
             # stop any animation which might still be playing

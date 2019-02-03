@@ -225,8 +225,12 @@ class SizeMixin():
         """
         self._width = width
         self._height = height
-        self._set_tk_config("width", width)
-        self._set_tk_config("height", height)
+        if width != "fill":
+            self._set_tk_config("width", width)
+        if height != "fill":
+            self._set_tk_config("height", height)
+        if width == "fill" or height == "fill":
+            self.master.display_widgets()
 
 
 class LayoutMixin():

@@ -54,6 +54,9 @@ class PushButton(TextWidget):
                 utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
 
     def _load_image(self):
+        if self._height == "fill" or self._width == "fill":
+            utils.raise_error("{}\nCannot use 'fill' for width and height when using a image.".format(self.description))
+
         # stop any animation which might still be playing
         if self._image_player:
             self._image_player.stop()

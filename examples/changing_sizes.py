@@ -12,11 +12,12 @@ button = PushButton(app, width=20, height=2)
 
 pic = Picture(app, image="guizero.gif", width=400, height=50)
 
-combo = Combo(app, ["martin", "laura", "rik"], width=50, height=2)
+combo = Combo(app, ["martin", "laura", "rik"], width="fill", height="fill")
 
-check = CheckBox(app, "tick me", width=17, height=2)
+check = CheckBox(app, "tick me", width=20, height=3)
+check.bg = "blue"
 
-button_group = ButtonGroup(app, ["cheese", "onion", "crisps"], 1, width=35, height=9)
+button_group = ButtonGroup(app, ["cheese", "onion", "crisps"], 1, width=20, height=9)
 button_group.bg = "darkgrey"
 
 box = Box(app, width=100, height=100)

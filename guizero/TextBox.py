@@ -30,12 +30,15 @@ class TextBox(TextWidget):
         # Create a tk object for the text box
         if multiline:
             if scrollbar:
-                tk = ScrolledText(master.tk, width=width, height=height, wrap="word")
+                #tk = ScrolledText(master.tk, width=width, height=height, wrap="word")
+                tk = ScrolledText(master.tk, wrap="word")
             else:
-                tk = Text(master.tk, width=width, height=height)
+                #tk = Text(master.tk, width=width, height=height)
+                tk = Text(master.tk)
             tk.insert(END,self._text.get())
         else:
-            tk = Entry(master.tk, textvariable=self._text, width=width)
+            #tk = Entry(master.tk, textvariable=self._text, width=width)
+            tk = Entry(master.tk, textvariable=self._text)
 
         super(TextBox, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
@@ -63,14 +66,19 @@ class TextBox(TextWidget):
         self.description = "[TextBox] object with text \"" + str(value) + "\""
 
     def resize(self, width, height):
-        self._set_tk_config("width", width)
+        self._width = width
+        if width != "fill":
+            self._set_tk_config("width", width)
+
         if height is not None:
             if self._multiline:
                 self._height = height
-                self.tk.config(height=height)
+                if height != "fill":
+                    self.tk.config(height=height)
             else:
-                if height > 1:
-                    utils.error_format("Cannot change the height of a single line TextBox{}".format(self.description))
+                if isinstance(height, int):
+                    if height > 1:
+                        utils.error_format("Cannot change the height of a single line TextBox{}".format(self.description))
 
     # METHODS
     # -------------------------------------------

@@ -23,6 +23,8 @@ Text(a_box, text="a box on the right", align="right")
 PushButton(a_box_in_a_box, text="on top", align="top")
 PushButton(a_box_in_a_box, text="of each other", align="top")
 
+full_button = PushButton(a, text="full button", width="fill", height="fill")
+
 bottom_box = Box(a, width=500, height=100, align="bottom", layout="grid")
 bottom_box.border = True
 

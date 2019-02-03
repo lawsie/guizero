@@ -104,6 +104,7 @@ class ListBox(ContainerTextWidget):
         :param int height:
             The height of the widget.
         """
+        self._set_propagation(width, height)
         super(ListBox, self).resize(width, height)
         self._listbox.resize(width, height)
 
