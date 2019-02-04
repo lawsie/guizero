@@ -1,28 +1,23 @@
 ## Layouts
 
-The layout of your GUI is how you arrange the widgets on the screen.
+The layout of your GUI is how you arrange the widgets in the window.
 
-Widgets can be arranged into containers (e.g. `App`, `Window`, `Box`) using either of these layouts:
+Widgets can be arranged into "containers" (e.g. `App`, `Window`, `Box`) using either of these layouts:
 + `auto` - where widgets are positioned automatically
 + `grid` - you specify where in a grid each widget should be positioned
 
-The layout is set using `layout` parameter e.g.
+The layout is set using `layout` parameter of the container e.g.
 
 ```python
 app = App(layout="auto")
-```
-
-```python
 app = App(layout="grid")
 ```
 
-If `layout` isn't specified the default `auto` is used.
+If a `layout` parameter isn't specified the default `auto` is used.
 
 ### Auto layout
 
 `auto` is the default layout used when a container is created and will arrange widgets in the order they are created aligned to the centre, e.g. the following code will create 2 Text widgets one on top of the other.
-
-![image of auto layout](images/layout_auto.png)
 
 ```python
 from guizero import App, Text
@@ -32,13 +27,13 @@ text_2 = Text(app, text="below")
 app.display()
 ```
 
+![image of auto layout](images/layout_auto.png)
+
 ### Aligning
 
 Widgets can be aligned to either the `top`, `bottom`, `left` or `right`, using the `align` property when created. 
 
 Aligning Widgets will cause them to be "stuck" to that side of the container e.g. 
-
-![image of auto layout](images/layout_auto_align.png)
 
 ```python
 from guizero import App, Text
@@ -50,9 +45,9 @@ right_text = Text(app, text="to the right", align="right")
 app.display()
 ```
 
-By aligning multiple widgets to the same side of the container, widgets can be made to stack together e.g.
+![image of auto layout](images/layout_auto_align.png)
 
-![image of auto layout](images/layout_auto_align_stack.png)
+By aligning multiple widgets to the same side of the container, widgets can be made to stack together e.g.
 
 ```python
 from guizero import App, Text, TextBox, PushButton
@@ -63,13 +58,15 @@ button = PushButton(app, text="submit", align="left")
 app.display()
 ```
 
+![image of auto layout](images/layout_auto_align_stack.png)
+
 ### Filling
 
 Widgets can also be made to "fill" all the available space by setting the `width` and `height` parameters to `fill`.
 
-A TextBox could span the entire width of the container e.g.
+e.g.
 
-![image of auto layout](images/layout_fill_width.png)
+A TextBox could span the entire width of the container:
 
 ```python
 from guizero import App, TextBox
@@ -78,9 +75,9 @@ text_box = TextBox(app, text="enter text", width="fill")
 app.display()
 ```
 
-Or a ListBox could fill the left hand side by using `fill` for the `height` and `align` to the `left` e.g.
+![image of auto layout](images/layout_fill_width.png)
 
-![image of auto layout](images/layout_fill_height.png)
+Or a ListBox could fill the left hand side by using `fill` for the `height` and `align` to the `left` e.g.
 
 ```python
 from guizero import App, ListBox
@@ -89,9 +86,9 @@ list_box = ListBox(app, items=["a list"], height="fill", align="left")
 app.display()
 ```
 
-Using `fill` for the `width` and the `height` will make a widget use all the available space e.g.
+![image of auto layout](images/layout_fill_height.png)
 
-![image of auto layout](images/layout_fill_both.png)
+Using `fill` for the `width` and the `height` will make a widget use all the available space e.g.
 
 ```python
 from guizero import App, PushButton
@@ -100,9 +97,9 @@ button = PushButton(app, width="fill", height="fill")
 app.display()
 ```
 
-When multiple widgets use `fill` the Window Manager (operating system) will distribute the space accordingly.
+![image of auto layout](images/layout_fill_both.png)
 
-![image of auto layout](images/layout_fill_multiple.png)
+When multiple widgets use `fill` the Window Manager (operating system) will distribute the space accordingly between all the widgets which need to fill it.
 
 ```python
 from guizero import App, ListBox, PushButton
@@ -111,6 +108,8 @@ list_box = ListBox(app, items=["a list"], height="fill", align="left")
 button = PushButton(app, width="fill", height="fill", align="right")
 app.display()
 ```
+
+![image of auto layout](images/layout_fill_multiple.png)
 
 **Note :** using fill may not always have the effect you are expecting as it is up to the operating system to distribute screen space.
 
@@ -127,28 +126,30 @@ text = Text(app, text="Hello world", grid=[0,1])
 
 There is no need to specify the width or height of the grid you want - it will expand depending on the coordinates you provide with each widget. However, grid cells containing no objects will have no height or width.
 
-This is really useful when creating GUIs where you want widgets to line up e.g. 
+This is really useful when creating GUIs where you want widgets to line up. 
 
-+ A form:
+e.g. 
 
-    ![image of grid layout](images/layout_grid.png)
+Creating a form:
 
-    ```python
-    from guizero import App, Text, TextBox
+![image of grid layout](images/layout_grid.png)
 
-    app = App(layout="grid")
+```python
+from guizero import App, Text, TextBox
 
-    name_label = Text(app, text="Name", grid=[0,0])
-    name = TextBox(app, grid=[1,0])
-    surname_label = Text(app, text="Surname", grid=[0,1])
-    surname = TextBox(app, grid=[1,1])
-    dob_label = Text(app, text="Date of Birth", grid=[0,2])
-    dob = TextBox(app, grid=[1,2])
+app = App(layout="grid")
 
-    app.display()
-    ```
+name_label = Text(app, text="Name", grid=[0,0])
+name = TextBox(app, grid=[1,0])
+surname_label = Text(app, text="Surname", grid=[0,1])
+surname = TextBox(app, grid=[1,1])
+dob_label = Text(app, text="Date of Birth", grid=[0,2])
+dob = TextBox(app, grid=[1,2])
 
-+ keypad
+app.display()
+```
+
+Or a number keypad:
 
 ![image of grid layout](images/layout_grid_keypad.png)
 
@@ -173,7 +174,7 @@ app.display()
 
 ### Spanning columns or rows**
 
-You can have a widget span multiple columns or rows by specifying those within the grid parameter. These are optional, but if specified both must be included using the format `[x,y,xspan,yspan]`.
+Widgets can be made to span multiple columns or rows by specifying the span within the grid parameter. These are optional, but if specified both must be included using the format `[x,y,xspan,yspan]`.
 
 The example below shows text widget located at 0,1 spanning two columns (x) and one row (y):
 
@@ -182,10 +183,6 @@ text = Text(app, text="Hello world", grid=[0,1,2,1])
 ```
 
 This can be used to include widgets of different sizes arranged alongside each other.
-
-![Grid layout images](images/layout_grid_span.png)
-
-Assuming you have four appropriate image files then the code to create this is shown below.
 
 ```python
 from guizero import App, Picture
@@ -200,16 +197,17 @@ picture4 = Picture(app, image="wide1.gif", grid=[0,1,2,1])
 app.display()
 ```
 
+![Grid layout images](images/layout_grid_span.png)
+
 ## Boxes
 
-By using `Box`es you can segment your GUI into different sections and allow you to layout your user interface how you want.
+By using `Box`es you can segment your GUI into different sections allowing you to layout your user interface any way you want.
 
 ![boxes layout](images/layout_boxes.png)
+
 [code](https://github.com/lawsie/guizero/tree/master/examples/layout_boxes.py)
 
-If you want to create a title in the top left hand corner of your GUI, use a `Box` which fills the width of the `App` and is aligned to the `top`, and align a `Text` widget to the `left`.
-
-![boxes title layout](images/layout_boxes_title.png)
+If you wanted to create a title in the top left hand corner of your GUI, you could use a `Box` which fills the top of the `App` and put a `Text` widget inside aligned to the `left`.
 
 ```python
 from guizero import App, Box, Text
@@ -221,9 +219,9 @@ title = Text(title_box, text="title", align="left")
 app.display()
 ```
 
-A similar method can be used to put "Ok" and "Cancel" buttons which at the bottom right of the GUI.
+![boxes title layout](images/layout_boxes_title.png)
 
-![boxes buttons layout](images/layout_boxes_buttons.png)
+A similar method can be used to put "Ok" and "Cancel" buttons which at the bottom right of the GUI.
 
 ```python
 from guizero import App, Box, PushButton
@@ -236,8 +234,10 @@ cancel = PushButton(buttons_box, text="Cancel", align="right")
 app.display()
 ```
 
+![boxes buttons layout](images/layout_boxes_buttons.png)
+
 **Note :** A `Box` can also be contained in a `Box`, allowing you to layer boxes and position your widgets.
 
-When creating a GUI you may find it easier to design it first on paper, noting where your boxes will be positioned.
+**Tip :** When creating a GUI you may find it easier to design it first on paper, noting where your boxes will be positioned.
 
 ![hand drawn gui](images/layout_boxes.jpg)
