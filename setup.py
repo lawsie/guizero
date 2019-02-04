@@ -9,7 +9,7 @@ if version_info.major != 3:
 
 __project__ = 'guizero'
 __desc__ = 'Python module to allow learners to easily create GUIs'
-__version__ = '0.5.4'
+__version__ = '0.6.0'
 __author__ = "Laura Sach"
 __author_email__ = 'laura.sach@raspberrypi.org'
 __license__ = 'BSD'
