@@ -247,6 +247,7 @@ def test_size():
     a = App()
     l = ListBox(a, ["foo", "bar"])
     size_text_test(l)
+    size_fill_test(l)
     a.destroy()
 
 def test_events():

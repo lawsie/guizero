@@ -103,6 +103,19 @@ def size_text_test(widget):
     widget.height = None
     assert widget.height == default
 
+def size_fill_test(widget):
+    default = widget.width
+    widget.width = "fill"
+    assert widget.width == "fill"
+    widget.width = None
+    assert widget.width == default
+
+    default = widget.height
+    widget.height = "fill"
+    assert widget.height == "fill"
+    widget.height = None
+    assert widget.height == default
+
 def text_test(widget):
     default = widget.font
     widget.font = SET_FONT

@@ -123,6 +123,7 @@ def test_size():
     a = App()
     t = Text(a)
     size_text_test(t)
+    size_fill_test(t)
     a.destroy()
 
 def test_events():
