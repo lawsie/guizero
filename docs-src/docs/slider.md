@@ -25,19 +25,19 @@ app.display()
 
 When you create a `Slider` object, you **must** specify a `master` and you can specify any of the the optional parameters. Specify parameters in the brackets, like this: `slider = Slider(app, horizontal=False)`
 
-| Parameter  | Takes           | Default | Compulsory | Description                                                                                                                                                                             |
-|------------|-----------------|---------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| master     | App or Box      | -       | Yes        | The container to which this widget belongs                                                                                                                                              |
-| align      | string          | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout. |
-| command    | function name   | None    | -          | The name of a function to call when the slider value is changed                                                                                                                         |
-| end        | int             | 100     | -          | The largest value selectable on the slider                                                                                                                                              |
-| grid       | List [int, int] | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                           |
-| horizontal | Boolean         | True    | -          | Whether you wish to display your slider horizontally or vertically (defaults to horizontal)                                                                                             |
-| start      | int             | 0       | -          | The smallest value selectable on the slider                                                                                                                                             |
-| visible    | boolean         | True    | No         | If the widget should be visible.                                                                                                                                                        |
-| enabled    | boolean         | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
-| width      | [size](size.md) | None    | No         | Sets the width of the widget                                                                                                                                                            |
-| height     | [size](size.md) | None    | No         | Sets the height of the widget                                                                                                                                                           |
+| Parameter  | Takes              | Default | Compulsory | Description                                                                                                     |
+|------------|--------------------|---------|------------|-----------------------------------------------------------------------------------------------------------------|
+| master     | App, Window or Box | -       | Yes        | The container to which this widget belongs                                                                      |
+| align      | string             | None    | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.       |
+| command    | function name      | None    | -          | The name of a function to call when the slider value is changed                                                 |
+| end        | int                | 100     | -          | The largest value selectable on the slider                                                                      |
+| grid       | List [int, int]    | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.   |
+| horizontal | Boolean            | True    | -          | Whether you wish to display your slider horizontally or vertically (defaults to horizontal)                     |
+| start      | int                | 0       | -          | The smallest value selectable on the slider                                                                     |
+| visible    | boolean            | True    | No         | If the widget should be visible.                                                                                |
+| enabled    | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
+| width      | [size](size.md)    | None    | No         | Sets the width of the widget                                                                                    |
+| height     | [size](size.md)    | None    | No         | Sets the height of the widget                                                                                   |
 
 
 ### Methods

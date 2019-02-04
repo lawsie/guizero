@@ -24,19 +24,19 @@ app.display()
 
 When you create a `Text` object, you **must** specify a `master` and you can specify any of the the optional parameters. Specify parameters in the brackets, like this: `text = Text(app, text="hi")`
 
-| Parameter | Data type          | Default     | Compulsory | Description                                                                                                                                                                             |
-|-----------|--------------------|-------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| master    | App or Box         | -           | Yes        | The container to which this widget belongs                                                                                                                                              |
-| align     | string             | None        | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout. |
-| color     | [color](colors.md) | black       | -          | The colour of the text. Accepts some colour strings (e.g. `red`) and colours specified in hex format (e.g. `#0099ff`)                                                                   |
-| font      | string             | "Helvetica" | -          | The font face that the text will be displayed in. Availability of fonts depends on which fonts are installed locally.                                                                   |
-| grid      | List [int, int]    | None        | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                           |
-| text_size | int                | 12          | -          | The font size of the text                                                                                                                                                               |
-| text      | string             | ""          | -          | The text you want to display                                                                                                                                                            |
-| visible   | boolean            | True        | No         | If the widget should be visible.                                                                                                                                                        |
-| enabled   | boolean            | None        | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
-| width     | [size](size.md)    | None        | No         | Sets the width of the widget                                                                                                                                                            |
-| height    | [size](size.md)    | None        | No         | Sets the height of the widget                                                                                                                                                           |
+| Parameter | Data type          | Default     | Compulsory | Description                                                                                                           |
+|-----------|--------------------|-------------|------------|-----------------------------------------------------------------------------------------------------------------------|
+| master    | App, Window or Box | -           | Yes        | The container to which this widget belongs                                                                            |
+| align     | string             | None        | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.             |
+| color     | [color](colors.md) | black       | -          | The colour of the text. Accepts some colour strings (e.g. `red`) and colours specified in hex format (e.g. `#0099ff`) |
+| font      | string             | "Helvetica" | -          | The font face that the text will be displayed in. Availability of fonts depends on which fonts are installed locally. |
+| grid      | List [int, int]    | None        | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.         |
+| text_size | int                | 12          | -          | The font size of the text                                                                                             |
+| text      | string             | ""          | -          | The text you want to display                                                                                          |
+| visible   | boolean            | True        | No         | If the widget should be visible.                                                                                      |
+| enabled   | boolean            | None        | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master       |
+| width     | [size](size.md)    | None        | No         | Sets the width of the widget                                                                                          |
+| height    | [size](size.md)    | None        | No         | Sets the height of the widget                                                                                         |
 
 
 ### Methods

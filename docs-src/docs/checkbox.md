@@ -24,18 +24,18 @@ app.display()
 
 When you create a `CheckBox` object you **must** specify `master` and `text` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `checkbox = CheckBox(app, text="Add extra glitter")`
 
-| Parameter | Takes           | Default | Compulsory | Description                                                                                                                                                                             |
-|-----------|-----------------|---------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| master    | App or Box      | -       | Yes        | The container to which this widget belongs                                                                                                                                              |
-| text      | string          | ""      | No         | The text to display next to the check box                                                                                                                                               |
-| align     | string          | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout. |
-| command   | function name   | None    | -          | The name of a function to call when this checkbox is ticked/unticked                                                                                                                    |
-| args      | list            | None    | -          | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list                                                                    |
-| grid      | List [int, int] | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                           |
-| visible   | boolean         | True    | No         | If the widget should be visible.                                                                                                                                                        |
-| enabled   | boolean         | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
-| width     | [size](size.md) | None    | No         | Sets the width of the widget                                                                                                                                                            |
-| height    | [size](size.md) | None    | No         | Sets the height of the widget                                                                                                                                                           |
+| Parameter | Takes              | Default | Compulsory | Description                                                                                                          |
+|-----------|--------------------|---------|------------|----------------------------------------------------------------------------------------------------------------------|
+| master    | App, Window or Box | -       | Yes        | The container to which this widget belongs                                                                           |
+| text      | string             | ""      | No         | The text to display next to the check box                                                                            |
+| align     | string             | None    | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.            |
+| command   | function name      | None    | -          | The name of a function to call when this checkbox is ticked/unticked                                                 |
+| args      | list               | None    | -          | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list |
+| grid      | List [int, int]    | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.        |
+| visible   | boolean            | True    | No         | If the widget should be visible.                                                                                     |
+| enabled   | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master      |
+| width     | [size](size.md)    | None    | No         | Sets the width of the widget                                                                                         |
+| height    | [size](size.md)    | None    | No         | Sets the height of the widget                                                                                        |
 
 
 ### Methods

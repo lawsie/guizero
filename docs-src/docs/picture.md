@@ -31,16 +31,16 @@ picture = Picture(app, image="images/test.gif")
 
 When you create a `Picture` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `picture = Picture(app, image="test.gif")`
 
-| Parameter | Takes           | Default | Compulsory | Description                                                                                                                                                                             |
-|-----------|-----------------|---------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| master    | App or Box      | -       | Yes        | The container to which this widget belongs                                                                                                                                              |
-| image     | string          | None    | -          | The file path, tkinter.PhotoImage or PIL.Image you wish to display                                                                                                                      |
-| align     | string          | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout. |
-| grid      | List [int, int] | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                           |
-| visible   | boolean         | True    | No         | If the widget should be visible.                                                                                                                                                        |
-| enabled   | boolean         | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
-| width     | [size](size.md) | None    | No         | Sets the width of the widget                                                                                                                                                            |
-| height    | [size](size.md) | None    | No         | Sets the height of the widget                                                                                                                                                           |
+| Parameter | Takes              | Default | Compulsory | Description                                                                                                     |
+|-----------|--------------------|---------|------------|-----------------------------------------------------------------------------------------------------------------|
+| master    | App, Window or Box | -       | Yes        | The container to which this widget belongs                                                                      |
+| image     | string             | None    | -          | The file path, tkinter.PhotoImage or PIL.Image you wish to display                                              |
+| align     | string             | None    | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.       |
+| grid      | List [int, int]    | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.   |
+| visible   | boolean            | True    | No         | If the widget should be visible.                                                                                |
+| enabled   | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
+| width     | [size](size.md)    | None    | No         | Sets the width of the widget                                                                                    |
+| height    | [size](size.md)    | None    | No         | Sets the height of the widget                                                                                   |
 
 
 

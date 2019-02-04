@@ -24,16 +24,16 @@ app.display()
 
 When you create a `Box` object you **must** specify a master, and you can specify any of the optional parameters. Specify parameters in the brackets like this: `box = Box(app, layout="grid")`
 
-| Parameter | Data type       | Default | Compulsory | Description                                                                                                                                                                             |
-|-----------|-----------------|---------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| master    | App             | -       | Yes        | The `App` object to which this box belongs                                                                                                                                              |
-| align     | string          | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout. |
-| grid      | List            | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                           |
-| layout    | string          | "auto"  | -          | Whether widgets *inside this box* pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`)                                                                         |
-| visible   | boolean         | True    | No         | If the widget should be visible.                                                                                                                                                        |
-| enabled   | boolean         | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
-| width     | [size](size.md) | None    | No         | Sets the width of the widget                                                                                                                                                            |
-| height    | [size](size.md) | None    | No         | Sets the height of the widget                                                                                                                                                           |
+| Parameter | Data type          | Default | Compulsory | Description                                                                                                     |
+|-----------|--------------------|---------|------------|-----------------------------------------------------------------------------------------------------------------|
+| master    | App, Window or Box | -       | Yes        | The container to which this widget belongs                                                                      |
+| align     | string             | None    | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.       |
+| grid      | List               | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.   |
+| layout    | string             | "auto"  | -          | Whether widgets *inside this box* pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
+| visible   | boolean            | True    | No         | If the widget should be visible.                                                                                |
+| enabled   | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
+| width     | [size](size.md)    | None    | No         | Sets the width of the widget                                                                                    |
+| height    | [size](size.md)    | None    | No         | Sets the height of the widget                                                                                   |
 
 
 ### Methods
