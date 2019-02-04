@@ -33,9 +33,9 @@ When you create a `Waffle` object you **must** specify `master` and you can spec
 | dim        | int                | 20      | -          | How large one of the pixels on the waffle is                                                                                                                                                                                    |
 | dotty      | boolean            | False   | -          | Whether the pixels display as dots/circles (True) or squares (False)                                                                                                                                                            |
 | grid       | List [int, int]    | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                                                                   |
-| height     | int                | 3       | -          | How many pixels high the waffle is                                                                                                                                                                                              |
+| height     | int                | 3       | -          | Set the height in waffle pixels                                                                                                                                                                                                 |
 | pad        | int                | 5       | -          | How much space is between the pixels on the waffle                                                                                                                                                                              |
-| width      | int                | 3       | -          | How many pixels wide the waffle is                                                                                                                                                                                              |
+| width      | int                | 3       | -          | Set the width in waffle pixels                                                                                                                                                                                                  |
 | _remember_ | _boolean_          | _True_  | -          | _No longer needed - all Waffles will now have a memory._                                                                                                                                                                        |
 | visible    | boolean            | True    | No         | If the widget should be visible.                                                                                                                                                                                                |
 | enabled    | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                                                                 |
@@ -78,11 +78,11 @@ You can set and get the following properties:
 | dotty      | bool               | If `True` the waffle will display circles                                                             |
 | enabled    | boolean            | `True` if the widget is enabled                                                                       |
 | grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height     | [size](size.md)    | Sets the height of the widget                                                                         |
+| height     | [size](size.md)    | Set the height in waffle pixels                                                                       |
 | master     | App or Box         | The container to which this widget belongs                                                            |
 | pad        | int                | The size of the padding between pixels                                                                |
 | pixel_size | int                | The size of the one pixel                                                                             |
-| width      | [size](size.md)    | Sets the width of the widget                                                                          |
+| width      | [size](size.md)    | Set the width in waffle pixels                                                                        |
 | visible    | boolean            | If this widget is visible                                                                             |
 
 ### Example

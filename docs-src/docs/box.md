@@ -32,8 +32,8 @@ When you create a `Box` object you **must** specify a master, and you can specif
 | layout    | string             | "auto"  | -          | Whether widgets *inside this box* pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
 | visible   | boolean            | True    | No         | If the widget should be visible.                                                                                |
 | enabled   | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
-| width     | [size](size.md)    | None    | No         | Sets the width of the widget                                                                                    |
-| height    | [size](size.md)    | None    | No         | Sets the height of the widget                                                                                   |
+| width     | [size](size.md)    | None    | No         | Set the width of the widget in pixels or to `"fill"`                                                            |
+| height    | [size](size.md)    | None    | No         | Set the height of the widget in pixels or to `"fill"`                                                           |
 
 
 ### Methods
@@ -67,13 +67,13 @@ You can set and get the following properties:
 | enabled    | boolean            | `True` if the box is enabled                                                                          |
 | grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | font       | string             | The font that widgets should use                                                                      |
-| height     | [size](size.md)    | Sets the height of the widget                                                                         |
+| height     | [size](size.md)    | Set the height of the widget in pixels or to `"fill"`                                                 |
 | layout     | string             | The layout being used by the Box (`"auto"`) or (`"grid"`)                                             |
 | master     | App                | The `App` object to which this box belongs                                                            |
 | text_size  | int                | The size of the text widgets should use                                                               |
 | text_color | [color](colors.md) | The colour of the text widgets should use                                                             |
 | visible    | boolean            | If this widget is visible                                                                             |
-| width      | [size](size.md)    | Sets the width of the widget                                                                          |
+| width      | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                  |
 
 ### Examples
 
