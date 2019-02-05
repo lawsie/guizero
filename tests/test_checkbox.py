@@ -181,6 +181,7 @@ def test_size():
     a = App()
     c = CheckBox(a, "foo")
     size_text_test(c)
+    size_fill_test(c)
     a.destroy()
 
 def test_events():

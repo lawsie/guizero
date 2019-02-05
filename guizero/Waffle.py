@@ -12,8 +12,8 @@ class Waffle(Widget):
         # Create a tk Frame object within this object which will be the waffle
         tk = Frame(master.tk)
 
-        self._height = height       # How many pixels high
-        self._width = width         # How many pixels wide
+        # self._height = height       # How many pixels high
+        # self._width = width         # How many pixels wide
         self._pixel_size = dim      # Size of one pixel
         self._pad = pad             # How much padding between pixels
         self._color = utils.convert_color(color)        # Start color of the whole waffle
@@ -40,6 +40,9 @@ class Waffle(Widget):
 
     # Internal use only
     def _create_waffle(self):
+        if self._height == "fill" or self._width == "fill":
+            utils.raise_error("{}\nCannot use 'fill' for width and height.".format(self.description))
+            
         self._create_canvas()
         self._size_waffle()
         self._draw_waffle()
@@ -187,24 +190,6 @@ class Waffle(Widget):
     def enable(self):
         """Enable the widget."""
         self._enabled = True
-
-    # PROPERTIES
-    # ----------------------------------
-    @property
-    def width(self):
-        return self._width
-
-    @width.setter
-    def width(self, value):
-        self.resize(value, self.height)
-
-    @property
-    def height(self):
-        return self._height
-
-    @height.setter
-    def height(self, value):
-        self.resize(self.width, value)
 
     def resize(self, width, height):
         if self._width != width or self._height != height:

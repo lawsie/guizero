@@ -234,6 +234,7 @@ def test_size():
     a = App()
     b = ButtonGroup(a, ["foo", "bar"])
     size_text_test(b)
+    size_fill_test(b)
     a.destroy()
 
 def test_events():

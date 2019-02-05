@@ -24,20 +24,20 @@ app.display()
 
 When you create a `ButtonGroup` object you **must** specify a `master` and you can specify any of the optional parameters. Specify parameters in the brackets like this: `choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)`
 
-| Parameter  | Takes           | Default | Compulsory | Description                                                                                                                                                                                                          |
-|------------|-----------------|---------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| master     | App or Box      | -       | Yes        | The container to which this widget belongs                                                                                                                                                                           |
-| options    | list or 2D List | -       | No         | Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. |
-| selected   | string          | -       | -          | The option that should be selected, if a value isn't provided the first option will be selected.                                                                                                                     |
-| align      | string          | None    | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout.                              |
-| command    | function name   | None    | -          | The name of a function to call when the selected option changes.                                                                                                                                                     |
-| args       | list            | None    | -          | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list                                                                                                 |
-| grid       | list [int, int] | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                                                        |
-| horizontal | boolean         | False   | -          | Whether the buttons stack vertically or horizontally. (Defaults to vertical)                                                                                                                                         |
-| visible    | boolean         | True    | No         | If the widget should be visible.                                                                                                                                                                                     |
-| enabled    | boolean         | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                                                      |
-| width      | [size](size.md) | None    | No         | Sets the width of the widget                                                                                                                                                                                         |
-| height     | [size](size.md) | None    | No         | Sets the height of the widget                                                                                                                                                                                        |
+| Parameter  | Takes              | Default | Compulsory | Description                                                                                                                                                                                                          |
+|------------|--------------------|---------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| master     | App, Window or Box | -       | Yes        | The container to which this widget belongs                                                                                                                                                                           |
+| options    | list or 2D List    | -       | No         | Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option. |
+| selected   | string             | -       | -          | The option that should be selected, if a value isn't provided the first option will be selected.                                                                                                                     |
+| align      | string             | None    | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.                                                                                                            |
+| command    | function name      | None    | -          | The name of a function to call when the selected option changes.                                                                                                                                                     |
+| args       | list               | None    | -          | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list                                                                                                 |
+| grid       | list [int, int]    | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                                                        |
+| horizontal | boolean            | False   | -          | Whether the buttons stack vertically or horizontally. (Defaults to vertical)                                                                                                                                         |
+| visible    | boolean            | True    | No         | If the widget should be visible.                                                                                                                                                                                     |
+| enabled    | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                                                      |
+| width      | [size](size.md)    | None    | No         | Set the width of the widget in characters or to `"fill"`                                                                                                                                                             |
+| height     | [size](size.md)    | None    | No         | Set the height of the widget in characters or to `"fill"`                                                                                                                                                            |
 
 
 ### Methods
@@ -78,12 +78,12 @@ You can set and get the following properties:
 | enabled    | boolean            | `True` if the widget is enabled                                                                       |
 | font       | string             | The font of the text                                                                                  |
 | grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height     | [size](size.md)    | Sets the height of the widget                                                                         |
+| height     | [size](size.md)    | Set the height of the widget in characters or to `"fill"`                                             |
 | master     | App or Box         | The container to which this widget belongs                                                            |
 | value      | string             | The hidden value associated with the currently selected option                                        |
 | value_text | string             | The text associated with the currently selected option                                                |
 | visible    | boolean            | If this widget is visible                                                                             |
-| width      | [size](size.md)    | Sets the width of the widget                                                                          |
+| width      | [size](size.md)    | Set the width of the widget in characters or to `"fill"`                                              |
 | text_size  | int                | The size of the text                                                                                  |
 | text_color | [color](colors.md) | The colour of the text                                                                                |
 

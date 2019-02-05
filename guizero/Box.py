@@ -61,31 +61,6 @@ class Box(ContainerWidget):
 
         self.resize(width, height)
 
-    def resize(self, width, height):
-        """
-        Resizes the widget.
-
-        :param int width:
-            The width of the widget.
-
-        :param int height:
-            The height of the widget.
-        """
-        if width is None:
-            width = 0
-
-        if height is None:
-            height = 0
-
-        if width == 0 and height == 0:
-            self.tk.pack_propagate(True)
-        elif width > 0 and height > 0:
-            self.tk.pack_propagate(False)
-        else:
-            utils.error_format("You must specify a width and a height for a Box")
-
-        super(Box, self).resize(width, height)
-
     @property
     def border(self):
         """
@@ -113,3 +88,17 @@ class Box(ContainerWidget):
         """
         self._set_tk_config("highlightthickness", thickness)
         self._set_tk_config("highlightbackground", utils.convert_color(color))
+
+    def resize(self, width, height):
+        """
+        Resizes the widget.
+
+        :param int width:
+            The width of the widget.
+
+        :param int height:
+            The height of the widget.
+        """
+        self._set_propagation(width, height)
+        
+        super(Box, self).resize(width, height)

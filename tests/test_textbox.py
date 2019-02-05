@@ -108,8 +108,13 @@ def test_color():
 def test_width():
     a = App()
     t = TextBox(a)
+
+    default_width = t.width
     t.width = 30
     assert t.width == 30
+    t.width = "fill"
+    assert t.width == "fill" 
+
     a.destroy()
 
 def test_height():
@@ -121,8 +126,11 @@ def test_height():
     assert t1.height == 1
 
     t2 = TextBox(a, multiline=True)
+    default_height = t2.height
     t2.height = 10
     assert t2.height == 10
+    t2.height = "fill"
+    assert t2.height == "fill"
 
     a.destroy()
 

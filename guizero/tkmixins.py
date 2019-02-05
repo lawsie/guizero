@@ -91,16 +91,13 @@ class DisplayMixin():
 
     def hide(self):
         """Hide the widget."""
-        if self.master.layout == "grid":
-            self.tk.grid_forget()
-        else:
-            self.tk.pack_forget()
         self._visible = False
+        self.master.display_widgets()
 
     def show(self):
         """Show the widget."""
-        utils.auto_pack(self, self.master, self.grid, self.align)
         self._visible = True
+        self.master.display_widgets()
 
 
 class TextMixin():
@@ -199,22 +196,22 @@ class SizeMixin():
         """
         Sets or returns the width of the widget.
         """
-        return int(self._get_tk_config("width"))
+        return self._width
 
     @width.setter
     def width(self, value):
-        self.resize(value, self.height)
+        self.resize(value, self._height)
 
     @property
     def height(self):
         """
         Sets or returns the height of the widget.
         """
-        return int(self._get_tk_config("height"))
+        return self._height
 
     @height.setter
     def height(self, value):
-        self.resize(self.width, value)
+        self.resize(self._width, value)
 
     def resize(self, width, height):
         """
@@ -226,10 +223,17 @@ class SizeMixin():
         :param int height:
             The height of the widget.
         """
-        self._set_tk_config("width", width)
-        self._set_tk_config("height", height)
+        self._width = width
+        self._height = height
+        if width != "fill":
+            self._set_tk_config("width", width)
+        if height != "fill":
+            self._set_tk_config("height", height)
+        if width == "fill" or height == "fill":
+            self.master.display_widgets()
 
-class GridMixin():
+
+class LayoutMixin():
 
     @property
     def grid(self):

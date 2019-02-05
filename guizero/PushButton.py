@@ -54,24 +54,27 @@ class PushButton(TextWidget):
                 utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
 
     def _load_image(self):
+        if self._height == "fill" or self._width == "fill":
+            utils.raise_error("{}\nCannot use 'fill' for width and height when using a image.".format(self.description))
+
         # stop any animation which might still be playing
         if self._image_player:
             self._image_player.stop()
 
-        self._image = utils.GUIZeroImage(self._image_source, self._image_width, self._image_height)
+        self._image = utils.GUIZeroImage(self._image_source, self._width, self._height)
 
-        self._image_width = self._image.width
-        self._image_height = self._image.height
-
+        # update the tk image
         # if its an animation, start it up
         if self._image.animation:
             self._image_player = utils.AnimationPlayer(self, self._image, self._update_tk_image)
         else:
             self._update_tk_image(self._image.tk_image)
 
-        # set the width and height of the widget to match the image
-        super(PushButton, self.__class__).width.fset(self, self._image.width)
-        super(PushButton, self.__class__).height.fset(self, self._image.height)
+        # set the width and height of the widget to match the image if they are None
+        super(PushButton, self.__class__).resize(
+            self, 
+            self._image.width if self.width is None else self.width, 
+            self._image.height if self.height is None else self.height)
 
     def _update_tk_image(self, tk_image):
         self.tk.config(image=tk_image)
@@ -103,29 +106,12 @@ class PushButton(TextWidget):
         self._image_source = value
         self._load_image()
 
-    @property
-    def width(self):
-        return super(PushButton, self.__class__).width.fget(self)
 
-    @width.setter
-    def width(self, value):
+    def resize(self, width, height):
+        super(PushButton, self.__class__).resize(self, width, height)
+        
         if self._image:
-            self._image_width = value
-            self._load_image()
-        else:
-            super(PushButton, self.__class__).width.fset(self, value)
-
-    @property
-    def height(self):
-        return super(PushButton, self.__class__).height.fget(self)
-
-    @height.setter
-    def height(self, value):
-        if self._image:
-            self._image_height = value
-            self._load_image()
-        else:
-            super(PushButton, self.__class__).height.fset(self, value)
+            self._load_image()        
 
     # METHODS
     # -------------------------------------------

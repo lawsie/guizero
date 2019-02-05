@@ -174,6 +174,7 @@ def test_size():
     a = App()
     s = Slider(a)
     size_pixel_test(s)
+    size_fill_test(s)
     a.destroy()
 
 def test_events():

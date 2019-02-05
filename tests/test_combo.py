@@ -250,6 +250,7 @@ def test_size():
     a = App()
     c = Combo(a, ["foo", "bar"])
     size_text_test(c)
+    size_fill_test(c)
     a.destroy()
 
 def test_events():

@@ -6,6 +6,7 @@ from common_test import (
     display_test,
     color_test,
     size_pixel_test,
+    size_fill_test,
     events_test,
     cascading_enable_test,
     cascading_properties_test,
@@ -91,6 +92,7 @@ def test_size():
     a = App()
     b = Box(a)
     size_pixel_test(b)
+    size_fill_test(b)
     a.destroy()
 
 def test_enable():

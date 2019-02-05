@@ -61,6 +61,14 @@ class ListBox(ContainerTextWidget):
 
         :param bool scrollbar:
             If ListBox should have a vertical scrollbar, defaults to False.
+
+        :param int width:
+            The starting width of the widget. Defaults to `None` and will auto
+            size.
+
+        :param int height:
+            The starting height of the widget. Defaults to `None` and will auto
+            size.
         """
 
         description = "[ListBox] object"
@@ -70,8 +78,6 @@ class ListBox(ContainerTextWidget):
         super(ListBox, self).__init__(master, tk, description, "auto", grid, align, visible, enabled, width, height)
 
         self._listbox = ListBoxWidget(self, items, selected, command, None, None, visible, enabled, multiselect, width, height)
-
-        #self._listbox.tk.config(width=300)
 
         if scrollbar:
             # create the scrollbar and link it to the listbox
@@ -98,6 +104,7 @@ class ListBox(ContainerTextWidget):
         :param int height:
             The height of the widget.
         """
+        self._set_propagation(width, height)
         super(ListBox, self).resize(width, height)
         self._listbox.resize(width, height)
 
@@ -160,7 +167,7 @@ class ListBox(ContainerTextWidget):
         Setting to `None` stops the callback.
 
         :param callback command:
-            The callback function to call, it can ccept 0 or 1 parameters.
+            The callback function to call, it can accept 0 or 1 parameters.
 
             If it accepts 1 parameter the `value` of the ListBox will be
             passed.

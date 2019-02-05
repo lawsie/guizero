@@ -10,11 +10,12 @@ from .tkmixins import (
     TextMixin,
     ColorMixin,
     SizeMixin,
-    GridMixin,
+    LayoutMixin,
     EventsMixin)
 
 from . import utilities as utils
 from .event import EventManager
+from tkinter import BOTH, X, Y, YES
 
 
 class Base():
@@ -288,6 +289,96 @@ class Container(Component):
         """
         self.children.remove(child)
 
+    def display_widgets(self):
+        """
+        Displays all the widgets associated with this Container.
+
+        Should be called when the widgets need to be "re-packed/gridded".
+        """
+        from . import utilities as utils
+        # All widgets are removed and then recreated to ensure the order they 
+        # were created is the order they are displayed.
+
+        for child in self.children:
+
+            # forget the widget
+            if self.layout != "grid":
+                child.tk.pack_forget()
+            else:
+                child.tk.grid_forget()
+            
+            # display the widget
+            if child.visible:
+                if self.layout != "grid":
+                    self._pack_widget(child)
+                else:
+                    self._grid_widget(child)
+
+    def _pack_widget(self, widget):
+        pack_params={}
+
+        if widget.width == "fill" and widget.height == "fill":
+            pack_params["fill"] = BOTH
+            pack_params["expand"] = YES
+        elif widget.width == "fill":
+            pack_params["fill"] = X
+        elif widget.height == "fill":
+            pack_params["fill"] = Y
+            
+        if widget.align is not None:
+            if widget.align in ["top", "bottom", "left", "right"]:
+                pack_params["side"] = widget.align
+            else:
+                utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
+                    widget.align,
+                    widget.description
+                ))
+
+        # this is to cater for scenario's where the frame will not expand to fill the container
+        # if aligned - tk weirdness.
+        if pack_params.get("side") is None and pack_params.get("fill") == Y:
+            pack_params["expand"] = YES
+
+        if pack_params.get("side") in ["top", "bottom"] and pack_params.get("fill") == Y:
+            pack_params["expand"] = YES
+
+        if pack_params.get("side") in ["left", "right"] and pack_params.get("fill") == X:
+            pack_params["expand"] = YES
+
+        widget.tk.pack(**pack_params)
+
+    def _grid_widget(self, widget):
+        # If they failed to specify grid coords
+        if widget.grid is None:
+            utils.error_format("{} will not be displayed because it has a missing grid reference.".format(widget.description))
+        elif type(widget.grid) is not list:
+            utils.error_format("{} will not be displayed because the grid reference is not a list.".format(widget.description))
+        # Can have 2 values (just coords) or 4 values (coords and col/rowspan)
+        elif (len(widget.grid) != 2 and len(widget.grid) != 4):
+            utils.error_format("{} will not be displayed because the grid reference should be either grid=[x, y] or grid=[x, y, columnspan, rowspan].".format(widget.description))
+        else:
+            grid_params = {
+                "column": widget.grid[0],
+                "row": widget.grid[1]
+            }
+
+            # Just check we have more than 2 as we have already checked it's a multiple of two previously
+            if len(widget.grid) > 2:
+                grid_params["columnspan"] = widget.grid[2]
+                grid_params["rowspan"] = widget.grid[3]
+
+            if widget.align is not None:
+                directions = {"top": "N", "bottom": "S", "left": "W", "right": "E"}
+                if widget.align in directions.keys():
+                    grid_params["sticky"] = directions[widget.align]
+                else:
+                    utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
+                    widget.align,
+                    widget.description
+                ))
+
+            widget.tk.grid(**grid_params)
+
     @property
     def enabled(self):
         """
@@ -432,7 +523,7 @@ class Widget(
     EnableMixin,
     DisplayMixin,
     SizeMixin,
-    GridMixin):
+    LayoutMixin):
 
     def __init__(self, master, tk, description, grid, align, visible, enabled, width, height):
         """
@@ -441,6 +532,8 @@ class Widget(
         super(Widget, self).__init__(master,tk, description)
         self._grid = grid
         self._align = align
+        self._width = width
+        self._height = height
         self.visible = visible
         self.enabled = enabled
 
@@ -475,15 +568,17 @@ class ContainerWidget(
     EnableMixin,
     DisplayMixin,
     SizeMixin,
-    GridMixin):
+    LayoutMixin):
 
     def __init__(self, master, tk, description, layout, grid, align, visible, enabled, width, height):
         """
-        The base class for a widget which is also a container e.g. `Box`
+        The base class for a widget which is also a container e.g. `Box`, `ButtonGroup`
         """
         super(ContainerWidget, self).__init__(master,tk, description, layout)
         self._grid = grid
         self._align = align
+        self._width = width
+        self._height = height
         self.visible = visible
 
         #inherit from master
@@ -491,6 +586,46 @@ class ContainerWidget(
             self.enabled = master.enabled
         else:
             self.enabled = enabled
+
+    def _set_propagation(self, width, height):
+        """
+        Set the propagation value of the tk widget dependent on the width and height
+
+        :param int width:
+            The width of the widget.
+
+        :param int height:
+            The height of the widget.
+        """
+        if width is None:
+            width = 0
+
+        if height is None:
+            height = 0
+
+        # set the propagate value
+        propagate_function = self.tk.pack_propagate
+        if self.layout == "grid":
+            propagate_function = self.tk.grid_propagate
+
+        propagate_value = True
+        
+        # if height or width > 0 need to stop propagation
+        if isinstance(width, int):
+            if width > 0:
+                propagate_value = False
+        if isinstance(height, int):
+            if height > 0:
+                propagate_value = False
+
+        # if you specify a height or width you must specify they other
+        # (unless its a fill)
+        if isinstance(width, int) and isinstance(height, int):
+            if (width == 0 and height > 0) or (height == 0 and width > 0):
+                 utils.error_format("You must specify a width and a height for {}".format(self.description))
+        
+        propagate_function(propagate_value)
+
 
 class ContainerTextWidget(
     ContainerWidget,

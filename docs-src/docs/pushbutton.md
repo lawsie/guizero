@@ -27,21 +27,21 @@ app.display()
 
 When you create a `PushButton` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `button = PushButton(app)`
 
-| Parameter | Takes           | Default  | Compulsory | Description                                                                                                                                                                             |
-|-----------|-----------------|----------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| master    | App or Box      | -        | Yes        | The container to which this widget belongs                                                                                                                                              |
-| command   | function name   | None     | -          | The name of a function to call when the button is pressed.                                                                                                                              |
-| align     | string          | None     | -          | Alignment of this widget within its grid location. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`. This parameter is only required if the `master` object has a grid layout. |
-| args      | list            | None     | -          | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list                                                                    |
-| grid      | List [int, int] | None     | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                           |
-| image     | string          | None     | -          | The file path, tkinter.PhotoImage or PIL.Image you wish to display. If both an image and text are specified, the image will override the text.                                          |
-| padx      | int             | 10       | -          | How much horizontal padding to add between the text/icon and the edge of the button.                                                                                                    |
-| pady      | int             | 10       | -          | How much vertical padding to add between the text/icon and the edge of the button.                                                                                                      |
-| text      | string          | "Button" | -          | The text to display on the button                                                                                                                                                       |
-| visible   | boolean         | True     | No         | If the widget should be visible.                                                                                                                                                        |
-| enabled   | boolean         | None     | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                         |
-| width     | [size](size.md) | None     | No         | Sets the width of the widget                                                                                                                                                            |
-| height    | [size](size.md) | None     | No         | Sets the height of the widget                                                                                                                                                           |
+| Parameter | Takes              | Default  | Compulsory | Description                                                                                                                                    |
+|-----------|--------------------|----------|------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| master    | App, Window or Box | -        | Yes        | The container to which this widget belongs                                                                                                     |
+| command   | function name      | None     | -          | The name of a function to call when the button is pressed.                                                                                     |
+| align     | string             | None     | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.                                      |
+| args      | list               | None     | -          | If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list                           |
+| grid      | List [int, int]    | None     | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                  |
+| image     | string             | None     | -          | The file path, tkinter.PhotoImage or PIL.Image you wish to display. If both an image and text are specified, the image will override the text. |
+| padx      | int                | 10       | -          | How much horizontal padding to add between the text/icon and the edge of the button.                                                           |
+| pady      | int                | 10       | -          | How much vertical padding to add between the text/icon and the edge of the button.                                                             |
+| text      | string             | "Button" | -          | The text to display on the button                                                                                                              |
+| visible   | boolean            | True     | No         | If the widget should be visible.                                                                                                               |
+| enabled   | boolean            | None     | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                |
+| width     | [size](size.md)    | None     | No         | Set the width of the widget in characters or pixels if its an image button or to `"fill"`                                                      |
+| height    | [size](size.md)    | None     | No         | Set the height of the widget in characters or pixels if its an image button or to `"fill"`                                                     |
 
 
 ### Methods
@@ -84,14 +84,14 @@ You can set and get the following properties:
 | enabled    | boolean            | `True` if the widget is enabled                                                                       |
 | font       | string             | The font of the text on the button                                                                    |
 | grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height     | [size](size.md)    | Sets the height of the widget                                                                         |
+| height     | [size](size.md)    | Set the height of the widget in characters or pixels if its an image button or to `"fill"`            |
 | master     | App or Box         | The container to which this widget belongs                                                            |
 | text       | string             | The text on the button                                                                                |
 | text_color | [color](colors.md) | The colour of the text on the button                                                                  |
 | text_size  | int                | The size of the text on the button                                                                    |
 | value      | int                | Returns 1 when the button is pressed, 0 if the button is released                                     |
 | visible    | boolean            | If this widget is visible                                                                             |
-| width      | [size](size.md)    | Sets the width of the widget                                                                          |
+| width      | [size](size.md)    | Set the width of the widget in characters or pixels if its an image button or to `"fill"`             |
 
 Refer to a property as `<name of widget>.property`. For example, if your `PushButton` object is called `button` you would write `button.value`.
 

@@ -1,11 +1,21 @@
 # guizero
 
+## 0.6.0 - tbc
+- Refactoring of layout functions
+- Enabled `align` for the `auto` layout
+- Reduce pillow version to 4.0.0
+- `width` and `height` can now be set to `"fill"`
+- Introduction of `full_screen` to `App` and `Window`
+- Minor bug fixes
+- contributors [martinohanlon](https://github.com/martinohanlon), [bennuttal](https://github.com/bennuttall), [yeyeto2788](https://github.com/yeyeto2788), [knowledgejunkie](https://github.com/knowledgejunkie), [lawsie](https://github.com/lawsie)
+
 ## 0.5.4 - 2018-10-16
 - Fixed `Box` to size properly
 - Added `border` to `Box`
 - Added `width` and `height` to widget constructor
 - Added `resize` method to all widgets
 - Minor bug fixes
+- contributors [martinohanlon](https://github.com/martinohanlon)
 
 ## 0.5.3 - 2018-07-18
 - Various bug fixes
