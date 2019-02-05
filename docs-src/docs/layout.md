@@ -221,6 +221,14 @@ app.display()
 
 ![boxes title layout](images/layout_boxes_title.png)
 
+You find it easier to design your layout if your Boxes have borders, which can be done by setting the `border` property on `Box` to `True`.
+
+```python
+title_box.border = True
+```
+
+![boxes with borders](images/layout_boxes_border.png)
+
 A similar method can be used to put "Ok" and "Cancel" buttons which at the bottom right of the GUI.
 
 ```python
