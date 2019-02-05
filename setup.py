@@ -14,7 +14,8 @@ __author__ = "Laura Sach"
 __author_email__ = 'laura.sach@raspberrypi.org'
 __license__ = 'BSD'
 __url__ = 'https://github.com/lawsie/guizero'
-__requires__ = ["pillow>=4"]
+__requires__ = ["pillow>=4.3.0"]
+__python_requires__ = ">=3"
 __keywords__ = [
     "GUI",
     "guizero",
@@ -72,4 +73,5 @@ setup(
     packages=find_packages(),
     classifiers=__classifiers__,
     install_requires=__requires__,
+    python_requires=__python_requires__,
 )
