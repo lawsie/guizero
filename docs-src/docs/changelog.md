@@ -1,11 +1,10 @@
 # guizero
 
-## 0.6.0 - tbc
+## 0.6.0 - 2019-02-08
 - Refactoring of layout functions
 - Enabled `align` for the `auto` layout
-- Reduce pillow version to 4.0.0
+- Modified `setup.py` to restrict install to Python 3 only
 - `width` and `height` can now be set to `"fill"`
-- Introduction of `full_screen` to `App` and `Window`
 - Minor bug fixes
 - contributors [martinohanlon](https://github.com/martinohanlon), [bennuttal](https://github.com/bennuttall), [yeyeto2788](https://github.com/yeyeto2788), [knowledgejunkie](https://github.com/knowledgejunkie), [lawsie](https://github.com/lawsie)
 

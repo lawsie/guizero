@@ -1,3 +1,11 @@
+guizero (0.6.0~stretch-1) unstable; urgency=low
+
+  * Refactoring of layouts
+  * Introduced fill to width and height
+  * bug fixes
+
+ -- Martin OHanlon <martin@ohanlonweb.com>  Mon, 8 Feb 2019 07:00:00 +0000
+
 guizero (0.5.4~stretch-1) unstable; urgency=low
 
   * Fixed Box and added border to Box
