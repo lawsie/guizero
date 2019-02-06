@@ -13,7 +13,8 @@ class Box(ContainerWidget):
         visible=True,
         enabled=None,
         width=None,
-        height=None):
+        height=None,
+        border=None):
         """
         Creates a Box
 
@@ -48,6 +49,10 @@ class Box(ContainerWidget):
         :param int height:
             The starting height of the widget. Defaults to `None` and will auto
             size. If not `None`, both the width and height need to be set.
+
+        :param int border:
+            Sets the border thickness. `0` or `False` is no border. `True` or 
+            value > 1 sets a border. The default is `None`.
         """
 
         self._grid = grid
@@ -60,6 +65,9 @@ class Box(ContainerWidget):
         super(Box, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
 
         self.resize(width, height)
+
+        if border is not None:
+            self.border = border
 
     @property
     def border(self):

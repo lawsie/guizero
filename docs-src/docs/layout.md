@@ -223,10 +223,10 @@ app.display()
 
 ![Title at the top](images/layout_boxes_title.png)
 
-You find it easier to design your layout if your Boxes have borders, which can be done by setting the `border` property on `Box` to `True`.
+You may find it easier to design your layout if your Boxes have borders, which can be done by setting the `border` parameter on `Box` to `True`.
 
 ```python
-title_box.border = True
+title_box = Box(app, width="fill", align="top", border=True)
 ```
 
 ![Title at the top, in a box](images/layout_boxes_border.png)

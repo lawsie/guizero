@@ -34,6 +34,7 @@ When you create a `Box` object you **must** specify a master, and you can specif
 | enabled   | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 | width     | [size](size.md)    | None    | No         | Set the width of the widget in pixels or to `"fill"`                                                            |
 | height    | [size](size.md)    | None    | No         | Set the height of the widget in pixels or to `"fill"`                                                           |
+| border    | int                | None    | No         | Sets the border thickness. `0` or `False` is no border. `True` or value > 1 sets a border.                      |
 
 
 ### Methods
