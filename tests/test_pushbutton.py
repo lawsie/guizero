@@ -10,6 +10,7 @@ from common_test import (
     text_test,
     color_test,
     size_text_test,
+    size_fill_test,
     events_test,
     cascaded_properties_test,
     inherited_properties_test
