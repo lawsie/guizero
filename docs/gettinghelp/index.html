@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Sizes - guizero</title>
+  <title>Getting help - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Sizes";
-    var mkdocs_page_input_path = "size.md";
-    var mkdocs_page_url = "/size/";
+    var mkdocs_page_name = "Getting help";
+    var mkdocs_page_input_path = "gettinghelp.md";
+    var mkdocs_page_url = "/gettinghelp/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -81,15 +81,9 @@
                     
     <a class="" href="../alerts/">Alerts</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Sizes</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#sizes">Sizes</a></li>
-    
-
-    </ul>
+    <a class="" href="../size/">Sizes</a>
                 </li>
                 <li class="">
                     
@@ -111,9 +105,23 @@
                     
     <a class="" href="../usingtk/">Using tkinter methods</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../gettinghelp/">Getting help</a>
+    <a class="current" href="./">Getting help</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#getting-help">Getting help</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#getting-help_1">Getting help</a></li>
+        
+            <li><a class="toctree-l4" href="#bugs-and-feature-requests">Bugs and feature requests</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -236,7 +244,7 @@
         
       
     
-    <li>Sizes</li>
+    <li>Getting help</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -246,110 +254,40 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="sizes">Sizes</h2>
-<p>You can set the <code>width</code> and <code>height</code> of widgets in guizero.</p>
-<p>Widgets are sized by pixels or characters depending on the widget and what it contains.</p>
-<p>Some widgets size can also be set to <code>"fill"</code> where it will use up all of the available space.</p>
-<pre><code class="python">from guizero import App, PushButton, Slider, ListBox
-
-app = App()
-
-# a PushButton's size is noted in characters
-button = PushButton(app, width=30, height=5)
-
-# a Slider's size is noted in pixels
-slider = Slider(app, width=300, height=30)
-
-# some widgets, such as ListBox can also be told to fill all the available space
-listbox = ListBox(app, width=&quot;fill&quot;, height=&quot;fill&quot;)
-
-app.display()
-</code></pre>
-
-<table>
-<thead>
-<tr>
-<th>Widget</th>
-<th>Characters or Pixels</th>
-<th>Fill</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../box/">Box</a></td>
-<td>Pixels</td>
-<td>Yes</td>
-<td>If a Box is sized in Pixels, both width and height must be specified.</td>
-</tr>
-<tr>
-<td><a href="../buttongroup/">ButtonGroup</a></td>
-<td>Characters</td>
-<td>Yes</td>
-<td>The height of a ButtonGroup must divide by the number of buttons in it</td>
-</tr>
-<tr>
-<td><a href="../checkbox/">CheckBox</a></td>
-<td>Characters</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../combo/">Combo</a></td>
-<td>Characters</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../listbox/">ListBox</a></td>
-<td>Characters</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../picture/">Picture</a></td>
-<td>Pixels</td>
-<td>No</td>
-<td>See <a href="../images/">Images</a> for more information</td>
-</tr>
-<tr>
-<td><a href="../pushbutton/">PushButton</a></td>
-<td>Characters</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../pushbutton/">PushButton</a> with image</td>
-<td>Pixels</td>
-<td>No</td>
-<td>PushButton's which have images are sized in pixels</td>
-</tr>
-<tr>
-<td><a href="../slider/">Slider</a></td>
-<td>Pixels</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../text/">Text</a></td>
-<td>Characters</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../textbox/">TextBox</a></td>
-<td>Characters</td>
-<td>Yes</td>
-<td>Only a TextBox's width can be set</td>
-</tr>
-<tr>
-<td><a href="../waffle/">Waffle</a></td>
-<td>Pixels</td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+                <h1 id="getting-help">Getting help</h1>
+<p>You may encounter a problem when using guizero, so here are some ways you can get help to solve your problem.</p>
+<h3 id="getting-help_1">Getting help</h3>
+<p>If you have a question about your guizero program it is a good idea to join a community to ask for support:</p>
+<ul>
+<li><a href="https://www.raspberrypi.org/forums/viewforum.php?f=32&amp;sid=b95bfdce6565681fad633c58a7e0e686">Raspberry Pi Forums</a> - some people post questions about guizero on these forums and other members of the community step in to help. The creators of guizero periodically check the Python forum.</li>
+<li><a href="https://stackoverflow.com/">Stack Overflow</a> - a popular site for techy questions</li>
+<li><a href="https://www.computingatschool.org.uk/">Computing at School</a> - a useful site for teachers</li>
+</ul>
+<p>If you would like to read guides and resources for guizero there are many freely available:</p>
+<ul>
+<li>
+<p><a href="https://github.com/lawsie/guizero/tree/master/examples">Example programs</a> - some example programs to get you going.</p>
+</li>
+<li>
+<p><a href="https://github.com/bennuttall/guizero-examples">Using guizero with hardware</a> - Ben Nuttall's projects using guizero combined with hardware</p>
+</li>
+<li>
+<p><a href="https://projects.raspberrypi.org/en/projects/getting-started-with-guis">Getting started with GUIs</a> - a beginners guide to guizero by the Raspberry Pi Foundation</p>
+</li>
+<li>
+<p><a href="http://www.cotswoldjam.org/downloads/2017-03/cat-name-generator/">Cat name generator</a> - materials for a kids workshop, first run at the <a href="http://www.cotswoldjam.org">Cotswold Jam</a></p>
+</li>
+<li>
+<p><a href="https://helloworld.raspberrypi.org/issues/2">Name your pet</a> - article on page 42 of <a href="https://helloworld.raspberrypi.org/">Hello World</a> magazine issue 2.</p>
+</li>
+</ul>
+<h3 id="bugs-and-feature-requests">Bugs and feature requests</h3>
+<p>Like many Python libraries, guizero has a <a href="https://github.com/lawsie/guizero">GitHub repository</a> where you can add issues. These issues come under two headings:</p>
+<ul>
+<li>You found a bug in guizero</li>
+<li>You would like to request we consider including a new feature</li>
+</ul>
+<p>We look at and respond to all issues created on GitHub. However, we ask that you only create issues for bugs and feature requests, rather than support, as we do not have time to answer everything :)</p>
               
             </div>
           </div>
@@ -357,10 +295,10 @@ app.display()
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../colors/" class="btn btn-neutral float-right" title="Colors">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../recipes/" class="btn btn-neutral float-right" title="Recipes">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../alerts/" class="btn btn-neutral" title="Alerts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../usingtk/" class="btn btn-neutral" title="Using tkinter methods"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -386,10 +324,10 @@ app.display()
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../alerts/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../usingtk/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../colors/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../recipes/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

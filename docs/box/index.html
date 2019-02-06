@@ -107,7 +107,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../resources/">Examples and resources</a>
+    <a class="" href="../gettinghelp/">Getting help</a>
                 </li>
     </ul>
 	    </li>
@@ -291,17 +291,17 @@ app.display()
 <tbody>
 <tr>
 <td>master</td>
-<td>App</td>
+<td>App, Window or Box</td>
 <td>-</td>
 <td>Yes</td>
-<td>The <code>App</code> object to which this box belongs</td>
+<td>The container to which this widget belongs</td>
 </tr>
 <tr>
 <td>align</td>
 <td>string</td>
 <td>None</td>
 <td>-</td>
-<td>Alignment of this widget within its grid location. Possible values: <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>. This parameter is only required if the <code>master</code> object has a grid layout.</td>
+<td>Alignment of this widget within its container. Possible values: <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>.</td>
 </tr>
 <tr>
 <td>grid</td>
@@ -336,14 +336,21 @@ app.display()
 <td><a href="../size/">size</a></td>
 <td>None</td>
 <td>No</td>
-<td>Sets the width of the widget</td>
+<td>Set the width of the widget in pixels or to <code>"fill"</code></td>
 </tr>
 <tr>
 <td>height</td>
 <td><a href="../size/">size</a></td>
 <td>None</td>
 <td>No</td>
-<td>Sets the height of the widget</td>
+<td>Set the height of the widget in pixels or to <code>"fill"</code></td>
+</tr>
+<tr>
+<td>border</td>
+<td>int</td>
+<td>None</td>
+<td>No</td>
+<td>Sets the border thickness. <code>0</code> or <code>False</code> is no border. <code>True</code> or value &gt; 1 sets a border.</td>
 </tr>
 </tbody>
 </table>
@@ -471,7 +478,7 @@ app.display()
 <tr>
 <td>height</td>
 <td><a href="../size/">size</a></td>
-<td>Sets the height of the widget</td>
+<td>Set the height of the widget in pixels or to <code>"fill"</code></td>
 </tr>
 <tr>
 <td>layout</td>
@@ -501,7 +508,7 @@ app.display()
 <tr>
 <td>width</td>
 <td><a href="../size/">size</a></td>
-<td>Sets the width of the widget</td>
+<td>Set the width of the widget in pixels or to <code>"fill"</code></td>
 </tr>
 </tbody>
 </table>

@@ -4,7 +4,7 @@
     
     <url>
      <loc>/about/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -21,73 +21,73 @@
         
     <url>
      <loc>/start/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/commands/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/multiple_windows/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/layout/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/alerts/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/size/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/colors/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/images/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/blocking/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/events/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/usingtk/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/resources/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <loc>/gettinghelp/</loc>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -96,7 +96,7 @@
     
     <url>
      <loc>/recipes/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -105,85 +105,85 @@
         
     <url>
      <loc>/app/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/box/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/buttongroup/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/checkbox/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/combo/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/listbox/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/menubar/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/picture/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/pushbutton/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/slider/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/text/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/textbox/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/waffle/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/window/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -193,19 +193,19 @@
         
     <url>
      <loc>/contributing/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/development/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/deployment/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -214,7 +214,7 @@
     
     <url>
      <loc>/changelog/</loc>
-     <lastmod>2018-10-15</lastmod>
+     <lastmod>2019-02-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
