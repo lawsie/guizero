@@ -88,8 +88,7 @@ class EventCallback():
 
     def _event_callback(self, tk_event):
         # the tk event has fired, run all the callbacks associated to this event
-        for ref in self._callbacks:
-
+        for ref in self._callbacks.copy():
             callback = self._callbacks[ref]
             args_expected = utils.no_args_expected(callback)
 
