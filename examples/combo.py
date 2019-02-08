@@ -9,6 +9,4 @@ combo.remove("Something")
 combo2 = Combo(app)
 combo2.append("hi")
 combo2.append("bye")
-
-combo2 = Combo(app, ["option 1"])
 app.display()
