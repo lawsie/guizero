@@ -3,8 +3,8 @@
 ## 0.6.0 - 2019-02-08
 - Refactoring of layout functions
 - Enabled `align` for the `auto` layout
-- Modified `setup.py` to restrict install to Python 3 only
 - `width` and `height` can now be set to `"fill"`
+- Modified `setup.py` to restrict install to Python 3 only
 - Minor bug fixes
 - contributors [martinohanlon](https://github.com/martinohanlon), [bennuttal](https://github.com/bennuttall), [yeyeto2788](https://github.com/yeyeto2788), [knowledgejunkie](https://github.com/knowledgejunkie), [lawsie](https://github.com/lawsie)
 
