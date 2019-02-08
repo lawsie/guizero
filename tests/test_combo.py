@@ -7,8 +7,9 @@ from common_test import (
     enable_test,
     display_test,
     text_test,
-    color_test, 
+    color_test,
     size_text_test,
+    size_fill_test,
     events_test,
     cascaded_properties_test,
     inherited_properties_test
@@ -26,14 +27,14 @@ def test_default_values():
 def test_alt_values():
     a = App(layout = "grid")
     c = Combo(
-        a, 
+        a,
         ["foo", "bar"],
         selected = "bar",
-        grid = [0,1], 
+        grid = [0,1],
         align = "top",
         width=10,
         height=11)
-    
+
     assert c.value == "bar"
     assert c.grid[0] == 0
     assert c.grid[1] == 1
@@ -45,7 +46,7 @@ def test_alt_values():
 def test_no_options():
     a = App()
     c = Combo(a)
-    
+
     assert c.value == ""
     assert len(c.options) == 0
 
@@ -57,7 +58,7 @@ def test_no_options():
 def test_getters_setters():
     a = App()
     c = Combo(a, ["foo", "bar"])
-    
+
     assert c.value == "foo"
     c.value = "bar"
     assert c.value == "bar"
@@ -68,7 +69,7 @@ def test_select_default():
     a = App()
     c1 = Combo(a, ["foo", "bar"], selected="bar")
     c2 = Combo(a, ["foo", "bar"])
-    
+
     assert c1.value == "bar"
     c1.value = "foo"
     assert c1.value == "foo"
@@ -86,7 +87,7 @@ def test_select_default():
 def test_append():
     a = App()
     c = Combo(a, ["foo", "bar"])
-    
+
     assert c.options == ["foo", "bar"]
     c.append("car")
     assert c.options == ["foo", "bar", "car"]
@@ -96,7 +97,7 @@ def test_append():
 def test_insert():
     a = App()
     c = Combo(a, ["foo", "bar"])
-    
+
     assert c.options == ["foo", "bar"]
     c.insert(1, "car")
     assert c.options == ["foo", "car", "bar"]
@@ -106,7 +107,7 @@ def test_insert():
 def test_remove():
     a = App()
     c = Combo(a, ["foo", "bar", "foo"])
-    
+
     assert c.options == ["foo", "bar", "foo"]
     c.remove("foo")
     assert c.options == ["bar", "foo"]
@@ -116,7 +117,7 @@ def test_remove():
 def test_add_option():
     a = App()
     c = Combo(a, ["foo", "bar"])
-    
+
     assert c.value == "foo"
     c.add_option("car")
     assert c.value == "car"
@@ -135,7 +136,7 @@ def test_clear():
 
 def test_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
@@ -150,7 +151,7 @@ def test_command():
 
 def test_command_with_parameter():
     a = App()
-    
+
     callback_event = Event()
     def callback(value):
         assert value == "foo"
@@ -163,19 +164,19 @@ def test_command_with_parameter():
     assert callback_event.is_set()
 
     a.destroy()
-    
+
 def test_update_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
 
     c = Combo(a, ["foo", "bar"])
-    
+
     c._command_callback(c.value)
     assert not callback_event.is_set()
-    
+
     c.update_command(callback)
     c._command_callback(c.value)
     assert callback_event.is_set()
@@ -184,26 +185,26 @@ def test_update_command():
     c.update_command(None)
     c._command_callback(c.value)
     assert not callback_event.is_set()
-    
+
     a.destroy()
 
 def test_update_command_with_parameter():
     a = App()
-    
+
     callback_event = Event()
     def callback(value):
         assert c.value == "foo"
         callback_event.set()
 
     c = Combo(a, ["foo", "bar"])
-    
+
     c.update_command(callback)
 
     c._command_callback(c.value)
     assert callback_event.is_set()
 
     a.destroy()
-    
+
 def test_after_schedule():
     a = App()
     c = Combo(a, ["foo", "bar"])
@@ -250,6 +251,7 @@ def test_size():
     a = App()
     c = Combo(a, ["foo", "bar"])
     size_text_test(c)
+    size_fill_test(c)
     a.destroy()
 
 def test_events():

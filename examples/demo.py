@@ -9,7 +9,7 @@ def message1():
     app.after(2000, message2)
 
 def message2():
-    message = "guizero uses events to make things happen\n" 
+    message = "guizero uses events to make things happen\n"
     message += "events are actions, like clicking a push button\n"
     message += "so...  create an event!"
     change_message(message)
@@ -59,4 +59,3 @@ logo.hide()
 app.after(2000, message1)
 
 app.display()
-

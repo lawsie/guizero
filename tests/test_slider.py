@@ -7,8 +7,9 @@ from common_test import (
     enable_test,
     display_test,
     text_test,
-    color_test, 
+    color_test,
     size_pixel_test,
+    size_fill_test,
     events_test,
     cascaded_properties_test,
     inherited_properties_test
@@ -28,15 +29,15 @@ def test_default_values():
 def test_alt_values():
     a = App(layout = "grid")
     s = Slider(
-        a, 
+        a,
         start=10,
         end=20,
         horizontal=False,
-        grid = [0,1], 
+        grid = [0,1],
         align = "top",
         width=10,
         height=11)
-    
+
     assert s.tk.cget("from") == 10
     assert s.tk.cget("to") == 20
     assert s.tk.cget("orient") == "vertical"
@@ -50,7 +51,7 @@ def test_alt_values():
 def test_getters_setters():
     a = App()
     s = Slider(a)
-    
+
     assert s.value == 0
     s.value = 10
     assert s.value == 10
@@ -59,7 +60,7 @@ def test_getters_setters():
 
 def test_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
@@ -74,7 +75,7 @@ def test_command():
 
 def test_command_with_parameter():
     a = App()
-    
+
     callback_event = Event()
     def callback(value):
         assert value == 0
@@ -87,19 +88,19 @@ def test_command_with_parameter():
     assert callback_event.is_set()
 
     a.destroy()
-    
+
 def test_update_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
 
     s = Slider(a)
-    
+
     s._command_callback(s.value)
     assert not callback_event.is_set()
-    
+
     s.update_command(callback)
     s._command_callback(s.value)
     assert callback_event.is_set()
@@ -108,26 +109,26 @@ def test_update_command():
     s.update_command(None)
     s._command_callback(s.value)
     assert not callback_event.is_set()
-    
+
     a.destroy()
 
 def test_update_command_with_parameter():
     a = App()
-    
+
     callback_event = Event()
     def callback(value):
         assert s.value == 0
         callback_event.set()
 
     s = Slider(a)
-    
+
     s.update_command(callback)
 
     s._command_callback(s.value)
     assert callback_event.is_set()
 
     a.destroy()
-    
+
 def test_after_schedule():
     a = App()
     s = Slider(a)
@@ -174,6 +175,7 @@ def test_size():
     a = App()
     s = Slider(a)
     size_pixel_test(s)
+    size_fill_test(s)
     a.destroy()
 
 def test_events():

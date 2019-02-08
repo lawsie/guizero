@@ -7,8 +7,9 @@ from common_test import (
     enable_test,
     display_test,
     text_test,
-    color_test, 
+    color_test,
     size_text_test,
+    size_fill_test,
     events_test,
     cascaded_properties_test,
     inherited_properties_test
@@ -26,13 +27,13 @@ def test_default_values():
 def test_alt_values():
     a = App(layout = "grid")
     c = CheckBox(
-        a, 
-        text = "foo", 
-        grid = [0,1], 
+        a,
+        text = "foo",
+        grid = [0,1],
         align = "top",
         width = 10,
         height = 11)
-    
+
     assert c.text == "foo"
     assert c.grid[0] == 0
     assert c.grid[1] == 1
@@ -44,7 +45,7 @@ def test_alt_values():
 def test_getters_setters():
     a = App()
     c = CheckBox(a, "foo")
-    
+
     assert c.text == "foo"
     c.text = "bar"
     assert c.text == "bar"
@@ -57,7 +58,7 @@ def test_getters_setters():
 
 def test_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
@@ -71,31 +72,31 @@ def test_command():
 
 def test_command_with_args():
     a = App()
-    
+
     callback_event = Event()
     def callback(value):
         assert value == "foo"
         callback_event.set()
 
     c = CheckBox(a, "foo", command = callback, args = ["foo"])
-    
+
     c.tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
-    
+
 def test_update_command():
     a = App()
-    
+
     callback_event = Event()
     def callback():
         callback_event.set()
 
     c = CheckBox(a, "foo")
-    
+
     c.tk.invoke()
     assert not callback_event.is_set()
-    
+
     c.update_command(callback)
     c.tk.invoke()
     assert callback_event.is_set()
@@ -104,19 +105,19 @@ def test_update_command():
     c.update_command(None)
     c.tk.invoke()
     assert not callback_event.is_set()
-    
+
     a.destroy()
 
 def test_update_command_with_args():
     a = App()
-    
+
     callback_event = Event()
     def callback(value):
         assert value == "foo"
         callback_event.set()
 
     c = CheckBox(a, "foo")
-    
+
     c.update_command(callback, ["foo"])
     c.tk.invoke()
     assert callback_event.is_set()
@@ -126,7 +127,7 @@ def test_update_command_with_args():
 def test_toggle():
     a = App()
     c = CheckBox(a, "foo")
-    
+
     assert not c.value
     c.toggle()
     assert c.value
@@ -134,7 +135,7 @@ def test_toggle():
     assert not c.value
 
     a.destroy()
-    
+
 def test_after_schedule():
     a = App()
     c = CheckBox(a, "foo")
@@ -181,6 +182,7 @@ def test_size():
     a = App()
     c = CheckBox(a, "foo")
     size_text_test(c)
+    size_fill_test(c)
     a.destroy()
 
 def test_events():

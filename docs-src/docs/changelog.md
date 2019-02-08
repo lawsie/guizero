@@ -1,11 +1,20 @@
 # guizero
 
+## 0.6.0 - 2019-02-08
+- Refactoring of layout functions
+- Enabled `align` for the `auto` layout
+- Modified `setup.py` to restrict install to Python 3 only
+- `width` and `height` can now be set to `"fill"`
+- Minor bug fixes
+- contributors [martinohanlon](https://github.com/martinohanlon), [bennuttal](https://github.com/bennuttall), [yeyeto2788](https://github.com/yeyeto2788), [knowledgejunkie](https://github.com/knowledgejunkie), [lawsie](https://github.com/lawsie)
+
 ## 0.5.4 - 2018-10-16
 - Fixed `Box` to size properly
 - Added `border` to `Box`
 - Added `width` and `height` to widget constructor
 - Added `resize` method to all widgets
 - Minor bug fixes
+- contributors [martinohanlon](https://github.com/martinohanlon)
 
 ## 0.5.3 - 2018-07-18
 - Various bug fixes
@@ -206,4 +215,3 @@ Waffle:
 - All waffles will now have a memory. The `remember` constructor argument remains for backwards compatibility only **and will be removed in a future release**.
 - You can now click on a Waffle, and specify a command to run when the Waffle is clicked on. The function given as the command should take two arguments as it will be passed the x, y coordinates of the pixel that was clicked. (Credit: [scotty3785](https://github.com/scotty3785))
 - Changed internal implementation of the Waffle so it should now be able to redraw more efficiently. (Credit: [scotty3785](https://github.com/scotty3785))
-

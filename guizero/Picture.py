@@ -11,8 +11,6 @@ class Picture(Widget):
         self._image_source = image
         self._image = None
         self._image_player = None
-        self._width = None
-        self._height = None
 
         # Instantiate label object which will contain image
         tk = Label(master.tk)
@@ -23,6 +21,9 @@ class Picture(Widget):
         self._load_image()
 
     def _load_image(self):
+        if self._height == "fill" or self._width == "fill":
+            utils.raise_error("{}\nCannot use 'fill' for width and height.".format(self.description))
+
         if self._image_source is not None:
 
             # stop any animation which might still be playing
@@ -40,10 +41,10 @@ class Picture(Widget):
                 self._image_player = utils.AnimationPlayer(self, self._image, self._update_tk_image)
             else:
                 self._update_tk_image(self._image.tk_image)
-            
+
             self.tk.config(width=self._width)
             self.tk.config(height=self._height)
-            
+
     def _update_tk_image(self, tk_image):
         self.tk.config(image=tk_image)
 
@@ -71,22 +72,6 @@ class Picture(Widget):
     @image.setter
     def image(self, image_source):
         self.value = image_source
-
-    @property
-    def width(self):
-        return self._width
-
-    @width.setter
-    def width(self, value):
-        self.resize(value, self._height)
-        
-    @property
-    def height(self):
-        return self._height
-
-    @height.setter
-    def height(self, value):
-        self.resize(self._width, value)
 
     def resize(self, width, height):
         self._width = width

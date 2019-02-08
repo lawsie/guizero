@@ -3,9 +3,10 @@ from common_test import (
     schedule_after_test,
     schedule_repeat_test,
     destroy_test,
-    display_test, 
-    color_test, 
+    display_test,
+    color_test,
     size_pixel_test,
+    size_fill_test,
     events_test,
     cascading_enable_test,
     cascading_properties_test,
@@ -37,19 +38,19 @@ def test_border():
     b = Box(a)
     assert not b.border
     assert b.border == 0
-    
+
     b.border = True
     assert b.border
     assert b.border == 1
     assert b._get_tk_config("highlightbackground") == "black"
-    
+
     b.border = False
     assert not b.border
-    
+
     b.border = 10
     assert b.border
     assert b.border == 10
-    
+
     b.set_border(11, "red")
     assert b.border
     assert b.border == 11
@@ -91,6 +92,7 @@ def test_size():
     a = App()
     b = Box(a)
     size_pixel_test(b)
+    size_fill_test(b)
     a.destroy()
 
 def test_enable():

@@ -9,12 +9,13 @@ if version_info.major != 3:
 
 __project__ = 'guizero'
 __desc__ = 'Python module to allow learners to easily create GUIs'
-__version__ = '0.5.4'
+__version__ = '0.6.0'
 __author__ = "Laura Sach"
 __author_email__ = 'laura.sach@raspberrypi.org'
 __license__ = 'BSD'
 __url__ = 'https://github.com/lawsie/guizero'
 __requires__ = ["pillow>=4.3.0"]
+__python_requires__ = ">=3"
 __keywords__ = [
     "GUI",
     "guizero",
@@ -43,7 +44,7 @@ If you can download and unzip a file, you can [install guizero](https://lawsie.g
 If you have administrator rights and are connected to the internet, you can use [pip to quickly install guizero](#install-using-pip).
 
 guizero only requires `tkinter` to be installed, which is included with a standard Python installation on all platforms except Linux.
-A python module to allow learners to easily create GUIs. guizero is designed to be used by new learners. 
+A python module to allow learners to easily create GUIs. guizero is designed to be used by new learners.
 
 ## Use
 
@@ -72,4 +73,5 @@ setup(
     packages=find_packages(),
     classifiers=__classifiers__,
     install_requires=__requires__,
+    python_requires=__python_requires__,
 )

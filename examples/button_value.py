@@ -2,7 +2,7 @@ from guizero import App, Text, PushButton
 
 def show_button_state():
     if button.value:
-        button_state.value = "pressed" 
+        button_state.value = "pressed"
     else:
         button_state.value = "released"
 

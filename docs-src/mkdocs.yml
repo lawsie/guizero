@@ -14,7 +14,7 @@ pages:
       - Loops and sleeping: blocking.md
       - Events: events.md
       - Using tkinter methods: usingtk.md
-      - Examples and resources: resources.md
+      - Getting help: gettinghelp.md
   - Recipes: recipes.md
   - Widgets:
       - App: app.md
@@ -31,7 +31,7 @@ pages:
       - TextBox: textbox.md
       - Waffle: waffle.md
       - Window: window.md
-  - Contributing: 
+  - Contributing:
       - Notes: contributing.md
       - Developing: development.md
       - Deploying: deployment.md

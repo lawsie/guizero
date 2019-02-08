@@ -8,12 +8,12 @@ class Waffle(Widget):
     def __init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, remember=True, visible=True, enabled=None, bg=None):
 
         description = "[Waffle] object ({}x{})".format(height, width)
-        
+
         # Create a tk Frame object within this object which will be the waffle
         tk = Frame(master.tk)
 
-        self._height = height       # How many pixels high
-        self._width = width         # How many pixels wide
+        # self._height = height       # How many pixels high
+        # self._width = width         # How many pixels wide
         self._pixel_size = dim      # Size of one pixel
         self._pad = pad             # How much padding between pixels
         self._color = utils.convert_color(color)        # Start color of the whole waffle
@@ -33,13 +33,16 @@ class Waffle(Widget):
 
         # Bind the left mouse click to the canvas so we can click on the waffle
         self.events.set_event("<Waffle.ButtonPress-1>", "<ButtonPress-1>", self._clicked_on)
-        
-        
+
+
     # METHODS
     # -------------------------------------------
 
     # Internal use only
     def _create_waffle(self):
+        if self._height == "fill" or self._width == "fill":
+            utils.raise_error("{}\nCannot use 'fill' for width and height.".format(self.description))
+            
         self._create_canvas()
         self._size_waffle()
         self._draw_waffle()
@@ -49,7 +52,7 @@ class Waffle(Widget):
         if self._canvas:
             self._canvas.delete("all")
             self._canvas.destroy()
-            
+
         #size the canvas
         self._c_height = (self._height * (self._pixel_size + self._pad)) + (self._pad * 2)
         self._c_width = self._width * (self._pixel_size + self._pad) + (self._pad * 2)
@@ -78,25 +81,25 @@ class Waffle(Widget):
                     # if pixel already exist, reuse it and update the values
                     old_pixel = self._waffle_pixels[(x,y)]
                     new_waffle_pixels[x,y] = WafflePixel(
-                        x, y, 
-                        self._canvas, currx, curry, 
-                        self._pixel_size, 
-                        old_pixel.dotty, 
+                        x, y,
+                        self._canvas, currx, curry,
+                        self._pixel_size,
+                        old_pixel.dotty,
                         old_pixel.color)
                 else:
                     # create a new celpixell
                     new_waffle_pixels[x,y] = WafflePixel(
-                        x, y, 
-                        self._canvas, currx, curry, 
-                        self._pixel_size, 
-                        self._dotty, 
+                        x, y,
+                        self._canvas, currx, curry,
+                        self._pixel_size,
+                        self._dotty,
                         self._color)
 
                 curry += self._pixel_size + self._pad
 
             currx += self._pixel_size + self._pad
             curry = self._pad
-                
+
         self._waffle_pixels = new_waffle_pixels
 
     def _draw_waffle(self):
@@ -108,7 +111,7 @@ class Waffle(Widget):
                 cell = self._waffle_pixels[x,y]
                 cell.draw()
                 curry += self._pixel_size + self._pad
-            
+
             currx += self._pixel_size + self._pad
             curry = self._pad
 
@@ -127,7 +130,7 @@ class Waffle(Widget):
     def get_pixel(self, x, y):
         if self.pixel(x, y):
             return self._waffle_pixels[x,y].color
-        
+
     # Returns a 2D list of all colours in the waffle
     def get_all(self):
         all_pixels = []
@@ -179,7 +182,7 @@ class Waffle(Widget):
     @enabled.setter
     def enabled(self, value):
         self._enabled = value
-    
+
     def disable(self):
         """Disable the widget."""
         self._enabled = False
@@ -187,24 +190,6 @@ class Waffle(Widget):
     def enable(self):
         """Enable the widget."""
         self._enabled = True
-
-    # PROPERTIES
-    # ----------------------------------
-    @property
-    def width(self):
-        return self._width
-
-    @width.setter
-    def width(self, value):
-        self.resize(value, self.height)
-
-    @property
-    def height(self):
-        return self._height
-
-    @height.setter
-    def height(self, value):
-        self.resize(self.width, value)
 
     def resize(self, width, height):
         if self._width != width or self._height != height:
@@ -264,7 +249,7 @@ class Waffle(Widget):
     # Set the background colour
     @bg.setter
     def bg(self, value):
-        # only change the color if we need too as it requires 
+        # only change the color if we need too as it requires
         # redrawing the canvas
         if self.bg != value:
             value = utils.convert_color(value)
@@ -299,13 +284,13 @@ class WafflePixel():
 
         if self._dotty == False:
             self._drawn_object = self._canvas.create_rectangle(
-                self._canvas_x, self._canvas_y, 
-                self._canvas_x + self._size, self._canvas_y + self._size, 
+                self._canvas_x, self._canvas_y,
+                self._canvas_x + self._size, self._canvas_y + self._size,
                 fill=self._color)
         else:
             self._drawn_object = self._canvas.create_oval(
-                self._canvas_x, self._canvas_y, 
-                self._canvas_x + self._size, self._canvas_y + self._size, 
+                self._canvas_x, self._canvas_y,
+                self._canvas_x + self._size, self._canvas_y + self._size,
                 fill=self._color)
 
     @property
@@ -327,7 +312,7 @@ class WafflePixel():
     @property
     def size(self):
         return self._size
-    
+
     @property
     def color(self):
         return self._color

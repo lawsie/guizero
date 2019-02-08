@@ -1,6 +1,6 @@
 # guizero
 
-[Version 0.5.4](http://lawsie.github.io/guizero/changelog) (16th Oct 2018)
+[Version 0.6.0](http://lawsie.github.io/guizero/changelog) (8th Feb 2019)
 
 guizero is designed to allow children to quickly and easily create GUIs for their programs.
 
@@ -34,7 +34,7 @@ If you have administrator rights to your computer and are connected to the inter
 
 1. Make sure you have pip installed - follow [this guide](https://projects.raspberrypi.org/en/projects/using-pip-on-windows) if you are not sure.
 2. Open a command prompt
-3. Type `pip install guizero` and press Enter
+3. Type `pip3 install guizero` and press Enter
 
 ### Raspberry Pi
 
@@ -58,8 +58,8 @@ If you have administrator rights to your computer and are connected to the inter
 
 ## Upgrading
 
-- Raspberry Pi/Linux/Mac - `sudo pip3 install -U guizero`
-- Windows - `pip install guizero --upgrade`
+- Raspberry Pi/Linux/Mac - `sudo pip3 install guizero --upgrade`
+- Windows - `pip3 install guizero --upgrade`
 
 ## Mission statement
 The aim of guizero is to make the process of creating simple GUIs quick, accessible and understandable for children.

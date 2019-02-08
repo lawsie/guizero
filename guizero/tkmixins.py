@@ -14,7 +14,7 @@ class ScheduleMixin():
         """Repeat `function` every `time` milliseconds."""
         callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
         self._callback[function] = [callback_id, True]
-        
+
     def cancel(self, function):
         """Cancel the scheduled `function` calls."""
         if function in self._callback.keys():
@@ -45,7 +45,7 @@ class DestroyMixin():
         self.tk.destroy()
 
 
-class EnableMixin():    
+class EnableMixin():
     @property
     def enabled(self):
         state = self._get_tk_config("state")
@@ -57,15 +57,15 @@ class EnableMixin():
             self.enable()
         else:
             self.disable()
-    
+
     def disable(self):
         """Disable the widget."""
         self._set_tk_config("state", "disabled")
-        
+
     def enable(self):
         """Enable the widget."""
         self._set_tk_config("state", "normal")
-        
+
 
 class FocusMixin():
     def focus(self):
@@ -81,7 +81,7 @@ class DisplayMixin():
         Sets or returns whether the widget is visible.
         """
         return self._visible
-    
+
     @visible.setter
     def visible(self, value):
         if value:
@@ -91,16 +91,13 @@ class DisplayMixin():
 
     def hide(self):
         """Hide the widget."""
-        if self.master.layout == "grid":
-            self.tk.grid_forget()
-        else:
-            self.tk.pack_forget()
         self._visible = False
+        self.master.display_widgets()
 
     def show(self):
         """Show the widget."""
-        utils.auto_pack(self, self.master, self.grid, self.align)
         self._visible = True
+        self.master.display_widgets()
 
 
 class TextMixin():
@@ -108,9 +105,9 @@ class TextMixin():
     FG_KEYS = [
         "fg",
         "activeforeground",
-    ] 
+    ]
 
-    # Get the font object for this widget 
+    # Get the font object for this widget
     def _get_font(self, default = False):
         # get the font in use for the widget
         f = Font(self.tk, self._get_tk_config("font", default=default))
@@ -124,12 +121,12 @@ class TextMixin():
         Sets or returns the text color of the widget.
         """
         return self._get_tk_config("fg")
-        
+
     # Set the text colour
     @text_color.setter
     def text_color(self, color):
         self._set_tk_config(self.FG_KEYS, utils.convert_color(color))
-        
+
     # Get the current font as a string
     @property
     def font(self):
@@ -148,7 +145,7 @@ class TextMixin():
             font = f["family"]
 
         self._set_tk_config("font", (font, self.text_size))
-        
+
     # Get the current text size as an integer
     @property
     def text_size(self):
@@ -171,7 +168,7 @@ class TextMixin():
 
 class ColorMixin():
 
-    # these are the widget keys which will get set when the background is changed 
+    # these are the widget keys which will get set when the background is changed
     BG_KEYS = [
         "bg",
         "activebackground",
@@ -191,7 +188,7 @@ class ColorMixin():
     @bg.setter
     def bg(self, color):
         self._set_tk_config(self.BG_KEYS, utils.convert_color(color))
-             
+
 
 class SizeMixin():
     @property
@@ -199,22 +196,22 @@ class SizeMixin():
         """
         Sets or returns the width of the widget.
         """
-        return int(self._get_tk_config("width"))
+        return self._width
 
     @width.setter
     def width(self, value):
-        self.resize(value, self.height)
+        self.resize(value, self._height)
 
     @property
     def height(self):
         """
         Sets or returns the height of the widget.
         """
-        return int(self._get_tk_config("height"))
+        return self._height
 
     @height.setter
     def height(self, value):
-        self.resize(self.width, value)
+        self.resize(self._width, value)
 
     def resize(self, width, height):
         """
@@ -226,10 +223,17 @@ class SizeMixin():
         :param int height:
             The height of the widget.
         """
-        self._set_tk_config("width", width)
-        self._set_tk_config("height", height)
-    
-class GridMixin():
+        self._width = width
+        self._height = height
+        if width != "fill":
+            self._set_tk_config("width", width)
+        if height != "fill":
+            self._set_tk_config("height", height)
+        if width == "fill" or height == "fill":
+            self.master.display_widgets()
+
+
+class LayoutMixin():
 
     @property
     def grid(self):
@@ -251,7 +255,7 @@ class EventsMixin():
     @property
     def when_clicked(self):
         """
-        Sets or returns the function called when the widget is clicked. 
+        Sets or returns the function called when the widget is clicked.
         """
         return self.events.get_event("<when_clicked>")
 
@@ -262,8 +266,8 @@ class EventsMixin():
     @property
     def when_left_button_pressed(self):
         """
-        Sets or returns the function called when the left mouse button is 
-        pressed. 
+        Sets or returns the function called when the left mouse button is
+        pressed.
         """
         return self.events.get_event("<when_left_button_pressed>")
 
@@ -274,8 +278,8 @@ class EventsMixin():
     @property
     def when_left_button_released(self):
         """
-        Sets or returns the function called when the left mouse button is 
-        released. 
+        Sets or returns the function called when the left mouse button is
+        released.
         """
         return self.events.get_event("<when_left_button_released>")
 
@@ -286,8 +290,8 @@ class EventsMixin():
     @property
     def when_right_button_pressed(self):
         """
-        Sets or returns the function called when the right mouse button is 
-        pressed. 
+        Sets or returns the function called when the right mouse button is
+        pressed.
         """
         return self.events.get_event("<when_right_button_pressed>")
 
@@ -298,8 +302,8 @@ class EventsMixin():
     @property
     def when_right_button_released(self):
         """
-        Sets or returns the function called when the right mouse button is 
-        released. 
+        Sets or returns the function called when the right mouse button is
+        released.
         """
         return self.events.get_event("<when_right_button_released>")
 
@@ -310,7 +314,7 @@ class EventsMixin():
     @property
     def when_key_pressed(self):
         """
-        Sets or returns the function called when a key is pressed. 
+        Sets or returns the function called when a key is pressed.
         """
         return self.events.get_event("<when_key_pressed>")
 
@@ -321,7 +325,7 @@ class EventsMixin():
     @property
     def when_key_released(self):
         """
-        Sets or returns the function called when a key is released. 
+        Sets or returns the function called when a key is released.
         """
         return self.events.get_event("<when_key_released>")
 
@@ -333,7 +337,7 @@ class EventsMixin():
     def when_mouse_enters(self):
         """
         Sets or returns the function called when the mouse pointer enters
-        the widget. 
+        the widget.
         """
         return self.events.get_event("<when_mouse_enters>")
 
@@ -345,7 +349,7 @@ class EventsMixin():
     def when_mouse_leaves(self):
         """
         Sets or returns the function called when the mouse pointer leaves
-        the widget. 
+        the widget.
         """
         return self.events.get_event("<when_mouse_leaves>")
 
@@ -359,7 +363,7 @@ class EventsMixin():
         Sets or returns the function called when the mouse pointers moves.
         """
         return self.events.get_event("<when_mouse_moved>")
-    
+
     @when_mouse_moved.setter
     def when_mouse_moved(self, value):
         self.events.set_event("<when_mouse_moved>", "<Motion>", value)

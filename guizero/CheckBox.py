@@ -5,16 +5,16 @@ from .base import TextWidget
 class CheckBox(TextWidget):
 
     def __init__(
-        self, 
-        master, 
-        text="", 
-        command=None, 
-        grid=None, 
-        align=None, 
-        args=None, 
-        visible=True, 
-        enabled=None, 
-        width=None, 
+        self,
+        master,
+        text="",
+        command=None,
+        grid=None,
+        align=None,
+        args=None,
+        visible=True,
+        enabled=None,
+        width=None,
         height=None):
         """
         Creates a CheckBox
@@ -23,7 +23,7 @@ class CheckBox(TextWidget):
             The Container (App, Box, etc) the CheckBox will belong too.
 
         :param string selected:
-            The text required for the checkbox. Defaults to "". 
+            The text required for the checkbox. Defaults to "".
 
         :param callback command:
             The callback function to call when the CheckBox changes.
@@ -36,7 +36,7 @@ class CheckBox(TextWidget):
             How to align the widget within the grid, defaults to None.
 
         :param callback args:
-            A list of arguments to pass to the widgets `command`, defaults to 
+            A list of arguments to pass to the widgets `command`, defaults to
             `None`.
 
         :param bool visible:
@@ -48,19 +48,19 @@ class CheckBox(TextWidget):
 
         :param int width:
             The starting width of the widget. Defaults to `None` and will auto
-            size. 
+            size.
 
         :param int height:
             The starting height of the widget. Defaults to `None` and will auto
-            size. 
+            size.
         """
-        
+
         description = "[CheckBox] object with text \"" + text + "\""
-        
+
         self._text = str(text)
         self._value = IntVar()
         tk = Checkbutton(master.tk, text=text, variable=self._value)
-        
+
         super(CheckBox, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         # Set the command callback
@@ -73,7 +73,7 @@ class CheckBox(TextWidget):
     @property
     def value(self):
         """
-        Sets or returns the value of the CheckBox. 
+        Sets or returns the value of the CheckBox.
         """
         return (self._value.get())
 
@@ -92,7 +92,7 @@ class CheckBox(TextWidget):
     @property
     def text(self):
         """
-        Sets or returns the text of the CheckBox. 
+        Sets or returns the text of the CheckBox.
         """
         return (self._text)
 
@@ -108,22 +108,22 @@ class CheckBox(TextWidget):
 
     def toggle(self):
         """
-        Toggles the value of the CheckBox. 
+        Toggles the value of the CheckBox.
         """
         self.tk.toggle()
 
     def update_command(self, command, args=None):
         """
         Updates the callback command which is called when the Combo
-        changes. 
-        
+        changes.
+
         Setting to `None` stops the callback.
 
         :param callback command:
             The callback function to call.
 
         :param args list:
-            A list of argument values to pass to the callback. Defaults to 
+            A list of argument values to pass to the callback. Defaults to
             `None`.
         """
         if command is None:
@@ -133,10 +133,10 @@ class CheckBox(TextWidget):
                 self._command = command
             else:
                 self._command = utils.with_args(command, *args)
-    
+
     def _command_callback(self):
         self._command()
-        
+
     # DEPRECATED METHODS
     # --------------------------------------------
     # Return text associated with this checkbox

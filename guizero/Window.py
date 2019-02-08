@@ -8,21 +8,21 @@ class Window(BaseWindow):
     def __init__(self, master, title="guizero", width=500, height=500, layout="auto", bg=None, visible=True):
 
         description = "[Window] oject"
-        
+
         self._modal = False
         tk = Toplevel(master.tk)
-        
+
         super(Window, self).__init__(
-            master, 
+            master,
             tk,
             description,
             title,
             width,
             height,
             layout,
-            bg, 
+            bg,
             visible)
-    
+
     def _close_window(self):
         if self._on_close is None:
             self.hide()
@@ -43,4 +43,3 @@ class Window(BaseWindow):
         self._modal = wait
         if self._modal:
             self.tk.grab_set()
-        

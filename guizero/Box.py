@@ -5,15 +5,16 @@ from .base import ContainerWidget
 class Box(ContainerWidget):
 
     def __init__(
-        self, 
-        master, 
-        layout="auto", 
-        grid=None, 
-        align=None, 
-        visible=True, 
-        enabled=None, 
-        width=None, 
-        height=None):
+        self,
+        master,
+        layout="auto",
+        grid=None,
+        align=None,
+        visible=True,
+        enabled=None,
+        width=None,
+        height=None,
+        border=None):
         """
         Creates a Box
 
@@ -31,7 +32,7 @@ class Box(ContainerWidget):
             How to align the widget within the grid, defaults to `None`.
 
         :param callback args:
-            A list of arguments to pass to the widgets `command`, defaults to 
+            A list of arguments to pass to the widgets `command`, defaults to
             `None`.
 
         :param bool visible:
@@ -48,49 +49,31 @@ class Box(ContainerWidget):
         :param int height:
             The starting height of the widget. Defaults to `None` and will auto
             size. If not `None`, both the width and height need to be set.
+
+        :param int border:
+            Sets the border thickness. `0` or `False` is no border. `True` or 
+            value > 1 sets a border. The default is `None`.
         """
 
         self._grid = grid
         self._align = align
-        
+
         description = "[Box] object (may also contain other objects)"
-        
+
         tk = Frame(master.tk)
 
         super(Box, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
 
         self.resize(width, height)
-            
-    def resize(self, width, height):
-        """
-        Resizes the widget.
 
-        :param int width:
-            The width of the widget.
-
-        :param int height:
-            The height of the widget.
-        """
-        if width is None:
-            width = 0
-        
-        if height is None:
-            height = 0
-
-        if width == 0 and height == 0:
-            self.tk.pack_propagate(True)
-        elif width > 0 and height > 0:
-            self.tk.pack_propagate(False)
-        else:
-            utils.error_format("You must specify a width and a height for a Box")
-
-        super(Box, self).resize(width, height)
+        if border is not None:
+            self.border = border
 
     @property
     def border(self):
         """
-        Sets or returns the border thickness. 
-        
+        Sets or returns the border thickness.
+
         `0` or `False` is no border.
         `True` or value > 1 sets a border
 
@@ -100,7 +83,7 @@ class Box(ContainerWidget):
     @border.setter
     def border(self, value):
         self.set_border(value, "black")
-        
+
     def set_border(self, thickness, color="black"):
         """
         Sets the border thickness and color.
@@ -113,3 +96,17 @@ class Box(ContainerWidget):
         """
         self._set_tk_config("highlightthickness", thickness)
         self._set_tk_config("highlightbackground", utils.convert_color(color))
+
+    def resize(self, width, height):
+        """
+        Resizes the widget.
+
+        :param int width:
+            The width of the widget.
+
+        :param int height:
+            The height of the widget.
+        """
+        self._set_propagation(width, height)
+        
+        super(Box, self).resize(width, height)

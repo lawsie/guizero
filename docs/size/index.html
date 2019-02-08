@@ -113,7 +113,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../resources/">Examples and resources</a>
+    <a class="" href="../gettinghelp/">Getting help</a>
                 </li>
     </ul>
 	    </li>
@@ -249,18 +249,21 @@
                 <h2 id="sizes">Sizes</h2>
 <p>You can set the <code>width</code> and <code>height</code> of widgets in guizero.</p>
 <p>Widgets are sized by pixels or characters depending on the widget and what it contains.</p>
-<pre><code class="python">from guizero import App, PushButton, Slide
+<p>Some widgets size can also be set to <code>"fill"</code> where it will use up all of the available space.</p>
+<pre><code class="python">from guizero import App, PushButton, Slider, ListBox
+
 app = App()
 
 # a PushButton's size is noted in characters
-button = PushButton(app)
-button.width = 30
-button.height = 5
+button = PushButton(app, width=30, height=5)
 
 # a Slider's size is noted in pixels
-slider = Slider(app)
-slider.width = 300
-slider.height = 30  
+slider = Slider(app, width=300, height=30)
+
+# some widgets, such as ListBox can also be told to fill all the available space
+listbox = ListBox(app, width=&quot;fill&quot;, height=&quot;fill&quot;)
+
+app.display()
 </code></pre>
 
 <table>
@@ -268,6 +271,7 @@ slider.height = 30
 <tr>
 <th>Widget</th>
 <th>Characters or Pixels</th>
+<th>Fill</th>
 <th>Notes</th>
 </tr>
 </thead>
@@ -275,61 +279,73 @@ slider.height = 30
 <tr>
 <td><a href="../box/">Box</a></td>
 <td>Pixels</td>
-<td>The size only takes affect if the Box is empty, if the Box contains any widgets it will size to the widgets inside it</td>
+<td>Yes</td>
+<td>If a Box is sized in Pixels, both width and height must be specified.</td>
 </tr>
 <tr>
 <td><a href="../buttongroup/">ButtonGroup</a></td>
 <td>Characters</td>
+<td>Yes</td>
 <td>The height of a ButtonGroup must divide by the number of buttons in it</td>
 </tr>
 <tr>
 <td><a href="../checkbox/">CheckBox</a></td>
 <td>Characters</td>
+<td>Yes</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="../combo/">Combo</a></td>
 <td>Characters</td>
+<td>Yes</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="../listbox/">ListBox</a></td>
 <td>Characters</td>
+<td>Yes</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="../picture/">Picture</a></td>
 <td>Pixels</td>
+<td>No</td>
 <td>See <a href="../images/">Images</a> for more information</td>
 </tr>
 <tr>
 <td><a href="../pushbutton/">PushButton</a></td>
 <td>Characters</td>
+<td>Yes</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="../pushbutton/">PushButton</a> with image</td>
 <td>Pixels</td>
+<td>No</td>
 <td>PushButton's which have images are sized in pixels</td>
 </tr>
 <tr>
 <td><a href="../slider/">Slider</a></td>
 <td>Pixels</td>
+<td>Yes</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="../text/">Text</a></td>
 <td>Characters</td>
+<td>Yes</td>
 <td></td>
 </tr>
 <tr>
 <td><a href="../textbox/">TextBox</a></td>
 <td>Characters</td>
+<td>Yes</td>
 <td>Only a TextBox's width can be set</td>
 </tr>
 <tr>
 <td><a href="../waffle/">Waffle</a></td>
 <td>Pixels</td>
+<td>No</td>
 <td></td>
 </tr>
 </tbody>

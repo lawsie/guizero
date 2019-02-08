@@ -12,16 +12,16 @@ from .event import EventManager
 class ListBox(ContainerTextWidget):
 
     def __init__(
-        self, 
-        master, 
-        items=None, 
-        selected=None, 
-        command=None, 
-        grid=None, 
-        align=None, 
-        visible=True, 
-        enabled=None, 
-        multiselect=False, 
+        self,
+        master,
+        items=None,
+        selected=None,
+        command=None,
+        grid=None,
+        align=None,
+        visible=True,
+        enabled=None,
+        multiselect=False,
         scrollbar=False,
         width=None,
         height=None):
@@ -35,7 +35,7 @@ class ListBox(ContainerTextWidget):
             A list of strings to populate the ListBox, defaults to `None`.
 
         :param string selected:
-            The item in the ListBox to select, defaults to `None`. 
+            The item in the ListBox to select, defaults to `None`.
 
         :param callback command:
             The callback function to call when the ListBox changes,
@@ -61,6 +61,14 @@ class ListBox(ContainerTextWidget):
 
         :param bool scrollbar:
             If ListBox should have a vertical scrollbar, defaults to False.
+
+        :param int width:
+            The starting width of the widget. Defaults to `None` and will auto
+            size.
+
+        :param int height:
+            The starting height of the widget. Defaults to `None` and will auto
+            size.
         """
 
         description = "[ListBox] object"
@@ -70,8 +78,6 @@ class ListBox(ContainerTextWidget):
         super(ListBox, self).__init__(master, tk, description, "auto", grid, align, visible, enabled, width, height)
 
         self._listbox = ListBoxWidget(self, items, selected, command, None, None, visible, enabled, multiselect, width, height)
-
-        #self._listbox.tk.config(width=300)
 
         if scrollbar:
             # create the scrollbar and link it to the listbox
@@ -98,6 +104,7 @@ class ListBox(ContainerTextWidget):
         :param int height:
             The height of the widget.
         """
+        self._set_propagation(width, height)
         super(ListBox, self).resize(width, height)
         self._listbox.resize(width, height)
 
@@ -110,7 +117,7 @@ class ListBox(ContainerTextWidget):
 
         If the ListBox is a not `multiselect`, `value` is the item selected.
 
-        If the ListBox is a `multiselect`, `value` is a list of items 
+        If the ListBox is a `multiselect`, `value` is a list of items
         selected.
         """
         return self._listbox.value
@@ -148,21 +155,21 @@ class ListBox(ContainerTextWidget):
     @property
     def items(self):
         """
-        Returns a list of items in the ListBox 
+        Returns a list of items in the ListBox
         """
         return self._listbox.items
 
     def update_command(self, command):
         """
         Updates the callback command which is called when the ListBox
-        changes. 
-        
+        changes.
+
         Setting to `None` stops the callback.
 
         :param callback command:
-            The callback function to call, it can ccept 0 or 1 parameters.
+            The callback function to call, it can accept 0 or 1 parameters.
 
-            If it accepts 1 parameter the `value` of the ListBox will be 
+            If it accepts 1 parameter the `value` of the ListBox will be
             passed.
         """
         self._listbox.update_command(command)
@@ -173,7 +180,7 @@ class ListBoxWidget(TextWidget):
 
         description = "[ListBox] object"
         self._multiselect = multiselect
-        
+
         # Create a tk OptionMenu object within this object
         mode = EXTENDED if multiselect else BROWSE
         # exportselection=0 allows you to select from more than 1 Listbox
