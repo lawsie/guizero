@@ -270,9 +270,11 @@
               
                 <h2 id="layouts">Layouts</h2>
 <p>The layout of your GUI is how you arrange the widgets in the window.</p>
-<p>Widgets can be arranged into "containers" (e.g. <code>App</code>, <code>Window</code>, <code>Box</code>) using either of these layouts:
-+ <code>auto</code> - where widgets are positioned automatically
-+ <code>grid</code> - you specify where in a grid each widget should be positioned</p>
+<p>Widgets can be arranged into "containers" (e.g. <code>App</code>, <code>Window</code>, <code>Box</code>) using either of these layouts:</p>
+<ul>
+<li><code>auto</code> - where widgets are positioned automatically</li>
+<li><code>grid</code> - you specify where in a grid each widget should be positioned</li>
+</ul>
 <p>The layout is set using <code>layout</code> parameter of the container e.g.</p>
 <pre><code class="python">app = App(layout=&quot;auto&quot;)
 app = App(layout=&quot;grid&quot;)
@@ -419,7 +421,7 @@ app.display()
 <h2 id="boxes">Boxes</h2>
 <p>By using a <code>Box</code> widget you can segment your GUI into different sections allowing you to lay out your user interface in any way you want.</p>
 <p><img alt="Layout with multiple boxes" src="../images/layout_boxes.png" /></p>
-<p><a href="https://github.com/lawsie/guizero/tree/master/examples/layout_boxes.py">code</a></p>
+<p><a href="https://github.com/lawsie/guizero/tree/master/examples/layout_boxes.py">code for example above</a></p>
 <p>If you wanted to create a title in the top left hand corner of your GUI, you could use a <code>Box</code> which fills the top of the <code>App</code> and put a <code>Text</code> widget inside aligned to the <code>left</code>.</p>
 <pre><code class="python">from guizero import App, Box, Text
 app = App()

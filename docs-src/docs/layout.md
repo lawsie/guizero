@@ -3,6 +3,7 @@
 The layout of your GUI is how you arrange the widgets in the window.
 
 Widgets can be arranged into "containers" (e.g. `App`, `Window`, `Box`) using either of these layouts:
+
 + `auto` - where widgets are positioned automatically
 + `grid` - you specify where in a grid each widget should be positioned
 
@@ -207,7 +208,7 @@ By using a `Box` widget you can segment your GUI into different sections allowin
 
 ![Layout with multiple boxes](images/layout_boxes.png)
 
-[code](https://github.com/lawsie/guizero/tree/master/examples/layout_boxes.py)
+[code for example above](https://github.com/lawsie/guizero/tree/master/examples/layout_boxes.py)
 
 If you wanted to create a title in the top left hand corner of your GUI, you could use a `Box` which fills the top of the `App` and put a `Text` widget inside aligned to the `left`.
 
