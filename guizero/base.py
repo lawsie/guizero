@@ -16,6 +16,7 @@ from .tkmixins import (
 from . import utilities as utils
 from .event import EventManager
 from tkinter import BOTH, X, Y, YES
+from . import utilities as utils
 
 
 class Base():
@@ -107,7 +108,7 @@ class Component(
     ColorMixin,
     EventsMixin):
 
-    def __init__(self, master, tk, description):
+    def __init__(self, master, tk, description, displayable):
         """
         An abstract class for a component in guizero.
         """
@@ -116,6 +117,7 @@ class Component(
         self._master = master
         self._description = description
         self._events = EventManager(self, tk)
+        self._displayable = displayable
 
         # check the master
         if self.master is not None:
@@ -155,6 +157,15 @@ class Component(
         """
         return self._events
 
+    @property
+    def displayable(self):
+        """
+        Returns whether the Component can be displayed (packed or gridded)
+
+        Note: this is only used by MenuBar and is a candidate for refactoring
+        """
+        return self._displayable
+
     def destroy(self):
         """
         Destroy the tk widget.
@@ -168,11 +179,11 @@ class Component(
 
 class Container(Component):
 
-    def __init__(self, master, tk, description, layout):
+    def __init__(self, master, tk, description, layout, displayable):
         """
         An abstract class for a container which can hold other widgets.
         """
-        super(Container, self).__init__(master, tk, description)
+        super(Container, self).__init__(master, tk, description, displayable)
         self._children = []
         self._layout_manager = layout
         self._bg = None
@@ -295,24 +306,25 @@ class Container(Component):
 
         Should be called when the widgets need to be "re-packed/gridded".
         """
-        from . import utilities as utils
         # All widgets are removed and then recreated to ensure the order they 
         # were created is the order they are displayed.
 
         for child in self.children:
 
-            # forget the widget
-            if self.layout != "grid":
-                child.tk.pack_forget()
-            else:
-                child.tk.grid_forget()
-            
-            # display the widget
-            if child.visible:
+            if child.displayable:
+
+                # forget the widget
                 if self.layout != "grid":
-                    self._pack_widget(child)
+                    child.tk.pack_forget()
                 else:
-                    self._grid_widget(child)
+                    child.tk.grid_forget()
+                
+                # display the widget
+                if child.visible:
+                    if self.layout != "grid":
+                        self._pack_widget(child)
+                    else:
+                        self._grid_widget(child)
 
     def _pack_widget(self, widget):
         pack_params={}
@@ -421,7 +433,7 @@ class BaseWindow(Container):
         """
         Base class for objects which use windows e.g. `App` and `Window`
         """
-        super(BaseWindow, self).__init__(master, tk, description, layout)
+        super(BaseWindow, self).__init__(master, tk, description, layout, False)
 
         # Initial setup
         self.tk.title( str(title) )
@@ -529,7 +541,7 @@ class Widget(
         """
         The base class for a widget which is an interactable component e.g. `Picture`
         """
-        super(Widget, self).__init__(master,tk, description)
+        super(Widget, self).__init__(master,tk, description, True)
         self._grid = grid
         self._align = align
         self._width = width
@@ -574,7 +586,7 @@ class ContainerWidget(
         """
         The base class for a widget which is also a container e.g. `Box`, `ButtonGroup`
         """
-        super(ContainerWidget, self).__init__(master,tk, description, layout)
+        super(ContainerWidget, self).__init__(master,tk, description, layout, True)
         self._grid = grid
         self._align = align
         self._width = width
