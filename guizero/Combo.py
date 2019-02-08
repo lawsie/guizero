@@ -285,7 +285,7 @@ class Combo(TextWidget):
         """
         Sets a single option in the Combo by its index, returning True if it was able too.
         """
-        if index < len(self._options) - 1:
+        if index < len(self._options):
             self._selected.set(self._options[index])
             return True
         else:
