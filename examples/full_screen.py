@@ -1,4 +1,4 @@
-from guizero import App, Window, PushButton
+from guizero import App, Text, PushButton
 
 def go_fs():
     app.full_screen = True
@@ -6,8 +6,9 @@ def go_fs():
 def exit_fs():
     app.full_screen = False
 
-app = App("Sup")
-pb = PushButton(app, text="Go fullscreen", command=go_fs)
-pb2 = PushButton(app, text="Exit fullscreen", command=exit_fs)
+app = App()
+go_fullscreen = PushButton(app, text="Go full screen", command=go_fs)
+exit_fullscreen = Text(app, "To exit full screen, press the escape key")
+
 
 app.display()
