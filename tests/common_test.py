@@ -303,3 +303,14 @@ def inheriting_properties_test(container):
     p = Picture(container)
     assert p.bg == "red"
     assert not p.enabled
+
+def full_screen_test(window):
+    assert window.full_screen == False
+    window.full_screen = True
+    assert window.full_screen == True
+    window.full_screen = False
+    assert window.full_screen == False
+    window.set_full_screen()
+    assert window.full_screen == True
+    window.exit_full_screen()
+    assert window.full_screen == False

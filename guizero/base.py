@@ -439,6 +439,7 @@ class BaseWindow(Container):
         self.tk.title( str(title) )
         self.tk.geometry(str(width)+"x"+str(height))
         self._on_close = None
+        self._full_screen = False
 
         self.bg = bg
 
@@ -547,11 +548,13 @@ class BaseWindow(Container):
     def set_full_screen(self, keybind="<Escape>"):
         """Make this window full screen and bind the Escape key (or given key) to exit full screen mode"""
         self.tk.attributes("-fullscreen", True)
+        self._full_screen = True
         self.events.set_event("<FullScreen.Escape>", keybind, self.exit_full_screen)
 
     def exit_full_screen(self):
         """Change from full screen to windowed mode and remove key binding"""
         self.tk.attributes("-fullscreen", False)
+        self._full_screen = False
         self.events.remove_event("<FullScreen.Escape>")
 
 
