@@ -306,7 +306,7 @@ class Container(Component):
 
         Should be called when the widgets need to be "re-packed/gridded".
         """
-        # All widgets are removed and then recreated to ensure the order they 
+        # All widgets are removed and then recreated to ensure the order they
         # were created is the order they are displayed.
 
         for child in self.children:
@@ -318,7 +318,7 @@ class Container(Component):
                     child.tk.pack_forget()
                 else:
                     child.tk.grid_forget()
-                
+
                 # display the widget
                 if child.visible:
                     if self.layout != "grid":
@@ -336,7 +336,7 @@ class Container(Component):
             pack_params["fill"] = X
         elif widget.height == "fill":
             pack_params["fill"] = Y
-            
+
         if widget.align is not None:
             if widget.align in ["top", "bottom", "left", "right"]:
                 pack_params["side"] = widget.align
@@ -439,6 +439,7 @@ class BaseWindow(Container):
         self.tk.title( str(title) )
         self.tk.geometry(str(width)+"x"+str(height))
         self._on_close = None
+        self._full_screen = False
 
         self.bg = bg
 
@@ -503,6 +504,21 @@ class BaseWindow(Container):
         else:
             self.hide()
 
+    # Whether the window is full screen or not
+    @property
+    def full_screen(self):
+        """
+        Sets or returns the visibility of the window
+        """
+        return self._full_screen
+
+    @full_screen.setter
+    def full_screen(self, make_full_screen):
+        if make_full_screen:
+            self.set_full_screen()
+        else:
+            self.exit_full_screen()
+
     # METHODS
     # --------------------------------------
 
@@ -528,6 +544,18 @@ class BaseWindow(Container):
 
     def update(self):
         self.tk.update()
+
+    def set_full_screen(self, keybind="<Escape>"):
+        """Make this window full screen and bind the Escape key (or given key) to exit full screen mode"""
+        self.tk.attributes("-fullscreen", True)
+        self._full_screen = True
+        self.events.set_event("<FullScreen.Escape>", keybind, self.exit_full_screen)
+
+    def exit_full_screen(self):
+        """Change from full screen to windowed mode and remove key binding"""
+        self.tk.attributes("-fullscreen", False)
+        self._full_screen = False
+        self.events.remove_event("<FullScreen.Escape>")
 
 
 class Widget(
@@ -621,7 +649,7 @@ class ContainerWidget(
             propagate_function = self.tk.grid_propagate
 
         propagate_value = True
-        
+
         # if height or width > 0 need to stop propagation
         if isinstance(width, int):
             if width > 0:
@@ -635,7 +663,7 @@ class ContainerWidget(
         if isinstance(width, int) and isinstance(height, int):
             if (width == 0 and height > 0) or (height == 0 and width > 0):
                  utils.error_format("You must specify a width and a height for {}".format(self.description))
-        
+
         propagate_function(propagate_value)
 
 

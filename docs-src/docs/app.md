@@ -47,12 +47,15 @@ You can call the following methods on an `App` object.
 | disable()             | -                                   | -       | Disables all the widgets in the app so that they cannot be interacted with                                                                                     |
 | display()             | -                                   | -       | Displays the app on the screen. You **MUST** call this method at the end of your program to display the app on the screen.                                     |
 | enable()              | -                                   | -       | Enables all the widgets in the app                                                                                                                             |
+| exit_full_screen()              | -                                   | -       | Exit full screen display                                                                        |
+
 | focus()               | -                                   | -       | Gives focus to the widget                                                                                                                                      |
 | hide()                | -                                   | -       | Hides the app window from view.                                                                                                                                |
 | on_close(command)     | command (function name)             | -       | Calls the given function when the user tries to close the window.                                                                                              |
 | repeat(time, command) | time (int), command (function name) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
 | show()                | -                                   | -       | Displays the app window if it was previously hidden                                                                                                            |
 | update()              | -                                   | -       | Force the application to update itself, useful if changes aren't reflected in the UI.                                                                          |
+| set_full_screen(keybind)              | String                                   | -       | Set the application to display full screen. Option to specify a key to exit full screen (default is 'Esc'.)                                                                          |
 | _set_title(title)_    | _title (string)_                    | -       | _Replaced by `title` property_                                                                                                                                 |
 | _bgcolor_             | _bgcolor (string)_                  | -       | _Replaced by `bg` property_                                                                                                                                    |
 
@@ -68,6 +71,7 @@ You can set and get the following properties:
 | enabled    | boolean            | `True` if the app is enabled                              |
 | height     | int                | The height of the window                                  |
 | font       | string             | The font that widgets should use                          |
+| full_screen   | boolean            | False      | No         | Whether the App is full screen        |
 | layout     | string             | The layout being used by the App (`"auto"`) or (`"grid"`) |
 | title      | string             | The title of the window                                   |
 | text_size  | int                | The size of the text widgets should use                   |

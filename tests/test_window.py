@@ -7,7 +7,8 @@ from common_test import (
     events_test,
     cascading_enable_test,
     cascading_properties_test,
-    inheriting_properties_test
+    inheriting_properties_test,
+    full_screen_test
     )
 
 def test_default_values():
@@ -90,4 +91,10 @@ def test_inheriting_properties():
     a = App()
     w = Window(a)
     inheriting_properties_test(w)
+    a.destroy()
+
+def test_full_screen():
+    a = App()
+    w = Window(a)
+    full_screen_test(w)
     a.destroy()
