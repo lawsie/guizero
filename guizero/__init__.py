@@ -14,6 +14,7 @@ from .Box import Box
 from .ButtonGroup import ButtonGroup
 from .CheckBox import CheckBox
 from .Combo import Combo
+from .Drawing import Drawing
 from .ListBox import ListBox
 from .MenuBar import MenuBar
 from .Picture import Picture
