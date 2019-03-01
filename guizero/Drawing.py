@@ -47,6 +47,9 @@ class Drawing(Widget):
             fill = "" if color is None else utils.convert_color(color)
             )
 
+    def triangle(self, x1, y1, x2, y2, x3, y3, color="black", outline=False, outline_color="black"):
+        self.polygon(x1, y1, x2, y2, x3, y3, color=color, outline=outline, outline_color=outline_color)
+
     def image(self, x, y, image, width=None, height=None):
 
         # load the image and add to the list (otherwise tk destroys the reference to them!)

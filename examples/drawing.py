@@ -27,12 +27,19 @@ d.line(130, 250, 240, 250, width=5)
 d.line(250, 250, 300, 250, width=5, color="green")
 d.line(310, 250, 360, 250, width=5, color="red")
 
-d.polygon(10, 300, 60, 300, 20, 350, 10, 350)
-d.polygon(70, 300, 120, 300, 80, 350, 70, 350, color="yellow")
+d.triangle(10, 400, 60, 400, 10, 450)
+d.triangle(70, 400, 120, 400, 70, 450, color="yellow")
+d.triangle(130, 400, 180, 400, 130, 450, color="yellow", outline=True)
+d.triangle(190, 400, 240, 400, 190, 450, color="yellow", outline=5)
+d.triangle(250, 400, 300, 400, 250, 450, color="yellow", outline=5, outline_color="green")
+d.triangle(310, 400, 360, 400, 310, 450, color=None, outline=5, outline_color="green")
+
+d.polygon(10, 300, 60, 300, 40, 350, 10, 350)
+d.polygon(70, 300, 120, 300, 100, 350, 70, 350, color="yellow")
 d.polygon(130, 300, 180, 300, 160, 350, 130, 350, color="yellow", outline=True)
 d.polygon(190, 300, 240, 300, 220, 350, 190, 350, color="yellow", outline=5)
 d.polygon(250, 300, 300, 300, 280, 350, 250, 350, color="yellow", outline=5, outline_color="green")
-d.polygon(310, 300, 360, 300, 320, 350, 310, 350, color=None, outline=5, outline_color="green")
+d.polygon(310, 300, 360, 300, 340, 350, 310, 350, color=None, outline=5, outline_color="green")
 
 
 #d.image(10, 300, "guizero.png")
