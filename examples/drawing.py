@@ -6,7 +6,7 @@ a = App()
 d = Drawing(a, width="fill", height="fill")
 d.bg = "light blue"
 
-# drawing the shapes
+# draw the shapes
 d.rectangle(10, 10, 60, 60)
 d.rectangle(70, 10, 120, 60, color="yellow")
 d.rectangle(130, 10, 180, 60, color="yellow", outline=True)
@@ -27,7 +27,17 @@ d.line(130, 250, 240, 250, width=5)
 d.line(250, 250, 300, 250, width=5, color="green")
 d.line(310, 250, 360, 250, width=5, color="red")
 
+d.polygon(10, 300, 60, 300, 20, 350, 10, 350)
+d.polygon(70, 300, 120, 300, 80, 350, 70, 350, color="yellow")
+d.polygon(130, 300, 180, 300, 160, 350, 130, 350, color="yellow", outline=True)
+d.polygon(190, 300, 240, 300, 220, 350, 190, 350, color="yellow", outline=5)
+d.polygon(250, 300, 300, 300, 280, 350, 250, 350, color="yellow", outline=5, outline_color="green")
+d.polygon(310, 300, 360, 300, 320, 350, 310, 350, color=None, outline=5, outline_color="green")
 
+
+#d.image(10, 300, "guizero.png")
+
+#a.after(1000, d.clear)
 
 #d.circle(50, 50, 15, fill_color="blue")
 #d.circle(150, 50, 15, fill_color="blue")
