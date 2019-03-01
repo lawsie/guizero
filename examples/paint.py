@@ -46,13 +46,17 @@ tool_box = Box(a, height="fill", border=True, align="left")
 paint_box = Box(a, width="fill", height="fill", border=True, align="right")
 
 tool = Combo(tool_box, options=["line", "rectangle", "oval"], selected="line", align="top", width="fill", command=select_tool)
+
 color_label = Text(tool_box, text="color", align="top", width="fill")
 color_label.bg = "black"
 color_label.text_color = "white"
+
 red = Slider(tool_box, end=255, command=update_color)
 red.bg = (255, 0, 0)
+
 green = Slider(tool_box, end=255, command=update_color)
 green.bg = (0, 255, 0)
+
 blue = Slider(tool_box, end=255, command=update_color)
 blue.bg = (0, 0, 255)
 
