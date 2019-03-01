@@ -51,22 +51,11 @@ class Drawing(Widget):
         self.polygon(x1, y1, x2, y2, x3, y3, color=color, outline=outline, outline_color=outline_color)
 
     def image(self, x, y, image, width=None, height=None):
-
         # load the image and add to the list (otherwise tk destroys the reference to them!)
         _image = utils.GUIZeroImage(image, width, height)
         self._images.append(_image)
         self.tk.create_image(x, y, image=_image.tk_image, anchor="nw")
         
-    def circle_old(self, x, y, radius, width=1, color="black", fill_color=None):
-        
-        self.tk.create_oval(
-            x - radius, y - radius, 
-            x + radius, y + radius,
-            outline = "" if color is None else color,
-            width = 0 if width is None else width,
-            fill = "" if fill_color is None else fill_color
-            )
-    
     def clear(self):
         self._images.clear()
         self.tk.delete(ALL)
