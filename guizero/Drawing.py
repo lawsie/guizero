@@ -17,14 +17,14 @@ class Drawing(Widget):
         super(Drawing, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
     def line(self, x1, y1, x2, y2, color="black", width=1):
-        self.tk.create_line(
+        return self.tk.create_line(
             x1, y1, x2, y2, 
             width = width,
             fill = "" if color is None else utils.convert_color(color)
             )
 
     def oval(self, x1, y1, x2, y2, color="black", outline=False, outline_color="black"):
-        self.tk.create_oval(
+        return self.tk.create_oval(
             x1, y1, x2, y2, 
             outline = utils.convert_color(outline_color) if outline else "",
             width = int(outline),
@@ -32,7 +32,7 @@ class Drawing(Widget):
             )
 
     def rectangle(self, x1, y1, x2, y2, color="black", outline=False, outline_color="black"):
-        self.tk.create_rectangle(
+        return self.tk.create_rectangle(
             x1, y1, x2, y2, 
             outline = utils.convert_color(outline_color) if outline else "",
             width = int(outline),
@@ -40,7 +40,7 @@ class Drawing(Widget):
             )
 
     def polygon(self, *coords, color="black", outline=False, outline_color="black"):
-        self.tk.create_polygon(
+        return self.tk.create_polygon(
             *coords, 
             outline = utils.convert_color(outline_color) if outline else "",
             width = int(outline),
@@ -48,14 +48,17 @@ class Drawing(Widget):
             )
 
     def triangle(self, x1, y1, x2, y2, x3, y3, color="black", outline=False, outline_color="black"):
-        self.polygon(x1, y1, x2, y2, x3, y3, color=color, outline=outline, outline_color=outline_color)
+        return self.polygon(x1, y1, x2, y2, x3, y3, color=color, outline=outline, outline_color=outline_color)
 
     def image(self, x, y, image, width=None, height=None):
         # load the image and add to the list (otherwise tk destroys the reference to them!)
         _image = utils.GUIZeroImage(image, width, height)
         self._images.append(_image)
-        self.tk.create_image(x, y, image=_image.tk_image, anchor="nw")
-        
+        return self.tk.create_image(x, y, image=_image.tk_image, anchor="nw")
+    
+    def delete(self, id):
+        self.tk.delete(id)
+
     def clear(self):
         self._images.clear()
         self.tk.delete(ALL)

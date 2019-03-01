@@ -41,9 +41,9 @@ d.triangle(190, 400, 240, 400, 190, 450, color="yellow", outline=5)
 d.triangle(250, 400, 300, 400, 250, 450, color="yellow", outline=5, outline_color="green")
 d.triangle(310, 400, 360, 400, 310, 450, color=None, outline=5, outline_color="green")
 
-d.image(10, 500, "guizero.png", width=350, height=100)
+ref = d.image(10, 500, "guizero.png", width=350, height=100)
 
-#a.after(1000, d.hide)
+a.after(1000, lambda: d.delete(ref))
 
 #d.circle(50, 50, 15, fill_color="blue")
 #d.circle(150, 50, 15, fill_color="blue")
