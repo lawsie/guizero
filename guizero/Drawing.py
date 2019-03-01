@@ -13,24 +13,23 @@ class Drawing(Widget):
 
         super(Drawing, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
-    def rectangle_old(self, x1, y1, x2, y2, width=1, color="black", fill_color=None):
-
-        self.tk.create_rectangle(
+    def oval(self, x1, y1, x2, y2, color="black", outline=False, outline_color="black"):
+        self.tk.create_oval(
             x1, y1, x2, y2, 
-            outline = "" if color is None else color,
-            width = 0 if width is None else width,
-            fill = "" if fill_color is None else fill_color
+            outline = utils.convert_color(outline_color) if outline else "",
+            width = int(outline),
+            fill = "" if color is None else utils.convert_color(color)
             )
 
     def rectangle(self, x1, y1, x2, y2, color="black", outline=False, outline_color="black"):
         self.tk.create_rectangle(
             x1, y1, x2, y2, 
-            outline = outline_color if outline else "",
+            outline = utils.convert_color(outline_color) if outline else "",
             width = int(outline),
-            fill = "" if color is None else color
+            fill = "" if color is None else utils.convert_color(color)
             )
 
-    def circle(self, x, y, radius, width=1, color="black", fill_color=None):
+    def circle_old(self, x, y, radius, width=1, color="black", fill_color=None):
         
         self.tk.create_oval(
             x - radius, y - radius, 

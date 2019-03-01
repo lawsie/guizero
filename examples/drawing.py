@@ -14,6 +14,15 @@ d.rectangle(190, 10, 240, 60, color="yellow", outline=5)
 d.rectangle(250, 10, 300, 60, color="yellow", outline=5, outline_color="green")
 d.rectangle(310, 10, 360, 60, color=None, outline=5, outline_color="red")
 
+d.oval(10, 100, 60, 150)
+d.oval(70, 100, 120, 200, color="yellow")
+d.oval(130, 100, 240, 150, color="yellow", outline=True)
+d.oval(130, 160, 240, 210, color="yellow", outline=5)
+d.oval(250, 100, 300, 150, color="yellow", outline=5, outline_color="green")
+d.oval(310, 100, 360, 150, color=None, outline=5, outline_color="red")
+
+
+
 #d.circle(50, 50, 15, fill_color="blue")
 #d.circle(150, 50, 15, fill_color="blue")
 #d.rectangle(20,160,190,170, color="red", fill_color="black")
