@@ -13,6 +13,13 @@ class Drawing(Widget):
 
         super(Drawing, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
+    def line(self, x1, y1, x2, y2, color="black", width=1):
+        self.tk.create_line(
+            x1, y1, x2, y2, 
+            width = width,
+            fill = "" if color is None else utils.convert_color(color)
+            )
+
     def oval(self, x1, y1, x2, y2, color="black", outline=False, outline_color="black"):
         self.tk.create_oval(
             x1, y1, x2, y2, 

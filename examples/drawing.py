@@ -21,6 +21,12 @@ d.oval(130, 160, 240, 210, color="yellow", outline=5)
 d.oval(250, 100, 300, 150, color="yellow", outline=5, outline_color="green")
 d.oval(310, 100, 360, 150, color=None, outline=5, outline_color="red")
 
+d.line(10, 250, 60, 250)
+d.line(70, 250, 120, 250, color="yellow")
+d.line(130, 250, 240, 250, width=5)
+d.line(250, 250, 300, 250, width=5, color="green")
+d.line(310, 250, 360, 250, width=5, color="red")
+
 
 
 #d.circle(50, 50, 15, fill_color="blue")
