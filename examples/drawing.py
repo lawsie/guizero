@@ -1,6 +1,6 @@
 from guizero import App, Drawing
 
-a = App(width = 370, height=800)
+a = App(width = 370, height=700)
 
 # create drawing object
 d = Drawing(a, width="fill", height="fill")
@@ -41,12 +41,11 @@ d.triangle(190, 400, 240, 400, 190, 450, color="yellow", outline=5)
 d.triangle(250, 400, 300, 400, 250, 450, color="yellow", outline=5, outline_color="green")
 d.triangle(310, 400, 360, 400, 310, 450, color=None, outline=5, outline_color="green")
 
-ref = d.image(10, 500, "guizero.png", width=350, height=100)
+d.image(10, 500, "guizero.png", width=350, height=100)
 
-a.after(1000, lambda: d.delete(ref))
-
-#d.circle(50, 50, 15, fill_color="blue")
-#d.circle(150, 50, 15, fill_color="blue")
-#d.rectangle(20,160,190,170, color="red", fill_color="black")
+d.text(10, 600, "guizero")
+d.text(110, 600, "guizero", font="times new roman")
+d.text(210, 600, "guizero", size=24)
+d.text(10, 650, "this is a some text which goes over the width and is wrapped", font="arial", size=16, max_width=350)
 
 a.display()

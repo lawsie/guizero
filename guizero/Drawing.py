@@ -1,4 +1,5 @@
-from tkinter import Canvas, BOTH, ALL, PhotoImage
+from tkinter import Canvas, ALL
+from tkinter.font import Font
 from . import utilities as utils
 from .base import Widget
 from .event import EventManager
@@ -206,7 +207,11 @@ class Drawing(Widget):
         :return:
             The id of the shape.
         """
-        return self.polygon(x1, y1, x2, y2, x3, y3, color=color, outline=outline, outline_color=outline_color)
+        return self.polygon(
+            x1, y1, x2, y2, x3, y3, 
+            color=color, 
+            outline=outline, 
+            outline_color=outline_color)
 
     def image(self, x, y, image, width=None, height=None):
         """
@@ -219,7 +224,7 @@ class Drawing(Widget):
             The y position to insert the image.
 
         :param str image:
-            The file path, PhotoImage or PIL.Image.
+            The file path or a PhotoImage or PIL.Image object.
 
         :param str width:
             The width to scale the image too, setting to `None` will use the
@@ -237,6 +242,45 @@ class Drawing(Widget):
         self._images.append(_image)
         return self.tk.create_image(x, y, image=_image.tk_image, anchor="nw")
     
+    def text(self, x, y, text, color="black", font=None, size=None, max_width=None):
+        """
+        Inserts an image into the drawing, position by its top-left corner.
+        
+        :param int x:
+            The x position to insert the image.
+
+        :param int y:
+            The y position to insert the image.
+
+        :param str color:
+            The color of the text. Defaults to `"black"`.
+
+        :param str font:
+            The font to use. Defaults to `None` and will use the system
+            default font.
+
+        :param int size:
+            The size of the text. Defaults to `None` and will use the system
+            default font size.
+
+        :param int max_width:
+            Maximum line length. Lines longer than this value are wrapped. 
+            Default is `None` (no wrapping).
+        """
+        # create the font
+        if size is None:
+            f = Font(self.tk, family=font)
+        else:
+            f = Font(self.tk, family=font, size=size)
+        
+        return self.tk.create_text(
+            x, y, 
+            text=text,
+            fill = "" if color is None else utils.convert_color(color),
+            font=f,
+            width=max_width,
+            anchor="nw")
+
     def delete(self, id):
         """
         Deletes an "object" (line, triangle, image, etc) from the drawing.
@@ -244,7 +288,6 @@ class Drawing(Widget):
         :param int id:
             The id of the object.
         """
-
         self.tk.delete(id)
 
     def clear(self):
