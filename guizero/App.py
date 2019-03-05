@@ -9,6 +9,32 @@ class App(BaseWindow):
 
     def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True):
 
+        """
+        Creates an App
+
+        :param string title:
+            The text in the title bar of the window, defaults to `guizero`.
+
+        :param int width:
+            The width of the App window, defaults to 500.
+
+        :param int height:
+            The height of the App window, defaults to 500.
+
+        :param string layout:
+            The layout manager style for this window, defaults to `auto`.
+
+        :param string bgcolor:
+            DEPRECATED: The background colour for this window, defaults to None. Use bg instead.
+
+        :param color bg:
+            The background colour for this window, defaults to None. See https://lawsie.github.io/guizero/colors/
+
+        :param bool visible:
+            If the widget should be visible, defaults to `True`.
+
+        """
+
         description = "[App] object"
 
         # If this is the first app to be created, create Tk
