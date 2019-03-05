@@ -41,19 +41,19 @@ When you create a `Box` object you **must** specify a master, and you can specif
 
 You can call the following methods on a `Box` object.
 
-| Method                       | Takes                                       | Returns | Description                                                                                                                                                    |
-|------------------------------|---------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| after(time, command)         | time (int), command (function name)         | -       | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
-| cancel(command)              | command (function name)                     | -       | Cancels a scheduled call to `command`                                                                                                                          |
-| disable()                    | -                                           | -       | Disables all the widgets in the box so that they cannot be interacted with                                                                                     |
-| destroy()                    | -                                           | -       | Destroys the widget                                                                                                                                            |
-| enable()                     | -                                           | -       | Enables all the widgets in the box                                                                                                                             |
-| focus()                      | -                                           | -       | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)                                                                      |
-| hide()                       | -                                           | -       | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
-| repeat(time, command)        | time (int), command (function name)         | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
-| resize(width, height)        | width (int), height (int)                   | -       | Sets the width and height of the widget                                                                                                                        |
-| set_border(thickness, color) | thickness (int), color ([color](colors.md)) | -       | Sets the border thickness and color. Setting thickness to `0` will result in no border.                                                                        |
-| show()                       | -                                           | -       | Displays the widget if it was previously hidden                                                                                                                |
+| Method                           | Takes                                                         | Returns | Description                                                                                                                                                    |
+|----------------------------------|---------------------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| after(time, command, args=None)  | time (int), command (function name), args (list of arguments) | -       | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
+| cancel(command)                  | command (function name)                                       | -       | Cancels a scheduled call to `command`                                                                                                                          |
+| disable()                        | -                                                             | -       | Disables all the widgets in the box so that they cannot be interacted with                                                                                     |
+| destroy()                        | -                                                             | -       | Destroys the widget                                                                                                                                            |
+| enable()                         | -                                                             | -       | Enables all the widgets in the box                                                                                                                             |
+| focus()                          | -                                                             | -       | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)                                                                      |
+| hide()                           | -                                                             | -       | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
+| repeat(time, command, args=None) | time (int), command (function name), args (list of arguments) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| resize(width, height)            | width (int), height (int)                                     | -       | Sets the width and height of the widget                                                                                                                        |
+| set_border(thickness, color)     | thickness (int), color ([color](colors.md))                   | -       | Sets the border thickness and color. Setting thickness to `0` will result in no border.                                                                        |
+| show()                           | -                                                             | -       | Displays the widget if it was previously hidden                                                                                                                |
 
 
 ### Properties
@@ -62,7 +62,7 @@ You can set and get the following properties:
 
 | Method     | Data type          | Description                                                                                           |
 |------------|--------------------|-------------------------------------------------------------------------------------------------------|
-| align      | string             | The alignment of this widget within its container                                                 |
+| align      | string             | The alignment of this widget within its container                                                     |
 | border     | int                | The border thickness, setting to `0` or `False` (the default) there is no border.                     |
 | bg         | [color](colors.md) | The background colour of the widget                                                                   |
 | enabled    | boolean            | `True` if the box is enabled                                                                          |
