@@ -62,7 +62,7 @@ You can set and get the following properties:
 
 | Method     | Data type          | Description                                                                                           |
 |------------|--------------------|-------------------------------------------------------------------------------------------------------|
-| align      | string             | The alignment of this widget within its grid location                                                 |
+| align      | string             | The alignment of this widget within its container                                                 |
 | border     | int                | The border thickness, setting to `0` or `False` (the default) there is no border.                     |
 | bg         | [color](colors.md) | The background colour of the widget                                                                   |
 | enabled    | boolean            | `True` if the box is enabled                                                                          |

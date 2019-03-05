@@ -72,7 +72,7 @@ You can set and get the following properties:
 
 | Method     | Data type          | Description                                                                                           |
 |------------|--------------------|-------------------------------------------------------------------------------------------------------|
-| align      | string             | The alignment of this widget within its grid location                                                 |
+| align      | string             | The alignment of this widget within its container                                                 |
 | bg         | [color](colors.md) | The background colour of the widget                                                                   |
 | color      | [color](colors.md) | The default colour of pixels on the waffle                                                            |
 | dotty      | bool               | If `True` the waffle will display circles                                                             |

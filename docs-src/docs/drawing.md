@@ -70,7 +70,7 @@ You can set and get the following properties:
 
 | Method  | Data type          | Description                                                                                           |
 |---------|--------------------|-------------------------------------------------------------------------------------------------------|
-| align   | string             | The alignment of this widget within its grid location                                                 |
+| align   | string             | The alignment of this widget within its container                                                 |
 | bg      | [color](colors.md) | The background colour of the widget                                                                   |
 | enabled | boolean            | `True` if the widget is enabled                                                                       |
 | grid    | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
