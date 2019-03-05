@@ -39,25 +39,24 @@ Parameters in _italics_ will still work but are **deprecated** - this means you 
 
 You can call the following methods on an `App` object.
 
-| Method                | Takes                               | Returns | Description                                                                                                                                                    |
-|-----------------------|-------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| after(time, command)  | time (int), command (function name) | -       | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
-| cancel(command)       | command (function name)             | -       | Cancels a scheduled call to `command`                                                                                                                          |
-| destroy()             | -                                   | -       | Destroys the widget                                                                                                                                            |
-| disable()             | -                                   | -       | Disables all the widgets in the app so that they cannot be interacted with                                                                                     |
-| display()             | -                                   | -       | Displays the app on the screen. You **MUST** call this method at the end of your program to display the app on the screen.                                     |
-| enable()              | -                                   | -       | Enables all the widgets in the app                                                                                                                             |
-| exit_full_screen()              | -                                   | -       | Exit full screen display                                                                        |
-
-| focus()               | -                                   | -       | Gives focus to the widget                                                                                                                                      |
-| hide()                | -                                   | -       | Hides the app window from view.                                                                                                                                |
-| on_close(command)     | command (function name)             | -       | Calls the given function when the user tries to close the window.                                                                                              |
-| repeat(time, command) | time (int), command (function name) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
-| show()                | -                                   | -       | Displays the app window if it was previously hidden                                                                                                            |
-| update()              | -                                   | -       | Force the application to update itself, useful if changes aren't reflected in the UI.                                                                          |
-| set_full_screen(keybind)              | String                                   | -       | Set the application to display full screen. Option to specify a key to exit full screen (default is 'Esc'.)                                                                          |
-| _set_title(title)_    | _title (string)_                    | -       | _Replaced by `title` property_                                                                                                                                 |
-| _bgcolor_             | _bgcolor (string)_                  | -       | _Replaced by `bg` property_                                                                                                                                    |
+| Method                           | Takes                                                         | Returns | Description                                                                                                                                                    |
+|----------------------------------|---------------------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| after(time, command, args=None)  | time (int), command (function name), args (list of arguments) | -       | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
+| cancel(command)                  | command (function name)                                       | -       | Cancels a scheduled call to `command`                                                                                                                          |
+| destroy()                        | -                                                             | -       | Destroys the widget                                                                                                                                            |
+| disable()                        | -                                                             | -       | Disables all the widgets in the app so that they cannot be interacted with                                                                                     |
+| display()                        | -                                                             | -       | Displays the app on the screen. You **MUST** call this method at the end of your program to display the app on the screen.                                     |
+| enable()                         | -                                                             | -       | Enables all the widgets in the app                                                                                                                             |
+| exit_full_screen()               | -                                                             | -       | Exit full screen display                                                                                                                                       |
+| focus()                          | -                                                             | -       | Gives focus to the widget                                                                                                                                      |
+| hide()                           | -                                                             | -       | Hides the app window from view.                                                                                                                                |
+| on_close(command)                | command (function name)                                       | -       | Calls the given function when the user tries to close the window.                                                                                              |
+| repeat(time, command, args=None) | time (int), command (function name), args (list of arguments) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| show()                           | -                                                             | -       | Displays the app window if it was previously hidden                                                                                                            |
+| update()                         | -                                                             | -       | Force the application to update itself, useful if changes aren't reflected in the UI.                                                                          |
+| set_full_screen(keybind)         | String                                                        | -       | Set the application to display full screen. Option to specify a key to exit full screen (default is 'Esc'.)                                                    |
+| _set_title(title)_               | _title (string)_                                              | -       | _Replaced by `title` property_                                                                                                                                 |
+| _bgcolor_                        | _bgcolor (string)_                                            | -       | _Replaced by `bg` property_                                                                                                                                    |
 
 Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
@@ -65,19 +64,19 @@ Parameters in _italics_ will still work but are **deprecated** - this means you 
 
 You can set and get the following properties:
 
-| Method     | Data type          | Description                                               |
-|------------|--------------------|-----------------------------------------------------------|
-| bg         | [color](colors.md) | The background colour of the window                       |
-| enabled    | boolean            | `True` if the app is enabled                              |
-| height     | int                | The height of the window                                  |
-| font       | string             | The font that widgets should use                          |
-| full_screen   | boolean            | False      | No         | Whether the App is full screen        |
-| layout     | string             | The layout being used by the App (`"auto"`) or (`"grid"`) |
-| title      | string             | The title of the window                                   |
-| text_size  | int                | The size of the text widgets should use                   |
-| text_color | [color](colors.md) | The colour of the text widgets should use                 |
-| visible    | boolean            | If the app is visible                                     |
-| width      | int                | The width of the window                                   |
+| Method      | Data type          | Description                                               |     |                                |
+|-------------|--------------------|-----------------------------------------------------------|-----|--------------------------------|
+| bg          | [color](colors.md) | The background colour of the window                       |     |                                |
+| enabled     | boolean            | `True` if the app is enabled                              |     |                                |
+| height      | int                | The height of the window                                  |     |                                |
+| font        | string             | The font that widgets should use                          |     |                                |
+| full_screen | boolean            | False                                                     | No  | Whether the App is full screen |
+| layout      | string             | The layout being used by the App (`"auto"`) or (`"grid"`) |     |                                |
+| title       | string             | The title of the window                                   |     |                                |
+| text_size   | int                | The size of the text widgets should use                   |     |                                |
+| text_color  | [color](colors.md) | The colour of the text widgets should use                 |     |                                |
+| visible     | boolean            | If the app is visible                                     |     |                                |
+| width       | int                | The width of the window                                   |     |                                |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `App` object is called `app` you would write `app.title`.
