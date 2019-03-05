@@ -97,13 +97,13 @@ from guizero import App, Waffle
 app = App()
 
 my_waffle = Waffle(app)
-my_waffle.set_pixel(2, 1, "red")
+my_waffle[2,1].color = "red"
 
 # Your waffle will remember what colour each pixel is
-print(my_waffle.get_pixel(2,1))
+print(my_waffle[2,1].color)
 
 # Even the ones auto-set at the start (which are white by default)
-print(my_waffle.get_pixel(1,1))
+print(my_waffle[1,1].color)
 
 app.display()
 ```
