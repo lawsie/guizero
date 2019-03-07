@@ -38,7 +38,7 @@ class Drawing(Widget):
         """
 
         # list to hold references to images, otherwise tk destroys them
-        self._images = []
+        self._images = {}
 
         description = "[Drawing] object"
 
@@ -237,10 +237,11 @@ class Drawing(Widget):
         :return:
             The id of the image.
         """
-        # load the image and add to the list (otherwise tk destroys the reference to them!)
+        # load the image and add to the dict (otherwise tk destroys the reference to them!)
         _image = utils.GUIZeroImage(image, width, height)
-        self._images.append(_image)
-        return self.tk.create_image(x, y, image=_image.tk_image, anchor="nw")
+        id = self.tk.create_image(x, y, image=_image.tk_image, anchor="nw")
+        self._images[id] = _image
+        return id
     
     def text(self, x, y, text, color="black", font=None, size=None, max_width=None):
         """
@@ -288,6 +289,8 @@ class Drawing(Widget):
         :param int id:
             The id of the object.
         """
+        if id in self._images.keys():
+            del self._images[id]
         self.tk.delete(id)
 
     def clear(self):
