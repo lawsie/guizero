@@ -244,13 +244,13 @@ class Drawing(Widget):
     
     def text(self, x, y, text, color="black", font=None, size=None, max_width=None):
         """
-        Inserts an image into the drawing, position by its top-left corner.
+        Inserts text into the drawing, position by its top-left corner.
         
         :param int x:
-            The x position to insert the image.
+            The x position of the text.
 
         :param int y:
-            The y position to insert the image.
+            The x position of the text.
 
         :param str color:
             The color of the text. Defaults to `"black"`.
