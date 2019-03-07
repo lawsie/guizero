@@ -1,5 +1,12 @@
 # guizero
 
+## 0.6.1 - 2019-03-08
+- New [Drawing widget](../drawing/) for creating "drawings"
+- Added full screen support for `App` and `Window`
+- Doc updates
+- Minor bug fixes
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie) 
+
 ## 0.6.0 - 2019-02-08
 - Refactoring of layout functions
 - Enabled `align` for the `auto` layout
