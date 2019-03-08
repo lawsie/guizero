@@ -38,36 +38,40 @@ When you create a `Window` object you **must** specify a `master` and you can sp
 
 You can call the following methods on a `Window` object.
 
-| Method                | Takes                               | Returns | Description                                                                                                                                                    |
-|-----------------------|-------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| after(time, command)  | time (int), command (function name) | -       | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
-| cancel(command)       | command (function name)             | -       | Cancels a scheduled call to `command`                                                                                                                          |
-| disable()             | -                                   | -       | Disables all the widgets in the window so that they cannot be interacted with                                                                                  |
-| destroy()             | -                                   | -       | Destroys the windows                                                                                                                                           |
-| enable()              | -                                   | -       | Enables all the widgets in the window                                                                                                                          |
-| focus()               | -                                   | -       | Gives focus to the window                                                                                                                                      |
-| hide()                | -                                   | -       | Hides the window from view.                                                                                                                                    |
-| on_close(command)     | command (function name)             | -       | Calls the given function when the user tries to close the window.                                                                                              |
-| repeat(time, command) | time (int), command (function name) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
-| show(wait = False)    | -                                   | -       | Displays the window if it was previously hidden                                                                                                                |
-| update()              | -                                   | -       | Force the window to update itself, useful if changes aren't reflected in the UI.                                                                               |
+| Method                           | Takes                                                         | Returns | Description                                                                                                                                                    |
+|----------------------------------|---------------------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| after(time, command, args=None)  | time (int), command (function name), args (list of arguments) | -       | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
+| cancel(command)                  | command (function name)                                       | -       | Cancels a scheduled call to `command`                                                                                                                          |
+| disable()                        | -                                                             | -       | Disables all the widgets in the window so that they cannot be interacted with                                                                                  |
+| destroy()                        | -                                                             | -       | Destroys the windows                                                                                                                                           |
+| enable()                         | -                                                             | -       | Enables all the widgets in the window                                                                                                                          |
+| exit_full_screen()               | -                                                             | -       | Exit full screen display                                                                                                                                       |
+| focus()                          | -                                                             | -       | Gives focus to the window                                                                                                                                      |
+| hide()                           | -                                                             | -       | Hides the window from view.                                                                                                                                    |
+| on_close(command)                | command (function name)                                       | -       | Calls the given function when the user tries to close the window.                                                                                              |
+| repeat(time, command, args=None) | time (int), command (function name), args (list of arguments) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| set_full_screen(keybind)         | String                                                        | -       | Set the application to display full screen. Option to specify a key to exit full screen (default is 'Esc'.)                                                    |
+| show(wait = False)               | -                                                             | -       | Displays the window if it was previously hidden                                                                                                                |
+| update()                         | -                                                             | -       | Force the window to update itself, useful if changes aren't reflected in the UI.                                                                               |
+
 
 ### Properties
 
 You can set and get the following properties:
 
-| Method     | Data type          | Description                                                  |
-|------------|--------------------|--------------------------------------------------------------|
-| bg         | [color](colors.md) | The background colour of the window                          |
-| enabled    | boolean            | `True` if the window is enabled                              |
-| font       | string             | The font that widgets should use                             |
-| height     | int                | The height of the window                                     |
-| layout     | string             | The layout being used by the Window (`"auto"`) or (`"grid"`) |
-| title      | string             | The title of the window                                      |
-| text_size  | int                | The size of the text widgets should use                      |
-| text_color | [color](colors.md) | The colour of the text widgets should use                    |
-| visible    | boolean            | If the window is visible                                     |
-| width      | int                | The width of the window                                      |
+| Method      | Data type          | Description                                                  |     |                                |
+|-------------|--------------------|--------------------------------------------------------------|-----|--------------------------------|
+| bg          | [color](colors.md) | The background colour of the window                          |     |                                |
+| enabled     | boolean            | `True` if the window is enabled                              |     |                                |
+| font        | string             | The font that widgets should use                             |     |                                |
+| full_screen | boolean            | False                                                        | No  | Whether the App is full screen |
+| height      | int                | The height of the window                                     |     |                                |
+| layout      | string             | The layout being used by the Window (`"auto"`) or (`"grid"`) |     |                                |
+| title       | string             | The title of the window                                      |     |                                |
+| text_size   | int                | The size of the text widgets should use                      |     |                                |
+| text_color  | [color](colors.md) | The colour of the text widgets should use                    |     |                                |
+| visible     | boolean            | If the window is visible                                     |     |                                |
+| width       | int                | The width of the window                                      |     |                                |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `Window` object is called `window` you would write `window.title`.

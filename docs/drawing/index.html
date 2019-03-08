@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>App - guizero</title>
+  <title>Drawing - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "App";
-    var mkdocs_page_input_path = "app.md";
-    var mkdocs_page_url = "/app/";
+    var mkdocs_page_name = "Drawing";
+    var mkdocs_page_input_path = "drawing.md";
+    var mkdocs_page_url = "/drawing/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -121,12 +121,32 @@
 		
     <span class="caption-text">Widgets</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../app/">App</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../box/">Box</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../buttongroup/">ButtonGroup</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../checkbox/">CheckBox</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../combo/">Combo</a>
+                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">App</a>
+    <a class="current" href="./">Drawing</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#app">App</a></li>
+    <li class="toctree-l3"><a href="#drawing">Drawing</a></li>
     
         <ul>
         
@@ -146,26 +166,6 @@
     
 
     </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../box/">Box</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../buttongroup/">ButtonGroup</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../checkbox/">CheckBox</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../combo/">Combo</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../drawing/">Drawing</a>
                 </li>
                 <li class="">
                     
@@ -256,7 +256,7 @@
         
       
     
-    <li>App</li>
+    <li>Drawing</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -266,26 +266,28 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="app">App</h1>
-<p>(Contains a <code>tkinter.Tk</code> object)</p>
-<p><code>__init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True)</code></p>
+                <h1 id="drawing">Drawing</h1>
+<p>(Contains a <code>tkinter.canvas</code> object)</p>
+<p><code>__init__(self, master, width=100, height=100, grid=None, align=None, visible=True, enabled=None):</code></p>
 <h3 id="what-is-it">What is it?</h3>
-<p>The <code>App</code> object is the basis of all GUIs created using guizero. It is the main window which contains all of the other widgets.</p>
-<p><img alt="App" src="../images/app.png" /></p>
+<p>The <code>Drawing</code> object allows shapes, images and text to be created.</p>
+<p><img alt="Drawing on Windows" src="../images/drawing_windows.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
-<p>Create an <code>App</code> object like this:</p>
-<pre><code class="python">from guizero import App
+<p>Create a <code>Drawing</code> object and draw a blue rectangle 50x50 pixels like this:</p>
+<pre><code class="python">from guizero import App, Drawing
 app = App()
+drawing = Drawing(app)
+drawing.rectangle(10, 10, 60, 60, color=&quot;blue&quot;)
 app.display()
 </code></pre>
 
 <h3 id="starting-parameters">Starting parameters</h3>
-<p>When you create an <code>App</code> object you can specify any of the following parameters, all of which are optional. Specify parameters in the brackets like this: <code>app = App(bg="red", height=200)</code></p>
+<p>When you create a <code>Drawing</code> object you <strong>must</strong> specify <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>drawing = Drawing(app, height=300, width=300)</code></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
-<th>Data type</th>
+<th>Takes</th>
 <th>Default</th>
 <th>Compulsory</th>
 <th>Description</th>
@@ -293,59 +295,58 @@ app.display()
 </thead>
 <tbody>
 <tr>
-<td>bg</td>
-<td><a href="../colors/">color</a></td>
-<td>None</td>
-<td>No</td>
-<td>The background colour of the app window and widgets inside it. Takes a <a href="../colors/">color</a> value.</td>
-</tr>
-<tr>
-<td>height</td>
-<td>int</td>
-<td>500</td>
-<td>No</td>
-<td>The height of the window in pixels.</td>
-</tr>
-<tr>
-<td>layout</td>
-<td>string</td>
-<td>"auto"</td>
-<td>No</td>
-<td>Whether widgets pack themselves (<code>"auto"</code>) or you specify their position on a grid (<code>"grid"</code>)</td>
-</tr>
-<tr>
-<td>title</td>
-<td>string</td>
-<td>"guizero"</td>
-<td>No</td>
-<td>The title displayed in the bar at the top of the window.</td>
+<td>master</td>
+<td>App, Window or Box</td>
+<td>-</td>
+<td>Yes</td>
+<td>The container to which this widget belongs</td>
 </tr>
 <tr>
 <td>width</td>
-<td>int</td>
-<td>500</td>
+<td><a href="../size/">size</a></td>
+<td>None</td>
 <td>No</td>
-<td>The width of the window in pixels.</td>
+<td>Set the width of the widget in characters or to <code>"fill"</code></td>
+</tr>
+<tr>
+<td>height</td>
+<td><a href="../size/">size</a></td>
+<td>None</td>
+<td>No</td>
+<td>Set the height of the widget in characters or to <code>"fill"</code></td>
+</tr>
+<tr>
+<td>grid</td>
+<td>List [int, int]</td>
+<td>None</td>
+<td>-</td>
+<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
+</tr>
+<tr>
+<td>align</td>
+<td>string</td>
+<td>None</td>
+<td>-</td>
+<td>Alignment of this widget within its container. Possible values: <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>.</td>
 </tr>
 <tr>
 <td>visible</td>
 <td>boolean</td>
 <td>True</td>
 <td>No</td>
-<td>If the App should be visible.</td>
+<td>If the widget should be visible.</td>
 </tr>
 <tr>
-<td><em>bgcolor</em></td>
-<td><em>string</em></td>
-<td><em>None</em></td>
-<td><em>No</em></td>
-<td><em>Replaced by <code>bg</code> parameter</em></td>
+<td>enabled</td>
+<td>boolean</td>
+<td>None</td>
+<td>No</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
 </tr>
 </tbody>
 </table>
-<p>Parameters in <em>italics</em> will still work but are <strong>deprecated</strong> - this means you should stop using them because they may not work in future versions of guizero</p>
 <h3 id="methods">Methods</h3>
-<p>You can call the following methods on an <code>App</code> object.</p>
+<p>You can call the following methods on a <code>Drawing</code> object.</p>
 <table>
 <thead>
 <tr>
@@ -369,6 +370,18 @@ app.display()
 <td>Cancels a scheduled call to <code>command</code></td>
 </tr>
 <tr>
+<td>clear()</td>
+<td>-</td>
+<td>-</td>
+<td>Clears the drawing</td>
+</tr>
+<tr>
+<td>delete()</td>
+<td>id (int) -</td>
+<td>-</td>
+<td>Deletes an "object" (line, triangle, image, etc) from the drawing.</td>
+</tr>
+<tr>
 <td>destroy()</td>
 <td>-</td>
 <td>-</td>
@@ -378,25 +391,13 @@ app.display()
 <td>disable()</td>
 <td>-</td>
 <td>-</td>
-<td>Disables all the widgets in the app so that they cannot be interacted with</td>
-</tr>
-<tr>
-<td>display()</td>
-<td>-</td>
-<td>-</td>
-<td>Displays the app on the screen. You <strong>MUST</strong> call this method at the end of your program to display the app on the screen.</td>
+<td>Disables the widget so that it is "greyed out" and cannot be interacted with</td>
 </tr>
 <tr>
 <td>enable()</td>
 <td>-</td>
 <td>-</td>
-<td>Enables all the widgets in the app</td>
-</tr>
-<tr>
-<td>exit_full_screen()</td>
-<td>-</td>
-<td>-</td>
-<td>Exit full screen display</td>
+<td>Enables the widget</td>
 </tr>
 <tr>
 <td>focus()</td>
@@ -408,13 +409,37 @@ app.display()
 <td>hide()</td>
 <td>-</td>
 <td>-</td>
-<td>Hides the app window from view.</td>
+<td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
 </tr>
 <tr>
-<td>on_close(command)</td>
-<td>command (function name)</td>
-<td>-</td>
-<td>Calls the given function when the user tries to close the window.</td>
+<td>image(self, x, y, image, width=None, height=None):</td>
+<td>x (int), y (int), image (str), width (int), height (int)</td>
+<td>Id</td>
+<td>Inserts an image into the drawing at the specified position and returns the id of the image created.</td>
+</tr>
+<tr>
+<td>line(x1, y1, x2, y2, color="black", width=1)</td>
+<td>x1 (int), y1 (int), x2 (int), y2 (int), color (str), width (int)</td>
+<td>Id</td>
+<td>Draws a line between 2 points and returns the id of the line created.</td>
+</tr>
+<tr>
+<td>oval(x1, y1, x2, y2, color="black", outline=False, outline_color="black")</td>
+<td>x1 (int), y1 (int), x2 (int), y2 (int), color (str), outline (int), outline_color (str)</td>
+<td>Id</td>
+<td>Draws an oval between 2 points and returns the id of the shape created.</td>
+</tr>
+<tr>
+<td>polygon(*coords, color="black", outline=False, outline_color="black")</td>
+<td>coords (list int), color (str), outline (int), outline_color (str)</td>
+<td>Id</td>
+<td>Draws a polygon between any number of coordinates passed as pairs of x, y and returns the id of the shape created.</td>
+</tr>
+<tr>
+<td>rectangle(x1, y1, x2, y2, color="black", outline=False, outline_color="black")</td>
+<td>x1 (int), y1 (int), x2 (int), y2 (int), color (str), outline (int), outline_color (str)</td>
+<td>Id</td>
+<td>Draws a rectangle between 2 points and returns the id of the shape created.</td>
 </tr>
 <tr>
 <td>repeat(time, command, args=None)</td>
@@ -423,38 +448,37 @@ app.display()
 <td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
 </tr>
 <tr>
+<td>resize(width, height)</td>
+<td>width (int), height (int)</td>
+<td>-</td>
+<td>Sets the width and height of the widget</td>
+</tr>
+<tr>
 <td>show()</td>
 <td>-</td>
 <td>-</td>
-<td>Displays the app window if it was previously hidden</td>
+<td>Displays the widget if it was previously hidden</td>
 </tr>
 <tr>
-<td>update()</td>
-<td>-</td>
-<td>-</td>
-<td>Force the application to update itself, useful if changes aren't reflected in the UI.</td>
+<td>text(x, y, text, color="black", font=None, size=None, max_width=None)</td>
+<td>x (int), y (int), text (str), color (str), font (str), size (str), max_width (int)</td>
+<td>Id</td>
+<td>Inserts text into the drawing at the specified position and returns the id of the shape created.</td>
 </tr>
 <tr>
-<td>set_full_screen(keybind)</td>
-<td>String</td>
-<td>-</td>
-<td>Set the application to display full screen. Option to specify a key to exit full screen (default is 'Esc'.)</td>
+<td>triangle(x1, y1, x2, y2, x3, y3, color="black", outline=False, outline_color="black")</td>
+<td>x1 (int), y1 (int), x2 (int), y2 (int), x3 (int), y3 (int), color (str), outline (int), outline_color (str)</td>
+<td>Id</td>
+<td>Draws a triangle between 3 points and returns the id of the shape created.</td>
 </tr>
 <tr>
-<td><em>set_title(title)</em></td>
-<td><em>title (string)</em></td>
+<td>update_command(command)</td>
+<td>command (function name)</td>
 <td>-</td>
-<td><em>Replaced by <code>title</code> property</em></td>
-</tr>
-<tr>
-<td><em>bgcolor</em></td>
-<td><em>bgcolor (string)</em></td>
-<td>-</td>
-<td><em>Replaced by <code>bg</code> property</em></td>
+<td>Updates the function to call when a different option is selected.</td>
 </tr>
 </tbody>
 </table>
-<p>Parameters in <em>italics</em> will still work but are <strong>deprecated</strong> - this means you should stop using them because they may not work in future versions of guizero</p>
 <h3 id="properties">Properties</h3>
 <p>You can set and get the following properties:</p>
 <table>
@@ -463,111 +487,74 @@ app.display()
 <th>Method</th>
 <th>Data type</th>
 <th>Description</th>
-<th></th>
-<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>align</td>
+<td>string</td>
+<td>The alignment of this widget within its container</td>
+</tr>
+<tr>
 <td>bg</td>
 <td><a href="../colors/">color</a></td>
-<td>The background colour of the window</td>
-<td></td>
-<td></td>
+<td>The background colour of the widget</td>
 </tr>
 <tr>
 <td>enabled</td>
 <td>boolean</td>
-<td><code>True</code> if the app is enabled</td>
-<td></td>
-<td></td>
+<td><code>True</code> if the widget is enabled</td>
+</tr>
+<tr>
+<td>grid</td>
+<td>List</td>
+<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid</td>
 </tr>
 <tr>
 <td>height</td>
-<td>int</td>
-<td>The height of the window</td>
-<td></td>
-<td></td>
+<td><a href="../size/">size</a></td>
+<td>Set the height of the widget in characters or to <code>"fill"</code></td>
 </tr>
 <tr>
-<td>font</td>
-<td>string</td>
-<td>The font that widgets should use</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>full_screen</td>
-<td>boolean</td>
-<td>False</td>
-<td>No</td>
-<td>Whether the App is full screen</td>
-</tr>
-<tr>
-<td>layout</td>
-<td>string</td>
-<td>The layout being used by the App (<code>"auto"</code>) or (<code>"grid"</code>)</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>title</td>
-<td>string</td>
-<td>The title of the window</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>text_size</td>
-<td>int</td>
-<td>The size of the text widgets should use</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>text_color</td>
-<td><a href="../colors/">color</a></td>
-<td>The colour of the text widgets should use</td>
-<td></td>
-<td></td>
+<td>master</td>
+<td>App or Box</td>
+<td>The container to which this widget belongs</td>
 </tr>
 <tr>
 <td>visible</td>
 <td>boolean</td>
-<td>If the app is visible</td>
-<td></td>
-<td></td>
+<td>If this widget is visible</td>
 </tr>
 <tr>
 <td>width</td>
-<td>int</td>
-<td>The width of the window</td>
-<td></td>
-<td></td>
+<td><a href="../size/">size</a></td>
+<td>Set the width of the widget in characters or to <code>"fill"</code></td>
 </tr>
 </tbody>
 </table>
-<p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>App</code> object is called <code>app</code> you would write <code>app.title</code>.</p>
-<p>You can <strong>set</strong> the property (for example <code>app.title = "Hello world"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(app.title)</code>).</p>
+<p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>Drawing</code> object is called <code>drawing</code> you would write <code>drawing.bg</code>.</p>
+<p>You can <strong>set</strong> the property (for example <code>drawing.bg = "blue"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(drawing.bg)</code>).</p>
 <h3 id="examples">Examples</h3>
-<p><strong>Creating an App object</strong></p>
-<p>Create an <code>App</code> object by calling the <code>App()</code> constructor. You should give the object a name so you can refer to it later - in this case we have called it <code>app</code>. It is best to keep the name you give to your <code>App</code> object quite short, as you will have to use it to tell other widgets where they should be stored.</p>
-<p>At the end of the program you <strong>MUST</strong> tell the app object to begin the display loop.</p>
-<pre><code class="python">from guizero import App
-app = App(title=&quot;My app&quot;, height=300, width=200)
-app.display()
+<p><strong> Draw a robot face </strong></p>
+<p>Use a rectangle for the face, ovals for the eyes, a triangle for the nose and lines for the mouth. </p>
+<pre><code class="python">from guizero import App, Drawing
+
+a = App()
+
+# create drawing object
+d = Drawing(a, width=220, height=220)
+d.rectangle(10, 10, 210, 210, color=&quot;light blue&quot;)
+d.oval(30, 30, 50, 50, color=&quot;white&quot;, outline=True)
+d.oval(170, 30, 190, 50, color=&quot;white&quot;, outline=True)
+d.triangle(110, 90, 120, 110, 100, 110, color=&quot;black&quot;)
+d.line(50, 180, 50, 160, color=&quot;red&quot;, width=5)
+d.line(50, 180, 170, 180, color=&quot;red&quot;, width=5)
+d.line(170, 180, 170, 160, color=&quot;red&quot;, width=5)
+
+a.display()
 </code></pre>
 
-<p><strong>Changing the title</strong></p>
-<p>You can change the title of the app object once it has been created like this:</p>
-<pre><code class="python">from guizero import App
-app = App(title=&quot;My app&quot;, height=300, width=200)
-app.title = &quot;A different title&quot;
-app.display()
-</code></pre>
-
-<p>This will display the app with the updated title:</p>
-<p><img alt="App title" src="../images/app_set_title.png" /></p>
+<p><img alt="A drawing of a robot face" src="../images/drawing_robot_face_windows.png" /></p>
               
             </div>
           </div>
@@ -575,10 +562,10 @@ app.display()
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../box/" class="btn btn-neutral float-right" title="Box">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../listbox/" class="btn btn-neutral float-right" title="ListBox">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../recipes/" class="btn btn-neutral" title="Recipes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../combo/" class="btn btn-neutral" title="Combo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -604,10 +591,10 @@ app.display()
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../recipes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../combo/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../box/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../listbox/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

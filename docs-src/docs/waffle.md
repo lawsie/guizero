@@ -48,23 +48,23 @@ Parameters in _italics_ will still work but are **deprecated** - this means you 
 
 You can call the following methods on your Waffle object.
 
-| Method                  | Takes                                        | Returns                     | Description                                                                                                                                                    |
-|-------------------------|----------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| after(time, command)    | time (int), command (function name)          | -                           | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
-| cancel(command)         | command (function name)                      | -                           | Cancels a scheduled call to `command`                                                                                                                          |
-| destroy()               | -                                            | -                           | Destroys the widget                                                                                                                                            |
-| disable()               | -                                            | -                           | Disables the widget so that it cannot be interacted with                                                                                                       |
-| enable()                | -                                            | -                           | Enables the widget                                                                                                                                             |
-| focus()                 | -                                            | -                           | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)                                                                      |
-| get_all()               | -                                            | List                        | Returns the pixel colours in the grid as a 2D list.                                                                                                            |
-| get_pixel(x, y)         | x (int), y (int)                             | string                      | Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid.                                                                 |
-| hide()                  | -                                            | -                           | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
-| pixel(x, y)             | (int), y (int)                               | [WafflePixel](#wafflepixel) | Returns the pixel at the specified coordinates. 0,0 is the top left of the grid. `Waffle.pixel(x,y)` is the equivalent of `Waffle[x,y]`                        |
-| repeat(time, command)   | time (int), command (function name)          | -                           | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
-| set_all(color)          | color ([color](colors.md))                   | -                           | Sets all pixels to the specified colour.                                                                                                                       |
-| set_pixel(x, y, color)  | x (int), y (int), color ([color](colors.md)) | -                           | Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.                                                          |
-| show()                  | -                                            | -                           | Displays the widget                                                                                                                                            |
-| update_command(command) | command (function name)                      | -                           | Updates the function to call when the Waffle is clicked                                                                                                        |
+| Method                           | Takes                                                         | Returns                     | Description                                                                                                                                                    |
+|----------------------------------|---------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| after(time, command, args=None)  | time (int), command (function name), args (list of arguments) | -                           | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
+| cancel(command)                  | command (function name)                                       | -                           | Cancels a scheduled call to `command`                                                                                                                          |
+| destroy()                        | -                                                             | -                           | Destroys the widget                                                                                                                                            |
+| disable()                        | -                                                             | -                           | Disables the widget so that it cannot be interacted with                                                                                                       |
+| enable()                         | -                                                             | -                           | Enables the widget                                                                                                                                             |
+| focus()                          | -                                                             | -                           | Gives focus to the widget (e.g. focusing a `TextBox` so that the user can type inside it)                                                                      |
+| get_all()                        | -                                                             | List                        | Returns the pixel colours in the grid as a 2D list.                                                                                                            |
+| get_pixel(x, y)                  | x (int), y (int)                                              | string                      | Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid.                                                                 |
+| hide()                           | -                                                             | -                           | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
+| pixel(x, y)                      | (int), y (int)                                                | [WafflePixel](#wafflepixel) | Returns the pixel at the specified coordinates. 0,0 is the top left of the grid. `Waffle.pixel(x,y)` is the equivalent of `Waffle[x,y]`                        |
+| repeat(time, command, args=None) | time (int), command (function name), args (list of arguments) | -                           | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| set_all(color)                   | color ([color](colors.md))                                    | -                           | Sets all pixels to the specified colour.                                                                                                                       |
+| set_pixel(x, y, color)           | x (int), y (int), color ([color](colors.md))                  | -                           | Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.                                                          |
+| show()                           | -                                                             | -                           | Displays the widget                                                                                                                                            |
+| update_command(command)          | command (function name)                                       | -                           | Updates the function to call when the Waffle is clicked                                                                                                        |
 
 ### Properties
 
@@ -72,7 +72,7 @@ You can set and get the following properties:
 
 | Method     | Data type          | Description                                                                                           |
 |------------|--------------------|-------------------------------------------------------------------------------------------------------|
-| align      | string             | The alignment of this widget within its grid location                                                 |
+| align      | string             | The alignment of this widget within its container                                                     |
 | bg         | [color](colors.md) | The background colour of the widget                                                                   |
 | color      | [color](colors.md) | The default colour of pixels on the waffle                                                            |
 | dotty      | bool               | If `True` the waffle will display circles                                                             |
@@ -97,13 +97,13 @@ from guizero import App, Waffle
 app = App()
 
 my_waffle = Waffle(app)
-my_waffle.set_pixel(2, 1, "red")
+my_waffle[2,1].color = "red"
 
 # Your waffle will remember what colour each pixel is
-print(my_waffle.get_pixel(2,1))
+print(my_waffle[2,1].color)
 
 # Even the ones auto-set at the start (which are white by default)
-print(my_waffle.get_pixel(1,1))
+print(my_waffle[1,1].color)
 
 app.display()
 ```

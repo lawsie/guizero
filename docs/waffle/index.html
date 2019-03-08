@@ -143,6 +143,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../drawing/">Drawing</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../listbox/">ListBox</a>
                 </li>
                 <li class="">
@@ -405,8 +409,8 @@ app.display()
 </thead>
 <tbody>
 <tr>
-<td>after(time, command)</td>
-<td>time (int), command (function name)</td>
+<td>after(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
 <td>-</td>
 <td>Schedules a <strong>single</strong> call to <code>command</code> after <code>time</code> milliseconds. (To repeatedly call the same command, use <code>repeat()</code>)</td>
 </tr>
@@ -465,8 +469,8 @@ app.display()
 <td>Returns the pixel at the specified coordinates. 0,0 is the top left of the grid. <code>Waffle.pixel(x,y)</code> is the equivalent of <code>Waffle[x,y]</code></td>
 </tr>
 <tr>
-<td>repeat(time, command)</td>
-<td>time (int), command (function name)</td>
+<td>repeat(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
 <td>-</td>
 <td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
 </tr>
@@ -510,7 +514,7 @@ app.display()
 <tr>
 <td>align</td>
 <td>string</td>
-<td>The alignment of this widget within its grid location</td>
+<td>The alignment of this widget within its container</td>
 </tr>
 <tr>
 <td>bg</td>
@@ -577,13 +581,13 @@ app.display()
 app = App()
 
 my_waffle = Waffle(app)
-my_waffle.set_pixel(2, 1, &quot;red&quot;)
+my_waffle[2,1].color = &quot;red&quot;
 
 # Your waffle will remember what colour each pixel is
-print(my_waffle.get_pixel(2,1))
+print(my_waffle[2,1].color)
 
 # Even the ones auto-set at the start (which are white by default)
-print(my_waffle.get_pixel(1,1))
+print(my_waffle[1,1].color)
 
 app.display()
 </code></pre>

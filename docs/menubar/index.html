@@ -143,6 +143,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../drawing/">Drawing</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../listbox/">ListBox</a>
                 </li>
                 <li class=" current">
@@ -342,8 +346,8 @@ app.display()
 </thead>
 <tbody>
 <tr>
-<td>after(time, command)</td>
-<td>time (int), command (function name)</td>
+<td>after(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
 <td>-</td>
 <td>Schedules a <strong>single</strong> call to <code>command</code> after <code>time</code> milliseconds. (To repeatedly call the same command, use <code>repeat()</code>)</td>
 </tr>
@@ -366,8 +370,8 @@ app.display()
 <td>Gives focus to the widget (e.g. focusing a <code>TextBox</code> so that the user can type inside it)</td>
 </tr>
 <tr>
-<td>repeat(time, command)</td>
-<td>time (int), command (function name)</td>
+<td>repeat(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
 <td>-</td>
 <td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
 </tr>

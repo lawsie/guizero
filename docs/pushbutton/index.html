@@ -143,6 +143,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../drawing/">Drawing</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../listbox/">ListBox</a>
                 </li>
                 <li class="">
@@ -396,8 +400,8 @@ app.display()
 </thead>
 <tbody>
 <tr>
-<td>after(time, command)</td>
-<td>time (int), command (function name)</td>
+<td>after(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
 <td>-</td>
 <td>Schedules a <strong>single</strong> call to <code>command</code> after <code>time</code> milliseconds. (To repeatedly call the same command, use <code>repeat()</code>)</td>
 </tr>
@@ -450,8 +454,8 @@ app.display()
 <td>Sets the amount of x (horizontal) and y (vertical) padding between the text/icon and the edge of the button</td>
 </tr>
 <tr>
-<td>repeat(time, command)</td>
-<td>time (int), command (function name)</td>
+<td>repeat(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
 <td>-</td>
 <td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
 </tr>
@@ -520,7 +524,7 @@ app.display()
 <tr>
 <td>align</td>
 <td>string</td>
-<td>The alignment of this widget within its grid location</td>
+<td>The alignment of this widget within its container</td>
 </tr>
 <tr>
 <td>bg</td>
