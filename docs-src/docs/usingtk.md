@@ -1,27 +1,37 @@
-## Using tkinter methods
+## Using tkinter
 
-If you are an advanced user, you can still make use of any tkinter method which is not implemented in guizero.
+If you are an advanced user, you can still make use of tkinter when using guizero.
 
-Each guizero widget itself contains a tk widget - you can find out which by looking on the guizero documentation page for the widget. For example, a guizero `TextBox` contains a tkinter `Entry` object. You can always access the internal object using the syntax `<object_name>.tk`.
+### Using tkinter widgets in guizero
+
+You can add tk widgets into your guizero app using the `add_tk_widget` method of `App`, `Window` and `Box`.
+
+In this example, we are adding the tkinter `Spinbox` into a guizero `App`:
+
+```python
+from guizero import App, Text
+from tkinter import Spinbox
+
+app = App()
+text = Text(app, text="A Spinbox widget")
+
+spinbox = Spinbox(from_=0, to=10)
+app.add_tk_widget(spinbox)
+
+a.display()
+```
 
 ### Using a tkinter method on a guizero object
 
-In this example, we have guizero `App` and `TextBox` widgets.
+Each guizero widget itself contains a tk widget - you can find out which by looking on the guizero documentation page for the widget. For example, a guizero `TextBox` contains a tkinter `Entry` object. You can access the internal object using the syntax `<object_name>.tk`.
+
+In this example, we have guizero `App` and `TextBox` widgets and are using the tk widgets `config` method to change the mouse cursor when it is over the `TextBox`.
 
 ```python
 from guizero import App, TextBox
 app = App()
 name = TextBox(app, text="Laura")
-app.display()
-```
-
-You want to make the mouse cursor change when you are over the text box, but you discover that at the moment this isn't possible in guizero. So instead, you access the internal tk widget directly using `<object_name>.tk` and then you call the tkinter method:
-
-```python
-from guizero import App, TextBox
-app = App()
-name = TextBox(app, text="Laura")
-name.tk.config(cursor="target")    # config() is a tkinter method
+name.tk.config(cursor="target") 
 app.display()
 ```
 

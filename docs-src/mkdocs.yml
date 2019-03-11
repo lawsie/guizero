@@ -13,7 +13,7 @@ pages:
       - Images: images.md
       - Loops and sleeping: blocking.md
       - Events: events.md
-      - Using tkinter methods: usingtk.md
+      - Using tkinter: usingtk.md
       - Getting help: gettinghelp.md
   - Recipes: recipes.md
   - Widgets:

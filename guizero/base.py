@@ -287,7 +287,34 @@ class Container(Component):
         return self._children
 
     def add_tk_widget(self, tk_widget, grid=None, align=None, visible=True, enabled=None, width=None, height=None):
+        """
+        Adds a tk widget into a guizero container.
 
+        :param tk tk_widget:
+            The Container (App, Box, etc) the tk widget will belong too.
+
+        :param List grid:
+            Grid co-ordinates for the widget, required if the master layout
+            is 'grid', defaults to `None`.
+
+        :param string align:
+            How to align the widget within the grid, defaults to None.
+
+        :param bool visible:
+            If the widget should be visible, defaults to `True`.
+
+        :param bool enabled:
+            If the widget should be enabled, defaults to `None`. If `None`
+            the value is inherited from the master.
+
+        :param int width:
+            The starting width of the widget. Defaults to `None` and will auto
+            size.
+
+        :param int height:
+            The starting height of the widget. Defaults to `None` and will auto
+            size.
+        """
         return Widget(self, tk_widget, "tk widget", grid, align, visible, enabled, width, height)
 
     def _add_child(self, child):
