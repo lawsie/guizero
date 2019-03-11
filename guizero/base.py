@@ -288,7 +288,7 @@ class Container(Component):
 
     def add_tk_widget(self, tk_widget, grid=None, align=None, visible=True, enabled=None, width=None, height=None):
 
-        return Widget(self, tk_widget, "a tk widget", grid, align, visible, enabled, width, height)
+        return Widget(self, tk_widget, "tk widget", grid, align, visible, enabled, width, height)
 
     def _add_child(self, child):
         """

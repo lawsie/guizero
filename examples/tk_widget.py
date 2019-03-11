@@ -1,26 +1,20 @@
 from guizero import App, Text
-from tkinter import Label, Entry, Spinbox
+from tkinter import Spinbox
 from tkinter.ttk import Progressbar
 
-a = App()
-a.bg = "light blue"
+a = App(title="Using tk widgets")
 
-text_1 = Text(a, text="text 1")
-
-label = Label(a.tk, text="label")
-a.add_tk_widget(label)
-
-entry = Entry(a.tk)
-guizero_entry = a.add_tk_widget(entry, height=10, width=60, enabled=False, visible=False)
-a.after(1000, guizero_entry.show)
+Text(a, text="Spinbox")
 
 sp = Spinbox(from_=0, to=10)
 a.add_tk_widget(sp)
+
+Text(a, text="and Progressbar")
 
 pb = Progressbar()
 a.add_tk_widget(pb)
 pb.start()
 
-text_2 = Text(a, text="text 2")
+text_2 = Text(a, text="in guizero")
 
 a.display()
