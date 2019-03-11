@@ -1,3 +1,8 @@
+__name__ = "guizero"
+__package__ = "guizero"
+__version__ = '0.6.1'
+__author__ = "Laura Sach"
+
 from sys import exit
 try:
     from tkinter import Tk
