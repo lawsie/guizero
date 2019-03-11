@@ -1,13 +1,8 @@
-from tkinter import Listbox, Frame, Scrollbar, END, BROWSE, EXTENDED, LEFT, RIGHT, Y
+from tkinter import Listbox, Frame, Scrollbar, END, BROWSE, EXTENDED
 from . import utilities as utils
-from .base import TextWidget, ContainerTextWidget
+from .base import TextWidget, ContainerTextWidget, Widget
 from .event import EventManager
 
-# I suspect the implementation of ListBox can be simplified in the future...
-# At the moment it is a Container which contains a list box
-# The only reason it is a container is to support scrollbars which need to be placed inside a frame.
-# It feels like scrollbar should be built into guizero's base classes, Im just not sure how at the moment.
-# Martin
 
 class ListBox(ContainerTextWidget):
 
@@ -77,17 +72,14 @@ class ListBox(ContainerTextWidget):
 
         super(ListBox, self).__init__(master, tk, description, "auto", grid, align, visible, enabled, width, height)
 
-        self._listbox = ListBoxWidget(self, items, selected, command, None, None, visible, enabled, multiselect, width, height)
+        self._listbox = ListBoxWidget(self, items, selected, command, None, "left", visible, enabled, multiselect, "fill", "fill")
 
         if scrollbar:
-            # create the scrollbar and link it to the listbox
-            self._listbox.tk.pack(side=LEFT)
-            scrollbar = Scrollbar(tk)
-            scrollbar.pack(side=RIGHT, fill=Y)
-            self._listbox.tk.config(yscrollcommand=scrollbar.set)
-            scrollbar.config(command=self._listbox.tk.yview)
-        else:
-            self._listbox.tk.pack()
+            # create the scrollbar and add it to the listbox
+            scrollbar_tk_widget = Scrollbar(tk)
+            Widget(self, scrollbar_tk_widget, "scrollbar", None, "right", True, True, None, "fill")
+            self._listbox.tk.config(yscrollcommand=scrollbar_tk_widget.set)
+            scrollbar_tk_widget.config(command=self._listbox.tk.yview)
 
         # override the event manager to associate it to the list box and not the frame
         self._events = EventManager(self, self._listbox.tk)
@@ -106,7 +98,6 @@ class ListBox(ContainerTextWidget):
         """
         self._set_propagation(width, height)
         super(ListBox, self).resize(width, height)
-        self._listbox.resize(width, height)
 
     @property
     def value(self):
@@ -191,7 +182,7 @@ class ListBoxWidget(TextWidget):
             for item in items:
                 tk.insert(END, item)
 
-        super(ListBoxWidget, self).__init__(master, tk, description, None, None, visible, enabled, width, height)
+        super(ListBoxWidget, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         self.events.set_event("<ListBox.ListboxSelect>", "<<ListboxSelect>>", self._command_callback)
 
