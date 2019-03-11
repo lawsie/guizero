@@ -2,11 +2,13 @@
 
 If you are an advanced user, you can still make use of tkinter when using guizero.
 
+You can combine the use of `guizero` and `tkinter` seamlessly in a program, taking advantage of the simplified syntax of guizero whilst still being able to access the full range of functionality in tkinter if you need it.
+
 ### Using tkinter widgets in guizero
 
 You can add tk widgets into your guizero app using the `add_tk_widget` method of `App`, `Window` and `Box`.
 
-In this example, we are adding the tkinter `Spinbox` into a guizero `App`:
+In this example, we are adding the tkinter widget `Spinbox` into a guizero `App`:
 
 ```python
 from guizero import App, Text
@@ -34,5 +36,3 @@ name = TextBox(app, text="Laura")
 name.tk.config(cursor="target") 
 app.display()
 ```
-
-You can combine the use of `guizero` and `tkinter` seamlessly in a program, taking advantage of the simplified syntax of guizero whilst still being able to access the full range of functionality in tkinter if you need it.
