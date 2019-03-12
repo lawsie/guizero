@@ -213,6 +213,8 @@ def test_update_command_with_parameters():
     mock_waffle_clicked(w)
     assert callback_event.is_set()
 
+    a.destroy()
+
 def mock_waffle_clicked(w):
     # you cant invoke a tk canvas - this is better than no tests!
     # create a mock event

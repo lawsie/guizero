@@ -2,6 +2,7 @@ from threading import Event
 from time import sleep
 from unittest.mock import MagicMock
 from guizero import Text, Picture
+from tkinter import Spinbox
 
 SET_FONT = "Times New Roman"
 TEST_FONTS = ["Times New Roman", "Liberation Serif"]
@@ -314,3 +315,26 @@ def full_screen_test(window):
     assert window.full_screen == True
     window.exit_full_screen()
     assert window.full_screen == False
+
+def add_tk_widget_test(container):
+    s = Spinbox(from_=0, to=10)
+    sw = container.add_tk_widget(s)
+    assert s is not None
+    assert sw is not None
+    assert sw.grid is None
+    assert sw.align is None
+    assert sw.enabled
+    assert sw.visible
+    assert sw.width is None
+    assert sw.height is None
+    
+    s2 = Spinbox(from_=0, to=10)
+    sw = container.add_tk_widget(s2, align="left", visible=False, enabled=False, width="fill", height="fill")
+    assert s is not None
+    assert sw is not None
+    assert sw.align == "left"
+    assert not sw.enabled
+    assert not sw.visible
+    assert sw.width == "fill"
+    assert sw.height == "fill"
+    
