@@ -7,7 +7,8 @@ from common_test import (
     cascading_enable_test,
     cascading_properties_test,
     inheriting_properties_test,
-    full_screen_test)
+    full_screen_test,
+    add_tk_widget_test)
 
 def test_default_values():
     a = App()
@@ -82,4 +83,9 @@ def test_inheriting_properties():
 def test_full_screen():
     a = App()
     full_screen_test(a)
+    a.destroy()
+
+def test_add_tk_widget():
+    a = App()
+    add_tk_widget_test(a)
     a.destroy()
