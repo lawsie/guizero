@@ -290,7 +290,7 @@ class Container(Component):
         """
         Adds a tk widget into a guizero container.
 
-        :param tk tk_widget:
+        :param tkinter.Widget tk_widget:
             The Container (App, Box, etc) the tk widget will belong too.
 
         :param List grid:
