@@ -39,3 +39,22 @@ class MenuBar(Component):
 
        	# Set this as the menu for the master object
        	master.tk.config(menu=self.tk)
+
+    @property
+    def bg(self):
+        """
+        Sets the background color of the widget.
+
+        Note - some operating systems dont allow the background color of the 
+        menu bar to be changed. 
+        """
+        return super(MenuBar, self.__class__).bg.fget(self)
+
+    # Set the background colour
+    @bg.setter
+    def bg(self, color):
+        super(MenuBar, self.__class__).bg.fset(self, color)
+        for sub_menu in self._sub_menus:
+            sub_menu["bg"] = utils.convert_color(color)
+            #self._set_tk_config(self.BG_KEYS, utils.convert_color(color))
+    
