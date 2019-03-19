@@ -23,5 +23,4 @@ menubar = MenuBar(app,
                       [ ["Open", file_open], ["Exit", file_exit] ],
                       [ ["Copy", edit_copy], ["Cut", edit_cut], ["Paste", edit_paste] ]
                   ])
-menubar.bg = "red"
 app.display()

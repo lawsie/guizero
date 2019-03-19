@@ -56,5 +56,4 @@ class MenuBar(Component):
         super(MenuBar, self.__class__).bg.fset(self, color)
         for sub_menu in self._sub_menus:
             sub_menu["bg"] = utils.convert_color(color)
-            #self._set_tk_config(self.BG_KEYS, utils.convert_color(color))
     
