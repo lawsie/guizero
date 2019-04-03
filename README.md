@@ -1,6 +1,6 @@
 # guizero
 
-[Version 0.6.1](http://lawsie.github.io/guizero/changelog) (8th Mar 2019)
+[Version 0.6.2](http://lawsie.github.io/guizero/changelog) (5th Apr 2019)
 
 guizero is designed to allow children to quickly and easily create GUIs for their programs.
 

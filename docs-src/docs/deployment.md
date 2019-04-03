@@ -4,7 +4,7 @@ Notes on how to deploy guizero (on Windows).
 
 ## Prepare
 
-- Update version number in `setup.py`
+- Update version number in `guizero\__init__.py`
 - Update version number in `README.md`
 - Update release date in `README.md`
 - Update version number in `docs-src\docs\about.md`
