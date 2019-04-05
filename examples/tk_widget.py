@@ -15,6 +15,6 @@ pb = Progressbar()
 a.add_tk_widget(pb)
 pb.start()
 
-text_2 = Text(a, text="in guizero")
+Text(a, text="in guizero")
 
 a.display()
