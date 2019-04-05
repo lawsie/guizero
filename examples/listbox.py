@@ -20,7 +20,7 @@ listbox = ListBox(
     command=change_color,
     scrollbar=True,
     width="fill",
-    height="fill")
+    height=150)
 
 mlistbox = ListBox(
     a,

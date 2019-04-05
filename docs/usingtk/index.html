@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Using tkinter methods - guizero</title>
+  <title>Using tkinter - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Using tkinter methods";
+    var mkdocs_page_name = "Using tkinter";
     var mkdocs_page_input_path = "usingtk.md";
     var mkdocs_page_url = "/usingtk/";
   </script>
@@ -103,12 +103,14 @@
                 </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Using tkinter methods</a>
+    <a class="current" href="./">Using tkinter</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#using-tkinter-methods">Using tkinter methods</a></li>
+    <li class="toctree-l3"><a href="#using-tkinter">Using tkinter</a></li>
     
         <ul>
+        
+            <li><a class="toctree-l4" href="#using-tkinter-widgets-in-guizero">Using tkinter widgets in guizero</a></li>
         
             <li><a class="toctree-l4" href="#using-a-tkinter-method-on-a-guizero-object">Using a tkinter method on a guizero object</a></li>
         
@@ -246,7 +248,7 @@
         
       
     
-    <li>Using tkinter methods</li>
+    <li>Using tkinter</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -256,26 +258,33 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="using-tkinter-methods">Using tkinter methods</h2>
-<p>If you are an advanced user, you can still make use of any tkinter method which is not implemented in guizero.</p>
-<p>Each guizero widget itself contains a tk widget - you can find out which by looking on the guizero documentation page for the widget. For example, a guizero <code>TextBox</code> contains a tkinter <code>Entry</code> object. You can always access the internal object using the syntax <code>&lt;object_name&gt;.tk</code>.</p>
-<h3 id="using-a-tkinter-method-on-a-guizero-object">Using a tkinter method on a guizero object</h3>
-<p>In this example, we have guizero <code>App</code> and <code>TextBox</code> widgets.</p>
-<pre><code class="python">from guizero import App, TextBox
-app = App()
-name = TextBox(app, text=&quot;Laura&quot;)
-app.display()
-</code></pre>
-
-<p>You want to make the mouse cursor change when you are over the text box, but you discover that at the moment this isn't possible in guizero. So instead, you access the internal tk widget directly using <code>&lt;object_name&gt;.tk</code> and then you call the tkinter method:</p>
-<pre><code class="python">from guizero import App, TextBox
-app = App()
-name = TextBox(app, text=&quot;Laura&quot;)
-name.tk.config(cursor=&quot;target&quot;)    # config() is a tkinter method
-app.display()
-</code></pre>
-
+                <h2 id="using-tkinter">Using tkinter</h2>
+<p>If you are an advanced user, you can still make use of tkinter when using guizero.</p>
 <p>You can combine the use of <code>guizero</code> and <code>tkinter</code> seamlessly in a program, taking advantage of the simplified syntax of guizero whilst still being able to access the full range of functionality in tkinter if you need it.</p>
+<h3 id="using-tkinter-widgets-in-guizero">Using tkinter widgets in guizero</h3>
+<p>You can add tk widgets into your guizero app using the <code>add_tk_widget</code> method of <code>App</code>, <code>Window</code> and <code>Box</code>.</p>
+<p>In this example, we are adding the tkinter widget <code>Spinbox</code> into a guizero <code>App</code>:</p>
+<pre><code class="python">from guizero import App, Text
+from tkinter import Spinbox
+
+app = App()
+text = Text(app, text=&quot;A Spinbox widget&quot;)
+
+spinbox = Spinbox(from_=0, to=10)
+app.add_tk_widget(spinbox)
+
+a.display()
+</code></pre>
+
+<h3 id="using-a-tkinter-method-on-a-guizero-object">Using a tkinter method on a guizero object</h3>
+<p>Each guizero widget itself contains a tk widget - you can find out which by looking on the guizero documentation page for the widget. For example, a guizero <code>TextBox</code> contains a tkinter <code>Entry</code> object. You can access the internal object using the syntax <code>&lt;object_name&gt;.tk</code>.</p>
+<p>In this example, we have guizero <code>App</code> and <code>TextBox</code> widgets and are using the tk widgets <code>config</code> method to change the mouse cursor when it is over the <code>TextBox</code>.</p>
+<pre><code class="python">from guizero import App, TextBox
+app = App()
+name = TextBox(app, text=&quot;Laura&quot;)
+name.tk.config(cursor=&quot;target&quot;) 
+app.display()
+</code></pre>
               
             </div>
           </div>

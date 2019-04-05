@@ -1,5 +1,12 @@
 # guizero
 
+## 0.6.2 - 2019-04-05
+- Ability to [add tk widgets](../usingtk/) into a guizero app with `.add_tk_widget()`
+- ListBox scrollbar bug fix
+- MenuBar background colour bug fix
+- `setup.py` changes to allow dunders to be accessed from guizero module
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie) 
+
 ## 0.6.1 - 2019-03-08
 - New [Drawing widget](../drawing/) for creating "drawings"
 - Added full screen support for `App` and `Window`

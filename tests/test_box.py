@@ -10,7 +10,8 @@ from common_test import (
     events_test,
     cascading_enable_test,
     cascading_properties_test,
-    inheriting_properties_test
+    inheriting_properties_test,
+    add_tk_widget_test
     )
 
 def test_default_values():
@@ -119,4 +120,9 @@ def test_inheriting_properties():
     a = App()
     b = Box(a)
     inheriting_properties_test(b)
+    a.destroy()
+
+def test_add_tk_widget():
+    a = App()
+    add_tk_widget_test(a)
     a.destroy()

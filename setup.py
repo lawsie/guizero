@@ -1,5 +1,6 @@
 import os
 from setuptools import setup, find_packages
+from guizero import __name__, __package__, __version__, __author__
 
 ## This is a Python 3 package only
 from sys import version_info
@@ -7,10 +8,7 @@ if version_info.major != 3:
     print("This package will only work with Python 3. \n"
           "If you already have Python 3 installed try 'pip3 install guizero'.")
 
-__project__ = 'guizero'
 __desc__ = 'Python module to allow learners to easily create GUIs'
-__version__ = '0.6.1'
-__author__ = "Laura Sach"
 __author_email__ = 'laura.sach@raspberrypi.org'
 __license__ = 'BSD'
 __url__ = 'https://github.com/lawsie/guizero'
@@ -60,7 +58,7 @@ app.display()
 """
 
 setup(
-    name=__project__,
+    name=__name__,
     version=__version__,
     author=__author__,
     author_email=__author_email__,
