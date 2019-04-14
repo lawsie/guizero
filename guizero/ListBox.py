@@ -72,7 +72,8 @@ class ListBox(ContainerTextWidget):
 
         super(ListBox, self).__init__(master, tk, description, "auto", grid, align, visible, enabled, width, height)
 
-        self._listbox = ListBoxWidget(self, items, selected, command, None, "left", visible, enabled, multiselect, "fill", "fill")
+        self._listbox = ListBoxWidget(self, items, selected, command, None, "left", visible, enabled, multiselect, None, None)
+        self._listbox.resize("fill", "fill")
 
         if scrollbar:
             # create the scrollbar and add it to the listbox
@@ -96,6 +97,9 @@ class ListBox(ContainerTextWidget):
         :param int height:
             The height of the widget.
         """
+        # set the internal listbox width to be 0 as otherwise it maintains a default
+        # size and you cant make the control smaller than that.
+        self._listbox._set_tk_config("width", None if width is None else 0)
         self._set_propagation(width, height)
         super(ListBox, self).resize(width, height)
 
