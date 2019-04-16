@@ -1,5 +1,12 @@
 # guizero
 
+## 0.6.3 - 2019-04-18
+- ListBox scrollbar bug fix (again)
+- Removed pillow requires dependency
+- Added pillow as an extra dependency `pip3 install guizero[images]`
+- Installation instructions update
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie) 
+
 ## 0.6.2 - 2019-04-05
 - Ability to [add tk widgets](./usingtk/) into a guizero app with `.add_tk_widget()`
 - ListBox scrollbar bug fix
