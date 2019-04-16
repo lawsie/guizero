@@ -19,10 +19,12 @@ If you have administrator rights and are connected to the internet, you can use 
 4. Open the `guizero-master` folder, then copy the `guizero` folder and paste it into your home directory
 
     + Windows
-    ![Copy the guizero folder in windows](images/copy-guizero-annotated.png)
+
+        ![Copy the guizero folder in windows](images/copy-guizero-annotated.png)
 
     + macOS
-    ![Copy the guizero folder in macos](images/copy-guizero-macos-annotated.png)
+
+        ![Copy the guizero folder in macos](images/copy-guizero-macos-annotated.png)
 
 5. That's it! When you write your guizero code, make sure you save it into your home directory.
 
