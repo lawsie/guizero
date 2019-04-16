@@ -1,80 +1,45 @@
+![version number]([images/guizero](https://badge.fury.io/py/guizero.svg)) 
+
 # guizero
 
-[Version 0.6.2](http://lawsie.github.io/guizero/changelog) (5th Apr 2019)
+[guizero](https://lawsie.github.io/guizero) is a Python 3 library for creating simple GUIs. 
 
-guizero is designed to allow children to quickly and easily create GUIs for their programs.
+Its designed to allow new learners to quickly and easily create GUIs for their programs.
 
-If you can download and unzip a file, you can [install guizero](#easy-installation) - **no special permissions or administrator rights are required**.
+![So have a go with guizero and see what you can create](docs-src/docs/images/have-a-go.png)
 
-If you have administrator rights and are connected to the internet, you can use [pip to quickly install guizero](#install-using-pip).
+```python
+from guizero import App, Text, PushButton
 
-guizero only requires `tkinter` to be installed, which is included with a standard Python installation on all platforms except Linux.
+app = App(title="guizero")
 
-## Easy installation
+intro = Text(app, text="So have a go with guizero and see what you can create.")
+ok = PushButton(app, text="Ok")
 
-Use this installation method if you do not have access to a terminal or command prompt on your computer.
+app.display()
+```
 
-1. Click the green "Clone or download" button and then "Download ZIP"
+[guizero](https://lawsie.github.io/guizero) is designed to allow children to quickly and easily create GUIs for their programs.
 
-    ![Download the zip](docs-src/docs/images/download-zip.png)
+## Install
 
-2. Unzip the file
+If you can download and unzip a file, you can [install guizero](https://lawsie.github.io/guizero/#easy-install) - **no special permissions or administrator rights are required**.
 
-3. Open the `guizero-master` folder, then copy the `guizero` folder and paste it into your home directory
-
-    ![Copy the guizero folder](docs-src/docs/images/copy-guizero.png)
-
-4. That's it! When you write your guizero code, make sure you save it into your home directory.
-
-## Install using pip
-
-If you have administrator rights to your computer and are connected to the internet, you can use pip to quickly install guizero.
-
-### Windows
-
-1. Make sure you have pip installed - follow [this guide](https://projects.raspberrypi.org/en/projects/using-pip-on-windows) if you are not sure.
-2. Open a command prompt
-3. Type `pip3 install guizero` and press Enter
-
-### Raspberry Pi
-
-1. Open a terminal window
-2. Type `sudo pip3 install guizero` and press Enter
-
-### Mac OS
-1. Open a terminal (you can search for it in the Launch Pad)
-
-    ![Mac terminal](docs-src/docs/images/mac-terminal.png)
-
-2. Type `sudo pip3 install guizero`
-
-    ![Mac install screenshot](docs-src/docs/images/mac-install.png)
-
-### Linux
-
-1. Open a terminal
-2. Install `tkinter` using your distribution's package manager, e.g. `sudo apt install python3-tk`
-3. Install guizero using pip by typing `pip3 install guizero` or `sudo pip3 install guizero` if you dont have superuser rights
-
-## Upgrading
-
-- Raspberry Pi/Linux/Mac - `sudo pip3 install guizero --upgrade`
-- Windows - `pip3 install guizero --upgrade`
-
-## Mission statement
-The aim of guizero is to make the process of creating simple GUIs quick, accessible and understandable for children.
-
-## Aims
-* Works with standard Python GUI library (and no need to install other libraries)
-* Abstracts away details children find hard (such as Tkinter StringVar() objects)
-* Accessible widget naming system to help children to build up a mental model
-* Flexible enough to be used for projects up to A-Level standard, yet accessible to primary school children
-* Comprehensive and accessible [documentation with examples](https://lawsie.github.io/guizero)
-* Helpful error messages
+If you have administrator rights and are connected to the internet, you can use [pip to install guizero]((https://lawsie.github.io/guizero/#install-using-pip).
 
 ## Documentation
 
-[lawsie.github.io/guizero](https://lawsie.github.io/guizero)
+There is comprehensive documentation [lawsie.github.io/guizero](https://lawsie.github.io/guizero) including [installing instructions](https://lawsie.github.io/guizero), a [getting started guide](https://lawsie.github.io/guizero/start), [recipes](http://127.0.0.1:8000/recipes/) and an [API reference](https://lawsie.github.io/guizero/app/)
+
+## Aims
+The aim of guizero is to make the process of creating simple GUIs quick, accessible and understandable for new learners.
+
+* Works with standard Python Tkinter GUI library (and no need to install other libraries)
+* Abstracts away details new learners find difficult to understand (such as Tkinter StringVar() objects)
+* Accessible widget naming system to help new learners to build up a mental model
+* Flexible enough to be used for projects up to A-Level standard, yet accessible to primary school children
+* Comprehensive and accessible documentation with examples
+* Generates helpful additional error messages
 
 ## Contributing
 
