@@ -1,4 +1,4 @@
-![version number](https://badge.fury.io/py/guizero.svg))
+![version number](https://badge.fury.io/py/guizero.svg)
 
 # guizero
 
@@ -19,8 +19,6 @@ ok = PushButton(app, text="Ok")
 app.display()
 ```
 
-[guizero](https://lawsie.github.io/guizero) is designed to allow children to quickly and easily create GUIs for their programs.
-
 ## Install
 
 If you can download and unzip a file, you can [install guizero](https://lawsie.github.io/guizero/#easy-install) - **no special permissions or administrator rights are required**.
@@ -29,7 +27,7 @@ If you have administrator rights and are connected to the internet, you can use 
 
 ## Documentation
 
-There is comprehensive documentation [lawsie.github.io/guizero](https://lawsie.github.io/guizero) including:
+Comprehensive documentation can be found at [lawsie.github.io/guizero](https://lawsie.github.io/guizero) including:
 + [installation instructions](https://lawsie.github.io/guizero)
 + [a getting started guide](https://lawsie.github.io/guizero/start)
 + [recipes](http://127.0.0.1:8000/recipes/)
