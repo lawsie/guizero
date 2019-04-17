@@ -4,7 +4,7 @@
 
 [guizero](https://lawsie.github.io/guizero) is a Python 3 library for creating simple GUIs. 
 
-Its designed to allow new learners to quickly and easily create GUIs for their programs.
+It is designed to allow new learners to quickly and easily create GUIs for their programs.
 
 ![Have a go with guizero and see what you can create](docs-src/docs/images/have-a-go.png)
 
@@ -49,4 +49,4 @@ Contributions are very welcome - please see [lawsie.github.io/guizero/contributi
 
 ## Issues
 
-All issues should be raise on [github.com/lawsie/guizero/issues](https://github.com/lawsie/guizero/issues)
+All issues should be raised on [github.com/lawsie/guizero/issues](https://github.com/lawsie/guizero/issues)
