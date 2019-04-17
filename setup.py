@@ -12,7 +12,10 @@ __desc__ = 'Python module to allow learners to easily create GUIs'
 __author_email__ = 'laura.sach@raspberrypi.org'
 __license__ = 'BSD'
 __url__ = 'https://github.com/lawsie/guizero'
-__requires__ = ["pillow>=4.3.0"]
+__requires__ = []
+__extras_require__={
+        'images':  ["pillow>=4.3.0"]
+    }
 __python_requires__ = ">=3"
 __keywords__ = [
     "GUI",
@@ -37,9 +40,9 @@ There is comprehensive documentation at [lawsie.github.io/guizero](https://lawsi
 
 ## Install
 
-If you can download and unzip a file, you can [install guizero](https://lawsie.github.io/guizero/#easy-installation) - **no special permissions or administrator rights are required**.
+If you can download and unzip a file, you can [install guizero](https://lawsie.github.io/guizero/#easy-install) - **no special permissions or administrator rights are required**.
 
-If you have administrator rights and are connected to the internet, you can use [pip to quickly install guizero](#install-using-pip).
+If you have administrator rights and are connected to the internet, you can use [pip to quickly install guizero]((https://lawsie.github.io/guizero/#install-using-pip).
 
 guizero only requires `tkinter` to be installed, which is included with a standard Python installation on all platforms except Linux.
 A python module to allow learners to easily create GUIs. guizero is designed to be used by new learners.
@@ -71,5 +74,6 @@ setup(
     packages=find_packages(),
     classifiers=__classifiers__,
     install_requires=__requires__,
+    extras_require = __extras_require__,
     python_requires=__python_requires__,
 )

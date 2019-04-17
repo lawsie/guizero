@@ -17,7 +17,7 @@ All systems support the `GIF` file type.
 
 Windows and Linux also support `PNG` files.
 
-If you [installed guizero](index.md) using `pip` it will also have installed `PIL` (Python Imaging Library) and you will be able use the majority of commonly used image types.
+If you [installed the addition image features](index.md#additional-features-install) using `pip` it will also have installed `PIL` (Python Imaging Library) and you will be able use the majority of commonly used image types.
 
 guizero will tell you what file types are supported on your computer using the following code:
 

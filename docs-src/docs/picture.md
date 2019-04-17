@@ -9,8 +9,6 @@ The `Picture` object displays an image.
 
 ![Picture on Windows](images/picture_windows.png)
 
-Windows & Linux support GIF and PNG file types, MacOS only supports GIF.
-
 ### How do I make one?
 
 Create a `Picture` object like this:
@@ -26,6 +24,12 @@ You must specify the correct path to the image. The image in the example is in t
 ```python
 picture = Picture(app, image="images/test.gif")
 ```
+
+### Image support
+
+Depending on your operating system and whether you installed the guizero [additional image features](index.md#additional-features-install) will determine what [image types you can use](images.md) with `Picture`.
+
+By default GIF and PNG are supported, except macOS which only supports GIF.
 
 ### Starting parameters
 
@@ -85,6 +89,4 @@ Refer to a property as `<name of widget>.property`. For example, if your `Pictur
 
 You can **set** the property (for example `picture.value = "star.gif"`) or **get** the value of the property to use (for example `print(picture.value)`).
 
-### Image types
 
-Find out [which file types are supported](https://lawsie.github.io/guizero/images/) (dependent on platform and whether PIL is available).
