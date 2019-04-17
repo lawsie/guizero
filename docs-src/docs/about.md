@@ -4,7 +4,7 @@
 
 guizero is a Python 3 library for creating simple GUIs. 
 
-Its designed to allow new learners to quickly and easily create GUIs for their programs.
+It is designed to allow new learners to quickly and easily create GUIs for their programs.
 
 ![So have a go with guizero and see what you can create](images/have-a-go.png)
 
