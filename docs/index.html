@@ -61,15 +61,9 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#easy-installation">Easy installation</a></li>
+            <li><a class="toctree-l3" href="#easy-install">Easy install</a></li>
         
             <li><a class="toctree-l3" href="#install-using-pip">Install using pip</a></li>
-        
-            <li><a class="toctree-l3" href="#raspberry-pi">Raspberry Pi</a></li>
-        
-            <li><a class="toctree-l3" href="#mac-os">Mac OS</a></li>
-        
-            <li><a class="toctree-l3" href="#linux">Linux</a></li>
         
         </ul>
     
@@ -262,58 +256,122 @@
               
                 <h1 id="installation">Installation</h1>
 <p>guizero is designed to allow new learners to quickly and easily create GUIs for their programs.</p>
-<p>If you can download and unzip a file, you can <a href="#easy-installation">install guizero</a> - <strong>no special permissions or administrator rights are required</strong>.</p>
-<p>If you have administrator rights and are connected to the internet, you can use <a href="#install-using-pip">pip to quickly install guizero</a>.</p>
-<p>guizero only requires <code>tkinter</code> to be installed, which is included with a standard Python installation on all platforms except Linux.</p>
-<h2 id="easy-installation">Easy installation</h2>
+<p>If you can download and unzip a file, you can <a href="#easy-install">install guizero</a> - <strong>no special permissions or administrator rights are required</strong>.</p>
+<p>If you have administrator rights and are connected to the internet, you can use <a href="#install-using-pip">pip to install guizero</a>.</p>
+<h2 id="easy-install">Easy install</h2>
 <ol>
 <li>
-<p>Go to the <a href="https://github.com/lawsie/guizero">Github repo</a> for guizero</p>
+<p>Go to the <a href="https://github.com/lawsie/guizero">guizero repository</a> on GitHub.</p>
 </li>
 <li>
 <p>Click the green "Clone or download" button and then "Download ZIP"</p>
 <p><img alt="Download the zip" src="./images/download-zip.png" /></p>
 </li>
 <li>
-<p>Unzip the file</p>
+<p>Open the zip file</p>
 </li>
 <li>
 <p>Open the <code>guizero-master</code> folder, then copy the <code>guizero</code> folder and paste it into your home directory</p>
-<p><img alt="Copy the guizero folder" src="./images/copy-guizero.png" /></p>
+<ul>
+<li>
+<p>Windows</p>
+<p><img alt="Copy the guizero folder in windows" src="./images/copy-guizero-annotated.png" /></p>
+</li>
+<li>
+<p>macOS</p>
+<p><img alt="Copy the guizero folder in macos" src="./images/copy-guizero-macos-annotated.png" /></p>
+</li>
+</ul>
 </li>
 <li>
 <p>That's it! When you write your guizero code, make sure you save it into your home directory.</p>
 </li>
 </ol>
 <h2 id="install-using-pip">Install using pip</h2>
+<p>You can use the command prompt and <code>pip</code> to install guizero for:</p>
+<ul>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#macos">macOS</a></li>
+<li><a href="#raspberry-pi">Raspberry Pi</a></li>
+<li><a href="#linux">Linux</a></li>
+</ul>
+<p><code>pip</code> can also be used to <a href="#additional-features-install">install additional features</a> and <a href="#upgrading">upgrade guizero</a>.</p>
 <h3 id="windows">Windows</h3>
 <ol>
-<li>Make sure you have <a href="https://projects.raspberrypi.org/en/projects/using-pip-on-windows">pip</a> installed.</li>
-<li>Open a command prompt</li>
-<li>Type <code>pip install guizero</code> and press Enter</li>
+<li>
+<p>Open a command prompt by clicking <strong>Start</strong> &gt; <strong>Windows System</strong> &gt; <strong>Command Prompt</strong>, or by typing 'command' into the start menu's search bar.</p>
+<p><img alt="windows command prompt" src="./images/windows_command_prompt_app.png" /></p>
+</li>
+<li>
+<p>Type this command and press enter:</p>
+<p><code>pip3 install guizero</code></p>
+</li>
 </ol>
-<h2 id="raspberry-pi">Raspberry Pi</h2>
-<ol>
-<li>Open a terminal window</li>
-<li>Type <code>sudo pip3 install guizero</code> and press Enter</li>
-</ol>
-<h2 id="mac-os">Mac OS</h2>
+<p><img alt="windows pip install" src="./images/windows_pip_install.gif" /></p>
+<p>If you experience problems, have a look at this guide to <a href="https://projects.raspberrypi.org/en/projects/using-pip-on-windows"><em>Using pip on Windows</em></a>.</p>
+<h3 id="macos">macOS</h3>
 <ol>
 <li>
-<p>Open a terminal (you can search for it in the Launch Pad)</p>
+<p>Open a terminal window by clicking <strong>Applications</strong> &gt; <strong>Utilities</strong> &gt; <strong>Terminal</strong>, or by typing 'terminal' into the desktop's search bar.</p>
 <p><img alt="Mac terminal" src="./images/mac-terminal.png" /></p>
 </li>
 <li>
-<p>Type <code>sudo pip3 install guizero</code></p>
-<p><img alt="Mac install screenshot" src="./images/mac-install.png" /></p>
+<p>Type this command and press enter:</p>
+<p><code>pip3 install guizero</code></p>
+<p><img alt="mac pip install" src="./images/mac_pip_install.gif" /></p>
 </li>
 </ol>
-<h2 id="linux">Linux</h2>
+<h3 id="raspberry-pi">Raspberry Pi</h3>
+<ol>
+<li>
+<p>Open a terminal window by clicking <strong>Menu</strong> &gt; <strong>Accessories</strong> &gt; <strong>Terminal</strong>.</p>
+<p><img alt="pi terminal" src="./images/pi-terminal.png" /></p>
+</li>
+<li>
+<p>Type this command and press enter:</p>
+<p><code>sudo pip3 install guizero</code></p>
+<p><img alt="run pip install guizero" src="./images/pi_pip_install.gif" /></p>
+</li>
+</ol>
+<h3 id="linux">Linux</h3>
 <ol>
 <li>Open a terminal</li>
 <li>Install <code>tkinter</code> using your distribution's package manager, e.g. <code>sudo apt install python3-tk</code></li>
-<li>Install guizero using pip by typing <code>pip3 install guizero</code> or <code>sudo pip3 install guizero</code> if you dont have superuser rights</li>
+<li>
+<p>Install guizero using pip by typing <code>pip3 install guizero</code> or <code>sudo pip3 install guizero</code> if you dont have superuser rights</p>
+<p><img alt="linux pip install" src="./images/linux_pip_install.gif" /></p>
+</li>
 </ol>
+<h3 id="additional-features-install">Additional features install</h3>
+<p>To use the additional <a href="images/">image features</a> of guizero such as:</p>
+<ul>
+<li>JPG image support</li>
+<li>scaling images</li>
+<li>animated gifs </li>
+</ul>
+<p>... you will need to install guizero with the pip command:</p>
+<ul>
+<li>
+<p>Windows / macOS</p>
+<p><code>pip3 install guizero[images]</code></p>
+</li>
+<li>
+<p>Linux / Raspberry Pi</p>
+<p><code>sudo pip3 install guizero[images]</code></p>
+</li>
+</ul>
+<h3 id="upgrading">Upgrading</h3>
+<p>Upgrade guizero using the pip command </p>
+<ul>
+<li>
+<p>Windows / macOS</p>
+<p><code>pip3 install guizero --upgrade</code></p>
+</li>
+<li>
+<p>Linux / Raspberry Pi</p>
+<p><code>sudo pip3 install guizero --upgrade</code></p>
+</li>
+</ul>
               
             </div>
           </div>
@@ -367,5 +425,5 @@
 
 <!--
 MkDocs version : 0.17.2
-Build Date UTC : 2019-04-05 06:44:54
+Build Date UTC : 2019-04-17 08:57:54
 -->
