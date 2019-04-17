@@ -6,14 +6,14 @@
 
 Its designed to allow new learners to quickly and easily create GUIs for their programs.
 
-![So have a go with guizero and see what you can create](docs-src/docs/images/have-a-go.png)
+![Have a go with guizero and see what you can create](docs-src/docs/images/have-a-go.png)
 
 ```python
 from guizero import App, Text, PushButton
 
 app = App(title="guizero")
 
-intro = Text(app, text="So have a go with guizero and see what you can create.")
+intro = Text(app, text="Have a go with guizero and see what you can create.")
 ok = PushButton(app, text="Ok")
 
 app.display()
@@ -30,7 +30,7 @@ If you have administrator rights and are connected to the internet, you can use 
 Comprehensive documentation can be found at [lawsie.github.io/guizero](https://lawsie.github.io/guizero) including:
 + [installation instructions](https://lawsie.github.io/guizero)
 + [a getting started guide](https://lawsie.github.io/guizero/start)
-+ [recipes](http://127.0.0.1:8000/recipes/)
++ [recipes](https://lawsie.github.io/guizero/recipes)
 + [an API reference](https://lawsie.github.io/guizero/app/)
 
 ## Aims
