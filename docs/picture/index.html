@@ -166,13 +166,13 @@
         
             <li><a class="toctree-l4" href="#how-do-i-make-one">How do I make one?</a></li>
         
+            <li><a class="toctree-l4" href="#image-support">Image support</a></li>
+        
             <li><a class="toctree-l4" href="#starting-parameters">Starting parameters</a></li>
         
             <li><a class="toctree-l4" href="#methods">Methods</a></li>
         
             <li><a class="toctree-l4" href="#properties">Properties</a></li>
-        
-            <li><a class="toctree-l4" href="#image-types">Image types</a></li>
         
         </ul>
     
@@ -272,7 +272,6 @@
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>Picture</code> object displays an image.</p>
 <p><img alt="Picture on Windows" src="../images/picture_windows.png" /></p>
-<p>Windows &amp; Linux support GIF and PNG file types, MacOS only supports GIF.</p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create a <code>Picture</code> object like this:</p>
 <pre><code class="python">from guizero import App, Picture
@@ -285,6 +284,9 @@ app.display()
 <pre><code class="python">picture = Picture(app, image=&quot;images/test.gif&quot;)
 </code></pre>
 
+<h3 id="image-support">Image support</h3>
+<p>Depending on your operating system and whether you installed the guizero <a href="..#additional-features-install">additional image features</a> will determine what <a href="../images/">image types you can use</a> with <code>Picture</code>.</p>
+<p>By default GIF and PNG are supported, except macOS which only supports GIF.</p>
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create a <code>Picture</code> object you <strong>must</strong> specify <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>picture = Picture(app, image="test.gif")</code></p>
 <table>
@@ -502,8 +504,6 @@ app.display()
 </table>
 <p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>Picture</code> object is called <code>picture</code> you would write <code>picture.value</code>.</p>
 <p>You can <strong>set</strong> the property (for example <code>picture.value = "star.gif"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(picture.value)</code>).</p>
-<h3 id="image-types">Image types</h3>
-<p>Find out <a href="https://lawsie.github.io/guizero/images/">which file types are supported</a> (dependent on platform and whether PIL is available).</p>
               
             </div>
           </div>

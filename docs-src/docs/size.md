@@ -29,7 +29,7 @@ app.display()
 | [ButtonGroup](buttongroup.md)          | Characters           | Yes  | The height of a ButtonGroup must divide by the number of buttons in it |
 | [CheckBox](checkbox.md)                | Characters           | Yes  |                                                                        |
 | [Combo](combo.md)                      | Characters           | Yes  |                                                                        |
-| [ListBox](listbox.md)                  | Characters           | Yes  |                                                                        |
+| [ListBox](listbox.md)                  | Pixels               | Yes  |                                                                        |
 | [Picture](picture.md)                  | Pixels               | No   | See [Images](images.md) for more information                           |
 | [PushButton](pushbutton.md)            | Characters           | Yes  |                                                                        |
 | [PushButton](pushbutton.md) with image | Pixels               | No   | PushButton's which have images are sized in pixels                     |

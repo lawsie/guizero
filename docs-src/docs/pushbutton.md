@@ -23,6 +23,20 @@ button = PushButton(app, command=do_nothing)
 app.display()
 ```
 
+Create a picture `PushButton` with an image like this:
+
+```python
+from guizero import App, PushButton
+def do_nothing():
+  print("A picture button was pressed")
+
+app = App()
+button = PushButton(app, image="button.gif", command=do_nothing)
+app.display()
+```
+
+Depending on your operating system and whether you installed the guizero [additional image features](index.md#additional-features-install) will determine what [image types you can use](images.md) for `PushButton`.  By default GIF and PNG are supported, except macOS which only supports GIF.
+
 ### Starting parameters
 
 When you create a `PushButton` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `button = PushButton(app)`
