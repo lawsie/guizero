@@ -12,11 +12,13 @@ If you have a question about your guizero program it is a good idea to join a co
 
 If you would like to read guides and resources for guizero there are many freely available:
 
+- [Getting started with GUIs](https://projects.raspberrypi.org/en/projects/getting-started-with-guis) - a beginners guide to guizero by the Raspberry Pi Foundation
+
+- [Python guizero video](https://youtu.be/3dab9xX6Uyg) - a series of videos by [Devon Schafer](https://www.youtube.com/channel/UCTHAn3Viqm9lZO2YSALXNWw) on using guizero.
+
 - [Example programs](https://github.com/lawsie/guizero/tree/master/examples) - some example programs to get you going.
 
 - [Using guizero with hardware](https://github.com/bennuttall/guizero-examples) - Ben Nuttall's projects using guizero combined with hardware
-
-- [Getting started with GUIs](https://projects.raspberrypi.org/en/projects/getting-started-with-guis) - a beginners guide to guizero by the Raspberry Pi Foundation
 
 - [Cat name generator](http://www.cotswoldjam.org/downloads/2017-03/cat-name-generator/) - materials for a kids workshop, first run at the [Cotswold Jam](http://www.cotswoldjam.org)
 
