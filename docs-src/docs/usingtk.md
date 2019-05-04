@@ -23,6 +23,14 @@ app.add_tk_widget(spinbox)
 a.display()
 ```
 
+When adding a tk widget to a `Box` or a `Window` you will have to specify its `tk` property when creating the tk widget.
+
+```python
+box = Box(app)
+spinbox = Spinbox(box.tk, from_=0, to=10)
+box.add_tk_widget(spinbox)
+```
+
 ### Using a tkinter method on a guizero object
 
 Each guizero widget itself contains a tk widget - you can find out which by looking on the guizero documentation page for the widget. For example, a guizero `TextBox` contains a tkinter `Entry` object. You can access the internal object using the syntax `<object_name>.tk`.
