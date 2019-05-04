@@ -38,7 +38,7 @@ When a `Window` object is created it is immediately displayed on the screen, you
 To make a window which is shown when a button on the `App` is clicked and closed when a button is clicked on the `Window`.
 
 ```python
-from guizero import App, Window
+from guizero import App, Window, PushButton
 
 def open_window():
     window.show()
