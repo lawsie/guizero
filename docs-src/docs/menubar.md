@@ -2,7 +2,13 @@
 
 (Contains a `tkinter.Menu` object)
 
-`__init__(self, master, toplevel, options)`
+```python
+__init__(
+    self, 
+    master, 
+    toplevel, 
+    options)
+```
 
 ### What is it?
 The `MenuBar` object displays a menu at the top of the screen, with each menu option leading to a submenu.

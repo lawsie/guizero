@@ -2,7 +2,21 @@
 
 (Contains a `tkinter.Scale` object)
 
-`__init__(self, master, start=0, end=100, horizontal=True, command=None, grid=None, align=None)`
+```python
+__init__(
+    self, 
+    master, 
+    start=0, 
+    end=100, 
+    horizontal=True, 
+    command=None, 
+    grid=None, 
+    align=None, 
+    visible=True, 
+    enabled=None, 
+    width=None, 
+    height=None)
+```
 
 ### What is it?
 The `Slider` object displays a bar and selector which can be used to specify a value in a range.

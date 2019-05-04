@@ -7,7 +7,15 @@ class App(BaseWindow):
 
     _main_app = None
 
-    def __init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True):
+    def __init__(
+        self, 
+        title="guizero", 
+        width=500, 
+        height=500, 
+        layout="auto", 
+        bgcolor=None, 
+        bg=None, 
+        visible=True):
 
         description = "[App] object"
 

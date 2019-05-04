@@ -5,7 +5,15 @@ from . import utilities as utils
 
 class Window(BaseWindow):
 
-    def __init__(self, master, title="guizero", width=500, height=500, layout="auto", bg=None, visible=True):
+    def __init__(
+        self, 
+        master, 
+        title="guizero", 
+        width=500, 
+        height=500, 
+        layout="auto", 
+        bg=None, 
+        visible=True):
 
         description = "[Window] oject"
 

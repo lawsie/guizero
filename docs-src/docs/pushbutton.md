@@ -2,7 +2,24 @@
 
 (Contains a `tkinter.Button` object)
 
-`__init__(self, master, command=None, args=None, text="Button", image=None, pady=10, padx=10, grid=None, align=None, visible=True, enabled=None)`
+```python
+__init__(
+    self,
+    master,
+    command=None,
+    args=None,
+    text="Button",
+    image=None,
+    pady=10,
+    padx=10,
+    grid=None,
+    align=None,
+    icon=None,
+    visible=True,
+    enabled=None,
+    width=None,
+    height=None)
+```
 
 ### What is it?
 The `PushButton` object displays a button with text or an image, which calls a function when pressed.
@@ -16,7 +33,7 @@ Create a `PushButton` object like this:
 ```python
 from guizero import App, PushButton
 def do_nothing():
-  print("Button was pressed")
+    print("Button was pressed")
 
 app = App()
 button = PushButton(app, command=do_nothing)
@@ -28,7 +45,7 @@ Create a picture `PushButton` with an image like this:
 ```python
 from guizero import App, PushButton
 def do_nothing():
-  print("A picture button was pressed")
+    print("A picture button was pressed")
 
 app = App()
 button = PushButton(app, image="button.gif", command=do_nothing)

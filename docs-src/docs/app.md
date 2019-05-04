@@ -2,7 +2,17 @@
 
 (Contains a `tkinter.Tk` object)
 
-`__init__(self, title="guizero", width=500, height=500, layout="auto", bgcolor=None, bg=None, visible=True)`
+```python
+__init__(
+    self, 
+    title="guizero", 
+    width=500, 
+    height=500, 
+    layout="auto", 
+    bgcolor=None, 
+    bg=None, 
+    visible=True)
+```
 
 ### What is it?
 The `App` object is the basis of all GUIs created using guizero. It is the main window which contains all of the other widgets.

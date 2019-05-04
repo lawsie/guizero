@@ -2,7 +2,24 @@
 
 (Contains a `tkinter.Frame` object)
 
-`__init__(self, master, height=3, width=3, dim=20, pad=5, color="white", dotty=False, grid=None, align=None, command=None, visible=True, enabled=None, bg=None)`
+```python
+__init__(
+    self, 
+    master, 
+    height=3, 
+    width=3, 
+    dim=20, 
+    pad=5, 
+    color="white", 
+    dotty=False, 
+    grid=None, 
+    align=None, 
+    command=None, 
+    remember=True, 
+    visible=True, 
+    enabled=None, 
+    bg=None)
+```
 
 ### What is it
 The `Waffle` object display an n*n grid of squares with custom dimensions and padding

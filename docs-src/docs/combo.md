@@ -2,7 +2,20 @@
 
 (Contains a `tkinter.OptionMenu` object)
 
-`__init__(self, master, options=[], selected=None, command=None, grid=None, align=None, visible=True, enabled=None)`
+```python
+__init__(
+    self,
+    master,
+    options=[],
+    selected=None,
+    command=None,
+    grid=None,
+    align=None,
+    visible=True,
+    enabled=None,
+    width=None,
+    height=None)
+```
 
 ### What is it?
 The `Combo` object displays a drop down box allowing a single option to be selected from a list of options.
