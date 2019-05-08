@@ -1,5 +1,12 @@
 # guizero
 
+## 0.6.4 - 2019-05-08
+- Fixed TextBox command to be on key release
+- Fix Text not inheriting properties
+- Added add_tk_warning when inserting a tk widget into the wrong container
+- Update docs
+- contributors [martinohanlon](https://github.com/martinohanlon), [hyle01](https://github.com/hyle01) 
+
 ## 0.6.3 - 2019-04-18
 - ListBox scrollbar bug fix (again)
 - Removed pillow requires dependency

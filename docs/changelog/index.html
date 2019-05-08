@@ -13,18 +13,19 @@
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
     var mkdocs_page_name = "Change log";
     var mkdocs_page_input_path = "changelog.md";
-    var mkdocs_page_url = "/changelog/";
+    var mkdocs_page_url = null;
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
 
@@ -35,10 +36,10 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../about/" class="icon icon-home"> guizero</a>
+        <a href=".." class="icon icon-home"> guizero</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -212,6 +213,8 @@
     
         <ul>
         
+            <li><a class="toctree-l3" href="#064-2019-05-08">0.6.4 - 2019-05-08</a></li>
+        
             <li><a class="toctree-l3" href="#063-2019-04-18">0.6.3 - 2019-04-18</a></li>
         
             <li><a class="toctree-l3" href="#062-2019-04-05">0.6.2 - 2019-04-05</a></li>
@@ -256,7 +259,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../about/">guizero</a>
+        <a href="..">guizero</a>
       </nav>
 
       
@@ -264,7 +267,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../about/">Docs</a> &raquo;</li>
+    <li><a href="..">Docs</a> &raquo;</li>
     
       
     
@@ -279,6 +282,14 @@
             <div class="section">
               
                 <h1 id="guizero">guizero</h1>
+<h2 id="064-2019-05-08">0.6.4 - 2019-05-08</h2>
+<ul>
+<li>Fixed TextBox command to be on key release</li>
+<li>Fix Text not inheriting properties</li>
+<li>Added add_tk_warning when inserting a tk widget into the wrong container</li>
+<li>Update docs</li>
+<li>contributors <a href="https://github.com/martinohanlon">martinohanlon</a>, <a href="https://github.com/hyle01">hyle01</a> </li>
+</ul>
 <h2 id="063-2019-04-18">0.6.3 - 2019-04-18</h2>
 <ul>
 <li>ListBox scrollbar bug fix (again)</li>
@@ -289,7 +300,7 @@
 </ul>
 <h2 id="062-2019-04-05">0.6.2 - 2019-04-05</h2>
 <ul>
-<li>Ability to <a href="../usingtk/">add tk widgets</a> into a guizero app with <code>.add_tk_widget()</code></li>
+<li>Ability to <a href="./usingtk/">add tk widgets</a> into a guizero app with <code>.add_tk_widget()</code></li>
 <li>ListBox scrollbar bug fix</li>
 <li>MenuBar background colour bug fix</li>
 <li><code>setup.py</code> changes to allow dunders to be accessed from guizero module</li>
@@ -297,7 +308,7 @@
 </ul>
 <h2 id="061-2019-03-08">0.6.1 - 2019-03-08</h2>
 <ul>
-<li>New <a href="../drawing/">Drawing widget</a> for creating "drawings"</li>
+<li>New <a href="./drawing/">Drawing widget</a> for creating "drawings"</li>
 <li>Added full screen support for <code>App</code> and <code>Window</code></li>
 <li>Doc updates</li>
 <li>Minor bug fixes</li>
@@ -574,9 +585,8 @@
     </span>
 </div>
     <script>var base_url = '..';</script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/require.js"></script>
-      <script src="../search/search.js"></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>
