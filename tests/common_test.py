@@ -265,7 +265,7 @@ def cascading_enable_test(container):
     check_children(container, True)
 
 def cascading_properties_test(container):
-    t = Text(container)
+    t = Text(container, color=None, size=None, font=None)
     p = Picture(container)
 
     container.bg = "red"
@@ -294,7 +294,7 @@ def inheriting_properties_test(container):
     container.font = SET_FONT
     container.enabled = False
 
-    t = Text(container)
+    t = Text(container, color=None, size=None, font=None)
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
