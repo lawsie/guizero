@@ -22,12 +22,21 @@ class Text(TextWidget):
         description = "[Text] object with text \"" + str(text) + "\""
 
         self._text = str(text)
-        tk = Label(master.tk, text=text, fg=utils.convert_color(color), bg=utils.convert_color(bg), font=(font, size))
-
+        tk = Label(master.tk, text=text)
         super(Text, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
+        # setup defaults
         if bg:
             self.bg = bg
+        
+        if size is not None:
+            self.text_size = size
+
+        if font is not None:
+            self.font = font
+
+        if color is not None:
+            self.text_color = color
 
     # PROPERTIES
     # ----------------------------------

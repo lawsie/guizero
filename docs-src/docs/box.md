@@ -2,7 +2,19 @@
 
 (Contains a `tkinter.Frame` object)
 
-`__init__(self, master, layout="auto", grid=None, align=None, visible=True, enabled=None)`
+```python
+__init__(
+    self,
+    master,
+    layout="auto",
+    grid=None,
+    align=None,
+    visible=True,
+    enabled=None,
+    width=None,
+    height=None,
+    border=None)
+```
 
 ### What is it?
 The `Box` object is an invisible container which can contain other widgets. It is the only object other than `App` which can act as the `master` for other objects and can have its own layout manager.

@@ -6,6 +6,7 @@ def go():
 
 def key_pressed(key):
     print("key pressed {}".format(key))
+    print("value = {}".format(textbox.value))
 
 app = App()
 text = Text(app, text="Enter your name")

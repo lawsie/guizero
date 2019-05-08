@@ -2,7 +2,20 @@
 
 (Contains a `tkinter.Checkbutton` object)
 
-`__init__(self, master, text, command=None, grid=None, align=None, args=None, visible=True, enabled=None)`
+```python
+__init__(
+    self,
+    master,
+    text="",
+    command=None,
+    grid=None,
+    align=None,
+    args=None,
+    visible=True,
+    enabled=None,
+    width=None,
+    height=None)
+```
 
 ### What is it?
 The `CheckBox` object displays a check box to allow an option to be ticked or unticked

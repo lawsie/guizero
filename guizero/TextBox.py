@@ -45,7 +45,7 @@ class TextBox(TextWidget):
         self.update_command(command)
 
         # Bind the key pressed event
-        self.events.set_event("<TextBox.KeyPress>", "<KeyPress>", self._key_pressed)
+        self.events.set_event("<TextBox.KeyRelease>", "<KeyRelease>", self._key_released)
 
     # PROPERTIES
     # ----------------------------------
@@ -82,7 +82,7 @@ class TextBox(TextWidget):
 
     # METHODS
     # -------------------------------------------
-    def _key_pressed(self, event):
+    def _key_released(self, event):
         if self._command:
             args_expected = utils.no_args_expected(self._command)
             if args_expected == 0:

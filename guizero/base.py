@@ -315,6 +315,9 @@ class Container(Component):
             The starting height of the widget. Defaults to `None` and will auto
             size.
         """
+        # raise a warning if the tk widgets master is not this container
+        if self.tk is not tk_widget.master:
+            utils.error_format("The tk widget's master is not '{}'.\nIt may not display correctly.".format(self.description))
         return Widget(self, tk_widget, "tk widget", grid, align, visible, enabled, width, height)
 
     def _add_child(self, child):

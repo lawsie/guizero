@@ -7,24 +7,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="None">
   
-  <link rel="shortcut icon" href="./img/favicon.ico">
+  <link rel="shortcut icon" href="img/favicon.ico">
   <title>Installation - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="./css/highlight.css">
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
     var mkdocs_page_name = "Installation";
     var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = "/";
+    var mkdocs_page_url = null;
   </script>
   
-  <script src="./js/jquery-2.1.1.min.js"></script>
-  <script src="./js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
 
@@ -35,10 +36,10 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="about/" class="icon icon-home"> guizero</a>
+        <a href="." class="icon icon-home"> guizero</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -232,7 +233,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="about/">guizero</a>
+        <a href=".">guizero</a>
       </nav>
 
       
@@ -240,7 +241,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="about/">Docs</a> &raquo;</li>
+    <li><a href=".">Docs</a> &raquo;</li>
     
       
     
@@ -265,7 +266,7 @@
 </li>
 <li>
 <p>Click the green "Clone or download" button and then "Download ZIP"</p>
-<p><img alt="Download the zip" src="./images/download-zip.png" /></p>
+<p><img alt="Download the zip" src="images/download-zip.png" /></p>
 </li>
 <li>
 <p>Open the zip file</p>
@@ -275,11 +276,11 @@
 <ul>
 <li>
 <p>Windows</p>
-<p><img alt="Copy the guizero folder in windows" src="./images/copy-guizero-annotated.png" /></p>
+<p><img alt="Copy the guizero folder in windows" src="images/copy-guizero-annotated.png" /></p>
 </li>
 <li>
 <p>macOS</p>
-<p><img alt="Copy the guizero folder in macos" src="./images/copy-guizero-macos-annotated.png" /></p>
+<p><img alt="Copy the guizero folder in macos" src="images/copy-guizero-macos-annotated.png" /></p>
 </li>
 </ul>
 </li>
@@ -300,37 +301,37 @@
 <ol>
 <li>
 <p>Open a command prompt by clicking <strong>Start</strong> &gt; <strong>Windows System</strong> &gt; <strong>Command Prompt</strong>, or by typing 'command' into the start menu's search bar.</p>
-<p><img alt="windows command prompt" src="./images/windows_command_prompt_app.png" /></p>
+<p><img alt="windows command prompt" src="images/windows_command_prompt_app.png" /></p>
 </li>
 <li>
 <p>Type this command and press enter:</p>
 <p><code>pip3 install guizero</code></p>
 </li>
 </ol>
-<p><img alt="windows pip install" src="./images/windows_pip_install.gif" /></p>
+<p><img alt="windows pip install" src="images/windows_pip_install.gif" /></p>
 <p>If you experience problems, have a look at this guide to <a href="https://projects.raspberrypi.org/en/projects/using-pip-on-windows"><em>Using pip on Windows</em></a>.</p>
 <h3 id="macos">macOS</h3>
 <ol>
 <li>
 <p>Open a terminal window by clicking <strong>Applications</strong> &gt; <strong>Utilities</strong> &gt; <strong>Terminal</strong>, or by typing 'terminal' into the desktop's search bar.</p>
-<p><img alt="Mac terminal" src="./images/mac-terminal.png" /></p>
+<p><img alt="Mac terminal" src="images/mac-terminal.png" /></p>
 </li>
 <li>
 <p>Type this command and press enter:</p>
 <p><code>pip3 install guizero</code></p>
-<p><img alt="mac pip install" src="./images/mac_pip_install.gif" /></p>
+<p><img alt="mac pip install" src="images/mac_pip_install.gif" /></p>
 </li>
 </ol>
 <h3 id="raspberry-pi">Raspberry Pi</h3>
 <ol>
 <li>
 <p>Open a terminal window by clicking <strong>Menu</strong> &gt; <strong>Accessories</strong> &gt; <strong>Terminal</strong>.</p>
-<p><img alt="pi terminal" src="./images/pi-terminal.png" /></p>
+<p><img alt="pi terminal" src="images/pi-terminal.png" /></p>
 </li>
 <li>
 <p>Type this command and press enter:</p>
 <p><code>sudo pip3 install guizero</code></p>
-<p><img alt="run pip install guizero" src="./images/pi_pip_install.gif" /></p>
+<p><img alt="run pip install guizero" src="images/pi_pip_install.gif" /></p>
 </li>
 </ol>
 <h3 id="linux">Linux</h3>
@@ -339,7 +340,7 @@
 <li>Install <code>tkinter</code> using your distribution's package manager, e.g. <code>sudo apt install python3-tk</code></li>
 <li>
 <p>Install guizero using pip by typing <code>pip3 install guizero</code> or <code>sudo pip3 install guizero</code> if you dont have superuser rights</p>
-<p><img alt="linux pip install" src="./images/linux_pip_install.gif" /></p>
+<p><img alt="linux pip install" src="images/linux_pip_install.gif" /></p>
 </li>
 </ol>
 <h3 id="additional-features-install">Additional features install</h3>
@@ -416,14 +417,13 @@
     </span>
 </div>
     <script>var base_url = '.';</script>
-    <script src="./js/theme.js"></script>
-      <script src="./search/require.js"></script>
-      <script src="./search/search.js"></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
 
 </body>
 </html>
 
 <!--
-MkDocs version : 0.17.2
-Build Date UTC : 2019-04-18 07:18:49
+MkDocs version : 1.0.4
+Build Date UTC : 2019-05-08 11:29:41
 -->

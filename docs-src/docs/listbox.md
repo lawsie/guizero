@@ -2,7 +2,22 @@
 
 (Contains a `tkinter.Listbox` object)
 
-`__init__(self, master, items=None, selected=None, command=None, grid=None, align=None, visible=True, enabled=None, multiselect=False, scrollbar=False)`
+```python
+__init__(
+    self,
+    master,
+    items=None,
+    selected=None,
+    command=None,
+    grid=None,
+    align=None,
+    visible=True,
+    enabled=None,
+    multiselect=False,
+    scrollbar=False,
+    width=None,
+    height=None)
+```
 
 ### What is it?
 The `ListBox` object displays a list of items from which either single or multiple items can be selected.

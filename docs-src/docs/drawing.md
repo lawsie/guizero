@@ -2,7 +2,17 @@
 
 (Contains a `tkinter.canvas` object)
 
-`__init__(self, master, width=100, height=100, grid=None, align=None, visible=True, enabled=None):`
+```python
+__init__(
+    self, 
+    master, 
+    width=100, 
+    height=100, 
+    grid=None, 
+    align=None, 
+    visible=True, 
+    enabled=None)
+```
 
 ### What is it?
 The `Drawing` object allows shapes, images and text to be created.

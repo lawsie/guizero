@@ -6,7 +6,15 @@ from .event import EventManager
 
 class Drawing(Widget):
 
-    def __init__(self, master, width=100, height=100, grid=None, align=None, visible=True, enabled=None):
+    def __init__(
+        self, 
+        master, 
+        width=100, 
+        height=100, 
+        grid=None, 
+        align=None, 
+        visible=True, 
+        enabled=None):
         """
         Creates a Drawing
 

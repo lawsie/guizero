@@ -110,7 +110,8 @@ def test_display():
 
 def test_text():
     a = App()
-    t = Text(a)
+    # default values
+    t = Text(a, color=None, size=None, font=None)
     text_test(t)
     a.destroy()
 
@@ -135,11 +136,11 @@ def test_events():
 
 def test_cascaded_properties():
     a = App()
-    t = Text(a)
+    t = Text(a, color=None, size=None, font=None)
     cascaded_properties_test(a, t, True)
     a.destroy()
 
 def test_inherited_properties():
     a = App()
-    inherited_properties_test(a, lambda: Text(a), True)
+    inherited_properties_test(a, lambda: Text(a, color=None, size=None, font=None), True)
     a.destroy()

@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Recipes - guizero</title>
+  <title>Allwidgets - guizero</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Recipes";
-    var mkdocs_page_input_path = "recipes.md";
+    var mkdocs_page_name = "Allwidgets";
+    var mkdocs_page_input_path = "allwidgets.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -113,33 +113,9 @@
     </ul>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Recipes</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#recipes">Recipes</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#hello-world">Hello World</a></li>
-        
-            <li><a class="toctree-l3" href="#get-some-text">Get some text</a></li>
-        
-            <li><a class="toctree-l3" href="#push-a-button">Push a button</a></li>
-        
-            <li><a class="toctree-l3" href="#display-an-image">Display an image</a></li>
-        
-            <li><a class="toctree-l3" href="#toggle-2-buttons">Toggle 2 buttons</a></li>
-        
-            <li><a class="toctree-l3" href="#change-your-apps-appearance">Change your apps appearance</a></li>
-        
-            <li><a class="toctree-l3" href="#scale-an-image">Scale an image</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../recipes/">Recipes</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -255,7 +231,7 @@
     
       
     
-    <li>Recipes</li>
+    <li>Allwidgets</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -265,127 +241,68 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="recipes">Recipes</h1>
-<p>These are examples of how you can use <code>guizero</code> to create user interfaces. Don't be restricted to these ideas, check out <a href="../start/">Using guizero</a> and the <a href="../app/">widgets</a>.</p>
-<h2 id="hello-world">Hello World</h2>
-<p>Create a guizero app and display some text.</p>
-<pre><code class="python">from guizero import App, Text
-app = App()
-text = Text(app, text=&quot;hello world&quot;)
-app.display()
-</code></pre>
-
-<h2 id="get-some-text">Get some text</h2>
-<p>Get some data from the user using a <code>TextBox</code>.</p>
-<pre><code class="python">from guizero import App, TextBox
-
-app = App()
-name = TextBox(app. text=&quot;Enter your name&quot;)
-
-app.display()
-</code></pre>
-
-<h2 id="push-a-button">Push a button</h2>
-<p>Use a <code>PushButton</code> to display a message when the button is pressed. </p>
-<pre><code class="python">from guizero import App, TextBox, PushButton, Text
-
-def update_text():
-    label.value = name.value
-
-app = App()
-label = Text(app, text=&quot;What's your name?&quot;)
-name = TextBox(app)
-button = PushButton(app, command=update_text)
-
-app.display()
-</code></pre>
-
-<h2 id="display-an-image">Display an image</h2>
-<p>Use a <code>Picture</code> object to display an image.</p>
-<pre><code class="python">from guizero import App, Picture
-app = App()
-pic = Picture(app, image=&quot;myimage.gif&quot;)
-app.display()
-</code></pre>
-
-<h2 id="toggle-2-buttons">Toggle 2 buttons</h2>
-<p>Have 2 buttons, <strong>start</strong> and <strong>stop</strong> with them changing the <code>enabled</code> state of each other.</p>
-<pre><code class="python">from guizero import App, PushButton
-
-def start():
-    start_button.disable()
-    stop_button.enable()
-
-def stop():
-    start_button.enable()
-    stop_button.disable()
-
-app = App()
-start_button = PushButton(app, command=start, text=&quot;start&quot;)
-stop_button = PushButton(app, command=stop, text=&quot;stop&quot;, enabled=False)
-app.display()
-</code></pre>
-
-<h2 id="change-your-apps-appearance">Change your apps appearance</h2>
-<p>Your app doesn't have to use the standard colors and text, let your user pick the background and text color from 2 combo's.</p>
-<pre><code class="python">from guizero import App, Combo, Text
-
-def update_bg():
-    app.bg = bg_combo.value
-
-def update_text():
-    app.text_color = text_combo.value
-
-colors = [&quot;black&quot;, &quot;white&quot;, &quot;red&quot;, &quot;green&quot;, &quot;blue&quot;]
-
-app = App()
-app.bg = &quot;black&quot;
-app.text_color = &quot;white&quot;
-
-title1 = Text(app, text=&quot;Background color&quot;)
-bg_combo = Combo(app, options=colors, selected=app.bg, command=update_bg)
-
-title2 = Text(app, text=&quot;Text color&quot;)
-text_combo = Combo(app, options=colors, selected=app.text_color, command=update_text)
-
-app.display()
-</code></pre>
-
-<h2 id="scale-an-image">Scale an image</h2>
-<p>Display an image on the screen with 2 sliders, 1 for height and 1 for width.</p>
-<pre><code class="python">from guizero import App, Slider, Picture
-
-def resize():
-    picture.width = width.value
-    picture.height = height.value
-
-app = App(layout=&quot;grid&quot;)
-
-picture = Picture(app, image=&quot;image.gif&quot;, grid=[0,1])
-
-width = Slider(app, command=resize, grid=[0,0], start=1, end=picture.width)
-width.width = picture.width
-width.value = picture.width
-
-height = Slider(app, command=resize, horizontal=False, grid=[1,1], start=1, end=picture.height)
-height.height = picture.height
-height.value = picture.height
-
-app.display()
-</code></pre>
+                <h2 id="common-methods">Common methods</h2>
+<p>These methods can be called upon any guizero widget.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Takes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>after(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
+<td>Schedules a <strong>single</strong> call to <code>command</code> after <code>time</code> milliseconds. (To repeatedly call the same command, use <code>repeat()</code>)</td>
+</tr>
+<tr>
+<td>repeat(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
+<td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
+</tr>
+<tr>
+<td>cancel(command)</td>
+<td>command (function name)</td>
+<td>Cancels a scheduled call to <code>command</code></td>
+</tr>
+<tr>
+<td>destroy()</td>
+<td>-</td>
+<td>Destroys the widget</td>
+</tr>
+<tr>
+<td>disable()</td>
+<td>-</td>
+<td>Disables the widget so that it is "greyed out" and cannot be interacted with</td>
+</tr>
+<tr>
+<td>enable()</td>
+<td>-</td>
+<td>Enables the widget</td>
+</tr>
+<tr>
+<td>focus()</td>
+<td>-</td>
+<td>Gives focus to the widget (e.g. focusing a <code>TextBox</code> so that the user can type inside it)</td>
+</tr>
+<tr>
+<td>hide()</td>
+<td>-</td>
+<td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
+</tr>
+<tr>
+<td>show()</td>
+<td>-</td>
+<td>Displays the widget</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../app/" class="btn btn-neutral float-right" title="App">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../gettinghelp/" class="btn btn-neutral" title="Getting help"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -409,10 +326,6 @@ app.display()
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../gettinghelp/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../app/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
