@@ -20,7 +20,7 @@ text = Text(app, text="A Spinbox widget")
 spinbox = Spinbox(from_=0, to=10)
 app.add_tk_widget(spinbox)
 
-a.display()
+app.display()
 ```
 
 When adding a tk widget to a `Box` or a `Window` you will have to specify its `tk` property when creating the tk widget.
