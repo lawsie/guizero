@@ -1,7 +1,6 @@
 from . import utilities as utils
 from tkinter.font import Font
 from tkinter import TclError
-from . import dialog
 
 
 class ScheduleMixin():
@@ -380,7 +379,3 @@ class EventsMixin():
     @when_mouse_dragged.setter
     def when_mouse_dragged(self, value):
         self.events.set_event("<when_mouse_dragged>", "<B1-Motion>", value)
-
-class DialogMixin():
-    def question(self,title,question,initial_value=None):
-        retutn dialog.askquestion(title,question,initial_value,parent=self.tk)

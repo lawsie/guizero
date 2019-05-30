@@ -11,14 +11,12 @@ from .tkmixins import (
     ColorMixin,
     SizeMixin,
     LayoutMixin,
-    EventsMixin,
-    DialogMixin)
+    EventsMixin)
 
 from . import utilities as utils
 from .event import EventManager
+from . import dialog
 from tkinter import BOTH, X, Y, YES
-from . import utilities as utils
-
 
 class Base():
 
@@ -462,7 +460,7 @@ class Container(Component):
                 child.enable()
 
 
-class BaseWindow(Container,DialogMixin):
+class BaseWindow(Container):
 
     def __init__(self, master, tk, description, title, width, height, layout, bg, visible):
         """
@@ -592,6 +590,8 @@ class BaseWindow(Container,DialogMixin):
         self._full_screen = False
         self.events.remove_event("<FullScreen.Escape>")
 
+    def question(self, title, question, initial_value=None):
+        return dialog.question(title, question, initial_value, master=self)
 
 class Widget(
     Component,
