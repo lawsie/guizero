@@ -11,7 +11,8 @@ from .tkmixins import (
     ColorMixin,
     SizeMixin,
     LayoutMixin,
-    EventsMixin)
+    EventsMixin,
+    DialogMixin)
 
 from . import utilities as utils
 from .event import EventManager
@@ -461,7 +462,7 @@ class Container(Component):
                 child.enable()
 
 
-class BaseWindow(Container):
+class BaseWindow(Container,DialogMixin):
 
     def __init__(self, master, tk, description, title, width, height, layout, bg, visible):
         """
