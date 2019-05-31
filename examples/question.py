@@ -1,13 +1,13 @@
-from guizero import App, question, PushButton, Text
+from guizero import App, PushButton, question, Text
 
-def ask_the_question():
-    r.value = question("Question", "This is a question?")
+def button_pressed():
+    name = question("Hello", "What's your name?")
+    # if Cancel is pressed None is return
+    # so check a name was entered
+    if name is not None:
+        hello.value = "Hello " + name
 
-def app_ask_the_question():
-    r.value = a.question("App question", "This is a question")
-
-a = App()
-b = PushButton(a, text="Question", command=ask_the_question)
-b = PushButton(a, text="App question", command=app_ask_the_question)
-r = Text(a)
-a.display()
+app = App()
+button = PushButton(app, command=button_pressed, text="Hello")
+hello = Text(app)
+app.display()

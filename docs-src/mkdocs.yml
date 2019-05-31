@@ -7,7 +7,7 @@ pages:
       - Commands: commands.md
       - Multiple windows: multiple_windows.md
       - Layouts: layout.md
-      - Alerts: alerts.md
+      - Pop-ups: alerts.md
       - Sizes: size.md
       - Colors: colors.md
       - Images: images.md

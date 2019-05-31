@@ -1,11 +1,11 @@
-# Alerts
+# Pop-ups
 
-Alerts are pop-up windows which can be used to interupt the user by asking question or providing information.
+Pop-up windows which can be used to interupt the user by asking question or providing information.
 
 ![Alert popup](images/alert_info_windows.png)
 
-### Using alerts
-To use the alerts you will need to import each one individually at the start of your program. For example:
+### Using pop-ups
+To use the pop-ups you will need to import each one individually at the start of your program. For example:
 
 ```python
 from guizero import warn, info
@@ -18,6 +18,7 @@ These functions pop up a box on the screen that displays a message. The function
 * `info(title, text)` - popup box with an information icon
 * `error(title, text)` - popup box with an error icon
 * `yesno(title, text)` - popup box with yes and no options. Pressing `Yes` returns `True` and pressing `No` returns `False`.
+* `question(title, text, initial_value)` - popup box with a question box which can accept a text response. Pressing `Ok` returns value entered into the box is returned and pressing `Cancel` returns `None`.
 
 All pop up boxes use the native display, so they will look different depending on your operating system.
 
@@ -110,3 +111,25 @@ app.on_close(do_this_on_close)
 app.display()
 
 ```
+
+**Example: Asking a question**
+
+You can use a `question` pop-up to get information from the user. In this example the user is asked to Enter their *name* when a button is pressed.
+
+```python
+from guizero import App, PushButton, question, Text
+
+def button_pressed():
+    name = question("Hello", "What's your name?")
+    # if Cancel is pressed None is return
+    # so check a name was entered
+    if name is not None:
+        hello.value = "Hello " + name
+
+app = App()
+button = PushButton(app, command=button_pressed, text="Hello")
+hello = Text(app)
+app.display()
+```
+
+![question popu](images/question_windows.png)
