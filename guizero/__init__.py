@@ -12,7 +12,6 @@ except ImportError:
 
 from . import utilities as utils
 from .utilities import system_config
-from .alerts import *
 from .dialog import *
 
 from .App import App

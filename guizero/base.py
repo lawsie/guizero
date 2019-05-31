@@ -589,6 +589,18 @@ class BaseWindow(Container):
         self.tk.attributes("-fullscreen", False)
         self._full_screen = False
         self.events.remove_event("<FullScreen.Escape>")
+    
+    def warn(self, title, text):
+        dialog.warn(title, text, master=self)
+
+    def info(self, title, text):
+        dialog.info(title, text, master=self)
+
+    def error(self, title, text):
+        dialog.error(title, text, master=self)
+
+    def yesno(self, title, text):
+        return dialog.yesno(title, text, master=self)
 
     def question(self, title, question, initial_value=None):
         return dialog.question(title, question, initial_value, master=self)

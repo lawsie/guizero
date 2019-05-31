@@ -1,16 +1,10 @@
-from guizero import *
+from guizero import App, Text
 
-"""
-Functions
-"""
-# Ask user if they really want to close the window
 def do_this_on_close():
-    if alerts.yesno("Close", "Do you want to quit?"):
+    # Ask user if they really want to close the window
+    if app.yesno("Close", "Do you want to quit?"):
         app.destroy()
 
-"""
-Main
-"""
 app = App()
 
 title = Text(app, "blank app")
