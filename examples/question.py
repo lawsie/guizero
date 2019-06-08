@@ -1,7 +1,7 @@
-from guizero import App, PushButton, question, Text
+from guizero import App, PushButton, Text
 
 def button_pressed():
-    name = question("Hello", "What's your name?")
+    name = app.question("Hello", "What's your name?")
     # if Cancel is pressed None is return
     # so check a name was entered
     if name is not None:
