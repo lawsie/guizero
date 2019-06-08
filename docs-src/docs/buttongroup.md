@@ -76,11 +76,7 @@ You can call the following methods on an `ButtonGroup` object.
 | resize(width, height)               | width (int), height (int)                                                            | -        | Sets the width and height of the widget                                                                                                                        |
 | show()                              | -                                                                                    | -        | Displays the widget if it was previously hidden                                                                                                                |
 | update_command(command, args =None) | command (function name), args (_Optional_ List of arguments to be passed to command) | -        | Updates the function to call when the selected option changes                                                                                                  |
-| _get()_                             | -                                                                                    | _string_ | _Replaced by `value` property_                                                                                                                                 |
-| _set(value)_                        | _value (string)_                                                                     | -        | _Replaced by `value` property_                                                                                                                                 |
 
-
-Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
 ### Properties
 

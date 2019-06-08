@@ -72,13 +72,6 @@ You can call the following methods on a `Text` object..
 | repeat(time, command, args=None) | time (int), command (function name), args (list of arguments) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
 | resize(width, height)            | width (int), height (int)                                     | -       | Sets the width and height of the widget                                                                                                                        |
 | show()                           | -                                                             | -       | Displays the widget if it was previously hidden                                                                                                                |
-| _color(color)_                   | _color (string)_                                              | -       | _Replaced by `text_color` property_                                                                                                                            |
-| _font_face(font)_                | font (string)                                                 | -       | _Replaced by `font` property_                                                                                                                                  |
-| _font_size(size)_                | size (int)                                                    | -       | _Replaced by `size` property_                                                                                                                                  |
-| _get()_                          | -                                                             | string  | _Replaced by `value` property_                                                                                                                                 |
-| _set(text)_                      | text (string)                                                 | -       | _Replaced by `value` property_                                                                                                                                 |
-
-Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
 
 ### Properties

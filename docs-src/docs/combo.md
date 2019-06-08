@@ -74,11 +74,6 @@ You can call the following methods on a `Combo` object.
 | select_default()                 | -                                                             | -        | Resets the combo box so that the first item is selected                                                                                                        |
 | show()                           | -                                                             | -        | Displays the widget if it was previously hidden                                                                                                                |
 | update_command(command)          | command (function name)                                       | -        | Updates the function to call when a different option is selected.                                                                                              |
-| _add_option(option)_             | _option (string)_                                             | -        | _Adds a new item to the combo box with the value `option`_                                                                                                     |
-| _get()_                          | -                                                             | _string_ | _Replaced by the `value` property_                                                                                                                             |
-| _set(text)_                      | _text (string)_                                               | -        | _Replaced by the `value` property_                                                                                                                             |
-
-Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
 
 

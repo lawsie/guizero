@@ -95,14 +95,7 @@ You can call the following methods on a `PushButton` object.
 | show()                              | -                                                                                    | -       | Displays the widget if it was previously hidden                                                                                                                |
 | toggle()                            | -                                                                                    | -       | Changes the state of the button to the opposite of its current state - if it is currently enabled, disable it and vice versa.                                  |
 | update_command(command, args =None) | command (function name), args (_Optional_ List of arguments to be passed to command) | -       | Updates the function to call when the button is pressed .                                                                                                      |
-| _change_command(newcommand, args)_  | _newcommand (function name), args (list)_                                            | -       | _Replaced by update_command function_                                                                                                                          |
-| _icon(icon)_                        | _icon (string)_                                                                      | -       | _The file path, tkinter.PhotoImage or PIL.Image you wish to display_                                                                                           |
-| _set_text(text)_                    | _text (string)_                                                                      | -       | _Replaced by the `text` property_                                                                                                                              |
-| _toggle_state()_                    | -                                                                                    | -       | _Renamed to `toggle()`_                                                                                                                                        |
 
-
-
-Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
 ### Properties
 

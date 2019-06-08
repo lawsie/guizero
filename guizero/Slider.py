@@ -83,10 +83,3 @@ class Slider(TextWidget):
             self._command = lambda: None
         else:
             self._command = command
-
-    # DEPRECATED
-    # -------------------------------------------
-
-    def add_command(self, command):
-        self.update_command(command)
-        utils.deprecated("Slider add_command() is deprecated - renamed to update_command()")

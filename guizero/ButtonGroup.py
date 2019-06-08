@@ -312,14 +312,4 @@ class ButtonGroup(ContainerTextWidget):
     def _command_callback(self):
         self._command()
 
-    # DEPRECATED METHODS
-    # -----------------------------------
-    # Get selected value (e.g. 1, 2, 3)
-    def get(self):
-        return self._selected.get()
-        utils.deprecated("ButtonGroup get() is deprecated. Please use the value property instead.")
-
-    # Set which option is selected
-    def set(self, value):
-        self._selected.set(str(value))
-        utils.deprecated("ButtonGroup set() is deprecated. Please use the value property instead.")
+ 

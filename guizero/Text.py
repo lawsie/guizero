@@ -76,33 +76,3 @@ class Text(TextWidget):
         self.tk.config(text=new_text)
         self.description = "[Text] object with text \"" + new_text + "\""
 
-
-    # DEPRECATED METHODS
-    # --------------------------------------------
-
-    # Sets the text colour
-    def color(self, color):
-        self.text_color = color
-        utils.deprecated("Text color() is deprecated. Please use the text_color property instead.")
-
-    # Set the font
-    def font_face(self, font):
-        self.font = font
-        utils.deprecated("Text font_face() is deprecated. Please use font property instead.")
-
-    # Set the font size
-    def font_size(self, size):
-        self.size = size
-        utils.deprecated("Text font_size() is deprecated. Please use the size property instead.")
-
-     # Returns the text
-    def get(self):
-        return self._text
-        utils.deprecated("Text get() is deprecated. Please use the value property instead.")
-
-    # Sets the text
-    def set(self, text):
-        self._text = str(text)
-        self.tk.config(text=self._text)
-        self.description = "[Text] object with text \"" + str(text) + "\""
-        utils.deprecated("Text set() is deprecated. Please use the value property instead.")

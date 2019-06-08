@@ -16,8 +16,7 @@ class Waffle(Widget):
         dotty=False, 
         grid=None, 
         align=None, 
-        command=None, 
-        remember=True, 
+        command=None,  
         visible=True, 
         enabled=None, 
         bg=None):

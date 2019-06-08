@@ -318,27 +318,3 @@ class Combo(TextWidget):
             self._command = lambda: None
         else:
             self._command = command
-
-    # DEPRECATED METHODS
-    # --------------------------------------------
-
-    # Returns currently selected option
-    def get(self):
-        return self._selected.get()
-        utils.deprecated("Combo get() is deprecated. Please use the value property instead.")
-
-    # Sets currently selected option (if it exists in the list)
-    def set(self, text):
-        if text in self._options:
-            self._selected.set( str(text) )
-        else:
-            utils.error_format("Tried to set " + self.description + " to option \"" + str(text) + "\", which does not exist" )
-        utils.deprecated("Combo set() is deprecated. Please use the value property instead.")
-
-    # Add an option to the combo
-    def add_option(self, option):
-
-        self.append(option)
-        self.value = option
-
-        utils.deprecated("Combo add_option() is deprecated. Please use append() instead.")

@@ -48,10 +48,6 @@ class PushButton(TextWidget):
 
         if image:
             self._load_image()
-        else:
-            if icon:
-                self._load_image()
-                utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
 
     def _load_image(self):
         if self._height == "fill" or self._width == "fill":
@@ -144,25 +140,3 @@ class PushButton(TextWidget):
 
     def _command_callback(self):
         self._command()
-
-    # DEPRECATED
-    # -------------------------------------------
-    # Change text
-    def set_text(self, text):
-        self.text = text
-        utils.deprecated("PushButton set_text() is deprecated. Please use the value property instead.")
-
-    # Toggle button state - renamed to just toggle
-    def toggle_state(self):
-        self.toggle()
-        utils.deprecated("PushButton toggle_state() is deprecated - renamed to toggle()")
-
-    # Change command - needs the name of a function and optional args as a list
-    def change_command(self, newcommand, args=None):
-        self.update_command(newcommand, args)
-        utils.deprecated("PushButton change_command() is deprecated - renamed to update_command()")
-
-    # Set the icon
-    def icon(self, icon):
-        self.image = icon
-        utils.deprecated("PushButton icon() is deprecated - use the image property instead.")
