@@ -612,6 +612,7 @@ class BaseWindow(Container):
     # DEPRECATED METHODS
     # --------------------------------------------
     def on_close(self, command):
+        # deprecated on 2019-06-08
         self.when_closed = command
         utils.deprecated("on_close() is deprecated. Please use the when_closed property instead.")
 
