@@ -75,9 +75,6 @@ You can call the following methods on a `Picture` object.
 | repeat(time, command, args=None) | time (int), command (function name), args (list of arguments) | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
 | resize(width, height)            | width (int), height (int)                                     | -       | Sets the width and height of the widget                                                                                                                        |
 | show()                           | -                                                             | -       | Displays the widget if it was previously hidden                                                                                                                |
-| _set(image)_                     | _image (string)_                                              | -       | _Replaced by the `value` property_                                                                                                                             |
-
-Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
 ### Properties
 

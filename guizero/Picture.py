@@ -86,11 +86,3 @@ class Picture(Widget):
         self._width = width
         self._height = height
         self._load_image()
-
-    # DEPRECATED METHODS
-    # --------------------------------------------
-
-    # Sets the image to something new
-    def set(self, image):
-        self.value = image
-        utils.deprecated("Picture set() is deprecated. Please use the value property instead.")

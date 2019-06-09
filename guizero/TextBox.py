@@ -106,15 +106,3 @@ class TextBox(TextWidget):
     def append(self, text):
         self.value = self.value + str(text)
 
-
-    # DEPRECATED METHODS
-    # --------------------------------------------
-    # Returns the text
-    def get(self):
-        return self.value
-        utils.deprecated("TextBox get() is deprecated. Please use the value property instead.")
-
-    # Sets the text
-    def set(self, text):
-        self.value = text
-        utils.deprecated("TextBox set() is deprecated. Please use the value property instead.")

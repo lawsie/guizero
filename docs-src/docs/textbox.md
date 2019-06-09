@@ -72,10 +72,6 @@ You can call the following methods on your TextBox object.
 | resize(width, height)            | width (int), height (int)                                     | -        | Sets the width and height of the widget                                                                                                                        |
 | show()                           | -                                                             | -        | Displays the widget if it was previously hidden                                                                                                                |
 | update_command(command)          | command (function name)                                       | -        | Updates the function to call when the text is changed.                                                                                                         |
-| _get()_                          | -                                                             | _string_ | _Replaced by `value` property_                                                                                                                                 |
-| _set(text)_                      | _text (string)_                                               | -        | _Replaced by `value` property_                                                                                                                                 |
-
-Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
 ### Properties
 
