@@ -63,7 +63,6 @@ You can call the following methods on an `App` object.
 | focus()                                                                                              | -                                                                                                   | -                                                                                                 | Gives focus to the widget                                                                                                                                      |
 | hide()                                                                                               | -                                                                                                   | -                                                                                                 | Hides the app window from view.                                                                                                                                |
 | info(title, text)                                                                                    | title (str), text (str)                                                                             | -                                                                                                 | Displays a popup box with an information icon                                                                                                                  |
-| on_close(command)                                                                                    | command (function name)                                                                             | -                                                                                                 | Calls the given function when the user tries to close the window.                                                                                              |
 | question(title, text, initial_value=None)                                                            | title (str), text (str), initial_value (str)                                                        | Pressing `Ok` returns value entered into the box is returned and pressing `Cancel` returns `None` | Displays a popup box with a question box which can accept a text response                                                                                      |
 | repeat(time, command, args=None)                                                                     | time (int), command (function name), args (list of arguments)                                       | -                                                                                                 | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
 | show()                                                                                               | -                                                                                                   | -                                                                                                 | Displays the app window if it was previously hidden                                                                                                            |
@@ -73,6 +72,7 @@ You can call the following methods on an `App` object.
 | yesno(title, text)                                                                                   | title (str), text (str)                                                                             | Pressing `Yes` returns `True` and pressing `No` returns `False`                                   | Displays a popup box with yes and no options                                                                                                                   |
 | _set_title(title)_                                                                                   | _title (string)_                                                                                    | -                                                                                                 | _Replaced by `title` property_                                                                                                                                 |
 | _bgcolor_                                                                                            | _bgcolor (string)_                                                                                  | -                                                                                                 | _Replaced by `bg` property_                                                                                                                                    |
+| _on_close(command)_                                                                                  | _command (function name)_                                                                           | -                                                                                                 | _Calls the given function when the user tries to close the window._                                                                                            |
 
 Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
@@ -80,19 +80,20 @@ Parameters in _italics_ will still work but are **deprecated** - this means you 
 
 You can set and get the following properties:
 
-| Method      | Data type          | Description                                               |     |                                |
-|-------------|--------------------|-----------------------------------------------------------|-----|--------------------------------|
-| bg          | [color](colors.md) | The background colour of the window                       |     |                                |
-| enabled     | boolean            | `True` if the app is enabled                              |     |                                |
-| height      | int                | The height of the window                                  |     |                                |
-| font        | string             | The font that widgets should use                          |     |                                |
-| full_screen | boolean            | False                                                     | No  | Whether the App is full screen |
-| layout      | string             | The layout being used by the App (`"auto"`) or (`"grid"`) |     |                                |
-| title       | string             | The title of the window                                   |     |                                |
-| text_size   | int                | The size of the text widgets should use                   |     |                                |
-| text_color  | [color](colors.md) | The colour of the text widgets should use                 |     |                                |
-| visible     | boolean            | If the app is visible                                     |     |                                |
-| width       | int                | The width of the window                                   |     |                                |
+| Method      | Data type          | Description                                                                                |     |                                |
+|-------------|--------------------|--------------------------------------------------------------------------------------------|-----|--------------------------------|
+| bg          | [color](colors.md) | The background colour of the window                                                        |     |                                |
+| enabled     | boolean            | `True` if the app is enabled                                                               |     |                                |
+| height      | int                | The height of the window                                                                   |     |                                |
+| font        | string             | The font that widgets should use                                                           |     |                                |
+| full_screen | boolean            | False                                                                                      | No  | Whether the App is full screen |
+| layout      | string             | The layout being used by the App (`"auto"`) or (`"grid"`)                                  |     |                                |
+| title       | string             | The title of the window                                                                    |     |                                |
+| text_size   | int                | The size of the text widgets should use                                                    |     |                                |
+| text_color  | [color](colors.md) | The colour of the text widgets should use                                                  |     |                                |
+| visible     | boolean            | If the app is visible                                                                      |     |                                |
+| width       | int                | The width of the window                                                                    |     |                                |
+| when_closed | function           | The function to call when the `App` is closed. Setting to `None` (the default) will reset. |     |                                |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `App` object is called `app` you would write `app.title`.
