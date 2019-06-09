@@ -7,10 +7,10 @@ class Picture(Widget):
     def __init__(self, master, image=None, grid=None, align=None, visible=True, enabled=None, width=None, height=None):
 
         """
-        Creates a ListBox
+        Creates a Picture
 
         :param Container master:
-            The Container (App, Box, etc) the Picture will belong too.
+            The Container (App, Box, etc) the Picture will belong to.
 
         :param string image:
             A string containing the image to display, defaults to `None`.
