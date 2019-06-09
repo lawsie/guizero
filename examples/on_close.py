@@ -10,6 +10,6 @@ app = App()
 title = Text(app, "blank app")
 
 # When user tries to close the window, execute do_this_on_close()
-app.on_close(do_this_on_close)
+app.when_closed = do_this_on_close
 
 app.display()
