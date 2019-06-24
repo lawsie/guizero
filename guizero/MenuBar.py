@@ -24,11 +24,12 @@ class MenuBar(Component):
                 - with each submenu being a list of options
                 - and each option being a text/command pair 
 
-            e.g
-            options=[
-                      [ ["File option 1", file_function], ["File option 2", file_function] ],
-                      [ ["Edit option 1", edit_function], ["Edit option 2", edit_function] ]
-                  ]
+            e.g ::
+
+                options=[
+                        [ ["File option 1", file_function], ["File option 2", file_function] ],
+                        [ ["Edit option 1", edit_function], ["Edit option 2", edit_function] ]
+                    ]
         """
 
         if not isinstance(master, (App, Window)):
