@@ -4,7 +4,9 @@ guizero is designed to allow new learners to quickly and easily create GUIs for 
 
 If you can download and unzip a file, you can [install guizero](#easy-install) - **no special permissions or administrator rights are required**.
 
-If you have administrator rights and are connected to the internet, you can use [pip to install guizero](#install-using-pip).
+If you have administrator rights and are connected to the internet, you can use [pip to install or upgrade guizero](#install-using-pip) (recommended).
+
+Windows users can also use the [Windows MSI installer](#windows-msi-installer).
 
 ## Easy install
 
@@ -128,3 +130,34 @@ Upgrade guizero using the pip command
     ```
     sudo pip3 install guizero --upgrade
     ```
+
+## Windows MSI installer
+
+If you are using Windows you can install guizero by downloading and running a Windows MSI installer application. 
+
+1. Download either the [32-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-0.6.4.amd64.msi) or the [64-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-0.6.4.win32.msi) depending on what version of Python you are using.
+
+    **Note:** If you are not sure what version of python you are running, run the following program in Python, which will output either `32` or `64`:
+        
+        import struct
+        print(struct.calcsize("P") * 8)
+
+2. Run the guizero installer and select whether guizero should be installed ***for all users*** or ***just for me*** and click **Next**.
+
+    ![windows msi installer step 1](images/windows_msi_1.png)
+
+3. Select which version(s) of Python you want to install guizero for and click **Next**.
+
+    ![windows msi installer step 2](images/windows_msi_2.png)
+
+    **Note:** For most people, there will be only 1 version of Python and the default option will be ok.
+
+4. You maybe asked *Do you wish to allow this application from an unknown puiblisher to make changes to your device*, click **Yes**.
+
+5. Wait while guizero is installed.
+   
+    ![windows msi installer step 3](images/windows_msi_3.png)
+
+6. Click **Finish** when the instation is complete.
+
+    ![windows msi installer step 4](images/windows_msi_4.png)
