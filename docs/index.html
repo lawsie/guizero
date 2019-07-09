@@ -66,6 +66,8 @@
         
             <li><a class="toctree-l3" href="#install-using-pip">Install using pip</a></li>
         
+            <li><a class="toctree-l3" href="#windows-msi-installer">Windows MSI installer</a></li>
+        
         </ul>
     
 
@@ -94,7 +96,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="alerts/">Alerts</a>
+    <a class="" href="alerts/">Pop-ups</a>
                 </li>
                 <li class="">
                     
@@ -258,7 +260,8 @@
                 <h1 id="installation">Installation</h1>
 <p>guizero is designed to allow new learners to quickly and easily create GUIs for their programs.</p>
 <p>If you can download and unzip a file, you can <a href="#easy-install">install guizero</a> - <strong>no special permissions or administrator rights are required</strong>.</p>
-<p>If you have administrator rights and are connected to the internet, you can use <a href="#install-using-pip">pip to install guizero</a>.</p>
+<p>If you have administrator rights and are connected to the internet, you can use <a href="#install-using-pip">pip to install or upgrade guizero</a> (recommended).</p>
+<p>Windows users can also use the <a href="#windows-msi-installer">Windows MSI installer</a>.</p>
 <h2 id="easy-install">Easy install</h2>
 <ol>
 <li>
@@ -373,6 +376,37 @@
 <p><code>sudo pip3 install guizero --upgrade</code></p>
 </li>
 </ul>
+<h2 id="windows-msi-installer">Windows MSI installer</h2>
+<p>If you are using Windows you can install guizero by downloading and running a Windows MSI installer application. </p>
+<ol>
+<li>
+<p>Download either the <a href="https://github.com/lawsie/guizero/releases/latest/download/guizero-1.0.0.amd64.msi">32-bit guizero installer</a> or the <a href="https://github.com/lawsie/guizero/releases/latest/download/guizero-1.0.0.win32.msi">64-bit guizero installer</a> depending on what version of Python you are using.</p>
+<p><strong>Note:</strong> If you are not sure what version of python you are running, run the following program in Python, which will output either <code>32</code> or <code>64</code>:</p>
+<pre><code>import struct
+print(struct.calcsize("P") * 8)
+</code></pre>
+</li>
+<li>
+<p>Run the guizero installer and select whether guizero should be installed <strong><em>for all users</em></strong> or <strong><em>just for me</em></strong> and click <strong>Next</strong>.</p>
+<p><img alt="windows msi installer step 1" src="images/windows_msi_1.png" /></p>
+</li>
+<li>
+<p>Select which version(s) of Python you want to install guizero for and click <strong>Next</strong>.</p>
+<p><img alt="windows msi installer step 2" src="images/windows_msi_2.png" /></p>
+<p><strong>Note:</strong> For most people, there will be only 1 version of Python and the default option will be ok.</p>
+</li>
+<li>
+<p>You maybe asked <em>Do you wish to allow this application from an unknown puiblisher to make changes to your device</em>, click <strong>Yes</strong>.</p>
+</li>
+<li>
+<p>Wait while guizero is installed.</p>
+<p><img alt="windows msi installer step 3" src="images/windows_msi_3.png" /></p>
+</li>
+<li>
+<p>Click <strong>Finish</strong> when the instation is complete.</p>
+<p><img alt="windows msi installer step 4" src="images/windows_msi_4.png" /></p>
+</li>
+</ol>
               
             </div>
           </div>
@@ -425,5 +459,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-05-08 11:29:41
+Build Date UTC : 2019-07-09 10:29:52
 -->

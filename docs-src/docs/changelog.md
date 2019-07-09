@@ -1,6 +1,6 @@
 # guizero
 
-## tbc
+## 1.0.0 - 2019-07-11
 - Previously deprecated methods have now been removed
 - Resolved race condition in the `repeat`, `cancel` methods
 - Refactored alerts (renamed pop-ups), they can now also be called from `App` & `Window` objects

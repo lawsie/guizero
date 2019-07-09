@@ -80,7 +80,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../alerts/">Alerts</a>
+    <a class="" href="../alerts/">Pop-ups</a>
                 </li>
                 <li class="">
                     
@@ -269,6 +269,7 @@
 <ul>
 <li>Update version number in <code>guizero\__init__.py</code></li>
 <li>Update version number in <code>docs-src\docs\about.md</code></li>
+<li>Update version number for Windows MSI installer in <code>docs-src\docs\index.md</code></li>
 <li>Update <code>changelog.md</code> in docs</li>
 </ul>
 <h2 id="python-library">Python library</h2>
@@ -281,6 +282,8 @@ python setup.py install
 <pre><code>cd guizero
 python setup.py sdist
 python setup.py bdist_wheel
+python setup.py bdist_msi --plat-name=amd64
+python setup.py bdist_msi --plat-name=win32
 </code></pre>
 
 <p>Upload to pypi:</p>
@@ -300,8 +303,11 @@ xcopy docs-src\site\* docs /E
 </code></pre>
 
 <h2 id="promote-and-tag-release-on-github">Promote and tag release on github</h2>
-<p>Push all changes to <code>master</code>.</p>
-<p>Create a new release on github named <code>0.0.0</code>. </p>
+<ul>
+<li>Push all changes to <code>master</code>.</li>
+<li>Create a new release on github named <code>0.0.0</code>. </li>
+<li>Upload Windows MSI installers named <code>guizero-0.0.0.amd64.msi</code> and <code>guizero-0.0.0.win32.msi</code> to the release.</li>
+</ul>
               
             </div>
           </div>

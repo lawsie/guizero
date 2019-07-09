@@ -135,7 +135,7 @@ Upgrade guizero using the pip command
 
 If you are using Windows you can install guizero by downloading and running a Windows MSI installer application. 
 
-1. Download either the [32-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-0.6.4.amd64.msi) or the [64-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-0.6.4.win32.msi) depending on what version of Python you are using.
+1. Download either the [32-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-1.0.0.amd64.msi) or the [64-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-1.0.0.win32.msi) depending on what version of Python you are using.
 
     **Note:** If you are not sure what version of python you are running, run the following program in Python, which will output either `32` or `64`:
         

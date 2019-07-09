@@ -80,7 +80,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../alerts/">Alerts</a>
+    <a class="" href="../alerts/">Pop-ups</a>
                 </li>
                 <li class="">
                     
@@ -345,16 +345,8 @@ app.display()
 <td>No</td>
 <td>If the App should be visible.</td>
 </tr>
-<tr>
-<td><em>bgcolor</em></td>
-<td><em>string</em></td>
-<td><em>None</em></td>
-<td><em>No</em></td>
-<td><em>Replaced by <code>bg</code> parameter</em></td>
-</tr>
 </tbody>
 </table>
-<p>Parameters in <em>italics</em> will still work but are <strong>deprecated</strong> - this means you should stop using them because they may not work in future versions of guizero</p>
 <h3 id="methods">Methods</h3>
 <p>You can call the following methods on an <code>App</code> object.</p>
 <table>
@@ -410,6 +402,12 @@ app.display()
 <td>Enables all the widgets in the app</td>
 </tr>
 <tr>
+<td>error(title, text)</td>
+<td>title (str), text (str)</td>
+<td>-</td>
+<td>Displays a popup box with an error icon</td>
+</tr>
+<tr>
 <td>exit_full_screen()</td>
 <td>-</td>
 <td>-</td>
@@ -428,10 +426,16 @@ app.display()
 <td>Hides the app window from view.</td>
 </tr>
 <tr>
-<td>on_close(command)</td>
-<td>command (function name)</td>
+<td>info(title, text)</td>
+<td>title (str), text (str)</td>
 <td>-</td>
-<td>Calls the given function when the user tries to close the window.</td>
+<td>Displays a popup box with an information icon</td>
+</tr>
+<tr>
+<td>question(title, text, initial_value=None)</td>
+<td>title (str), text (str), initial_value (str)</td>
+<td>Pressing <code>Ok</code> returns value entered into the box is returned and pressing <code>Cancel</code> returns <code>None</code></td>
+<td>Displays a popup box with a question box which can accept a text response</td>
 </tr>
 <tr>
 <td>repeat(time, command, args=None)</td>
@@ -458,16 +462,22 @@ app.display()
 <td>Set the application to display full screen. Option to specify a key to exit full screen (default is 'Esc'.)</td>
 </tr>
 <tr>
-<td><em>set_title(title)</em></td>
-<td><em>title (string)</em></td>
+<td>warn(title, text)</td>
+<td>title (str), text (str)</td>
 <td>-</td>
-<td><em>Replaced by <code>title</code> property</em></td>
+<td>Displays a popup box with a warning icon</td>
 </tr>
 <tr>
-<td><em>bgcolor</em></td>
-<td><em>bgcolor (string)</em></td>
+<td>yesno(title, text)</td>
+<td>title (str), text (str)</td>
+<td>Pressing <code>Yes</code> returns <code>True</code> and pressing <code>No</code> returns <code>False</code></td>
+<td>Displays a popup box with yes and no options</td>
+</tr>
+<tr>
+<td><em>on_close(command)</em></td>
+<td><em>command (function name)</em></td>
 <td>-</td>
-<td><em>Replaced by <code>bg</code> property</em></td>
+<td><em>Calls the given function when the user tries to close the window.</em></td>
 </tr>
 </tbody>
 </table>
@@ -559,6 +569,13 @@ app.display()
 <td>width</td>
 <td>int</td>
 <td>The width of the window</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>when_closed</td>
+<td>function</td>
+<td>The function to call when the <code>App</code> is closed. Setting to <code>None</code> (the default) will reset.</td>
 <td></td>
 <td></td>
 </tr>

@@ -1,6 +1,6 @@
 __name__ = "guizero"
 __package__ = "guizero"
-__version__ = '0.6.4'
+__version__ = '1.0.0'
 __author__ = "Laura Sach"
 
 from sys import exit
