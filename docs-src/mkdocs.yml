@@ -1,5 +1,5 @@
 site_name: guizero
-pages:
+nav:
   - About: about.md
   - Installation: index.md
   - Using guizero:
