@@ -1,7 +1,5 @@
 ## Events
 
-_Warning - events are currently experimental, issues maybe experienced and the API may change._.
-
 Custom events can be added to guizero widgets to call functions when the user takes the following actions:
 
 - when clicked - `when_clicked`
