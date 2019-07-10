@@ -18,10 +18,10 @@ Custom events can be added to guizero widgets to call functions when the user ta
 Events are set by assigning them to a function:
 
 ```python
-def clicked():
-    print("clicked")
+def do_this():
+    print("The widget was clicked")
 
-widget.when_clicked = clicked
+widget.when_clicked = do_this
 ```
 
 ### Event Data
@@ -42,7 +42,7 @@ The event data returned has:
 def clicked(event_data):
     print("widget clicked = " + event_data.widget)
     print("mouse position = " + event_data.x + "." + event_data.y)
-    
+
 widget.when_clicked = clicked
 ```
 
@@ -62,9 +62,9 @@ def lowlight():
 app = App()
 text_box = TextBox(app)
 
-# when the mouse enters the textbox
+# When the mouse enters the TextBox
 text_box.when_mouse_enters = highlight
-# when the mouse leaves the textbox
+# When the mouse leaves the TextBox
 text_box.when_mouse_leaves = lowlight
 
 app.display()
