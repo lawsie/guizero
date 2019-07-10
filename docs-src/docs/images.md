@@ -35,7 +35,7 @@ print(system_config.supported_image_types)
 
 ### Resizing
 
-When the size of a widget is changed the image will be changed to fit the widget, if `PIL` is available the image will be scaled correctly, if not the image will be cropped.
+When the size of a widget is changed the image will be changed to fit the widget. If the additional image features were installed and `PIL` is available, the image will be scaled correctly, if not the image will be cropped.
 
 ### Animated GIFs
 

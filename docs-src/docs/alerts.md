@@ -1,6 +1,6 @@
 # Pop-ups
 
-Pop-up windows which can be used to interupt the user by asking question or providing information.
+Pop-up windows which can be used to interrupt the user by asking question or providing information.
 
 ![Alert popup](images/alert_info_windows.png)
 
@@ -104,7 +104,7 @@ You can use a `yesno` box to check whether someone really wants to exit your app
 from guizero import App, Text
 
 # Ask the user if they really want to close the window
-def do_this_on_close():
+def do_this_when_closed():
     if app.yesno("Close", "Do you want to quit?"):
         app.destroy()
 
@@ -112,8 +112,8 @@ app = App()
 
 title = Text(app, text="blank app")
 
-# When the user tries to close the window, run the function do_this_on_close()
-app.when_closed = do_this_on_close
+# When the user tries to close the window, run the function do_this_when_closed()
+app.when_closed = do_this_when_closed
 
 app.display()
 
@@ -121,14 +121,14 @@ app.display()
 
 **Example: Asking a question**
 
-You can use a `question` pop-up to get information from the user. In this example the user is asked to Enter their *name* when a button is pressed.
+You can use a `question` pop-up to get information from the user. In this example the user is asked to enter their name when a button is pressed.
 
 ```python
 from guizero import App, PushButton, Text
 
 def button_pressed():
     name = app.question("Hello", "What's your name?")
-    # if Cancel is pressed None is return
+    # If cancel is pressed, None is returned
     # so check a name was entered
     if name is not None:
         hello.value = "Hello " + name
