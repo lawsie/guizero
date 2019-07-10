@@ -93,6 +93,9 @@ If you experience problems, have a look at this guide to [_Using pip on Windows_
 
     ![linux pip install](images/linux_pip_install.gif)
 
+**Note:** If you are using Debian, you alternatively have the option to install guizero via apt
+`sudo apt-get install python-guizero`
+
 ### Install additional features
 
 To use the additional [image features](images.md) of guizero such as:
