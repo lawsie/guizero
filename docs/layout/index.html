@@ -280,14 +280,14 @@
 <li><code>auto</code> - where widgets are positioned automatically</li>
 <li><code>grid</code> - you specify where in a grid each widget should be positioned</li>
 </ul>
-<p>The layout is set using <code>layout</code> parameter of the container e.g.</p>
+<p>The layout is set using the <code>layout</code> parameter of the container, for example:</p>
 <pre><code class="python">app = App(layout=&quot;auto&quot;)
 app = App(layout=&quot;grid&quot;)
 </code></pre>
 
 <p>If no <code>layout</code> parameter is specified, the default <code>auto</code> layout is used.</p>
 <h3 id="auto-layout">Auto layout</h3>
-<p><code>auto</code> is the default layout used when a container is created. All widgets will be arranged in the order they are created and aligned to the centre, e.g. the following code will create two Text widgets, one on top of the other.</p>
+<p><code>auto</code> is the default layout used when a container is created. All widgets will be arranged in the order they are created and aligned to the centre. For example, the following code will create two <code>Text</code> widgets, one on top of the other.</p>
 <pre><code class="python">from guizero import App, Text
 app = App()
 text_1 = Text(app, text=&quot;on top&quot;)
@@ -298,7 +298,7 @@ app.display()
 <p><img alt="Text on top and below" src="../images/layout_auto.png" /></p>
 <h3 id="aligning">Aligning</h3>
 <p>Widgets can be aligned to either the <code>top</code>, <code>bottom</code>, <code>left</code> or <code>right</code>, using the <code>align</code> property when created.</p>
-<p>Aligning Widgets will cause them to be "stuck" to that side of the container e.g.</p>
+<p>Aligning a widget will cause it to be "stuck" to that side of the container, for example:</p>
 <pre><code class="python">from guizero import App, Text
 app = App()
 top_text = Text(app, text=&quot;at the top&quot;, align=&quot;top&quot;)
@@ -309,7 +309,7 @@ app.display()
 </code></pre>
 
 <p><img alt="Text aligned at each edge" src="../images/layout_auto_align.png" /></p>
-<p>By aligning multiple widgets to the same side of the container, widgets can be made to stack together e.g.</p>
+<p>By aligning multiple widgets to the same side of the container, widgets can be made to stack together:</p>
 <pre><code class="python">from guizero import App, Text, TextBox, PushButton
 app = App()
 text = Text(app, text=&quot;label&quot;, align=&quot;left&quot;)
@@ -321,9 +321,8 @@ app.display()
 <p><img alt="Widgets stacked at the side" src="../images/layout_auto_align_stack.png" /></p>
 <p>The widgets will stack in the order they are created, so the widget created first will be closest to the edge in the direction specified.</p>
 <h3 id="filling">Filling</h3>
-<p>Widgets can also be made to "fill" all the available space by setting the <code>width</code> and <code>height</code> parameters to <code>fill</code>.</p>
-<p>e.g.</p>
-<p>A TextBox could span the entire width of the container:</p>
+<p>Widgets can also be made to "fill" all available space by setting the <code>width</code> and <code>height</code> parameters to <code>fill</code>. Here are some examples:</p>
+<p>A <code>TextBox</code> could span the entire width of the container:</p>
 <pre><code class="python">from guizero import App, TextBox
 app = App()
 text_box = TextBox(app, text=&quot;enter text&quot;, width=&quot;fill&quot;)
@@ -331,7 +330,7 @@ app.display()
 </code></pre>
 
 <p><img alt="A text box filling the width of the screen" src="../images/layout_fill_width.png" /></p>
-<p>Or a ListBox could fill the left hand side by using <code>fill</code> for the <code>height</code> and <code>align</code> to the <code>left</code> e.g.</p>
+<p>Or a <code>ListBox</code> could fill the left hand side by using <code>fill</code> for the <code>height</code> and <code>align</code> to the <code>left</code>:</p>
 <pre><code class="python">from guizero import App, ListBox
 app = App()
 list_box = ListBox(app, items=[&quot;a list&quot;], height=&quot;fill&quot;, align=&quot;left&quot;)
@@ -339,7 +338,7 @@ app.display()
 </code></pre>
 
 <p><img alt="List box spanning the whole left edge" src="../images/layout_fill_height.png" /></p>
-<p>Using <code>fill</code> for the <code>width</code> and the <code>height</code> will make a widget use all the available space e.g.</p>
+<p>Using <code>fill</code> for the <code>width</code> and the <code>height</code> will make a widget use all of the available space:</p>
 <pre><code class="python">from guizero import App, PushButton
 app = App()
 button = PushButton(app, width=&quot;fill&quot;, height=&quot;fill&quot;)
@@ -347,7 +346,7 @@ app.display()
 </code></pre>
 
 <p><img alt="Button filling the whole window" src="../images/layout_fill_both.png" /></p>
-<p>When multiple widgets use <code>fill</code> the Window Manager (operating system) will distribute the space accordingly between all the widgets which need to fill it.</p>
+<p>When multiple widgets use <code>fill</code>, the Window Manager (operating system) will distribute the space accordingly between all the widgets which have requested to fill it.</p>
 <pre><code class="python">from guizero import App, ListBox, PushButton
 app = App()
 list_box = ListBox(app, items=[&quot;a list&quot;, &quot;of items&quot;, &quot;yay&quot;], height=&quot;fill&quot;, align=&quot;left&quot;)
@@ -356,7 +355,7 @@ app.display()
 </code></pre>
 
 <p><img alt="Two widgets filling the space" src="../images/layout_fill_multiple.png" /></p>
-<p><strong>Note :</strong> Using fill may not always have the effect you are expecting as it is up to the operating system to distribute screen space.</p>
+<p><strong>Note :</strong> Using fill may not always have the effect you are expecting, as it is up to the operating system to distribute screen space.</p>
 <h2 id="grid-layout">Grid layout</h2>
 <p>The <code>grid</code> layout allows you to position widgets into a virtual grid.</p>
 <p>When you create a widget you will need to pass an extra parameter called <code>grid</code> which is a list containing <code>[x,y]</code> coordinates for where you want the widget to appear, like this:</p>
@@ -366,8 +365,7 @@ text = Text(app, text=&quot;Hello world&quot;, grid=[0,1])
 
 <p>There is no need to specify the width or height of the grid you want - it will expand depending on the coordinates you provide with each widget. However, grid cells containing no objects will have no height or width.</p>
 <p>This is really useful when creating GUIs where you want widgets to line up.</p>
-<p>e.g.</p>
-<p>Creating a number keypad:</p>
+<p>For example, you could create a number keypad:</p>
 <p><img alt="Number keypad with 10 buttons" src="../images/layout_grid_keypad.png" /></p>
 <pre><code class="python">from guizero import App, PushButton
 
@@ -387,7 +385,7 @@ button0  = PushButton(app, text=&quot;0&quot;, grid=[1,3])
 app.display()
 </code></pre>
 
-<p>You can also align widgets within the grid, e.g. when you are creating a form:</p>
+<p>You can also align widgets within the grid, which is useful when you are creating a form:</p>
 <p><img alt="Form data entry layout" src="../images/layout_grid.png" /></p>
 <pre><code class="python">from guizero import App, Text, TextBox
 
@@ -405,11 +403,11 @@ app.display()
 
 <h3 id="spanning-columns-or-rows">Spanning columns or rows</h3>
 <p>Widgets can be made to span multiple columns or rows by specifying the span within the grid parameter. These are optional, but if specified both must be included using the format <code>[x,y,xspan,yspan]</code>.</p>
-<p>The example below shows text widget located at 0,1 spanning two columns (x) and one row (y):</p>
+<p>The example below shows a <code>Text</code> widget located at 0,1 and spanning two columns (x) and one row (y):</p>
 <pre><code class="python">text = Text(app, text=&quot;Hello world&quot;, grid=[0,1,2,1])
 </code></pre>
 
-<p>This can be used to include widgets of different sizes arranged alongside each other.</p>
+<p>This layout method can be used to include widgets of different sizes arranged alongside each other.</p>
 <pre><code class="python">from guizero import App, Picture
 
 app = App(layout=&quot;grid&quot;)
@@ -426,7 +424,7 @@ app.display()
 <h2 id="boxes">Boxes</h2>
 <p>By using a <code>Box</code> widget you can segment your GUI into different sections allowing you to lay out your user interface in any way you want.</p>
 <p><img alt="Layout with multiple boxes" src="../images/layout_boxes.png" /></p>
-<p><a href="https://github.com/lawsie/guizero/tree/master/examples/layout_boxes.py">code for example above</a></p>
+<p>(<a href="https://github.com/lawsie/guizero/tree/master/examples/layout_boxes.py">Code for example above</a>)</p>
 <p>If you wanted to create a title in the top left hand corner of your GUI, you could use a <code>Box</code> which fills the top of the <code>App</code> and put a <code>Text</code> widget inside aligned to the <code>left</code>.</p>
 <pre><code class="python">from guizero import App, Box, Text
 app = App()
@@ -455,9 +453,10 @@ app.display()
 </code></pre>
 
 <p><img alt="OK and Cancel buttons on the bottom right" src="../images/layout_boxes_buttons.png" /></p>
-<p><strong>Note :</strong> A <code>Box</code> can also be contained in a <code>Box</code>, allowing you to layer boxes and position your widgets.</p>
+<p><strong>Note :</strong> You can put a <code>Box</code> inside another <code>Box</code>, allowing you to layer boxes and position your widgets.</p>
 <p><strong>Tip :</strong> When creating a GUI you may find it easier to design it first on paper, noting where your boxes will be positioned.</p>
 <p><img alt="hand drawn gui" src="../images/layout_boxes.jpg" /></p>
+<p>Unfortunately, whilst you can put one box inside another box, guizero does not support mailing it to yourself, nor smashing it with a hammer ;) </p>
               
             </div>
           </div>

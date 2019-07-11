@@ -253,19 +253,19 @@
               
                 <h2 id="sizes">Sizes</h2>
 <p>You can set the <code>width</code> and <code>height</code> of widgets in guizero.</p>
-<p>Widgets are sized by pixels or characters depending on the widget and what it contains.</p>
+<p>Widgets are sized by either pixels or characters depending on the widget and what it contains.</p>
 <p>Some widgets size can also be set to <code>"fill"</code> where it will use up all of the available space.</p>
 <pre><code class="python">from guizero import App, PushButton, Slider, ListBox
 
 app = App()
 
-# a PushButton's size is noted in characters
+# A PushButton's size is noted in characters
 button = PushButton(app, width=30, height=5)
 
-# a Slider's size is noted in pixels
+# A Slider's size is noted in pixels
 slider = Slider(app, width=300, height=30)
 
-# some widgets, such as ListBox can also be told to fill all the available space
+# Some widgets such as ListBox can also be told to fill all the available space
 listbox = ListBox(app, width=&quot;fill&quot;, height=&quot;fill&quot;)
 
 app.display()

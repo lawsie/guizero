@@ -342,16 +342,18 @@
 <li>Open a terminal</li>
 <li>Install <code>tkinter</code> using your distribution's package manager, e.g. <code>sudo apt install python3-tk</code></li>
 <li>
-<p>Install guizero using pip by typing <code>pip3 install guizero</code> or <code>sudo pip3 install guizero</code> if you dont have superuser rights</p>
+<p>Install guizero using pip by typing <code>pip3 install guizero</code> or <code>sudo pip3 install guizero</code> if you don't have superuser rights</p>
 <p><img alt="linux pip install" src="images/linux_pip_install.gif" /></p>
 </li>
 </ol>
-<h3 id="additional-features-install">Additional features install</h3>
+<p><strong>Note:</strong> If you are using Debian, you alternatively have the option to install guizero via apt
+<code>sudo apt-get install python-guizero</code></p>
+<h3 id="install-additional-features">Install additional features</h3>
 <p>To use the additional <a href="images/">image features</a> of guizero such as:</p>
 <ul>
 <li>JPG image support</li>
 <li>scaling images</li>
-<li>animated gifs </li>
+<li>animated gifs</li>
 </ul>
 <p>... you will need to install guizero with the pip command:</p>
 <ul>
@@ -364,8 +366,9 @@
 <p><code>sudo pip3 install guizero[images]</code></p>
 </li>
 </ul>
-<h3 id="upgrading">Upgrading</h3>
-<p>Upgrade guizero using the pip command </p>
+<p>The additional image features are not available to install using the easy install method.</p>
+<h3 id="upgrading-guizero">Upgrading guizero</h3>
+<p>If you installed guizero using pip, you can upgrade guizero using a pip command:</p>
 <ul>
 <li>
 <p>Windows / macOS</p>
@@ -376,11 +379,12 @@
 <p><code>sudo pip3 install guizero --upgrade</code></p>
 </li>
 </ul>
+<p>If you installed guizero using the easy install method, to upgrade you should follow the same easy installation steps to download the latest version of guizero, then delete the old guizero folder and replace it with the newest version.</p>
 <h2 id="windows-msi-installer">Windows MSI installer</h2>
-<p>If you are using Windows you can install guizero by downloading and running a Windows MSI installer application. </p>
+<p>If you are using Windows you can install guizero by downloading and running a Windows MSI installer application.</p>
 <ol>
 <li>
-<p>Download either the <a href="https://github.com/lawsie/guizero/releases/latest/download/guizero-1.0.0.amd64.msi">32-bit guizero installer</a> or the <a href="https://github.com/lawsie/guizero/releases/latest/download/guizero-1.0.0.win32.msi">64-bit guizero installer</a> depending on what version of Python you are using.</p>
+<p>Download either the <a href="https://github.com/lawsie/guizero/releases/latest/download/guizero-1.0.0.amd64.msi">64-bit guizero installer</a> or the <a href="https://github.com/lawsie/guizero/releases/latest/download/guizero-1.0.0.win32.msi">32-bit guizero installer</a> depending on which version of Python you are using.</p>
 <p><strong>Note:</strong> If you are not sure what version of python you are running, run the following program in Python, which will output either <code>32</code> or <code>64</code>:</p>
 <pre><code>import struct
 print(struct.calcsize("P") * 8)
@@ -393,17 +397,17 @@ print(struct.calcsize("P") * 8)
 <li>
 <p>Select which version(s) of Python you want to install guizero for and click <strong>Next</strong>.</p>
 <p><img alt="windows msi installer step 2" src="images/windows_msi_2.png" /></p>
-<p><strong>Note:</strong> For most people, there will be only 1 version of Python and the default option will be ok.</p>
+<p><strong>Note:</strong> For most people, there will be only one version of Python and you can safely choose the default option.</p>
 </li>
 <li>
-<p>You maybe asked <em>Do you wish to allow this application from an unknown puiblisher to make changes to your device</em>, click <strong>Yes</strong>.</p>
+<p>You may be asked <em>"Do you wish to allow this application from an unknown publisher to make changes to your device?"</em> - click <strong>Yes</strong>.</p>
 </li>
 <li>
 <p>Wait while guizero is installed.</p>
 <p><img alt="windows msi installer step 3" src="images/windows_msi_3.png" /></p>
 </li>
 <li>
-<p>Click <strong>Finish</strong> when the instation is complete.</p>
+<p>Click <strong>Finish</strong> when the installation is complete.</p>
 <p><img alt="windows msi installer step 4" src="images/windows_msi_4.png" /></p>
 </li>
 </ol>
@@ -459,5 +463,5 @@ print(struct.calcsize("P") * 8)
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-07-09 10:29:52
+Build Date UTC : 2019-07-11 06:16:59
 -->

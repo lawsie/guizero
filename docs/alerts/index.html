@@ -262,7 +262,7 @@
             <div class="section">
               
                 <h1 id="pop-ups">Pop-ups</h1>
-<p>Pop-up windows which can be used to interupt the user by asking question or providing information.</p>
+<p>Pop-up windows which can be used to interrupt the user by asking question or providing information.</p>
 <p><img alt="Alert popup" src="../images/alert_info_windows.png" /></p>
 <h3 id="using-pop-ups">Using pop-ups</h3>
 <p>Pop-ups can be called from an <code>App</code> or <code>Window</code> object, for example:</p>
@@ -338,7 +338,7 @@ app.display()
 <pre><code class="python">from guizero import App, Text
 
 # Ask the user if they really want to close the window
-def do_this_on_close():
+def do_this_when_closed():
     if app.yesno(&quot;Close&quot;, &quot;Do you want to quit?&quot;):
         app.destroy()
 
@@ -346,20 +346,20 @@ app = App()
 
 title = Text(app, text=&quot;blank app&quot;)
 
-# When the user tries to close the window, run the function do_this_on_close()
-app.when_closed = do_this_on_close
+# When the user tries to close the window, run the function do_this_when_closed()
+app.when_closed = do_this_when_closed
 
 app.display()
 
 </code></pre>
 
 <p><strong>Example: Asking a question</strong></p>
-<p>You can use a <code>question</code> pop-up to get information from the user. In this example the user is asked to Enter their <em>name</em> when a button is pressed.</p>
+<p>You can use a <code>question</code> pop-up to get information from the user. In this example the user is asked to enter their name when a button is pressed.</p>
 <pre><code class="python">from guizero import App, PushButton, Text
 
 def button_pressed():
     name = app.question(&quot;Hello&quot;, &quot;What's your name?&quot;)
-    # if Cancel is pressed None is return
+    # If cancel is pressed, None is returned
     # so check a name was entered
     if name is not None:
         hello.value = &quot;Hello &quot; + name
