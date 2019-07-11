@@ -15,9 +15,8 @@ from .tkmixins import (
 
 from . import utilities as utils
 from .event import EventManager
+from . import dialog
 from tkinter import BOTH, X, Y, YES
-from . import utilities as utils
-
 
 class Base():
 
@@ -553,12 +552,16 @@ class BaseWindow(Container):
         else:
             self.exit_full_screen()
 
+    @property
+    def when_closed(self):
+        return self._on_close
+
+    @when_closed.setter
+    def when_closed(self, value):
+        self._on_close = value
+
     # METHODS
     # --------------------------------------
-
-    # Do `command` when the window is closed
-    def on_close(self, command):
-        self._on_close = command
 
     def hide(self):
         """Hide the window."""
@@ -590,6 +593,28 @@ class BaseWindow(Container):
         self.tk.attributes("-fullscreen", False)
         self._full_screen = False
         self.events.remove_event("<FullScreen.Escape>")
+    
+    def warn(self, title, text):
+        dialog.warn(title, text, master=self)
+
+    def info(self, title, text):
+        dialog.info(title, text, master=self)
+
+    def error(self, title, text):
+        dialog.error(title, text, master=self)
+
+    def yesno(self, title, text):
+        return dialog.yesno(title, text, master=self)
+
+    def question(self, title, question, initial_value=None):
+        return dialog.question(title, question, initial_value, master=self)
+
+    # DEPRECATED METHODS
+    # --------------------------------------------
+    def on_close(self, command):
+        # deprecated on 2019-06-08
+        self.when_closed = command
+        utils.deprecated("on_close() is deprecated. Please use the when_closed property instead.")
 
 
 class Widget(

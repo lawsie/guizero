@@ -15,6 +15,38 @@ class Picture(Widget):
         width=None, 
         height=None):
 
+        """
+        Creates a Picture
+
+        :param Container master:
+            The Container (App, Box, etc) the Picture will belong to.
+
+        :param string image:
+            A string containing the image to display, defaults to `None`.
+
+        :param List grid:
+            Grid co-ordinates for the widget, required if the master layout
+            is 'grid', defaults to `None`.
+
+        :param string align:
+            How to align the widget within the grid, defaults to None.
+
+        :param bool visible:
+            If the widget should be visible, defaults to `True`.
+
+        :param bool enabled:
+            If the widget should be enabled, defaults to `None`. If `None`
+            the value is inherited from the master.
+
+        :param int width:
+            The starting width of the widget. Defaults to `None` and will auto
+            size.
+
+        :param int height:
+            The starting height of the widget. Defaults to `None` and will auto
+            size.
+        """
+
         description = "[Picture] object"
 
         self._image_source = image
@@ -62,6 +94,9 @@ class Picture(Widget):
     # Get the filename of the image
     @property
     def value(self):
+        """
+        Gets or sets the file path, tkinter.PhotoImage or PIL.Image you wish to display
+        """
         if self._image:
             return self._image.image_source
         else:
@@ -75,6 +110,9 @@ class Picture(Widget):
 
     @property
     def image(self):
+        """
+        Gets or sets the file path, tkinter.PhotoImage or PIL.Image you wish to display
+        """
         return self.value
 
     # Set the image to a given file
@@ -86,11 +124,3 @@ class Picture(Widget):
         self._width = width
         self._height = height
         self._load_image()
-
-    # DEPRECATED METHODS
-    # --------------------------------------------
-
-    # Sets the image to something new
-    def set(self, image):
-        self.value = image
-        utils.deprecated("Picture set() is deprecated. Please use the value property instead.")

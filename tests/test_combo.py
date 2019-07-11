@@ -114,16 +114,6 @@ def test_remove():
 
     a.destroy()
 
-def test_add_option():
-    a = App()
-    c = Combo(a, ["foo", "bar"])
-
-    assert c.value == "foo"
-    c.add_option("car")
-    assert c.value == "car"
-
-    a.destroy()
-
 def test_clear():
     a = App()
     c = Combo(a, ["foo", "bar"])

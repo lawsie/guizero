@@ -17,6 +17,32 @@ class App(BaseWindow):
         bg=None, 
         visible=True):
 
+        """
+        Creates an App
+
+        :param string title:
+            The text in the title bar of the window, defaults to `guizero`.
+
+        :param int width:
+            The width of the App window, defaults to 500.
+
+        :param int height:
+            The height of the App window, defaults to 500.
+
+        :param string layout:
+            The layout manager style for this window, defaults to `auto`.
+
+        :param string bgcolor:
+            DEPRECATED: The background colour for this window, defaults to None. Use bg instead.
+
+        :param color bg:
+            The background colour for this window, defaults to None. See https://lawsie.github.io/guizero/colors/
+
+        :param bool visible:
+            If the widget should be visible, defaults to `True`.
+
+        """
+
         description = "[App] object"
 
         # If this is the first app to be created, create Tk
@@ -26,11 +52,6 @@ class App(BaseWindow):
         else:
             tk = Toplevel(App._main_app.tk)
             utils.error_format("There should only be 1 guizero App, use Window to create multiple windows.")
-
-        # bg overrides deprecated bgcolor
-        if bgcolor is not None:
-            bg = bgcolor
-            utils.deprecated("App 'bgcolor' constructor argument is deprecated. Please use bg instead.")
 
         super(App, self).__init__(
             None,
@@ -70,16 +91,3 @@ class App(BaseWindow):
         if self == App._main_app:
             App._main_app = None
         self.tk.destroy()
-
-    # DEPRECATED METHODS
-    # ------------------------------------
-
-    # Set the title of the window
-    def set_title(self, title):
-        self.title = title
-        utils.deprecated("App set_title() is deprecated. Please use the title property instead.")
-
-    # Change the background colour
-    def bgcolor(self, color):
-        self.bg = color
-        utils.deprecated("App bgcolor() is deprecated. Please use the bg property instead.")

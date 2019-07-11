@@ -4,7 +4,9 @@ guizero is designed to allow new learners to quickly and easily create GUIs for 
 
 If you can download and unzip a file, you can [install guizero](#easy-install) - **no special permissions or administrator rights are required**.
 
-If you have administrator rights and are connected to the internet, you can use [pip to install guizero](#install-using-pip).
+If you have administrator rights and are connected to the internet, you can use [pip to install or upgrade guizero](#install-using-pip) (recommended).
+
+Windows users can also use the [Windows MSI installer](#windows-msi-installer).
 
 ## Easy install
 
@@ -87,17 +89,20 @@ If you experience problems, have a look at this guide to [_Using pip on Windows_
 
 1. Open a terminal
 2. Install `tkinter` using your distribution's package manager, e.g. `sudo apt install python3-tk`
-3. Install guizero using pip by typing `pip3 install guizero` or `sudo pip3 install guizero` if you dont have superuser rights
+3. Install guizero using pip by typing `pip3 install guizero` or `sudo pip3 install guizero` if you don't have superuser rights
 
     ![linux pip install](images/linux_pip_install.gif)
 
-### Additional features install
+**Note:** If you are using Debian, you alternatively have the option to install guizero via apt
+`sudo apt-get install python-guizero`
+
+### Install additional features
 
 To use the additional [image features](images.md) of guizero such as:
 
 - JPG image support
 - scaling images
-- animated gifs 
+- animated gifs
 
 ... you will need to install guizero with the pip command:
 
@@ -113,9 +118,11 @@ To use the additional [image features](images.md) of guizero such as:
     sudo pip3 install guizero[images]
     ```
 
-### Upgrading
+The additional image features are not available to install using the easy install method.
 
-Upgrade guizero using the pip command 
+### Upgrading guizero
+
+If you installed guizero using pip, you can upgrade guizero using a pip command:
 
 - Windows / macOS
 
@@ -128,3 +135,36 @@ Upgrade guizero using the pip command
     ```
     sudo pip3 install guizero --upgrade
     ```
+
+If you installed guizero using the easy install method, to upgrade you should follow the same easy installation steps to download the latest version of guizero, then delete the old guizero folder and replace it with the newest version.
+
+## Windows MSI installer
+
+If you are using Windows you can install guizero by downloading and running a Windows MSI installer application.
+
+1. Download either the [64-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-1.0.0.amd64.msi) or the [32-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-1.0.0.win32.msi) depending on which version of Python you are using.
+
+    **Note:** If you are not sure what version of python you are running, run the following program in Python, which will output either `32` or `64`:
+
+        import struct
+        print(struct.calcsize("P") * 8)
+
+2. Run the guizero installer and select whether guizero should be installed ***for all users*** or ***just for me*** and click **Next**.
+
+    ![windows msi installer step 1](images/windows_msi_1.png)
+
+3. Select which version(s) of Python you want to install guizero for and click **Next**.
+
+    ![windows msi installer step 2](images/windows_msi_2.png)
+
+    **Note:** For most people, there will be only one version of Python and you can safely choose the default option.
+
+4. You may be asked *"Do you wish to allow this application from an unknown publisher to make changes to your device?"* - click **Yes**.
+
+5. Wait while guizero is installed.
+
+    ![windows msi installer step 3](images/windows_msi_3.png)
+
+6. Click **Finish** when the installation is complete.
+
+    ![windows msi installer step 4](images/windows_msi_4.png)

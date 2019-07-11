@@ -7,7 +7,7 @@ Widgets can be arranged into "containers" (e.g. `App`, `Window`, `Box`) using ei
 + `auto` - where widgets are positioned automatically
 + `grid` - you specify where in a grid each widget should be positioned
 
-The layout is set using `layout` parameter of the container e.g.
+The layout is set using the `layout` parameter of the container, for example:
 
 ```python
 app = App(layout="auto")
@@ -18,7 +18,7 @@ If no `layout` parameter is specified, the default `auto` layout is used.
 
 ### Auto layout
 
-`auto` is the default layout used when a container is created. All widgets will be arranged in the order they are created and aligned to the centre, e.g. the following code will create two Text widgets, one on top of the other.
+`auto` is the default layout used when a container is created. All widgets will be arranged in the order they are created and aligned to the centre. For example, the following code will create two `Text` widgets, one on top of the other.
 
 ```python
 from guizero import App, Text
@@ -34,7 +34,7 @@ app.display()
 
 Widgets can be aligned to either the `top`, `bottom`, `left` or `right`, using the `align` property when created.
 
-Aligning Widgets will cause them to be "stuck" to that side of the container e.g.
+Aligning a widget will cause it to be "stuck" to that side of the container, for example:
 
 ```python
 from guizero import App, Text
@@ -48,7 +48,7 @@ app.display()
 
 ![Text aligned at each edge](images/layout_auto_align.png)
 
-By aligning multiple widgets to the same side of the container, widgets can be made to stack together e.g.
+By aligning multiple widgets to the same side of the container, widgets can be made to stack together:
 
 ```python
 from guizero import App, Text, TextBox, PushButton
@@ -65,11 +65,9 @@ The widgets will stack in the order they are created, so the widget created firs
 
 ### Filling
 
-Widgets can also be made to "fill" all the available space by setting the `width` and `height` parameters to `fill`.
+Widgets can also be made to "fill" all available space by setting the `width` and `height` parameters to `fill`. Here are some examples:
 
-e.g.
-
-A TextBox could span the entire width of the container:
+A `TextBox` could span the entire width of the container:
 
 ```python
 from guizero import App, TextBox
@@ -80,7 +78,7 @@ app.display()
 
 ![A text box filling the width of the screen](images/layout_fill_width.png)
 
-Or a ListBox could fill the left hand side by using `fill` for the `height` and `align` to the `left` e.g.
+Or a `ListBox` could fill the left hand side by using `fill` for the `height` and `align` to the `left`:
 
 ```python
 from guizero import App, ListBox
@@ -91,7 +89,7 @@ app.display()
 
 ![List box spanning the whole left edge](images/layout_fill_height.png)
 
-Using `fill` for the `width` and the `height` will make a widget use all the available space e.g.
+Using `fill` for the `width` and the `height` will make a widget use all of the available space:
 
 ```python
 from guizero import App, PushButton
@@ -102,7 +100,7 @@ app.display()
 
 ![Button filling the whole window](images/layout_fill_both.png)
 
-When multiple widgets use `fill` the Window Manager (operating system) will distribute the space accordingly between all the widgets which need to fill it.
+When multiple widgets use `fill`, the Window Manager (operating system) will distribute the space accordingly between all the widgets which have requested to fill it.
 
 ```python
 from guizero import App, ListBox, PushButton
@@ -114,7 +112,7 @@ app.display()
 
 ![Two widgets filling the space](images/layout_fill_multiple.png)
 
-**Note :** Using fill may not always have the effect you are expecting as it is up to the operating system to distribute screen space.
+**Note :** Using fill may not always have the effect you are expecting, as it is up to the operating system to distribute screen space.
 
 ## Grid layout
 
@@ -131,9 +129,7 @@ There is no need to specify the width or height of the grid you want - it will e
 
 This is really useful when creating GUIs where you want widgets to line up.
 
-e.g.
-
-Creating a number keypad:
+For example, you could create a number keypad:
 
 ![Number keypad with 10 buttons](images/layout_grid_keypad.png)
 
@@ -156,7 +152,7 @@ button0  = PushButton(app, text="0", grid=[1,3])
 app.display()
 ```
 
-You can also align widgets within the grid, e.g. when you are creating a form:
+You can also align widgets within the grid, which is useful when you are creating a form:
 
 ![Form data entry layout](images/layout_grid.png)
 
@@ -179,13 +175,13 @@ app.display()
 
 Widgets can be made to span multiple columns or rows by specifying the span within the grid parameter. These are optional, but if specified both must be included using the format `[x,y,xspan,yspan]`.
 
-The example below shows text widget located at 0,1 spanning two columns (x) and one row (y):
+The example below shows a `Text` widget located at 0,1 and spanning two columns (x) and one row (y):
 
 ```python
 text = Text(app, text="Hello world", grid=[0,1,2,1])
 ```
 
-This can be used to include widgets of different sizes arranged alongside each other.
+This layout method can be used to include widgets of different sizes arranged alongside each other.
 
 ```python
 from guizero import App, Picture
@@ -208,7 +204,7 @@ By using a `Box` widget you can segment your GUI into different sections allowin
 
 ![Layout with multiple boxes](images/layout_boxes.png)
 
-[code for example above](https://github.com/lawsie/guizero/tree/master/examples/layout_boxes.py)
+([Code for example above](https://github.com/lawsie/guizero/tree/master/examples/layout_boxes.py))
 
 If you wanted to create a title in the top left hand corner of your GUI, you could use a `Box` which fills the top of the `App` and put a `Text` widget inside aligned to the `left`.
 
@@ -247,8 +243,10 @@ app.display()
 
 ![OK and Cancel buttons on the bottom right](images/layout_boxes_buttons.png)
 
-**Note :** A `Box` can also be contained in a `Box`, allowing you to layer boxes and position your widgets.
+**Note :** You can put a `Box` inside another `Box`, allowing you to layer boxes and position your widgets.
 
 **Tip :** When creating a GUI you may find it easier to design it first on paper, noting where your boxes will be positioned.
 
 ![hand drawn gui](images/layout_boxes.jpg)
+
+Unfortunately, whilst you can put one box inside another box, guizero does not support mailing it to yourself, nor smashing it with a hammer ;) 

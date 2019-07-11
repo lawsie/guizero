@@ -20,6 +20,61 @@ class PushButton(TextWidget):
         width=None,
         height=None):
 
+        """
+        Creates a PushButton
+
+        :param Container master:
+            The Container (App, Box, etc) the Picture will belong to.
+
+        :param function command:
+            A string containing the image to display, defaults to `None`.
+
+        :param List args:
+            A list of arguments to pass to the command. Defaults to `None`.
+
+        :param string text:
+            The text to display on the button, defaults to `Button`.
+
+        :param string image:
+            A string containing the image to display, defaults to `None`.
+            If an image is specified, this overrides any text set to display
+            on the button.
+
+        :param int padx:
+            The amount of horizontal padding the button should have. Defaults to 10.
+
+        :param int pady:
+            The amount of vertical padding the button should have. Defaults to 10.
+
+        :param List grid:
+            Grid co-ordinates for the widget, required if the master layout
+            is 'grid', defaults to `None`.
+
+        :param string align:
+            How to align the widget within the grid, defaults to None.
+
+        :param string icon:
+            A string containing the image to display, defaults to `None`.
+            If an image is specified, this overrides any text set to display
+            on the button. (DEPRECATED)
+
+        :param bool visible:
+            If the widget should be visible, defaults to `True`.
+
+        :param bool enabled:
+            If the widget should be enabled, defaults to `None`. If `None`
+            the value is inherited from the master.
+
+        :param int width:
+            The starting width of the widget. Defaults to `None` and will auto
+            size.
+
+        :param int height:
+            The starting height of the widget. Defaults to `None` and will auto
+            size.
+        """
+
+
         description = "[PushButton] object with text \"" + text + "\""
 
         self._value = 0
@@ -48,10 +103,6 @@ class PushButton(TextWidget):
 
         if image:
             self._load_image()
-        else:
-            if icon:
-                self._load_image()
-                utils.deprecated("PushButton 'icon' constructor argument is deprecated. Please use image instead.")
 
     def _load_image(self):
         if self._height == "fill" or self._width == "fill":
@@ -72,8 +123,8 @@ class PushButton(TextWidget):
 
         # set the width and height of the widget to match the image if they are None
         super(PushButton, self.__class__).resize(
-            self, 
-            self._image.width if self.width is None else self.width, 
+            self,
+            self._image.width if self.width is None else self.width,
             self._image.height if self.height is None else self.height)
 
     def _update_tk_image(self, tk_image):
@@ -109,9 +160,9 @@ class PushButton(TextWidget):
 
     def resize(self, width, height):
         super(PushButton, self.__class__).resize(self, width, height)
-        
+
         if self._image:
-            self._load_image()        
+            self._load_image()
 
     # METHODS
     # -------------------------------------------
@@ -144,25 +195,3 @@ class PushButton(TextWidget):
 
     def _command_callback(self):
         self._command()
-
-    # DEPRECATED
-    # -------------------------------------------
-    # Change text
-    def set_text(self, text):
-        self.text = text
-        utils.deprecated("PushButton set_text() is deprecated. Please use the value property instead.")
-
-    # Toggle button state - renamed to just toggle
-    def toggle_state(self):
-        self.toggle()
-        utils.deprecated("PushButton toggle_state() is deprecated - renamed to toggle()")
-
-    # Change command - needs the name of a function and optional args as a list
-    def change_command(self, newcommand, args=None):
-        self.update_command(newcommand, args)
-        utils.deprecated("PushButton change_command() is deprecated - renamed to update_command()")
-
-    # Set the icon
-    def icon(self, icon):
-        self.image = icon
-        utils.deprecated("PushButton icon() is deprecated - use the image property instead.")

@@ -1,6 +1,15 @@
 # guizero
 
-## 0.6.4 - 2019-05-08
+## 1.0.0 - 2019-07-11
+- Previously deprecated methods have now been removed
+- Resolved race condition in the `repeat`, `cancel` methods
+- Refactored alerts (renamed pop-ups), they can now also be called from `App` & `Window` objects
+- Added `question` pop-up
+- Created windows MSI installer for guizero
+- Deprecated `App.on_closed` method and replaced with `App.when_closed` property
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [MrYsLab](https://github.com/MrYsLab), [scotty3785](https://github.com/scotty3785)
+
+## 0.6.4 - 2019-05-08)
 - Fixed TextBox command to be on key release
 - Fix Text not inheriting properties
 - Added add_tk_warning when inserting a tk widget into the wrong container

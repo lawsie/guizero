@@ -53,13 +53,10 @@ When you create a `Waffle` object you **must** specify `master` and you can spec
 | height     | int                | 3       | -          | Set the height in waffle pixels                                                                                                                                                                                                 |
 | pad        | int                | 5       | -          | How much space is between the pixels on the waffle                                                                                                                                                                              |
 | width      | int                | 3       | -          | Set the width in waffle pixels                                                                                                                                                                                                  |
-| _remember_ | _boolean_          | _True_  | -          | _No longer needed - all Waffles will now have a memory._                                                                                                                                                                        |
 | visible    | boolean            | True    | No         | If the widget should be visible.                                                                                                                                                                                                |
 | enabled    | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                                                                 |
 | bg         | [color](colors.md) | None    | No         | The background colour of the waffle. Takes a [color](colors.md) value.                                                                                                                                                          |
 
-
-Parameters in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
 ### Methods
 

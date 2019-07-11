@@ -26,8 +26,6 @@ class ScheduleMixin():
 
     def _call_wrapper(self, time, function, *args):
         """Fired by tk.after, gets the callback and either executes the function and cancels or repeats"""
-        # execute the function
-        function(*args)
         if function in self._callback.keys():
             repeat = self._callback[function][1]
             if repeat:
@@ -37,6 +35,8 @@ class ScheduleMixin():
             else:
                 # remove it from the call back dictionary
                 self._callback.pop(function)
+        # execute the function
+        function(*args)
 
 
 class DestroyMixin():

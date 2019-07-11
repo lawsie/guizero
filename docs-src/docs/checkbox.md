@@ -69,13 +69,7 @@ You can call the following methods on a `CheckBox` object.
 | show()                              | -                                                                                    | -        | Displays the widget if it was previously hidden                                                                                                                |
 | toggle()                            | -                                                                                    | -        | Switches the `CheckBox` to the opposite of its current value. i.e. if it is ticked, untick it and vice versa                                                   |
 | update_command(command, args =None) | command (function name), args (_Optional_ List of arguments to be passed to command) | -        | Updates the function to call when the checkbox is ticked/unticked                                                                                              |
-| _change_text(newtext)_              | _newtext (string)_                                                                   | -        | _Replaced by the `text` property_                                                                                                                              |
-| _get_text()_                        | -                                                                                    | _string_ | _Replaced by the `text` property_                                                                                                                              |
-| _get_value()_                       | -                                                                                    | _int_    | _Replaced by the `value` property_                                                                                                                             |
 
-
-
-Methods in _italics_ will still work but are **deprecated** - this means you should stop using them because they may not work in future versions of guizero
 
 ### Properties
 
