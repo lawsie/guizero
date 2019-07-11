@@ -1,4 +1,7 @@
 site_name: guizero
+theme:
+  name: null
+  custom_dir: 'cinder'
 nav:
   - About: about.md
   - Installation: index.md
@@ -37,4 +40,3 @@ nav:
       - Developing: development.md
       - Deploying: deployment.md
   - Change log: changelog.md
-theme: readthedocs
