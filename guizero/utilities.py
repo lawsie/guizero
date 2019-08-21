@@ -32,8 +32,14 @@ class SystemConfig():
         else:
             self._supported_image_types = ["GIF", "PNG"]
             if self._platform == "darwin":
-                #MacOS only supports GIF with PIL
+                # macOS only supports GIF with PIL
                 self._supported_image_types = ["GIF"]
+
+        # tk options  
+        self._tk_options = {
+            "*Label.Font": "helvetica 12",
+            "*Label.Foreground": "black",
+        }
 
     @property
     def PIL_available(self):
@@ -56,6 +62,21 @@ class SystemConfig():
         Returns the current platform ("linux", "darwin", "win32")
         """
         return self._platform
+
+    @property
+    def tk_options(self):
+        """
+        Returns a dictionary of tk options in the format {"pattern": value}
+        which will be applied when an App is created.
+
+        The tk options can be used to modify the default behaviour of 
+        tk and its widgets e.g. Change the background colour of all Buttons ::
+
+            from guizero import system_config
+            system_config.tk_options["*Button.Background"] = "green"
+
+        """
+        return self._tk_options
 
 system_config = SystemConfig()
 
