@@ -283,6 +283,9 @@ class LayoutMixin():
         self.master.display_widgets()
 
     def _update_align(self, align):
+        """
+        Validates a widgets align property
+        """
         self._align = None
         if align is not None:
             if align in ["top", "bottom", "left", "right"]:
