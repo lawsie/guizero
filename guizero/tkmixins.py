@@ -238,9 +238,37 @@ class LayoutMixin():
     @property
     def grid(self):
         """
-        Returns `[x,y]` coordinates of this widget.
+        Sets or returns `[x,y]` coordinates of this widget.
         """
         return self._grid
+
+    @grid.setter
+    def grid(self, value):
+        self._update_grid(value)
+        self.master.display_widgets()
+
+    def _update_grid(self, grid):
+        """
+        Validates a Widgets grid property and stores it as a TriggeredList
+        which will call the masters display_widgets method when it is changed
+        """
+        self._grid = None
+        if self.master.layout == "grid":
+            # validate the grid
+            if grid is None:
+                utils.error_format("{} will not be displayed because it has a missing grid reference.".format(self.description))
+            elif type(grid) is not list:
+                utils.error_format("{} will not be displayed because the grid reference is not a list.".format(self.description))
+            # Can have 2 values (just coords) or 4 values (coords and col/rowspan)
+            elif (len(grid) != 2 and len(grid) != 4):
+                utils.error_format("{} will not be displayed because the grid reference should be either grid=[x, y] or grid=[x, y, columnspan, rowspan].".format(self.description))
+            else:
+                # convert the grid to a trackable list
+                self._grid = utils.TriggeredList(grid, on_change=self.master.display_widgets)
+        else:
+            if grid is not None:
+                utils.error_format("A grid is not required for {} as it is not using a 'grid' layout.".format(self.description))
+
 
     @property
     def align(self):
