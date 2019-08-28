@@ -277,6 +277,22 @@ class LayoutMixin():
         """
         return self._align
 
+    @align.setter
+    def align(self, value):
+        self._update_align(value)
+        self.master.display_widgets()
+
+    def _update_align(self, align):
+        self._align = None
+        if align is not None:
+            if align in ["top", "bottom", "left", "right"]:
+                self._align = align
+            else:
+                utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
+                    align,
+                    self.description
+                ))
+
 
 class EventsMixin():
 

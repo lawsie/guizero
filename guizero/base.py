@@ -371,13 +371,16 @@ class Container(Component):
             pack_params["fill"] = Y
 
         if widget.align is not None:
-            if widget.align in ["top", "bottom", "left", "right"]:
-                pack_params["side"] = widget.align
-            else:
-                utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
-                    widget.align,
-                    widget.description
-                ))
+            pack_params["side"] = widget.align
+
+        # if widget.align is not None:
+        #     if widget.align in ["top", "bottom", "left", "right"]:
+        #         pack_params["side"] = widget.align
+        #     else:
+        #         utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
+        #             widget.align,
+        #             widget.description
+        #         ))
 
         # this is to cater for scenario's where the frame will not expand to fill the container
         # if aligned - tk weirdness.
@@ -406,13 +409,7 @@ class Container(Component):
 
         if widget.align is not None:
             directions = {"top": "N", "bottom": "S", "left": "W", "right": "E"}
-            if widget.align in directions.keys():
-                grid_params["sticky"] = directions[widget.align]
-            else:
-                utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
-                widget.align,
-                widget.description
-            ))
+            grid_params["sticky"] = directions[widget.align]
 
         widget.tk.grid(**grid_params)
 
@@ -622,7 +619,7 @@ class Widget(
         """
         super(Widget, self).__init__(master,tk, description, True)
         self._update_grid(grid)
-        self._align = align
+        self._update_align(align)
         self._width = width
         self._height = height
         self.visible = visible
@@ -667,7 +664,7 @@ class ContainerWidget(
         """
         super(ContainerWidget, self).__init__(master,tk, description, layout, True)
         self._update_grid(grid)
-        self._align = align
+        self._update_align(align)
         self._width = width
         self._height = height
         self.visible = visible
