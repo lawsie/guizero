@@ -373,15 +373,6 @@ class Container(Component):
         if widget.align is not None:
             pack_params["side"] = widget.align
 
-        # if widget.align is not None:
-        #     if widget.align in ["top", "bottom", "left", "right"]:
-        #         pack_params["side"] = widget.align
-        #     else:
-        #         utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
-        #             widget.align,
-        #             widget.description
-        #         ))
-
         # this is to cater for scenario's where the frame will not expand to fill the container
         # if aligned - tk weirdness.
         if pack_params.get("side") is None and pack_params.get("fill") == Y:
@@ -402,8 +393,7 @@ class Container(Component):
             "row": widget.grid[1]
         }
 
-        # Just check we have more than 2 as we have already checked it's a multiple of two previously
-        if len(widget.grid) > 2:
+        if len(widget.grid) == 4:
             grid_params["columnspan"] = widget.grid[2]
             grid_params["rowspan"] = widget.grid[3]
 

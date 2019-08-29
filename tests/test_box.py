@@ -11,7 +11,9 @@ from common_test import (
     cascading_enable_test,
     cascading_properties_test,
     inheriting_properties_test,
-    add_tk_widget_test
+    add_tk_widget_test,
+    grid_layout_test,
+    auto_layout_test
     )
 
 def test_default_values():
@@ -125,4 +127,24 @@ def test_inheriting_properties():
 def test_add_tk_widget():
     a = App()
     add_tk_widget_test(a)
+    a.destroy()
+
+def test_auto_layout():
+    a = App()
+    w = Box(a)
+    auto_layout_test(w, None)
+    a.destroy()
+
+def test_grid_layout():
+    a = App(layout="grid")
+    
+    w = Box(a, grid=[1,2])
+    grid_layout_test(w, 1, 2, 1, 1, None)
+    
+    ws = Box(a, grid=[1,2,3,4])
+    grid_layout_test(ws, 1, 2, 3, 4, None)
+
+    wa = Box(a, grid=[1,2], align="top")
+    grid_layout_test(wa, 1, 2, 1, 1, "top")
+    
     a.destroy()

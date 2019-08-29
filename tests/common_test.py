@@ -337,4 +337,69 @@ def add_tk_widget_test(container):
     assert not sw.visible
     assert sw.width == "fill"
     assert sw.height == "fill"
+
+def auto_layout_test(widget, align):
     
+    assert widget.master.layout == "auto"
+    side = "top" if align is None else align
+    assert widget.tk.pack_info()["side"] == side
+
+    widget.align = "left"
+    assert widget.tk.pack_info()["side"] == "left"
+
+    widget.align = "right"
+    assert widget.tk.pack_info()["side"] == "right"
+
+    widget.align = "top"
+    assert widget.tk.pack_info()["side"] == "top"
+
+    widget.align = "bottom"
+    assert widget.tk.pack_info()["side"] == "bottom"
+
+def grid_layout_test(widget, x, y, col_span, row_span, align):
+
+    sticky = {"top": "n", "bottom": "s", "left": "w", "right": "e", None: ""}
+
+    # test initial values
+    assert widget.master.layout == "grid"
+    assert widget.tk.grid_info()["column"] == x
+    assert widget.tk.grid_info()["row"] == y
+    assert widget.tk.grid_info()["columnspan"] == col_span
+    assert widget.tk.grid_info()["rowspan"] == row_span
+    assert widget.tk.grid_info()["sticky"] == sticky[align]
+
+    # change grid values
+    widget.grid[0] = 3
+    widget.grid[1] = 4
+    assert widget.tk.grid_info()["column"] == 3
+    assert widget.tk.grid_info()["row"] == 4
+    assert widget.tk.grid_info()["columnspan"] == col_span
+    assert widget.tk.grid_info()["rowspan"] == row_span
+    assert widget.tk.grid_info()["sticky"] == sticky[align]
+
+    widget.grid = [5,6]
+    assert widget.tk.grid_info()["column"] == 5
+    assert widget.tk.grid_info()["row"] == 6
+    assert widget.tk.grid_info()["columnspan"] == 1
+    assert widget.tk.grid_info()["rowspan"] == 1
+    assert widget.tk.grid_info()["sticky"] == sticky[align]
+
+    widget.grid = (7,8)
+    assert widget.tk.grid_info()["column"] == 7
+    assert widget.tk.grid_info()["row"] == 8
+    assert widget.tk.grid_info()["columnspan"] == 1
+    assert widget.tk.grid_info()["rowspan"] == 1
+    assert widget.tk.grid_info()["sticky"] == sticky[align]
+
+    # change span
+    widget.grid = [9, 10, 11, 12]
+    assert widget.tk.grid_info()["column"] == 9
+    assert widget.tk.grid_info()["row"] == 10
+    assert widget.tk.grid_info()["columnspan"] == 11
+    assert widget.tk.grid_info()["rowspan"] == 12
+    assert widget.tk.grid_info()["sticky"] == sticky[align]
+
+    # change align
+    widget.align = "left"
+    assert widget.tk.grid_info()["sticky"] == sticky["left"]
+

@@ -257,8 +257,8 @@ class LayoutMixin():
             # validate the grid
             if grid is None:
                 utils.error_format("{} will not be displayed because it has a missing grid reference.".format(self.description))
-            elif type(grid) is not list:
-                utils.error_format("{} will not be displayed because the grid reference is not a list.".format(self.description))
+            elif not isinstance(grid, (list, tuple)):
+                utils.error_format("{} will not be displayed because the grid reference is not a list or tuple.".format(self.description))
             # Can have 2 values (just coords) or 4 values (coords and col/rowspan)
             elif (len(grid) != 2 and len(grid) != 4):
                 utils.error_format("{} will not be displayed because the grid reference should be either grid=[x, y] or grid=[x, y, columnspan, rowspan].".format(self.description))
