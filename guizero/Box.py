@@ -55,9 +55,6 @@ class Box(ContainerWidget):
             value > 1 sets a border. The default is `None`.
         """
 
-        self._grid = grid
-        self._align = align
-
         description = "[Box] object (may also contain other objects)"
 
         tk = Frame(master.tk)

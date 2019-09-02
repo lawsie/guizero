@@ -371,13 +371,7 @@ class Container(Component):
             pack_params["fill"] = Y
 
         if widget.align is not None:
-            if widget.align in ["top", "bottom", "left", "right"]:
-                pack_params["side"] = widget.align
-            else:
-                utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
-                    widget.align,
-                    widget.description
-                ))
+            pack_params["side"] = widget.align
 
         # this is to cater for scenario's where the frame will not expand to fill the container
         # if aligned - tk weirdness.
@@ -393,36 +387,21 @@ class Container(Component):
         widget.tk.pack(**pack_params)
 
     def _grid_widget(self, widget):
-        # If they failed to specify grid coords
-        if widget.grid is None:
-            utils.error_format("{} will not be displayed because it has a missing grid reference.".format(widget.description))
-        elif type(widget.grid) is not list:
-            utils.error_format("{} will not be displayed because the grid reference is not a list.".format(widget.description))
-        # Can have 2 values (just coords) or 4 values (coords and col/rowspan)
-        elif (len(widget.grid) != 2 and len(widget.grid) != 4):
-            utils.error_format("{} will not be displayed because the grid reference should be either grid=[x, y] or grid=[x, y, columnspan, rowspan].".format(widget.description))
-        else:
-            grid_params = {
-                "column": widget.grid[0],
-                "row": widget.grid[1]
-            }
 
-            # Just check we have more than 2 as we have already checked it's a multiple of two previously
-            if len(widget.grid) > 2:
-                grid_params["columnspan"] = widget.grid[2]
-                grid_params["rowspan"] = widget.grid[3]
+        grid_params = {
+            "column": widget.grid[0],
+            "row": widget.grid[1]
+        }
 
-            if widget.align is not None:
-                directions = {"top": "N", "bottom": "S", "left": "W", "right": "E"}
-                if widget.align in directions.keys():
-                    grid_params["sticky"] = directions[widget.align]
-                else:
-                    utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
-                    widget.align,
-                    widget.description
-                ))
+        if len(widget.grid) == 4:
+            grid_params["columnspan"] = widget.grid[2]
+            grid_params["rowspan"] = widget.grid[3]
 
-            widget.tk.grid(**grid_params)
+        if widget.align is not None:
+            directions = {"top": "N", "bottom": "S", "left": "W", "right": "E"}
+            grid_params["sticky"] = directions[widget.align]
+
+        widget.tk.grid(**grid_params)
 
     @property
     def enabled(self):
@@ -629,8 +608,8 @@ class Widget(
         The base class for a widget which is an interactable component e.g. `Picture`
         """
         super(Widget, self).__init__(master,tk, description, True)
-        self._grid = grid
-        self._align = align
+        self._update_grid(grid)
+        self._update_align(align)
         self._width = width
         self._height = height
         self.visible = visible
@@ -674,8 +653,8 @@ class ContainerWidget(
         The base class for a widget which is also a container e.g. `Box`, `ButtonGroup`
         """
         super(ContainerWidget, self).__init__(master,tk, description, layout, True)
-        self._grid = grid
-        self._align = align
+        self._update_grid(grid)
+        self._update_align(align)
         self._width = width
         self._height = height
         self.visible = visible

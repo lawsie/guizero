@@ -8,7 +8,9 @@ from common_test import (
     display_test,
     events_test,
     cascaded_properties_test,
-    inherited_properties_test
+    inherited_properties_test,
+    grid_layout_test,
+    auto_layout_test
     )
 
 def test_default_values():
@@ -147,4 +149,24 @@ def test_clear():
     assert len(d.tk.find_all()) == 2
     d.clear()
     assert len(d.tk.find_all()) == 0
+    a.destroy()
+
+def test_auto_layout():
+    a = App()
+    w = Drawing(a)
+    auto_layout_test(w, None)
+    a.destroy()
+
+def test_grid_layout():
+    a = App(layout="grid")
+    
+    w = Drawing(a, grid=[1,2])
+    grid_layout_test(w, 1, 2, 1, 1, None)
+    
+    ws = Drawing(a, grid=[1,2,3,4])
+    grid_layout_test(ws, 1, 2, 3, 4, None)
+
+    wa = Drawing(a, grid=[1,2], align="top")
+    grid_layout_test(wa, 1, 2, 1, 1, "top")
+    
     a.destroy()

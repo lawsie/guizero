@@ -10,7 +10,9 @@ from common_test import (
     color_test,
     events_test,
     cascaded_properties_test,
-    inherited_properties_test
+    inherited_properties_test,
+    grid_layout_test,
+    auto_layout_test
     )
 
 def test_default_values():
@@ -277,4 +279,24 @@ def test_cascaded_properties():
 def test_inherited_properties():
     a = App()
     inherited_properties_test(a, lambda: Waffle(a), False)
+    a.destroy()
+
+def test_auto_layout():
+    a = App()
+    w = Waffle(a)
+    auto_layout_test(w, None)
+    a.destroy()
+
+def test_grid_layout():
+    a = App(layout="grid")
+    
+    w = Waffle(a, grid=[1,2])
+    grid_layout_test(w, 1, 2, 1, 1, None)
+    
+    ws = Waffle(a, grid=[1,2,3,4])
+    grid_layout_test(ws, 1, 2, 3, 4, None)
+
+    wa = Waffle(a, grid=[1,2], align="top")
+    grid_layout_test(wa, 1, 2, 1, 1, "top")
+    
     a.destroy()

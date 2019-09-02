@@ -14,6 +14,8 @@ from common_test import (
     inherited_properties_test,
     SET_FONT,
     TEST_FONTS,
+    grid_layout_test,
+    auto_layout_test
     )
 
 def test_default_values():
@@ -144,4 +146,24 @@ def test_inherited_properties():
     a = App()
     t = Text(a)
     inherited_properties_test(a, lambda: Text(a), True)
+    a.destroy()
+
+def test_auto_layout():
+    a = App()
+    w = Text(a)
+    auto_layout_test(w, None)
+    a.destroy()
+
+def test_grid_layout():
+    a = App(layout="grid")
+    
+    w = Text(a, grid=[1,2])
+    grid_layout_test(w, 1, 2, 1, 1, None)
+    
+    ws = Text(a, grid=[1,2,3,4])
+    grid_layout_test(ws, 1, 2, 3, 4, None)
+
+    wa = Text(a, grid=[1,2], align="top")
+    grid_layout_test(wa, 1, 2, 1, 1, "top")
+    
     a.destroy()
