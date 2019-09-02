@@ -136,11 +136,12 @@ def test_events():
 
 def test_cascaded_properties():
     a = App()
-    t = Text(a, color=None, size=None, font=None)
+    t = Text(a)
     cascaded_properties_test(a, t, True)
     a.destroy()
 
 def test_inherited_properties():
     a = App()
-    inherited_properties_test(a, lambda: Text(a, color=None, size=None, font=None), True)
+    t = Text(a)
+    inherited_properties_test(a, lambda: Text(a), True)
     a.destroy()
