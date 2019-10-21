@@ -17,12 +17,13 @@ class TextBox(TextWidget):
         enabled=None,
         multiline=False,
         scrollbar=False,
-        command=None):
+        command=None,
+        hide_text=False):
 
         description = "[TextBox] object with text \"" + str(text) + "\""
 
         self._multiline = multiline
-
+        
         # Set up controlling string variable
         self._text = StringVar()
         self._text.set( str(text) )
@@ -30,18 +31,16 @@ class TextBox(TextWidget):
         # Create a tk object for the text box
         if multiline:
             if scrollbar:
-                #tk = ScrolledText(master.tk, width=width, height=height, wrap="word")
                 tk = ScrolledText(master.tk, wrap="word")
             else:
-                #tk = Text(master.tk, width=width, height=height)
                 tk = Text(master.tk)
             tk.insert(END,self._text.get())
         else:
-            #tk = Entry(master.tk, textvariable=self._text, width=width)
             tk = Entry(master.tk, textvariable=self._text)
 
         super(TextBox, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
+        self.hide_text = hide_text
         self.update_command(command)
 
         # Bind the key pressed event
@@ -79,6 +78,23 @@ class TextBox(TextWidget):
                 if isinstance(height, int):
                     if height > 1:
                         utils.error_format("Cannot change the height of a single line TextBox{}".format(self.description))
+
+    @property
+    def hide_text(self):
+        return self._hide_text
+
+    @hide_text.setter
+    def hide_text(self, value):
+        self._hide_text = value
+
+        if value == True:
+            show_value = "*"
+        elif value == False:
+            show_value = ""
+        else:
+            show_value = value
+        
+        self._set_tk_config("show", show_value)
 
     # METHODS
     # -------------------------------------------
