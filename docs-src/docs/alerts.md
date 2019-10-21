@@ -19,13 +19,15 @@ info("info", "this is a guizero app")
 ```
 
 ### Purpose
-These functions pop up a box on the screen that displays a message. The functions available are:
+These functions pop up a box on the screen that displays a message or asks a question. The functions available are:
 
 * `warn(title, text)` - popup box with a warning icon
 * `info(title, text)` - popup box with an information icon
 * `error(title, text)` - popup box with an error icon
 * `yesno(title, text)` - popup box with yes and no options. Pressing `Yes` returns `True` and pressing `No` returns `False`.
 * `question(title, text, initial_value=None)` - popup box with a question box which can accept a text response. Pressing `Ok` returns value entered into the box is returned and pressing `Cancel` returns `None`.
+* `select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False)` - popup file dialog box which asks the user to select a file. By default, an *Open* button is displayed, setting `save` to `True` will change the button to *Save as*. The path of the selected file is returned by the function.
+* `select_folder(title="Select folder", folder=".")` - popup box which asks the user to select a folder. The path of the selected folder is returned by the function.
 
 All pop up boxes use the native display, so they will look different depending on your operating system.
 
@@ -140,3 +142,63 @@ app.display()
 ```
 
 ![question popu](images/question_windows.png)
+
+** Example: Get a file name**
+
+Ask the user to select a file using the `select_file` pop-up.
+
+```python
+from guizero import App, PushButton, Text
+
+def get_file():
+    file_name.value = app.select_file()
+
+app = App()
+
+PushButton(app, command=get_file, text="Get file")
+file_name = Text(app)
+
+app.display()
+```
+
+![select file popup](images/select_file_windows.png)
+
+You can change the file type filter by providing a list of type descriptions and extensions as the `filetypes` parameter e.g.   
+
+```python
+file_name.value = app.select_file(filetypes=[["All files", "*.*"], ["Text documents", "*.txt"]])
+```
+
+The default is to show an *Open* button, this can be changed to a *Save* button by setting the `save` parameter to `True` e.g.
+
+```python
+file_name.value = app.select_file(save=True)
+```
+
+![select save file popup](images/select_file_save_windows.png)
+
+** Example: Get a folder name**
+
+Select a folder using the `select_folder` pop-up.
+
+```python
+from guizero import App, PushButton, Text
+
+def get_folder():
+    path.value = app.select_folder()
+
+app = App()
+
+PushButton(app, command=get_folder, text="Get path")
+path = Text(app)
+
+app.display()
+```
+
+![select folder popup](images/select_file_windows.png)
+
+You can set the initial folder by passing a path to the `folder` parameter    
+
+```python
+file_name.value = app.select_file(folder="c:\users\lawsie")
+```

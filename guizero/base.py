@@ -588,6 +588,12 @@ class BaseWindow(Container):
     def question(self, title, question, initial_value=None):
         return dialog.question(title, question, initial_value, master=self)
 
+    def select_file(self, title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False):
+        return dialog.select_file(title=title, folder=folder, filetypes=filetypes, save=save, master=self)
+
+    def select_folder(self, title="Select folder", folder="."):
+        return dialog.select_folder(title=title, folder=folder, master=self)
+
     # DEPRECATED METHODS
     # --------------------------------------------
     def on_close(self, command):
