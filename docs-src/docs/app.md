@@ -77,20 +77,21 @@ Parameters in _italics_ will still work but are **deprecated** - this means you 
 
 You can set and get the following properties:
 
-| Method      | Data type          | Description                                                                                |     |                                |
-|-------------|--------------------|--------------------------------------------------------------------------------------------|-----|--------------------------------|
-| bg          | [color](colors.md) | The background colour of the window                                                        |     |                                |
-| enabled     | boolean            | `True` if the app is enabled                                                               |     |                                |
-| height      | int                | The height of the window                                                                   |     |                                |
-| font        | string             | The font that widgets should use                                                           |     |                                |
-| full_screen | boolean            | False                                                                                      | No  | Whether the App is full screen |
-| layout      | string             | The layout being used by the App (`"auto"`) or (`"grid"`)                                  |     |                                |
-| title       | string             | The title of the window                                                                    |     |                                |
-| text_size   | int                | The size of the text widgets should use                                                    |     |                                |
-| text_color  | [color](colors.md) | The colour of the text widgets should use                                                  |     |                                |
-| visible     | boolean            | If the app is visible                                                                      |     |                                |
-| width       | int                | The width of the window                                                                    |     |                                |
-| when_closed | function           | The function to call when the `App` is closed. Setting to `None` (the default) will reset. |     |                                |
+| Method      | Data type          | Description                                                                                |
+|-------------|--------------------|--------------------------------------------------------------------------------------------|
+| bg          | [color](colors.md) | The background colour of the window                                                        |
+| children    | list(widgets)      | A list of widgets in this container                                                        |
+| enabled     | boolean            | `True` if the app is enabled                                                               |
+| height      | int                | The height of the window                                                                   |
+| font        | string             | The font that widgets should use                                                           |
+| full_screen | boolean            | False                                                                                      |
+| layout      | string             | The layout being used by the App (`"auto"`) or (`"grid"`)                                  |
+| title       | string             | The title of the window                                                                    |
+| text_size   | int                | The size of the text widgets should use                                                    |
+| text_color  | [color](colors.md) | The colour of the text widgets should use                                                  |
+| visible     | boolean            | If the app is visible                                                                      |
+| width       | int                | The width of the window                                                                    |
+| when_closed | function           | The function to call when the `App` is closed. Setting to `None` (the default) will reset. |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `App` object is called `app` you would write `app.title`.
