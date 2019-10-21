@@ -1,8 +1,8 @@
-from guizero import App, TextBox, PushButton, Text, alerts
+from guizero import App, TextBox, PushButton, Text, info
 from tkinter.font import Font
 
 def go():
-    alerts.info("hi", "hi " + textbox.value)
+    info("hi", "hi " + textbox.value)
 
 def key_pressed(key):
     print("key pressed {}".format(key))
