@@ -524,6 +524,18 @@ app.display()
 <td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
 </tr>
 <tr>
+<td>select_file(title="Select file", folder=".", filetypes=[["All files", "<em>.</em>"]], save=False)</td>
+<td>title (str), folder (str), filetypes (list), save (bool)</td>
+<td>Full path of the file selected as a string</td>
+<td>Display a box to select a file to open or save. If Open or Save is pressed the filename path is returned. If Cancel is pressed <code>None</code> is returned.</td>
+</tr>
+<tr>
+<td>select_folder(title="Select folder", folder=".")</td>
+<td>title (str), folder (str)</td>
+<td>Full path of the folder selected as a string</td>
+<td>Display a box to select a folder. If a folder is selected the folder path is returned, otherwise <code>None</code> is returned.</td>
+</tr>
+<tr>
 <td>set_full_screen(keybind)</td>
 <td>String</td>
 <td>-</td>
@@ -569,8 +581,6 @@ app.display()
 <th>Method</th>
 <th>Data type</th>
 <th>Description</th>
-<th></th>
-<th></th>
 </tr>
 </thead>
 <tbody>
@@ -578,85 +588,66 @@ app.display()
 <td>bg</td>
 <td><a href="../colors/">color</a></td>
 <td>The background colour of the window</td>
-<td></td>
-<td></td>
+</tr>
+<tr>
+<td>children</td>
+<td>list(widgets)</td>
+<td>A list of widgets in this container</td>
 </tr>
 <tr>
 <td>enabled</td>
 <td>boolean</td>
 <td><code>True</code> if the window is enabled</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>font</td>
 <td>string</td>
 <td>The font that widgets should use</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>full_screen</td>
 <td>boolean</td>
 <td>False</td>
-<td>No</td>
-<td>Whether the App is full screen</td>
 </tr>
 <tr>
 <td>height</td>
 <td>int</td>
 <td>The height of the window</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>layout</td>
 <td>string</td>
 <td>The layout being used by the Window (<code>"auto"</code>) or (<code>"grid"</code>)</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>title</td>
 <td>string</td>
 <td>The title of the window</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>text_size</td>
 <td>int</td>
 <td>The size of the text widgets should use</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>text_color</td>
 <td><a href="../colors/">color</a></td>
 <td>The colour of the text widgets should use</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>visible</td>
 <td>boolean</td>
 <td>If the window is visible</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>width</td>
 <td>int</td>
 <td>The width of the window</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>when_closed</td>
 <td>function</td>
 <td>The function to call when the <code>Window</code> is closed. Setting to <code>None</code> (the default) will reset.</td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>

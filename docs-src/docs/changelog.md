@@ -1,5 +1,13 @@
 # guizero
 
+## 1.1.0 - 2019-10-25
+- Added ability to be able to change the grid of a widget at room time
+- Added `hide_text` to `TextBox` for use with passwords
+- Added open file and folder popups `select_file` and `select_folder`
+- Changes to `Text` to better support cascading of text color, font and size
+- Various documentation updates 
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie)
+
 ## 1.0.0 - 2019-07-11
 - Previously deprecated methods have now been removed
 - Resolved race condition in the `repeat`, `cancel` methods

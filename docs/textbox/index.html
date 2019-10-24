@@ -359,7 +359,8 @@
     enabled=None,
     multiline=False,
     scrollbar=False,
-    command=None)
+    command=None,
+    hide_text=False)
 </code></pre>
 
 <h3 id="what-is-it">What is it</h3>
@@ -462,6 +463,13 @@ app.display()
 <td>None</td>
 <td>-</td>
 <td>The name of a function to call when the text is changed. This function MUST take either zero or one argument, if the function takes one argument the key which was added to the textbox will be returned.</td>
+</tr>
+<tr>
+<td>hide_text</td>
+<td>boolean</td>
+<td>False</td>
+<td>-</td>
+<td>When set to <code>True</code> will hide the text replacing typed characters with <code>*</code>. Setting to a character will result in the text being hidden with that character.</td>
 </tr>
 </tbody>
 </table>
@@ -599,6 +607,11 @@ app.display()
 <td>Set the height of the widget in characters or to <code>"fill"</code>, only effective if <code>multiline</code> is <code>True</code></td>
 </tr>
 <tr>
+<td>hide_text</td>
+<td>boolean / char</td>
+<td>When set to <code>True</code> will hide the text replacing typed characters with <code>*</code>. Setting to a character will result in the text being hidden with that character.</td>
+</tr>
+<tr>
 <td>master</td>
 <td>App or Box</td>
 <td>The container to which this widget belongs</td>
@@ -636,6 +649,14 @@ app.display()
 <pre><code class="python">from guizero import App, TextBox
 app = App()
 input_box = TextBox(app, text=&quot;Type here&quot;)
+app.display()
+</code></pre>
+
+<p><strong>Creating a password TextBox with hidden text</strong></p>
+<p>You can hide the text in a TextBox using the <code>hide_text</code> parameter:</p>
+<pre><code class="python">from guizero import App, TextBox
+app = App()
+password_box = TextBox(app, hide_text=True)
 app.display()
 </code></pre>
 
