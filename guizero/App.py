@@ -1,6 +1,6 @@
 from tkinter import Tk, Toplevel
 from .base import BaseWindow
-from . import utilities as utils
+from . import utilities as utils, system_config
 
 
 class App(BaseWindow):
@@ -49,6 +49,9 @@ class App(BaseWindow):
         if App._main_app is None:
             tk = Tk()
             App._main_app = self
+            # apply tk options
+            for option_key in system_config.tk_options:
+                tk.option_add(option_key, system_config.tk_options[option_key])
         else:
             tk = Toplevel(App._main_app.tk)
             utils.error_format("There should only be 1 guizero App, use Window to create multiple windows.")

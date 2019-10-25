@@ -11,6 +11,7 @@ except ImportError:
     PIL_AVAILABLE = False
 
 from tkinter import PhotoImage, TclError
+from collections.abc import MutableSequence
 
 import sys
 
@@ -32,8 +33,14 @@ class SystemConfig():
         else:
             self._supported_image_types = ["GIF", "PNG"]
             if self._platform == "darwin":
-                #MacOS only supports GIF with PIL
+                # macOS only supports GIF with PIL
                 self._supported_image_types = ["GIF"]
+
+        # tk options  
+        self._tk_options = {
+            "*Label.Font": "helvetica 12",
+            "*Label.Foreground": "black",
+        }
 
     @property
     def PIL_available(self):
@@ -56,6 +63,21 @@ class SystemConfig():
         Returns the current platform ("linux", "darwin", "win32")
         """
         return self._platform
+
+    @property
+    def tk_options(self):
+        """
+        Returns a dictionary of tk options in the format {"pattern": value}
+        which will be applied when an App is created.
+
+        The tk options can be used to modify the default behaviour of 
+        tk and its widgets e.g. Change the background colour of all Buttons ::
+
+            from guizero import system_config
+            system_config.tk_options["*Button.Background"] = "green"
+
+        """
+        return self._tk_options
 
 system_config = SystemConfig()
 
@@ -290,6 +312,51 @@ class AnimationPlayer():
 
             # call again after the delay
             self._master.after(delay, self._show_frame)
+
+
+class TriggeredList(MutableSequence):
+
+    def __init__(self, iterable=(), on_change=None):
+        """
+        A list which will call a callback when a value is changed.
+
+        Used to hold a widgets grid reference.  
+        """
+        self._list = list(iterable)
+        self._on_change = on_change
+
+    def __getitem__(self, key):
+        return self._list.__getitem__(key)
+
+    def __setitem__(self, key, item):
+        self._list.__setitem__(key, item)
+        # trigger change handler
+        self._changed()
+
+    def __delitem__(self, key):
+        self._list.__delitem__(key)
+        # trigger change handler
+        self._changed()
+
+    def __len__(self):
+        return self._list.__len__()
+
+    def insert(self, index, item):
+        self._list.insert(index, item)
+        # trigger change handler
+        self._changed()
+
+    def _changed(self):
+        if self._on_change is not None:
+            self._on_change()
+
+    def __str__(self):
+        data = "["
+        for item in self._list:
+            data = data + str(item) + ", "
+        data = data[:-2] + "]"
+        return data
+
 
 # Lambda-izer for making it easy to pass arguments with function calls
 # without having to know what lambda does

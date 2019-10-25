@@ -63,6 +63,8 @@ You can call the following methods on a `Window` object.
 | info(title, text)                                                                                    | title (str), text (str)                                                                             | -                                                                                                 | Displays a popup box with an information icon                                                                                                                  |
 | question(title, text, initial_value=None)                                                            | title (str), text (str), initial_value (str)                                                        | Pressing `Ok` returns value entered into the box is returned and pressing `Cancel` returns `None` | Displays a popup box with a question box which can accept a text response                                                                                      |
 | repeat(time, command, args=None)                                                                     | time (int), command (function name), args (list of arguments)                                       | -                                                                                                 | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False)           | title (str), folder (str), filetypes (list), save (bool)                                            | Full path of the file selected as a string                                                        | Display a box to select a file to open or save. If Open or Save is pressed the filename path is returned. If Cancel is pressed `None` is returned.             |
+| select_folder(title="Select folder", folder=".")                                                     | title (str), folder (str)                                                                           | Full path of the folder selected as a string                                                      | Display a box to select a folder. If a folder is selected the folder path is returned, otherwise `None` is returned.                                           |
 | set_full_screen(keybind)                                                                             | String                                                                                              | -                                                                                                 | Set the application to display full screen. Option to specify a key to exit full screen (default is 'Esc'.)                                                    |
 | show(wait = False)                                                                                   | -                                                                                                   | -                                                                                                 | Displays the window if it was previously hidden                                                                                                                |
 | update()                                                                                             | -                                                                                                   | -                                                                                                 | Force the window to update itself, useful if changes aren't reflected in the UI.                                                                               |
@@ -75,20 +77,21 @@ You can call the following methods on a `Window` object.
 
 You can set and get the following properties:
 
-| Method      | Data type          | Description                                                                                   |     |                                |
-|-------------|--------------------|-----------------------------------------------------------------------------------------------|-----|--------------------------------|
-| bg          | [color](colors.md) | The background colour of the window                                                           |     |                                |
-| enabled     | boolean            | `True` if the window is enabled                                                               |     |                                |
-| font        | string             | The font that widgets should use                                                              |     |                                |
-| full_screen | boolean            | False                                                                                         | No  | Whether the App is full screen |
-| height      | int                | The height of the window                                                                      |     |                                |
-| layout      | string             | The layout being used by the Window (`"auto"`) or (`"grid"`)                                  |     |                                |
-| title       | string             | The title of the window                                                                       |     |                                |
-| text_size   | int                | The size of the text widgets should use                                                       |     |                                |
-| text_color  | [color](colors.md) | The colour of the text widgets should use                                                     |     |                                |
-| visible     | boolean            | If the window is visible                                                                      |     |                                |
-| width       | int                | The width of the window                                                                       |     |                                |
-| when_closed | function           | The function to call when the `Window` is closed. Setting to `None` (the default) will reset. |     |                                |
+| Method      | Data type          | Description                                                                                   |
+|-------------|--------------------|-----------------------------------------------------------------------------------------------|
+| bg          | [color](colors.md) | The background colour of the window                                                           |
+| children    | list(widgets)      | A list of widgets in this container                                                           |
+| enabled     | boolean            | `True` if the window is enabled                                                               |
+| font        | string             | The font that widgets should use                                                              |
+| full_screen | boolean            | False                                                                                         |
+| height      | int                | The height of the window                                                                      |
+| layout      | string             | The layout being used by the Window (`"auto"`) or (`"grid"`)                                  |
+| title       | string             | The title of the window                                                                       |
+| text_size   | int                | The size of the text widgets should use                                                       |
+| text_color  | [color](colors.md) | The colour of the text widgets should use                                                     |
+| visible     | boolean            | If the window is visible                                                                      |
+| width       | int                | The width of the window                                                                       |
+| when_closed | function           | The function to call when the `Window` is closed. Setting to `None` (the default) will reset. |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `Window` object is called `window` you would write `window.title`.

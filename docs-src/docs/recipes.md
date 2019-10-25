@@ -21,7 +21,7 @@ Get some data from the user using a `TextBox`.
 from guizero import App, TextBox
 
 app = App()
-name = TextBox(app. text="Enter your name")
+name = TextBox(app, text="Enter your name")
 
 app.display()
 ```
