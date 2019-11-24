@@ -23,6 +23,7 @@ install:
   # Install `guizero` in "development mode"
   - python setup.py develop
   - cd tests
+  - python -c 'import tkinter; print(tkinter.TclVersion)'
 
 script:
   - pytest -v
