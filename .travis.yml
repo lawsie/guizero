@@ -1,0 +1,36 @@
+language: python
+
+jobs:
+  include:
+    - os: linux
+      dist: xenial
+      python: "3.7"
+      services: xvfb
+    - os: osx
+      osx_image: xcode11.2
+      # 'language: python' is an error on Travis CI macOS
+      # See https://docs.travis-ci.com/user/languages/python
+      language: shell
+
+install:
+  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then sudo Xvfb :99 -ac & fi
+  # Create and activate an isolated virtual environment
+  - pip3 install --upgrade virtualenv
+  - python3 -m virtualenv guizero-env
+  - source guizero-env/bin/activate
+  # Install test dependencies
+  - pip install --upgrade mkdocs wheel twine virtualenv pytest pillow
+  # Install `guizero` in "development mode"
+  - python setup.py develop
+  - cd tests
+
+script:
+  - pytest -v
+
+after_script:
+  # Clean up to test the full lifecycle
+  - cd ..
+  - python setup.py develop --uninstall
+  - deactivate
+  - rm -r guizero-env
+  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then sudo pkill -SIGTERM Xvfb; fi
