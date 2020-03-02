@@ -6,19 +6,19 @@ from .event import EventManager
 class Waffle(Widget):
 
     def __init__(
-        self, 
-        master, 
-        height=3, 
-        width=3, 
-        dim=20, 
-        pad=5, 
-        color="white", 
-        dotty=False, 
-        grid=None, 
-        align=None, 
-        command=None,  
-        visible=True, 
-        enabled=None, 
+        self,
+        master,
+        height=3,
+        width=3,
+        dim=20,
+        pad=5,
+        color="white",
+        dotty=False,
+        grid=None,
+        align=None,
+        command=None,
+        visible=True,
+        enabled=None,
         bg=None):
 
         description = "[Waffle] object ({}x{})".format(height, width)
@@ -35,7 +35,7 @@ class Waffle(Widget):
         self._waffle_pixels = {}
         self._canvas = None
 
-        super(Waffle, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         if bg is not None:
             self.bg = bg
@@ -56,7 +56,7 @@ class Waffle(Widget):
     def _create_waffle(self):
         if self._height == "fill" or self._width == "fill":
             utils.raise_error("{}\nCannot use 'fill' for width and height.".format(self.description))
-            
+
         self._create_canvas()
         self._size_waffle()
         self._draw_waffle()

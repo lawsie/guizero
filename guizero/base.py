@@ -111,7 +111,7 @@ class Component(
         """
         An abstract class for a component in guizero.
         """
-        super(Component, self).__init__(tk)
+        super().__init__(tk)
 
         self._master = master
         self._description = description
@@ -182,7 +182,7 @@ class Container(Component):
         """
         An abstract class for a container which can hold other widgets.
         """
-        super(Container, self).__init__(master, tk, description, displayable)
+        super().__init__(master, tk, description, displayable)
         self._children = []
         self._layout_manager = layout
         self._bg = None
@@ -445,7 +445,7 @@ class BaseWindow(Container):
         """
         Base class for objects which use windows e.g. `App` and `Window`
         """
-        super(BaseWindow, self).__init__(master, tk, description, layout, False)
+        super().__init__(master, tk, description, layout, False)
 
         # Initial setup
         self.tk.title( str(title) )
@@ -572,7 +572,7 @@ class BaseWindow(Container):
         self.tk.attributes("-fullscreen", False)
         self._full_screen = False
         self.events.remove_event("<FullScreen.Escape>")
-    
+
     def warn(self, title, text):
         dialog.warn(title, text, master=self)
 
@@ -613,7 +613,7 @@ class Widget(
         """
         The base class for a widget which is an interactable component e.g. `Picture`
         """
-        super(Widget, self).__init__(master,tk, description, True)
+        super().__init__(master,tk, description, True)
         self._update_grid(grid)
         self._update_align(align)
         self._width = width
@@ -639,7 +639,7 @@ class TextWidget(
         """
         The base class for a widget which contains or has text e.g. ``Text`, `PushButton`
         """
-        super(TextWidget, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         #inherit from master
         self.text_color = master.text_color
@@ -658,7 +658,7 @@ class ContainerWidget(
         """
         The base class for a widget which is also a container e.g. `Box`, `ButtonGroup`
         """
-        super(ContainerWidget, self).__init__(master,tk, description, layout, True)
+        super().__init__(master,tk, description, layout, True)
         self._update_grid(grid)
         self._update_align(align)
         self._width = width
@@ -720,4 +720,4 @@ class ContainerTextWidget(
         The base class for a widget which is also a container and contains text
         e.g. `ButtonGroup`
         """
-        super(ContainerTextWidget, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)

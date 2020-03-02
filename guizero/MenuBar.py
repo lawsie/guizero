@@ -22,7 +22,7 @@ class MenuBar(Component):
             A 3D list of:
                 - submenus,
                 - with each submenu being a list of options
-                - and each option being a text/command pair 
+                - and each option being a text/command pair
 
             e.g ::
 
@@ -40,7 +40,7 @@ class MenuBar(Component):
         # Create a tk Menu object within this object
         tk = Menu(master.tk)
 
-        super(MenuBar, self).__init__(master, tk, description, False)
+        super().__init__(master, tk, description, False)
 
         # Keep track of submenu objects
         self._sub_menus = []
@@ -68,8 +68,8 @@ class MenuBar(Component):
         """
         Sets the background color of the widget.
 
-        Note - some operating systems dont allow the background color of the 
-        menu bar to be changed. 
+        Note - some operating systems dont allow the background color of the
+        menu bar to be changed.
         """
         return super(MenuBar, self.__class__).bg.fget(self)
 
@@ -79,4 +79,3 @@ class MenuBar(Component):
         super(MenuBar, self.__class__).bg.fset(self, color)
         for sub_menu in self._sub_menus:
             sub_menu["bg"] = utils.convert_color(color)
-    

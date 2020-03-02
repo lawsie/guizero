@@ -61,7 +61,7 @@ class CheckBox(TextWidget):
         self._value = IntVar()
         tk = Checkbutton(master.tk, text=text, variable=self._value)
 
-        super(CheckBox, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         # Set the command callback
         self.tk.config(command=self._command_callback)

@@ -51,7 +51,7 @@ class Box(ContainerWidget):
             size. If not `None`, both the width and height need to be set.
 
         :param int border:
-            Sets the border thickness. `0` or `False` is no border. `True` or 
+            Sets the border thickness. `0` or `False` is no border. `True` or
             value > 1 sets a border. The default is `None`.
         """
 
@@ -59,7 +59,7 @@ class Box(ContainerWidget):
 
         tk = Frame(master.tk)
 
-        super(Box, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
 
         self.resize(width, height)
 
@@ -105,5 +105,5 @@ class Box(ContainerWidget):
             The height of the widget.
         """
         self._set_propagation(width, height)
-        
-        super(Box, self).resize(width, height)
+
+        super().resize(width, height)

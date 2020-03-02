@@ -5,14 +5,14 @@ from .base import Widget
 class Picture(Widget):
 
     def __init__(
-        self, 
-        master, 
-        image=None, 
-        grid=None, 
-        align=None, 
-        visible=True, 
-        enabled=None, 
-        width=None, 
+        self,
+        master,
+        image=None,
+        grid=None,
+        align=None,
+        visible=True,
+        enabled=None,
+        width=None,
         height=None):
 
         """
@@ -56,7 +56,7 @@ class Picture(Widget):
         # Instantiate label object which will contain image
         tk = Label(master.tk)
 
-        super(Picture, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         # create the image
         self._load_image()

@@ -23,12 +23,12 @@ class Text(TextWidget):
 
         self._text = str(text)
         tk = Label(master.tk, text=text)
-        super(Text, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         # setup defaults
         if bg:
             self.bg = bg
-        
+
         if size is not None:
             self.text_size = size
 
@@ -75,4 +75,3 @@ class Text(TextWidget):
         self._text = new_text
         self.tk.config(text=new_text)
         self.description = "[Text] object with text \"" + new_text + "\""
-

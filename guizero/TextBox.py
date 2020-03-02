@@ -23,7 +23,7 @@ class TextBox(TextWidget):
         description = "[TextBox] object with text \"" + str(text) + "\""
 
         self._multiline = multiline
-        
+
         # Set up controlling string variable
         self._text = StringVar()
         self._text.set( str(text) )
@@ -38,7 +38,7 @@ class TextBox(TextWidget):
         else:
             tk = Entry(master.tk, textvariable=self._text)
 
-        super(TextBox, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
         self.hide_text = hide_text
         self.update_command(command)
@@ -93,7 +93,7 @@ class TextBox(TextWidget):
             show_value = ""
         else:
             show_value = value
-        
+
         self._set_tk_config("show", show_value)
 
     # METHODS
@@ -121,4 +121,3 @@ class TextBox(TextWidget):
     # Append text
     def append(self, text):
         self.value = self.value + str(text)
-

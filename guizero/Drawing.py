@@ -7,13 +7,13 @@ from .event import EventManager
 class Drawing(Widget):
 
     def __init__(
-        self, 
-        master, 
-        width=100, 
-        height=100, 
-        grid=None, 
-        align=None, 
-        visible=True, 
+        self,
+        master,
+        width=100,
+        height=100,
+        grid=None,
+        align=None,
+        visible=True,
         enabled=None):
         """
         Creates a Drawing
@@ -28,7 +28,7 @@ class Drawing(Widget):
         :param int height:
             The starting height of the widget. Defaults to `None` and will auto
             size.
-        
+
         :param List grid:
             Grid co-ordinates for the widget, required if the master layout
             is 'grid', defaults to `None`.
@@ -52,7 +52,7 @@ class Drawing(Widget):
 
         tk = Canvas(master.tk, height=100, width=100, bd=0, highlightthickness=0)
 
-        super(Drawing, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, description, grid, align, visible, enabled, width, height)
 
     def line(self, x1, y1, x2, y2, color="black", width=1):
         """
@@ -80,7 +80,7 @@ class Drawing(Widget):
             The id of the line.
         """
         return self.tk.create_line(
-            x1, y1, x2, y2, 
+            x1, y1, x2, y2,
             width = width,
             fill = "" if color is None else utils.convert_color(color)
             )
@@ -114,7 +114,7 @@ class Drawing(Widget):
             The id of the shape.
         """
         return self.tk.create_oval(
-            x1, y1, x2, y2, 
+            x1, y1, x2, y2,
             outline = utils.convert_color(outline_color) if outline else "",
             width = int(outline),
             fill = "" if color is None else utils.convert_color(color)
@@ -149,7 +149,7 @@ class Drawing(Widget):
             The id of the shape.
         """
         return self.tk.create_rectangle(
-            x1, y1, x2, y2, 
+            x1, y1, x2, y2,
             outline = utils.convert_color(outline_color) if outline else "",
             width = int(outline),
             fill = "" if color is None else utils.convert_color(color)
@@ -175,7 +175,7 @@ class Drawing(Widget):
             The id of the shape.
         """
         return self.tk.create_polygon(
-            *coords, 
+            *coords,
             outline = utils.convert_color(outline_color) if outline else "",
             width = int(outline),
             fill = "" if color is None else utils.convert_color(color)
@@ -216,15 +216,15 @@ class Drawing(Widget):
             The id of the shape.
         """
         return self.polygon(
-            x1, y1, x2, y2, x3, y3, 
-            color=color, 
-            outline=outline, 
+            x1, y1, x2, y2, x3, y3,
+            color=color,
+            outline=outline,
             outline_color=outline_color)
 
     def image(self, x, y, image, width=None, height=None):
         """
         Inserts an image into the drawing, position by its top-left corner.
-        
+
         :param int x:
             The x position to insert the image.
 
@@ -239,7 +239,7 @@ class Drawing(Widget):
             actual width of the Image. Default to `None`.
 
         :param str height:
-            The width to scale the image too, setting to `None` will use the 
+            The width to scale the image too, setting to `None` will use the
             actual height of the Image. Default to `None`.
 
         :return:
@@ -250,11 +250,11 @@ class Drawing(Widget):
         id = self.tk.create_image(x, y, image=_image.tk_image, anchor="nw")
         self._images[id] = _image
         return id
-    
+
     def text(self, x, y, text, color="black", font=None, size=None, max_width=None):
         """
         Inserts text into the drawing, position by its top-left corner.
-        
+
         :param int x:
             The x position of the text.
 
@@ -273,7 +273,7 @@ class Drawing(Widget):
             default font size.
 
         :param int max_width:
-            Maximum line length. Lines longer than this value are wrapped. 
+            Maximum line length. Lines longer than this value are wrapped.
             Default is `None` (no wrapping).
         """
         # create the font
@@ -281,9 +281,9 @@ class Drawing(Widget):
             f = Font(self.tk, family=font)
         else:
             f = Font(self.tk, family=font, size=size)
-        
+
         return self.tk.create_text(
-            x, y, 
+            x, y,
             text=text,
             fill = "" if color is None else utils.convert_color(color),
             font=f,

@@ -84,7 +84,7 @@ class ButtonGroup(ContainerTextWidget):
         self._selected = StringVar(master=tk.winfo_toplevel())
 
         # ButtonGroup uses "grid" internally to sort the RadioButtons
-        super(ButtonGroup, self).__init__(master, tk, description, "grid", grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, description, "grid", grid, align, visible, enabled, width, height)
 
         # Loop through the list given and setup the options
         self._options = []
@@ -207,7 +207,7 @@ class ButtonGroup(ContainerTextWidget):
         if len(self._rbuttons) > 0:
             # work out the height of a button
             button_height = height
-            
+
             if isinstance(height, int):
                 if height % len(self._rbuttons) != 0:
                     # if the height doesnt divide by the number of radio buttons give a warning
@@ -216,11 +216,11 @@ class ButtonGroup(ContainerTextWidget):
                     utils.error_format("ButtonGroup height '{}' doesn't divide by the number of buttons '{}' setting height to '{}'.".format(height, len(self._rbuttons), new_height))
                 else:
                     button_height = int(height / len(self._rbuttons))
-            
+
             for item in self._rbuttons:
                 item.height = button_height
 
-        super(ButtonGroup, self).resize(width, height)
+        super().resize(width, height)
 
     @property
     def options(self):
@@ -311,5 +311,3 @@ class ButtonGroup(ContainerTextWidget):
 
     def _command_callback(self):
         self._command()
-
- 
