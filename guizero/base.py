@@ -18,7 +18,7 @@ from .event import EventManager
 from . import dialog
 from tkinter import BOTH, X, Y, YES
 
-class Base():
+class Base:
 
     def __init__(self, tk):
         """

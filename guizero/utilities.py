@@ -19,7 +19,7 @@ class GUIZeroException(Exception):
     pass
 
 # holds details about the configuration guizero is using
-class SystemConfig():
+class SystemConfig:
     def __init__(self):
         """
         Holds details about the system configuration guizero is using
@@ -36,7 +36,7 @@ class SystemConfig():
                 # macOS only supports GIF with PIL
                 self._supported_image_types = ["GIF"]
 
-        # tk options  
+        # tk options
         self._tk_options = {
             "*Label.Font": "helvetica 12",
             "*Label.Foreground": "black",
@@ -70,7 +70,7 @@ class SystemConfig():
         Returns a dictionary of tk options in the format {"pattern": value}
         which will be applied when an App is created.
 
-        The tk options can be used to modify the default behaviour of 
+        The tk options can be used to modify the default behaviour of
         tk and its widgets e.g. Change the background colour of all Buttons ::
 
             from guizero import system_config
@@ -82,7 +82,7 @@ class SystemConfig():
 system_config = SystemConfig()
 
 
-class GUIZeroImage():
+class GUIZeroImage:
     def __init__(self, image_source, width, height):
         """
         GUIZeroImage manages an "image" for guizero widgets, parsing its
@@ -250,7 +250,7 @@ class GUIZeroImage():
                 self._animation = True
 
 
-class AnimationPlayer():
+class AnimationPlayer:
     def __init__(self, master, guizero_image, update_image_callback):
         """
         AnimationPlayer manages the playing of a animated gif for guizero
@@ -320,7 +320,7 @@ class TriggeredList(MutableSequence):
         """
         A list which will call a callback when a value is changed.
 
-        Used to hold a widgets grid reference.  
+        Used to hold a widgets grid reference.
         """
         self._list = list(iterable)
         self._on_change = on_change
@@ -397,7 +397,7 @@ def deprecated(message):
 
 def convert_color(color):
     """
-    Converts a color from "color", (255, 255, 255) or "#ffffff" into a color tk 
+    Converts a color from "color", (255, 255, 255) or "#ffffff" into a color tk
     should understand.
     """
     if color is not None:
