@@ -21,6 +21,8 @@ drawing.text(50, 5, "Drawing", color="white")
 
 listbox = ListBox(app, items=["ListBox", "of", "items"])
 
+picture = Picture(app, image="guizero.gif")
+
 
 
 
