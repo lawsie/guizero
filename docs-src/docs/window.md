@@ -15,7 +15,7 @@ __init__(
 ```
 
 ### What is it?
-A `Window` object is how you create new windows in guizero.
+The `Window` object create a new window in guizero.
 
 ![Window](images/window.png)
 
