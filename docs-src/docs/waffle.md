@@ -22,7 +22,7 @@ __init__(
 ```
 
 ### What is it
-The `Waffle` object display an n*n grid of squares with custom dimensions and padding
+The `Waffle` object display an n*n grid of squares with custom dimensions and padding.
 
 ![Waffle on Windows](images/waffle_windows.png)
 

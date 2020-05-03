@@ -17,7 +17,7 @@ __init__(
 ```
 
 ### What is it?
-The `Box` object is an invisible container which can contain other widgets. It is the only object other than `App` which can act as the `master` for other objects and can have its own layout manager.
+The `Box` object is an invisible container which can contain other widgets. It is the only object other than `App` and `Window` which can act as the `master` for other objects and can have its own layout manager.
 
 You can use the `Box` object to group other objects within your GUI.
 

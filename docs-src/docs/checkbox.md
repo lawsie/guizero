@@ -18,7 +18,7 @@ __init__(
 ```
 
 ### What is it?
-The `CheckBox` object displays a check box to allow an option to be ticked or unticked
+The `CheckBox` object displays a check box to allow an option to be ticked or un-ticked.
 
 ![Checkbox on Windows](images/checkbox_windows.png)
 

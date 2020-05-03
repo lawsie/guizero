@@ -234,7 +234,6 @@ class SizeMixin():
 
 
 class LayoutMixin():
-
     @property
     def grid(self):
         """
@@ -268,7 +267,6 @@ class LayoutMixin():
         else:
             if grid is not None:
                 utils.error_format("A grid is not required for {} as it is not using a 'grid' layout.".format(self.description))
-
 
     @property
     def align(self):

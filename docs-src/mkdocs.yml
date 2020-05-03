@@ -20,6 +20,7 @@ nav:
       - Getting help: gettinghelp.md
   - Recipes: recipes.md
   - Widgets:
+      - Overview: widgetoverview.md
       - App: app.md
       - Box: box.md
       - ButtonGroup: buttongroup.md
