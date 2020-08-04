@@ -12,9 +12,9 @@ Windows users can also use the [Windows MSI installer](#windows-msi-installer).
 
 1. Go to the [guizero repository](https://github.com/lawsie/guizero) on GitHub.
 
-2. Click the green "Clone or download" button and then "Download ZIP"
+2. Click the green "Code" button and then "Download ZIP"
 
-    ![Download the zip](images/download-zip.png)
+    ![Download the zip](images/download-zip-annotated.png)
 
 3. Open the zip file
 
