@@ -163,12 +163,6 @@
                 
                 
                 
-                    <li >
-                        <a href="../recipes/">Recipes</a>
-                    </li>
-                
-                
-                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Widgets <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -274,6 +268,18 @@
                 
                 
                 
+                    <li >
+                        <a href="../recipes/">Recipes</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
+                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -353,18 +359,16 @@
 <li>a list of rgb values - <code>(255,255,255)</code></li>
 </ul>
 <p>Colors can be used as either starting parameters, for example:</p>
-<pre><code class="python">app = App(bg = &quot;red&quot;)
+<pre><code class="language-python">app = App(bg = &quot;red&quot;)
 app = App(bg = &quot;#ff0000&quot;)
 app = App(bg = (255, 0, 0))
 </code></pre>
-
 <p>or as properties, for example:</p>
-<pre><code class="python">text = Text(app, text = &quot;hi&quot;)
+<pre><code class="language-python">text = Text(app, text = &quot;hi&quot;)
 text.text_color = &quot;green&quot;
 text.text_color = &quot;#00ff00&quot;
 text.text_color = (0, 255, 0)
 </code></pre>
-
 <p>If a color is set using a list of rgb values (<code>(255,255,255)</code>) it will be returned as an #rgb hex value (<code>#ffffff</code>)</p>
 <h3 id="color-names">Color names</h3>
 <p>Some color names can be given as strings, for example</p>

@@ -163,12 +163,6 @@
                 
                 
                 
-                    <li >
-                        <a href="../recipes/">Recipes</a>
-                    </li>
-                
-                
-                
                     <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Widgets <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -274,6 +268,18 @@
                 
                 
                 
+                    <li >
+                        <a href="../recipes/">Recipes</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
+                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -320,7 +326,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="../contributing/">
+                        <a rel="next" href="../recipes/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -353,7 +359,7 @@
 
 <h1 id="window">Window</h1>
 <p>(Contains a <code>tkinter.TopLevel</code> object)</p>
-<pre><code class="python">__init__(
+<pre><code class="language-python">__init__(
     self, 
     master, 
     title=&quot;guizero&quot;, 
@@ -363,18 +369,16 @@
     bg=None, 
     visible=True)
 </code></pre>
-
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>Window</code> object create a new window in guizero.</p>
 <p><img alt="Window" src="../images/window.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create an <code>Window</code> object like this:</p>
-<pre><code class="python">from guizero import App, Window
+<pre><code class="language-python">from guizero import App, Window
 app = App()
 window = Window(app)
 app.display()
 </code></pre>
-
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create a <code>Window</code> object you <strong>must</strong> specify a <code>master</code> and you can specify any of the the optional parameters. Specify parameters in the brackets like this: <code>window = Window(app, bg="red", height=200)</code></p>
 <table>
@@ -662,15 +666,14 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong>Creating a Window object</strong></p>
 <p>Create an <code>Window</code> object by calling the <code>Window()</code> constructor. You should give the object a name so you can refer to it later - in this case we have called it <code>window</code>. It is best to keep the name you give to your <code>Window</code> object quite short, as you will have to use it to tell other widgets where they should be stored.</p>
-<pre><code class="python">from guizero import App, Window
+<pre><code class="language-python">from guizero import App, Window
 app = App(title=&quot;My app&quot;, height=300, width=200)
 window = Window(title = &quot;2nd Window&quot;, height=300, width=200)
 app.display()
 </code></pre>
-
 <p><strong>Showing and hiding a Window</strong></p>
 <p><code>Window</code> objects can be shown and hidden using the <code>show()</code> and <code>hide()</code> methods:</p>
-<pre><code class="python">from guizero import App, Window, PushButton
+<pre><code class="language-python">from guizero import App, Window, PushButton
 
 def open_window():
     window_2.show()
@@ -683,9 +686,8 @@ open_button(app, text=&quot;open 2nd window&quot;, command=open_window)
 
 app.display()
 </code></pre>
-
 <p>If you want a <code>Window</code> to become the main window and stop all other windows responding until it is closed you can set the optional <code>wait</code> parameter to <code>True</code> when using <code>show</code>:</p>
-<pre><code class="python">def open_window():
+<pre><code class="language-python">def open_window():
     window_2.show(wait = True)
 </code></pre></div>
         

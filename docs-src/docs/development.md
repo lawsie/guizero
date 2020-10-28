@@ -52,16 +52,16 @@ To run the automated tests:
 
 ```
 cd guizero\test
-pytest -v 
+pytest -v
 ```
 
-If running the tests inside a virtual environment you will need to install pytest in that virtual enviroment.
+If running the tests inside a virtual environment you will need to install pytest in that virtual environment.
 
 ```
 pip install pytest
 ```
 
-_Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesnt seem to like being initialised and destroyed hundreds of times, I suspect a file locking issue as you dont see the problem on Linux. So sometimes you might get a test fail with an error like `This probably means that tk wasn't installed properly.`. Just re-run the last failed errors! `pytest --lf -v`_
+_Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesn't seem to like being initialised and destroyed hundreds of times, I suspect a file locking issue as you don't see the problem on Linux. So sometimes you might get a test fail with an error like `This probably means that tk wasn't installed properly.`. Just re-run the last failed errors! `pytest --lf -v`_
 
 ## Documents
 
@@ -72,4 +72,4 @@ cd guizero\docs-src
 mkdocs serve
 ```
 
-Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) 
+Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
