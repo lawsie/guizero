@@ -163,12 +163,6 @@
                 
                 
                 
-                    <li >
-                        <a href="../recipes/">Recipes</a>
-                    </li>
-                
-                
-                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Widgets <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -274,6 +268,18 @@
                 
                 
                 
+                    <li >
+                        <a href="../recipes/">Recipes</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
+                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -346,15 +352,14 @@
 <h2 id="loops-and-sleeping">Loops and sleeping</h2>
 <p>You may be used to writing programs which contain loops or make use of the <code>sleep()</code> command, but find when you try to use these with guizero they cause your GUI to freeze. This is because guizero (in common with almost all GUIs) operates an <strong>event driven</strong> model of programming which may be different to the one you are familiar with.</p>
 <p>Your first guizero program might look a bit like this:</p>
-<pre><code class="python">from guizero import App
+<pre><code class="language-python">from guizero import App
 app = App(&quot;Hello world&quot;)
 app.display()
 </code></pre>
-
 <p>The line of code <code>app.display()</code> doesn't just display the app - it enters an <strong>infinite event loop</strong> which is watching and waiting for events to happen on the GUI. Events include things like the user clicking on a button, moving a slider, typing in a text box etc. No code written after this line will ever execute because the event loop is infinite.</p>
 <h3 id="example">Example</h3>
 <p>Suppose you want a counter on your GUI to start counting up by 1 every second. You might be tempted to write a program like this:</p>
-<pre><code class="python">from guizero import App, Text
+<pre><code class="language-python">from guizero import App, Text
 from time import sleep
 
 app = App(&quot;Hello world&quot;)
@@ -364,7 +369,6 @@ while True:
     sleep(1)
 app.display()
 </code></pre>
-
 <p>If you run this program, you'll see that this does not have the desired effect - your program crashes! This is because you have blocked the updating of your GUI in two ways:</p>
 <ol>
 <li>
@@ -385,7 +389,7 @@ app.display()
 <p>Set a <strong>callback</strong> to that function. You can either schedule the same callback to occur repeatedly after a given number of milliseconds (in this example <code>1000</code>), or you can schedule it only once.</p>
 </li>
 </ol>
-<pre><code class="python">from guizero import App, Text
+<pre><code class="language-python">from guizero import App, Text
 
 # Action you would like to perform
 def counter():

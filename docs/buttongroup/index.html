@@ -163,12 +163,6 @@
                 
                 
                 
-                    <li >
-                        <a href="../recipes/">Recipes</a>
-                    </li>
-                
-                
-                
                     <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Widgets <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -274,6 +268,18 @@
                 
                 
                 
+                    <li >
+                        <a href="../recipes/">Recipes</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
+                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -353,7 +359,7 @@
 
 <h1 id="buttongroup">ButtonGroup</h1>
 <p>(Contains a <code>tkinter.Frame</code> object)</p>
-<pre><code class="python">__init__(
+<pre><code class="language-python">__init__(
     self,
     master,
     options=[],
@@ -368,18 +374,16 @@
     width=None,
     height=None)
 </code></pre>
-
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>ButtonGroup</code> object displays a group of radio buttons, allowing the user to choose a single option.</p>
 <p><img alt="ButtonGroup" src="../images/buttongroup.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create a <code>ButtonGroup</code> object like this:</p>
-<pre><code class="python">from guizero import App, ButtonGroup
+<pre><code class="language-python">from guizero import App, ButtonGroup
 app = App()
 choice = ButtonGroup(app, options=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;], selected=&quot;cheese&quot;)
 app.display()
 </code></pre>
-
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create a <code>ButtonGroup</code> object you <strong>must</strong> specify a <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets like this: <code>choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)</code></p>
 <table>
@@ -666,7 +670,7 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong>Creating a ButtonGroup with a 2D list</strong></p>
 <p>If you want to create a ButtonGroup object with your own hidden values you can specify a 2D list of options:</p>
-<pre><code class="python">from guizero import App, ButtonGroup, Text
+<pre><code class="language-python">from guizero import App, ButtonGroup, Text
 
 def update_text():
     what_is_selected.value = activities.value

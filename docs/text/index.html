@@ -163,12 +163,6 @@
                 
                 
                 
-                    <li >
-                        <a href="../recipes/">Recipes</a>
-                    </li>
-                
-                
-                
                     <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Widgets <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -274,6 +268,18 @@
                 
                 
                 
+                    <li >
+                        <a href="../recipes/">Recipes</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
+                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -351,7 +357,7 @@
 
 <h1 id="text">Text</h1>
 <p>(Contains a <code>tkinter.Label</code> object)</p>
-<pre><code class="python">__init__(
+<pre><code class="language-python">__init__(
     self,
     master,
     text=&quot;&quot;,
@@ -366,18 +372,16 @@
     width=None,
     height=None)
 </code></pre>
-
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>Text</code> object displays non editable text in your app, useful for titles, labels and instructions.</p>
 <p><img alt="Text on Windows" src="../images/text_windows.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create a <code>Text</code> object like this:</p>
-<pre><code class="python">from guizero import App, Text
+<pre><code class="language-python">from guizero import App, Text
 app = App()
 text = Text(app, text=&quot;Hello World&quot;)
 app.display()
 </code></pre>
-
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create a <code>Text</code> object, you <strong>must</strong> specify a <code>master</code> and you can specify any of the the optional parameters. Specify parameters in the brackets, like this: <code>text = Text(app, text="hi")</code></p>
 <table>

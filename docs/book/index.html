@@ -11,7 +11,7 @@
     <link rel="../img/favicon.ico">
 
     
-    <title>Waffle - guizero</title>
+    <title>Book - guizero</title>
     
 
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -163,7 +163,7 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Widgets <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
@@ -252,8 +252,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Waffle</a>
+<li >
+    <a href="../waffle/">Waffle</a>
 </li>
 
                         
@@ -274,8 +274,8 @@
                 
                 
                 
-                    <li >
-                        <a href="../book/">Book</a>
+                    <li class="active">
+                        <a href="./">Book</a>
                     </li>
                 
                 
@@ -321,12 +321,12 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../textbox/">
+                        <a rel="prev" href="../recipes/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="../window/">
+                        <a rel="next" href="../contributing/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -340,416 +340,18 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#waffle">Waffle</a></li>
-            <li class="second-level"><a href="#what-is-it">What is it</a></li>
+        <li class="first-level active"><a href="#book">Book</a></li>
+            <li class="second-level"><a href="#create-graphical-user-interfaces-with-python">Create Graphical User Interfaces with Python</a></li>
                 
-            <li class="second-level"><a href="#how-do-i-make-one">How do I make one?</a></li>
-                
-            <li class="second-level"><a href="#starting-parameters">Starting parameters</a></li>
-                
-            <li class="second-level"><a href="#methods">Methods</a></li>
-                
-            <li class="second-level"><a href="#properties">Properties</a></li>
-                
-            <li class="second-level"><a href="#example">Example</a></li>
-                
-            <li class="second-level"><a href="#wafflepixel">WafflePixel</a></li>
-                
-                <li class="third-level"><a href="#properties_1">Properties</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="waffle">Waffle</h1>
-<p>(Contains a <code>tkinter.Frame</code> object)</p>
-<pre><code class="language-python">__init__(
-    self, 
-    master, 
-    height=3, 
-    width=3, 
-    dim=20, 
-    pad=5, 
-    color=&quot;white&quot;, 
-    dotty=False, 
-    grid=None, 
-    align=None, 
-    command=None, 
-    remember=True, 
-    visible=True, 
-    enabled=None, 
-    bg=None)
-</code></pre>
-<h3 id="what-is-it">What is it</h3>
-<p>The <code>Waffle</code> object display an n*n grid of squares with custom dimensions and padding.</p>
-<p><img alt="Waffle on Windows" src="../images/waffle_windows.png" /></p>
-<h3 id="how-do-i-make-one">How do I make one?</h3>
-<p>Create a <code>Waffle</code> object like this:</p>
-<pre><code class="language-python">from guizero import App, Waffle
-app = App()
-waffle = Waffle(app)
-app.display()
-</code></pre>
-<h3 id="starting-parameters">Starting parameters</h3>
-<p>When you create a <code>Waffle</code> object you <strong>must</strong> specify <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>waffle = Waffle(app, height=25)</code></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Takes</th>
-<th>Default</th>
-<th>Compulsory</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>master</td>
-<td>App, Window or Box</td>
-<td>-</td>
-<td>Yes</td>
-<td>The container to which this widget belongs</td>
-</tr>
-<tr>
-<td>align</td>
-<td>string</td>
-<td>None</td>
-<td>-</td>
-<td>Alignment of this widget within its container. Possible values: <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>.</td>
-</tr>
-<tr>
-<td>color</td>
-<td><a href="../colors/">color</a></td>
-<td>"white"</td>
-<td>-</td>
-<td>The default colour of pixels on the waffle</td>
-</tr>
-<tr>
-<td>command</td>
-<td>function name</td>
-<td>None</td>
-<td>-</td>
-<td>The name of a function to call when the waffle is clicked. This function MUST take either zero or two arguments, if the function takes two arguments the <code>x</code> and <code>y</code> co-ordinates of the pixel which was clicked will be given.</td>
-</tr>
-<tr>
-<td>dim</td>
-<td>int</td>
-<td>20</td>
-<td>-</td>
-<td>How large one of the pixels on the waffle is</td>
-</tr>
-<tr>
-<td>dotty</td>
-<td>boolean</td>
-<td>False</td>
-<td>-</td>
-<td>Whether the pixels display as dots/circles (True) or squares (False)</td>
-</tr>
-<tr>
-<td>grid</td>
-<td>List [int, int]</td>
-<td>None</td>
-<td>-</td>
-<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
-</tr>
-<tr>
-<td>height</td>
-<td>int</td>
-<td>3</td>
-<td>-</td>
-<td>Set the height in waffle pixels</td>
-</tr>
-<tr>
-<td>pad</td>
-<td>int</td>
-<td>5</td>
-<td>-</td>
-<td>How much space is between the pixels on the waffle</td>
-</tr>
-<tr>
-<td>width</td>
-<td>int</td>
-<td>3</td>
-<td>-</td>
-<td>Set the width in waffle pixels</td>
-</tr>
-<tr>
-<td>visible</td>
-<td>boolean</td>
-<td>True</td>
-<td>No</td>
-<td>If the widget should be visible.</td>
-</tr>
-<tr>
-<td>enabled</td>
-<td>boolean</td>
-<td>None</td>
-<td>No</td>
-<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
-</tr>
-<tr>
-<td>bg</td>
-<td><a href="../colors/">color</a></td>
-<td>None</td>
-<td>No</td>
-<td>The background colour of the waffle. Takes a <a href="../colors/">color</a> value.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="methods">Methods</h3>
-<p>You can call the following methods on your Waffle object.</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Takes</th>
-<th>Returns</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>after(time, command, args=None)</td>
-<td>time (int), command (function name), args (list of arguments)</td>
-<td>-</td>
-<td>Schedules a <strong>single</strong> call to <code>command</code> after <code>time</code> milliseconds. (To repeatedly call the same command, use <code>repeat()</code>)</td>
-</tr>
-<tr>
-<td>cancel(command)</td>
-<td>command (function name)</td>
-<td>-</td>
-<td>Cancels a scheduled call to <code>command</code></td>
-</tr>
-<tr>
-<td>destroy()</td>
-<td>-</td>
-<td>-</td>
-<td>Destroys the widget</td>
-</tr>
-<tr>
-<td>disable()</td>
-<td>-</td>
-<td>-</td>
-<td>Disables the widget so that it cannot be interacted with</td>
-</tr>
-<tr>
-<td>enable()</td>
-<td>-</td>
-<td>-</td>
-<td>Enables the widget</td>
-</tr>
-<tr>
-<td>focus()</td>
-<td>-</td>
-<td>-</td>
-<td>Gives focus to the widget (e.g. focusing a <code>TextBox</code> so that the user can type inside it)</td>
-</tr>
-<tr>
-<td>get_all()</td>
-<td>-</td>
-<td>List</td>
-<td>Returns the pixel colours in the grid as a 2D list.</td>
-</tr>
-<tr>
-<td>get_pixel(x, y)</td>
-<td>x (int), y (int)</td>
-<td>string</td>
-<td>Returns the colour of the pixel at the specified coordinates. 0,0 is the top left of the grid.</td>
-</tr>
-<tr>
-<td>hide()</td>
-<td>-</td>
-<td>-</td>
-<td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
-</tr>
-<tr>
-<td>pixel(x, y)</td>
-<td>(int), y (int)</td>
-<td><a href="#wafflepixel">WafflePixel</a></td>
-<td>Returns the pixel at the specified coordinates. 0,0 is the top left of the grid. <code>Waffle.pixel(x,y)</code> is the equivalent of <code>Waffle[x,y]</code></td>
-</tr>
-<tr>
-<td>repeat(time, command, args=None)</td>
-<td>time (int), command (function name), args (list of arguments)</td>
-<td>-</td>
-<td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
-</tr>
-<tr>
-<td>set_all(color)</td>
-<td>color (<a href="../colors/">color</a>)</td>
-<td>-</td>
-<td>Sets all pixels to the specified colour.</td>
-</tr>
-<tr>
-<td>set_pixel(x, y, color)</td>
-<td>x (int), y (int), color (<a href="../colors/">color</a>)</td>
-<td>-</td>
-<td>Sets the pixel at the specified coordinates to the specified colour. 0,0 is the top left of the grid.</td>
-</tr>
-<tr>
-<td>show()</td>
-<td>-</td>
-<td>-</td>
-<td>Displays the widget</td>
-</tr>
-<tr>
-<td>update_command(command)</td>
-<td>command (function name)</td>
-<td>-</td>
-<td>Updates the function to call when the Waffle is clicked</td>
-</tr>
-</tbody>
-</table>
-<h3 id="properties">Properties</h3>
-<p>You can set and get the following properties:</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Data type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>align</td>
-<td>string</td>
-<td>The alignment of this widget within its container</td>
-</tr>
-<tr>
-<td>bg</td>
-<td><a href="../colors/">color</a></td>
-<td>The background colour of the widget</td>
-</tr>
-<tr>
-<td>color</td>
-<td><a href="../colors/">color</a></td>
-<td>The default colour of pixels on the waffle</td>
-</tr>
-<tr>
-<td>dotty</td>
-<td>bool</td>
-<td>If <code>True</code> the waffle will display circles</td>
-</tr>
-<tr>
-<td>enabled</td>
-<td>boolean</td>
-<td><code>True</code> if the widget is enabled</td>
-</tr>
-<tr>
-<td>grid</td>
-<td>List</td>
-<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid</td>
-</tr>
-<tr>
-<td>height</td>
-<td><a href="../size/">size</a></td>
-<td>Set the height in waffle pixels</td>
-</tr>
-<tr>
-<td>master</td>
-<td>App or Box</td>
-<td>The container to which this widget belongs</td>
-</tr>
-<tr>
-<td>pad</td>
-<td>int</td>
-<td>The size of the padding between pixels</td>
-</tr>
-<tr>
-<td>pixel_size</td>
-<td>int</td>
-<td>The size of the one pixel</td>
-</tr>
-<tr>
-<td>width</td>
-<td><a href="../size/">size</a></td>
-<td>Set the width in waffle pixels</td>
-</tr>
-<tr>
-<td>visible</td>
-<td>boolean</td>
-<td>If this widget is visible</td>
-</tr>
-</tbody>
-</table>
-<h3 id="example">Example</h3>
-<p><strong>Set a pixel colour</strong></p>
-<p>A Waffle can remember the colour of each pixel within it.</p>
-<pre><code class="language-python">from guizero import App, Waffle
-
-app = App()
-
-my_waffle = Waffle(app)
-my_waffle[2,1].color = &quot;red&quot;
-
-# Your waffle will remember what colour each pixel is
-print(my_waffle[2,1].color)
-
-# Even the ones auto-set at the start (which are white by default)
-print(my_waffle[1,1].color)
-
-app.display()
-</code></pre>
-<h2 id="wafflepixel">WafflePixel</h2>
-<p>A WafflePixel object is returned by <code>Waffle.pixel(x,y)</code> and <code>Waffle[x,y]</code>.</p>
-<pre><code class="language-python">from guizero import App, Waffle
-
-app = App()
-
-my_waffle = Waffle(app)
-my_waffle.pixel(x,y).color = &quot;red&quot;
-my_waffle[x,y].dotty = True
-
-app.display()
-</code></pre>
-<h3 id="properties_1">Properties</h3>
-<p>You can set and get the following properties:</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Data type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>x</td>
-<td>int</td>
-<td>Returns the x position of the pixel on the widget</td>
-</tr>
-<tr>
-<td>x</td>
-<td>int</td>
-<td>Returns the y position of the pixel on the widget</td>
-</tr>
-<tr>
-<td>canvas_x</td>
-<td>int</td>
-<td>Returns the x position of the pixel on the canvas</td>
-</tr>
-<tr>
-<td>canvas_y</td>
-<td>int</td>
-<td>Returns the y position of the pixel on the canvas</td>
-</tr>
-<tr>
-<td>color</td>
-<td><a href="../colors/">color</a></td>
-<td>Sets or returns the color of the pixel</td>
-</tr>
-<tr>
-<td>dotty</td>
-<td>bool</td>
-<td>Set to <code>True</code> to make the pixel a circle</td>
-</tr>
-<tr>
-<td>size</td>
-<td>int</td>
-<td>Returns the size of the pixel in <em>display</em> pixels</td>
-</tr>
-</tbody>
-</table></div>
+<h1 id="book">Book</h1>
+<h3 id="create-graphical-user-interfaces-with-python">Create Graphical User Interfaces with Python</h3>
+<p>The authors of guizero have written a book containing ten fun guizero projects. The book starts from a very basic GUI and shows you how to create gradually more complex GUI programs including a painting program and a stop-motion animation creator.</p>
+<p>You can <a href="https://store.rpipress.cc/products/create-graphical-user-interfaces-with-python">buy the book in print</a> or download it as a <a href="https://magpi.raspberrypi.org/books/create-guis">free PDF</a>.</p>
+<p><img alt="guizero book" src="../images/guizero-book.jpg" /></p></div>
         
         
     </div>

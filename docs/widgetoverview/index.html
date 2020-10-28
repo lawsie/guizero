@@ -163,12 +163,6 @@
                 
                 
                 
-                    <li >
-                        <a href="../recipes/">Recipes</a>
-                    </li>
-                
-                
-                
                     <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Widgets <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -274,6 +268,18 @@
                 
                 
                 
+                    <li >
+                        <a href="../recipes/">Recipes</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
+                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -315,7 +321,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../recipes/">
+                        <a rel="prev" href="../gettinghelp/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -366,92 +372,78 @@
 <h3 id="app"><a href="../app/">App</a></h3>
 <p>The App object is the basis of all GUIs created using guizero. It is the main window which contains all of the other widgets.</p>
 <p><a href="../app/"><img alt="guizero App widget" src="../images/app_small.png" /></a></p>
-<pre><code class="python">app = App()
+<pre><code class="language-python">app = App()
 app.display()
 </code></pre>
-
 <h3 id="box"><a href="../box/">Box</a></h3>
 <p>The <code>Box</code> object is an invisible container which can contain other widgets.</p>
 <p><a href="../box/"><img alt="guizero Box widget" src="../images/box.png" /></a></p>
-<pre><code class="python">box = Box(app)
+<pre><code class="language-python">box = Box(app)
 box = Box(app, border=True)
 </code></pre>
-
 <h3 id="buttongroup"><a href="../buttongroup/">ButtonGroup</a></h3>
 <p>The <code>ButtonGroup</code> object displays a group of radio buttons, allowing the user to choose a single option.</p>
 <p><a href="../buttongroup/"><img alt="guizero ButtonGroup widget" src="../images/buttongroup.png" /></a></p>
-<pre><code class="python">choice = ButtonGroup(app, options=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;])
+<pre><code class="language-python">choice = ButtonGroup(app, options=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;])
 </code></pre>
-
 <h3 id="checkbox"><a href="../checkbox/">CheckBox</a></h3>
 <p>The <code>CheckBox</code> object displays a check box to allow an option to be ticked or un-ticked.</p>
 <p><a href="../checkbox/"><img alt="guizero CheckBox widget" src="../images/checkbox.png" /></a></p>
-<pre><code class="python">checkbox = CheckBox(app, text=&quot;salad ?&quot;)
+<pre><code class="language-python">checkbox = CheckBox(app, text=&quot;salad ?&quot;)
 </code></pre>
-
 <h3 id="combo"><a href="../combo/">Combo</a></h3>
 <p>The <code>Combo</code> object displays a drop down box allowing a single option to be selected from a list of options.</p>
 <p><a href="../combo/"><img alt="guizero Combo widget" src="../images/combo.png" /></a></p>
-<pre><code class="python">combo = Combo(app, options=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;])
+<pre><code class="language-python">combo = Combo(app, options=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;])
 </code></pre>
-
 <h3 id="drawing"><a href="../drawing/">Drawing</a></h3>
 <p>The <code>Drawing</code> object allows shapes, images and text to be created.</p>
 <p><a href="../drawing/"><img alt="guizero Drawing widget" src="../images/drawing.png" /></a></p>
-<pre><code class="python">drawing = Drawing(app)
+<pre><code class="language-python">drawing = Drawing(app)
 </code></pre>
-
 <h3 id="listbox"><a href="../listbox/">ListBox</a></h3>
 <p>The <code>ListBox</code> object displays a list of items from which either single or multiple items can be selected.</p>
 <p><a href="../listbox/"><img alt="guizero ListBox widget" src="../images/listbox.png" /></a></p>
-<pre><code class="python">listbox = ListBox(app, items=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;])
+<pre><code class="language-python">listbox = ListBox(app, items=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;])
 </code></pre>
-
 <h3 id="picture"><a href="../picture/">Picture</a></h3>
 <p>The <code>Picture</code> object displays an image.</p>
 <p><a href="../picture/"><img alt="guizero Picture widget" src="../images/picture.png" /></a></p>
-<pre><code class="python">picture = Picture(app, image=&quot;guizero.png&quot;)
+<pre><code class="language-python">picture = Picture(app, image=&quot;guizero.png&quot;)
 </code></pre>
-
 <h3 id="pushbutton"><a href="../pushbutton/">PushButton</a></h3>
 <p>The <code>PushButton</code> object displays a button with text or an image, which calls a function when pressed.</p>
 <p><a href="../pushbutton/"><img alt="guizero PushButton widget" src="../images/pushbutton.png" /></a></p>
-<pre><code class="python">def do_nothing():
+<pre><code class="language-python">def do_nothing():
     print(&quot;button pressed&quot;)
 
 button = PushButton(app, command=do_nothing)
 </code></pre>
-
 <h3 id="slider"><a href="../slider/">Slider</a></h3>
 <p>The <code>Slider</code> object displays a bar and selector which can be used to specify a value in a range.</p>
 <p><a href="../slider/"><img alt="guizero Slider widget" src="../images/slider.png" /></a></p>
-<pre><code class="python">slider = Slider(app)
+<pre><code class="language-python">slider = Slider(app)
 </code></pre>
-
 <h3 id="text"><a href="../text/">Text</a></h3>
 <p>The <code>Text</code> object displays non editable text in your app, useful for titles, labels and instructions.</p>
 <p><a href="../text/"><img alt="guizero Text widget" src="../images/text.png" /></a></p>
-<pre><code class="python">text = Text(app, text=&quot;Hello World&quot;)
+<pre><code class="language-python">text = Text(app, text=&quot;Hello World&quot;)
 </code></pre>
-
 <h3 id="textbox"><a href="../textbox/">TextBox</a></h3>
 <p>The <code>TextBox</code> object displays a text box which the user can type in.</p>
 <p><a href="../textbox/"><img alt="guizero TextBox widget" src="../images/textbox.png" /></a></p>
-<pre><code class="python">textbox = TextBox(app)
+<pre><code class="language-python">textbox = TextBox(app)
 </code></pre>
-
 <h3 id="waffle"><a href="../waffle/">Waffle</a></h3>
 <p>The <code>Waffle</code> object display an n*n grid of squares with custom dimensions and padding.</p>
 <p><a href="../waffle/"><img alt="guizero Waffle widget" src="../images/waffle.png" /></a></p>
-<pre><code class="python">waffle = Waffle(app)
+<pre><code class="language-python">waffle = Waffle(app)
 </code></pre>
-
 <h3 id="window"><a href="../window/">Window</a></h3>
 <p>The <code>Window</code> object create a new window in guizero.</p>
 <p><a href="../window/"><img alt="guizero Waffle widget" src="../images/window_small.png" /></a></p>
-<pre><code class="python">window = Window(app)
+<pre><code class="language-python">window = Window(app)
 </code></pre>
-
 <h2 id="properties">Properties</h2>
 <p>All widgets are customisable through their properties. These properties are typical for most widgets. Check the widgets document for more information.</p>
 <table>

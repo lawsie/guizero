@@ -163,12 +163,6 @@
                 
                 
                 
-                    <li >
-                        <a href="../recipes/">Recipes</a>
-                    </li>
-                
-                
-                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Widgets <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -274,6 +268,18 @@
                 
                 
                 
+                    <li >
+                        <a href="../recipes/">Recipes</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
+                
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -358,12 +364,11 @@
 <li>when the mouse is dragged across a widget - <code>when_mouse_dragged</code></li>
 </ul>
 <p>Events are set by assigning them to a function:</p>
-<pre><code class="python">def do_this():
+<pre><code class="language-python">def do_this():
     print(&quot;The widget was clicked&quot;)
 
 widget.when_clicked = do_this
 </code></pre>
-
 <h3 id="event-data">Event Data</h3>
 <p>The function which is called can also accept a parameter and will be passed data about the event which occured.</p>
 <p>The event data returned has:</p>
@@ -376,16 +381,15 @@ widget.when_clicked = do_this
 <li><code>display_x</code> - the mouse's x position on the display when the event occured</li>
 <li><code>display_y</code> - the mouse's y position on the display when the event occured</li>
 </ul>
-<pre><code class="python">def clicked(event_data):
+<pre><code class="language-python">def clicked(event_data):
     print(&quot;widget clicked = &quot; + event_data.widget)
     print(&quot;mouse position = &quot; + event_data.x + &quot;.&quot; + event_data.y)
 
 widget.when_clicked = clicked
 </code></pre>
-
 <h3 id="example">Example</h3>
 <p>Highlight a text box widget by changing its background color (<code>bg</code>) when the mouse is hovering over it.</p>
-<pre><code class="python">from guizero import App, TextBox
+<pre><code class="language-python">from guizero import App, TextBox
 
 def highlight():
     text_box.bg = &quot;lightblue&quot;
