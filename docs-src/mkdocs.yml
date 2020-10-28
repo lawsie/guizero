@@ -41,3 +41,4 @@ nav:
       - Developing: development.md
       - Deploying: deployment.md
   - Change log: changelog.md
+  - Book : book.md

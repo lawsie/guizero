@@ -306,6 +306,12 @@
                     </li>
                 
                 
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
                 </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -345,33 +351,29 @@
 
 <h1 id="getting-started">Getting Started</h1>
 <p>At the start of every guizero program, choose the widgets you need from the guizero library and import them:</p>
-<pre><code class="python">from guizero import App, PushButton, Slider
+<pre><code class="language-python">from guizero import App, PushButton, Slider
 </code></pre>
-
 <p>You only need to import each widget once, and then you can use it in your program as many times as you like.</p>
 <h3 id="hello-world">Hello World</h3>
 <p>All guizero projects begin with a main window which is called an <code>App</code>. At the end of every guizero program you must tell the program to display the app you have just created.</p>
 <p>Let's create an app window with the title "Hello world":</p>
-<pre><code class="python">from guizero import App
+<pre><code class="language-python">from guizero import App
 app = App(title=&quot;Hello world&quot;)
 app.display()
 </code></pre>
-
 <p>Save and run the code - you've created your first guizero app!</p>
 <h3 id="adding-widgets">Adding widgets</h3>
 <p>Widgets are the things which appear on the GUI, such as text boxes, buttons, sliders and even plain old pieces of text.</p>
 <p><strong>All widgets</strong> go between the line of code to create the <code>App</code> and the <code>app.display()</code> line.</p>
-<pre><code class="python">from guizero import App, Text
+<pre><code class="language-python">from guizero import App, Text
 app = App(title=&quot;Hello world&quot;)
 message = Text(app, text=&quot;Welcome to the Hello world app!&quot;)
 app.display()
 </code></pre>
-
 <p><img alt="Hello world" src="../images/hello-world.png" /></p>
 <p>Let’s look at the <code>Text</code> widget code in a bit more detail:</p>
-<pre><code class="python">message = Text(app, text=&quot;Welcome to the Hello world app!&quot;)
+<pre><code class="language-python">message = Text(app, text=&quot;Welcome to the Hello world app!&quot;)
 </code></pre>
-
 <ul>
 <li><code>message =</code> - The <code>Text</code> object has a name, just like any variable</li>
 <li><code>Text</code> - an <em>object</em> which creates a piece of text on the screen</li>

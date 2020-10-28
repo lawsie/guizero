@@ -306,6 +306,12 @@
                     </li>
                 
                 
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
                 </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -361,7 +367,6 @@
 <pre><code>cd guizero
 python setup.py install
 </code></pre>
-
 <p>Build for deployment:</p>
 <pre><code>cd guizero
 python setup.py sdist
@@ -369,23 +374,19 @@ python setup.py bdist_wheel
 python setup.py bdist_msi --plat-name=amd64
 python setup.py bdist_msi --plat-name=win32
 </code></pre>
-
 <p>Upload to pypi:</p>
 <pre><code>cd guizero
 twine upload dist/* --skip-existing
 </code></pre>
-
 <h2 id="documents">Documents</h2>
 <p>Build:</p>
 <pre><code>cd guizero/docs-src
 mkdocs build
 </code></pre>
-
 <p>Copy to <code>docs</code>:</p>
 <pre><code>cd guizero
 xcopy docs-src\site\* docs /E
 </code></pre>
-
 <h2 id="promote-and-tag-release-on-github">Promote and tag release on github</h2>
 <ul>
 <li>Push all changes to <code>master</code>.</li>

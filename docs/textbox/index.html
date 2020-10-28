@@ -306,6 +306,12 @@
                     </li>
                 
                 
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
                 </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -353,7 +359,7 @@
 
 <h1 id="textbox">TextBox</h1>
 <p>(Contains a <code>tkinter.Entry</code> object)</p>
-<pre><code class="python">__init__(
+<pre><code class="language-python">__init__(
     self,
     master,
     text=&quot;&quot;,
@@ -368,18 +374,16 @@
     command=None,
     hide_text=False)
 </code></pre>
-
 <h3 id="what-is-it">What is it</h3>
 <p>The <code>TextBox</code> object displays a text box which the user can type in.</p>
 <p><img alt="TextBox on Windows" src="../images/textbox_windows.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create a <code>TextBox</code> object like this:</p>
-<pre><code class="python">from guizero import App, TextBox
+<pre><code class="language-python">from guizero import App, TextBox
 app = App()
 input_box = TextBox(app)
 app.display()
 </code></pre>
-
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create a <code>TextBox</code> object you <strong>must</strong> specify <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>textbox = TextBox(app, text="Please enter some text")</code></p>
 <table>
@@ -652,30 +656,27 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong>Creating a TextBox with default text</strong></p>
 <p>You can set the default text in a TextBox when it is created using the <code>text</code> parameter:</p>
-<pre><code class="python">from guizero import App, TextBox
+<pre><code class="language-python">from guizero import App, TextBox
 app = App()
 input_box = TextBox(app, text=&quot;Type here&quot;)
 app.display()
 </code></pre>
-
 <p><strong>Creating a password TextBox with hidden text</strong></p>
 <p>You can hide the text in a TextBox using the <code>hide_text</code> parameter:</p>
-<pre><code class="python">from guizero import App, TextBox
+<pre><code class="language-python">from guizero import App, TextBox
 app = App()
 password_box = TextBox(app, hide_text=True)
 app.display()
 </code></pre>
-
 <p><strong>Creating a multi-line TextBox</strong></p>
 <p>You can create a text box which is capable of capturing multiple lines of text by setting the <code>multiline</code> parameter to <code>True</code> and giving the textbox a <code>height</code>:</p>
-<pre><code class="python">from guizero import App, TextBox
+<pre><code class="language-python">from guizero import App, TextBox
 app = App()
 input_box = TextBox(app, text=&quot;Type lines here&quot;, height=10, multiline=True)
 app.display()
 </code></pre>
-
 <p>Multi-line text boxes can also be given a scrollbar by setting the <code>scrollbar</code> parameter to <code>True</code>:</p>
-<pre><code class="python">input_box = TextBox(app, text=&quot;Type lines here&quot;, height=10, multiline=True, scrollbar=True)
+<pre><code class="language-python">input_box = TextBox(app, text=&quot;Type lines here&quot;, height=10, multiline=True, scrollbar=True)
 </code></pre></div>
         
         
