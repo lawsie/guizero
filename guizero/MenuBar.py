@@ -93,19 +93,20 @@ class MenuBar(Component):
                 self.tk.add_cascade(label=toplevel[i], menu=self._sub_menus[i])
 
         # Create all the top level menus
-        for toplevel_label in menu:
-            # Create this submenu
-            new_menu = Menu(self.tk, tearoff=0)
+        else:
+            for toplevel_label in menu:
+                # Create this submenu
+                new_menu = Menu(self.tk, tearoff=0)
 
-            # Populate the drop down menu with the items/commands from the list
-            for item_label in menu[toplevel_label]:
-                new_menu.add_command(label=item_label, command=menu[toplevel_label][item_label])
+                # Populate the drop down menu with the items/commands from the list
+                for item_label in menu[toplevel_label]:
+                    new_menu.add_command(label=item_label, command=menu[toplevel_label][item_label])
 
-            # Append to the submenus list
-            self._sub_menus.append(new_menu)
+                # Append to the submenus list
+                self._sub_menus.append(new_menu)
 
-            # Add to the menu bar
-            self.tk.add_cascade(label=toplevel_label, menu=self._sub_menus[-1])
+                # Add to the menu bar
+                self.tk.add_cascade(label=toplevel_label, menu=self._sub_menus[-1])
 
        	# Set this as the menu for the master object
        	master.tk.config(menu=self.tk)
