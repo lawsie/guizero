@@ -6,13 +6,15 @@ from common_test import (
     destroy_test
     )
 
-def test_initial_values():
+def test_legacy_initial_values():
     a = App()
 
     callback_event = Event()
     def callback():
         callback_event.set()
 
+    # Using positional arguments as that is most likely to cause error with
+    # it having to detect the legacy system.
     m = MenuBar(
         a,
         ["foo", "bar"],
@@ -20,6 +22,38 @@ def test_initial_values():
             [ ["foo1", callback], ["foo2", callback] ],
             [ ["bar1", callback], ["bar2", callback] ]
         ])
+
+    assert m.master == a
+
+    assert not callback_event.is_set()
+
+    # menu invoke doesnt work...
+    # m.tk.invoke(0)
+    # assert callback_event.is_set()
+
+    a.destroy()
+
+def test_initial_values():
+    a = App()
+
+    callback_event = Event()
+    def callback():
+        callback_event.set()
+
+    # Using positional arguments as that is most likely to cause error with
+    # it having to detect the legacy system.
+    m = MenuBar(
+        a,
+        {
+            "foo": {
+                "foo1": callback,
+                "foo2": callback
+            },
+            "bar": {
+                "bar1": callback,
+                "bar2": callback
+            }
+        })
 
     assert m.master == a
 
