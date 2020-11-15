@@ -66,7 +66,7 @@ class MenuBar(Component):
         # Keep track of submenu objects
         self._sub_menus = []
 
-        # If menu is a list, then legacy parameters have been used as none-kwargs.
+        # If menu is a list, then legacy parameters have been used as positional arguments.
         if isinstance(menu, (list, tuple)):
             # Just double-check as options may have been a kwarg even if toplevel wasn't.
             if options is None:
@@ -75,8 +75,8 @@ class MenuBar(Component):
             toplevel = menu
             menu = None
 
-        # Legacy support, this is exactly the same as the old code.
-        if menu is None:
+        # Legacy list support, this is exactly the same as the old code.
+        if (menu is None) and isinstance(toplevel, (list, tuple)):
             # Create all the top level menus
             for i in range(len(toplevel)):
                 # Create this submenu
@@ -92,8 +92,9 @@ class MenuBar(Component):
                 # Add to the menu bar
                 self.tk.add_cascade(label=toplevel[i], menu=self._sub_menus[i])
 
-        # Create all the top level menus
-        else:
+        # Dictionary method.
+        elif isinstance(menu, dict):
+            # Create all the top level menus
             for toplevel_label in menu:
                 # Create this submenu
                 new_menu = Menu(self.tk, tearoff=0)
