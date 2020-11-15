@@ -64,3 +64,12 @@ def test_initial_values():
     # assert callback_event.is_set()
 
     a.destroy()
+
+def test_empty_menu():
+    a = App()
+
+    m = MenuBar(a)
+
+    assert m.master == a
+
+    a.destroy()
