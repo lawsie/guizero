@@ -15,15 +15,12 @@ class Window(BaseWindow):
         bg=None, 
         visible=True):
 
-        description = "[Window] oject"
-
         self._modal = False
         tk = Toplevel(master.tk)
 
         super(Window, self).__init__(
             master,
             tk,
-            description,
             title,
             width,
             height,

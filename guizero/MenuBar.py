@@ -35,12 +35,10 @@ class MenuBar(Component):
         if not isinstance(master, (App, Window)):
             utils.error_format("The [MenuBar] must have an [App] or [Window] object as its master")
 
-        description = "[MenuBar] object "
-
         # Create a tk Menu object within this object
         tk = Menu(master.tk)
 
-        super(MenuBar, self).__init__(master, tk, description, False)
+        super(MenuBar, self).__init__(master, tk, False)
 
         # Keep track of submenu objects
         self._sub_menus = []

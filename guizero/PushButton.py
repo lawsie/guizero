@@ -74,9 +74,6 @@ class PushButton(TextWidget):
             size.
         """
 
-
-        description = "[PushButton] object with text \"" + text + "\""
-
         self._value = 0
         self._image_source = icon
         self._image_source = image
@@ -90,7 +87,7 @@ class PushButton(TextWidget):
         self._text.set(text)
         tk = Button(master.tk, textvariable=self._text, command=self._command_callback)
 
-        super(PushButton, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(PushButton, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         # Add padding if necessary
         self.tk.config(pady=pady, padx=padx)
@@ -146,8 +143,7 @@ class PushButton(TextWidget):
     @text.setter
     def text(self, value):
         self._text.set(str(value))
-        self.description = "[Text] object with text \"" + str(value) + "\""
-
+        
     @property
     def image(self):
         return self._image.image_source
@@ -157,6 +153,12 @@ class PushButton(TextWidget):
         self._image_source = value
         self._load_image()
 
+    @property
+    def description(self):
+        """
+        Returns the description for the widget.
+        """
+        return "[PushButton] object with text '{}'".format(self.text)
 
     def resize(self, width, height):
         super(PushButton, self.__class__).resize(self, width, height)

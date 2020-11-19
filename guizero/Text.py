@@ -19,11 +19,9 @@ class Text(TextWidget):
         width=None,
         height=None):
 
-        description = "[Text] object with text \"" + str(text) + "\""
-
         self._text = str(text)
         tk = Label(master.tk, text=text)
-        super(Text, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(Text, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         # setup defaults
         if bg:
@@ -49,7 +47,6 @@ class Text(TextWidget):
     def value(self, value):
         self.tk.config(text=value)
         self._text = str(value)
-        self.description = "[Text] object with text \"" + str(value) + "\""
 
     # The font size
     @property
@@ -60,6 +57,12 @@ class Text(TextWidget):
     def size(self, size):
         self.text_size = size
 
+    @property
+    def description(self):
+        """
+        Returns the description for the widget.
+        """
+        return "[Text] object with text '{}'".format(self.value)
 
     # METHODS
     # -------------------------------------------
@@ -74,5 +77,4 @@ class Text(TextWidget):
         new_text = self._text + str(text)
         self._text = new_text
         self.tk.config(text=new_text)
-        self.description = "[Text] object with text \"" + new_text + "\""
 

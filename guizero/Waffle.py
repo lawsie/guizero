@@ -21,8 +21,6 @@ class Waffle(Widget):
         enabled=None, 
         bg=None):
 
-        description = "[Waffle] object ({}x{})".format(height, width)
-
         # Create a tk Frame object within this object which will be the waffle
         tk = Frame(master.tk)
 
@@ -35,7 +33,7 @@ class Waffle(Widget):
         self._waffle_pixels = {}
         self._canvas = None
 
-        super(Waffle, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(Waffle, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         if bg is not None:
             self.bg = bg
@@ -269,6 +267,13 @@ class Waffle(Widget):
             value = utils.convert_color(value)
             super(Waffle, self.__class__).bg.fset(self, value)
             self._create_waffle()
+
+    @property
+    def description(self):
+        """
+        Returns the description for the widget.
+        """
+        return "[Waffle] object with text ({}x{})".format(self._height, self._width)
 
     def reset(self):
         # reset all the colors and dottiness

@@ -70,8 +70,6 @@ class ButtonGroup(ContainerTextWidget):
             size.
         """
 
-        description = "[ButtonGroup] object with selected option \"" + str(selected) + "\""
-
         self._rbuttons = []   # List of RadioButton objects
         self._text_size = None
         self._font = None
@@ -84,7 +82,7 @@ class ButtonGroup(ContainerTextWidget):
         self._selected = StringVar(master=tk.winfo_toplevel())
 
         # ButtonGroup uses "grid" internally to sort the RadioButtons
-        super(ButtonGroup, self).__init__(master, tk, description, "grid", grid, align, visible, enabled, width, height)
+        super(ButtonGroup, self).__init__(master, tk, "grid", grid, align, visible, enabled, width, height)
 
         # Loop through the list given and setup the options
         self._options = []
@@ -228,6 +226,13 @@ class ButtonGroup(ContainerTextWidget):
         Returns a list of options in the ButtonGroup
         """
         return self._options
+
+    @property
+    def description(self):
+        """
+        Returns the description for the widget.
+        """
+        return "[ButtonGroup] object with selected option '{}'".format(self.value)
 
     # METHODS
     # -----------------------------------

@@ -43,8 +43,6 @@ class App(BaseWindow):
 
         """
 
-        description = "[App] object"
-
         # If this is the first app to be created, create Tk
         if App._main_app is None:
             tk = Tk()
@@ -59,7 +57,6 @@ class App(BaseWindow):
         super(App, self).__init__(
             None,
             tk,
-            description,
             title,
             width,
             height,

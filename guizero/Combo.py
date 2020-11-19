@@ -70,8 +70,6 @@ class Combo(TextWidget):
         # Maintain a list of options (as strings, to avoid problems comparing)
         self._options = [str(x) for x in options]
 
-        description = "[Combo] object with options  " + str(self._options)
-
         # Store currently selected item
         self._selected = StringVar()
 
@@ -84,7 +82,7 @@ class Combo(TextWidget):
         # Create the combo menu object
         self._combo_menu = ComboMenu(tk["menu"])
 
-        super(Combo, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(Combo, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         # Remove the thick highlight when the bg is a different color
         self._set_tk_config("highlightthickness", 0)
@@ -171,6 +169,13 @@ class Combo(TextWidget):
         Returns a list of options in the Combo
         """
         return self._options
+
+    @property
+    def description(self):
+        """
+        Returns the description for the widget.
+        """
+        return "[Combo] object with options {}".format(self._options)
 
     # METHODS
     # -------------------------------------------
@@ -262,8 +267,6 @@ class Combo(TextWidget):
         # This uses an internal tk method _setit which is a bit naughty
         for item in self._options:
             self._combo_menu.tk.add_command(label=item, command=_setit(self._selected, item, self._command_callback))
-
-        self.description = "[Combo] object with options  " + str(self._options)
 
         # set the option which was previously selected
         self._set_option(selected)

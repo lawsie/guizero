@@ -55,13 +55,11 @@ class CheckBox(TextWidget):
             size.
         """
 
-        description = "[CheckBox] object with text \"" + text + "\""
-
         self._text = str(text)
         self._value = IntVar()
         tk = Checkbutton(master.tk, text=text, variable=self._value)
 
-        super(CheckBox, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(CheckBox, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         # Set the command callback
         self.tk.config(command=self._command_callback)
@@ -101,7 +99,13 @@ class CheckBox(TextWidget):
     def text(self, text):
         self._text = str(text)
         self.tk.config(text=self._text)
-        self.description = "[CheckBox] object with text \"" + str(self._text) + "\""
+
+    @property
+    def description(self):
+        """
+        Returns the description for the widget.
+        """
+        return "[CheckBox] object with text '{}'".format(self.text)
 
     # METHODS
     # -------------------------------------------
