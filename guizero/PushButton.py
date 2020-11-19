@@ -145,16 +145,20 @@ class PushButton(TextWidget):
     # Set the text on the button
     @text.setter
     def text(self, value):
+        # clear any existing image from the button
+        self._clear_image()
         self._text.set(str(value))
         
     @property
     def image(self):
-        return self._image.image_source
-
+        return None if self._image is None else self._image.image_source
+        
     @image.setter
     def image(self, value):
-        self._image_source = value
-        self._load_image()
+        self._clear_image()
+        if value is not None:
+            self._image_source = value
+            self._load_image()    
 
     @property
     def description(self):
@@ -162,12 +166,6 @@ class PushButton(TextWidget):
         Returns the description for the widget.
         """
         return "[PushButton] object with text '{}'".format(self.text)
-
-    def resize(self, width, height):
-        super(PushButton, self.__class__).resize(self, width, height)
-
-        if self._image:
-            self._load_image()
 
     # METHODS
     # -------------------------------------------
@@ -197,6 +195,23 @@ class PushButton(TextWidget):
                 self._command = command
             else:
                 self._command = utils.with_args(command, *args)
+    
+    def resize(self, width, height):
+        super(PushButton, self.__class__).resize(self, width, height)
+
+        if self._image:
+            self._load_image()
 
     def _command_callback(self):
         self._command()
+
+    def _clear_image(self):
+        if self._image:
+            self._image_source = None
+            self._image = None
+            self._image_height = None
+            self._image_width = None
+            self._image_player = None
+            self.tk.config(image="")
+            self.resize(None, None)
+            self._text.set(str("Button"))
