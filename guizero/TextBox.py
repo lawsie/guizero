@@ -56,10 +56,18 @@ class TextBox(TextWidget):
 
     @value.setter
     def value(self, value):
+        # if the TextBox is disabled, enable it so they value can be set
+        was_disabled = not self.enabled
+        if was_disabled:
+            self.enabled = True
+
         self._text.set( str(value) )
         if self._multiline:
             self.tk.delete(1.0,END)
             self.tk.insert(END,self._text.get())
+
+        if was_disabled:
+            self.enabled = False
 
     def resize(self, width, height):
         self._width = width

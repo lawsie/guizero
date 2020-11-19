@@ -173,3 +173,10 @@ def test_grid_layout():
     grid_layout_test(wa, 1, 2, 1, 1, "top")
     
     a.destroy()
+
+def test_disabled_text():
+    a = App()
+    t = TextBox(a, enabled=False)
+    t.text = "text"
+    assert t.text == "text"
+    a.destroy()
