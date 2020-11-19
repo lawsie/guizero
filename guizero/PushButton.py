@@ -102,6 +102,9 @@ class PushButton(TextWidget):
             self._load_image()
 
     def _load_image(self):
+        # clear the text on the button if an image is being loaded
+        self._text.set("")
+        
         if self._height == "fill" or self._width == "fill":
             utils.raise_error("{}\nCannot use 'fill' for width and height when using a image.".format(self.description))
 
