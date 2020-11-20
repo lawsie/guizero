@@ -24,6 +24,7 @@ def test_default_values():
     assert t.align == None
     assert t.width == 10
     assert t.value == ""
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():

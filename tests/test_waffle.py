@@ -27,6 +27,7 @@ def test_default_values():
     assert w.pad == 5
     assert w.color == "white"
     assert w.dotty == False
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():

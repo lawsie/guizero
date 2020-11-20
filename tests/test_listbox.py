@@ -28,6 +28,7 @@ def test_default_values():
     assert l.visible == True
     assert l.enabled == True
     assert l._listbox._multiselect == False
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():

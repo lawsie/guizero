@@ -24,6 +24,7 @@ def test_default_values():
     assert c.text == "foo"
     assert c.grid == None
     assert c.align == None
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():
