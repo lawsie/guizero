@@ -76,7 +76,7 @@ class ListBox(ContainerTextWidget):
         if scrollbar:
             # create the scrollbar and add it to the listbox
             scrollbar_tk_widget = Scrollbar(tk)
-            Widget(self, scrollbar_tk_widget, "scrollbar", None, "right", True, True, None, "fill")
+            Widget(self, scrollbar_tk_widget, None, "right", True, True, None, "fill")
             self._listbox.tk.config(yscrollcommand=scrollbar_tk_widget.set)
             scrollbar_tk_widget.config(command=self._listbox.tk.yview)
 
