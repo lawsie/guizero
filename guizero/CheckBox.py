@@ -25,7 +25,7 @@ class CheckBox(TextWidget):
         :param string selected:
             The text required for the checkbox. Defaults to "".
 
-        :param callback command:
+        :param Callable command:
             The callback function to call when the CheckBox changes.
 
         :param List grid:
@@ -123,7 +123,7 @@ class CheckBox(TextWidget):
 
         Setting to `None` stops the callback.
 
-        :param callback command:
+        :param Callable command:
             The callback function to call.
 
         :param args list:

@@ -40,7 +40,7 @@ class Combo(TextWidget):
         :param string selected:
             The item in the Combo to select, defaults to `None`.
 
-        :param callback command:
+        :param Callable command:
             The callback function to call when the Combo changes,
             defaults to `None`.
 
@@ -311,7 +311,7 @@ class Combo(TextWidget):
 
         Setting to `None` stops the callback.
 
-        :param callback command:
+        :param Callable command:
             The callback function to call, it can accept 0 or 1 parameters.
 
             If it accepts 1 parameter the `value` of the Combo will be

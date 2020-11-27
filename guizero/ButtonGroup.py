@@ -39,7 +39,7 @@ class ButtonGroup(ContainerTextWidget):
             If the ButtonGroup is to be displayed horizontally, defaults to
             `True`.
 
-        :param callback command:
+        :param Callable command:
             The callback function to call when the ButtonGroup changes,
             defaults to `None`.
 
@@ -299,7 +299,7 @@ class ButtonGroup(ContainerTextWidget):
 
         Setting to `None` stops the callback.
 
-        :param callback command:
+        :param Callable command:
             The callback function to call.
 
         :param callback args:

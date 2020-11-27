@@ -26,7 +26,7 @@ class PushButton(TextWidget):
         :param Container master:
             The Container (App, Box, etc) the Picture will belong to.
 
-        :param function command:
+        :param Callable command:
             A string containing the image to display, defaults to `None`.
 
         :param List args:

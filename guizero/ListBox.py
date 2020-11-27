@@ -32,7 +32,7 @@ class ListBox(ContainerTextWidget):
         :param string selected:
             The item in the ListBox to select, defaults to `None`.
 
-        :param callback command:
+        :param Callable command:
             The callback function to call when the ListBox changes,
             defaults to `None`.
 
@@ -159,7 +159,7 @@ class ListBox(ContainerTextWidget):
 
         Setting to `None` stops the callback.
 
-        :param callback command:
+        :param Callable command:
             The callback function to call, it can accept 0 or 1 parameters.
 
             If it accepts 1 parameter the `value` of the ListBox will be
