@@ -20,8 +20,6 @@ class TextBox(TextWidget):
         command=None,
         hide_text=False):
 
-        description = "[TextBox] object with text \"" + str(text) + "\""
-
         self._multiline = multiline
         
         # Set up controlling string variable
@@ -38,7 +36,7 @@ class TextBox(TextWidget):
         else:
             tk = Entry(master.tk, textvariable=self._text)
 
-        super(TextBox, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(TextBox, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         self.hide_text = hide_text
         self.update_command(command)
@@ -58,11 +56,18 @@ class TextBox(TextWidget):
 
     @value.setter
     def value(self, value):
+        # if the TextBox is disabled, enable it so they value can be set
+        was_disabled = not self.enabled
+        if was_disabled:
+            self.enabled = True
+
         self._text.set( str(value) )
         if self._multiline:
             self.tk.delete(1.0,END)
             self.tk.insert(END,self._text.get())
-        self.description = "[TextBox] object with text \"" + str(value) + "\""
+
+        if was_disabled:
+            self.enabled = False
 
     def resize(self, width, height):
         self._width = width
@@ -95,6 +100,13 @@ class TextBox(TextWidget):
             show_value = value
         
         self._set_tk_config("show", show_value)
+
+    @property
+    def description(self):
+        """
+        Returns the description for the widget.
+        """
+        return "[TextBox] object with text '{}'".format(self.value)
 
     # METHODS
     # -------------------------------------------

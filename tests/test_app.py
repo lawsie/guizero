@@ -16,6 +16,7 @@ def test_default_values():
     assert a.width == 500
     assert a.height == 500
     assert a.layout == "auto"
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():

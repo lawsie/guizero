@@ -22,6 +22,7 @@ def test_default_values():
     assert p.image == None
     assert p.grid == None
     assert p.align == None
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():

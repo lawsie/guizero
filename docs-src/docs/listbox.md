@@ -1,7 +1,5 @@
 # ListBox
 
-(Contains a `tkinter.Listbox` object)
-
 ```python
 __init__(
     self,
@@ -53,8 +51,8 @@ If you want the `ListBox` to allow multiple items to be selected you must set th
 | enabled     | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                                             |
 | multiselect | boolean            | False   | No         | If the widget should allow multiple items to be selected.                                                                                                                                                   |
 | scrollbar   | boolean            | False   | No         | If the widget should have a verticle scrollbar.                                                                                                                                                             |
-| width       | [size](size.md)    | None    | No         | Set the width of the widget in pixels or to `"fill"`                                                                                                                                                    |
-| height      | [size](size.md)    | None    | No         | Set the height of the widget in pixels or to `"fill"`                                                                                                                                                   |
+| width       | [size](size.md)    | None    | No         | Set the width of the widget in pixels or to `"fill"`                                                                                                                                                        |
+| height      | [size](size.md)    | None    | No         | Set the height of the widget in pixels or to `"fill"`                                                                                                                                                       |
 
 
 ### Methods
@@ -88,17 +86,19 @@ You can set and get the following properties:
 |------------|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | align      | string             | The alignment of this widget within its container                                                                                                                                                                                     |
 | bg         | [color](colors.md) | The background colour of the widget                                                                                                                                                                                                   |
+| children   | List               | A list of the widgets in this container. `[ListBoxWidget, ListBoxScrollbar]`                                                                                                                                                          |
 | enabled    | boolean            | `True` if the widget is enabled                                                                                                                                                                                                       |
 | font       | string             | The font of the text                                                                                                                                                                                                                  |
 | grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid                                                                                                                                 |
-| height     | [size](size.md)    | Set the height of the widget in pixels or to `"fill"`                                                                                                                                                                             |
+| height     | [size](size.md)    | Set the height of the widget in pixels or to `"fill"`                                                                                                                                                                                 |
 | items      | List               | Returns a list of items in the ListBox                                                                                                                                                                                                |
 | master     | App or Box         | The container to which this widget belongs                                                                                                                                                                                            |
 | value      | string             | Sets or returns the items selected in a ListBox. Returns `None` if 0 items are selected. If the ListBox is a not `multiselect`, `value` is the item selected, if the ListBox is a `multiselect`, `value` is a list of items selected. |
 | visible    | boolean            | If this widget is visible                                                                                                                                                                                                             |
-| width      | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                                                                                                                                              |
+| width      | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                                                                                                                                                  |
 | text_size  | int                | The size of the text                                                                                                                                                                                                                  |
 | text_color | [color](colors.md) | The colour of the text                                                                                                                                                                                                                |
+| tk         | tkinter.Frame      | The internal tkinter object, see [Using tkinter](usingtk.md)                                                                                                                                                                      |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `ListBox` object is called `listbox` you would write `listbox.value`.
@@ -132,3 +132,25 @@ a.display()
 ```
 
 ![A list of colors](images/listbox_color_changer_windows.png)
+
+### Using ListBox tk widgets
+
+Advanced users can gain internal access to the internal tkinter widgets used by `ListBox`. For more information on using tkinter in combination with guizero see [Using tkinter](usingtk.md).
+
+The `ListBox` widget contains a `tkinter.Frame` object, which frames 2 other child guizero widgets containing `tkinter.Listbox` and `tkinter.Scrollbar` objects.
+
+The `.children` property returns a list of these widgets:
+
+| .children index | guizero class      | tk class            | notes                                                                                     |
+|-----------------|--------------------|---------------------|-------------------------------------------------------------------------------------------|
+| 0               | `ListBoxWidget`    | `tkinter.Listbox`   |                                                                                           |
+| 1               | `ListBoxScrollbar` | `tkinter.Scrollbar` | A `ListBoxScrollbar` widget will only be present if `ListBox.scrollbar` is set to `True`. |
+
+To access the internal tk object for these child guizero widgets you would use its `tk` property e.g.
+
+```python
+listbox = listBox(app)
+
+tk_listbox = listbox.children[0].tk
+tk_scrollbar = listbox.children[1].tk
+```

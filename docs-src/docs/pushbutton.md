@@ -1,7 +1,5 @@
 # PushButton
 
-(Contains a `tkinter.Button` object)
-
 ```python
 __init__(
     self,
@@ -113,6 +111,7 @@ You can set and get the following properties:
 | text       | string             | The text on the button                                                                                |
 | text_color | [color](colors.md) | The colour of the text on the button                                                                  |
 | text_size  | int                | The size of the text on the button                                                                    |
+| tk         | tkinter.Button     | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
 | value      | int                | Returns 1 when the button is pressed, 0 if the button is released                                     |
 | visible    | boolean            | If this widget is visible                                                                             |
 | width      | [size](size.md)    | Set the width of the widget in characters or pixels if its an image button or to `"fill"`             |

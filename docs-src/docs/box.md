@@ -1,7 +1,5 @@
 # Box
 
-(Contains a `tkinter.Frame` object)
-
 ```python
 __init__(
     self,
@@ -78,7 +76,7 @@ You can set and get the following properties:
 | align      | string             | The alignment of this widget within its container                                                     |
 | border     | int                | The border thickness, setting to `0` or `False` (the default) there is no border.                     |
 | bg         | [color](colors.md) | The background colour of the widget                                                                   |
-| children   | list(widgets)      | A list of widgets in this container                                                                   |
+| children   | List               | A list of widgets in this container                                                                   |
 | enabled    | boolean            | `True` if the box is enabled                                                                          |
 | grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | font       | string             | The font that widgets should use                                                                      |
@@ -87,6 +85,7 @@ You can set and get the following properties:
 | master     | App                | The `App` object to which this box belongs                                                            |
 | text_size  | int                | The size of the text widgets should use                                                               |
 | text_color | [color](colors.md) | The colour of the text widgets should use                                                             |
+| tk         | tkinter.Frame      | The internal tkinter object, see [Using tkinter](usingtk.md)                                      |
 | visible    | boolean            | If this widget is visible                                                                             |
 | width      | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                  |
 

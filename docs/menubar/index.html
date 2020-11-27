@@ -356,19 +356,19 @@
         <div class="col-md-9" role="main">
 
 <h1 id="menubar">MenuBar</h1>
-<p>(Contains a <code>tkinter.Menu</code> object)</p>
-<pre><code class="language-python">__init__(
+<pre><code class="python">__init__(
     self, 
     master, 
     toplevel, 
     options)
 </code></pre>
+
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>MenuBar</code> object displays a menu at the top of the screen, with each menu option leading to a submenu.</p>
 <p><img alt="MenuBar on Windows" src="../images/menubar_windows.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create a <code>MenuBar</code> object like this:</p>
-<pre><code class="language-python">from guizero import App, MenuBar
+<pre><code class="python">from guizero import App, MenuBar
 def file_function():
     print(&quot;File option&quot;)
 
@@ -384,6 +384,7 @@ menubar = MenuBar(app,
                   ])
 app.display()
 </code></pre>
+
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create a <code>MenuBar</code> object you <strong>must</strong> specify all of the parameters.</p>
 <table>
@@ -424,8 +425,9 @@ app.display()
 <p><img alt="Top level menu on Windows" src="../images/toplevel_windows.png" /></p>
 <p>The options parameter should be a 3D List containing lists of submenu items, which are themselves lists. The elements in the list correspond to the elements in the <code>toplevel</code> list, so the first list of submenu items provided in <code>options</code> will be the submenu for the first menu heading provided in <code>toplevel</code> and so on.</p>
 <p>The menu item sub-sublists within <code>options</code> should contain pairs consisting of the text to display on the menu and the function to call when that option is selected. In this example, the text "File option 1" is displayed and the function <code>file_function</code> is called if this option is clicked on.</p>
-<pre><code class="language-python">[&quot;File option 1&quot;, file_function]
+<pre><code class="python">[&quot;File option 1&quot;, file_function]
 </code></pre>
+
 <p>The MenuBar is never displayed on a grid so there are no grid or alignment parameters.</p>
 <h3 id="methods">Methods</h3>
 <p>You can call the following methods on an <code>MenuBar</code> object.</p>
@@ -486,6 +488,11 @@ app.display()
 <td>master</td>
 <td>App</td>
 <td>The <code>App</code> object to which this MenuBar belongs</td>
+</tr>
+<tr>
+<td>tk</td>
+<td>tkinter.Menu</td>
+<td>The internal tkinter object, see <a href="../usingtk/">Using tkinter</a></td>
 </tr>
 </tbody>
 </table></div>

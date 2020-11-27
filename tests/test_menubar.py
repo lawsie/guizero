@@ -24,6 +24,7 @@ def test_initial_values():
     assert m.master == a
 
     assert not callback_event.is_set()
+    assert a.description > ""
 
     # menu invoke doesnt work...
     # m.tk.invoke(0)

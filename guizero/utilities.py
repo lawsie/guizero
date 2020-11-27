@@ -262,7 +262,7 @@ class AnimationPlayer():
         :param GUIZeroImage guizero_image:
             The image object which contains the animation.
 
-        :param function update_image_callback:
+        :param Callable update_image_callback:
             A function which should be called when the Image needs updating.
             The function will be called and passed a reference to the next
             Tk PhotoImage object in the animation.
