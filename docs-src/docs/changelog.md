@@ -1,5 +1,13 @@
 # guizero
 
+## 1.1.1 - tbc
+- PushButton image bug fix for macOS
+- Documentation updates regarding how to use tk, particularly for ListBox widget
+- Refactored `.description` property due to issue with TextBox widget
+- Fix TextBox widget where you cant set the value if its disabled
+- Removed `bgcolor` from App constructor which had previously been deprecated
+- 
+
 ## 1.1.0 - 2019-10-25
 - Added ability to be able to change the grid of a widget at room time
 - Added `hide_text` to `TextBox` for use with passwords

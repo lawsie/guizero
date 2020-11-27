@@ -13,7 +13,6 @@ class App(BaseWindow):
         width=500, 
         height=500, 
         layout="auto", 
-        bgcolor=None, 
         bg=None, 
         visible=True):
 
@@ -31,9 +30,6 @@ class App(BaseWindow):
 
         :param string layout:
             The layout manager style for this window, defaults to `auto`.
-
-        :param string bgcolor:
-            DEPRECATED: The background colour for this window, defaults to None. Use bg instead.
 
         :param color bg:
             The background colour for this window, defaults to None. See https://lawsie.github.io/guizero/colors/
