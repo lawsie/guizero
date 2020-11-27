@@ -54,12 +54,9 @@ class Box(ContainerWidget):
             Sets the border thickness. `0` or `False` is no border. `True` or 
             value > 1 sets a border. The default is `None`.
         """
-
-        description = "[Box] object (may also contain other objects)"
-
         tk = Frame(master.tk)
 
-        super(Box, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
+        super(Box, self).__init__(master, tk, layout, grid, align, visible, enabled, width, height)
 
         self.resize(width, height)
 

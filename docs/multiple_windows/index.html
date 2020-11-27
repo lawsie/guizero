@@ -356,7 +356,7 @@
 <p>If you want to create a second (or 3rd, 4th, 5th) window, your program should use a <a href="../window/">Window</a> object.</p>
 <h3 id="a-second-window">A Second window</h3>
 <p>When you create a second <code>Window</code> you need to pass it the <code>App</code>, just like when you create a widget:</p>
-<pre><code class="language-python">from guizero import App, Window
+<pre><code class="python">from guizero import App, Window
 
 app = App(title=&quot;Main window&quot;)
 window = Window(app, title=&quot;Second window&quot;)
@@ -364,8 +364,9 @@ window = Window(app, title=&quot;Second window&quot;)
 app.display()
 
 </code></pre>
+
 <p>Adding widgets to the second window is the same as adding them to an <code>App</code>. You tell the widget which window it will be in by passing it the name of the <code>Window</code>:</p>
-<pre><code class="language-python">from guizero import App, Window, Text
+<pre><code class="python">from guizero import App, Window, Text
 
 app = App(title=&quot;Main window&quot;)
 window = Window(app, title=&quot;Second window&quot;)
@@ -374,10 +375,11 @@ text = Text(window, text=&quot;This text will show up in the second window&quot;
 app.display()
 
 </code></pre>
+
 <h3 id="opening-and-closing-windows">Opening and closing windows</h3>
 <p>When a <code>Window</code> object is created it is immediately displayed on the screen. You can control whether a window is visible or not using the <code>show()</code> and <code>hide()</code> methods.</p>
 <p>This code creates a window which is shown when a button on the <code>App</code> is clicked and closed when a button is clicked in the <code>Window</code>.</p>
-<pre><code class="language-python">from guizero import App, Window, PushButton
+<pre><code class="python">from guizero import App, Window, PushButton
 
 def open_window():
     window.show()
@@ -395,11 +397,12 @@ close_button = PushButton(window, text=&quot;Close&quot;, command=close_window)
 
 app.display()
 </code></pre>
+
 <h3 id="modal-windows">Modal windows</h3>
 <p>When a window is opened using <code>show()</code> it opens side by side with the main window, and both windows can be used at the same time.</p>
 <p>A "modal" window prevents the other windows in the application being used until it is closed. To create a modal window, you can pass <code>True</code> to the optional <code>wait</code> parameter of <code>show</code>.</p>
 <p>This will force all other windows to wait until this window is closed before they can be used.</p>
-<pre><code class="language-python">def open_window():
+<pre><code class="python">def open_window():
     window.show(wait=True)
 </code></pre></div>
         

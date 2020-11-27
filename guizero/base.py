@@ -98,6 +98,8 @@ class Base():
                 else:
                     self.tk[key] = value
 
+    def __repr__(self):
+        return "guizero.{} object".format(self.__class__.__name__)
 
 class Component(
     Base,
@@ -107,14 +109,13 @@ class Component(
     ColorMixin,
     EventsMixin):
 
-    def __init__(self, master, tk, description, displayable):
+    def __init__(self, master, tk, displayable):
         """
         An abstract class for a component in guizero.
         """
         super(Component, self).__init__(tk)
 
         self._master = master
-        self._description = description
         self._events = EventManager(self, tk)
         self._displayable = displayable
 
@@ -123,7 +124,7 @@ class Component(
             if isinstance(master, Container):
                 self.master._add_child(self)
             else:
-                utils.raise_error("{}\nMaster is not an [App], [Window] or [Box]".format(description))
+                utils.raise_error("{}\nMaster is not an [App], [Window] or [Box]".format(self.description))
 
     @property
     def master(self):
@@ -138,15 +139,11 @@ class Component(
     @property
     def description(self):
         """
-        Sets and returns the description for the widget.
+        Returns the description for the widget.
         """
-        return self._description
+        return "[{}] object".format(self.__class__.__name__)
 
-    @description.setter
-    def description(self, value):
-        self._description = value
-
-    def __repr__(self):
+    def __str__(self):
         return self.description
 
     @property
@@ -178,11 +175,11 @@ class Component(
 
 class Container(Component):
 
-    def __init__(self, master, tk, description, layout, displayable):
+    def __init__(self, master, tk, layout, displayable):
         """
         An abstract class for a container which can hold other widgets.
         """
-        super(Container, self).__init__(master, tk, description, displayable)
+        super(Container, self).__init__(master, tk, displayable)
         self._children = []
         self._layout_manager = layout
         self._bg = None
@@ -317,7 +314,7 @@ class Container(Component):
         # raise a warning if the tk widgets master is not this container
         if self.tk is not tk_widget.master:
             utils.error_format("The tk widget's master is not '{}'.\nIt may not display correctly.".format(self.description))
-        return Widget(self, tk_widget, "tk widget", grid, align, visible, enabled, width, height)
+        return Widget(self, tk_widget, grid, align, visible, enabled, width, height)
 
     def _add_child(self, child):
         """
@@ -441,11 +438,11 @@ class Container(Component):
 
 class BaseWindow(Container):
 
-    def __init__(self, master, tk, description, title, width, height, layout, bg, visible):
+    def __init__(self, master, tk, title, width, height, layout, bg, visible):
         """
         Base class for objects which use windows e.g. `App` and `Window`
         """
-        super(BaseWindow, self).__init__(master, tk, description, layout, False)
+        super(BaseWindow, self).__init__(master, tk, layout, False)
 
         # Initial setup
         self.tk.title( str(title) )
@@ -609,11 +606,11 @@ class Widget(
     SizeMixin,
     LayoutMixin):
 
-    def __init__(self, master, tk, description, grid, align, visible, enabled, width, height):
+    def __init__(self, master, tk, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is an interactable component e.g. `Picture`
         """
-        super(Widget, self).__init__(master,tk, description, True)
+        super(Widget, self).__init__(master,tk, True)
         self._update_grid(grid)
         self._update_align(align)
         self._width = width
@@ -635,11 +632,11 @@ class TextWidget(
     Widget,
     TextMixin):
 
-    def __init__(self, master, tk, description, grid, align, visible, enabled, width, height):
+    def __init__(self, master, tk, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which contains or has text e.g. ``Text`, `PushButton`
         """
-        super(TextWidget, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(TextWidget, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         #inherit from master
         self.text_color = master.text_color
@@ -654,11 +651,11 @@ class ContainerWidget(
     SizeMixin,
     LayoutMixin):
 
-    def __init__(self, master, tk, description, layout, grid, align, visible, enabled, width, height):
+    def __init__(self, master, tk, layout, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is also a container e.g. `Box`, `ButtonGroup`
         """
-        super(ContainerWidget, self).__init__(master,tk, description, layout, True)
+        super(ContainerWidget, self).__init__(master, tk, layout, True)
         self._update_grid(grid)
         self._update_align(align)
         self._width = width
@@ -715,9 +712,9 @@ class ContainerTextWidget(
     ContainerWidget,
     TextMixin):
 
-    def __init__(self, master, tk, description, layout, grid, align, visible, enabled, width, height):
+    def __init__(self, master, tk, layout, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is also a container and contains text
         e.g. `ButtonGroup`
         """
-        super(ContainerTextWidget, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
+        super(ContainerTextWidget, self).__init__(master, tk, layout, grid, align, visible, enabled, width, height)

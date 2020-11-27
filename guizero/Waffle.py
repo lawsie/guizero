@@ -6,22 +6,20 @@ from .event import EventManager
 class Waffle(Widget):
 
     def __init__(
-        self, 
-        master, 
-        height=3, 
-        width=3, 
-        dim=20, 
-        pad=5, 
-        color="white", 
-        dotty=False, 
-        grid=None, 
-        align=None, 
-        command=None,  
-        visible=True, 
-        enabled=None, 
+        self,
+        master,
+        height=3,
+        width=3,
+        dim=20,
+        pad=5,
+        color="white",
+        dotty=False,
+        grid=None,
+        align=None,
+        command=None,
+        visible=True,
+        enabled=None,
         bg=None):
-
-        description = "[Waffle] object ({}x{})".format(height, width)
 
         # Create a tk Frame object within this object which will be the waffle
         tk = Frame(master.tk)
@@ -35,7 +33,7 @@ class Waffle(Widget):
         self._waffle_pixels = {}
         self._canvas = None
 
-        super(Waffle, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(Waffle, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         if bg is not None:
             self.bg = bg
@@ -56,7 +54,7 @@ class Waffle(Widget):
     def _create_waffle(self):
         if self._height == "fill" or self._width == "fill":
             utils.raise_error("{}\nCannot use 'fill' for width and height.".format(self.description))
-            
+
         self._create_canvas()
         self._size_waffle()
         self._draw_waffle()
@@ -67,9 +65,14 @@ class Waffle(Widget):
             self._canvas.delete("all")
             self._canvas.destroy()
 
-        #size the canvas
-        self._c_height = (self._height * (self._pixel_size + self._pad)) + (self._pad * 2)
-        self._c_width = self._width * (self._pixel_size + self._pad) + (self._pad * 2)
+        # size the canvas. Each element of the waffle has padding to top,
+        # bottom, left and right, but the padding is shared between elements.
+        # What this means in pratice is that elements at the edge have a whole
+        # padding width between them and the edge of the canvas and a single
+        # padding width between individual elements, so the padding between
+        # elements is shared.
+        self._c_height = (self._height * (self._pixel_size + self._pad)) + self._pad
+        self._c_width = (self._width * (self._pixel_size + self._pad)) + self._pad
 
         # create the canvas and pack it into the waffle frame
         self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width, bd=0, highlightthickness=0)
@@ -161,18 +164,25 @@ class Waffle(Widget):
         # you can only click on the waffle if its enabled
         if self._enabled:
             canvas = e.tk_event.widget
-            x = canvas.canvasx(e.tk_event.x)
-            y = canvas.canvasy(e.tk_event.y)
-            pixel_x = int(x / (self._pixel_size + self._pad))
-            pixel_y = int(y / (self._pixel_size + self._pad))
-            if self._command:
-                args_expected = utils.no_args_expected(self._command)
-                if args_expected == 0:
-                    self._command()
-                elif args_expected == 2:
-                    self._command(pixel_x,pixel_y)
-                else:
-                    utils.error_format("Waffle command function must accept either 0 or 2 arguments.\nThe current command has {} arguments.".format(args_expected))
+            # Because the padding between waffle elements is shared we have to
+            # determine which element is being clicked on if the user clicks on
+            # the padding between elements and on the padding around the
+            # elements at the edge of the waffle. The approach taken is that
+            # half of the padding belongs to each element and padding at the
+            # edges of the canvas are excluded
+            x = int(canvas.canvasx(e.tk_event.x) - (self._pad / 2))
+            y = int(canvas.canvasy(e.tk_event.y) - (self._pad / 2))
+            if x >= 0 and y >= 0:
+                pixel_x = int(x / (self._pixel_size + self._pad))
+                pixel_y = int(y / (self._pixel_size + self._pad))
+                if self._command and pixel_x < self._width and pixel_y < self._height:
+                    args_expected = utils.no_args_expected(self._command)
+                    if args_expected == 0:
+                        self._command()
+                    elif args_expected == 2:
+                        self._command(pixel_x,pixel_y)
+                    else:
+                        utils.error_format("Waffle command function must accept either 0 or 2 arguments.\nThe current command has {} arguments.".format(args_expected))
 
     def update_command(self, command):
         if command is None:
@@ -269,6 +279,13 @@ class Waffle(Widget):
             value = utils.convert_color(value)
             super(Waffle, self.__class__).bg.fset(self, value)
             self._create_waffle()
+
+    @property
+    def description(self):
+        """
+        Returns the description for the widget.
+        """
+        return "[Waffle] object with text ({}x{})".format(self._height, self._width)
 
     def reset(self):
         # reset all the colors and dottiness

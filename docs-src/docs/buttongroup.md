@@ -1,7 +1,5 @@
 # ButtonGroup
 
-(Contains a `tkinter.Frame` object)
-
 ```python
 __init__(
     self,
@@ -59,23 +57,23 @@ When you create a `ButtonGroup` object you **must** specify a `master` and you c
 
 You can call the following methods on an `ButtonGroup` object.
 
-| Method                              | Takes                                                                                | Returns  | Description                                                                                                                                                    |
-|-------------------------------------|--------------------------------------------------------------------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| append(option)                      | item (string)                                                                        | -        | Appends a new `option` to the end of the ButtonGroup.                                                                                                          |
-| after(time, command, args=None)     | time (int), command (function name), args (list of arguments)                        | -        | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
-| cancel(command)                     | command (function name)                                                              | -        | Cancels a scheduled call to `command`                                                                                                                          |
-| destroy()                           | -                                                                                    | -        | Destroys the widget                                                                                                                                            |
-| disable()                           | -                                                                                    | -        | Disables the widget so that it is "greyed out" and cannot be interacted with                                                                                   |
-| enable()                            | -                                                                                    | -        | Enables the widget                                                                                                                                             |
-| focus()                             | -                                                                                    | -        | Gives focus to the widget                                                                                                                                      |
-| get_group_as_list()                 | -                                                                                    | list     | Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging)                                                       |
-| hide()                              | -                                                                                    | -        | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
-| insert(index, option)               | index (int), option (string)                                                         | -        | Insert a new `option` in the ButtonGroup at `index`                                                                                                            |
-| remove(option)                      | item (string)                                                                        | Boolean  | Removes the first `option` from the ButtonGroup. Returns `True` if an item was removed.                                                                        |
-| repeat(time, command, args=None)    | time (int), command (function name), args (list of arguments)                        | -        | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
-| resize(width, height)               | width (int), height (int)                                                            | -        | Sets the width and height of the widget                                                                                                                        |
-| show()                              | -                                                                                    | -        | Displays the widget if it was previously hidden                                                                                                                |
-| update_command(command, args =None) | command (function name), args (_Optional_ List of arguments to be passed to command) | -        | Updates the function to call when the selected option changes                                                                                                  |
+| Method                              | Takes                                                                                | Returns | Description                                                                                                                                                    |
+|-------------------------------------|--------------------------------------------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| append(option)                      | item (string)                                                                        | -       | Appends a new `option` to the end of the ButtonGroup.                                                                                                          |
+| after(time, command, args=None)     | time (int), command (function name), args (list of arguments)                        | -       | Schedules a **single** call to `command` after `time` milliseconds. (To repeatedly call the same command, use `repeat()`)                                      |
+| cancel(command)                     | command (function name)                                                              | -       | Cancels a scheduled call to `command`                                                                                                                          |
+| destroy()                           | -                                                                                    | -       | Destroys the widget                                                                                                                                            |
+| disable()                           | -                                                                                    | -       | Disables the widget so that it is "greyed out" and cannot be interacted with                                                                                   |
+| enable()                            | -                                                                                    | -       | Enables the widget                                                                                                                                             |
+| focus()                             | -                                                                                    | -       | Gives focus to the widget                                                                                                                                      |
+| get_group_as_list()                 | -                                                                                    | list    | Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging)                                                       |
+| hide()                              | -                                                                                    | -       | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
+| insert(index, option)               | index (int), option (string)                                                         | -       | Insert a new `option` in the ButtonGroup at `index`                                                                                                            |
+| remove(option)                      | item (string)                                                                        | Boolean | Removes the first `option` from the ButtonGroup. Returns `True` if an item was removed.                                                                        |
+| repeat(time, command, args=None)    | time (int), command (function name), args (list of arguments)                        | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
+| resize(width, height)               | width (int), height (int)                                                            | -       | Sets the width and height of the widget                                                                                                                        |
+| show()                              | -                                                                                    | -       | Displays the widget if it was previously hidden                                                                                                                |
+| update_command(command, args =None) | command (function name), args (_Optional_ List of arguments to be passed to command) | -       | Updates the function to call when the selected option changes                                                                                                  |
 
 
 ### Properties
@@ -86,6 +84,7 @@ You can set and get the following properties:
 |------------|--------------------|-------------------------------------------------------------------------------------------------------|
 | align      | string             | The alignment of this widget within its container                                                     |
 | bg         | [color](colors.md) | The background colour of the widget                                                                   |
+| children   | List               | A list of the widgets in this container. `[RadioButton, *]`                                           |
 | enabled    | boolean            | `True` if the widget is enabled                                                                       |
 | font       | string             | The font of the text                                                                                  |
 | grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
@@ -97,7 +96,7 @@ You can set and get the following properties:
 | width      | [size](size.md)    | Set the width of the widget in characters or to `"fill"`                                              |
 | text_size  | int                | The size of the text                                                                                  |
 | text_color | [color](colors.md) | The colour of the text                                                                                |
-
+| tk         | tkinter.Frame      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
 
 Refer to a property as `<name of widget>.property`. For example, if your `ButtonGroup` object is called `choice` you would write `choice.value`.
 
@@ -125,4 +124,21 @@ activities = ButtonGroup(app, options=[
 
 what_is_selected = Text(app, text="skate")
 app.display()
+```
+
+### Using ButtonGroup tk widgets
+
+Advanced users can gain internal access to the internal tkinter widgets used by `ButtonGroup`. For more information on using tkinter in combination with guizero see [Using tkinter](usingtk.md).
+
+The `ButtonGroup` widget contains a `tkinter.Frame` object, which frames multiple guizero `RadioButton` widgets. Each `RadioButton` widget contains a `tkinter.Radiobutton` object.
+
+The `.children` property returns the list of `RadioButton` widgets in the order they appear in the `ButtonGroup`:
+
+To access the internal `RadioButton` tk object you would use the child's `tk` property e.g.
+
+```python
+button_group = ButtonGroup(app)
+
+for radio_button in ButtonGroup.children:
+    tk_radio_button = radio_button.tk
 ```

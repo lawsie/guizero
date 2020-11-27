@@ -32,7 +32,7 @@ class ListBox(ContainerTextWidget):
         :param string selected:
             The item in the ListBox to select, defaults to `None`.
 
-        :param callback command:
+        :param Callable command:
             The callback function to call when the ListBox changes,
             defaults to `None`.
 
@@ -66,11 +66,9 @@ class ListBox(ContainerTextWidget):
             size.
         """
 
-        description = "[ListBox] object"
-
         tk = Frame(master.tk)
 
-        super(ListBox, self).__init__(master, tk, description, "auto", grid, align, visible, enabled, width, height)
+        super(ListBox, self).__init__(master, tk, "auto", grid, align, visible, enabled, width, height)
 
         self._listbox = ListBoxWidget(self, items, selected, command, None, "left", visible, enabled, multiselect, None, None)
         self._listbox.resize("fill", "fill")
@@ -78,7 +76,7 @@ class ListBox(ContainerTextWidget):
         if scrollbar:
             # create the scrollbar and add it to the listbox
             scrollbar_tk_widget = Scrollbar(tk)
-            Widget(self, scrollbar_tk_widget, "scrollbar", None, "right", True, True, None, "fill")
+            ListBoxScrollbar(self, scrollbar_tk_widget, None, "right", True, True, None, "fill")
             self._listbox.tk.config(yscrollcommand=scrollbar_tk_widget.set)
             scrollbar_tk_widget.config(command=self._listbox.tk.yview)
 
@@ -161,7 +159,7 @@ class ListBox(ContainerTextWidget):
 
         Setting to `None` stops the callback.
 
-        :param callback command:
+        :param Callable command:
             The callback function to call, it can accept 0 or 1 parameters.
 
             If it accepts 1 parameter the `value` of the ListBox will be
@@ -173,7 +171,6 @@ class ListBoxWidget(TextWidget):
 
     def __init__(self, master, items=None, selected=None, command=None, grid=None, align=None, visible=True, enabled=None, multiselect=False, width=None, height=None):
 
-        description = "[ListBox] object"
         self._multiselect = multiselect
 
         # Create a tk OptionMenu object within this object
@@ -186,7 +183,7 @@ class ListBoxWidget(TextWidget):
             for item in items:
                 tk.insert(END, item)
 
-        super(ListBoxWidget, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(ListBoxWidget, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         self.events.set_event("<ListBox.ListboxSelect>", "<<ListboxSelect>>", self._command_callback)
 
@@ -257,3 +254,7 @@ class ListBoxWidget(TextWidget):
             self._command = lambda: None
         else:
             self._command = command
+
+
+class ListBoxScrollbar(Widget):
+    pass

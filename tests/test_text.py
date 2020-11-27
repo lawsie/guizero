@@ -29,6 +29,7 @@ def test_default_values():
     # test for different fonts to support tests on windows, debian and macos
     assert (t.font == "Arial" or t.font == "Nimbus Sans L" or t.font == "Helvetica")
     assert t.value == ""
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():

@@ -28,6 +28,7 @@ def test_default_values():
     assert l.visible == True
     assert l.enabled == True
     assert l._listbox._multiselect == False
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():
@@ -39,7 +40,8 @@ def test_alt_values():
         grid = [0,1],
         align = "top",
         width=10,
-        height=11)
+        height=11,
+        scrollbar=True)
 
     assert l.value == "bar"
     assert l.items == ["foo", "bar"]
@@ -51,6 +53,19 @@ def test_alt_values():
 
     a.destroy()
 
+def test_multi_default_values():
+    a = App()
+    l = ListBox(a, multiselect = True)
+    assert l.master == a
+    assert l.value == None
+    assert l.items == []
+    assert l.grid == None
+    assert l.align == None
+    assert l.visible == True
+    assert l.enabled == True
+    assert l._listbox._multiselect == True
+    a.destroy()
+
 def test_multi_alt_values():
     a = App(layout = "grid")
     l = ListBox(
@@ -59,7 +74,8 @@ def test_multi_alt_values():
         selected = ["bar"],
         grid = [0,1],
         align = "top",
-        multiselect = True)
+        multiselect = True,
+        scrollbar=True)
 
     assert l.value == ["bar"]
     assert l.items == ["foo", "bar"]
@@ -289,3 +305,5 @@ def test_grid_layout():
     grid_layout_test(wa, 1, 2, 1, 1, "top")
     
     a.destroy()
+
+test_multi_alt_values()

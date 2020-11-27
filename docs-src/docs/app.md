@@ -1,7 +1,5 @@
 # App
 
-(Contains a `tkinter.Tk` object)
-
 ```python
 __init__(
     self, 
@@ -80,7 +78,7 @@ You can set and get the following properties:
 | Method      | Data type          | Description                                                                                |
 |-------------|--------------------|--------------------------------------------------------------------------------------------|
 | bg          | [color](colors.md) | The background colour of the window                                                        |
-| children    | list(widgets)      | A list of widgets in this container                                                        |
+| children    | List               | A list of widgets in this container                                                        |
 | enabled     | boolean            | `True` if the app is enabled                                                               |
 | height      | int                | The height of the window                                                                   |
 | font        | string             | The font that widgets should use                                                           |
@@ -89,10 +87,10 @@ You can set and get the following properties:
 | title       | string             | The title of the window                                                                    |
 | text_size   | int                | The size of the text widgets should use                                                    |
 | text_color  | [color](colors.md) | The colour of the text widgets should use                                                  |
+| tk          | tkinter.Tk         | The internal tkinter object, see [Using tkinter](usingtk.md)                               |
 | visible     | boolean            | If the app is visible                                                                      |
 | width       | int                | The width of the window                                                                    |
 | when_closed | function           | The function to call when the `App` is closed. Setting to `None` (the default) will reset. |
-
 
 Refer to a property as `<name of widget>.property`. For example, if your `App` object is called `app` you would write `app.title`.
 

@@ -9,7 +9,6 @@ class RadioButton(TextWidget):
 
     def __init__(self, master, text, value, variable, command=None, grid=None, align=None, visible=True, enabled=None):
 
-        description = "[RadioButton] object with option=\"" + str(text) + "\" value=\"" + str(value) + "\""
         self._text = text
         self._value = value
 
@@ -18,7 +17,7 @@ class RadioButton(TextWidget):
         # unless they know what they are doing.
         tk = Radiobutton(master.tk, text=self._text, value=self._value, variable=variable)
 
-        super(RadioButton, self).__init__(master, tk, description, grid, align, visible, enabled, None, None)
+        super(RadioButton, self).__init__(master, tk, grid, align, visible, enabled, None, None)
 
     # PROPERTIES
     # -----------------------------------
@@ -32,7 +31,6 @@ class RadioButton(TextWidget):
     def value(self, value):
         self._value = str(value)
         self.tk.config(value=str(value))
-        self.description = "[RadioButton] object with option=\"" + self._text + "\" value=\"" + str(value) + "\""
 
     # The text from this button
     @property
@@ -43,4 +41,10 @@ class RadioButton(TextWidget):
     def text(self, text):
         self._text = str(text)
         self.tk.config(text=self._text)
-        self.description = "[RadioButton] object with option=\"" + str(text) + "\" value=\"" + self._value + "\""
+
+    @property
+    def description(self):
+        """
+        Returns the description for the widget.
+        """
+        return "[RadioButton] object with option={} value={}".format(self.text, self.value)
