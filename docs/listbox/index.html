@@ -353,13 +353,14 @@
                 
             <li class="second-level"><a href="#examples">Examples</a></li>
                 
+            <li class="second-level"><a href="#using-listbox-tk-widgets">Using ListBox tk widgets</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
 <h1 id="listbox">ListBox</h1>
-<p>(Contains a <code>tkinter.Listbox</code> object)</p>
-<pre><code class="language-python">__init__(
+<pre><code class="python">__init__(
     self,
     master,
     items=None,
@@ -374,16 +375,18 @@
     width=None,
     height=None)
 </code></pre>
+
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>ListBox</code> object displays a list of items from which either single or multiple items can be selected.</p>
 <p><img alt="ListBox on Windows" src="../images/listbox_windows.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create a <code>ListBox</code> object like this:</p>
-<pre><code class="language-python">from guizero import App, ListBox
+<pre><code class="python">from guizero import App, ListBox
 app = App()
 listbox = ListBox(app, items=[&quot;Beef&quot;, &quot;Chicken&quot;, &quot;Fish&quot;, &quot;Vegetarian&quot;])
 app.display()
 </code></pre>
+
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create a <code>ListBox</code> object you <strong>must</strong> specify <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>listbox = ListBox(app, items=["Beef", "Chicken", "Fish", "Vegetarian"])</code></p>
 <p>If you want the <code>ListBox</code> to allow multiple items to be selected you must set the <code>multiselect</code> optional parameter to <code>True</code>: <code>listbox = ListBox(app, multiselect=True)</code></p>
@@ -610,6 +613,11 @@ app.display()
 <td>The background colour of the widget</td>
 </tr>
 <tr>
+<td>children</td>
+<td>List</td>
+<td>A list of the widgets in this container. <code>[ListBoxWidget, ListBoxScrollbar]</code></td>
+</tr>
+<tr>
 <td>enabled</td>
 <td>boolean</td>
 <td><code>True</code> if the widget is enabled</td>
@@ -664,6 +672,11 @@ app.display()
 <td><a href="../colors/">color</a></td>
 <td>The colour of the text</td>
 </tr>
+<tr>
+<td>tk</td>
+<td>tkinter.Frame</td>
+<td>The internal tkinter object, see <a href="../usingtk/">Using tkinter</a></td>
+</tr>
 </tbody>
 </table>
 <p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>ListBox</code> object is called <code>listbox</code> you would write <code>listbox.value</code>.</p>
@@ -671,7 +684,7 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong> Select a text color from a ListBox </strong></p>
 <p>When an item in the ListBox is selected a function will be called to change the color of the text.</p>
-<pre><code class="language-python">from guizero import App, ListBox, Text
+<pre><code class="python">from guizero import App, ListBox, Text
 
 def change_color(value):
     t.text_color = value
@@ -689,7 +702,42 @@ listbox = ListBox(
 
 a.display()
 </code></pre>
-<p><img alt="A list of colors" src="../images/listbox_color_changer_windows.png" /></p></div>
+
+<p><img alt="A list of colors" src="../images/listbox_color_changer_windows.png" /></p>
+<h3 id="using-listbox-tk-widgets">Using ListBox tk widgets</h3>
+<p>Advanced users can gain internal access to the internal tkinter widgets used by <code>ListBox</code>. For more information on using tkinter in combination with guizero see <a href="../usingtk/">Using tkinter</a>.</p>
+<p>The <code>ListBox</code> widget contains a <code>tkinter.Frame</code> object, which frames 2 other child guizero widgets containing <code>tkinter.Listbox</code> and <code>tkinter.Scrollbar</code> objects.</p>
+<p>The <code>.children</code> property returns a list of these widgets:</p>
+<table>
+<thead>
+<tr>
+<th>.children index</th>
+<th>guizero class</th>
+<th>tk class</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>ListBoxWidget</code></td>
+<td><code>tkinter.Listbox</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>ListBoxScrollbar</code></td>
+<td><code>tkinter.Scrollbar</code></td>
+<td>A <code>ListBoxScrollbar</code> widget will only be present if <code>ListBox.scrollbar</code> is set to <code>True</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>To access the internal tk object for these child guizero widgets you would use its <code>tk</code> property e.g.</p>
+<pre><code class="python">listbox = listBox(app)
+
+tk_listbox = listbox.children[0].tk
+tk_scrollbar = listbox.children[1].tk
+</code></pre></div>
         
         
     </div>
