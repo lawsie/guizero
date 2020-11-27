@@ -1,7 +1,5 @@
 # Slider
 
-(Contains a `tkinter.Scale` object)
-
 ```python
 __init__(
     self, 
@@ -89,6 +87,7 @@ You can set and get the following properties:
 | master     | App or Box         | The container to which this widget belongs                                                            |
 | text_size  | int                | The size of the text                                                                                  |
 | text_color | [color](colors.md) | The colour of the text                                                                                |
+| tk         | tkinter.Scale      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
 | value      | string             | The current value of the slider                                                                       |
 | visible    | boolean            | If this widget is visible                                                                             |
 | width      | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                  |

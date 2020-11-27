@@ -1,7 +1,5 @@
 # MenuBar
 
-(Contains a `tkinter.Menu` object)
-
 ```python
 __init__(
     self, 
@@ -79,6 +77,7 @@ You can call the following methods on an `MenuBar` object.
 
 You can set and get the following properties:
 
-| Method | Data type | Description                                    |
-|--------|-----------|------------------------------------------------|
-| master | App       | The `App` object to which this MenuBar belongs |
+| Method | Data type    | Description                                                  |
+|--------|--------------|--------------------------------------------------------------|
+| master | App          | The `App` object to which this MenuBar belongs               |
+| tk     | tkinter.Menu | The internal tkinter object, see [Using tkinter](usingtk.md) |

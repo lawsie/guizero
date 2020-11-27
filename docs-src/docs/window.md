@@ -1,7 +1,5 @@
 # Window
 
-(Contains a `tkinter.TopLevel` object)
-
 ```python
 __init__(
     self, 
@@ -80,7 +78,7 @@ You can set and get the following properties:
 | Method      | Data type          | Description                                                                                   |
 |-------------|--------------------|-----------------------------------------------------------------------------------------------|
 | bg          | [color](colors.md) | The background colour of the window                                                           |
-| children    | list(widgets)      | A list of widgets in this container                                                           |
+| children    | List               | A list of widgets in this container                                                           |
 | enabled     | boolean            | `True` if the window is enabled                                                               |
 | font        | string             | The font that widgets should use                                                              |
 | full_screen | boolean            | False                                                                                         |
@@ -89,6 +87,7 @@ You can set and get the following properties:
 | title       | string             | The title of the window                                                                       |
 | text_size   | int                | The size of the text widgets should use                                                       |
 | text_color  | [color](colors.md) | The colour of the text widgets should use                                                     |
+| tk          | tkinter.TopLevel   | The internal tkinter object, see [Using tkinter](usingtk.md)                                  |
 | visible     | boolean            | If the window is visible                                                                      |
 | width       | int                | The width of the window                                                                       |
 | when_closed | function           | The function to call when the `Window` is closed. Setting to `None` (the default) will reset. |

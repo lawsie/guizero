@@ -1,7 +1,5 @@
 # TextBox
 
-(Contains a `tkinter.Entry` object)
-
 ```python
 __init__(
     self,
@@ -94,6 +92,7 @@ You can set and get the following properties:
 | width      | [size](size.md)    | Set the width of the widget in characters or to `"fill"`                                                                                                    |
 | text_size  | int                | The size of the text                                                                                                                                        |
 | text_color | [color](colors.md) | The colour of the text                                                                                                                                      |
+| tk         | tkinter.Entry      | The internal tkinter object, see [Using tkinter](usingtk.md)                                                                                                |
 
 ### Examples
 

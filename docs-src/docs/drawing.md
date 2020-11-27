@@ -1,7 +1,5 @@
 # Drawing
 
-(Contains a `tkinter.canvas` object)
-
 ```python
 __init__(
     self, 
@@ -86,6 +84,7 @@ You can set and get the following properties:
 | grid    | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | height  | [size](size.md)    | Set the height of the widget in characters or to `"fill"`                                             |
 | master  | App or Box         | The container to which this widget belongs                                                            |
+| tk      | tkinter.canvas     | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
 | visible | boolean            | If this widget is visible                                                                             |
 | width   | [size](size.md)    | Set the width of the widget in characters or to `"fill"`                                              |
 

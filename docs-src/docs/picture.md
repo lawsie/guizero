@@ -1,7 +1,5 @@
 # Picture
 
-(Contains a `tkinter.Label` object)
-
 ```python
 __init__(
     self, 
@@ -89,6 +87,7 @@ You can set and get the following properties:
 | height  | [size](size.md)    | Set the height of the widget in pixels                                                                |
 | image   | string             | The file path, tkinter.PhotoImage or PIL.Image you wish to display                                    |
 | master  | App or Box         | The container to which this widget belongs                                                            |
+| tk      | tkinter.Label      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
 | value   | string             | The file path, tkinter.PhotoImage or PIL.Image you wish to display                                    |
 | visible | boolean            | If this widget is visible                                                                             |
 | width   | [size](size.md)    | Set the width of the widget in pixels                                                                 |
