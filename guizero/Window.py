@@ -28,6 +28,9 @@ class Window(BaseWindow):
             bg,
             visible)
 
+        # Window objects should not cascade icons to other windows (or the App object)
+        self._icon_cascade = False
+
     def _close_window(self):
         if self._on_close is None:
             self.hide()

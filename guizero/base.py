@@ -449,6 +449,8 @@ class BaseWindow(Container):
         self.tk.geometry(str(width)+"x"+str(height))
         self._on_close = None
         self._full_screen = False
+        self._icon = None
+        self._icon_cascade = True
 
         self.bg = bg
 
@@ -535,7 +537,16 @@ class BaseWindow(Container):
     @when_closed.setter
     def when_closed(self, value):
         self._on_close = value
+        
+    @property
+    def icon(self):
+        return None if self._icon is None else self._icon.image_source
 
+    @icon.setter
+    def icon(self, value):
+        self._icon = utils.GUIZeroImage(value, None, None)
+        self.tk.iconphoto(self._icon_cascade, self._icon.tk_image)
+    
     # METHODS
     # --------------------------------------
 
