@@ -1,4 +1,5 @@
-from guizero import App, Text, Picture
+import pytest
+from guizero import App, Text, Picture, system_config
 from common_test import (
     schedule_after_test,
     schedule_repeat_test,
@@ -8,7 +9,8 @@ from common_test import (
     cascading_properties_test,
     inheriting_properties_test,
     full_screen_test,
-    add_tk_widget_test)
+    add_tk_widget_test,
+    icon_test)
 
 def test_default_values():
     a = App()
@@ -89,4 +91,16 @@ def test_full_screen():
 def test_add_tk_widget():
     a = App()
     add_tk_widget_test(a)
+    a.destroy()
+
+def test_icon():
+    a = App()
+    icon_test(a, "../examples/guizero.gif")
+    a.destroy()
+
+@pytest.mark.skipif(system_config.PIL_available == False,
+                    reason="PIL not available")
+def test_icon_jpg():
+    a = App()
+    icon_test(a, "../examples/guizero.jpg")
     a.destroy()

@@ -403,3 +403,7 @@ def grid_layout_test(widget, x, y, col_span, row_span, align):
     widget.align = "left"
     assert widget.tk.grid_info()["sticky"] == sticky["left"]
 
+def icon_test(widget, file_name):
+    widget.icon = file_name
+    assert widget.icon == file_name
+    assert widget._icon.tk_image is not None
