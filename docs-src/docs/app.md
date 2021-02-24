@@ -7,7 +7,6 @@ __init__(
     width=500, 
     height=500, 
     layout="auto", 
-    bgcolor=None, 
     bg=None, 
     visible=True)
 ```
