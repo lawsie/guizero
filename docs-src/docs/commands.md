@@ -20,7 +20,7 @@ button = PushButton(app, command=say_hello)
 app.display()
 ```
 
-One can provide arguments to the command function, for example:
+Arguments can be passed to the command function using the `args` parameter.
 
 ```python
 from guizero import App, Text, PushButton
