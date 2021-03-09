@@ -1,5 +1,10 @@
 # guizero
 
+## 1.2 - tbc
+- Added `filename` to `select_file` dialog
+- Documentation updates and fixes
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [mirelsol](https://github.com/mirelsol)
+
 ## 1.1.1 - 2020-11-27
 - PushButton image bug fix for macOS
 - Documentation updates regarding how to use tk, particularly for ListBox widget
