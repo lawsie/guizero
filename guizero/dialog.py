@@ -89,7 +89,7 @@ def question(title, question, initial_value=None, master=None):
     """
     return askstring(title, question, initialvalue=initial_value, parent=None if master is None else master.tk)
 
-def select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False, master=None):
+def select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False, master=None, filename=""):
     """
     Display a box to select a file to open or save.
 
@@ -122,12 +122,14 @@ def select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]
             title=title, 
             filetypes=filetypes, 
             initialdir=folder, 
+            initialfile=filename,
             parent=None if master is None else master.tk)
     else:
         return filedialog.askopenfilename(
             title=title, 
             filetypes=filetypes, 
             initialdir=folder, 
+            initialfile=filename,
             parent=None if master is None else master.tk)
 
 def select_folder(title="Select folder", folder=".", master=None):
