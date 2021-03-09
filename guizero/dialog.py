@@ -73,7 +73,7 @@ def question(title, question, initial_value=None, master=None):
 
     If Ok is pressed the value entered into the box is returned.
 
-    If Cancel is pressed `None` is returned.
+    If Cancel is pressed `""` is returned.
 
     :param string title:
         The title to be displayed on the box.
@@ -134,7 +134,7 @@ def select_folder(title="Select folder", folder=".", master=None):
     """
     Display a box to select a folder.
 
-    If a folder is selected the folder path is returned, otherwise `None` is returned.
+    If a folder is selected the folder path is returned, otherwise `""` is returned.
 
     :param string title:
         The title to be displayed on the box. Defaults to 'Select file'.
