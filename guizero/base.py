@@ -119,6 +119,14 @@ class Component(
         self._events = EventManager(self, tk)
         self._displayable = displayable
 
+        # keep track of the tk widget's size by creating 
+        # an event to track when the widget is configured
+        self._when_resized = None
+        self._actual_height = None
+        self._actual_width = None
+        
+        self.events.set_event("<Component.Configure>", "<Configure>", self._on_configure_change)
+
         # check the master
         if self.master is not None:
             if isinstance(master, Container):
@@ -162,6 +170,14 @@ class Component(
         """
         return self._displayable
 
+    @property
+    def when_resized(self):
+        return self._when_resized
+
+    @when_resized.setter
+    def when_resized(self, value):
+        self._when_resized = value
+
     def destroy(self):
         """
         Destroy the tk widget.
@@ -172,6 +188,20 @@ class Component(
 
         self.tk.destroy()
 
+    def _on_configure_change(self, e):
+        
+        # is this configure event for this widget?
+        if e.tk_event.widget == self.tk:
+
+            # has the widgets size changed?
+            if self._actual_height != e.tk_event.height or self._actual_width != e.tk_event.width: 
+
+                self._actual_height = e.tk_event.height
+                self._actual_width = e.tk_event.height
+
+                # call the resize event
+                if self._when_resized is not None:
+                    self._when_resized(e)
 
 class Container(Component):
 

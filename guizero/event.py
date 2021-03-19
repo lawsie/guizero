@@ -63,7 +63,20 @@ class EventData():
         the display when the event occurred.
         """
         return self._tk_event.y_root
+    
+    @property
+    def width(self):
+        """
+        The new width of the widget when re-configured.
+        """
+        return self._tk_event.width
 
+    @property
+    def height(self):
+        """
+        The new height of the widget when re-configured.
+        """
+        return self._tk_event.height
 
 class EventCallback():
 
