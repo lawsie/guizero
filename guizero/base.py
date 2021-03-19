@@ -192,15 +192,16 @@ class Component(
         
         # is this configure event for this widget?
         if e.tk_event.widget == self.tk:
+
+            # has the widgets size changed?
             if self._actual_height != e.tk_event.height or self._actual_width != e.tk_event.width: 
 
                 self._actual_height = e.tk_event.height
                 self._actual_width = e.tk_event.height
+
+                # call the resize event
                 if self._when_resized is not None:
                     self._when_resized(e)
-            # debug
-            # print(e.tk_event.widget)
-            # print(e.tk_event.widget, e.tk_event.x, e.tk_event.y, e.tk_event.height, e.tk_event.width)
 
 class Container(Component):
 
