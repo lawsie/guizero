@@ -188,21 +188,28 @@ class Component(
 
         self.tk.destroy()
 
-    def _on_configure_change(self, e):
+    def _on_configure_change(self, event):
         
         # is this configure event for this widget?
-        if e.tk_event.widget == self.tk:
+        if event.tk_event.widget == self.tk:
 
             # has the widgets size changed?
-            if self._actual_height != e.tk_event.height or self._actual_width != e.tk_event.width: 
+            if self._actual_height != event.tk_event.height or self._actual_width != event.tk_event.width: 
 
-                self._actual_height = e.tk_event.height
-                self._actual_width = e.tk_event.height
+                self._actual_height = event.tk_event.height
+                self._actual_width = event.tk_event.height
 
                 # call the resize event
                 if self._when_resized is not None:
-                    self._when_resized(e)
+                    args_expected = utils.no_args_expected(self._when_resized)
 
+                    if args_expected == 0:
+                        self._when_resized()
+                    elif args_expected == 1:
+                        self._when_resized(event)
+                    else:
+                        utils.error_format("An event callback function must accept either 0 or 1 arguments.\nThe current callback has {} arguments.".format(args_expected))
+                
 class Container(Component):
 
     def __init__(self, master, tk, layout, displayable):
@@ -579,6 +586,19 @@ class BaseWindow(Container):
     
     # METHODS
     # --------------------------------------
+
+    def resize(self, width, height):
+        """
+        Resizes the window.
+
+        :param int width:
+            The width of the window.
+
+        :param int height:
+            The height of the window.
+        """
+        self.tk.geometry(str(width)+"x"+str(height))
+        self.tk.update()
 
     def hide(self):
         """Hide the window."""

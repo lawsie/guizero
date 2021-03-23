@@ -1,4 +1,5 @@
 import pytest
+from threading import Event
 from guizero import App, Text, Picture, system_config
 from common_test import (
     schedule_after_test,
@@ -71,6 +72,36 @@ def test_enable():
 def test_events():
     a = App()
     events_test(a)
+    a.destroy()
+
+def test_when_resized():
+    
+    a = App()
+
+    resize_event = Event()
+    def callback():
+        resize_event.set()
+
+    def callback_params(event):
+        assert event.width == 503
+        assert event.height == 504
+        resize_event.set()
+
+
+    a.when_resized = callback
+    a.resize(501, 502)
+    assert resize_event.wait(1)
+    resize_event.clear()
+    
+    a.when_resized = callback_params
+    a.resize(503, 504)
+    assert resize_event.wait(1)
+    resize_event.clear()
+
+    a.when_resized = None
+    a.resize(505, 506)
+    assert not resize_event.wait(0.1)
+
     a.destroy()
 
 def test_cascading_properties():
