@@ -3,6 +3,7 @@
 Custom events can be added to guizero widgets to call functions when the user takes the following actions:
 
 - when clicked - `when_clicked`
+- when double clicked - `when_double_clicked`
 - when the left mouse button is pressed - `when_left_button_pressed`
 - when the left mouse button is released - `when_left_button_released`
 - when the right mouse button is pressed - `when_right_button_pressed`

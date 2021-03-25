@@ -2,6 +2,7 @@
 
 ## 1.2 - tbc
 - Added `filename` to `select_file` dialog
+- Added `when_resized` and `when_double_clicked` events
 - Documentation updates and fixes
 - contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [mirelsol](https://github.com/mirelsol)
 

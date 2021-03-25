@@ -144,6 +144,7 @@ def events_test(widget):
 
     events_to_test = (
         ("when_clicked", "<when_clicked>"),
+        ("when_double_clicked", "<when_double_clicked>"),
         ("when_left_button_pressed", "<when_left_button_pressed>"),
         ("when_left_button_released", "<when_left_button_released>"),
         ("when_right_button_pressed", "<when_right_button_pressed>"),
