@@ -652,13 +652,6 @@ class BaseWindow(Container):
     def select_folder(self, title="Select folder", folder="."):
         return dialog.select_folder(title=title, folder=folder, master=self)
 
-    # DEPRECATED METHODS
-    # --------------------------------------------
-    def on_close(self, command):
-        # deprecated on 2019-06-08
-        self.when_closed = command
-        utils.deprecated("on_close() is deprecated. Please use the when_closed property instead.")
-
 
 class Widget(
     Component,

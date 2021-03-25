@@ -3,8 +3,10 @@
 ## 1.2 - tbc
 - Added `filename` to `select_file` dialog
 - Added `when_resized` and `when_double_clicked` events
+- Removed previously deprecated `App.on_closed` method
 - A window icon can be set using the `.icon` property
 - Documentation updates and fixes
+- Added new examples and recipes
 - contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [mirelsol](https://github.com/mirelsol)
 
 ## 1.1.1 - 2020-11-27
