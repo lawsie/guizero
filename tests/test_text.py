@@ -12,8 +12,6 @@ from common_test import (
     events_test,
     cascaded_properties_test,
     inherited_properties_test,
-    # SET_FONT,
-    # TEST_FONTS,
     TEST_FONT,
     grid_layout_test,
     auto_layout_test
@@ -27,8 +25,6 @@ def test_default_values():
     assert t.align == None
     assert t.size == 12
     assert t.text_color == "black"
-    # test for different fonts to support tests on windows, debian and macos
-    # assert (t.font == "Arial" or t.font == "Nimbus Sans L" or t.font == "Helvetica")
     assert t.value == ""
     assert a.description > ""
     a.destroy()

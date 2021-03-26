@@ -21,9 +21,6 @@ for suitable_font in SUITABLE_FONTS:
 if TEST_FONT is None:
     pytest.exit("A suitable test font could not be found.")
 
-# SET_FONT = "Times New Roman"
-# TEST_FONTS = ["Times New Roman", "Liberation Serif"]
-
 def schedule_after_test(app, widget):
     callback_event = Event()
     def callback():
