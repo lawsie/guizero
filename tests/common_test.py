@@ -1,11 +1,28 @@
+import pytest
 from threading import Event
 from time import sleep
 from unittest.mock import MagicMock
 from guizero import Text, Picture
 from tkinter import Spinbox
 
-SET_FONT = "Times New Roman"
-TEST_FONTS = ["Times New Roman", "Liberation Serif"]
+# find a suitable font to test with
+SUITABLE_FONTS = ["Times New Roman", "Liberation Serif"]
+TEST_FONT = None
+from tkinter import Tk, font
+root = Tk()
+available_fonts = font.families()
+root.destroy()
+
+for suitable_font in SUITABLE_FONTS:
+    if suitable_font in available_fonts:
+        TEST_FONT = suitable_font
+        break
+
+if TEST_FONT is None:
+    pytest.exit("A suitable test font could not be found.")
+
+# SET_FONT = "Times New Roman"
+# TEST_FONTS = ["Times New Roman", "Liberation Serif"]
 
 def schedule_after_test(app, widget):
     callback_event = Event()
@@ -119,8 +136,8 @@ def size_fill_test(widget):
 
 def text_test(widget):
     default = widget.font
-    widget.font = SET_FONT
-    assert widget.font in TEST_FONTS
+    widget.font = TEST_FONT
+    assert widget.font == TEST_FONT
     widget.font = None
     assert widget.font == default
 
@@ -276,13 +293,13 @@ def cascading_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
-    container.font = SET_FONT
+    container.font = TEST_FONT
     container.enabled = False
 
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
-    assert t.font in TEST_FONTS
+    assert t.font == TEST_FONT
     assert t.enabled == False
     assert p.bg == "red"
     assert p.enabled == False
@@ -296,14 +313,14 @@ def inheriting_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
-    container.font = SET_FONT
+    container.font = TEST_FONT
     container.enabled = False
 
     t = Text(container, color=None, size=None, font=None)
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
-    assert t.font in TEST_FONTS
+    assert t.font == TEST_FONT
     assert not t.enabled
 
     p = Picture(container)
