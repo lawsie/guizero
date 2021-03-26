@@ -6,7 +6,7 @@ from guizero import Text, Picture
 from tkinter import Spinbox
 
 # find a suitable font to test with
-SUITABLE_FONTS = ["Times New Roman", "Liberation Serif", "Impact"]
+SUITABLE_FONTS = ["Times New Roman", "Liberation Serif", "Impact", "FreeSans"]
 TEST_FONT = None
 from tkinter import Tk, font
 root = Tk()
