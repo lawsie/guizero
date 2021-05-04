@@ -355,6 +355,8 @@
                 
             <li class="second-level"><a href="#scale-an-image">Scale an image</a></li>
                 
+            <li class="second-level"><a href="#double-click-a-widget">Double click a widget</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -464,6 +466,21 @@ width.value = picture.width
 height = Slider(app, command=resize, horizontal=False, grid=[1,1], start=1, end=picture.height)
 height.height = picture.height
 height.value = picture.height
+
+app.display()
+</code></pre>
+
+<h2 id="double-click-a-widget">Double click a widget</h2>
+<p>To be able to react when a user double click's you will need to use <a href="../events/">events</a>.</p>
+<pre><code class="python">from guizero import App, Text
+
+def double_click():
+    double_click_me.value = &quot;Thanks&quot;
+
+app = App()
+
+double_click_me = Text(app, text=&quot;Double click me&quot;)
+double_click_me.when_double_clicked = double_click
 
 app.display()
 </code></pre></div>

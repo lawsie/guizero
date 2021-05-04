@@ -372,8 +372,9 @@ info(&quot;info&quot;, &quot;this is a guizero app&quot;)
 <li><code>error(title, text)</code> - popup box with an error icon</li>
 <li><code>yesno(title, text)</code> - popup box with yes and no options. Pressing <code>Yes</code> returns <code>True</code> and pressing <code>No</code> returns <code>False</code>.</li>
 <li><code>question(title, text, initial_value=None)</code> - popup box with a question box which can accept a text response. Pressing <code>Ok</code> returns value entered into the box is returned and pressing <code>Cancel</code> returns <code>None</code>.</li>
-<li><code>select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False)</code> - popup file dialog box which asks the user to select a file. By default, an <em>Open</em> button is displayed, setting <code>save</code> to <code>True</code> will change the button to <em>Save as</em>. The path of the selected file is returned by the function.</li>
+<li><code>select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False, filename="")</code> - popup file dialog box which asks the user to select a file. By default, an <em>Open</em> button is displayed, setting <code>save</code> to <code>True</code> will change the button to <em>Save as</em>. The path of the selected file is returned by the function. A <code>filename</code> parameter can be supplied which will auto populate the file name field.</li>
 <li><code>select_folder(title="Select folder", folder=".")</code> - popup box which asks the user to select a folder. The path of the selected folder is returned by the function.</li>
+<li><code>select_color(color=None)</code> - popup box which prompts the user to select a color. Set <code>color</code> to an <code>#rrggbb</code> to select a default color when the popup opens. Pressing <code>Ok</code> returns the select color as a <code>#rrggbb</code> value, pressing <code>Cancel</code> returns <code>None</code>.</li>
 </ul>
 <p>All pop up boxes use the native display, so they will look different depending on your operating system.</p>
 <h3 id="examples">Examples</h3>
@@ -462,7 +463,7 @@ hello = Text(app)
 app.display()
 </code></pre>
 
-<p><img alt="question popu" src="../images/question_windows.png" /></p>
+<p><img alt="question popup" src="../images/question_windows.png" /></p>
 <p><strong> Example: Get a file name</strong></p>
 <p>Ask the user to select a file using the <code>select_file</code> pop-up.</p>
 <pre><code class="python">from guizero import App, PushButton, Text
