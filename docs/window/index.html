@@ -535,16 +535,22 @@ app.display()
 <td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
 </tr>
 <tr>
-<td>select_file(title="Select file", folder=".", filetypes=[["All files", "<em>.</em>"]], save=False)</td>
-<td>title (str), folder (str), filetypes (list), save (bool)</td>
+<td>select_color(color=None)</td>
+<td>color (str)</td>
+<td>color as RGB value string ('#000000' - '#ffffff')</td>
+<td>Display a box to select a color. If a color is selected the color RGB value is returned, otherwise <code>None</code> is returned.</td>
+</tr>
+<tr>
+<td>select_file(title="Select file", folder=".", filetypes=[["All files", "<em>.</em>"]], save=False, filename="")</td>
+<td>title (str), folder (str), filetypes (list), save (bool), filename (str)</td>
 <td>Full path of the file selected as a string</td>
-<td>Display a box to select a file to open or save. If Open or Save is pressed the filename path is returned. If Cancel is pressed <code>None</code> is returned.</td>
+<td>Display a box to select a file to open or save. If Open or Save is pressed the filename path is returned. If Cancel is pressed <code>""</code> is returned.</td>
 </tr>
 <tr>
 <td>select_folder(title="Select folder", folder=".")</td>
 <td>title (str), folder (str)</td>
 <td>Full path of the folder selected as a string</td>
-<td>Display a box to select a folder. If a folder is selected the folder path is returned, otherwise <code>None</code> is returned.</td>
+<td>Display a box to select a folder. If a folder is selected the folder path is returned, otherwise <code>""</code> is returned.</td>
 </tr>
 <tr>
 <td>set_full_screen(keybind)</td>
@@ -575,12 +581,6 @@ app.display()
 <td>title (str), text (str)</td>
 <td>Pressing <code>Yes</code> returns <code>True</code> and pressing <code>No</code> returns <code>False</code></td>
 <td>Displays a popup box with yes and no options</td>
-</tr>
-<tr>
-<td><em>on_close(command)</em></td>
-<td><em>command (function name)</em></td>
-<td>-</td>
-<td><em>Calls the given function when the user tries to close the window.</em></td>
 </tr>
 </tbody>
 </table>
@@ -624,6 +624,11 @@ app.display()
 <td>height</td>
 <td>int</td>
 <td>The height of the window</td>
+</tr>
+<tr>
+<td>image</td>
+<td>image_source (string)</td>
+<td>The file path, tkinter.PhotoImage or PIL.Image you wish to use as the window icon.</td>
 </tr>
 <tr>
 <td>layout</td>

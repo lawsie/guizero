@@ -358,7 +358,7 @@
         <div class="col-md-9" role="main">
 
 <h1 id="app">App</h1>
-<pre><code class="language-python">__init__(
+<pre><code class="python">__init__(
     self, 
     title=&quot;guizero&quot;, 
     width=500, 
@@ -367,15 +367,17 @@
     bg=None, 
     visible=True)
 </code></pre>
+
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>App</code> object is the basis of all GUIs created using guizero. It is the main window which contains all of the other widgets.</p>
 <p><img alt="App" src="../images/app.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create an <code>App</code> object like this:</p>
-<pre><code class="language-python">from guizero import App
+<pre><code class="python">from guizero import App
 app = App()
 app.display()
 </code></pre>
+
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create an <code>App</code> object you can specify any of the following parameters, all of which are optional. Specify parameters in the brackets like this: <code>app = App(bg="red", height=200)</code></p>
 <table>
@@ -530,16 +532,22 @@ app.display()
 <td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
 </tr>
 <tr>
-<td>select_file(title="Select file", folder=".", filetypes=[["All files", "<em>.</em>"]], save=False)</td>
-<td>title (str), folder (str), filetypes (list), save (bool)</td>
+<td>select_color(color=None)</td>
+<td>color (str)</td>
+<td>color as RGB value string ('#000000' - '#ffffff')</td>
+<td>Display a box to select a color. If a color is selected the color RGB value is returned, otherwise <code>None</code> is returned.</td>
+</tr>
+<tr>
+<td>select_file(title="Select file", folder=".", filetypes=[["All files", "<em>.</em>"]], save=False, filename="")</td>
+<td>title (str), folder (str), filetypes (list), save (bool), filename (str)</td>
 <td>Full path of the file selected as a string</td>
-<td>Display a box to select a file to open or save. If Open or Save is pressed the filename path is returned. If Cancel is pressed <code>None</code> is returned.</td>
+<td>Display a box to select a file to open or save. If Open or Save is pressed the filename path is returned. If Cancel is pressed <code>""</code> is returned.</td>
 </tr>
 <tr>
 <td>select_folder(title="Select folder", folder=".")</td>
 <td>title (str), folder (str)</td>
 <td>Full path of the folder selected as a string</td>
-<td>Display a box to select a folder. If a folder is selected the folder path is returned, otherwise <code>None</code> is returned.</td>
+<td>Display a box to select a folder. If a folder is selected the folder path is returned, otherwise <code>""</code> is returned.</td>
 </tr>
 <tr>
 <td>set_full_screen(keybind)</td>
@@ -571,15 +579,8 @@ app.display()
 <td>Pressing <code>Yes</code> returns <code>True</code> and pressing <code>No</code> returns <code>False</code></td>
 <td>Displays a popup box with yes and no options</td>
 </tr>
-<tr>
-<td><em>on_close(command)</em></td>
-<td><em>command (function name)</em></td>
-<td>-</td>
-<td><em>Calls the given function when the user tries to close the window.</em></td>
-</tr>
 </tbody>
 </table>
-<p>Parameters in <em>italics</em> will still work but are <strong>deprecated</strong> - this means you should stop using them because they may not work in future versions of guizero</p>
 <h3 id="properties">Properties</h3>
 <p>You can set and get the following properties:</p>
 <table>
@@ -620,6 +621,11 @@ app.display()
 <td>full_screen</td>
 <td>boolean</td>
 <td>False</td>
+</tr>
+<tr>
+<td>image</td>
+<td>image_source (string)</td>
+<td>The file path, tkinter.PhotoImage or PIL.Image you wish to use as the window icon.</td>
 </tr>
 <tr>
 <td>layout</td>
@@ -669,17 +675,19 @@ app.display()
 <p><strong>Creating an App object</strong></p>
 <p>Create an <code>App</code> object by calling the <code>App()</code> constructor. You should give the object a name so you can refer to it later - in this case we have called it <code>app</code>. It is best to keep the name you give to your <code>App</code> object quite short, as you will have to use it to tell other widgets where they should be stored.</p>
 <p>At the end of the program you <strong>MUST</strong> tell the app object to begin the display loop.</p>
-<pre><code class="language-python">from guizero import App
+<pre><code class="python">from guizero import App
 app = App(title=&quot;My app&quot;, height=300, width=200)
 app.display()
 </code></pre>
+
 <p><strong>Changing the title</strong></p>
 <p>You can change the title of the app object once it has been created like this:</p>
-<pre><code class="language-python">from guizero import App
+<pre><code class="python">from guizero import App
 app = App(title=&quot;My app&quot;, height=300, width=200)
 app.title = &quot;A different title&quot;
 app.display()
 </code></pre>
+
 <p>This will display the app with the updated title:</p>
 <p><img alt="App title" src="../images/app_set_title.png" /></p></div>
         

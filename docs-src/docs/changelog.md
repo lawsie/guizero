@@ -1,6 +1,6 @@
 # guizero
 
-## 1.2 - tbc
+## 1.2.0 - 2021-05-04
 - Added `filename` to `select_file` dialog
 - Added `when_resized` and `when_double_clicked` events
 - Removed previously deprecated `App.on_closed` method
