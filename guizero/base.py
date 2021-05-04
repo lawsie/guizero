@@ -119,6 +119,14 @@ class Component(
         self._events = EventManager(self, tk)
         self._displayable = displayable
 
+        # keep track of the tk widget's size by creating 
+        # an event to track when the widget is configured
+        self._when_resized = None
+        self._actual_height = None
+        self._actual_width = None
+        
+        self.events.set_event("<Component.Configure>", "<Configure>", self._on_configure_change)
+
         # check the master
         if self.master is not None:
             if isinstance(master, Container):
@@ -162,6 +170,14 @@ class Component(
         """
         return self._displayable
 
+    @property
+    def when_resized(self):
+        return self._when_resized
+
+    @when_resized.setter
+    def when_resized(self, value):
+        self._when_resized = value
+
     def destroy(self):
         """
         Destroy the tk widget.
@@ -172,7 +188,28 @@ class Component(
 
         self.tk.destroy()
 
+    def _on_configure_change(self, event):
+        
+        # is this configure event for this widget?
+        if event.tk_event.widget == self.tk:
 
+            # has the widgets size changed?
+            if self._actual_height != event.tk_event.height or self._actual_width != event.tk_event.width: 
+
+                self._actual_height = event.tk_event.height
+                self._actual_width = event.tk_event.height
+
+                # call the resize event
+                if self._when_resized is not None:
+                    args_expected = utils.no_args_expected(self._when_resized)
+
+                    if args_expected == 0:
+                        self._when_resized()
+                    elif args_expected == 1:
+                        self._when_resized(event)
+                    else:
+                        utils.error_format("An event callback function must accept either 0 or 1 arguments.\nThe current callback has {} arguments.".format(args_expected))
+                
 class Container(Component):
 
     def __init__(self, master, tk, layout, displayable):
@@ -449,6 +486,8 @@ class BaseWindow(Container):
         self.tk.geometry(str(width)+"x"+str(height))
         self._on_close = None
         self._full_screen = False
+        self._icon = None
+        self._icon_cascade = True
 
         self.bg = bg
 
@@ -535,9 +574,31 @@ class BaseWindow(Container):
     @when_closed.setter
     def when_closed(self, value):
         self._on_close = value
+        
+    @property
+    def icon(self):
+        return None if self._icon is None else self._icon.image_source
 
+    @icon.setter
+    def icon(self, value):
+        self._icon = utils.GUIZeroImage(value, None, None)
+        self.tk.iconphoto(self._icon_cascade, self._icon.tk_image)
+    
     # METHODS
     # --------------------------------------
+
+    def resize(self, width, height):
+        """
+        Resizes the window.
+
+        :param int width:
+            The width of the window.
+
+        :param int height:
+            The height of the window.
+        """
+        self.tk.geometry(str(width)+"x"+str(height))
+        self.tk.update()
 
     def hide(self):
         """Hide the window."""
@@ -585,21 +646,14 @@ class BaseWindow(Container):
     def question(self, title, question, initial_value=None):
         return dialog.question(title, question, initial_value, master=self)
 
-    def select_file(self, title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False):
-        return dialog.select_file(title=title, folder=folder, filetypes=filetypes, save=save, master=self)
+    def select_file(self, title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False, filename=""):
+        return dialog.select_file(title=title, folder=folder, filetypes=filetypes, save=save, master=self, filename=filename)
 
     def select_folder(self, title="Select folder", folder="."):
         return dialog.select_folder(title=title, folder=folder, master=self)
 
     def select_color(self, color=None):
         return dialog.select_color(color, master=self)
-
-    # DEPRECATED METHODS
-    # --------------------------------------------
-    def on_close(self, command):
-        # deprecated on 2019-06-08
-        self.when_closed = command
-        utils.deprecated("on_close() is deprecated. Please use the when_closed property instead.")
 
 
 class Widget(

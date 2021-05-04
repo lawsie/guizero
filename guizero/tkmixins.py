@@ -309,6 +309,17 @@ class EventsMixin():
         self.events.set_event("<when_clicked>", "<ButtonPress-1>", value)
 
     @property
+    def when_double_clicked(self):
+        """
+        Sets or returns the function called when the widget is double clicked.
+        """
+        return self.events.get_event("<when_double_clicked>")
+
+    @when_double_clicked.setter
+    def when_double_clicked(self, value):
+        self.events.set_event("<when_double_clicked>", "<Double-Button-1>", value)
+
+    @property
     def when_left_button_pressed(self):
         """
         Sets or returns the function called when the left mouse button is

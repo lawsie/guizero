@@ -1,7 +1,8 @@
 from guizero import App, PushButton, Text, CheckBox
 
 def get_file():
-    file_name.value = app.select_file(filetypes=[["All files", "*.*"], ["Text documents", "*.txt"]], save=save.value)
+    file_returned = app.select_file(filetypes=[["All files", "*.*"], ["Text documents", "*.txt"]], save=save.value)
+    file_name.value = file_returned
 
 app = App()
 
