@@ -152,13 +152,12 @@ def select_folder(title="Select folder", folder=".", master=None):
     
     return filedialog.askdirectory(title=title, initialdir=folder, parent=None if master is None else master.tk)
 
-
 def select_color(color=None, master=None):
     """
     Display a box to select a color.
 
     :param color:
-        Preselected color
+        Preselected color. Defaults to `None`.
     :param App master:
         Optional guizero master which the popup will be placed over. Defaults
         to `None`.
