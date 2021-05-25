@@ -160,4 +160,4 @@ destroy_button = PushButton(app, text="Destroy", command=destroy_message)
 app.display()
 ~~~
 
-**Warning** - destroying a widget in an uncontrolled way could make your application unstable. A widget's code will stop immediately regardless of what your application is doing. It is often to simpler and safer to hide or disable a widget rather than destroying it.
+**Warning** - destroying a widget in an uncontrolled way could make your application unstable. A widget's code will stop immediately regardless of what your application is doing. It is often to simpler and safer to hide or disable a widget rather than destroy it.
