@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -365,25 +371,23 @@
 <p>These are examples of how you can use <code>guizero</code> to create user interfaces. Don't be restricted to these ideas, check out <a href="../start/">Using guizero</a> and the <a href="../app/">widgets</a>.</p>
 <h2 id="hello-world">Hello World</h2>
 <p>Create a guizero app and display some text.</p>
-<pre><code class="python">from guizero import App, Text
+<pre><code class="language-python">from guizero import App, Text
 app = App()
 text = Text(app, text=&quot;hello world&quot;)
 app.display()
 </code></pre>
-
 <h2 id="get-some-text">Get some text</h2>
 <p>Get some data from the user using a <code>TextBox</code>.</p>
-<pre><code class="python">from guizero import App, TextBox
+<pre><code class="language-python">from guizero import App, TextBox
 
 app = App()
 name = TextBox(app, text=&quot;Enter your name&quot;)
 
 app.display()
 </code></pre>
-
 <h2 id="push-a-button">Push a button</h2>
 <p>Use a <code>PushButton</code> to display a message when the button is pressed. </p>
-<pre><code class="python">from guizero import App, TextBox, PushButton, Text
+<pre><code class="language-python">from guizero import App, TextBox, PushButton, Text
 
 def update_text():
     label.value = name.value
@@ -395,18 +399,16 @@ button = PushButton(app, command=update_text)
 
 app.display()
 </code></pre>
-
 <h2 id="display-an-image">Display an image</h2>
 <p>Use a <code>Picture</code> object to display an image.</p>
-<pre><code class="python">from guizero import App, Picture
+<pre><code class="language-python">from guizero import App, Picture
 app = App()
 pic = Picture(app, image=&quot;myimage.gif&quot;)
 app.display()
 </code></pre>
-
 <h2 id="toggle-2-buttons">Toggle 2 buttons</h2>
 <p>Have 2 buttons, <strong>start</strong> and <strong>stop</strong> with them changing the <code>enabled</code> state of each other.</p>
-<pre><code class="python">from guizero import App, PushButton
+<pre><code class="language-python">from guizero import App, PushButton
 
 def start():
     start_button.disable()
@@ -421,10 +423,9 @@ start_button = PushButton(app, command=start, text=&quot;start&quot;)
 stop_button = PushButton(app, command=stop, text=&quot;stop&quot;, enabled=False)
 app.display()
 </code></pre>
-
 <h2 id="change-your-apps-appearance">Change your apps appearance</h2>
 <p>Your app doesn't have to use the standard colors and text, let your user pick the background and text color from 2 combo's.</p>
-<pre><code class="python">from guizero import App, Combo, Text
+<pre><code class="language-python">from guizero import App, Combo, Text
 
 def update_bg():
     app.bg = bg_combo.value
@@ -446,10 +447,9 @@ text_combo = Combo(app, options=colors, selected=app.text_color, command=update_
 
 app.display()
 </code></pre>
-
 <h2 id="scale-an-image">Scale an image</h2>
 <p>Display an image on the screen with 2 sliders, 1 for height and 1 for width.</p>
-<pre><code class="python">from guizero import App, Slider, Picture
+<pre><code class="language-python">from guizero import App, Slider, Picture
 
 def resize():
     picture.width = width.value

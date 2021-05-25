@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -355,7 +361,7 @@
 <h3 id="using-tkinter-widgets-in-guizero">Using tkinter widgets in guizero</h3>
 <p>You can add tk widgets into your guizero app using the <code>add_tk_widget</code> method of <code>App</code>, <code>Window</code> and <code>Box</code>.</p>
 <p>In this example, we are adding the tkinter widget <code>Spinbox</code> into a guizero <code>App</code>:</p>
-<pre><code class="python">from guizero import App, Text
+<pre><code class="language-python">from guizero import App, Text
 from tkinter import Spinbox
 
 app = App()
@@ -366,17 +372,15 @@ app.add_tk_widget(spinbox)
 
 app.display()
 </code></pre>
-
 <p>When adding a tk widget to a <code>Box</code> or a <code>Window</code> you will have to specify its <code>tk</code> property when creating the tk widget.</p>
-<pre><code class="python">box = Box(app)
+<pre><code class="language-python">box = Box(app)
 spinbox = Spinbox(box.tk, from_=0, to=10)
 box.add_tk_widget(spinbox)
 </code></pre>
-
 <h3 id="using-a-tkinter-method-on-a-guizero-object">Using a tkinter method on a guizero object</h3>
 <p>Each guizero widget itself contains a tk widget - you can find out which by looking on the guizero documentation page for the widget. For example, a guizero <code>TextBox</code> contains a tkinter <code>Entry</code> object. You can access the internal object using the syntax <code>&lt;object_name&gt;.tk</code>.</p>
 <p>In this example, we have guizero <code>App</code> and <code>TextBox</code> widgets and are using the tk widgets <code>config</code> method to change the mouse cursor when it is over the <code>TextBox</code>.</p>
-<pre><code class="python">from guizero import App, TextBox
+<pre><code class="language-python">from guizero import App, TextBox
 app = App()
 name = TextBox(app, text=&quot;Laura&quot;)
 name.tk.config(cursor=&quot;target&quot;) 

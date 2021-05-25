@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -366,12 +372,11 @@
 <li>when the widget is resized - <code>when_resized</code></li>
 </ul>
 <p>Events are set by assigning them to a function:</p>
-<pre><code class="python">def do_this():
+<pre><code class="language-python">def do_this():
     print(&quot;The widget was clicked&quot;)
 
 widget.when_clicked = do_this
 </code></pre>
-
 <h3 id="event-data">Event Data</h3>
 <p>The function which is called can also accept a parameter and will be passed data about the event which occurred.</p>
 <p>The event data returned has:</p>
@@ -393,10 +398,9 @@ widget.when_clicked = do_this
 
 widget.when_clicked = clicked
 </code></pre>
-
 <h3 id="example">Example</h3>
 <p>Highlight a text box widget by changing its background color (<code>bg</code>) when the mouse is hovering over it.</p>
-<pre><code class="python">from guizero import App, TextBox
+<pre><code class="language-python">from guizero import App, TextBox
 
 def highlight():
     text_box.bg = &quot;lightblue&quot;

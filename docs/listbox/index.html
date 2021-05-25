@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -360,7 +366,7 @@
         <div class="col-md-9" role="main">
 
 <h1 id="listbox">ListBox</h1>
-<pre><code class="python">__init__(
+<pre><code class="language-python">__init__(
     self,
     master,
     items=None,
@@ -375,18 +381,16 @@
     width=None,
     height=None)
 </code></pre>
-
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>ListBox</code> object displays a list of items from which either single or multiple items can be selected.</p>
 <p><img alt="ListBox on Windows" src="../images/listbox_windows.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create a <code>ListBox</code> object like this:</p>
-<pre><code class="python">from guizero import App, ListBox
+<pre><code class="language-python">from guizero import App, ListBox
 app = App()
 listbox = ListBox(app, items=[&quot;Beef&quot;, &quot;Chicken&quot;, &quot;Fish&quot;, &quot;Vegetarian&quot;])
 app.display()
 </code></pre>
-
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create a <code>ListBox</code> object you <strong>must</strong> specify <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>listbox = ListBox(app, items=["Beef", "Chicken", "Fish", "Vegetarian"])</code></p>
 <p>If you want the <code>ListBox</code> to allow multiple items to be selected you must set the <code>multiselect</code> optional parameter to <code>True</code>: <code>listbox = ListBox(app, multiselect=True)</code></p>
@@ -684,7 +688,7 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong> Select a text color from a ListBox </strong></p>
 <p>When an item in the ListBox is selected a function will be called to change the color of the text.</p>
-<pre><code class="python">from guizero import App, ListBox, Text
+<pre><code class="language-python">from guizero import App, ListBox, Text
 
 def change_color(value):
     t.text_color = value
@@ -702,7 +706,6 @@ listbox = ListBox(
 
 a.display()
 </code></pre>
-
 <p><img alt="A list of colors" src="../images/listbox_color_changer_windows.png" /></p>
 <h3 id="using-listbox-tk-widgets">Using ListBox tk widgets</h3>
 <p>Advanced users can gain internal access to the internal tkinter widgets used by <code>ListBox</code>. For more information on using tkinter in combination with guizero see <a href="../usingtk/">Using tkinter</a>.</p>
@@ -733,7 +736,7 @@ a.display()
 </tbody>
 </table>
 <p>To access the internal tk object for these child guizero widgets you would use its <code>tk</code> property e.g.</p>
-<pre><code class="python">listbox = listBox(app)
+<pre><code class="language-python">listbox = listBox(app)
 
 tk_listbox = listbox.children[0].tk
 tk_scrollbar = listbox.children[1].tk

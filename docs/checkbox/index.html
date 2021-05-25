@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -358,7 +364,7 @@
         <div class="col-md-9" role="main">
 
 <h1 id="checkbox">CheckBox</h1>
-<pre><code class="python">__init__(
+<pre><code class="language-python">__init__(
     self,
     master,
     text=&quot;&quot;,
@@ -371,18 +377,16 @@
     width=None,
     height=None)
 </code></pre>
-
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>CheckBox</code> object displays a check box to allow an option to be ticked or un-ticked.</p>
 <p><img alt="Checkbox on Windows" src="../images/checkbox_windows.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create a <code>CheckBox</code> object like this:</p>
-<pre><code class="python">from guizero import App, CheckBox
+<pre><code class="language-python">from guizero import App, CheckBox
 app = App()
 checkbox = CheckBox(app, text=&quot;Add extra glitter&quot;)
 app.display()
 </code></pre>
-
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create a <code>CheckBox</code> object you <strong>must</strong> specify <code>master</code> and <code>text</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>checkbox = CheckBox(app, text="Add extra glitter")</code></p>
 <table>
@@ -642,16 +646,15 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong>Creating multiple CheckBoxes</strong></p>
 <p>Create multiple CheckBoxes like this.</p>
-<pre><code class="python">from guizero import App, CheckBox
+<pre><code class="language-python">from guizero import App, CheckBox
 app = App()
 glitter = CheckBox(app, text=&quot;Add glitter&quot;)
 sparkles = CheckBox(app, text=&quot;Add sparkles&quot;)
 app.display()
 </code></pre>
-
 <p><strong>Calling a function when a CheckBox value changes</strong></p>
 <p>You can call a function when the value of a CheckBox changes (becomes checked or unchecked). In this particular example all three CheckBoxes call the same function, but it is possible for each CheckBox object to call a different function.</p>
-<pre><code class="python">from guizero import App, Text, CheckBox, TextBox
+<pre><code class="language-python">from guizero import App, Text, CheckBox, TextBox
 def calculate_extras():
     total = 0
     if syrup.value == 1:
@@ -676,7 +679,6 @@ cost = TextBox(app, text=&quot;0&quot;)
 
 app.display()
 </code></pre>
-
 <p><img alt="CheckBox calling a function" src="../images/checkbox_function_windows.png" /></p></div>
         
         

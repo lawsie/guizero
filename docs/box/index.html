@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -358,7 +364,7 @@
         <div class="col-md-9" role="main">
 
 <h1 id="box">Box</h1>
-<pre><code class="python">__init__(
+<pre><code class="language-python">__init__(
     self,
     master,
     layout=&quot;auto&quot;,
@@ -370,18 +376,16 @@
     height=None,
     border=None)
 </code></pre>
-
 <h3 id="what-is-it">What is it?</h3>
 <p>The <code>Box</code> object is an invisible container which can contain other widgets. It is the only object other than <code>App</code> and <code>Window</code> which can act as the <code>master</code> for other objects and can have its own layout manager.</p>
 <p>You can use the <code>Box</code> object to group other objects within your GUI.</p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
 <p>Create a <code>Box</code> object like this:</p>
-<pre><code class="python">from guizero import App, Box
+<pre><code class="language-python">from guizero import App, Box
 app = App()
 box = Box(app)
 app.display()
 </code></pre>
-
 <h3 id="starting-parameters">Starting parameters</h3>
 <p>When you create a <code>Box</code> object you <strong>must</strong> specify a master, and you can specify any of the optional parameters. Specify parameters in the brackets like this: <code>box = Box(app, layout="grid")</code></p>
 <table>
@@ -637,19 +641,18 @@ app.display()
 <h3 id="examples">Examples</h3>
 <p><strong>Putting widgets in a Box</strong></p>
 <p>A <code>Box</code> object is invisible, but it can contain other widgets. In this example, there are two <code>Text</code> objects. One has <code>box</code> as its master, the other has <code>app</code> as its master.</p>
-<pre><code class="python">from guizero import App, Box, Text
+<pre><code class="language-python">from guizero import App, Box, Text
 app = App(title=&quot;My app&quot;, height=300, width=400)
 box = Box(app)
 text1 = Text(box, text=&quot;Hello from the box&quot;, size=14, text_color=&quot;red&quot;, font=&quot;Arial&quot;)
 text2 = Text(app, text=&quot;Hello from the app&quot;, size=14, text_color=&quot;blue&quot;, font=&quot;Courier New&quot;)
 app.display()
 </code></pre>
-
 <p><img alt="Box and app" src="../images/box-app.png" /></p>
 <p><strong>Grouping objects within a Box</strong></p>
 <p>It is useful to put objects in a box to group them together. For example here we have given the <code>app</code> a grid layout, then placed some text at [0,0] and the <code>Box</code> object at [1,0]. This means that the text will appear on the left, and the contents of the Box will appear on the right.</p>
 <p>The <code>Box</code> object itself has a grid layout and contains six buttons which are positioned on a <em>separate</em> grid layout belonging to the box.</p>
-<pre><code class="python">from guizero import App, Text, Box, PushButton
+<pre><code class="language-python">from guizero import App, Text, Box, PushButton
 def do_nothing():
     return 0
 
@@ -665,7 +668,6 @@ button6 = PushButton(box, command=do_nothing, text=&quot;6&quot;, grid=[2,1])
 app.display()
 
 </code></pre>
-
 <p><img alt="Box with grid layout" src="../images/box_complicated.png" /></p></div>
         
         

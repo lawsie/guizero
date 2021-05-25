@@ -11,7 +11,7 @@
     <link rel="../img/favicon.ico">
 
     
-    <title>Layouts - guizero</title>
+    <title>Using Widgets - guizero</title>
     
 
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -93,8 +93,8 @@
 
                         
                             
-<li >
-    <a href="../usingwidgets/">Using Widgets</a>
+<li class="active">
+    <a href="./">Using Widgets</a>
 </li>
 
                         
@@ -111,8 +111,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Layouts</a>
+<li >
+    <a href="../layout/">Layouts</a>
 </li>
 
                         
@@ -327,12 +327,12 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../multiple_windows/">
+                        <a rel="prev" href="../start/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="../alerts/">
+                        <a rel="next" href="../commands/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -346,189 +346,141 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#layouts">Layouts</a></li>
-            <li class="second-level"><a href="#auto-layout">Auto layout</a></li>
+        <li class="first-level active"><a href="#using-widgets">Using Widgets</a></li>
+            <li class="second-level"><a href="#the-app-widget">The App widget</a></li>
                 
-            <li class="second-level"><a href="#aligning">Aligning</a></li>
+            <li class="second-level"><a href="#adding-widgets">Adding widgets</a></li>
                 
-            <li class="second-level"><a href="#filling">Filling</a></li>
+            <li class="second-level"><a href="#using-events">Using events</a></li>
                 
-        <li class="first-level "><a href="#grid-layout">Grid layout</a></li>
-            <li class="second-level"><a href="#spanning-columns-or-rows">Spanning columns or rows</a></li>
+            <li class="second-level"><a href="#controlling-widgets">Controlling widgets</a></li>
                 
-        <li class="first-level "><a href="#boxes">Boxes</a></li>
+            <li class="second-level"><a href="#destroying-widgets">Destroying widgets</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h2 id="layouts">Layouts</h2>
-<p>The layout of your GUI is how you arrange the widgets in the window.</p>
-<p>Widgets can be arranged into "containers" (e.g. <code>App</code>, <code>Window</code>, <code>Box</code>) using either of these layouts:</p>
-<ul>
-<li><code>auto</code> - where widgets are positioned automatically</li>
-<li><code>grid</code> - you specify where in a grid each widget should be positioned</li>
-</ul>
-<p>The layout is set using the <code>layout</code> parameter of the container, for example:</p>
-<pre><code class="language-python">app = App(layout=&quot;auto&quot;)
-app = App(layout=&quot;grid&quot;)
+<h1 id="using-widgets">Using Widgets</h1>
+<p><a href="../widgetoverview/">Widgets</a> are how you create your GUI. They are the things which appear on the GUI, everything from the app itself to text boxes, buttons and pictures.</p>
+<p>At the start of every guizero program, choose the widgets you need from the guizero library and import them e.g.</p>
+<pre><code class="language-python">from guizero import App, Text, PushButton, Slider
 </code></pre>
-<p>If no <code>layout</code> parameter is specified, the default <code>auto</code> layout is used.</p>
-<h3 id="auto-layout">Auto layout</h3>
-<p><code>auto</code> is the default layout used when a container is created. All widgets will be arranged in the order they are created and aligned to the centre. For example, the following code will create two <code>Text</code> widgets, one on top of the other.</p>
-<pre><code class="language-python">from guizero import App, Text
-app = App()
-text_1 = Text(app, text=&quot;on top&quot;)
-text_2 = Text(app, text=&quot;below&quot;)
-app.display()
-</code></pre>
-<p><img alt="Text on top and below" src="../images/layout_auto.png" /></p>
-<h3 id="aligning">Aligning</h3>
-<p>Widgets can be aligned to either the <code>top</code>, <code>bottom</code>, <code>left</code> or <code>right</code>, using the <code>align</code> property when created.</p>
-<p>Aligning a widget will cause it to be "stuck" to that side of the container, for example:</p>
-<pre><code class="language-python">from guizero import App, Text
-app = App()
-top_text = Text(app, text=&quot;at the top&quot;, align=&quot;top&quot;)
-bottom_text = Text(app, text=&quot;at the bottom&quot;, align=&quot;bottom&quot;)
-left_text = Text(app, text=&quot;to the left&quot;, align=&quot;left&quot;)
-right_text = Text(app, text=&quot;to the right&quot;, align=&quot;right&quot;)
-app.display()
-</code></pre>
-<p><img alt="Text aligned at each edge" src="../images/layout_auto_align.png" /></p>
-<p>By aligning multiple widgets to the same side of the container, widgets can be made to stack together:</p>
-<pre><code class="language-python">from guizero import App, Text, TextBox, PushButton
-app = App()
-text = Text(app, text=&quot;label&quot;, align=&quot;left&quot;)
-text_box = TextBox(app, text=&quot;enter text&quot;, align=&quot;left&quot;)
-button = PushButton(app, text=&quot;submit&quot;, align=&quot;left&quot;)
-app.display()
-</code></pre>
-<p><img alt="Widgets stacked at the side" src="../images/layout_auto_align_stack.png" /></p>
-<p>The widgets will stack in the order they are created, so the widget created first will be closest to the edge in the direction specified.</p>
-<h3 id="filling">Filling</h3>
-<p>Widgets can also be made to "fill" all available space by setting the <code>width</code> and <code>height</code> parameters to <code>fill</code>. Here are some examples:</p>
-<p>A <code>TextBox</code> could span the entire width of the container:</p>
-<pre><code class="language-python">from guizero import App, TextBox
-app = App()
-text_box = TextBox(app, text=&quot;enter text&quot;, width=&quot;fill&quot;)
-app.display()
-</code></pre>
-<p><img alt="A text box filling the width of the screen" src="../images/layout_fill_width.png" /></p>
-<p>Or a <code>ListBox</code> could fill the left hand side by using <code>fill</code> for the <code>height</code> and <code>align</code> to the <code>left</code>:</p>
-<pre><code class="language-python">from guizero import App, ListBox
-app = App()
-list_box = ListBox(app, items=[&quot;a list&quot;], height=&quot;fill&quot;, align=&quot;left&quot;)
-app.display()
-</code></pre>
-<p><img alt="List box spanning the whole left edge" src="../images/layout_fill_height.png" /></p>
-<p>Using <code>fill</code> for the <code>width</code> and the <code>height</code> will make a widget use all of the available space:</p>
-<pre><code class="language-python">from guizero import App, PushButton
-app = App()
-button = PushButton(app, width=&quot;fill&quot;, height=&quot;fill&quot;)
-app.display()
-</code></pre>
-<p><img alt="Button filling the whole window" src="../images/layout_fill_both.png" /></p>
-<p>When multiple widgets use <code>fill</code>, the Window Manager (operating system) will distribute the space accordingly between all the widgets which have requested to fill it.</p>
-<pre><code class="language-python">from guizero import App, ListBox, PushButton
-app = App()
-list_box = ListBox(app, items=[&quot;a list&quot;, &quot;of items&quot;, &quot;yay&quot;], height=&quot;fill&quot;, align=&quot;left&quot;)
-button = PushButton(app, width=&quot;fill&quot;, height=&quot;fill&quot;, align=&quot;right&quot;)
-app.display()
-</code></pre>
-<p><img alt="Two widgets filling the space" src="../images/layout_fill_multiple.png" /></p>
-<p><strong>Note :</strong> Using fill may not always have the effect you are expecting, as it is up to the operating system to distribute screen space.</p>
-<h2 id="grid-layout">Grid layout</h2>
-<p>The <code>grid</code> layout allows you to position widgets into a virtual grid.</p>
-<p>When you create a widget you will need to pass an extra parameter called <code>grid</code> which is a list containing <code>[x,y]</code> coordinates for where you want the widget to appear, like this:</p>
-<pre><code class="language-python">app = App(layout=&quot;grid&quot;)
-text = Text(app, text=&quot;Hello world&quot;, grid=[0,1])
-</code></pre>
-<p>There is no need to specify the width or height of the grid you want - it will expand depending on the coordinates you provide with each widget. However, grid cells containing no objects will have no height or width.</p>
-<p>This is really useful when creating GUIs where you want widgets to line up.</p>
-<p>For example, you could create a number keypad:</p>
-<p><img alt="Number keypad with 10 buttons" src="../images/layout_grid_keypad.png" /></p>
-<pre><code class="language-python">from guizero import App, PushButton
+<p>You only need to import each widget once, and then you can use it in your program as many times as you like.</p>
+<h3 id="the-app-widget">The App widget</h3>
+<p>Every guizero app will need an <a href="../app/">App</a> widget. This is the main window.</p>
+<p>At the end of every guizero program you must tell the program to <code>display</code> the app you have just created.</p>
+<pre><code class="language-python">from guizero import App
 
-app = App(layout=&quot;grid&quot;)
-
-button1 = PushButton(app, text=&quot;1&quot;, grid=[0,0])
-button2 = PushButton(app, text=&quot;2&quot;, grid=[1,0])
-button3  = PushButton(app, text=&quot;3&quot;, grid=[2,0])
-button4  = PushButton(app, text=&quot;4&quot;, grid=[0,1])
-button5  = PushButton(app, text=&quot;5&quot;, grid=[1,1])
-button6  = PushButton(app, text=&quot;6&quot;, grid=[2,1])
-button7  = PushButton(app, text=&quot;7&quot;, grid=[0,2])
-button8  = PushButton(app, text=&quot;8&quot;, grid=[1,2])
-button9  = PushButton(app, text=&quot;9&quot;, grid=[2,2])
-button0  = PushButton(app, text=&quot;0&quot;, grid=[1,3])
+app = App(title=&quot;My guizero app&quot;)
 
 app.display()
 </code></pre>
-<p>You can also align widgets within the grid, which is useful when you are creating a form:</p>
-<p><img alt="Form data entry layout" src="../images/layout_grid.png" /></p>
+<h3 id="adding-widgets">Adding widgets</h3>
+<p>All the text boxes, buttons, sliders and even plain old pieces of text which appear on your GUI are widgets.</p>
+<p><strong>All widgets</strong> go between the line of code to create the <code>App</code> and the <code>app.display()</code> line.</p>
 <pre><code class="language-python">from guizero import App, Text, TextBox
 
-app = App(layout=&quot;grid&quot;)
+app = App(title=&quot;Whats your name?&quot;)
 
-name_label = Text(app, text=&quot;Name&quot;, grid=[0,0], align=&quot;left&quot;)
-name = TextBox(app, grid=[1,0])
-surname_label = Text(app, text=&quot;Surname&quot;, grid=[0,1], align=&quot;left&quot;)
-surname = TextBox(app, grid=[1,1])
-dob_label = Text(app, text=&quot;Date of Birth&quot;, grid=[0,2], align=&quot;left&quot;)
-dob = TextBox(app, grid=[1,2])
+# create widgets here
+message = Text(app, text=&quot;Enter your name&quot;)
+name = TextBox(app)
 
 app.display()
 </code></pre>
-<h3 id="spanning-columns-or-rows">Spanning columns or rows</h3>
-<p>Widgets can be made to span multiple columns or rows by specifying the span within the grid parameter. These are optional, but if specified both must be included using the format <code>[x,y,xspan,yspan]</code>.</p>
-<p>The example below shows a <code>Text</code> widget located at 0,1 and spanning two columns (x) and one row (y):</p>
-<pre><code class="language-python">text = Text(app, text=&quot;Hello world&quot;, grid=[0,1,2,1])
+<p>Let’s look at the <a href="../text/">Text</a> widget code in a bit more detail:</p>
+<pre><code class="language-python">message = Text(app, text=&quot;Enter your name&quot;))
 </code></pre>
-<p>This layout method can be used to include widgets of different sizes arranged alongside each other.</p>
-<pre><code class="language-python">from guizero import App, Picture
+<ul>
+<li><code>message =</code> - The <code>Text</code> object has a name, just like any variable</li>
+<li><code>Text</code> - an <em>object</em> which creates a piece of text on the screen</li>
+<li><code>app</code> – This tells the <code>Text</code> where it will live. Most of the time your widgets will live directly inside the app.</li>
+<li><code>text="Enter your name"</code> - The text to display</li>
+</ul>
+<p><img alt="an app showing the text 'Enter your name` with a text box below where a name can be entered" src="../images/whats-your-name.png" /></p>
+<p>Have a look at <a href="../widgetoverview/">Widget overview</a> to see all the widgets, find out more about them and how they are used.</p>
+<h3 id="using-events">Using events</h3>
+<p>An event is how you trigger code as a result of users interacting with your app. An example of an event could be a user clicking on a button or entering text into a TextBox. When an event occurs you can run a piece of code. </p>
+<p>This is how you make your app "do stuff".</p>
+<p>Widgets which can be interacted with can accept a <code>command</code> parameter. You can set the <code>command</code> parameter to be the name of a function which will be called when the widget is used.</p>
+<p>In this example the function <code>say_hello</code> is called when a <a href="../pushbutton/">PushButton</a> is pressed.</p>
+<pre><code class="language-python">from guizero import App, PushButton, Text
 
-app = App(layout=&quot;grid&quot;)
+def say_hello():
+    message.value = &quot;Hello&quot;
 
-picture1 = Picture(app, image=&quot;std1.gif&quot;, grid=[0,0])
-picture2 = Picture(app, image=&quot;std2.gif&quot;, grid=[1,0])
-picture3 = Picture(app, image=&quot;tall1.gif&quot;, grid=[2,0,1,2])
-picture4 = Picture(app, image=&quot;wide1.gif&quot;, grid=[0,1,2,1])
+app = App()
+message = Text(app)
+button = PushButton(app, text=&quot;Press me&quot;, command=say_hello)
 
 app.display()
 </code></pre>
-<p><img alt="Images laid out on a grid with various spans" src="../images/layout_grid_span.png" /></p>
-<h2 id="boxes">Boxes</h2>
-<p>By using a <code>Box</code> widget you can segment your GUI into different sections allowing you to lay out your user interface in any way you want.</p>
-<p><img alt="Layout with multiple boxes" src="../images/layout_boxes.png" /></p>
-<p>(<a href="https://github.com/lawsie/guizero/tree/master/examples/layout_boxes.py">Code for example above</a>)</p>
-<p>If you wanted to create a title in the top left hand corner of your GUI, you could use a <code>Box</code> which fills the top of the <code>App</code> and put a <code>Text</code> widget inside aligned to the <code>left</code>.</p>
-<pre><code class="language-python">from guizero import App, Box, Text
+<p><img alt="an app showing the text 'Hello` with a button underneath with the label 'Press me#" src="../images/say-hello.png" /></p>
+<p>In this example the <code>command</code> parameter of a <a href="../textbox/">TextBox</a> widget is used to call the <code>count</code> function which displays how many characters have been entered.</p>
+<pre><code class="language-python">from guizero import App, TextBox, Text
+
+def count():
+    character_count.value = len(entered_text.value)
+
+app = App()
+entered_text = TextBox(app, command=count)
+character_count = Text(app)
+
+app.display()
+</code></pre>
+<p><img alt="an app showing a TextBox with the word 'guizero' entered and the number 7 shown below" src="../images/count-chars.png" /></p>
+<h3 id="controlling-widgets">Controlling widgets</h3>
+<p>The status of a widget can be controlled. This allows you to control how an app is used e.g. Only allowing the submit button of a form to be used when all the data has been entered</p>
+<p>You can control whether a widget is:</p>
+<ul>
+<li>shown</li>
+<li>hidden</li>
+<li>enabled</li>
+<li>disabled</li>
+</ul>
+<p>A widget will only appear on an app if it is visible. The widget can only be interacted with (used) if it is enabled.</p>
+<p>In this example <a href="../pushbutton/">PushButton</a> widgets are used to change the status of a <a href="../textbox/">TextBox</a> widget by calling the text box's <code>show</code>, <code>hide</code>, <code>disable</code> and <code>enable</code> methods.</p>
+<pre><code class="language-python">from guizero import App, PushButton, TextBox
+
+def show():
+    text_box.show()
+
+def hide():
+    text_box.hide()
+
+def enable():
+    text_box.enable()
+
+def disable():
+    text_box.disable()
+
 app = App()
 
-title_box = Box(app, width=&quot;fill&quot;, align=&quot;top&quot;)
-title = Text(title_box, text=&quot;title&quot;, align=&quot;left&quot;)
+text_box = TextBox(app)
+
+show_button = PushButton(app, text=&quot;show&quot;, command=show)
+hide_button = PushButton(app, text=&quot;hide&quot;, command=hide)
+enable_button = PushButton(app, text=&quot;enable&quot;, command=enable)
+disable_button = PushButton(app, text=&quot;disable&quot;,command=disable)
 
 app.display()
 </code></pre>
-<p><img alt="Title at the top" src="../images/layout_boxes_title.png" /></p>
-<p>You may find it easier to design your layout if your Boxes have borders, which can be done by setting the <code>border</code> parameter on <code>Box</code> to <code>True</code>.</p>
-<pre><code class="language-python">title_box = Box(app, width=&quot;fill&quot;, align=&quot;top&quot;, border=True)
-</code></pre>
-<p><img alt="Title at the top, in a box" src="../images/layout_boxes_border.png" /></p>
-<p>A similar method can be used to put "OK" and "Cancel" buttons at the bottom right of the GUI. Remember that the widgets will get stacked on the right in order of creation, so the cancel button is created first.</p>
-<pre><code class="language-python">from guizero import App, Box, PushButton
+<h3 id="destroying-widgets">Destroying widgets</h3>
+<p>Widgets can be destroyed (removed) from an application by using the <code>destroy</code> method. </p>
+<p>Once a widget has been destroyed it cannot be used or referenced again. An error will be raised when trying to call a destroyed widget.</p>
+<pre><code class="language-python">from guizero import App, PushButton, Text
+
+def destroy_message():
+    message.destroy()
+
 app = App()
-
-buttons_box = Box(app, width=&quot;fill&quot;, align=&quot;bottom&quot;)
-cancel = PushButton(buttons_box, text=&quot;Cancel&quot;, align=&quot;right&quot;)
-ok = PushButton(buttons_box, text=&quot;OK&quot;, align=&quot;right&quot;)
+message = Text(app, text=&quot;Destroy me!&quot;)
+destroy_button = PushButton(app, text=&quot;Destroy&quot;, command=destroy_message)
 
 app.display()
 </code></pre>
-<p><img alt="OK and Cancel buttons on the bottom right" src="../images/layout_boxes_buttons.png" /></p>
-<p><strong>Note :</strong> You can put a <code>Box</code> inside another <code>Box</code>, allowing you to layer boxes and position your widgets.</p>
-<p><strong>Tip :</strong> When creating a GUI you may find it easier to design it first on paper, noting where your boxes will be positioned.</p>
-<p><img alt="hand drawn gui" src="../images/layout_boxes.jpg" /></p>
-<p>Unfortunately, whilst you can put one box inside another box, guizero does not support mailing it to yourself, nor smashing it with a hammer ;) </p></div>
+<p><strong>Warning</strong> - destroying a widget in an uncontrolled way could make your application unstable. A widget's code will stop immediately regardless of what your application is doing. It is often to simpler and safer to hide or disable a widget rather than destroy it.</p></div>
         
         
     </div>
