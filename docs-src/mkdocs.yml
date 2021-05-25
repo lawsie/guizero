@@ -7,6 +7,7 @@ nav:
   - Installation: index.md
   - Using guizero:
       - Getting started: start.md
+      - Using Widgets: usingwidgets.md 
       - Commands: commands.md
       - Multiple windows: multiple_windows.md
       - Layouts: layout.md

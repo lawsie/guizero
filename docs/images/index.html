@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -353,22 +359,20 @@
 
 <h2 id="images">Images</h2>
 <p>Widgets such as <a href="../picture/">Picture</a> and <a href="../pushbutton/">PushButton</a> allow you to use images in your GUI.</p>
-<pre><code class="python">from guizero import App, Picture
+<pre><code class="language-python">from guizero import App, Picture
 app = App()
 picture = Picture(app, image=&quot;test.gif&quot;)
 app.display()
 </code></pre>
-
 <p>The types of image (GIF, JPG, PNG, etc) supported depend on how you <a href="..">installed guizero</a> and the setup of your computer.</p>
 <h3 id="supported-files-types">Supported files types</h3>
 <p>All systems support the <code>GIF</code> file type.</p>
 <p>Windows and Linux also support <code>PNG</code> files.</p>
 <p>If you <a href="..#additional-features-install">installed the addition image features</a> using <code>pip</code> it will also have installed <code>PIL</code> (Python Imaging Library) and you will be able use the majority of commonly used image types.</p>
 <p>guizero will tell you what file types are supported on your computer using the following code:</p>
-<pre><code class="python">from guizero import system_config
+<pre><code class="language-python">from guizero import system_config
 print(system_config.supported_image_types)
 </code></pre>
-
 <table>
 <thead>
 <tr>
