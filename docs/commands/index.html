@@ -368,9 +368,8 @@ text = Text(app)
 button = PushButton(app, command=say_hello)
 app.display()
 </code></pre>
-
 <p>Arguments can be passed to the command function using the <code>args</code> parameter.</p>
-<pre><code class="python">from guizero import App, Text, PushButton
+<pre><code class="language-python">from guizero import App, Text, PushButton
 
 def say_goodbye(first_name, last_name):
     text.value = first_name + &quot; &quot; + last_name

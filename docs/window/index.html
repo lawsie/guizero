@@ -539,6 +539,12 @@ app.display()
 <td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
 </tr>
 <tr>
+<td>select_color(color=None)</td>
+<td>color (str)</td>
+<td>color as RGB value string ('#000000' - '#ffffff')</td>
+<td>Display a box to select a color. If a color is selected the color RGB value is returned, otherwise <code>None</code> is returned.</td>
+</tr>
+<tr>
 <td>select_file(title="Select file", folder=".", filetypes=[["All files", "<em>.</em>"]], save=False, filename="")</td>
 <td>title (str), folder (str), filetypes (list), save (bool), filename (str)</td>
 <td>Full path of the file selected as a string</td>
