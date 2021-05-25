@@ -59,7 +59,7 @@ Have a look at [Widget overview](widgetoverview.md) to see all the widgets, find
 
 ### Using events
 
-An event is how you trigger code as a result of users interacting with your app. The event could be a user clicking on a button or entering text into a TextBox. When an event occurs you can run a piece of code. 
+An event is how you trigger code as a result of users interacting with your app. An example of an event could be a user clicking on a button or entering text into a TextBox. When an event occurs you can run a piece of code. 
 
 This is how you make your app "do stuff".
 
@@ -160,4 +160,4 @@ destroy_button = PushButton(app, text="Destroy", command=destroy_message)
 app.display()
 ~~~
 
-**Warning** - destroying a widget in an uncontrolled way could leave your application in an non-determinate state. A widget's execution is stopped immediately regardless of the state of your application. It is often to more appropriate to hide or disable a widget rather than destroying it.
+**Warning** - destroying a widget in an uncontrolled way could make your application unstable. A widget's code will stop immediately regardless of what your application is doing. It is often to simpler and safer to hide or disable a widget rather than destroying it.
