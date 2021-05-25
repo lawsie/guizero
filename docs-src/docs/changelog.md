@@ -1,14 +1,15 @@
 # guizero
 
-## 1.2 - tbc
+## 1.2.0 - 2021-05-04
 - Added `filename` to `select_file` dialog
 - Added `when_resized` and `when_double_clicked` events
 - Removed previously deprecated `App.on_closed` method
 - A window icon can be set using the `.icon` property
+- Add `select_color` popup
 - Documentation updates and fixes
 - Added new examples and recipes
 - Tests updated to cope with a greater range of operating systems. Tests work on Windows, macOS and Raspberry Pi OS.
-- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [mirelsol](https://github.com/mirelsol)
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [mirelsol](https://github.com/mirelsol), [maroph](https://github.com/maroph)
 
 ## 1.1.1 - 2020-11-27
 - PushButton image bug fix for macOS

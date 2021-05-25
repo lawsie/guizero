@@ -1,4 +1,4 @@
-from tkinter import messagebox, filedialog
+from tkinter import messagebox, filedialog, colorchooser
 from tkinter.simpledialog import askstring
 from . import utilities as utils
 import os.path
@@ -153,3 +153,21 @@ def select_folder(title="Select folder", folder=".", master=None):
         folder = "."
     
     return filedialog.askdirectory(title=title, initialdir=folder, parent=None if master is None else master.tk)
+
+def select_color(color=None, master=None):
+    """
+    Display a box to select a color.
+
+    :param color:
+        Preselected color. Defaults to `None`.
+    :param App master:
+        Optional guizero master which the popup will be placed over. Defaults
+        to `None`.
+    :return:
+        The color in code #rrggbb or `None`.
+    """
+
+    ret_color = colorchooser.askcolor(color=color, parent=None if master is None else master.tk)
+    if ret_color is None:
+        return None
+    return ret_color[1]
