@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -353,6 +359,7 @@
 <p>Custom events can be added to guizero widgets to call functions when the user takes the following actions:</p>
 <ul>
 <li>when clicked - <code>when_clicked</code></li>
+<li>when double clicked - <code>when_double_clicked</code></li>
 <li>when the left mouse button is pressed - <code>when_left_button_pressed</code></li>
 <li>when the left mouse button is released - <code>when_left_button_released</code></li>
 <li>when the right mouse button is pressed - <code>when_right_button_pressed</code></li>
@@ -362,36 +369,38 @@
 <li>when the mouse enters a widget - <code>when_mouse_enters</code></li>
 <li>when the mouse leaves a widget - <code>when_mouse_leaves</code></li>
 <li>when the mouse is dragged across a widget - <code>when_mouse_dragged</code></li>
+<li>when the widget is resized - <code>when_resized</code></li>
 </ul>
 <p>Events are set by assigning them to a function:</p>
-<pre><code class="python">def do_this():
+<pre><code class="language-python">def do_this():
     print(&quot;The widget was clicked&quot;)
 
 widget.when_clicked = do_this
 </code></pre>
-
 <h3 id="event-data">Event Data</h3>
-<p>The function which is called can also accept a parameter and will be passed data about the event which occured.</p>
+<p>The function which is called can also accept a parameter and will be passed data about the event which occurred.</p>
 <p>The event data returned has:</p>
 <ul>
 <li><code>widget</code> - the guizero widget which raised the event</li>
 <li><code>tk_event</code> - the <a href="http://effbot.org/tkinterbook/tkinter-events-and-bindings.htm">tkinter event object</a></li>
 <li><code>key</code> - the key which raised the event</li>
-<li><code>x</code> - the mouse's x position relative to the widget when the event occured</li>
-<li><code>y</code> - the mouse's y position relative to the widget when the event occured</li>
-<li><code>display_x</code> - the mouse's x position on the display when the event occured</li>
-<li><code>display_y</code> - the mouse's y position on the display when the event occured</li>
+<li><code>x</code> - the mouse's x position relative to the widget when the event occurred</li>
+<li><code>y</code> - the mouse's y position relative to the widget when the event occurred</li>
+<li><code>display_x</code> - the mouse's x position on the display when the event occurred</li>
+<li><code>display_y</code> - the mouse's y position on the display when the event occurred</li>
+<li><code>width</code> - the width of the widget. </li>
+<li><code>height</code> - the height of the widget.</li>
 </ul>
-<pre><code class="python">def clicked(event_data):
+<p><strong>Note:</strong> only data relevant to the event will be returned. e.g. <code>key</code> is only returned for <code>when_key_#</code> events and <code>width</code> and <code>height</code> are only returned for <code>when_resized</code> events.</p>
+<pre><code class="language-python">def clicked(event_data):
     print(&quot;widget clicked = &quot; + event_data.widget)
     print(&quot;mouse position = &quot; + event_data.x + &quot;.&quot; + event_data.y)
 
 widget.when_clicked = clicked
 </code></pre>
-
 <h3 id="example">Example</h3>
 <p>Highlight a text box widget by changing its background color (<code>bg</code>) when the mouse is hovering over it.</p>
-<pre><code class="python">from guizero import App, TextBox
+<pre><code class="language-python">from guizero import App, TextBox
 
 def highlight():
     text_box.bg = &quot;lightblue&quot;
