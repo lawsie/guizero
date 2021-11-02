@@ -26,6 +26,7 @@ nav:
       - CheckBox: checkbox.md
       - Combo: combo.md
       - Drawing: drawing.md
+      - LabelBox: labelbox.md
       - ListBox: listbox.md
       - MenuBar: menubar.md
       - Picture: picture.md
