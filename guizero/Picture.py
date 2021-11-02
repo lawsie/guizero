@@ -47,8 +47,6 @@ class Picture(Widget):
             size.
         """
 
-        description = "[Picture] object"
-
         self._image_source = image
         self._image = None
         self._image_player = None
@@ -56,7 +54,7 @@ class Picture(Widget):
         # Instantiate label object which will contain image
         tk = Label(master.tk)
 
-        super(Picture, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(Picture, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         # create the image
         self._load_image()

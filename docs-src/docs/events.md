@@ -3,6 +3,7 @@
 Custom events can be added to guizero widgets to call functions when the user takes the following actions:
 
 - when clicked - `when_clicked`
+- when double clicked - `when_double_clicked`
 - when the left mouse button is pressed - `when_left_button_pressed`
 - when the left mouse button is released - `when_left_button_released`
 - when the right mouse button is pressed - `when_right_button_pressed`
@@ -12,6 +13,7 @@ Custom events can be added to guizero widgets to call functions when the user ta
 - when the mouse enters a widget - `when_mouse_enters`
 - when the mouse leaves a widget - `when_mouse_leaves`
 - when the mouse is dragged across a widget - `when_mouse_dragged`
+- when the widget is resized - `when_resized`
 
 Events are set by assigning them to a function:
 
@@ -24,17 +26,21 @@ widget.when_clicked = do_this
 
 ### Event Data
 
-The function which is called can also accept a parameter and will be passed data about the event which occured.
+The function which is called can also accept a parameter and will be passed data about the event which occurred.
 
 The event data returned has:
 
 - `widget` - the guizero widget which raised the event
 - `tk_event` - the [tkinter event object](http://effbot.org/tkinterbook/tkinter-events-and-bindings.htm)
 - `key` - the key which raised the event
-- `x` - the mouse's x position relative to the widget when the event occured
-- `y` - the mouse's y position relative to the widget when the event occured
-- `display_x` - the mouse's x position on the display when the event occured
-- `display_y` - the mouse's y position on the display when the event occured
+- `x` - the mouse's x position relative to the widget when the event occurred
+- `y` - the mouse's y position relative to the widget when the event occurred
+- `display_x` - the mouse's x position on the display when the event occurred
+- `display_y` - the mouse's y position on the display when the event occurred
+- `width` - the width of the widget. 
+- `height` - the height of the widget.
+
+**Note:** only data relevant to the event will be returned. e.g. `key` is only returned for `when_key_#` events and `width` and `height` are only returned for `when_resized` events.
 
 ```python
 def clicked(event_data):

@@ -1,5 +1,6 @@
+import pytest
 from threading import Event
-from guizero import App, Window, Text
+from guizero import App, Window, Text, system_config
 from common_test import (
     schedule_after_test,
     schedule_repeat_test,
@@ -9,7 +10,8 @@ from common_test import (
     cascading_properties_test,
     inheriting_properties_test,
     full_screen_test,
-    add_tk_widget_test
+    add_tk_widget_test,
+    icon_test
     )
 
 def test_default_values():
@@ -19,6 +21,7 @@ def test_default_values():
     assert w.width == 500
     assert w.height == 500
     assert w.layout == "auto"
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():
@@ -103,4 +106,18 @@ def test_full_screen():
 def test_add_tk_widget():
     a = App()
     add_tk_widget_test(a)
+    a.destroy()
+
+def test_icon():
+    a = App()
+    w = Window(a)
+    icon_test(w, "../examples/guizero.gif")
+    a.destroy()
+
+@pytest.mark.skipif(system_config.PIL_available == False,
+                    reason="PIL not available")
+def test_icon_jpg():
+    a = App()
+    w = Window(a)
+    icon_test(w, "../examples/guizero.jpg")
     a.destroy()

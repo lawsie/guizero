@@ -1,50 +1,68 @@
 # Getting Started
 
-At the start of every guizero program, choose the widgets you need from the guizero library and import them:
+After you have [installed guizero](index.md) you are ready to create your GUI with guizero.
 
-```python
-from guizero import App, PushButton, Slider
-```
-
-You only need to import each widget once, and then you can use it in your program as many times as you like.
+This is a quick start guide, for more information see [Using Widgets](usingwidgets.md)
 
 ### Hello World
 
-All guizero projects begin with a main window which is called an `App`. At the end of every guizero program you must tell the program to display the app you have just created.
-
-Let's create an app window with the title "Hello world":
+Let's create an app window with the title "Hello world" and display it.
 
 ```python
 from guizero import App
+
 app = App(title="Hello world")
+
 app.display()
 ```
 
 Save and run the code - you've created your first guizero app!
 
-### Adding widgets
+### Add some text
 
-Widgets are the things which appear on the GUI, such as text boxes, buttons, sliders and even plain old pieces of text.
+To add things to your app you will need to [use widgets](usingwidgets.md). 
 
-**All widgets** go between the line of code to create the `App` and the `app.display()` line.
+Use the [Text](text.md) widget to add a message to your app. 
+
+![Hello world app](images/hello-world.png)
 
 ```python
 from guizero import App, Text
+
 app = App(title="Hello world")
+
 message = Text(app, text="Welcome to the Hello world app!")
+
 app.display()
 ```
-![Hello world](images/hello-world.png)
 
-Let’s look at the `Text` widget code in a bit more detail:
+The `text` parameter of the `TextBox` sets the text that will be displayed on the GUI.
+
+### Make something happen
+
+You can make your app *do things* by using other [widgets](widgetoverview.md) which a user can interact with.
+
+Use the [PushButton](pushbutton.md) widget to create a button which will change the `message` when it is clicked.
+
+![Hello world app with a button which says 'Press me'](images/hello-world-button.png)
 
 ```python
+from guizero import App, Text, PushButton
+
+def change_message():
+    message.value = "You pressed the button!"
+
+app = App(title="Hello world")
+
 message = Text(app, text="Welcome to the Hello world app!")
+
+button = PushButton(app, text="Press me", command=change_message)
+
+app.display()
 ```
 
-- `message =` - The `Text` object has a name, just like any variable
-- `Text` - an *object* which creates a piece of text on the screen
-- `app` – This tells the `Text` where it will live. Most of the time your widgets will live directly inside the app.
-- `text="Welcome to the Hello world app!"` - The text to display
+The `PushButton` widget includes a `command` parameter which is set to the name of a function - `change_message`. 
 
-And that's it! Now have a look on the documentation pages for the individual widgets to find out more about how to use them.
+The `change_message` function is called each time the button is clicked.
+
+And that's it! Take a look at [Using Widgets](usingwidgets.md) for more information on how to use guizero. 

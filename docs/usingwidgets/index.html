@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="../img/favicon.ico">
+
+    
+    <title>Using Widgets - guizero</title>
+    
+
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/base.min.css" rel="stylesheet">
+    <link href="../css/cinder.min.css" rel="stylesheet">
+    <link href="../css/highlight.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="..">guizero</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../about/">About</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="..">Installation</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Using guizero <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../start/">Getting started</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../commands/">Commands</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../multiple_windows/">Multiple windows</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../layout/">Layouts</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../alerts/">Pop-ups</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../size/">Sizes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../colors/">Colors</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../images/">Images</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../blocking/">Loops and sleeping</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../events/">Events</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../usingtk/">Using tkinter</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../gettinghelp/">Getting help</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Widgets <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../widgetoverview/">Overview</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../app/">App</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../box/">Box</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../buttongroup/">ButtonGroup</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../checkbox/">CheckBox</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../combo/">Combo</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../drawing/">Drawing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../listbox/">ListBox</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../menubar/">MenuBar</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../picture/">Picture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../pushbutton/">PushButton</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../slider/">Slider</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../text/">Text</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../textbox/">TextBox</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../waffle/">Waffle</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../window/">Window</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../recipes/">Recipes</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../book/">Book</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../contributing/">Notes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../development/">Developing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../deployment/">Deploying</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../changelog/">Change log</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../start/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../commands/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#using-widgets">Using Widgets</a></li>
+            <li class="second-level"><a href="#the-app-widget">The App widget</a></li>
+                
+            <li class="second-level"><a href="#adding-widgets">Adding widgets</a></li>
+                
+            <li class="second-level"><a href="#using-events">Using events</a></li>
+                
+            <li class="second-level"><a href="#controlling-widgets">Controlling widgets</a></li>
+                
+            <li class="second-level"><a href="#destroying-widgets">Destroying widgets</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="using-widgets">Using Widgets</h1>
+<p><a href="../widgetoverview/">Widgets</a> are how you create your GUI. They are the things which appear on the GUI, everything from the app itself to text boxes, buttons and pictures.</p>
+<p>At the start of every guizero program, choose the widgets you need from the guizero library and import them e.g.</p>
+<pre><code class="language-python">from guizero import App, Text, PushButton, Slider
+</code></pre>
+<p>You only need to import each widget once, and then you can use it in your program as many times as you like.</p>
+<h3 id="the-app-widget">The App widget</h3>
+<p>Every guizero app will need an <a href="../app/">App</a> widget. This is the main window.</p>
+<p>At the end of every guizero program you must tell the program to <code>display</code> the app you have just created.</p>
+<pre><code class="language-python">from guizero import App
+
+app = App(title=&quot;My guizero app&quot;)
+
+app.display()
+</code></pre>
+<h3 id="adding-widgets">Adding widgets</h3>
+<p>All the text boxes, buttons, sliders and even plain old pieces of text which appear on your GUI are widgets.</p>
+<p><strong>All widgets</strong> go between the line of code to create the <code>App</code> and the <code>app.display()</code> line.</p>
+<pre><code class="language-python">from guizero import App, Text, TextBox
+
+app = App(title=&quot;Whats your name?&quot;)
+
+# create widgets here
+message = Text(app, text=&quot;Enter your name&quot;)
+name = TextBox(app)
+
+app.display()
+</code></pre>
+<p>Let’s look at the <a href="../text/">Text</a> widget code in a bit more detail:</p>
+<pre><code class="language-python">message = Text(app, text=&quot;Enter your name&quot;))
+</code></pre>
+<ul>
+<li><code>message =</code> - The <code>Text</code> object has a name, just like any variable</li>
+<li><code>Text</code> - an <em>object</em> which creates a piece of text on the screen</li>
+<li><code>app</code> – This tells the <code>Text</code> where it will live. Most of the time your widgets will live directly inside the app.</li>
+<li><code>text="Enter your name"</code> - The text to display</li>
+</ul>
+<p><img alt="an app showing the text 'Enter your name` with a text box below where a name can be entered" src="../images/whats-your-name.png" /></p>
+<p>Have a look at <a href="../widgetoverview/">Widget overview</a> to see all the widgets, find out more about them and how they are used.</p>
+<h3 id="using-events">Using events</h3>
+<p>An event is how you trigger code as a result of users interacting with your app. An example of an event could be a user clicking on a button or entering text into a TextBox. When an event occurs you can run a piece of code. </p>
+<p>This is how you make your app "do stuff".</p>
+<p>Widgets which can be interacted with can accept a <code>command</code> parameter. You can set the <code>command</code> parameter to be the name of a function which will be called when the widget is used.</p>
+<p>In this example the function <code>say_hello</code> is called when a <a href="../pushbutton/">PushButton</a> is pressed.</p>
+<pre><code class="language-python">from guizero import App, PushButton, Text
+
+def say_hello():
+    message.value = &quot;Hello&quot;
+
+app = App()
+message = Text(app)
+button = PushButton(app, text=&quot;Press me&quot;, command=say_hello)
+
+app.display()
+</code></pre>
+<p><img alt="an app showing the text 'Hello` with a button underneath with the label 'Press me#" src="../images/say-hello.png" /></p>
+<p>In this example the <code>command</code> parameter of a <a href="../textbox/">TextBox</a> widget is used to call the <code>count</code> function which displays how many characters have been entered.</p>
+<pre><code class="language-python">from guizero import App, TextBox, Text
+
+def count():
+    character_count.value = len(entered_text.value)
+
+app = App()
+entered_text = TextBox(app, command=count)
+character_count = Text(app)
+
+app.display()
+</code></pre>
+<p><img alt="an app showing a TextBox with the word 'guizero' entered and the number 7 shown below" src="../images/count-chars.png" /></p>
+<h3 id="controlling-widgets">Controlling widgets</h3>
+<p>The status of a widget can be controlled. This allows you to control how an app is used e.g. Only allowing the submit button of a form to be used when all the data has been entered</p>
+<p>You can control whether a widget is:</p>
+<ul>
+<li>shown</li>
+<li>hidden</li>
+<li>enabled</li>
+<li>disabled</li>
+</ul>
+<p>A widget will only appear on an app if it is visible. The widget can only be interacted with (used) if it is enabled.</p>
+<p>In this example <a href="../pushbutton/">PushButton</a> widgets are used to change the status of a <a href="../textbox/">TextBox</a> widget by calling the text box's <code>show</code>, <code>hide</code>, <code>disable</code> and <code>enable</code> methods.</p>
+<pre><code class="language-python">from guizero import App, PushButton, TextBox
+
+def show():
+    text_box.show()
+
+def hide():
+    text_box.hide()
+
+def enable():
+    text_box.enable()
+
+def disable():
+    text_box.disable()
+
+app = App()
+
+text_box = TextBox(app)
+
+show_button = PushButton(app, text=&quot;show&quot;, command=show)
+hide_button = PushButton(app, text=&quot;hide&quot;, command=hide)
+enable_button = PushButton(app, text=&quot;enable&quot;, command=enable)
+disable_button = PushButton(app, text=&quot;disable&quot;,command=disable)
+
+app.display()
+</code></pre>
+<h3 id="destroying-widgets">Destroying widgets</h3>
+<p>Widgets can be destroyed (removed) from an application by using the <code>destroy</code> method. </p>
+<p>Once a widget has been destroyed it cannot be used or referenced again. An error will be raised when trying to call a destroyed widget.</p>
+<pre><code class="language-python">from guizero import App, PushButton, Text
+
+def destroy_message():
+    message.destroy()
+
+app = App()
+message = Text(app, text=&quot;Destroy me!&quot;)
+destroy_button = PushButton(app, text=&quot;Destroy&quot;, command=destroy_message)
+
+app.display()
+</code></pre>
+<p><strong>Warning</strong> - destroying a widget in an uncontrolled way could make your application unstable. A widget's code will stop immediately regardless of what your application is doing. It is often to simpler and safer to hide or disable a widget rather than destroy it.</p></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+
+        
+        
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>var base_url = ".."</script>
+    
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

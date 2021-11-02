@@ -27,6 +27,7 @@ def test_default_values():
     assert w.pad == 5
     assert w.color == "white"
     assert w.dotty == False
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():
@@ -223,9 +224,10 @@ def mock_waffle_clicked(w):
     ev = MagicMock()
     ev.widget = w
     ev.tk_event.widget = w._canvas
-    ev.tk_event.x = 1
-    # make sure the y is 1 pixel down
-    ev.tk_event.y = 1 + w.pixel_size + w.pad
+    # the x event occurs in the middle of the first pixel 
+    ev.tk_event.x = ((w.pixel_size + w.pad) / 2)
+    # the y event occurs in the middle of the second pixel
+    ev.tk_event.y = 1 + (w.pixel_size + w.pad) + ((w.pixel_size + w.pad) / 2)
     w._clicked_on(ev)
 
 def test_after_schedule():

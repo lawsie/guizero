@@ -48,11 +48,9 @@ class Drawing(Widget):
         # list to hold references to images, otherwise tk destroys them
         self._images = {}
 
-        description = "[Drawing] object"
-
         tk = Canvas(master.tk, height=100, width=100, bd=0, highlightthickness=0)
 
-        super(Drawing, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(Drawing, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
     def line(self, x1, y1, x2, y2, color="black", width=1):
         """

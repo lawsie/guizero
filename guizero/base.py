@@ -98,6 +98,8 @@ class Base():
                 else:
                     self.tk[key] = value
 
+    def __repr__(self):
+        return "guizero.{} object".format(self.__class__.__name__)
 
 class Component(
     Base,
@@ -107,23 +109,30 @@ class Component(
     ColorMixin,
     EventsMixin):
 
-    def __init__(self, master, tk, description, displayable):
+    def __init__(self, master, tk, displayable):
         """
         An abstract class for a component in guizero.
         """
         super(Component, self).__init__(tk)
 
         self._master = master
-        self._description = description
         self._events = EventManager(self, tk)
         self._displayable = displayable
+
+        # keep track of the tk widget's size by creating 
+        # an event to track when the widget is configured
+        self._when_resized = None
+        self._actual_height = None
+        self._actual_width = None
+        
+        self.events.set_event("<Component.Configure>", "<Configure>", self._on_configure_change)
 
         # check the master
         if self.master is not None:
             if isinstance(master, Container):
                 self.master._add_child(self)
             else:
-                utils.raise_error("{}\nMaster is not an [App], [Window] or [Box]".format(description))
+                utils.raise_error("{}\nMaster is not an [App], [Window] or [Box]".format(self.description))
 
     @property
     def master(self):
@@ -138,15 +147,11 @@ class Component(
     @property
     def description(self):
         """
-        Sets and returns the description for the widget.
+        Returns the description for the widget.
         """
-        return self._description
+        return "[{}] object".format(self.__class__.__name__)
 
-    @description.setter
-    def description(self, value):
-        self._description = value
-
-    def __repr__(self):
+    def __str__(self):
         return self.description
 
     @property
@@ -165,6 +170,14 @@ class Component(
         """
         return self._displayable
 
+    @property
+    def when_resized(self):
+        return self._when_resized
+
+    @when_resized.setter
+    def when_resized(self, value):
+        self._when_resized = value
+
     def destroy(self):
         """
         Destroy the tk widget.
@@ -175,14 +188,35 @@ class Component(
 
         self.tk.destroy()
 
+    def _on_configure_change(self, event):
+        
+        # is this configure event for this widget?
+        if event.tk_event.widget == self.tk:
 
+            # has the widgets size changed?
+            if self._actual_height != event.tk_event.height or self._actual_width != event.tk_event.width: 
+
+                self._actual_height = event.tk_event.height
+                self._actual_width = event.tk_event.height
+
+                # call the resize event
+                if self._when_resized is not None:
+                    args_expected = utils.no_args_expected(self._when_resized)
+
+                    if args_expected == 0:
+                        self._when_resized()
+                    elif args_expected == 1:
+                        self._when_resized(event)
+                    else:
+                        utils.error_format("An event callback function must accept either 0 or 1 arguments.\nThe current callback has {} arguments.".format(args_expected))
+                
 class Container(Component):
 
-    def __init__(self, master, tk, description, layout, displayable):
+    def __init__(self, master, tk, layout, displayable):
         """
         An abstract class for a container which can hold other widgets.
         """
-        super(Container, self).__init__(master, tk, description, displayable)
+        super(Container, self).__init__(master, tk, displayable)
         self._children = []
         self._layout_manager = layout
         self._bg = None
@@ -317,7 +351,7 @@ class Container(Component):
         # raise a warning if the tk widgets master is not this container
         if self.tk is not tk_widget.master:
             utils.error_format("The tk widget's master is not '{}'.\nIt may not display correctly.".format(self.description))
-        return Widget(self, tk_widget, "tk widget", grid, align, visible, enabled, width, height)
+        return Widget(self, tk_widget, grid, align, visible, enabled, width, height)
 
     def _add_child(self, child):
         """
@@ -441,17 +475,19 @@ class Container(Component):
 
 class BaseWindow(Container):
 
-    def __init__(self, master, tk, description, title, width, height, layout, bg, visible):
+    def __init__(self, master, tk, title, width, height, layout, bg, visible):
         """
         Base class for objects which use windows e.g. `App` and `Window`
         """
-        super(BaseWindow, self).__init__(master, tk, description, layout, False)
+        super(BaseWindow, self).__init__(master, tk, layout, False)
 
         # Initial setup
         self.tk.title( str(title) )
         self.tk.geometry(str(width)+"x"+str(height))
         self._on_close = None
         self._full_screen = False
+        self._icon = None
+        self._icon_cascade = True
 
         self.bg = bg
 
@@ -538,9 +574,31 @@ class BaseWindow(Container):
     @when_closed.setter
     def when_closed(self, value):
         self._on_close = value
+        
+    @property
+    def icon(self):
+        return None if self._icon is None else self._icon.image_source
 
+    @icon.setter
+    def icon(self, value):
+        self._icon = utils.GUIZeroImage(value, None, None)
+        self.tk.iconphoto(self._icon_cascade, self._icon.tk_image)
+    
     # METHODS
     # --------------------------------------
+
+    def resize(self, width, height):
+        """
+        Resizes the window.
+
+        :param int width:
+            The width of the window.
+
+        :param int height:
+            The height of the window.
+        """
+        self.tk.geometry(str(width)+"x"+str(height))
+        self.tk.update()
 
     def hide(self):
         """Hide the window."""
@@ -588,18 +646,14 @@ class BaseWindow(Container):
     def question(self, title, question, initial_value=None):
         return dialog.question(title, question, initial_value, master=self)
 
-    def select_file(self, title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False):
-        return dialog.select_file(title=title, folder=folder, filetypes=filetypes, save=save, master=self)
+    def select_file(self, title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False, filename=""):
+        return dialog.select_file(title=title, folder=folder, filetypes=filetypes, save=save, master=self, filename=filename)
 
     def select_folder(self, title="Select folder", folder="."):
         return dialog.select_folder(title=title, folder=folder, master=self)
 
-    # DEPRECATED METHODS
-    # --------------------------------------------
-    def on_close(self, command):
-        # deprecated on 2019-06-08
-        self.when_closed = command
-        utils.deprecated("on_close() is deprecated. Please use the when_closed property instead.")
+    def select_color(self, color=None):
+        return dialog.select_color(color, master=self)
 
 
 class Widget(
@@ -609,11 +663,11 @@ class Widget(
     SizeMixin,
     LayoutMixin):
 
-    def __init__(self, master, tk, description, grid, align, visible, enabled, width, height):
+    def __init__(self, master, tk, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is an interactable component e.g. `Picture`
         """
-        super(Widget, self).__init__(master,tk, description, True)
+        super(Widget, self).__init__(master,tk, True)
         self._update_grid(grid)
         self._update_align(align)
         self._width = width
@@ -635,11 +689,11 @@ class TextWidget(
     Widget,
     TextMixin):
 
-    def __init__(self, master, tk, description, grid, align, visible, enabled, width, height):
+    def __init__(self, master, tk, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which contains or has text e.g. ``Text`, `PushButton`
         """
-        super(TextWidget, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(TextWidget, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         #inherit from master
         self.text_color = master.text_color
@@ -654,11 +708,11 @@ class ContainerWidget(
     SizeMixin,
     LayoutMixin):
 
-    def __init__(self, master, tk, description, layout, grid, align, visible, enabled, width, height):
+    def __init__(self, master, tk, layout, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is also a container e.g. `Box`, `ButtonGroup`
         """
-        super(ContainerWidget, self).__init__(master,tk, description, layout, True)
+        super(ContainerWidget, self).__init__(master, tk, layout, True)
         self._update_grid(grid)
         self._update_align(align)
         self._width = width
@@ -715,9 +769,9 @@ class ContainerTextWidget(
     ContainerWidget,
     TextMixin):
 
-    def __init__(self, master, tk, description, layout, grid, align, visible, enabled, width, height):
+    def __init__(self, master, tk, layout, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is also a container and contains text
         e.g. `ButtonGroup`
         """
-        super(ContainerTextWidget, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
+        super(ContainerTextWidget, self).__init__(master, tk, layout, grid, align, visible, enabled, width, height)

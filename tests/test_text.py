@@ -12,8 +12,7 @@ from common_test import (
     events_test,
     cascaded_properties_test,
     inherited_properties_test,
-    SET_FONT,
-    TEST_FONTS,
+    TEST_FONT,
     grid_layout_test,
     auto_layout_test
     )
@@ -26,9 +25,8 @@ def test_default_values():
     assert t.align == None
     assert t.size == 12
     assert t.text_color == "black"
-    # test for different fonts to support tests on windows, debian and macos
-    assert (t.font == "Arial" or t.font == "Nimbus Sans L" or t.font == "Helvetica")
     assert t.value == ""
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():
@@ -39,7 +37,7 @@ def test_alt_values():
         size = 14,
         color="green",
         bg="red",
-        font=SET_FONT,
+        font=TEST_FONT,
         grid = [0,1],
         align="top",
         width = 10,
@@ -52,7 +50,7 @@ def test_alt_values():
     assert t.size == 14
     assert t.text_color == "green"
     assert t.bg == "red"
-    assert t.font in TEST_FONTS
+    assert t.font == TEST_FONT
     assert t.value == "foo"
     assert t.width == 10
     assert t.height == 11

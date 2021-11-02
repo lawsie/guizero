@@ -1,4 +1,4 @@
-from tkinter import messagebox, filedialog
+from tkinter import messagebox, filedialog, colorchooser
 from tkinter.simpledialog import askstring
 from . import utilities as utils
 import os.path
@@ -73,7 +73,7 @@ def question(title, question, initial_value=None, master=None):
 
     If Ok is pressed the value entered into the box is returned.
 
-    If Cancel is pressed `None` is returned.
+    If Cancel is pressed `""` is returned.
 
     :param string title:
         The title to be displayed on the box.
@@ -89,7 +89,7 @@ def question(title, question, initial_value=None, master=None):
     """
     return askstring(title, question, initialvalue=initial_value, parent=None if master is None else master.tk)
 
-def select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False, master=None):
+def select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False, master=None, filename=""):
     """
     Display a box to select a file to open or save.
 
@@ -122,19 +122,21 @@ def select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]
             title=title, 
             filetypes=filetypes, 
             initialdir=folder, 
+            initialfile=filename,
             parent=None if master is None else master.tk)
     else:
         return filedialog.askopenfilename(
             title=title, 
             filetypes=filetypes, 
             initialdir=folder, 
+            initialfile=filename,
             parent=None if master is None else master.tk)
 
 def select_folder(title="Select folder", folder=".", master=None):
     """
     Display a box to select a folder.
 
-    If a folder is selected the folder path is returned, otherwise `None` is returned.
+    If a folder is selected the folder path is returned, otherwise `""` is returned.
 
     :param string title:
         The title to be displayed on the box. Defaults to 'Select file'.
@@ -151,3 +153,21 @@ def select_folder(title="Select folder", folder=".", master=None):
         folder = "."
     
     return filedialog.askdirectory(title=title, initialdir=folder, parent=None if master is None else master.tk)
+
+def select_color(color=None, master=None):
+    """
+    Display a box to select a color.
+
+    :param color:
+        Preselected color. Defaults to `None`.
+    :param App master:
+        Optional guizero master which the popup will be placed over. Defaults
+        to `None`.
+    :return:
+        The color in code #rrggbb or `None`.
+    """
+
+    ret_color = colorchooser.askcolor(color=color, parent=None if master is None else master.tk)
+    if ret_color is None:
+        return None
+    return ret_color[1]

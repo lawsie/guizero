@@ -26,6 +26,7 @@ def test_default_values():
     assert s.master == a
     assert s.grid == None
     assert s.align == None
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():

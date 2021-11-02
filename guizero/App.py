@@ -13,7 +13,6 @@ class App(BaseWindow):
         width=500, 
         height=500, 
         layout="auto", 
-        bgcolor=None, 
         bg=None, 
         visible=True):
 
@@ -32,9 +31,6 @@ class App(BaseWindow):
         :param string layout:
             The layout manager style for this window, defaults to `auto`.
 
-        :param string bgcolor:
-            DEPRECATED: The background colour for this window, defaults to None. Use bg instead.
-
         :param color bg:
             The background colour for this window, defaults to None. See https://lawsie.github.io/guizero/colors/
 
@@ -42,8 +38,6 @@ class App(BaseWindow):
             If the widget should be visible, defaults to `True`.
 
         """
-
-        description = "[App] object"
 
         # If this is the first app to be created, create Tk
         if App._main_app is None:
@@ -59,7 +53,6 @@ class App(BaseWindow):
         super(App, self).__init__(
             None,
             tk,
-            description,
             title,
             width,
             height,

@@ -1,11 +1,25 @@
+import pytest
 from threading import Event
 from time import sleep
 from unittest.mock import MagicMock
 from guizero import Text, Picture
 from tkinter import Spinbox
 
-SET_FONT = "Times New Roman"
-TEST_FONTS = ["Times New Roman", "Liberation Serif"]
+# find a suitable font to test with
+SUITABLE_FONTS = ["Times New Roman", "Liberation Serif", "Impact", "FreeSans"]
+TEST_FONT = None
+from tkinter import Tk, font
+root = Tk()
+available_fonts = font.families()
+root.destroy()
+
+for suitable_font in SUITABLE_FONTS:
+    if suitable_font in available_fonts:
+        TEST_FONT = suitable_font
+        break
+
+if TEST_FONT is None:
+    pytest.exit("A suitable test font could not be found.")
 
 def schedule_after_test(app, widget):
     callback_event = Event()
@@ -119,8 +133,8 @@ def size_fill_test(widget):
 
 def text_test(widget):
     default = widget.font
-    widget.font = SET_FONT
-    assert widget.font in TEST_FONTS
+    widget.font = TEST_FONT
+    assert widget.font == TEST_FONT
     widget.font = None
     assert widget.font == default
 
@@ -144,6 +158,7 @@ def events_test(widget):
 
     events_to_test = (
         ("when_clicked", "<when_clicked>"),
+        ("when_double_clicked", "<when_double_clicked>"),
         ("when_left_button_pressed", "<when_left_button_pressed>"),
         ("when_left_button_released", "<when_left_button_released>"),
         ("when_right_button_pressed", "<when_right_button_pressed>"),
@@ -167,6 +182,8 @@ def events_test(widget):
         assert e.y == 2
         assert e.display_x == 3
         assert e.display_y == 4
+        assert e.width == 5
+        assert e.height == 6
         callback_with_param_event.set()
 
     for event_to_test in events_to_test:
@@ -174,7 +191,7 @@ def events_test(widget):
         setattr(widget, event_to_test[0], callback)
         assert not callback_event.is_set()
         # mock the event
-        mock_event(widget, event_to_test[1], "A", 1, 2, 3, 4)
+        mock_event(widget, event_to_test[1], "A", 1, 2, 3, 4, 5, 6)
         assert callback_event.is_set()
 
         callback_with_param_event.clear()
@@ -182,19 +199,19 @@ def events_test(widget):
         setattr(widget, event_to_test[0], callback_with_param)
         assert not callback_with_param_event.is_set()
         # mock the event
-        mock_event(widget, event_to_test[1], "A", 1, 2, 3, 4)
+        mock_event(widget, event_to_test[1], "A", 1, 2, 3, 4, 5, 6)
         assert callback_with_param_event.is_set()
 
         callback_event.clear()
         callback_with_param_event.clear()
         # set the when_attribute to None
         setattr(widget, event_to_test[0], None)
-        mock_event(widget, event_to_test[1], "A", 1, 2, 3, 4)
+        mock_event(widget, event_to_test[1], "A", 1, 2, 3, 4, 5, 6)
         # make sure its not called
         assert not callback_event.is_set()
         assert not callback_with_param_event.is_set()
 
-def mock_event(widget, ref, key, x, y, display_x, display_y):
+def mock_event(widget, ref, key, x, y, display_x, display_y, width, height):
     # you cant invoke a tk event so we will mock it
     # create a mock event
 
@@ -208,6 +225,8 @@ def mock_event(widget, ref, key, x, y, display_x, display_y):
     tk_event.y = y
     tk_event.x_root = display_x
     tk_event.y_root = display_y
+    tk_event.width = width
+    tk_event.height = height
 
     # call the event callback
     event_callback._event_callback(tk_event)
@@ -271,13 +290,13 @@ def cascading_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
-    container.font = SET_FONT
+    container.font = TEST_FONT
     container.enabled = False
 
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
-    assert t.font in TEST_FONTS
+    assert t.font == TEST_FONT
     assert t.enabled == False
     assert p.bg == "red"
     assert p.enabled == False
@@ -291,14 +310,14 @@ def inheriting_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
-    container.font = SET_FONT
+    container.font = TEST_FONT
     container.enabled = False
 
     t = Text(container, color=None, size=None, font=None)
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
-    assert t.font in TEST_FONTS
+    assert t.font == TEST_FONT
     assert not t.enabled
 
     p = Picture(container)
@@ -403,3 +422,7 @@ def grid_layout_test(widget, x, y, col_span, row_span, align):
     widget.align = "left"
     assert widget.tk.grid_info()["sticky"] == sticky["left"]
 
+def icon_test(widget, file_name):
+    widget.icon = file_name
+    assert widget.icon == file_name
+    assert widget._icon.tk_image is not None

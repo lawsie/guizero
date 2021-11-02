@@ -24,6 +24,7 @@ def test_default_values():
     assert t.align == None
     assert t.width == 10
     assert t.value == ""
+    assert a.description > ""
     a.destroy()
 
 def test_alt_values():
@@ -172,4 +173,11 @@ def test_grid_layout():
     wa = TextBox(a, grid=[1,2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
     
+    a.destroy()
+
+def test_disabled_text():
+    a = App()
+    t = TextBox(a, enabled=False)
+    t.text = "text"
+    assert t.text == "text"
     a.destroy()

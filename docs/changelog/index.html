@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -341,6 +347,10 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="first-level active"><a href="#guizero">guizero</a></li>
+            <li class="second-level"><a href="#120-2021-05-04">1.2.0 - 2021-05-04</a></li>
+                
+            <li class="second-level"><a href="#111-2020-11-27">1.1.1 - 2020-11-27</a></li>
+                
             <li class="second-level"><a href="#110-2019-10-25">1.1.0 - 2019-10-25</a></li>
                 
             <li class="second-level"><a href="#100-2019-07-11">1.0.0 - 2019-07-11</a></li>
@@ -380,11 +390,33 @@
         <div class="col-md-9" role="main">
 
 <h1 id="guizero">guizero</h1>
+<h2 id="120-2021-05-04">1.2.0 - 2021-05-04</h2>
+<ul>
+<li>Added <code>filename</code> to <code>select_file</code> dialog</li>
+<li>Added <code>when_resized</code> and <code>when_double_clicked</code> events</li>
+<li>Removed previously deprecated <code>App.on_closed</code> method</li>
+<li>A window icon can be set using the <code>.icon</code> property</li>
+<li>Add <code>select_color</code> popup</li>
+<li>Documentation updates and fixes</li>
+<li>Added new examples and recipes</li>
+<li>Tests updated to cope with a greater range of operating systems. Tests work on Windows, macOS and Raspberry Pi OS.</li>
+<li>contributors <a href="https://github.com/martinohanlon">martinohanlon</a>, <a href="https://github.com/lawsie">lawsie</a>, <a href="https://github.com/mirelsol">mirelsol</a>, <a href="https://github.com/maroph">maroph</a></li>
+</ul>
+<h2 id="111-2020-11-27">1.1.1 - 2020-11-27</h2>
+<ul>
+<li>PushButton image bug fix for macOS</li>
+<li>Documentation updates regarding how to use tk, particularly for ListBox widget</li>
+<li>Refactored <code>.description</code> property due to issue with TextBox widget</li>
+<li>Fix TextBox widget where you cant set the value if its disabled</li>
+<li>Removed <code>bgcolor</code> from App constructor which had previously been deprecated</li>
+<li>Resolved issue with <code>Waffle</code> and being able to click "outside" the waffle</li>
+<li>contributors <a href="https://github.com/martinohanlon">martinohanlon</a>, <a href="https://github.com/aajshaw">aajshaw</a></li>
+</ul>
 <h2 id="110-2019-10-25">1.1.0 - 2019-10-25</h2>
 <ul>
-<li>Added ability to be able to change the grid of a widget at room time</li>
+<li>Added ability to be able to change the grid of a widget at run time</li>
 <li>Added <code>hide_text</code> to <code>TextBox</code> for use with passwords</li>
-<li>Added open file and folder popups <code>select_file</code> and <code>select_folder</code></li>
+<li>Added open file and folder pop-ups <code>select_file</code> and <code>select_folder</code></li>
 <li>Changes to <code>Text</code> to better support cascading of text color, font and size</li>
 <li>Various documentation updates </li>
 <li>contributors <a href="https://github.com/martinohanlon">martinohanlon</a>, <a href="https://github.com/lawsie">lawsie</a></li>

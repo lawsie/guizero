@@ -15,21 +15,21 @@ class Window(BaseWindow):
         bg=None, 
         visible=True):
 
-        description = "[Window] oject"
-
         self._modal = False
         tk = Toplevel(master.tk)
 
         super(Window, self).__init__(
             master,
             tk,
-            description,
             title,
             width,
             height,
             layout,
             bg,
             visible)
+
+        # Window objects should not cascade icons to other windows (or the App object)
+        self._icon_cascade = False
 
     def _close_window(self):
         if self._on_close is None:

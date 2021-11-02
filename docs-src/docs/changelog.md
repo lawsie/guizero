@@ -1,9 +1,29 @@
 # guizero
 
+## 1.2.0 - 2021-05-04
+- Added `filename` to `select_file` dialog
+- Added `when_resized` and `when_double_clicked` events
+- Removed previously deprecated `App.on_closed` method
+- A window icon can be set using the `.icon` property
+- Add `select_color` popup
+- Documentation updates and fixes
+- Added new examples and recipes
+- Tests updated to cope with a greater range of operating systems. Tests work on Windows, macOS and Raspberry Pi OS.
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [mirelsol](https://github.com/mirelsol), [maroph](https://github.com/maroph)
+
+## 1.1.1 - 2020-11-27
+- PushButton image bug fix for macOS
+- Documentation updates regarding how to use tk, particularly for ListBox widget
+- Refactored `.description` property due to issue with TextBox widget
+- Fix TextBox widget where you cant set the value if its disabled
+- Removed `bgcolor` from App constructor which had previously been deprecated
+- Resolved issue with `Waffle` and being able to click "outside" the waffle
+- contributors [martinohanlon](https://github.com/martinohanlon), [aajshaw](https://github.com/aajshaw)
+
 ## 1.1.0 - 2019-10-25
-- Added ability to be able to change the grid of a widget at room time
+- Added ability to be able to change the grid of a widget at run time
 - Added `hide_text` to `TextBox` for use with passwords
-- Added open file and folder popups `select_file` and `select_folder`
+- Added open file and folder pop-ups `select_file` and `select_folder`
 - Changes to `Text` to better support cascading of text color, font and size
 - Various documentation updates 
 - contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie)

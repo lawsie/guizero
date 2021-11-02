@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -353,12 +359,13 @@
                 
             <li class="second-level"><a href="#examples">Examples</a></li>
                 
+            <li class="second-level"><a href="#using-buttongroup-tk-widgets">Using ButtonGroup tk widgets</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
 <h1 id="buttongroup">ButtonGroup</h1>
-<p>(Contains a <code>tkinter.Frame</code> object)</p>
 <pre><code class="language-python">__init__(
     self,
     master,
@@ -609,6 +616,11 @@ app.display()
 <td>The background colour of the widget</td>
 </tr>
 <tr>
+<td>children</td>
+<td>List</td>
+<td>A list of the widgets in this container. <code>[RadioButton, *]</code></td>
+</tr>
+<tr>
 <td>enabled</td>
 <td>boolean</td>
 <td><code>True</code> if the widget is enabled</td>
@@ -663,6 +675,11 @@ app.display()
 <td><a href="../colors/">color</a></td>
 <td>The colour of the text</td>
 </tr>
+<tr>
+<td>tk</td>
+<td>tkinter.Frame</td>
+<td>The internal tkinter object, see <a href="../usingtk/">Using tkinter</a></td>
+</tr>
 </tbody>
 </table>
 <p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>ButtonGroup</code> object is called <code>choice</code> you would write <code>choice.value</code>.</p>
@@ -685,6 +702,16 @@ activities = ButtonGroup(app, options=[
 
 what_is_selected = Text(app, text=&quot;skate&quot;)
 app.display()
+</code></pre>
+<h3 id="using-buttongroup-tk-widgets">Using ButtonGroup tk widgets</h3>
+<p>Advanced users can gain internal access to the internal tkinter widgets used by <code>ButtonGroup</code>. For more information on using tkinter in combination with guizero see <a href="../usingtk/">Using tkinter</a>.</p>
+<p>The <code>ButtonGroup</code> widget contains a <code>tkinter.Frame</code> object, which frames multiple guizero <code>RadioButton</code> widgets. Each <code>RadioButton</code> widget contains a <code>tkinter.Radiobutton</code> object.</p>
+<p>The <code>.children</code> property returns the list of <code>RadioButton</code> widgets in the order they appear in the <code>ButtonGroup</code>:</p>
+<p>To access the internal <code>RadioButton</code> tk object you would use the child's <code>tk</code> property e.g.</p>
+<pre><code class="language-python">button_group = ButtonGroup(app)
+
+for radio_button in ButtonGroup.children:
+    tk_radio_button = radio_button.tk
 </code></pre></div>
         
         

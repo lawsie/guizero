@@ -1,7 +1,5 @@
 # Waffle
 
-(Contains a `tkinter.Frame` object)
-
 ```python
 __init__(
     self, 
@@ -41,21 +39,21 @@ app.display()
 
 When you create a `Waffle` object you **must** specify `master` and you can specify any of the optional parameters. Specify parameters in the brackets, like this: `waffle = Waffle(app, height=25)`
 
-| Parameter  | Takes              | Default | Compulsory | Description                                                                                                                                                                                                                     |
-|------------|--------------------|---------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| master     | App, Window or Box | -       | Yes        | The container to which this widget belongs                                                                                                                                                                                      |
-| align      | string             | None    | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.                                                                                                                       |
-| color      | [color](colors.md) | "white" | -          | The default colour of pixels on the waffle                                                                                                                                                                                      |
-| command    | function name      | None    | -          | The name of a function to call when the waffle is clicked. This function MUST take either zero or two arguments, if the function takes two arguments the `x` and `y` co-ordinates of the pixel which was clicked will be given. |
-| dim        | int                | 20      | -          | How large one of the pixels on the waffle is                                                                                                                                                                                    |
-| dotty      | boolean            | False   | -          | Whether the pixels display as dots/circles (True) or squares (False)                                                                                                                                                            |
-| grid       | List [int, int]    | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                                                                   |
-| height     | int                | 3       | -          | Set the height in waffle pixels                                                                                                                                                                                                 |
-| pad        | int                | 5       | -          | How much space is between the pixels on the waffle                                                                                                                                                                              |
-| width      | int                | 3       | -          | Set the width in waffle pixels                                                                                                                                                                                                  |
-| visible    | boolean            | True    | No         | If the widget should be visible.                                                                                                                                                                                                |
-| enabled    | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                                                                 |
-| bg         | [color](colors.md) | None    | No         | The background colour of the waffle. Takes a [color](colors.md) value.                                                                                                                                                          |
+| Parameter | Takes              | Default | Compulsory | Description                                                                                                                                                                                                                     |
+|-----------|--------------------|---------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| master    | App, Window or Box | -       | Yes        | The container to which this widget belongs                                                                                                                                                                                      |
+| align     | string             | None    | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.                                                                                                                       |
+| color     | [color](colors.md) | "white" | -          | The default colour of pixels on the waffle                                                                                                                                                                                      |
+| command   | function name      | None    | -          | The name of a function to call when the waffle is clicked. This function MUST take either zero or two arguments, if the function takes two arguments the `x` and `y` co-ordinates of the pixel which was clicked will be given. |
+| dim       | int                | 20      | -          | How large one of the pixels on the waffle is                                                                                                                                                                                    |
+| dotty     | boolean            | False   | -          | Whether the pixels display as dots/circles (True) or squares (False)                                                                                                                                                            |
+| grid      | List [int, int]    | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.                                                                                                                   |
+| height    | int                | 3       | -          | Set the height in waffle pixels                                                                                                                                                                                                 |
+| pad       | int                | 5       | -          | How much space is between the pixels on the waffle                                                                                                                                                                              |
+| width     | int                | 3       | -          | Set the width in waffle pixels                                                                                                                                                                                                  |
+| visible   | boolean            | True    | No         | If the widget should be visible.                                                                                                                                                                                                |
+| enabled   | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master                                                                                                                 |
+| bg        | [color](colors.md) | None    | No         | The background colour of the waffle. Takes a [color](colors.md) value.                                                                                                                                                          |
 
 
 ### Methods
@@ -96,6 +94,7 @@ You can set and get the following properties:
 | master     | App or Box         | The container to which this widget belongs                                                            |
 | pad        | int                | The size of the padding between pixels                                                                |
 | pixel_size | int                | The size of the one pixel                                                                             |
+| tk         | tkinter.Frame      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
 | width      | [size](size.md)    | Set the width in waffle pixels                                                                        |
 | visible    | boolean            | If this widget is visible                                                                             |
 

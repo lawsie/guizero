@@ -1,7 +1,5 @@
 # PushButton
 
-(Contains a `tkinter.Button` object)
-
 ```python
 __init__(
     self,
@@ -88,7 +86,6 @@ You can call the following methods on a `PushButton` object.
 | enable()                            | -                                                                                    | -       | Enables the widget                                                                                                                                             |
 | focus()                             | -                                                                                    | -       | Gives focus to the widget                                                                                                                                      |
 | hide()                              | -                                                                                    | -       | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
-| image(image_source)                 | image_source (string)                                                                | -       | The file path, tkinter.PhotoImage or PIL.Image you wish to display.                                                                                            |
 | padding(padx, pady)                 | padx (int), pady(int)                                                                | -       | Sets the amount of x (horizontal) and y (vertical) padding between the text/icon and the edge of the button                                                    |
 | repeat(time, command, args=None)    | time (int), command (function name), args (list of arguments)                        | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
 | resize(width, height)               | width (int), height (int)                                                            | -       | Sets the width and height of the widget                                                                                                                        |
@@ -101,21 +98,23 @@ You can call the following methods on a `PushButton` object.
 
 You can set and get the following properties:
 
-| Method     | Data type          | Description                                                                                           |
-|------------|--------------------|-------------------------------------------------------------------------------------------------------|
-| align      | string             | The alignment of this widget within its container                                                     |
-| bg         | [color](colors.md) | The background colour of the widget                                                                   |
-| enabled    | boolean            | `True` if the widget is enabled                                                                       |
-| font       | string             | The font of the text on the button                                                                    |
-| grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height     | [size](size.md)    | Set the height of the widget in characters or pixels if its an image button or to `"fill"`            |
-| master     | App or Box         | The container to which this widget belongs                                                            |
-| text       | string             | The text on the button                                                                                |
-| text_color | [color](colors.md) | The colour of the text on the button                                                                  |
-| text_size  | int                | The size of the text on the button                                                                    |
-| value      | int                | Returns 1 when the button is pressed, 0 if the button is released                                     |
-| visible    | boolean            | If this widget is visible                                                                             |
-| width      | [size](size.md)    | Set the width of the widget in characters or pixels if its an image button or to `"fill"`             |
+| Method     | Data type             | Description                                                                                           |
+|------------|-----------------------|-------------------------------------------------------------------------------------------------------|
+| align      | string                | The alignment of this widget within its container                                                     |
+| bg         | [color](colors.md)    | The background colour of the widget                                                                   |
+| enabled    | boolean               | `True` if the widget is enabled                                                                       |
+| font       | string                | The font of the text on the button                                                                    |
+| grid       | List                  | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| height     | [size](size.md)       | Set the height of the widget in characters or pixels if its an image button or to `"fill"`            |
+| image      | image_source (string) | The file path, tkinter.PhotoImage or PIL.Image you wish to display.                                   |
+| master     | App or Box            | The container to which this widget belongs                                                            |
+| text       | string                | The text on the button                                                                                |
+| text_color | [color](colors.md)    | The colour of the text on the button                                                                  |
+| text_size  | int                   | The size of the text on the button                                                                    |
+| tk         | tkinter.Button        | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
+| value      | int                   | Returns 1 when the button is pressed, 0 if the button is released                                     |
+| visible    | boolean               | If this widget is visible                                                                             |
+| width      | [size](size.md)       | Set the width of the widget in characters or pixels if its an image button or to `"fill"`             |
 
 Refer to a property as `<name of widget>.property`. For example, if your `PushButton` object is called `button` you would write `button.value`.
 

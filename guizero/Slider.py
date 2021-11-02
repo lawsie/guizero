@@ -18,7 +18,8 @@ class Slider(TextWidget):
         width=None, 
         height=None):
 
-        description = "[Slider] object from " + str(start) + " to " + str(end)
+        self._start = start
+        self._end = end
 
         # Set the direction
         self._horizontal = horizontal
@@ -27,7 +28,7 @@ class Slider(TextWidget):
         # Create a tk Scale object within this object
         tk = Scale(master.tk, from_=start, to=end, orient=orient, command=self._command_callback)
 
-        super(Slider, self).__init__(master, tk, description, grid, align, visible, enabled, width, height)
+        super(Slider, self).__init__(master, tk, grid, align, visible, enabled, width, height)
 
         self.update_command(command)
 
@@ -64,6 +65,12 @@ class Slider(TextWidget):
             else:
                 self._set_tk_config("length", height)
 
+    @property
+    def description(self):
+        """
+        Returns the description for the widget.
+        """
+        return "[Slider] object from {} to {}".format(self._start, self._end)
 
     # METHODS
     # ----------------

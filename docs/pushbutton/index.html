@@ -94,6 +94,12 @@
                         
                             
 <li >
+    <a href="../usingwidgets/">Using Widgets</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../commands/">Commands</a>
 </li>
 
@@ -356,7 +362,6 @@
         <div class="col-md-9" role="main">
 
 <h1 id="pushbutton">PushButton</h1>
-<p>(Contains a <code>tkinter.Button</code> object)</p>
 <pre><code class="language-python">__init__(
     self,
     master,
@@ -558,12 +563,6 @@ app.display()
 <td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
 </tr>
 <tr>
-<td>image(image_source)</td>
-<td>image_source (string)</td>
-<td>-</td>
-<td>The file path, tkinter.PhotoImage or PIL.Image you wish to display.</td>
-</tr>
-<tr>
 <td>padding(padx, pady)</td>
 <td>padx (int), pady(int)</td>
 <td>-</td>
@@ -643,6 +642,11 @@ app.display()
 <td>Set the height of the widget in characters or pixels if its an image button or to <code>"fill"</code></td>
 </tr>
 <tr>
+<td>image</td>
+<td>image_source (string)</td>
+<td>The file path, tkinter.PhotoImage or PIL.Image you wish to display.</td>
+</tr>
+<tr>
 <td>master</td>
 <td>App or Box</td>
 <td>The container to which this widget belongs</td>
@@ -661,6 +665,11 @@ app.display()
 <td>text_size</td>
 <td>int</td>
 <td>The size of the text on the button</td>
+</tr>
+<tr>
+<td>tk</td>
+<td>tkinter.Button</td>
+<td>The internal tkinter object, see <a href="../usingtk/">Using tkinter</a></td>
 </tr>
 <tr>
 <td>value</td>
