@@ -20,7 +20,6 @@ from .ButtonGroup import ButtonGroup
 from .CheckBox import CheckBox
 from .Combo import Combo
 from .Drawing import Drawing
-from .LabelBox import LabelBox
 from .ListBox import ListBox
 from .MenuBar import MenuBar
 from .Picture import Picture
@@ -29,6 +28,7 @@ from .RadioButton import RadioButton
 from .Slider import Slider
 from .Text import Text
 from .TextBox import TextBox
+from .TitleBox import TitleBox
 from .PushButton import PushButton
 from .Waffle import Waffle
 from .Window import Window

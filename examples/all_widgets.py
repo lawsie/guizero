@@ -43,8 +43,8 @@ Box(app, width="fill", align="bottom", height=15)
 
 # waffle = Waffle(app)
 
-# labelBox = LabelBox(app, "This is a label")
-# Text(labelBox, text="Text in a LabelBox")
+# titlebox = TitleBox(app, "This is the title")
+# Text(titlebox, text="Text in a TitleBox")
 
 window = Window(app, width=210, height=100)
 

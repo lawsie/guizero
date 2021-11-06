@@ -1,10 +1,10 @@
-# LabelBox
+# TitleBox
 
 ```python
 __init__(
     self,
     master,
-    text = "",
+    title = "Name",
     layout="auto",
     grid=None,
     align=None,
@@ -12,35 +12,35 @@ __init__(
     enabled=None,
     width=None,
     height=None,
-    border=None)
+    border=1)
 ```
 
 ### What is it?
-The `LabelBox` object is an visible container which can contain other widgets with a border surrounding them, and show an optional label. It is the only object other than `App`, `Box`, and `Window` which can act as the `master` for other objects and can have its own layout manager.
+The `TitleBox` object is an visible container which can group together other widgets within a border and show the group title. It is the only object other than `App`, `Box`, and `Window` which can act as the `master` for other objects and can have its own layout manager.
 
-You can use the `LabelBox` object to group other objects within your GUI.
+You can use the `TitleBox` object to group other objects within your GUI.
 
-![Labelbox](images/labelbox.png)
+![TitleBox](images/titlebox.png)
 
 ### How do I make one?
 
-Create a `LabelBox` object like this:
+Create a `TitleBox` object like this:
 
 ```python
-from guizero import App, LabelBox
+from guizero import App, TitleBox
 app = App()
-labelbox = LabelBox(app)
+titlebox = TitleBox(app, "title")
 app.display()
 ```
 
 ### Starting parameters
 
-When you create a `LabelBox` object you **must** specify a master and you can specify any of the optional parameters. Specify parameters in the brackets like this: `labelbox = LabelBox(app, text="label", layout="grid")`
+When you create a `TitleBox` object you **must** specify a master and a title, and you can specify any of the optional parameters. Specify parameters in the brackets like this: `titlebox = TitleBox(app, title="group name", layout="grid")`
 
 | Parameter | Data type          | Default | Compulsory | Description                                                                                                     |
 |-----------|--------------------|---------|------------|-----------------------------------------------------------------------------------------------------------------|
 | master    | App, Window or Box | -       | Yes        | The container to which this widget belongs                                                                      |
-| text      | string             | -       | No        | The label to display as the box name                                                     |
+| title      | string             | "Name" | Yes        | The text to display as the box name                                                     |
 | align     | string             | None    | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.       |
 | grid      | List               | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.   |
 | layout    | string             | "auto"  | -          | Whether widgets *inside this box* pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
@@ -53,7 +53,7 @@ When you create a `LabelBox` object you **must** specify a master and you can sp
 
 ### Methods
 
-You can call the following methods on a `LabelBox` object.
+You can call the following methods on a `TitleBox` object.
 
 | Method                                                                                               | Takes                                                                                               | Returns | Description                                                                                                                                                    |
 |------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -87,50 +87,50 @@ You can set and get the following properties:
 | height     | [size](size.md)    | Set the height of the widget in pixels or to `"fill"`                                                 |
 | layout     | string             | The layout being used by the Box (`"auto"`) or (`"grid"`)                                             |
 | master     | App                | The `App` object to which this box belongs                                                            |
-| text_size  | int                | The size of the text widgets should use                                                               |
-| text_color | [color](colors.md) | The colour of the text widgets should use                                                             |
+| title  | string                | The text that should be displayed as the title of the box                                                              |
 | tk         | tkinter.Frame      | The internal tkinter object, see [Using tkinter](usingtk.md)                                      |
 | visible    | boolean            | If this widget is visible                                                                             |
 | width      | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                  |
 
 ### Examples
 
-**Putting widgets in a LabelBox**
+**Putting widgets in a TitleBox**
 
-A `LabelBox` object is invisible except for the label, but it can contain other widgets. In this example, there are two `Text` objects. One has `labelbox` as its master, the other has `app` as its master.
+The `TitleBox` object is an visible container which can group together other widgets within a border and show the group title
+In this example, there are two `Text` objects. One has `titlebox` as its master, the other has `app` as its master.
 
 ```python
-from guizero import App, LabelBox, Text
+from guizero import App, TitleBox, Text
 app = App(title="My app", height=300, width=400)
-labelbox = LabelBox(app, text="Labelbox title")
-text1 = Text(labelbox, text="Hello from the labelbox", size=14, font="Arial")
+titlebox = TitleBox(app, title="Titlebox name")
+text1 = Text(titlebox, text="Hello from the titlebox", size=14, font="Arial")
 text2 = Text(app, text="Hello from the app", size=14, font="Courier New")
 app.display()
 ```
 
-![Box and app](images/labelbox-app.png)
+![Box and app](images/titlebox-app.png)
 
-**Grouping objects within a LabelBox**
+**Grouping objects within a TitleBox**
 
-It is useful to put objects in a labelbox to group them together and give them a title. For example here we have given the `app` a grid layout, then placed some text at [0,0] and the `LabelBox` object at [1,0]. This means that the text will appear on the left, and the contents of the LabelBox will appear on the right.
+It is useful to put objects in a titlebox to group them together and give them a title. For example here we have given the `app` a grid layout, then placed some text at [0,0] and the `TitleBox` object at [1,0]. This means that the text will appear on the left, and the contents of the TitleBox will appear on the right.
 
-The `LabelBox` object itself has a grid layout and contains six buttons which are positioned on a *separate* grid layout belonging to the box.
+The `TitleBox` object itself has a grid layout and contains six buttons which are positioned on a *separate* grid layout belonging to the box.
 
 ```python
-from guizero import App, Text, LabelBox, PushButton
+from guizero import App, Text, TitleBox, PushButton
 def do_nothing():
     return 0
 
 app = App(title="My app", height=300, width=300, layout="grid")
 text = Text(app, text="Some text here", grid=[0,0])
-labelbox = LabelBox(app, text="Buttons", layout="grid", grid=[1,0])
-button1 = PushButton(labelbox, command=do_nothing, text="1", grid=[0,0])
-button2 = PushButton(labelbox, command=do_nothing, text="2", grid=[1,0])
-button3 = PushButton(labelbox, command=do_nothing, text="3", grid=[2,0])
-button4 = PushButton(labelbox, command=do_nothing, text="4", grid=[0,1])
-button5 = PushButton(labelbox, command=do_nothing, text="5", grid=[1,1])
-button6 = PushButton(labelbox, command=do_nothing, text="6", grid=[2,1])
+titlebox = TitleBox(app, title="Buttons", layout="grid", grid=[1,0])
+button1 = PushButton(titlebox, command=do_nothing, text="1", grid=[0,0])
+button2 = PushButton(titlebox, command=do_nothing, text="2", grid=[1,0])
+button3 = PushButton(titlebox, command=do_nothing, text="3", grid=[2,0])
+button4 = PushButton(titlebox, command=do_nothing, text="4", grid=[0,1])
+button5 = PushButton(titlebox, command=do_nothing, text="5", grid=[1,1])
+button6 = PushButton(titlebox, command=do_nothing, text="6", grid=[2,1])
 app.display()
 
 ```
-![Box with grid layout](images/labelbox-complicated.png)
+![Box with grid layout](images/titlebox-complicated.png)
