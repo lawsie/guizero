@@ -3,12 +3,12 @@ from . import utilities as utils
 from .base import ContainerTextWidget
 from .event import EventManager
 
-class LabelBox(ContainerTextWidget):
+class TitleBox(ContainerTextWidget):
 
     def __init__(
         self,
         master,
-        text="",
+        title="Name",
         layout="auto",
         grid=None,
         align=None,
@@ -16,18 +16,18 @@ class LabelBox(ContainerTextWidget):
         enabled=None,
         width=None,
         height=None,
-        border=None):
+        border=1):
         """
-        Creates a LabelBox
+        Creates a TitleBox
 
         :param Container master:
-            The Container (App, LabelBox, etc) the LabelBox will belong too.
+            The Container (App, TitleBox, etc) the TitleBox will belong too.
 
-        :param string text:
-            The text to be displayed on the box label.
+        :param string title:
+            The text to be displayed on the box title. Defaults to "Name".
 
         :param string layout:
-            The layout the LabelBox should use "auto" or "grid. Defaults to "auto".
+            The layout the TitleBox should use "auto" or "grid. Defaults to "auto".
 
         :param List grid:
             Grid co-ordinates for the widget, required if the master layout
@@ -57,19 +57,20 @@ class LabelBox(ContainerTextWidget):
 
         :param int border:
             Sets the border thickness. `0` or `False` is no border. `True` or
-            value > 1 sets a border. The default is `None`.
+            value > 1 sets a border. The default is `1`.
         """
 
-        description = "[LabelBox] object (may also contain other objects)"
-        self._text = str(text)
-        tk = LabelFrame(master.tk, text=self._text)
+        description = "[TitleBox] object (may also contain other objects)"
+        self._title = str(title)
+        self._border = border;
+        if border is None or border < 1:
+            self._border = 1;
+        # border = 1 has a weird behavior, so it is avoided
+        tk = LabelFrame(master.tk, text=self._title, bd=self._border + 1);
 
-        super(LabelBox, self).__init__(master, tk, description, layout, grid, align, visible, enabled, width, height)
+        super(TitleBox, self).__init__(master, tk, layout, grid, align, visible, enabled, width, height)
 
         self.resize(width, height)
-
-        if border is not None:
-            self.border = border
 
     @property
     def border(self):
@@ -80,24 +81,23 @@ class LabelBox(ContainerTextWidget):
         `True` or value > 1 sets a border
 
         """
-        return self._get_tk_config("highlightthickness")
+        return self._get_tk_config("bd") - 1
 
     @border.setter
     def border(self, value):
-        self.set_border(value, "black")
+        self.set_border(value)
 
-    def set_border(self, thickness, color="black"):
+    def set_border(self, thickness):
         """
         Sets the border thickness and color.
 
         :param int thickness:
             The thickenss of the border.
-
-        :param str color:
-            The color of the border.
         """
-        self._set_tk_config("highlightthickness", thickness)
-        self._set_tk_config("highlightbackground", utils.convert_color(color))
+        if thickness < 1:
+            self._set_tk_config("bd", 2)
+        else:
+            self._set_tk_config("bd", thickness + 1)
 
     def resize(self, width, height):
         """
@@ -111,4 +111,16 @@ class LabelBox(ContainerTextWidget):
         """
         self._set_propagation(width, height)
 
-        super(LabelBox, self).resize(width, height)
+        super(TitleBox, self).resize(width, height)
+
+    @property
+    def title(self):
+        return self._get_tk_config("text")
+
+    @title.setter
+    def title(self, value):
+        self.set_title(value)
+
+    def set_title(self, value):
+        if value is not "":
+            self._set_tk_config("text", value)
