@@ -4,7 +4,7 @@
 __init__(
     self,
     master,
-    title = "Name",
+    text,
     layout="auto",
     grid=None,
     align=None,
@@ -12,7 +12,7 @@ __init__(
     enabled=None,
     width=None,
     height=None,
-    border=1)
+    border=2)
 ```
 
 ### What is it?
@@ -35,12 +35,12 @@ app.display()
 
 ### Starting parameters
 
-When you create a `TitleBox` object you **must** specify a master and a title, and you can specify any of the optional parameters. Specify parameters in the brackets like this: `titlebox = TitleBox(app, title="group name", layout="grid")`
+When you create a `TitleBox` object you **must** specify a master and a title, and you can specify any of the optional parameters. Specify parameters in the brackets like this: `titlebox = TitleBox(app, "group name", layout="grid")`
 
 | Parameter | Data type          | Default | Compulsory | Description                                                                                                     |
 |-----------|--------------------|---------|------------|-----------------------------------------------------------------------------------------------------------------|
 | master    | App, Window or Box | -       | Yes        | The container to which this widget belongs                                                                      |
-| title      | string             | "Name" | Yes        | The text to display as the box name                                                     |
+| text      | string             | -       | Yes        | The text to display as the box name                                                                             |
 | align     | string             | None    | -          | Alignment of this widget within its container. Possible values: `"top"`, `"bottom"`, `"left"`, `"right"`.       |
 | grid      | List               | None    | -          | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid layout.   |
 | layout    | string             | "auto"  | -          | Whether widgets *inside this box* pack themselves (`"auto"`) or you specify their position on a grid (`"grid"`) |
@@ -67,7 +67,6 @@ You can call the following methods on a `TitleBox` object.
 | hide()                                                                                               | -                                                                                                   | -       | Hides the widget from view. This method will unpack the widget from the layout manager.                                                                        |
 | repeat(time, command, args=None)                                                                     | time (int), command (function name), args (list of arguments)                                       | -       | Repeats `command` every `time` milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor. |
 | resize(width, height)                                                                                | width (int), height (int)                                                                           | -       | Sets the width and height of the widget                                                                                                                        |
-| set_border(thickness, color)                                                                         | thickness (int), color ([color](colors.md))                                                         | -       | Sets the border thickness and color. Setting thickness to `0` will result in no border.                                                                        |
 | show()                                                                                               | -                                                                                                   | -       | Displays the widget if it was previously hidden                                                                                                                |
 
 
@@ -75,34 +74,34 @@ You can call the following methods on a `TitleBox` object.
 
 You can set and get the following properties:
 
-| Method     | Data type          | Description                                                                                           |
-|------------|--------------------|-------------------------------------------------------------------------------------------------------|
-| align      | string             | The alignment of this widget within its container                                                     |
-| border     | int                | The border thickness, setting to `0` or `False` (the default) there is no border.                     |
-| bg         | [color](colors.md) | The background colour of the widget                                                                   |
-| children   | List      | A list of widgets in this container                                                                   |
-| enabled    | boolean            | `True` if the box is enabled                                                                          |
-| grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| font       | string             | The font that widgets should use                                                                      |
-| height     | [size](size.md)    | Set the height of the widget in pixels or to `"fill"`                                                 |
-| layout     | string             | The layout being used by the Box (`"auto"`) or (`"grid"`)                                             |
-| master     | App                | The `App` object to which this box belongs                                                            |
-| title  | string                | The text that should be displayed as the title of the box                                                              |
-| tk         | tkinter.Frame      | The internal tkinter object, see [Using tkinter](usingtk.md)                                      |
-| visible    | boolean            | If this widget is visible                                                                             |
-| width      | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                  |
+| Method   | Data type          | Description                                                                                           |
+|----------|--------------------|-------------------------------------------------------------------------------------------------------|
+| align    | string             | The alignment of this widget within its container                                                     |
+| border   | int                | The border thickness, setting to `0` or `False` there is no border.                                   |
+| bg       | [color](colors.md) | The background colour of the widget                                                                   |
+| children | List               | A list of widgets in this container                                                                   |
+| enabled  | boolean            | `True` if the box is enabled                                                                          |
+| grid     | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| font     | string             | The font that widgets should use                                                                      |
+| height   | [size](size.md)    | Set the height of the widget in pixels or to `"fill"`                                                 |
+| layout   | string             | The layout being used by the Box (`"auto"`) or (`"grid"`)                                             |
+| master   | App                | The `App` object to which this box belongs                                                            |
+| text     | string             | The text that should be displayed as the title of the box                                             |
+| tk       | tkinter.Frame      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
+| visible  | boolean            | If this widget is visible                                                                             |
+| width    | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                  |
 
 ### Examples
 
 **Putting widgets in a TitleBox**
 
-The `TitleBox` object is an visible container which can group together other widgets within a border and show the group title
+The `TitleBox` object is a visible container which can group together other widgets within a border and show the group title
 In this example, there are two `Text` objects. One has `titlebox` as its master, the other has `app` as its master.
 
 ```python
 from guizero import App, TitleBox, Text
 app = App(title="My app", height=300, width=400)
-titlebox = TitleBox(app, title="Titlebox name")
+titlebox = TitleBox(app, text="Titlebox name")
 text1 = Text(titlebox, text="Hello from the titlebox", size=14, font="Arial")
 text2 = Text(app, text="Hello from the app", size=14, font="Courier New")
 app.display()
@@ -123,7 +122,7 @@ def do_nothing():
 
 app = App(title="My app", height=300, width=300, layout="grid")
 text = Text(app, text="Some text here", grid=[0,0])
-titlebox = TitleBox(app, title="Buttons", layout="grid", grid=[1,0])
+titlebox = TitleBox(app, text="Buttons", layout="grid", grid=[1,0])
 button1 = PushButton(titlebox, command=do_nothing, text="1", grid=[0,0])
 button2 = PushButton(titlebox, command=do_nothing, text="2", grid=[1,0])
 button3 = PushButton(titlebox, command=do_nothing, text="3", grid=[2,0])
