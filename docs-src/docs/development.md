@@ -25,6 +25,12 @@ virtualenv guizero-[versionno]
 cd guizero-[versionno]
 ```
 
+If using a virtual environment, make sure that guizero is not already installed as it could interfere with your changes. To remove it:
+
+```
+pip uninstall guizero
+```
+
 Activate your virtual environment:
 
 ```
@@ -48,11 +54,18 @@ Scripts\deactivate
 
 ## Tests
 
-To run the automated tests:
+To run all the automated tests:
 
 ```
 cd guizero\test
 pytest -v
+```
+
+To run just the tests of a certain file:
+
+```
+cd guizero\test
+pytest -v [tests_filename]
 ```
 
 If running the tests inside a virtual environment you will need to install pytest in that virtual environment.

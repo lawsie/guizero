@@ -7,7 +7,7 @@ nav:
   - Installation: index.md
   - Using guizero:
       - Getting started: start.md
-      - Using Widgets: usingwidgets.md 
+      - Using Widgets: usingwidgets.md
       - Commands: commands.md
       - Multiple windows: multiple_windows.md
       - Layouts: layout.md
@@ -34,6 +34,7 @@ nav:
       - Slider: slider.md
       - Text: text.md
       - TextBox: textbox.md
+      - TitleBox: titlebox.md
       - Waffle: waffle.md
       - Window: window.md
   - Recipes: recipes.md

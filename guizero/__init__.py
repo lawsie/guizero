@@ -28,6 +28,7 @@ from .RadioButton import RadioButton
 from .Slider import Slider
 from .Text import Text
 from .TextBox import TextBox
+from .TitleBox import TitleBox
 from .PushButton import PushButton
 from .Waffle import Waffle
 from .Window import Window
