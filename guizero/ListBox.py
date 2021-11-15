@@ -1,10 +1,10 @@
 from tkinter import Listbox, Frame, Scrollbar, END, BROWSE, EXTENDED
 from . import utilities as utils
-from .base import TextWidget, ContainerTextWidget, Widget
+from .base import TextWidget, ContainerWidget, Widget
 from .event import EventManager
 
 
-class ListBox(ContainerTextWidget):
+class ListBox(ContainerWidget):
 
     def __init__(
         self,

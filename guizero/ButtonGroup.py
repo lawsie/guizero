@@ -1,11 +1,10 @@
 from tkinter import Frame, StringVar
 from . import utilities as utils
-from .base import ContainerTextWidget
-from .tkmixins import TextMixin
+from .base import ContainerWidget
 from .RadioButton import RadioButton
 from .event import EventManager
 
-class ButtonGroup(ContainerTextWidget):
+class ButtonGroup(ContainerWidget):
 
     def __init__(
         self,

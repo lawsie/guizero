@@ -1,5 +1,9 @@
 # guizero
 
+## 1.3.0 - tbc
+- Added [TitleBox widget](./titlebox/) widget
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [kosme](https://github.com/kosme) - "^
+
 ## 1.2.0 - 2021-05-04
 - Added `filename` to `select_file` dialog
 - Added `when_resized` and `when_double_clicked` events
