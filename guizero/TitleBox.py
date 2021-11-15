@@ -79,10 +79,13 @@ class TitleBox(ContainerTextWidget):
 
     @border.setter
     def border(self, value):
-        self._set_tk_config("bd", value)        
+        self._set_tk_config("bd", value)
 
     @property
     def text(self):
+        """
+        Sets of returns the text used in the title
+        """
         return self._get_tk_config("text")
 
     @text.setter

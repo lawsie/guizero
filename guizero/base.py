@@ -765,13 +765,49 @@ class ContainerWidget(
         propagate_function(propagate_value)
 
 
-class ContainerTextWidget(
-    ContainerWidget,
-    TextMixin):
+class ContainerTextWidget(ContainerWidget):
 
     def __init__(self, master, tk, layout, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is also a container and contains text
-        e.g. `ButtonGroup`
+        e.g. `TitleBox`
         """
         super(ContainerTextWidget, self).__init__(master, tk, layout, grid, align, visible, enabled, width, height)
+
+    @property
+    def text_color(self):
+        """
+        Sets or returns the text color of the widget.
+        """
+        return TextMixin.get_text_color(self)
+
+    @text_color.setter
+    def text_color(self, color):
+        # of this widget
+        TextMixin.set_text_color(self, color)
+        # and of the container
+        super(ContainerWidget, self.__class__).text_color.fset(self, color)
+
+    @property
+    def font(self):
+        """
+        Set or returns the font the widget is using.
+        """
+        return TextMixin.get_font(self)
+
+    @font.setter
+    def font(self, font):
+        TextMixin.set_font(self, font)
+        super(ContainerWidget, self.__class__).font.fset(self, font)
+
+    @property
+    def text_size(self):
+        """
+        Sets or returns the text size of the widget.
+        """
+        return TextMixin.get_text_size(self)
+
+    @text_size.setter
+    def text_size(self, size):
+        TextMixin.set_text_size(self, size)
+        super(ContainerWidget, self.__class__).text_size.fset(self, size)
