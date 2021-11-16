@@ -24,7 +24,6 @@ __keywords__ = [
 ]
 __classifiers__ = [
     "Development Status :: 5 - Production/Stable",
-    "Programming Language :: Python :: 3",
     "Topic :: Education",
     "Topic :: Software Development :: User Interfaces",
     "Topic :: Education",
