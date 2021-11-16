@@ -110,7 +110,14 @@ class TextBox(TextWidget):
 
     @property
     def cursor_position(self):
+        """
+        Sets or returns the cursor position
+        """
         return self.tk.index(INSERT)
+
+    @cursor_position.setter
+    def cursor_position(self, value):
+        self.tk.icursor(value)
 
     # METHODS
     # -------------------------------------------
