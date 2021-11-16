@@ -19,7 +19,7 @@ class GUIZeroException(Exception):
     pass
 
 # holds details about the configuration guizero is using
-class SystemConfig():
+class SystemConfig:
     def __init__(self):
         """
         Holds details about the system configuration guizero is using
@@ -82,7 +82,7 @@ class SystemConfig():
 system_config = SystemConfig()
 
 
-class GUIZeroImage():
+class GUIZeroImage:
     def __init__(self, image_source, width, height):
         """
         GUIZeroImage manages an "image" for guizero widgets, parsing its

@@ -3,7 +3,7 @@ from tkinter.font import Font
 from tkinter import TclError
 
 
-class ScheduleMixin():
+class ScheduleMixin:
     _callback = {}
     def after(self, time, function, args = []):
         """Call `function` after `time` milliseconds."""
@@ -39,13 +39,13 @@ class ScheduleMixin():
         function(*args)
 
 
-class DestroyMixin():
+class DestroyMixin:
     def destroy(self):
         """Destroy the object."""
         self.tk.destroy()
 
 
-class EnableMixin():
+class EnableMixin:
     @property
     def enabled(self):
         state = self._get_tk_config("state")
@@ -67,13 +67,13 @@ class EnableMixin():
         self._set_tk_config("state", "normal")
 
 
-class FocusMixin():
+class FocusMixin:
     def focus(self):
         """Give focus to the widget."""
         self.tk.focus_set()
 
 
-class DisplayMixin():
+class DisplayMixin:
 
     @property
     def visible(self):
@@ -100,7 +100,7 @@ class DisplayMixin():
         self.master.display_widgets()
 
 
-class TextMixin():
+class TextMixin:
 
     FG_KEYS = [
         "fg",
@@ -195,7 +195,7 @@ class TextMixin():
     def text_size(self, size):
         TextMixin.set_text_size(self, size)
 
-class ColorMixin():
+class ColorMixin:
 
     # these are the widget keys which will get set when the background is changed
     BG_KEYS = [
@@ -219,7 +219,7 @@ class ColorMixin():
         self._set_tk_config(self.BG_KEYS, utils.convert_color(color))
 
 
-class SizeMixin():
+class SizeMixin:
     @property
     def width(self):
         """
@@ -262,7 +262,7 @@ class SizeMixin():
             self.master.display_widgets()
 
 
-class LayoutMixin():
+class LayoutMixin:
     @property
     def grid(self):
         """
@@ -324,7 +324,7 @@ class LayoutMixin():
                 ))
 
 
-class EventsMixin():
+class EventsMixin:
 
     @property
     def when_clicked(self):
