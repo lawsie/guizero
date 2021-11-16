@@ -3,6 +3,8 @@
 ## 1.3.0 - tbc
 - Added [TitleBox](./titlebox/) widget
 - Added cursor_position property to [TextBox](./textbox/)
+- Code tidy up
+- Tested with Python 3.10 and added python version classifiers to setup.py
 - Minor documentation updates
 - contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [kosme](https://github.com/kosme) - "^
 
