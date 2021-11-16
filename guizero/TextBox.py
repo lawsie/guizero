@@ -1,4 +1,4 @@
-from tkinter import Entry, StringVar, Text, END
+from tkinter import Entry, StringVar, Text, END, INSERT
 from tkinter.scrolledtext import ScrolledText
 from . import utilities as utils
 from .base import TextWidget
@@ -107,6 +107,10 @@ class TextBox(TextWidget):
         Returns the description for the widget.
         """
         return "[TextBox] object with text '{}'".format(self.value)
+
+    @property
+    def cursor_position(self):
+        return self.tk.index(INSERT)
 
     # METHODS
     # -------------------------------------------

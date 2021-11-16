@@ -60,6 +60,12 @@ def test_clear():
     assert t.value == ""
     a.destroy()
 
+def test_cursor_position():
+    a = App()
+    t = TextBox(a, text = "foo")
+    assert t.cursor_position == 0
+    a.destroy()
+
 def test_append():
     a = App()
     t = TextBox(a, text = "foo")
