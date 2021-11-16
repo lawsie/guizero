@@ -21,7 +21,7 @@ class Text(TextWidget):
 
         self._text = str(text)
         tk = Label(master.tk, text=text)
-        super(Text, self).__init__(master, tk, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, grid, align, visible, enabled, width, height)
 
         # setup defaults
         if bg:

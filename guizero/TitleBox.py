@@ -62,7 +62,7 @@ class TitleBox(ContainerTextWidget):
 
         tk = LabelFrame(master.tk, text=str(text), bd=border)
 
-        super(TitleBox, self).__init__(master, tk, layout, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, layout, grid, align, visible, enabled, width, height)
 
         self.resize(width, height)
 
@@ -104,4 +104,4 @@ class TitleBox(ContainerTextWidget):
         """
         self._set_propagation(width, height)
 
-        super(TitleBox, self).resize(width, height)
+        super().resize(width, height)

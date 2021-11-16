@@ -33,7 +33,7 @@ class Waffle(Widget):
         self._waffle_pixels = {}
         self._canvas = None
 
-        super(Waffle, self).__init__(master, tk, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, grid, align, visible, enabled, width, height)
 
         if bg is not None:
             self.bg = bg

@@ -81,7 +81,7 @@ class ButtonGroup(ContainerWidget):
         self._selected = StringVar(master=tk.winfo_toplevel())
 
         # ButtonGroup uses "grid" internally to sort the RadioButtons
-        super(ButtonGroup, self).__init__(master, tk, "grid", grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, "grid", grid, align, visible, enabled, width, height)
 
         # Loop through the list given and setup the options
         self._options = []
@@ -217,7 +217,7 @@ class ButtonGroup(ContainerWidget):
             for item in self._rbuttons:
                 item.height = button_height
 
-        super(ButtonGroup, self).resize(width, height)
+        super().resize(width, height)
 
     @property
     def options(self):

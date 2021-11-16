@@ -17,7 +17,7 @@ class RadioButton(TextWidget):
         # unless they know what they are doing.
         tk = Radiobutton(master.tk, text=self._text, value=self._value, variable=variable)
 
-        super(RadioButton, self).__init__(master, tk, grid, align, visible, enabled, None, None)
+        super().__init__(master, tk, grid, align, visible, enabled, None, None)
 
     # PROPERTIES
     # -----------------------------------

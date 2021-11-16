@@ -36,7 +36,7 @@ class TextBox(TextWidget):
         else:
             tk = Entry(master.tk, textvariable=self._text)
 
-        super(TextBox, self).__init__(master, tk, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, grid, align, visible, enabled, width, height)
 
         self.hide_text = hide_text
         self.update_command(command)

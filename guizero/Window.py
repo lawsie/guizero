@@ -18,7 +18,7 @@ class Window(BaseWindow):
         self._modal = False
         tk = Toplevel(master.tk)
 
-        super(Window, self).__init__(
+        super().__init__(
             master,
             tk,
             title,
