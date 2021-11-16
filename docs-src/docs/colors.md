@@ -25,6 +25,15 @@ text.text_color = (0, 255, 0)
 
 If a color is set using a list of rgb values (`(255,255,255)`) it will be returned as an #rgb hex value (`#ffffff`)
 
+A widget's color can be reset to its default value by setting the property to `None`, for example:
+
+```python
+text = Text(app, text = "hi")
+text.text_color = "green"
+# reset to original color
+text.text_color = None
+```
+
 ### Color names
 
 Some color names can be given as strings, for example

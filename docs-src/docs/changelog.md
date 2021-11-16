@@ -2,6 +2,7 @@
 
 ## 1.3.0 - tbc
 - Added [TitleBox widget](./titlebox/) widget
+- Minor documentation updates
 - contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [kosme](https://github.com/kosme) - "^
 
 ## 1.2.0 - 2021-05-04
