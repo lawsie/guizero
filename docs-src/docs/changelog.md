@@ -1,7 +1,8 @@
 # guizero
 
 ## 1.3.0 - tbc
-- Added [TitleBox widget](./titlebox/) widget
+- Added [TitleBox](./titlebox/) widget
+- Added cursor_position property to [TextBox](./textbox/)
 - Minor documentation updates
 - contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [kosme](https://github.com/kosme) - "^
 
