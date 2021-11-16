@@ -250,7 +250,7 @@ class GUIZeroImage:
                 self._animation = True
 
 
-class AnimationPlayer():
+class AnimationPlayer:
     def __init__(self, master, guizero_image, update_image_callback):
         """
         AnimationPlayer manages the playing of a animated gif for guizero
