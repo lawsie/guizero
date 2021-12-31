@@ -7,7 +7,7 @@ from .Window import Window
 
 class MenuBar(Component):
 
-    def __init__(self, master, toplevel, options):
+    def __init__(self, master, menu=None, toplevel=None, options=None):
 
         """
         Creates a MenuBar
@@ -15,10 +15,31 @@ class MenuBar(Component):
         :param Container master:
             The Container (App, Box, etc) the MenuBar will belong too.
 
+        :param Dictionary menu:
+            A 2D dictionary of:
+                - submenus,
+                - with each submenu being a dict of options
+                - and each option being a command 
+
+            e.g ::
+
+                menu={
+                    "File": {
+                        "File option 1": file_function,
+                        "File option 2": file_function
+                    },
+                    "Edit": {
+                        "Edit option 1": edit_function,
+                        "Edit option 2": edit_function
+                    }
+                }
+
         :param List toplevel:
+            DEPRECATED: Use menu instead.
             A list of strings to populate the top level menu options.
 
         :param List options:
+            DEPRECATED: Use menu instead.
             A 3D list of:
                 - submenus,
                 - with each submenu being a list of options
@@ -43,20 +64,48 @@ class MenuBar(Component):
         # Keep track of submenu objects
         self._sub_menus = []
 
-        # Create all the top level menus
-        for i in range(len(toplevel)):
-            # Create this submenu
-            new_menu = Menu(self.tk, tearoff=0)
+        # If menu is a list, then legacy parameters have been used as positional arguments.
+        if isinstance(menu, (list, tuple)):
+            # Just double-check as options may have been a kwarg even if toplevel wasn't.
+            if options is None:
+                options = toplevel
 
-            # Populate the drop down menu with the items/commands from the list
-            for menu_item in options[i]:
-                new_menu.add_command(label=menu_item[0], command=menu_item[1])
+            toplevel = menu
+            menu = None
 
-            # Append to the submenus list
-            self._sub_menus.append(new_menu)
+        # Legacy list support, this is exactly the same as the old code.
+        if (menu is None) and isinstance(toplevel, (list, tuple)):
+            # Create all the top level menus
+            for i in range(len(toplevel)):
+                # Create this submenu
+                new_menu = Menu(self.tk, tearoff=0)
 
-            # Add to the menu bar
-            self.tk.add_cascade(label=toplevel[i], menu=self._sub_menus[i])
+                # Populate the drop down menu with the items/commands from the list
+                for menu_item in options[i]:
+                    new_menu.add_command(label=menu_item[0], command=menu_item[1])
+
+                # Append to the submenus list
+                self._sub_menus.append(new_menu)
+
+                # Add to the menu bar
+                self.tk.add_cascade(label=toplevel[i], menu=self._sub_menus[i])
+
+        # Dictionary method.
+        elif isinstance(menu, dict):
+            # Create all the top level menus
+            for toplevel_label in menu:
+                # Create this submenu
+                new_menu = Menu(self.tk, tearoff=0)
+
+                # Populate the drop down menu with the items/commands from the list
+                for item_label in menu[toplevel_label]:
+                    new_menu.add_command(label=item_label, command=menu[toplevel_label][item_label])
+
+                # Append to the submenus list
+                self._sub_menus.append(new_menu)
+
+                # Add to the menu bar
+                self.tk.add_cascade(label=toplevel_label, menu=self._sub_menus[-1])
 
        	# Set this as the menu for the master object
         master.tk.config(menu=self.tk)

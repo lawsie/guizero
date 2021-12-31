@@ -4,8 +4,9 @@
 __init__(
     self, 
     master, 
-    toplevel, 
-    options)
+    menu=None, 
+    toplevel=None, 
+    options=None)
 ```
 
 ### What is it?
@@ -26,39 +27,58 @@ def edit_function():
     print("Edit option")
 
 app = App()
-menubar = MenuBar(app,
-                  toplevel=["File", "Edit"],
-                  options=[
-                      [ ["File option 1", file_function], ["File option 2", file_function] ],
-                      [ ["Edit option 1", edit_function], ["Edit option 2", edit_function] ]
-                  ])
+menubar = MenuBar(app, menu={
+    "File": {
+        "File option 1": file_function,
+        "File option 2": file_function
+    },
+    "Edit": {
+        "Edit option 1": edit_function,
+        "Edit option 2": edit_function
+    }
+})
 app.display()
 ```
 
 
 ### Starting parameters
 
-When you create a `MenuBar` object you **must** specify all of the parameters.
+When you create a `MenuBar` object you **must** specify the `master` for the `MenuBar` to be in. The `menu` is techincally optional, and empty `MenuBar` will be crated without it.
 
-| Parameter | Takes   | Default | Compulsory | Description                                                                                                                                |
-|-----------|---------|---------|------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| master    | App     | -       | Yes        | The container to which this widget belongs                                                                                                 |
-| toplevel  | list    | -       | Yes        | A list of top level menu items                                                                                                             |
-| options   | 3D list | -       | Yes        | A list of submenus, with each submenu being a list of options and each option being a text/command pair. See notes above for more details. |
+| Parameter | Takes   | Default | Compulsory | Description                                                                                                                    |
+|-----------|---------|---------|------------|--------------------------------------------------------------------------------------------------------------------------------|
+| master    | App     | -       | Yes        | The container to which this widget belongs                                                                                     |
+| menu      | 2D dict | None    | No         | A dictionary of top level menus, with each submenu being a dict of options, which have a function as their value. See example. |
+| toplevel  | list    | None    | No         | **DEPRECATED:** A list of top level menu items                                                                                 |
+| options   | 3D list | None    | No         | **DEPRECATED:** A list of submenus, with each submenu being a list of options and each option being a text/command pair.       |
 
-The `toplevel` parameter should be a list of options you wish to display on the menu. In the example, the `toplevel` options are File and Edit:
+The `menu` parameter should be a dictionary of options you wish to display on the menu. In the example, the keys "File" and "Edit" are used:
 
 ![Top level menu on Windows](images/toplevel_windows.png)
+
+As the value for each of these options will be anothher dictionary for the submenu. The key is the displayed label for each option and it's value is the function to run.
+
+![Submenus on Windows](images/submenu_windows.png)
+
+The MenuBar is never displayed on a grid so there are no grid or alignment parameters.
+
+#### **DEPRECATED:** `toplevel` and `options`:
+*Please use `menu` in any new code.*
+
+```python
+toplevel=["File", "Edit"],
+options=[
+    [ ["File option 1", file_function], ["File option 2", file_function] ],
+    [ ["Edit option 1", edit_function], ["Edit option 2", edit_function] ]
+]
+```
+
+The `toplevel` parameter should be a list of options you wish to display on the menu. In the example, the `toplevel` options are "File" and "Edit".
 
 The options parameter should be a 3D List containing lists of submenu items, which are themselves lists. The elements in the list correspond to the elements in the `toplevel` list, so the first list of submenu items provided in `options` will be the submenu for the first menu heading provided in `toplevel` and so on.
 
 The menu item sub-sublists within `options` should contain pairs consisting of the text to display on the menu and the function to call when that option is selected. In this example, the text "File option 1" is displayed and the function `file_function` is called if this option is clicked on.
 
-```python
-["File option 1", file_function]
-```
-
-The MenuBar is never displayed on a grid so there are no grid or alignment parameters.
 
 ### Methods
 
