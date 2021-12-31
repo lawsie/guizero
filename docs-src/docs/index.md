@@ -142,7 +142,7 @@ If you installed guizero using the easy install method, to upgrade you should fo
 
 If you are using Windows you can install guizero by downloading and running a Windows MSI installer application.
 
-1. Download either the [64-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-1.2.0.amd64.msi) or the [32-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-1.2.0.win32.msi) depending on which version of Python you are using.
+1. Download either the [64-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-1.3.0.amd64.msi) or the [32-bit guizero installer](https://github.com/lawsie/guizero/releases/latest/download/guizero-1.3.0.win32.msi) depending on which version of Python you are using.
 
     **Note:** If you are not sure what version of python you are running, run the following program in Python, which will output either `32` or `64`:
 

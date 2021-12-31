@@ -1,6 +1,6 @@
 # guizero
 
-## 1.3.0 - tbc
+## 1.3.0 - 2022-01-01
 - Added [TitleBox](./titlebox/) widget
 - Added cursor_position property to [TextBox](./textbox/)
 - Made wrapping consistent (`word`) for multiline [TextBox](./textbox/) and added a `wrap` property

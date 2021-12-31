@@ -11,7 +11,7 @@
     <link rel="../img/favicon.ico">
 
     
-    <title>Slider - guizero</title>
+    <title>TitleBox - guizero</title>
     
 
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -240,8 +240,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Slider</a>
+<li >
+    <a href="../slider/">Slider</a>
 </li>
 
                         
@@ -258,8 +258,8 @@
 
                         
                             
-<li >
-    <a href="../titlebox/">TitleBox</a>
+<li class="active">
+    <a href="./">TitleBox</a>
 </li>
 
                         
@@ -333,12 +333,12 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../pushbutton/">
+                        <a rel="prev" href="../textbox/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="../text/">
+                        <a rel="next" href="../waffle/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -352,12 +352,12 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#slider">Slider</a></li>
+        <li class="first-level active"><a href="#titlebox">TitleBox</a></li>
             <li class="second-level"><a href="#what-is-it">What is it?</a></li>
                 
             <li class="second-level"><a href="#how-do-i-make-one">How do I make one?</a></li>
                 
-            <li class="second-level"><a href="#starting-paramters">Starting paramters</a></li>
+            <li class="second-level"><a href="#starting-parameters">Starting parameters</a></li>
                 
             <li class="second-level"><a href="#methods">Methods</a></li>
                 
@@ -369,39 +369,38 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="slider">Slider</h1>
+<h1 id="titlebox">TitleBox</h1>
 <pre><code class="language-python">__init__(
-    self, 
-    master, 
-    start=0, 
-    end=100, 
-    horizontal=True, 
-    command=None, 
-    grid=None, 
-    align=None, 
-    visible=True, 
-    enabled=None, 
-    width=None, 
-    height=None)
+    self,
+    master,
+    text,
+    layout=&quot;auto&quot;,
+    grid=None,
+    align=None,
+    visible=True,
+    enabled=None,
+    width=None,
+    height=None,
+    border=2)
 </code></pre>
 <h3 id="what-is-it">What is it?</h3>
-<p>The <code>Slider</code> object displays a bar and selector which can be used to specify a value in a range.</p>
-<p>The above code looks like this on Windows:
-<img alt="Slider on Windows" src="../images/slider_windows.png" /></p>
+<p>The <code>TitleBox</code> object is an visible container which can group together other widgets within a border and show the group title. It is the only object other than <code>App</code>, <code>Box</code>, and <code>Window</code> which can act as the <code>master</code> for other objects and can have its own layout manager.</p>
+<p>You can use the <code>TitleBox</code> object to group other objects within your GUI.</p>
+<p><img alt="TitleBox" src="../images/titlebox.png" /></p>
 <h3 id="how-do-i-make-one">How do I make one?</h3>
-<p>Create a <code>Slider</code> object like this:</p>
-<pre><code class="language-python">from guizero import App, Slider
+<p>Create a <code>TitleBox</code> object like this:</p>
+<pre><code class="language-python">from guizero import App, TitleBox
 app = App()
-slider = Slider(app)
+titlebox = TitleBox(app, &quot;title&quot;)
 app.display()
 </code></pre>
-<h3 id="starting-paramters">Starting paramters</h3>
-<p>When you create a <code>Slider</code> object, you <strong>must</strong> specify a <code>master</code> and you can specify any of the the optional parameters. Specify parameters in the brackets, like this: <code>slider = Slider(app, horizontal=False)</code></p>
+<h3 id="starting-parameters">Starting parameters</h3>
+<p>When you create a <code>TitleBox</code> object you <strong>must</strong> specify a master and a title, and you can specify any of the optional parameters. Specify parameters in the brackets like this: <code>titlebox = TitleBox(app, "group name", layout="grid")</code></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
-<th>Takes</th>
+<th>Data type</th>
 <th>Default</th>
 <th>Compulsory</th>
 <th>Description</th>
@@ -416,6 +415,13 @@ app.display()
 <td>The container to which this widget belongs</td>
 </tr>
 <tr>
+<td>text</td>
+<td>string</td>
+<td>-</td>
+<td>Yes</td>
+<td>The text to display as the box name</td>
+</tr>
+<tr>
 <td>align</td>
 <td>string</td>
 <td>None</td>
@@ -423,39 +429,18 @@ app.display()
 <td>Alignment of this widget within its container. Possible values: <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>.</td>
 </tr>
 <tr>
-<td>command</td>
-<td>function name</td>
-<td>None</td>
-<td>-</td>
-<td>The name of a function to call when the slider value is changed</td>
-</tr>
-<tr>
-<td>end</td>
-<td>int</td>
-<td>100</td>
-<td>-</td>
-<td>The largest value selectable on the slider</td>
-</tr>
-<tr>
 <td>grid</td>
-<td>List [int, int]</td>
+<td>List</td>
 <td>None</td>
 <td>-</td>
 <td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
 </tr>
 <tr>
-<td>horizontal</td>
-<td>Boolean</td>
-<td>True</td>
+<td>layout</td>
+<td>string</td>
+<td>"auto"</td>
 <td>-</td>
-<td>Whether you wish to display your slider horizontally or vertically (defaults to horizontal)</td>
-</tr>
-<tr>
-<td>start</td>
-<td>int</td>
-<td>0</td>
-<td>-</td>
-<td>The smallest value selectable on the slider</td>
+<td>Whether widgets <em>inside this box</em> pack themselves (<code>"auto"</code>) or you specify their position on a grid (<code>"grid"</code>)</td>
 </tr>
 <tr>
 <td>visible</td>
@@ -485,10 +470,17 @@ app.display()
 <td>No</td>
 <td>Set the height of the widget in pixels or to <code>"fill"</code></td>
 </tr>
+<tr>
+<td>border</td>
+<td>int</td>
+<td>None</td>
+<td>No</td>
+<td>Sets the border thickness. <code>0</code> or <code>False</code> is no border. <code>True</code> or value &gt; 1 sets a border.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="methods">Methods</h3>
-<p>You can call the following methods on a <code>Slider</code> object.</p>
+<p>You can call the following methods on a <code>TitleBox</code> object.</p>
 <table>
 <thead>
 <tr>
@@ -500,10 +492,10 @@ app.display()
 </thead>
 <tbody>
 <tr>
-<td>the function specified in <code>command</code></td>
-<td></td>
-<td></td>
-<td></td>
+<td>add_tk_widget(tk_widget, grid=None, align=None, visible=True, enabled=None, width=None, height=None)</td>
+<td>tk_widget (tk), grid (list), align (str), visible (bool), enabled (bool), width (int), height (int)</td>
+<td>Widget</td>
+<td>Adds a tk widget into a guizero container. Note - this is an advanced feature see <a href="../usingtk/">Using tk</a> for more information.</td>
 </tr>
 <tr>
 <td>after(time, command, args=None)</td>
@@ -518,22 +510,22 @@ app.display()
 <td>Cancels a scheduled call to <code>command</code></td>
 </tr>
 <tr>
+<td>disable()</td>
+<td>-</td>
+<td>-</td>
+<td>Disables all the widgets in the box so that they cannot be interacted with</td>
+</tr>
+<tr>
 <td>destroy()</td>
 <td>-</td>
 <td>-</td>
 <td>Destroys the widget</td>
 </tr>
 <tr>
-<td>disable()</td>
-<td>-</td>
-<td>-</td>
-<td>Disables the widget so that it is "greyed out" and cannot be interacted with</td>
-</tr>
-<tr>
 <td>enable()</td>
 <td>-</td>
 <td>-</td>
-<td>Enables the widget</td>
+<td>Enables all the widgets in the box</td>
 </tr>
 <tr>
 <td>focus()</td>
@@ -565,12 +557,6 @@ app.display()
 <td>-</td>
 <td>Displays the widget if it was previously hidden</td>
 </tr>
-<tr>
-<td>update_command(command)</td>
-<td>command (function name)</td>
-<td>-</td>
-<td>Updates the function to call when the slider value is changed</td>
-</tr>
 </tbody>
 </table>
 <h3 id="properties">Properties</h3>
@@ -590,19 +576,24 @@ app.display()
 <td>The alignment of this widget within its container</td>
 </tr>
 <tr>
+<td>border</td>
+<td>int</td>
+<td>The border thickness, setting to <code>0</code> or <code>False</code> there is no border.</td>
+</tr>
+<tr>
 <td>bg</td>
 <td><a href="../colors/">color</a></td>
 <td>The background colour of the widget</td>
 </tr>
 <tr>
-<td>enabled</td>
-<td>boolean</td>
-<td><code>True</code> if the widget is enabled</td>
+<td>children</td>
+<td>List</td>
+<td>A list of widgets in this container</td>
 </tr>
 <tr>
-<td>font</td>
-<td>string</td>
-<td>The font of the text</td>
+<td>enabled</td>
+<td>boolean</td>
+<td><code>True</code> if the box is enabled</td>
 </tr>
 <tr>
 <td>grid</td>
@@ -610,34 +601,34 @@ app.display()
 <td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid</td>
 </tr>
 <tr>
+<td>font</td>
+<td>string</td>
+<td>The font that widgets should use</td>
+</tr>
+<tr>
 <td>height</td>
 <td><a href="../size/">size</a></td>
 <td>Set the height of the widget in pixels or to <code>"fill"</code></td>
 </tr>
 <tr>
+<td>layout</td>
+<td>string</td>
+<td>The layout being used by the Box (<code>"auto"</code>) or (<code>"grid"</code>)</td>
+</tr>
+<tr>
 <td>master</td>
-<td>App or Box</td>
-<td>The container to which this widget belongs</td>
+<td>App</td>
+<td>The <code>App</code> object to which this box belongs</td>
 </tr>
 <tr>
-<td>text_size</td>
-<td>int</td>
-<td>The size of the text</td>
-</tr>
-<tr>
-<td>text_color</td>
-<td><a href="../colors/">color</a></td>
-<td>The colour of the text</td>
+<td>text</td>
+<td>string</td>
+<td>The text that should be displayed as the title of the box</td>
 </tr>
 <tr>
 <td>tk</td>
-<td>tkinter.Scale</td>
+<td>tkinter.Frame</td>
 <td>The internal tkinter object, see <a href="../usingtk/">Using tkinter</a></td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>The current value of the slider</td>
 </tr>
 <tr>
 <td>visible</td>
@@ -652,19 +643,37 @@ app.display()
 </tbody>
 </table>
 <h3 id="examples">Examples</h3>
-<p><strong>Calling a function when the slider value changes</strong></p>
-<p>You can specify a function to call when the slider value changes. Your function <strong>MUST</strong> have a minimum of one parameter as it will automatically receive a string containing the value of the slider (called <code>slider_value</code> in the example) when it is called.</p>
-<p>This code has a slider and a text box, and the text box updates automatically to display the current value of the slider.</p>
-<p><img alt="Text box and slider" src="../images/textbox_slider_windows.png" /></p>
-<pre><code class="language-python">from guizero import App, Slider, TextBox
-def slider_changed(slider_value):
-    textbox.value = slider_value
-
-app = App()
-slider = Slider(app, command=slider_changed)
-textbox = TextBox(app)
+<p><strong>Putting widgets in a TitleBox</strong></p>
+<p>The <code>TitleBox</code> object is a visible container which can group together other widgets within a border and show the group title
+In this example, there are two <code>Text</code> objects. One has <code>titlebox</code> as its master, the other has <code>app</code> as its master.</p>
+<pre><code class="language-python">from guizero import App, TitleBox, Text
+app = App(title=&quot;My app&quot;, height=300, width=400)
+titlebox = TitleBox(app, text=&quot;Titlebox name&quot;)
+text1 = Text(titlebox, text=&quot;Hello from the titlebox&quot;, size=14, font=&quot;Arial&quot;)
+text2 = Text(app, text=&quot;Hello from the app&quot;, size=14, font=&quot;Courier New&quot;)
 app.display()
-</code></pre></div>
+</code></pre>
+<p><img alt="Box and app" src="../images/titlebox-app.png" /></p>
+<p><strong>Grouping objects within a TitleBox</strong></p>
+<p>It is useful to put objects in a titlebox to group them together and give them a title. For example here we have given the <code>app</code> a grid layout, then placed some text at [0,0] and the <code>TitleBox</code> object at [1,0]. This means that the text will appear on the left, and the contents of the TitleBox will appear on the right.</p>
+<p>The <code>TitleBox</code> object itself has a grid layout and contains six buttons which are positioned on a <em>separate</em> grid layout belonging to the box.</p>
+<pre><code class="language-python">from guizero import App, Text, TitleBox, PushButton
+def do_nothing():
+    return 0
+
+app = App(title=&quot;My app&quot;, height=300, width=300, layout=&quot;grid&quot;)
+text = Text(app, text=&quot;Some text here&quot;, grid=[0,0])
+titlebox = TitleBox(app, text=&quot;Buttons&quot;, layout=&quot;grid&quot;, grid=[1,0])
+button1 = PushButton(titlebox, command=do_nothing, text=&quot;1&quot;, grid=[0,0])
+button2 = PushButton(titlebox, command=do_nothing, text=&quot;2&quot;, grid=[1,0])
+button3 = PushButton(titlebox, command=do_nothing, text=&quot;3&quot;, grid=[2,0])
+button4 = PushButton(titlebox, command=do_nothing, text=&quot;4&quot;, grid=[0,1])
+button5 = PushButton(titlebox, command=do_nothing, text=&quot;5&quot;, grid=[1,1])
+button6 = PushButton(titlebox, command=do_nothing, text=&quot;6&quot;, grid=[2,1])
+app.display()
+
+</code></pre>
+<p><img alt="Box with grid layout" src="../images/titlebox-complicated.png" /></p></div>
         
         
     </div>

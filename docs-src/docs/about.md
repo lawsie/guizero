@@ -32,5 +32,5 @@ The aim of guizero is to make the process of creating simple GUIs quick, accessi
 
 ### Version
 
-guizero is currently [version 1.2.0](changelog.md)
+guizero is currently [version 1.3.0](changelog.md)
 
