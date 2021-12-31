@@ -3,6 +3,7 @@
 ## 1.3.0 - tbc
 - Added [TitleBox](./titlebox/) widget
 - Added cursor_position property to [TextBox](./textbox/)
+- Made wrapping consistent (`word`) for multiline [TextBox](./textbox/) and added a `wrap` property
 - Code tidy up
 - Tested with Python 3.10 and added python version classifiers to setup.py
 - Minor documentation updates

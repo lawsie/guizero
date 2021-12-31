@@ -31,7 +31,7 @@ class TextBox(TextWidget):
             if scrollbar:
                 tk = ScrolledText(master.tk, wrap="word")
             else:
-                tk = Text(master.tk)
+                tk = Text(master.tk, wrap="word")
             tk.insert(END,self._text.get())
         else:
             tk = Entry(master.tk, textvariable=self._text)
@@ -118,6 +118,20 @@ class TextBox(TextWidget):
     @cursor_position.setter
     def cursor_position(self, value):
         self.tk.icursor(value)
+
+    @property
+    def wrap(self):
+        if self._multiline:
+            return self._get_tk_config("wrap") != "none"
+        else:
+            return None
+
+    @wrap.setter
+    def wrap(self, value):
+        if self._multiline:
+            self._set_tk_config("wrap", "word" if value else "none")
+        else:
+            utils.error_format("wrap can only be set on a multiline TextBox")
 
     # METHODS
     # -------------------------------------------
