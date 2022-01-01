@@ -1,11 +1,10 @@
 from tkinter import Frame, StringVar
 from . import utilities as utils
-from .base import ContainerTextWidget
-from .tkmixins import TextMixin
+from .base import ContainerWidget
 from .RadioButton import RadioButton
 from .event import EventManager
 
-class ButtonGroup(ContainerTextWidget):
+class ButtonGroup(ContainerWidget):
 
     def __init__(
         self,
@@ -82,7 +81,7 @@ class ButtonGroup(ContainerTextWidget):
         self._selected = StringVar(master=tk.winfo_toplevel())
 
         # ButtonGroup uses "grid" internally to sort the RadioButtons
-        super(ButtonGroup, self).__init__(master, tk, "grid", grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, "grid", grid, align, visible, enabled, width, height)
 
         # Loop through the list given and setup the options
         self._options = []
@@ -218,7 +217,7 @@ class ButtonGroup(ContainerTextWidget):
             for item in self._rbuttons:
                 item.height = button_height
 
-        super(ButtonGroup, self).resize(width, height)
+        super().resize(width, height)
 
     @property
     def options(self):

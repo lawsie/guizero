@@ -11,7 +11,7 @@ class ComboMenu(Base, ColorMixin, TextMixin):
         Internal class for managing the little menu which pops up when the
         combo box is opened
         """
-        super(ComboMenu, self).__init__(tk)
+        super().__init__(tk)
 
 
 class Combo(TextWidget):
@@ -82,7 +82,7 @@ class Combo(TextWidget):
         # Create the combo menu object
         self._combo_menu = ComboMenu(tk["menu"])
 
-        super(Combo, self).__init__(master, tk, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, grid, align, visible, enabled, width, height)
 
         # Remove the thick highlight when the bg is a different color
         self._set_tk_config("highlightthickness", 0)

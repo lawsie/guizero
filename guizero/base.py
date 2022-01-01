@@ -18,7 +18,7 @@ from .event import EventManager
 from . import dialog
 from tkinter import BOTH, X, Y, YES
 
-class Base():
+class Base:
 
     def __init__(self, tk):
         """
@@ -113,7 +113,7 @@ class Component(
         """
         An abstract class for a component in guizero.
         """
-        super(Component, self).__init__(tk)
+        super().__init__(tk)
 
         self._master = master
         self._events = EventManager(self, tk)
@@ -216,7 +216,7 @@ class Container(Component):
         """
         An abstract class for a container which can hold other widgets.
         """
-        super(Container, self).__init__(master, tk, displayable)
+        super().__init__(master, tk, displayable)
         self._children = []
         self._layout_manager = layout
         self._bg = None
@@ -479,7 +479,7 @@ class BaseWindow(Container):
         """
         Base class for objects which use windows e.g. `App` and `Window`
         """
-        super(BaseWindow, self).__init__(master, tk, layout, False)
+        super().__init__(master, tk, layout, False)
 
         # Initial setup
         self.tk.title( str(title) )
@@ -667,7 +667,7 @@ class Widget(
         """
         The base class for a widget which is an interactable component e.g. `Picture`
         """
-        super(Widget, self).__init__(master,tk, True)
+        super().__init__(master,tk, True)
         self._update_grid(grid)
         self._update_align(align)
         self._width = width
@@ -693,7 +693,7 @@ class TextWidget(
         """
         The base class for a widget which contains or has text e.g. ``Text`, `PushButton`
         """
-        super(TextWidget, self).__init__(master, tk, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, grid, align, visible, enabled, width, height)
 
         #inherit from master
         self.text_color = master.text_color
@@ -712,7 +712,7 @@ class ContainerWidget(
         """
         The base class for a widget which is also a container e.g. `Box`, `ButtonGroup`
         """
-        super(ContainerWidget, self).__init__(master, tk, layout, True)
+        super().__init__(master, tk, layout, True)
         self._update_grid(grid)
         self._update_align(align)
         self._width = width
@@ -765,13 +765,49 @@ class ContainerWidget(
         propagate_function(propagate_value)
 
 
-class ContainerTextWidget(
-    ContainerWidget,
-    TextMixin):
+class ContainerTextWidget(ContainerWidget):
 
     def __init__(self, master, tk, layout, grid, align, visible, enabled, width, height):
         """
         The base class for a widget which is also a container and contains text
-        e.g. `ButtonGroup`
+        e.g. `TitleBox`
         """
-        super(ContainerTextWidget, self).__init__(master, tk, layout, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, layout, grid, align, visible, enabled, width, height)
+
+    @property
+    def text_color(self):
+        """
+        Sets or returns the text color of the widget.
+        """
+        return TextMixin.get_text_color(self)
+
+    @text_color.setter
+    def text_color(self, color):
+        # of this widget
+        TextMixin.set_text_color(self, color)
+        # and of the container
+        super(ContainerWidget, self.__class__).text_color.fset(self, color)
+
+    @property
+    def font(self):
+        """
+        Set or returns the font the widget is using.
+        """
+        return TextMixin.get_font(self)
+
+    @font.setter
+    def font(self, font):
+        TextMixin.set_font(self, font)
+        super(ContainerWidget, self.__class__).font.fset(self, font)
+
+    @property
+    def text_size(self):
+        """
+        Sets or returns the text size of the widget.
+        """
+        return TextMixin.get_text_size(self)
+
+    @text_size.setter
+    def text_size(self, size):
+        TextMixin.set_text_size(self, size)
+        super(ContainerWidget, self.__class__).text_size.fset(self, size)

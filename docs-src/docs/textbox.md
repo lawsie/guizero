@@ -77,22 +77,25 @@ You can call the following methods on your TextBox object.
 
 You can set and get the following properties:
 
-| Method     | Data type          | Description                                                                                                                                                 |
-|------------|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| align      | string             | The alignment of this widget within its container                                                                                                           |
-| bg         | [color](colors.md) | The background colour of the widget                                                                                                                         |
-| enabled    | boolean            | `True` if the widget is enabled                                                                                                                             |
-| font       | string             | The font of the text                                                                                                                                        |
-| grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid                                                       |
-| height     | [size](size.md)    | Set the height of the widget in characters or to `"fill"`, only effective if `multiline` is `True`                                                          |
-| hide_text  | boolean / char     | When set to `True` will hide the text replacing typed characters with `*`. Setting to a character will result in the text being hidden with that character. |
-| master     | App or Box         | The container to which this widget belongs                                                                                                                  |
-| value      | string             | The text in the TextBox                                                                                                                                     |
-| visible    | boolean            | If this widget is visible                                                                                                                                   |
-| width      | [size](size.md)    | Set the width of the widget in characters or to `"fill"`                                                                                                    |
-| text_size  | int                | The size of the text                                                                                                                                        |
-| text_color | [color](colors.md) | The colour of the text                                                                                                                                      |
-| tk         | tkinter.Entry      | The internal tkinter object, see [Using tkinter](usingtk.md)                                                                                                |
+| Method          | Data type          | Description                                                                                                                                                                   |
+|-----------------|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| align           | string             | The alignment of this widget within its container                                                                                                                             |
+| bg              | [color](colors.md) | The background colour of the widget                                                                                                                                           |
+| cursor_position | int                | The current position of the cursor                                                                                                                                            |
+| enabled         | boolean            | `True` if the widget is enabled                                                                                                                                               |
+| font            | string             | The font of the text                                                                                                                                                          |
+| grid            | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid                                                                         |
+| height          | [size](size.md)    | Set the height of the widget in characters or to `"fill"`, only effective if `multiline` is `True`                                                                            |
+| hide_text       | boolean / char     | When set to `True` will hide the text replacing typed characters with `*`. Setting to a character will result in the text being hidden with that character.                   |
+| master          | App or Box         | The container to which this widget belongs                                                                                                                                    |
+| value           | string             | The text in the TextBox                                                                                                                                                       |
+| visible         | boolean            | If this widget is visible                                                                                                                                                     |
+| width           | [size](size.md)    | Set the width of the widget in characters or to `"fill"`                                                                                                                      |
+| text_size       | int                | The size of the text                                                                                                                                                          |
+| text_color      | [color](colors.md) | The colour of the text                                                                                                                                                        |
+| tk              | tkinter.Entry      | The internal tkinter object, see [Using tkinter](usingtk.md)                                                                                                                  |
+| wrap            | boolean            | Whether text in a multiline text box should be wrapped. Defaults to `True`. If its a single line TextBox, `None` will be returned and a warning displayed when trying to set. |
+
 
 ### Examples
 

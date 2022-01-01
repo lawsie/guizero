@@ -259,6 +259,12 @@
                         
                             
 <li >
+    <a href="../titlebox/">TitleBox</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../waffle/">Waffle</a>
 </li>
 
@@ -332,7 +338,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="../waffle/">
+                        <a rel="next" href="../titlebox/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -602,6 +608,11 @@ app.display()
 <td>The background colour of the widget</td>
 </tr>
 <tr>
+<td>cursor_position</td>
+<td>int</td>
+<td>The current position of the cursor</td>
+</tr>
+<tr>
 <td>enabled</td>
 <td>boolean</td>
 <td><code>True</code> if the widget is enabled</td>
@@ -660,6 +671,11 @@ app.display()
 <td>tk</td>
 <td>tkinter.Entry</td>
 <td>The internal tkinter object, see <a href="../usingtk/">Using tkinter</a></td>
+</tr>
+<tr>
+<td>wrap</td>
+<td>boolean</td>
+<td>Whether text in a multiline text box should be wrapped. Defaults to <code>True</code>. If its a single line TextBox, <code>None</code> will be returned and a warning displayed when trying to set.</td>
 </tr>
 </tbody>
 </table>

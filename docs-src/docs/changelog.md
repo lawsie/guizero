@@ -1,5 +1,14 @@
 # guizero
 
+## 1.3.0 - 2022-01-01
+- Added [TitleBox](./titlebox/) widget
+- Added cursor_position property to [TextBox](./textbox/)
+- Made wrapping consistent (`word`) for multiline [TextBox](./textbox/) and added a `wrap` property
+- Code tidy up
+- Tested with Python 3.10 and added python version classifiers to setup.py
+- Minor documentation updates
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie), [kosme](https://github.com/kosme) - "^
+
 ## 1.2.0 - 2021-05-04
 - Added `filename` to `select_file` dialog
 - Added `when_resized` and `when_double_clicked` events

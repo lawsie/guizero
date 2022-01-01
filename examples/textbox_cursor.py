@@ -2,11 +2,13 @@ from guizero import App, TextBox, Text
 from tkinter import INSERT
 
 def key_pressed(key):
-    print("key pressed {}".format(key))
-    print("textbox value = {}".format(textbox.value))
-    print("cursor pos = {}".format(textbox.tk.index(INSERT)))
+    details.value = "key pressed = {}, cursor pos = {}".format(
+        textbox.value, 
+        textbox.cursor_position
+        )
 
 app = App()
 text = Text(app, text="Enter some text")
 textbox = TextBox(app, width=40, command=key_pressed)
+details = Text(app)
 app.display()

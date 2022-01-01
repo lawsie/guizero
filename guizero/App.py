@@ -50,7 +50,7 @@ class App(BaseWindow):
             tk = Toplevel(App._main_app.tk)
             utils.error_format("There should only be 1 guizero App, use Window to create multiple windows.")
 
-        super(App, self).__init__(
+        super().__init__(
             None,
             tk,
             title,

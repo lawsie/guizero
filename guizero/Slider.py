@@ -28,7 +28,7 @@ class Slider(TextWidget):
         # Create a tk Scale object within this object
         tk = Scale(master.tk, from_=start, to=end, orient=orient, command=self._command_callback)
 
-        super(Slider, self).__init__(master, tk, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, grid, align, visible, enabled, width, height)
 
         self.update_command(command)
 

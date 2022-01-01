@@ -56,7 +56,7 @@ class Box(ContainerWidget):
         """
         tk = Frame(master.tk)
 
-        super(Box, self).__init__(master, tk, layout, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, layout, grid, align, visible, enabled, width, height)
 
         self.resize(width, height)
 
@@ -103,4 +103,4 @@ class Box(ContainerWidget):
         """
         self._set_propagation(width, height)
         
-        super(Box, self).resize(width, height)
+        super().resize(width, height)

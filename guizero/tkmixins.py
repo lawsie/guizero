@@ -3,7 +3,7 @@ from tkinter.font import Font
 from tkinter import TclError
 
 
-class ScheduleMixin():
+class ScheduleMixin:
     _callback = {}
     def after(self, time, function, args = []):
         """Call `function` after `time` milliseconds."""
@@ -39,13 +39,13 @@ class ScheduleMixin():
         function(*args)
 
 
-class DestroyMixin():
+class DestroyMixin:
     def destroy(self):
         """Destroy the object."""
         self.tk.destroy()
 
 
-class EnableMixin():
+class EnableMixin:
     @property
     def enabled(self):
         state = self._get_tk_config("state")
@@ -67,13 +67,13 @@ class EnableMixin():
         self._set_tk_config("state", "normal")
 
 
-class FocusMixin():
+class FocusMixin:
     def focus(self):
         """Give focus to the widget."""
         self.tk.focus_set()
 
 
-class DisplayMixin():
+class DisplayMixin:
 
     @property
     def visible(self):
@@ -100,19 +100,61 @@ class DisplayMixin():
         self.master.display_widgets()
 
 
-class TextMixin():
+class TextMixin:
 
     FG_KEYS = [
         "fg",
         "activeforeground",
     ]
 
-    # Get the font object for this widget
-    def _get_font(self, default = False):
+    # these static methods are used where classes need to inherit 'text' properties
+    # from multiple classes and obvs cant, e.g. ContainerTextWidget
+    @staticmethod
+    def get_tk_font(widget, default=False):
         # get the font in use for the widget
-        f = Font(self.tk, self._get_tk_config("font", default=default))
+        f = Font(widget.tk, widget._get_tk_config("font", default=default))
         # configure() returns a dictionary of font attributes
         return f.configure()
+
+    @staticmethod
+    def get_text_color(widget):
+        return widget._get_tk_config("fg")
+
+    @staticmethod
+    def set_text_color(widget, color):
+        widget._set_tk_config(TextMixin.FG_KEYS, utils.convert_color(color))
+
+    @staticmethod
+    def get_font(widget):
+        f = TextMixin.get_tk_font(widget)
+        return (f["family"])
+
+    @staticmethod
+    def set_font(widget, font):
+        f = TextMixin.get_tk_font(widget)
+
+        if font is None:
+            # get the font from the default font
+            default_font = TextMixin.get_tk_font(widget, default = True)
+            font = default_font["family"]
+
+        widget._set_tk_config("font", (font, f["size"]))
+
+    @staticmethod
+    def get_text_size(widget):
+        f = TextMixin.get_tk_font(widget)
+        return (f["size"])
+
+    @staticmethod
+    def set_text_size(widget, size):
+        f = TextMixin.get_tk_font(widget)
+
+        if size is None:
+            # get the size from the default font
+            default_font = TextMixin.get_tk_font(widget, default=True)
+            size = default_font["size"]
+
+        widget._set_tk_config("font", (f["family"], size))
 
     # Get the text colour as a string
     @property
@@ -120,31 +162,25 @@ class TextMixin():
         """
         Sets or returns the text color of the widget.
         """
-        return self._get_tk_config("fg")
+        return TextMixin.get_text_color(self)
 
     # Set the text colour
     @text_color.setter
     def text_color(self, color):
-        self._set_tk_config(self.FG_KEYS, utils.convert_color(color))
-
+        TextMixin.set_text_color(self, color)
+        
     # Get the current font as a string
     @property
     def font(self):
         """
         Set or returns the font the widget is using.
         """
-        f = self._get_font()
-        return (f["family"])
+        return TextMixin.get_font(self)
 
     # Set the current font
     @font.setter
     def font(self, font):
-        if font is None:
-            # get the font from the default font
-            f = self._get_font(default = True)
-            font = f["family"]
-
-        self._set_tk_config("font", (font, self.text_size))
+        TextMixin.set_font(self, font)
 
     # Get the current text size as an integer
     @property
@@ -152,21 +188,14 @@ class TextMixin():
         """
         Sets or returns the text size of the widget.
         """
-        f = self._get_font()
-        return (f["size"])
+        return TextMixin.get_text_size(self)
 
     # Set the font size
     @text_size.setter
     def text_size(self, size):
-        if size is None:
-            # get the size from the default font
-            f = self._get_font(default = True)
-            size = f["size"]
+        TextMixin.set_text_size(self, size)
 
-        self._set_tk_config("font", (self.font, size))
-
-
-class ColorMixin():
+class ColorMixin:
 
     # these are the widget keys which will get set when the background is changed
     BG_KEYS = [
@@ -190,7 +219,7 @@ class ColorMixin():
         self._set_tk_config(self.BG_KEYS, utils.convert_color(color))
 
 
-class SizeMixin():
+class SizeMixin:
     @property
     def width(self):
         """
@@ -233,7 +262,7 @@ class SizeMixin():
             self.master.display_widgets()
 
 
-class LayoutMixin():
+class LayoutMixin:
     @property
     def grid(self):
         """
@@ -295,7 +324,7 @@ class LayoutMixin():
                 ))
 
 
-class EventsMixin():
+class EventsMixin:
 
     @property
     def when_clicked(self):

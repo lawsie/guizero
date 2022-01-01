@@ -131,6 +131,17 @@ The `TextBox` object displays a text box which the user can type in.
 textbox = TextBox(app)
 ```
 
+### [TitleBox](titlebox.md)
+
+The `TitleBox` object is an container with a title which can contain other widgets.
+
+[![guizero TitleBox widget](images/titlebox.png)](box.md)
+
+```python
+titlebox = TitleBox(app, "Title")
+titlebox = TitleBox(app, "Title", border=False)
+```
+
 ### [Waffle](waffle.md)
 
 The `Waffle` object display an n*n grid of squares with custom dimensions and padding.

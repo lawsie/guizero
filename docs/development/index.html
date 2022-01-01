@@ -259,6 +259,12 @@
                         
                             
 <li >
+    <a href="../titlebox/">TitleBox</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../waffle/">Waffle</a>
 </li>
 
@@ -363,12 +369,15 @@
 <p>Notes on how to develop guizero (on Windows).</p>
 <h2 id="setup">Setup</h2>
 <p>Upgrade pip:</p>
-<pre><code>python.exe -m pip install pip --upgrade
+<pre><code>python -m pip install pip --upgrade
 </code></pre>
 <p>Install / upgrade pre-requisites:</p>
 <pre><code>pip install mkdocs wheel twine virtualenv pytest pillow --upgrade
 </code></pre>
 <h2 id="python-library">Python library</h2>
+<p>Uninstall previous versions of guizero: </p>
+<pre><code>pip uninstall guizero
+</code></pre>
 <p>Create a virtual environment (not essential, but a good idea!):</p>
 <pre><code>virtualenv guizero-[versionno]
 cd guizero-[versionno]
@@ -386,12 +395,16 @@ python setup.py develop
 <pre><code>Scripts\deactivate
 </code></pre>
 <h2 id="tests">Tests</h2>
-<p>To run the automated tests:</p>
+<p>If running the tests inside a virtual environment you will need to install pytest in that virtual environment.</p>
+<pre><code>pip install pytest
+</code></pre>
+<p>To run all the automated tests:</p>
 <pre><code>cd guizero\test
 pytest -v
 </code></pre>
-<p>If running the tests inside a virtual environment you will need to install pytest in that virtual environment.</p>
-<pre><code>pip install pytest
+<p>To run a specific test:</p>
+<pre><code>cd guizero\test
+pytest -v [test_filename.py]
 </code></pre>
 <p><em>Note - tkinter can error when running the tests usually when the interpreter doesn't start properly, it doesn't seem to like being initialised and destroyed hundreds of times, I suspect a file locking issue as you don't see the problem on Linux. So sometimes you might get a test fail with an error like <code>This probably means that tk wasn't installed properly.</code>. Just re-run the last failed errors! <code>pytest --lf -v</code></em></p>
 <h2 id="documents">Documents</h2>

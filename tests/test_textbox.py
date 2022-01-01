@@ -25,6 +25,7 @@ def test_default_values():
     assert t.width == 10
     assert t.value == ""
     assert a.description > ""
+    assert t.wrap == None
     a.destroy()
 
 def test_alt_values():
@@ -44,6 +45,7 @@ def test_alt_values():
     assert t.align == "top"
     assert t.value == "foo\n"
     assert t.width == 20
+    assert t.wrap == True
     a.destroy()
 
 def test_getters_setters():
@@ -58,6 +60,12 @@ def test_clear():
     t = TextBox(a, text = "foo")
     t.clear()
     assert t.value == ""
+    a.destroy()
+
+def test_cursor_position():
+    a = App()
+    t = TextBox(a, text = "foo")
+    assert t.cursor_position == 0
     a.destroy()
 
 def test_append():
@@ -180,4 +188,22 @@ def test_disabled_text():
     t = TextBox(a, enabled=False)
     t.text = "text"
     assert t.text == "text"
+    a.destroy()
+
+def test_wrap():
+    a = App()
+    t = TextBox(a)
+    mlt = TextBox(a, multiline=True)
+
+    # test you cant set the wrap on a single line textbox
+    assert t.wrap == None
+    t.wrap = True
+    assert t.wrap == None
+
+    assert mlt.wrap == True
+    mlt.wrap = False
+    assert mlt.wrap == False 
+    mlt.wrap = True
+    assert mlt.wrap == True
+    
     a.destroy()

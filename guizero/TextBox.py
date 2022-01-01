@@ -1,4 +1,4 @@
-from tkinter import Entry, StringVar, Text, END
+from tkinter import Entry, StringVar, Text, END, INSERT
 from tkinter.scrolledtext import ScrolledText
 from . import utilities as utils
 from .base import TextWidget
@@ -31,12 +31,12 @@ class TextBox(TextWidget):
             if scrollbar:
                 tk = ScrolledText(master.tk, wrap="word")
             else:
-                tk = Text(master.tk)
+                tk = Text(master.tk, wrap="word")
             tk.insert(END,self._text.get())
         else:
             tk = Entry(master.tk, textvariable=self._text)
 
-        super(TextBox, self).__init__(master, tk, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, grid, align, visible, enabled, width, height)
 
         self.hide_text = hide_text
         self.update_command(command)
@@ -107,6 +107,31 @@ class TextBox(TextWidget):
         Returns the description for the widget.
         """
         return "[TextBox] object with text '{}'".format(self.value)
+
+    @property
+    def cursor_position(self):
+        """
+        Sets or returns the cursor position
+        """
+        return self.tk.index(INSERT)
+
+    @cursor_position.setter
+    def cursor_position(self, value):
+        self.tk.icursor(value)
+
+    @property
+    def wrap(self):
+        if self._multiline:
+            return self._get_tk_config("wrap") != "none"
+        else:
+            return None
+
+    @wrap.setter
+    def wrap(self, value):
+        if self._multiline:
+            self._set_tk_config("wrap", "word" if value else "none")
+        else:
+            utils.error_format("wrap can only be set on a multiline TextBox")
 
     # METHODS
     # -------------------------------------------

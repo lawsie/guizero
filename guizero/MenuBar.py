@@ -38,7 +38,7 @@ class MenuBar(Component):
         # Create a tk Menu object within this object
         tk = Menu(master.tk)
 
-        super(MenuBar, self).__init__(master, tk, False)
+        super().__init__(master, tk, False)
 
         # Keep track of submenu objects
         self._sub_menus = []
@@ -59,7 +59,7 @@ class MenuBar(Component):
             self.tk.add_cascade(label=toplevel[i], menu=self._sub_menus[i])
 
        	# Set this as the menu for the master object
-       	master.tk.config(menu=self.tk)
+        master.tk.config(menu=self.tk)
 
     @property
     def bg(self):

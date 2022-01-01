@@ -54,7 +54,7 @@ class Picture(Widget):
         # Instantiate label object which will contain image
         tk = Label(master.tk)
 
-        super(Picture, self).__init__(master, tk, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, grid, align, visible, enabled, width, height)
 
         # create the image
         self._load_image()

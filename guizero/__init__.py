@@ -1,6 +1,6 @@
 __name__ = "guizero"
 __package__ = "guizero"
-__version__ = '1.2.0'
+__version__ = '1.3.0'
 __author__ = "Laura Sach"
 
 from sys import exit
@@ -28,6 +28,7 @@ from .RadioButton import RadioButton
 from .Slider import Slider
 from .Text import Text
 from .TextBox import TextBox
+from .TitleBox import TitleBox
 from .PushButton import PushButton
 from .Waffle import Waffle
 from .Window import Window

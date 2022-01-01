@@ -1,7 +1,7 @@
 from . import utilities as utils
 
 
-class EventData():
+class EventData:
 
     def __init__(self, widget, tk_event):
         """
@@ -159,7 +159,7 @@ class EventCallback():
         return self._tk_event
 
 
-class EventManager():
+class EventManager:
 
     def __init__(self, widget, *tks):
         """

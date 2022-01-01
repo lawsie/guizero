@@ -1,10 +1,10 @@
 from tkinter import Listbox, Frame, Scrollbar, END, BROWSE, EXTENDED
 from . import utilities as utils
-from .base import TextWidget, ContainerTextWidget, Widget
+from .base import TextWidget, ContainerWidget, Widget
 from .event import EventManager
 
 
-class ListBox(ContainerTextWidget):
+class ListBox(ContainerWidget):
 
     def __init__(
         self,
@@ -68,7 +68,7 @@ class ListBox(ContainerTextWidget):
 
         tk = Frame(master.tk)
 
-        super(ListBox, self).__init__(master, tk, "auto", grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, "auto", grid, align, visible, enabled, width, height)
 
         self._listbox = ListBoxWidget(self, items, selected, command, None, "left", visible, enabled, multiselect, None, None)
         self._listbox.resize("fill", "fill")
@@ -99,7 +99,7 @@ class ListBox(ContainerTextWidget):
         # size and you cant make the control smaller than that.
         self._listbox._set_tk_config("width", None if width is None else 0)
         self._set_propagation(width, height)
-        super(ListBox, self).resize(width, height)
+        super().resize(width, height)
 
     @property
     def value(self):
@@ -183,7 +183,7 @@ class ListBoxWidget(TextWidget):
             for item in items:
                 tk.insert(END, item)
 
-        super(ListBoxWidget, self).__init__(master, tk, grid, align, visible, enabled, width, height)
+        super().__init__(master, tk, grid, align, visible, enabled, width, height)
 
         self.events.set_event("<ListBox.ListboxSelect>", "<<ListboxSelect>>", self._command_callback)
 
