@@ -45,7 +45,7 @@ app.display()
 Let’s look at the [Text](text.md) widget code in a bit more detail:
 
 ```python
-message = Text(app, text="Enter your name"))
+message = Text(app, text="Enter your name")
 ```
 
 - `message =` - The `Text` object has a name, just like any variable
@@ -54,8 +54,8 @@ message = Text(app, text="Enter your name"))
 - `text="Enter your name"` - The text to display
 
 ![an app showing the text 'Enter your name` with a text box below where a name can be entered](images/whats-your-name.png)
+Have a look at [Widget overview](widgetoverview.md) to see all the widgets, find out more about them and how they are used.`
 
-Have a look at [Widget overview](widgetoverview.md) to see all the widgets, find out more about them and how they are used.
 
 ### Using events
 
