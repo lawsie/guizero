@@ -396,7 +396,7 @@ name = TextBox(app)
 app.display()
 </code></pre>
 <p>Let’s look at the <a href="../text/">Text</a> widget code in a bit more detail:</p>
-<pre><code class="language-python">message = Text(app, text=&quot;Enter your name&quot;))
+<pre><code class="language-python">message = Text(app, text=&quot;Enter your name&quot;)
 </code></pre>
 <ul>
 <li><code>message =</code> - The <code>Text</code> object has a name, just like any variable</li>
@@ -404,8 +404,8 @@ app.display()
 <li><code>app</code> – This tells the <code>Text</code> where it will live. Most of the time your widgets will live directly inside the app.</li>
 <li><code>text="Enter your name"</code> - The text to display</li>
 </ul>
-<p><img alt="an app showing the text 'Enter your name` with a text box below where a name can be entered" src="../images/whats-your-name.png" /></p>
-<p>Have a look at <a href="../widgetoverview/">Widget overview</a> to see all the widgets, find out more about them and how they are used.</p>
+<p><img alt="an app showing the text 'Enter your name with a text box below where a name can be entered" src="../images/whats-your-name.png" />
+Have a look at <a href="../widgetoverview/">Widget overview</a> to see all the widgets, find out more about them and how they are used.</p>
 <h3 id="using-events">Using events</h3>
 <p>An event is how you trigger code as a result of users interacting with your app. An example of an event could be a user clicking on a button or entering text into a TextBox. When an event occurs you can run a piece of code. </p>
 <p>This is how you make your app "do stuff".</p>
@@ -422,7 +422,7 @@ button = PushButton(app, text=&quot;Press me&quot;, command=say_hello)
 
 app.display()
 </code></pre>
-<p><img alt="an app showing the text 'Hello` with a button underneath with the label 'Press me#" src="../images/say-hello.png" /></p>
+<p><img alt="an app showing the text 'Hello with a button underneath with the label 'Press me#" src="../images/say-hello.png" /></p>
 <p>In this example the <code>command</code> parameter of a <a href="../textbox/">TextBox</a> widget is used to call the <code>count</code> function which displays how many characters have been entered.</p>
 <pre><code class="language-python">from guizero import App, TextBox, Text
 

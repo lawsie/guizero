@@ -139,6 +139,6 @@ To access the internal `RadioButton` tk object you would use the child's `tk` pr
 ```python
 button_group = ButtonGroup(app)
 
-for radio_button in ButtonGroup.children:
+for radio_button in button_group.children:
     tk_radio_button = radio_button.tk
 ```

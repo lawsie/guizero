@@ -689,7 +689,7 @@ app.display()
 <p>Create an <code>Window</code> object by calling the <code>Window()</code> constructor. You should give the object a name so you can refer to it later - in this case we have called it <code>window</code>. It is best to keep the name you give to your <code>Window</code> object quite short, as you will have to use it to tell other widgets where they should be stored.</p>
 <pre><code class="language-python">from guizero import App, Window
 app = App(title=&quot;My app&quot;, height=300, width=200)
-window = Window(title = &quot;2nd Window&quot;, height=300, width=200)
+window = Window(app, title = &quot;2nd Window&quot;, height=300, width=200)
 app.display()
 </code></pre>
 <p><strong>Showing and hiding a Window</strong></p>

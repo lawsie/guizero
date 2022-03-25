@@ -108,7 +108,7 @@ Create an `Window` object by calling the `Window()` constructor. You should give
 ```python
 from guizero import App, Window
 app = App(title="My app", height=300, width=200)
-window = Window(title = "2nd Window", height=300, width=200)
+window = Window(app, title = "2nd Window", height=300, width=200)
 app.display()
 ```
 

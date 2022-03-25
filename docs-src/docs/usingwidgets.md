@@ -45,7 +45,7 @@ app.display()
 Let’s look at the [Text](text.md) widget code in a bit more detail:
 
 ```python
-message = Text(app, text="Enter your name"))
+message = Text(app, text="Enter your name")
 ```
 
 - `message =` - The `Text` object has a name, just like any variable
@@ -53,9 +53,9 @@ message = Text(app, text="Enter your name"))
 - `app` – This tells the `Text` where it will live. Most of the time your widgets will live directly inside the app.
 - `text="Enter your name"` - The text to display
 
-![an app showing the text 'Enter your name` with a text box below where a name can be entered](images/whats-your-name.png)
-
+![an app showing the text 'Enter your name with a text box below where a name can be entered](images/whats-your-name.png)
 Have a look at [Widget overview](widgetoverview.md) to see all the widgets, find out more about them and how they are used.
+
 
 ### Using events
 
@@ -80,7 +80,7 @@ button = PushButton(app, text="Press me", command=say_hello)
 app.display()
 ~~~
 
-![an app showing the text 'Hello` with a button underneath with the label 'Press me#](images/say-hello.png)
+![an app showing the text 'Hello with a button underneath with the label 'Press me#](images/say-hello.png)
 
 In this example the `command` parameter of a [TextBox](textbox.md) widget is used to call the `count` function which displays how many characters have been entered.
 
