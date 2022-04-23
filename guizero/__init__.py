@@ -27,6 +27,7 @@ from .PushButton import PushButton
 from .RadioButton import RadioButton
 from .Slider import Slider
 from .Text import Text
+from .Padding import Padding
 from .TextBox import TextBox
 from .TitleBox import TitleBox
 from .PushButton import PushButton
