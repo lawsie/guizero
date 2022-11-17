@@ -42,7 +42,27 @@ class Slider(TextWidget):
     @value.setter
     def value(self, value):
         self.tk.set(value)
+    
+    # Add ability to set start and end as properties 
+    @property
+    def start(self):
+        return self._start
 
+    @start.setter
+    def start(self, value):
+        self.tk.configure(from_=value)
+        self._start = value
+
+    @property
+    def end(self):
+        return self._end
+
+    @end.setter
+    def end(self, value):
+        self.tk.configure(to=value)
+        self._end = value
+    
+    # Resize
     def resize(self, width, height):
         self._set_width(width)
         self._set_height(height)

@@ -63,14 +63,14 @@ pip install pytest
 To run all the automated tests:
 
 ```
-cd guizero\test
+cd guizero\tests
 pytest -v
 ```
 
 To run a specific test:
 
 ```
-cd guizero\test
+cd guizero\tests
 pytest -v [test_filename.py]
 ```
 

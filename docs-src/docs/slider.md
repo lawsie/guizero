@@ -81,10 +81,12 @@ You can set and get the following properties:
 | align      | string             | The alignment of this widget within its container                                                     |
 | bg         | [color](colors.md) | The background colour of the widget                                                                   |
 | enabled    | boolean            | `True` if the widget is enabled                                                                       |
+| end        | int                | The largest value selectable on the slider                                                          |
 | font       | string             | The font of the text                                                                                  |
 | grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
 | height     | [size](size.md)    | Set the height of the widget in pixels or to `"fill"`                                                 |
 | master     | App or Box         | The container to which this widget belongs                                                            |
+| start      | int                | The smallest value selectable on the slider                                                         |
 | text_size  | int                | The size of the text                                                                                  |
 | text_color | [color](colors.md) | The colour of the text                                                                                |
 | tk         | tkinter.Scale      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
