@@ -18,9 +18,6 @@ class Slider(TextWidget):
         width=None, 
         height=None):
 
-        self._start = start
-        self._end = end
-
         # Set the direction
         self._horizontal = horizontal
         orient = HORIZONTAL if horizontal else VERTICAL
@@ -46,21 +43,19 @@ class Slider(TextWidget):
     # Add ability to set start and end as properties 
     @property
     def start(self):
-        return self._start
+        return self._get_tk_config("from")
 
     @start.setter
     def start(self, value):
-        self.tk.configure(from_=value)
-        self._start = value
+        self._set_tk_config("from", value)
 
     @property
     def end(self):
-        return self._end
+        return self._get_tk_config("to")
 
     @end.setter
     def end(self, value):
-        self.tk.configure(to=value)
-        self._end = value
+        self._set_tk_config("to", value)
     
     # Resize
     def resize(self, width, height):
@@ -90,7 +85,7 @@ class Slider(TextWidget):
         """
         Returns the description for the widget.
         """
-        return "[Slider] object from {} to {}".format(self._start, self._end)
+        return f"[Slider] object from {self.start} to {self.end}"
 
     # METHODS
     # ----------------
