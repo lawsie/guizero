@@ -31,6 +31,13 @@ class EventData:
         The key which was pressed and generated the event.
         """
         return self._tk_event.char
+    
+    @property
+    def keycode(self):
+        """
+        The keycode of the key which was pressed and generated the event.
+        """
+        return self._tk_event.keycode
 
     @property
     def x(self):
