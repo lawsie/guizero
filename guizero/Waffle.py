@@ -60,26 +60,26 @@ class Waffle(Widget):
         self._draw_waffle()
 
     def _create_canvas(self):
+
         # If the canvas exists, clear it 
         if self._canvas:
             self._canvas.delete("all")
         
         # If not, make one
         else:
-
-            # size the canvas. Each element of the waffle has padding to top,
-            # bottom, left and right, but the padding is shared between elements.
-            # What this means in pratice is that elements at the edge have a whole
-            # padding width between them and the edge of the canvas and a single
-            # padding width between individual elements, so the padding between
-            # elements is shared.
-            self._c_height = (self._height * (self._pixel_size + self._pad)) + self._pad
-            self._c_width = (self._width * (self._pixel_size + self._pad)) + self._pad
-
             # create the canvas and pack it into the waffle frame
-            self._canvas = Canvas(self.tk, height=self._c_height, width=self._c_width, bd=0, highlightthickness=0)
+            self._canvas = Canvas(self.tk, height=1, width=1, bd=0, highlightthickness=0)
             self._canvas.pack(fill=BOTH, expand=1)
 
+        # size the canvas. Each element of the waffle has padding to top,
+        # bottom, left and right, but the padding is shared between elements.
+        # What this means in pratice is that elements at the edge have a whole
+        # padding width between them and the edge of the canvas and a single
+        # padding width between individual elements, so the padding between
+        # elements is shared.
+        self._c_height = (self._height * (self._pixel_size + self._pad)) + self._pad
+        self._c_width = (self._width * (self._pixel_size + self._pad)) + self._pad
+        self._canvas.config(width=self._c_width, height=self._c_height)
 
         # fill the canvas background
         self._canvas.create_rectangle(0, 0, self._c_width, self._c_height, fill=self.bg, outline=self.bg)
