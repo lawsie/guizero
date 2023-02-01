@@ -17,6 +17,20 @@ from common_test import (
     auto_layout_test
     )
 
+def test_start_end_change():
+    a = App()
+    s = Slider(a)
+    assert s.tk.cget("from") == 0
+    assert s.tk.cget("to") == 100
+    s.start = 1
+    assert s.tk.cget("from") == 1
+    s.end = 99
+    assert s.tk.cget("to") == 99
+    # Also check that getters have worked
+    assert s.start == 1
+    assert s.end == 99
+    a.destroy()
+
 def test_default_values():
     a = App()
     s = Slider(a)

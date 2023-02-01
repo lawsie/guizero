@@ -39,6 +39,7 @@ The event data returned has:
 - `display_y` - the mouse's y position on the display when the event occurred
 - `width` - the width of the widget. 
 - `height` - the height of the widget.
+- `keycode` - the [keycode](https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/key-names.html) of the key which raised the event. 
 
 **Note:** only data relevant to the event will be returned. e.g. `key` is only returned for `when_key_#` events and `width` and `height` are only returned for `when_resized` events.
 

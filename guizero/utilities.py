@@ -221,7 +221,7 @@ class GUIZeroImage:
         # does it need resizing?
         if self._width != self._tk_image.width() or self._height != self._tk_image.height():
             if self._pil_image:
-                resized_image = self._pil_image.resize((self._width, self._height), Image.ANTIALIAS)
+                resized_image = self._pil_image.resize((self._width, self._height))
                 self._tk_image = ImageTk.PhotoImage(resized_image)
             else:
                 error_format("Image resizing - cannot scale the image as PIL is not available.")
@@ -232,7 +232,7 @@ class GUIZeroImage:
             try:
                 while True:
                     self._pil_image.seek(frame_count)
-                    tk_frame = ImageTk.PhotoImage(self._pil_image.resize((self._width, self._height), Image.ANTIALIAS))
+                    tk_frame = ImageTk.PhotoImage(self._pil_image.resize((self._width, self._height)))
 
                     try:
                         delay = self._pil_image.info['duration']

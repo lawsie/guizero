@@ -396,6 +396,7 @@ widget.when_clicked = do_this
 <li><code>display_y</code> - the mouse's y position on the display when the event occurred</li>
 <li><code>width</code> - the width of the widget. </li>
 <li><code>height</code> - the height of the widget.</li>
+<li><code>keycode</code> - the <a href="https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/key-names.html">keycode</a> of the key which raised the event. </li>
 </ul>
 <p><strong>Note:</strong> only data relevant to the event will be returned. e.g. <code>key</code> is only returned for <code>when_key_#</code> events and <code>width</code> and <code>height</code> are only returned for <code>when_resized</code> events.</p>
 <pre><code class="language-python">def clicked(event_data):

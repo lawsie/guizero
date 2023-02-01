@@ -1,5 +1,13 @@
 # guizero
 
+## 1.4.0 - 2023-02-01
+- [Slider](./slider/) start and end properties can now be at runtime
+- `key_code` is now returned as part of [events](./events/) meaning non-printing characters keys can now be detected
+- Resolved a bug with [Waffle](./waffle/) whereby double events were triggered when the waffle was changed as part of the event handler
+- Removed use of deprecated Pillow.Image.ANTIALIAS constant 
+- Various minor docs fixes
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie)
+
 ## 1.3.0 - 2022-01-01
 - Added [TitleBox](./titlebox/) widget
 - Added cursor_position property to [TextBox](./textbox/)
