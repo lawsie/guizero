@@ -144,7 +144,7 @@ You can set and get the following properties:
 | Method   | Data type          | Description                                       |
 |----------|--------------------|---------------------------------------------------|
 | x        | int                | Returns the x position of the pixel on the widget |
-| x        | int                | Returns the y position of the pixel on the widget |
+| y        | int                | Returns the y position of the pixel on the widget |
 | canvas_x | int                | Returns the x position of the pixel on the canvas |
 | canvas_y | int                | Returns the y position of the pixel on the canvas |
 | color    | [color](colors.md) | Sets or returns the color of the pixel            |
