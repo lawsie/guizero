@@ -36,7 +36,7 @@ message = Text(app, text="Welcome to the Hello world app!")
 app.display()
 ```
 
-The `text` parameter of the `TextBox` sets the text that will be displayed on the GUI.
+The `text` parameter of the `Text` widget sets the text that will be displayed on the GUI.
 
 ### Make something happen
 
