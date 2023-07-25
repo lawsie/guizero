@@ -1,7 +1,8 @@
 site_name: guizero
 theme:
-  name: null
-  custom_dir: 'cinder'
+  name: 'litera'
+  #custom_dir: 'cinder'
+extra_css: [extra.css]
 nav:
   - About: about.md
   - Installation: index.md
