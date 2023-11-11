@@ -31,7 +31,7 @@ The function which is called can also accept a parameter and will be passed data
 The event data returned has:
 
 - `widget` - the guizero widget which raised the event
-- `tk_event` - the [tkinter event object](http://effbot.org/tkinterbook/tkinter-events-and-bindings.htm)
+- `tk_event` - the [tkinter event object](https://dafarry.github.io/tkinterbook/tkinter-events-and-bindings.htm)
 - `key` - the key which raised the event
 - `x` - the mouse's x position relative to the widget when the event occurred
 - `y` - the mouse's y position relative to the widget when the event occurred
