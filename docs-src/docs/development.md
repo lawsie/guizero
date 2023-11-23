@@ -43,7 +43,7 @@ Checkout and install guizero for development:
 git clone https://github.com/lawsie/guizero
 cd guizero
 git checkout dev
-python setup.py develop
+pip install -e .
 ```
 
 When you have finished your development, deactivate your virtual environment:
