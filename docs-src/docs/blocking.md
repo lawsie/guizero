@@ -10,7 +10,7 @@ app = App("Hello world")
 app.display()
 ```
 
-The line of code `app.display()` doesn't just display the app - it enters an **infinite event loop** which is watching and waiting for events to happen on the GUI. Events include things like the user clicking on a button, moving a slider, typing in a text box etc. No code written after this line will ever execute because the event loop is infinite.
+The line of code `app.display()` doesn't just display the app - it enters an **infinite event loop** which is watching and waiting for events to happen on the GUI. Events include things like the user clicking on a button, moving a slider, typing in a text box etc. No code written after this line will execute until the application is closed.
 
 ### Example
 
