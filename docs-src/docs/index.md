@@ -4,7 +4,7 @@ guizero is designed to allow new learners to quickly and easily create GUIs for 
 
 If you can download and unzip a file, you can [install guizero](#easy-install) - **no special permissions or administrator rights are required**.
 
-If you have administrator rights and are connected to the internet, you can use [pip to install or upgrade guizero](#install-using-pip) (recommended).
+If you have administrator rights and are connected to the internet, you can [use the command line to install or upgrade guizero](#install-using-command-line) (recommended).
 
 Windows users can also use the [Windows MSI installer](#windows-msi-installer).
 
@@ -30,9 +30,9 @@ Windows users can also use the [Windows MSI installer](#windows-msi-installer).
 
 5. That's it! When you write your guizero code, make sure you save it into your home directory.
 
-## Install using pip
+## Install using command line
 
-You can use the command prompt and `pip` to install guizero for:
+You can use the command prompt to install guizero for:
 
 + [Windows](#windows)
 + [macOS](#macos)
@@ -47,7 +47,7 @@ You can use the command prompt and `pip` to install guizero for:
 
     ![windows command prompt](images/windows_command_prompt_app.png)
 
-2. Type this command and press enter:
+2. Type this command to use `pip` to install guizero and press enter:
 
     ```
     pip3 install guizero
@@ -63,7 +63,7 @@ If you experience problems, have a look at this guide to [_Using pip on Windows_
 
     ![Mac terminal](images/mac-terminal.png)
 
-2. Type this command and press enter:
+2. Type this command to use `pip` to install guizero and press enter:
 
     ```
     pip3 install guizero
@@ -77,13 +77,15 @@ If you experience problems, have a look at this guide to [_Using pip on Windows_
 
     ![pi terminal](images/pi-terminal.png)
 
-2. Type this command and press enter:
+2. Type this command to use `apt` to install guizero and press enter:
 
     ```
-    sudo pip3 install guizero
+    sudo apt-get install python3-guizero
     ```
 
-    ![run pip install guizero](images/pi_pip_install.gif)
+    ![run sudo apt-get install python3-guizero](images/pi_apt_install.gif)
+
+**Note:** The installation available via apt may not be the latest. You can always install the latest version using `pip`.
 
 ### Linux
 
@@ -94,7 +96,7 @@ If you experience problems, have a look at this guide to [_Using pip on Windows_
     ![linux pip install](images/linux_pip_install.gif)
 
 **Note:** If you are using Debian, you alternatively have the option to install guizero via apt
-`sudo apt-get install python-guizero`
+`sudo apt-get install python3-guizero`
 
 ### Install additional features
 
@@ -104,36 +106,36 @@ To use the additional [image features](images.md) of guizero such as:
 - scaling images
 - animated gifs
 
-... you will need to install guizero with the pip command:
+... you will need to install [PIL/pillow (python imaging library)](https://pypi.org/project/Pillow/).
 
-- Windows / macOS
+You can install pillow using `pip`:
 
     ```
     pip3 install guizero[images]
     ```
 
-- Linux / Raspberry Pi
+Or using `apt` on Raspberry Pi / Linux
 
     ```
-    sudo pip3 install guizero[images]
+    sudo apt-get install python3-pillow
     ```
 
 The additional image features are not available to install using the easy install method.
 
 ### Upgrading guizero
 
-If you installed guizero using pip, you can upgrade guizero using a pip command:
+Depending how you installed guizero will dictate how you should upgrade
 
-- Windows / macOS
+Using `pip`:
 
     ```
     pip3 install guizero --upgrade
     ```
 
-- Linux / Raspberry Pi
+Using `apt`
 
     ```
-    sudo pip3 install guizero --upgrade
+    sudo apt-get install python3-guizero
     ```
 
 If you installed guizero using the easy install method, to upgrade you should follow the same easy installation steps to download the latest version of guizero, then delete the old guizero folder and replace it with the newest version.
