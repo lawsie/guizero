@@ -23,7 +23,7 @@ app.display()
 
 If you can download and unzip a file, you can [install guizero](https://lawsie.github.io/guizero/#easy-install) - **no special permissions or administrator rights are required**.
 
-If you have administrator rights and are connected to the internet, you can use [pip to install guizero](https://lawsie.github.io/guizero/#install-using-pip).
+If you have administrator rights and are connected to the internet, you can [use the command line to install or upgrade guizero](https://lawsie.github.io/guizero/#install-using-command-line).
 
 ## Documentation
 
