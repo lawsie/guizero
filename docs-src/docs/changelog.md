@@ -5,7 +5,8 @@
 - Resolve issue with Listbox / Combo / ButttonGroup where you couldnt programmatically update the widget unless it was enabled
 - Documentation style change due to obsolete mkdocs theme
 - Documentation fixes mainly dead links
-- Updated installation guidance and instructions, mainly to take into account changes to Raspberry Pi OS and Linux 
+- Updated installation guidance and instructions, to take into account changes to Raspberry Pi OS and Linux
+- Removed Windows MSI installer as they have been depreciated 
 - contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie)
 
 ## 1.4.0 - 2023-02-01
