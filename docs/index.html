@@ -12,13 +12,10 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/color-brewer.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css">
         <link href="extra.css" rel="stylesheet">
-
-        <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body class="homepage">
@@ -238,11 +235,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#install-using-pip" class="nav-link">Install using pip</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#windows-msi-installer" class="nav-link">Windows MSI installer</a>
+            <li class="nav-item" data-level="2"><a href="#install-using-command-line" class="nav-link">Install using command line</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -256,8 +249,7 @@
 <h1 id="installation">Installation</h1>
 <p>guizero is designed to allow new learners to quickly and easily create GUIs for their programs.</p>
 <p>If you can download and unzip a file, you can <a href="#easy-install">install guizero</a> - <strong>no special permissions or administrator rights are required</strong>.</p>
-<p>If you have administrator rights and are connected to the internet, you can use <a href="#install-using-pip">pip to install or upgrade guizero</a> (recommended).</p>
-<p>Windows users can also use the <a href="#windows-msi-installer">Windows MSI installer</a>.</p>
+<p>If you have administrator rights and are connected to the internet, you can <a href="#install-using-command-line">use the command line to install or upgrade guizero</a> (recommended).</p>
 <h2 id="easy-install">Easy install</h2>
 <ol>
 <li>
@@ -287,8 +279,8 @@
 <p>That's it! When you write your guizero code, make sure you save it into your home directory.</p>
 </li>
 </ol>
-<h2 id="install-using-pip">Install using pip</h2>
-<p>You can use the command prompt and <code>pip</code> to install guizero for:</p>
+<h2 id="install-using-command-line">Install using command line</h2>
+<p>You can use the command prompt to install guizero for:</p>
 <ul>
 <li><a href="#windows">Windows</a></li>
 <li><a href="#macos">macOS</a></li>
@@ -303,7 +295,7 @@
 <p><img alt="windows command prompt" src="images/windows_command_prompt_app.png" /></p>
 </li>
 <li>
-<p>Type this command and press enter:</p>
+<p>Type this command to use <code>pip</code> to install guizero and press enter:</p>
 <p><code>pip3 install guizero</code></p>
 </li>
 </ol>
@@ -316,7 +308,7 @@
 <p><img alt="Mac terminal" src="images/mac-terminal.png" /></p>
 </li>
 <li>
-<p>Type this command and press enter:</p>
+<p>Type this command to use <code>pip</code> to install guizero and press enter:</p>
 <p><code>pip3 install guizero</code></p>
 <p><img alt="mac pip install" src="images/mac_pip_install.gif" /></p>
 </li>
@@ -328,11 +320,12 @@
 <p><img alt="pi terminal" src="images/pi-terminal.png" /></p>
 </li>
 <li>
-<p>Type this command and press enter:</p>
-<p><code>sudo pip3 install guizero</code></p>
-<p><img alt="run pip install guizero" src="images/pi_pip_install.gif" /></p>
+<p>Type this command to use <code>apt</code> to install guizero and press enter:</p>
+<p><code>sudo apt-get install python3-guizero</code></p>
+<p><img alt="run sudo apt-get install python3-guizero" src="images/pi_apt_install.gif" /></p>
 </li>
 </ol>
+<p><strong>Note:</strong> The installation available via apt may not be the latest. You can always install the latest version using <code>pip</code>.</p>
 <h3 id="linux">Linux</h3>
 <ol>
 <li>Open a terminal</li>
@@ -343,7 +336,7 @@
 </li>
 </ol>
 <p><strong>Note:</strong> If you are using Debian, you alternatively have the option to install guizero via apt
-<code>sudo apt-get install python-guizero</code></p>
+<code>sudo apt-get install python3-guizero</code></p>
 <h3 id="install-additional-features">Install additional features</h3>
 <p>To use the additional <a href="images/">image features</a> of guizero such as:</p>
 <ul>
@@ -351,62 +344,23 @@
 <li>scaling images</li>
 <li>animated gifs</li>
 </ul>
-<p>... you will need to install guizero with the pip command:</p>
-<ul>
-<li>
-<p>Windows / macOS</p>
-<p><code>pip3 install guizero[images]</code></p>
-</li>
-<li>
-<p>Linux / Raspberry Pi</p>
-<p><code>sudo pip3 install guizero[images]</code></p>
-</li>
-</ul>
+<p>... you will need to install <a href="https://pypi.org/project/Pillow/">PIL/pillow (python imaging library)</a>.</p>
+<p>You can install pillow using <code>pip</code>:</p>
+<pre><code>pip3 install guizero[images]
+</code></pre>
+<p>Or using <code>apt</code> on Raspberry Pi / Linux</p>
+<pre><code>sudo apt-get install python3-pillow
+</code></pre>
 <p>The additional image features are not available to install using the easy install method.</p>
 <h3 id="upgrading-guizero">Upgrading guizero</h3>
-<p>If you installed guizero using pip, you can upgrade guizero using a pip command:</p>
-<ul>
-<li>
-<p>Windows / macOS</p>
-<p><code>pip3 install guizero --upgrade</code></p>
-</li>
-<li>
-<p>Linux / Raspberry Pi</p>
-<p><code>sudo pip3 install guizero --upgrade</code></p>
-</li>
-</ul>
-<p>If you installed guizero using the easy install method, to upgrade you should follow the same easy installation steps to download the latest version of guizero, then delete the old guizero folder and replace it with the newest version.</p>
-<h2 id="windows-msi-installer">Windows MSI installer</h2>
-<p>If you are using Windows you can install guizero by downloading and running a Windows MSI installer application.</p>
-<ol>
-<li>
-<p>Download either the <a href="https://github.com/lawsie/guizero/releases/latest/download/guizero-1.4.0.amd64.msi">64-bit guizero installer</a> or the <a href="https://github.com/lawsie/guizero/releases/latest/download/guizero-1.4.0.win32.msi">32-bit guizero installer</a> depending on which version of Python you are using.</p>
-<p><strong>Note:</strong> If you are not sure what version of python you are running, run the following program in Python, which will output either <code>32</code> or <code>64</code>:</p>
-<pre><code>import struct
-print(struct.calcsize("P") * 8)
+<p>Depending how you installed guizero will dictate how you should upgrade</p>
+<p>Using <code>pip</code>:</p>
+<pre><code>pip3 install guizero --upgrade
 </code></pre>
-</li>
-<li>
-<p>Run the guizero installer and select whether guizero should be installed <strong><em>for all users</em></strong> or <strong><em>just for me</em></strong> and click <strong>Next</strong>.</p>
-<p><img alt="windows msi installer step 1" src="images/windows_msi_1.png" /></p>
-</li>
-<li>
-<p>Select which version(s) of Python you want to install guizero for and click <strong>Next</strong>.</p>
-<p><img alt="windows msi installer step 2" src="images/windows_msi_2.png" /></p>
-<p><strong>Note:</strong> For most people, there will be only one version of Python and you can safely choose the default option.</p>
-</li>
-<li>
-<p>You may be asked <em>"Do you wish to allow this application from an unknown publisher to make changes to your device?"</em> - click <strong>Yes</strong>.</p>
-</li>
-<li>
-<p>Wait while guizero is installed.</p>
-<p><img alt="windows msi installer step 3" src="images/windows_msi_3.png" /></p>
-</li>
-<li>
-<p>Click <strong>Finish</strong> when the installation is complete.</p>
-<p><img alt="windows msi installer step 4" src="images/windows_msi_4.png" /></p>
-</li>
-</ol></div>
+<p>Using <code>apt</code></p>
+<pre><code>sudo apt-get install python3-guizero
+</code></pre>
+<p>If you installed guizero using the easy install method, to upgrade you should follow the same easy installation steps to download the latest version of guizero, then delete the old guizero folder and replace it with the newest version.</p></div>
             </div>
         </div>
 
@@ -414,12 +368,14 @@ print(struct.calcsize("P") * 8)
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <script>
             var base_url = ".",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js" defer></script>
-        <script src="search/main.js" defer></script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -486,6 +442,6 @@ print(struct.calcsize("P") * 8)
 </html>
 
 <!--
-MkDocs version : 1.4.3
-Build Date UTC : 2023-09-08 12:58:18.162761+00:00
+MkDocs version : 1.5.3
+Build Date UTC : 2023-12-03 09:21:24.430993+00:00
 -->

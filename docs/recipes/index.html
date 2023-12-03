@@ -12,13 +12,10 @@
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/color-brewer.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css">
         <link href="../extra.css" rel="stylesheet">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -250,6 +247,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#button-with-an-image" class="nav-link">Button with an image</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#toggle-2-buttons" class="nav-link">Toggle 2 buttons</a>
               <ul class="nav flex-column">
               </ul>
@@ -263,6 +264,14 @@
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#double-click-a-widget" class="nav-link">Double click a widget</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#update-your-app-using-a-timer" class="nav-link">Update your app using a timer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#ask-before-closing-the-app" class="nav-link">Ask before closing the app</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -312,6 +321,19 @@ app = App()
 pic = Picture(app, image=&quot;myimage.gif&quot;)
 app.display()
 </code></pre>
+<h2 id="button-with-an-image">Button with an image</h2>
+<p>Create a picture <code>PushButton</code> with an image like this:</p>
+<pre><code class="language-python">from guizero import App, PushButton
+def do_nothing():
+    print(&quot;A picture button was pressed&quot;)
+
+app = App()
+button = PushButton(app, image=&quot;button.gif&quot;, command=do_nothing)
+app.display()
+</code></pre>
+<blockquote>
+<p>The image <code>button.gif</code> should be stored in the folder as your program. Alternatively you can provide the path to your image.</p>
+</blockquote>
 <h2 id="toggle-2-buttons">Toggle 2 buttons</h2>
 <p>Have 2 buttons, <strong>start</strong> and <strong>stop</strong> with them changing the <code>enabled</code> state of each other.</p>
 <pre><code class="language-python">from guizero import App, PushButton
@@ -388,6 +410,40 @@ double_click_me = Text(app, text=&quot;Double click me&quot;)
 double_click_me.when_double_clicked = double_click
 
 app.display()
+</code></pre>
+<h2 id="update-your-app-using-a-timer">Update your app using a timer</h2>
+<p>You can use <code>repeat</code> to periodically update your application. For example, a timer which updates every 1 second (1000 ms).</p>
+<pre><code class="language-python">from guizero import App, Text
+
+# Update the counter
+def counter():
+    text.value = int(text.value) + 1
+
+app = App(&quot;Hello world&quot;)
+text = Text(app, text=&quot;1&quot;)
+
+# Schedule call to counter() every 1000ms
+text.repeat(1000, counter)  
+
+app.display()
+</code></pre>
+<h2 id="ask-before-closing-the-app">Ask before closing the app</h2>
+<p>You can use a <code>yesno</code> box to check whether someone really wants to exit your app. If they click yes, the app is closed, if not, nothing happens and they can continue with what they were doing.</p>
+<pre><code class="language-python">from guizero import App, Text
+
+# Ask the user if they really want to close the window
+def do_this_when_closed():
+    if app.yesno(&quot;Close&quot;, &quot;Do you want to quit?&quot;):
+        app.destroy()
+
+app = App()
+
+title = Text(app, text=&quot;blank app&quot;)
+
+# When the user tries to close the window, run the function do_this_when_closed()
+app.when_closed = do_this_when_closed
+
+app.display()
 </code></pre></div>
             </div>
         </div>
@@ -396,12 +452,14 @@ app.display()
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <script>
             var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
