@@ -108,15 +108,15 @@ To use the additional [image features](images.md) of guizero such as:
 
 You can install pillow using `pip`:
 
-    ```
-    pip3 install guizero[images]
-    ```
+```
+pip3 install guizero[images]
+```
 
 Or using `apt` on Raspberry Pi / Linux
 
-    ```
-    sudo apt-get install python3-pillow
-    ```
+```
+sudo apt-get install python3-pillow
+```
 
 The additional image features are not available to install using the easy install method.
 
@@ -126,14 +126,14 @@ Depending how you installed guizero will dictate how you should upgrade
 
 Using `pip`:
 
-    ```
-    pip3 install guizero --upgrade
-    ```
+```
+pip3 install guizero --upgrade
+```
 
 Using `apt`
 
-    ```
-    sudo apt-get install python3-guizero
-    ```
+```
+sudo apt-get install python3-guizero
+```
 
 If you installed guizero using the easy install method, to upgrade you should follow the same easy installation steps to download the latest version of guizero, then delete the old guizero folder and replace it with the newest version.
