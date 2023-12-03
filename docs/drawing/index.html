@@ -12,13 +12,10 @@
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/color-brewer.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css">
         <link href="../extra.css" rel="stylesheet">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -522,7 +519,7 @@ app.display()
 <p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>Drawing</code> object is called <code>drawing</code> you would write <code>drawing.bg</code>.</p>
 <p>You can <strong>set</strong> the property (for example <code>drawing.bg = "blue"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(drawing.bg)</code>).</p>
 <h3 id="examples">Examples</h3>
-<p><strong> Draw a robot face </strong></p>
+<p>** Draw a robot face **</p>
 <p>Use a rectangle for the face, ovals for the eyes, a triangle for the nose and lines for the mouth. </p>
 <pre><code class="language-python">from guizero import App, Drawing
 
@@ -548,12 +545,14 @@ a.display()
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <script>
             var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

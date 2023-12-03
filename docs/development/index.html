@@ -12,13 +12,10 @@
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/color-brewer.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css">
         <link href="../extra.css" rel="stylesheet">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -264,7 +261,7 @@
 <pre><code>python -m pip install pip --upgrade
 </code></pre>
 <p>Install / upgrade pre-requisites:</p>
-<pre><code>pip install mkdocs mkdocs-bootswatch wheel twine virtualenv pytest pillow --upgrade
+<pre><code>pip install mkdocs mkdocs-bootswatch wheel twine virtualenv pytest pillow setuptools --upgrade
 </code></pre>
 <h2 id="python-library">Python library</h2>
 <p>Uninstall previous versions of guizero: </p>
@@ -281,7 +278,7 @@ cd guizero-[versionno]
 <pre><code>git clone https://github.com/lawsie/guizero
 cd guizero
 git checkout dev
-python setup.py develop
+pip install -e .
 </code></pre>
 <p>When you have finished your development, deactivate your virtual environment:</p>
 <pre><code>Scripts\deactivate
@@ -312,12 +309,14 @@ mkdocs serve
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <script>
             var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

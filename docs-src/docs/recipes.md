@@ -55,6 +55,22 @@ pic = Picture(app, image="myimage.gif")
 app.display()
 ```
 
+## Button with an image
+
+Create a picture `PushButton` with an image like this:
+
+```python
+from guizero import App, PushButton
+def do_nothing():
+    print("A picture button was pressed")
+
+app = App()
+button = PushButton(app, image="button.gif", command=do_nothing)
+app.display()
+```
+
+> The image `button.gif` should be stored in the folder as your program. Alternatively you can provide the path to your image.
+
 ## Toggle 2 buttons
 
 Have 2 buttons, **start** and **stop** with them changing the `enabled` state of each other.
@@ -144,6 +160,48 @@ app = App()
 
 double_click_me = Text(app, text="Double click me")
 double_click_me.when_double_clicked = double_click
+
+app.display()
+```
+
+## Update your app using a timer
+
+You can use `repeat` to periodically update your application. For example, a timer which updates every 1 second (1000 ms).
+
+```python
+from guizero import App, Text
+
+# Update the counter
+def counter():
+    text.value = int(text.value) + 1
+
+app = App("Hello world")
+text = Text(app, text="1")
+
+# Schedule call to counter() every 1000ms
+text.repeat(1000, counter)  
+
+app.display()
+```
+
+## Ask before closing the app
+
+You can use a `yesno` box to check whether someone really wants to exit your app. If they click yes, the app is closed, if not, nothing happens and they can continue with what they were doing.
+
+```python
+from guizero import App, Text
+
+# Ask the user if they really want to close the window
+def do_this_when_closed():
+    if app.yesno("Close", "Do you want to quit?"):
+        app.destroy()
+
+app = App()
+
+title = Text(app, text="blank app")
+
+# When the user tries to close the window, run the function do_this_when_closed()
+app.when_closed = do_this_when_closed
 
 app.display()
 ```

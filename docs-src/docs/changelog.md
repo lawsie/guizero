@@ -1,17 +1,26 @@
 # guizero
 
+## 1.5.0 - 2023-12-03
+- Uplifted to Python 3.12
+- Resolve issue with Listbox / Combo / ButttonGroup where you couldnt programmatically update the widget unless it was enabled
+- Documentation style change due to obsolete mkdocs theme
+- Documentation fixes mainly dead links
+- Updated installation guidance and instructions, to take into account changes to Raspberry Pi OS and Linux
+- Removed Windows MSI installer as they have been depreciated 
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie)
+
 ## 1.4.0 - 2023-02-01
-- [Slider](./slider/) start and end properties can now be at runtime
-- `key_code` is now returned as part of [events](./events/) meaning non-printing characters keys can now be detected
-- Resolved a bug with [Waffle](./waffle/) whereby double events were triggered when the waffle was changed as part of the event handler
+- [Slider](slider.md) start and end properties can now be at runtime
+- `key_code` is now returned as part of [events](events.md) meaning non-printing characters keys can now be detected
+- Resolved a bug with [Waffle](waffle.md) whereby double events were triggered when the waffle was changed as part of the event handler
 - Removed use of deprecated Pillow.Image.ANTIALIAS constant 
 - Various minor docs fixes
 - contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie)
 
 ## 1.3.0 - 2022-01-01
-- Added [TitleBox](./titlebox/) widget
-- Added cursor_position property to [TextBox](./textbox/)
-- Made wrapping consistent (`word`) for multiline [TextBox](./textbox/) and added a `wrap` property
+- Added [TitleBox](titlebox.md) widget
+- Added cursor_position property to [TextBox](textbox.md)
+- Made wrapping consistent (`word`) for multiline [TextBox](textbox.md) and added a `wrap` property
 - Code tidy up
 - Tested with Python 3.10 and added python version classifiers to setup.py
 - Minor documentation updates
@@ -69,14 +78,14 @@
 - contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie) 
 
 ## 0.6.2 - 2019-04-05
-- Ability to [add tk widgets](./usingtk/) into a guizero app with `.add_tk_widget()`
+- Ability to [add tk widgets](usingtk.md) into a guizero app with `.add_tk_widget()`
 - ListBox scrollbar bug fix
 - MenuBar background colour bug fix
 - `setup.py` changes to allow dunders to be accessed from guizero module
 - contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie) 
 
 ## 0.6.1 - 2019-03-08
-- New [Drawing widget](./drawing/) for creating "drawings"
+- New [Drawing widget](drawing.md) for creating "drawings"
 - Added full screen support for `App` and `Window`
 - Doc updates
 - Minor bug fixes

@@ -12,13 +12,10 @@
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/color-brewer.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css">
         <link href="../extra.css" rel="stylesheet">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -347,7 +344,7 @@ hello = Text(app)
 app.display()
 </code></pre>
 <p><img alt="question popup" src="../images/question_windows.png" /></p>
-<p><strong> Example: Get a file name</strong></p>
+<p>** Example: Get a file name**</p>
 <p>Ask the user to select a file using the <code>select_file</code> pop-up.</p>
 <pre><code class="language-python">from guizero import App, PushButton, Text
 
@@ -369,7 +366,7 @@ app.display()
 <pre><code class="language-python">file_name.value = app.select_file(save=True)
 </code></pre>
 <p><img alt="select save file popup" src="../images/select_file_save_windows.png" /></p>
-<p><strong> Example: Get a folder name</strong></p>
+<p>** Example: Get a folder name**</p>
 <p>Select a folder using the <code>select_folder</code> pop-up.</p>
 <pre><code class="language-python">from guizero import App, PushButton, Text
 
@@ -394,12 +391,14 @@ app.display()
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <script>
             var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
