@@ -13,7 +13,7 @@ python -m pip install pip --upgrade
 Install / upgrade pre-requisites:
 
 ```
-pip install mkdocs mkdocs-bootswatch wheel twine virtualenv pytest pillow --upgrade
+pip install mkdocs mkdocs-bootswatch wheel twine virtualenv pytest pillow setuptools --upgrade
 ```
 
 ## Python library
