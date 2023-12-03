@@ -1,5 +1,13 @@
 # guizero
 
+## 1.5.0 - 2023-12-03
+- Uplifted to Python 3.12
+- Resolve issue with Listbox / Combo / ButttonGroup where you couldnt programmatically update the widget unless it was enabled
+- Documentation style change due to obsolete mkdocs theme
+- Documentation fixes mainly dead links
+- Updated installation guidance and instructions, mainly to take into account changes to Raspberry Pi OS and Linux 
+- contributors [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie)
+
 ## 1.4.0 - 2023-02-01
 - [Slider](./slider/) start and end properties can now be at runtime
 - `key_code` is now returned as part of [events](./events/) meaning non-printing characters keys can now be detected
