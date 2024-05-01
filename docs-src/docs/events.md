@@ -45,8 +45,8 @@ The event data returned has:
 
 ```python
 def clicked(event_data):
-    print("widget clicked = " + event_data.widget)
-    print("mouse position = " + event_data.x + "." + event_data.y)
+    print("widget clicked = ", event_data.widget)
+    print("mouse position = ", event_data.x, ".", event_data.y)
 
 widget.when_clicked = clicked
 ```
