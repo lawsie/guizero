@@ -222,6 +222,7 @@ class Container(Component):
         self._bg = None
         self._text_color = None
         self._text_size = None
+        self._text_weight = None
         self._font = None
         self._enabled = True
 
@@ -230,6 +231,7 @@ class Container(Component):
             self.bg = master.bg
             self.text_color = master.text_color
             self.text_size = master.text_size
+            self.text_weight = master.text_weight
             self.font = master.font
 
     @property
@@ -292,6 +294,25 @@ class Container(Component):
         for child in self.children:
             if isinstance(child, (Container, TextWidget)):
                 child.text_size = self.text_size
+
+    @property
+    def text_weight(self):
+        """
+        Sets and returns the text weight to be used by the widgets
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default 'normal' weight
+        """
+        return self._text_weight
+
+    @text_weight.setter
+    def text_weight(self, value):
+        self._text_weight = value
+        # cascade to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_weight = self.text_weight
 
     @property
     def font(self):
@@ -698,6 +719,7 @@ class TextWidget(
         #inherit from master
         self.text_color = master.text_color
         self.text_size = master.text_size
+        self.text_weight = master.text_weight
         self.font = master.font
 
 
@@ -811,3 +833,15 @@ class ContainerTextWidget(ContainerWidget):
     def text_size(self, size):
         TextMixin.set_text_size(self, size)
         super(ContainerWidget, self.__class__).text_size.fset(self, size)
+
+    @property
+    def text_weight(self):
+        """
+        Sets or returns the text weight of the widget.
+        """
+        return TextMixin.get_text_weight(self)
+
+    @text_weight.setter
+    def text_weight(self, weight):
+        TextMixin.set_text_weight(self, weight)
+        super(ContainerWidget, self.__class__).text_weight.fset(self, weight)

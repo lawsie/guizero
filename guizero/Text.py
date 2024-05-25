@@ -17,7 +17,8 @@ class Text(TextWidget):
         visible=True,
         enabled=None,
         width=None,
-        height=None):
+        height=None,
+        weight=None):
 
         self._text = str(text)
         tk = Label(master.tk, text=text)
@@ -35,6 +36,9 @@ class Text(TextWidget):
 
         if color is not None:
             self.text_color = color
+
+        if weight is not None:
+            self.text_weight = weight
 
     # PROPERTIES
     # ----------------------------------
@@ -56,6 +60,15 @@ class Text(TextWidget):
     @size.setter
     def size(self, size):
         self.text_size = size
+
+    # The font weight
+    @property
+    def weight(self):
+        return self.text_weight
+
+    @weight.setter
+    def weight(self, weight):
+        self.text_weight = weight
 
     @property
     def description(self):
