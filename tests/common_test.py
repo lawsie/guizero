@@ -154,6 +154,13 @@ def text_test(widget):
     widget.text_size = None
     assert widget.text_size == default
 
+def weight_text_test(widget):
+    default = font.NORMAL
+    widget.weight = font.BOLD
+    assert widget.weight == font.BOLD
+    widget.weight = None
+    assert widget.weight == default
+
 def events_test(widget):
 
     events_to_test = (

@@ -9,6 +9,7 @@ from common_test import (
     color_test,
     size_text_test,
     size_fill_test,
+    weight_text_test,
     events_test,
     cascaded_properties_test,
     inherited_properties_test,
@@ -25,6 +26,7 @@ def test_default_values():
     assert t.align == None
     assert t.size == 12
     assert t.text_color == "black"
+    assert t.text_weight == "normal"
     assert t.value == ""
     assert a.description > ""
     a.destroy()
@@ -41,7 +43,8 @@ def test_alt_values():
         grid = [0,1],
         align="top",
         width = 10,
-        height = 11)
+        height = 11,
+        weight="bold")
 
     assert t.master == a
     assert t.grid[0] == 0
@@ -54,6 +57,7 @@ def test_alt_values():
     assert t.value == "foo"
     assert t.width == 10
     assert t.height == 11
+    assert t.weight == "bold"
     a.destroy()
 
 def test_getters_setters():
@@ -63,6 +67,8 @@ def test_getters_setters():
     assert t.value == "foo"
     t.size = 18
     assert t.size == 18
+    t.weight = "bold"
+    assert t.weight == "bold"
     a.destroy()
 
 def test_clear():
@@ -112,7 +118,7 @@ def test_display():
 def test_text():
     a = App()
     # default values
-    t = Text(a, color=None, size=None, font=None)
+    t = Text(a, color=None, size=None, font=None, weight=None)
     text_test(t)
     a.destroy()
 
@@ -127,6 +133,12 @@ def test_size():
     t = Text(a)
     size_text_test(t)
     size_fill_test(t)
+    a.destroy()
+
+def test_weight():
+    a = App()
+    t = Text(a)
+    weight_text_test(t)
     a.destroy()
 
 def test_events():
