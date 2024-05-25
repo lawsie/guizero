@@ -14,7 +14,8 @@ __init__(
     visible=True,
     enabled=None,
     width=None,
-    height=None)
+    height=None,
+    weight=None)
 ```
 
 ### What is it?
@@ -50,6 +51,7 @@ When you create a `Text` object, you **must** specify a `master` and you can spe
 | enabled   | boolean            | None        | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master       |
 | width     | [size](size.md)    | None        | No         | Set the width of the widget in characters or to `"fill"`                                                              |
 | height    | [size](size.md)    | None        | No         | Set the height of the widget in characters or to `"fill"`                                                             |
+| weight    | string             | None        | No         | Set the weight of the font. Possible values: `"normal"`, `"bold"`.                                                    |
 
 
 ### Methods
@@ -76,18 +78,19 @@ You can call the following methods on a `Text` object..
 
 You can set and get the following properties:
 
-| Method     | Data type          | Description                                                                                           |
-|------------|--------------------|-------------------------------------------------------------------------------------------------------|
-| align      | string             | The alignment of this widget within its container                                                     |
-| bg         | [color](colors.md) | The background colour of the widget                                                                   |
-| enabled    | boolean            | `True` if the widget is enabled                                                                       |
-| font       | string             | The font of the text                                                                                  |
-| grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height     | [size](size.md)    | Set the height of the widget in characters or to `"fill"`                                             |
-| master     | App or Box         | The container to which this widget belongs                                                            |
-| text_size  | int                | The size of the text                                                                                  |
-| text_color | [color](colors.md) | The colour of the text                                                                                |
-| tk         | tkinter.Label      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
-| value      | string             | The text                                                                                              |
-| visible    | boolean            | If this widget is visible                                                                             |
-| width      | [size](size.md)    | Set the width of the widget in characters or to `"fill"`                                              |
+| Method      | Data type          | Description                                                                                           |
+|-------------|--------------------|-------------------------------------------------------------------------------------------------------|
+| align       | string             | The alignment of this widget within its container                                                     |
+| bg          | [color](colors.md) | The background colour of the widget                                                                   |
+| enabled     | boolean            | `True` if the widget is enabled                                                                       |
+| font        | string             | The font of the text                                                                                  |
+| grid        | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| height      | [size](size.md)    | Set the height of the widget in characters or to `"fill"`                                             |
+| master      | App or Box         | The container to which this widget belongs                                                            |
+| text_size   | int                | The size of the text                                                                                  |
+| text_color  | [color](colors.md) | The colour of the text                                                                                |
+| text_weight | string             | The weight of the text                                                                                |
+| tk          | tkinter.Label      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
+| value       | string             | The text                                                                                              |
+| visible     | boolean            | If this widget is visible                                                                             |
+| width       | [size](size.md)    | Set the width of the widget in characters or to `"fill"`                                              |
