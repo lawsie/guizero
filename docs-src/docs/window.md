@@ -88,6 +88,8 @@ You can set and get the following properties:
 | title       | string                | The title of the window                                                                       |
 | text_size   | int                   | The size of the text widgets should use                                                       |
 | text_color  | [color](colors.md)    | The colour of the text widgets should use                                                     |
+| text_weight | string                | The weight of the text                                                                        |
+| text_slant  | string                | The slant of the text                                                                         |
 | tk          | tkinter.TopLevel      | The internal tkinter object, see [Using tkinter](usingtk.md)                                  |
 | visible     | boolean               | If the window is visible                                                                      |
 | width       | int                   | The width of the window                                                                       |

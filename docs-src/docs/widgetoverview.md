@@ -166,20 +166,22 @@ window = Window(app)
 
 All widgets are customisable through their properties. These properties are typical for most widgets. Check the widgets document for more information.
 
-| Property   | Data type          | Description                                             |
-|------------|--------------------|---------------------------------------------------------|
-| align      | string             | The alignment of this widget within its container       |
-| bg         | string, List       | The background colour of the widget                     |
-| enabled    | boolean            | `True` if the widget is enabled                         |
-| font       | string             | The font of the text                                    |
-| grid       | List               | `[x,y]` coordinates of this widget if in a "grid".      |
-| height     | int, string        | The height of the widget.                               |
-| master     | App, Window, Box   | The container to which this widget belongs              |
-| value      | int, string, bool  | The widgets current "value", e.g. the text in a TextBox |
-| visible    | boolean            | If this widget is visible                               |
-| width      | [size](size.md)    | The width of the widget.                                |
-| text_size  | int                | The size of the text                                    |
-| text_color | [color](colors.md) | The colour of the text                                  |
+| Property    | Data type          | Description                                             |
+|-------------|--------------------|---------------------------------------------------------|
+| align       | string             | The alignment of this widget within its container       |
+| bg          | string, List       | The background colour of the widget                     |
+| enabled     | boolean            | `True` if the widget is enabled                         |
+| font        | string             | The font of the text                                    |
+| grid        | List               | `[x,y]` coordinates of this widget if in a "grid".      |
+| height      | int, string        | The height of the widget.                               |
+| master      | App, Window, Box   | The container to which this widget belongs              |
+| value       | int, string, bool  | The widgets current "value", e.g. the text in a TextBox |
+| visible     | boolean            | If this widget is visible                               |
+| width       | [size](size.md)    | The width of the widget.                                |
+| text_size   | int                | The size of the text                                    |
+| text_color  | [color](colors.md) | The colour of the text                                  |
+| text_weight | string             | The weight of the text                                  |
+| text_slant  | string             | The slant of the text                                   |
 
 ## Methods
 

@@ -15,7 +15,8 @@ __init__(
     enabled=None,
     width=None,
     height=None,
-    weight=None)
+    weight=None,
+    slant=None)
 ```
 
 ### What is it?
@@ -52,6 +53,7 @@ When you create a `Text` object, you **must** specify a `master` and you can spe
 | width     | [size](size.md)    | None        | No         | Set the width of the widget in characters or to `"fill"`                                                              |
 | height    | [size](size.md)    | None        | No         | Set the height of the widget in characters or to `"fill"`                                                             |
 | weight    | string             | None        | No         | Set the weight of the font. Possible values: `"normal"`, `"bold"`.                                                    |
+| slant     | string             | None        | No         | Set the slant of the font. Possible values: `"roman"`, `"italic"`.                                                    |
 
 
 ### Methods
@@ -90,6 +92,7 @@ You can set and get the following properties:
 | text_size   | int                | The size of the text                                                                                  |
 | text_color  | [color](colors.md) | The colour of the text                                                                                |
 | text_weight | string             | The weight of the text                                                                                |
+| text_slant  | string             | The slant of the text                                                                                 |
 | tk          | tkinter.Label      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
 | value       | string             | The text                                                                                              |
 | visible     | boolean            | If this widget is visible                                                                             |

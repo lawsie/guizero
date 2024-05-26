@@ -93,6 +93,8 @@ You can set and get the following properties:
 | width           | [size](size.md)    | Set the width of the widget in characters or to `"fill"`                                                                                                                      |
 | text_size       | int                | The size of the text                                                                                                                                                          |
 | text_color      | [color](colors.md) | The colour of the text                                                                                                                                                        |
+| text_weight     | string             | The weight of the text                                                                                                                                                        |
+| text_slant      | string             | The slant of the text                                                                                                                                                         |
 | tk              | tkinter.Entry      | The internal tkinter object, see [Using tkinter](usingtk.md)                                                                                                                  |
 | wrap            | boolean            | Whether text in a multiline text box should be wrapped. Defaults to `True`. If its a single line TextBox, `None` will be returned and a warning displayed when trying to set. |
 
