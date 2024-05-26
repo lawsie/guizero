@@ -9,7 +9,6 @@ from common_test import (
     color_test,
     size_text_test,
     size_fill_test,
-    weight_text_test,
     events_test,
     cascaded_properties_test,
     inherited_properties_test,
@@ -133,12 +132,6 @@ def test_size():
     t = Text(a)
     size_text_test(t)
     size_fill_test(t)
-    a.destroy()
-
-def test_weight():
-    a = App()
-    t = Text(a)
-    weight_text_test(t)
     a.destroy()
 
 def test_events():
