@@ -1,5 +1,5 @@
 from . import utilities as utils
-from tkinter.font import Font, NORMAL
+from tkinter.font import Font
 from tkinter import TclError
 
 
@@ -138,7 +138,7 @@ class TextMixin:
             default_font = TextMixin.get_tk_font(widget, default = True)
             font = default_font["family"]
 
-        widget._set_tk_config("font", (font, f["size"], f["weight"]))
+        widget._set_tk_config("font", (font, f["size"], f["weight"], f["slant"]))
 
     @staticmethod
     def get_text_size(widget):
@@ -154,7 +154,7 @@ class TextMixin:
             default_font = TextMixin.get_tk_font(widget, default=True)
             size = default_font["size"]
 
-        widget._set_tk_config("font", (f["family"], size, f["weight"]))
+        widget._set_tk_config("font", (f["family"], size, f["weight"], f["slant"]))
 
     @staticmethod
     def get_text_weight(widget):
@@ -166,9 +166,25 @@ class TextMixin:
         f = TextMixin.get_tk_font(widget)
 
         if weight is None:
-            weight = NORMAL
+            default_font = TextMixin.get_tk_font(widget, default=True)
+            weight = default_font["weight"]
+        
+        widget._set_tk_config("font", (f["family"], f["size"], weight, f["slant"]))
 
-        widget._set_tk_config("font", (f["family"], f["size"], weight))
+    @staticmethod
+    def get_text_slant(widget):
+        f = TextMixin.get_tk_font(widget)
+        return (f["slant"])
+    
+    @staticmethod
+    def set_text_slant(widget, slant):
+        f = TextMixin.get_tk_font(widget)
+
+        if slant is None:
+            default_font = TextMixin.get_tk_font(widget, default=True)
+            slant = default_font["slant"]
+
+        widget._set_tk_config("font", (f["family"], f["size"], f["weight"], slant))
 
     # Get the text colour as a string
     @property
@@ -209,7 +225,7 @@ class TextMixin:
     def text_size(self, size):
         TextMixin.set_text_size(self, size)
 
-    # Get the current text size as an integer
+    # Get the current text weight
     @property
     def text_weight(self):
         """
@@ -217,10 +233,23 @@ class TextMixin:
         """
         return TextMixin.get_text_weight(self)
 
-    # Set the font size
+    # Set the font weight
     @text_weight.setter
     def text_weight(self, weight):
         TextMixin.set_text_weight(self, weight)
+
+    # Get the current text slant
+    @property
+    def text_slant(self):
+        """
+        Sets or returns the text slant of the widget.
+        """
+        return TextMixin.get_text_slant(self)
+
+    # Set the font slant
+    @text_slant.setter
+    def text_slant(self, slant):
+        TextMixin.set_text_slant(self, slant)
 
 
 class ColorMixin:

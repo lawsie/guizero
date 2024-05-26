@@ -223,6 +223,7 @@ class Container(Component):
         self._text_color = None
         self._text_size = None
         self._text_weight = None
+        self._text_slant = None
         self._font = None
         self._enabled = True
 
@@ -232,6 +233,7 @@ class Container(Component):
             self.text_color = master.text_color
             self.text_size = master.text_size
             self.text_weight = master.text_weight
+            self.text_slant = master.text_slant
             self.font = master.font
 
     @property
@@ -313,6 +315,25 @@ class Container(Component):
         for child in self.children:
             if isinstance(child, (Container, TextWidget)):
                 child.text_weight = self.text_weight
+
+    @property
+    def text_slant(self):
+        """
+        Sets and returns the text slant to be used by the widgets
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default 'roman' slant
+        """
+        return self._text_slant
+
+    @text_slant.setter
+    def text_slant(self, value):
+        self._text_slant = value
+        # cascade to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_slant = self.text_slant
 
     @property
     def font(self):
@@ -720,6 +741,7 @@ class TextWidget(
         self.text_color = master.text_color
         self.text_size = master.text_size
         self.text_weight = master.text_weight
+        self.text_slant = master.text_slant
         self.font = master.font
 
 
@@ -845,3 +867,15 @@ class ContainerTextWidget(ContainerWidget):
     def text_weight(self, weight):
         TextMixin.set_text_weight(self, weight)
         super(ContainerWidget, self.__class__).text_weight.fset(self, weight)
+
+    @property
+    def text_slant(self):
+        """
+        Sets or returns the text slant of the widget.
+        """
+        return TextMixin.get_text_slant(self)
+
+    @text_slant.setter
+    def text_slant(self, slant):
+        TextMixin.set_text_slant(self, slant)
+        super(ContainerWidget, self.__class__).text_slant.fset(self, slant)

@@ -18,7 +18,8 @@ class Text(TextWidget):
         enabled=None,
         width=None,
         height=None,
-        weight=None):
+        weight=None,
+        slant=None):
 
         self._text = str(text)
         tk = Label(master.tk, text=text)
@@ -39,6 +40,9 @@ class Text(TextWidget):
 
         if weight is not None:
             self.text_weight = weight
+
+        if slant is not None:
+            self.text_slant = slant
 
     # PROPERTIES
     # ----------------------------------
@@ -69,6 +73,15 @@ class Text(TextWidget):
     @weight.setter
     def weight(self, weight):
         self.text_weight = weight
+
+    # The font slant
+    @property
+    def slant(self):
+        return self.text_slant
+
+    @slant.setter
+    def slant(self, slant):
+        self.text_slant = slant
 
     @property
     def description(self):

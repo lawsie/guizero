@@ -249,7 +249,7 @@ class Drawing(Widget):
         self._images[id] = _image
         return id
     
-    def text(self, x, y, text, color="black", font=None, size=None, weight=None, max_width=None):
+    def text(self, x, y, text, color="black", font=None, size=None, max_width=None, weight=None, slant=None):
         """
         Inserts text into the drawing, position by its top-left corner.
         
@@ -284,6 +284,8 @@ class Drawing(Widget):
             kwargs["size"] = size
         if weight is not None:
             kwargs["weight"] = weight
+        if slant is not None:
+            kwargs["slant"] = slant
 
         f = Font(self.tk, family=font, **kwargs)
 
