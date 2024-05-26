@@ -144,6 +144,13 @@ def test_text_color():
     assert id > 0
     a.destroy()
 
+def test_text_slant():
+    a = App()
+    d = Drawing(a)
+    id = d.text(1,2,"foo", slant="italic")
+    assert id > 0
+    a.destroy()
+
 def test_delete():
     a = App()
     d = Drawing(a)

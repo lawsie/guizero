@@ -154,11 +154,17 @@ def text_test(widget):
     widget.text_size = None
     assert widget.text_size == default
 
-    default = font.NORMAL
+    default = widget.text_weight
     widget.text_weight = font.BOLD
     assert widget.text_weight == font.BOLD
     widget.text_weight = None
     assert widget.text_weight == default
+
+    default = widget.text_slant
+    widget.text_slant = font.ITALIC
+    assert widget.text_slant == font.ITALIC
+    widget.text_slant = None
+    assert widget.text_slant == default
 
 def events_test(widget):
 
@@ -250,6 +256,10 @@ def cascaded_properties_test(container, widget, text):
         assert widget.text_color == "purple"
         container.text_size = 16
         assert widget.text_size == 16
+        container.text_weight = "bold"
+        assert widget.text_weight == "bold"
+        container.text_slant = "italic"
+        assert widget.text_slant == "italic"
 
 def inherited_properties_test(container, widget_create, text):
     container.bg = "red"
@@ -257,6 +267,8 @@ def inherited_properties_test(container, widget_create, text):
     if text:
         container.text_color = "purple"
         container.text_size = 16
+        container.text_weight = "bold"
+        container.text_slant = "italic"
 
     w = widget_create()
 
@@ -265,6 +277,8 @@ def inherited_properties_test(container, widget_create, text):
     if text:
         assert w.text_color == "purple"
         assert w.text_size == 16
+        assert w.text_weight == "bold"
+        assert w.text_slant == "italic"
 
 def cascading_enable_test(container):
 
@@ -298,12 +312,16 @@ def cascading_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
+    container.text_weight = "bold"
+    container.text_slant = "italic"
     container.font = TEST_FONT
     container.enabled = False
 
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
+    assert t.text_weight == "bold"
+    assert t.text_slant == "italic"
     assert t.font == TEST_FONT
     assert t.enabled == False
     assert p.bg == "red"
@@ -318,13 +336,17 @@ def inheriting_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
+    container.text_weight = "bold"
+    container.text_slant = "italic"
     container.font = TEST_FONT
     container.enabled = False
 
-    t = Text(container, color=None, size=None, font=None)
+    t = Text(container, color=None, size=None, font=None, weight=None, slant=None)
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
+    assert t.text_weight == "bold"
+    assert t.text_slant == "italic"
     assert t.font == TEST_FONT
     assert not t.enabled
 
