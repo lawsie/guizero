@@ -224,6 +224,8 @@ class Container(Component):
         self._text_size = None
         self._text_weight = None
         self._text_slant = None
+        self._text_underline = None
+        self._text_overstrike = None
         self._font = None
         self._enabled = True
 
@@ -234,6 +236,8 @@ class Container(Component):
             self.text_size = master.text_size
             self.text_weight = master.text_weight
             self.text_slant = master.text_slant
+            self.text_underline = master.text_underline
+            self.text_overstrike = master.text_overstrike
             self.font = master.font
 
     @property
@@ -334,6 +338,44 @@ class Container(Component):
         for child in self.children:
             if isinstance(child, (Container, TextWidget)):
                 child.text_slant = self.text_slant
+
+    @property
+    def text_underline(self):
+        """
+        Sets and returns the text underline to be used by the widgets
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default (False)
+        """
+        return self._text_underline
+
+    @text_underline.setter
+    def text_underline(self, value):
+        self._text_underline = value
+        # cascade to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_underline = self.text_underline
+
+    @property
+    def text_overstrike(self):
+        """
+        Sets and returns the text overstrike to be used by the widgets
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default (False)
+        """
+        return self._text_overstrike
+
+    @text_overstrike.setter
+    def text_overstrike(self, value):
+        self._text_overstrike = value
+        # cascade to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_overstrike = self.text_overstrike
 
     @property
     def font(self):
@@ -742,6 +784,8 @@ class TextWidget(
         self.text_size = master.text_size
         self.text_weight = master.text_weight
         self.text_slant = master.text_slant
+        self.text_underline = master.text_underline
+        self.text_overstrike = master.text_overstrike
         self.font = master.font
 
 
@@ -879,3 +923,27 @@ class ContainerTextWidget(ContainerWidget):
     def text_slant(self, slant):
         TextMixin.set_text_slant(self, slant)
         super(ContainerWidget, self.__class__).text_slant.fset(self, slant)
+
+    @property
+    def text_underline(self):
+        """
+        Sets or returns the text underline of the widget.
+        """
+        return TextMixin.get_text_underline(self)
+
+    @text_underline.setter
+    def text_underline(self, underline):
+        TextMixin.set_text_underline(self, underline)
+        super(ContainerWidget, self.__class__).text_underline.fset(self, underline)
+
+    @property
+    def text_overstrike(self):
+        """
+        Sets or returns the text overstrike of the widget.
+        """
+        return TextMixin.get_text_overstrike(self)
+
+    @text_overstrike.setter
+    def text_overstrike(self, overstrike):
+        TextMixin.set_text_underline(self, overstrike)
+        super(ContainerWidget, self.__class__).text_overstrike.fset(self, overstrike)

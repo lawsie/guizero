@@ -19,7 +19,9 @@ class Text(TextWidget):
         width=None,
         height=None,
         weight=None,
-        slant=None):
+        slant=None,
+        underline=None,
+        overstrike=None):
 
         self._text = str(text)
         tk = Label(master.tk, text=text)
@@ -43,6 +45,12 @@ class Text(TextWidget):
 
         if slant is not None:
             self.text_slant = slant
+
+        if underline is not None:
+            self.text_underline = underline
+
+        if overstrike is not None:
+            self.text_overstrike = overstrike
 
     # PROPERTIES
     # ----------------------------------
@@ -82,6 +90,24 @@ class Text(TextWidget):
     @slant.setter
     def slant(self, slant):
         self.text_slant = slant
+
+    # The font underline
+    @property
+    def underline(self):
+        return self.text_underline
+
+    @underline.setter
+    def underline(self, underline):
+        self.text_underline = underline
+
+    # The font overstrike
+    @property
+    def overstrike(self):
+        return self.text_overstrike
+
+    @overstrike.setter
+    def overstrike(self, overstrike):
+        self.text_overstrike = overstrike
 
     @property
     def description(self):

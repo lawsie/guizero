@@ -1,5 +1,5 @@
 from . import utilities as utils
-from tkinter.font import Font
+from tkinter.font import Font, NORMAL, ROMAN
 from tkinter import TclError
 
 
@@ -138,7 +138,13 @@ class TextMixin:
             default_font = TextMixin.get_tk_font(widget, default = True)
             font = default_font["family"]
 
-        widget._set_tk_config("font", (font, f["size"], f["weight"], f["slant"]))
+        kw_list = [font, f["size"], f["weight"], f["slant"]]
+        if f["underline"]:
+            kw_list.append("underline")
+        if f["overstrike"]:
+            kw_list.append("overstrike")
+        
+        widget._set_tk_config("font", kw_list)
 
     @staticmethod
     def get_text_size(widget):
@@ -153,8 +159,14 @@ class TextMixin:
             # get the size from the default font
             default_font = TextMixin.get_tk_font(widget, default=True)
             size = default_font["size"]
+        
+        kw_list = [f["family"], size, f["weight"], f["slant"]]
+        if f["underline"]:
+            kw_list.append("underline")
+        if f["overstrike"]:
+            kw_list.append("overstrike")
 
-        widget._set_tk_config("font", (f["family"], size, f["weight"], f["slant"]))
+        widget._set_tk_config("font", kw_list)
 
     @staticmethod
     def get_text_weight(widget):
@@ -166,10 +178,15 @@ class TextMixin:
         f = TextMixin.get_tk_font(widget)
 
         if weight is None:
-            default_font = TextMixin.get_tk_font(widget, default=True)
-            weight = default_font["weight"]
+            weight = NORMAL
+
+        kw_list = [f["family"], f["size"], weight, f["slant"]]
+        if f["underline"]:
+            kw_list.append("underline")
+        if f["overstrike"]:
+            kw_list.append("overstrike")
         
-        widget._set_tk_config("font", (f["family"], f["size"], weight, f["slant"]))
+        widget._set_tk_config("font", kw_list)
 
     @staticmethod
     def get_text_slant(widget):
@@ -181,10 +198,55 @@ class TextMixin:
         f = TextMixin.get_tk_font(widget)
 
         if slant is None:
-            default_font = TextMixin.get_tk_font(widget, default=True)
-            slant = default_font["slant"]
+            slant = ROMAN
 
-        widget._set_tk_config("font", (f["family"], f["size"], f["weight"], slant))
+        kw_list = [f["family"], f["size"], f["weight"], slant]
+        if f["underline"]:
+            kw_list.append("underline")
+        if f["overstrike"]:
+            kw_list.append("overstrike")
+
+        widget._set_tk_config("font", kw_list)
+
+    @staticmethod
+    def get_text_underline(widget):
+        f = TextMixin.get_tk_font(widget)
+        return (f["underline"])
+    
+    @staticmethod
+    def set_text_underline(widget, underline):
+        f = TextMixin.get_tk_font(widget)
+
+        if underline is None:
+            underline = False
+
+        kw_list = [f["family"], f["size"], f["weight"], f["slant"]]
+        if underline:
+            kw_list.append("underline")
+        if f["overstrike"]:
+            kw_list.append("overstrike")
+
+        widget._set_tk_config("font", kw_list)
+
+    @staticmethod
+    def get_text_overstrike(widget):
+        f = TextMixin.get_tk_font(widget)
+        return (f["overstrike"])
+    
+    @staticmethod
+    def set_text_overstrike(widget, overstrike):
+        f = TextMixin.get_tk_font(widget)
+
+        if overstrike is None:
+            overstrike = False
+
+        kw_list = [f["family"], f["size"], f["weight"], f["slant"]]
+        if f["underline"]:
+            kw_list.append("underline")
+        if overstrike:
+            kw_list.append("overstrike")
+
+        widget._set_tk_config("font", kw_list)
 
     # Get the text colour as a string
     @property
@@ -250,6 +312,32 @@ class TextMixin:
     @text_slant.setter
     def text_slant(self, slant):
         TextMixin.set_text_slant(self, slant)
+
+    # Get the current text underline
+    @property
+    def text_underline(self):
+        """
+        Sets or returns the text underline of the widget.
+        """
+        return TextMixin.get_text_underline(self)
+
+    # Set the font underline
+    @text_underline.setter
+    def text_underline(self, underline):
+        TextMixin.set_text_underline(self, underline)
+
+    # Get the current text overstrike
+    @property
+    def text_overstrike(self):
+        """
+        Sets or returns the text overstrike of the widget.
+        """
+        return TextMixin.get_text_overstrike(self)
+
+    # Set the font overstrike
+    @text_overstrike.setter
+    def text_overstrike(self, overstrike):
+        TextMixin.set_text_overstrike(self, overstrike)
 
 
 class ColorMixin:
