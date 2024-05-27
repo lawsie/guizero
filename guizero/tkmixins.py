@@ -144,7 +144,7 @@ class TextMixin:
         if f["overstrike"]:
             kw_list.append("overstrike")
         
-        widget._set_tk_config("font", kw_list)
+        widget._set_tk_config("font", tuple(kw_list))
 
     @staticmethod
     def get_text_size(widget):
@@ -166,7 +166,7 @@ class TextMixin:
         if f["overstrike"]:
             kw_list.append("overstrike")
 
-        widget._set_tk_config("font", kw_list)
+        widget._set_tk_config("font", tuple(kw_list))
 
     @staticmethod
     def get_text_weight(widget):
@@ -186,7 +186,7 @@ class TextMixin:
         if f["overstrike"]:
             kw_list.append("overstrike")
         
-        widget._set_tk_config("font", kw_list)
+        widget._set_tk_config("font", tuple(kw_list))
 
     @staticmethod
     def get_text_slant(widget):
@@ -206,7 +206,7 @@ class TextMixin:
         if f["overstrike"]:
             kw_list.append("overstrike")
 
-        widget._set_tk_config("font", kw_list)
+        widget._set_tk_config("font", tuple(kw_list))
 
     @staticmethod
     def get_text_underline(widget):
@@ -226,7 +226,7 @@ class TextMixin:
         if f["overstrike"]:
             kw_list.append("overstrike")
 
-        widget._set_tk_config("font", kw_list)
+        widget._set_tk_config("font", tuple(kw_list))
 
     @staticmethod
     def get_text_overstrike(widget):
@@ -246,7 +246,7 @@ class TextMixin:
         if overstrike:
             kw_list.append("overstrike")
 
-        widget._set_tk_config("font", kw_list)
+        widget._set_tk_config("font", tuple(kw_list))
 
     # Get the text colour as a string
     @property
