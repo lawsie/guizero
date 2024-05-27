@@ -151,6 +151,20 @@ def test_text_slant():
     assert id > 0
     a.destroy()
 
+def test_text_underline():
+    a = App()
+    d = Drawing(a)
+    id = d.text(1,2,"foo", underline=True)
+    assert id > 0
+    a.destroy()
+
+def test_text_overstrike():
+    a = App()
+    d = Drawing(a)
+    id = d.text(1,2,"foo", overstrike=True)
+    assert id > 0
+    a.destroy()
+
 def test_delete():
     a = App()
     d = Drawing(a)
