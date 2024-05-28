@@ -75,25 +75,27 @@ You can call the following methods on a `Window` object.
 
 You can set and get the following properties:
 
-| Method      | Data type             | Description                                                                                   |
-|-------------|-----------------------|-----------------------------------------------------------------------------------------------|
-| bg          | [color](colors.md)    | The background colour of the window                                                           |
-| children    | List                  | A list of widgets in this container                                                           |
-| enabled     | boolean               | `True` if the window is enabled                                                               |
-| font        | string                | The font that widgets should use                                                              |
-| full_screen | boolean               | False                                                                                         |
-| height      | int                   | The height of the window                                                                      |
-| image       | image_source (string) | The file path, tkinter.PhotoImage or PIL.Image you wish to use as the window icon.            |
-| layout      | string                | The layout being used by the Window (`"auto"`) or (`"grid"`)                                  |
-| title       | string                | The title of the window                                                                       |
-| text_size   | int                   | The size of the text widgets should use                                                       |
-| text_color  | [color](colors.md)    | The colour of the text widgets should use                                                     |
-| text_weight | string                | The weight of the text                                                                        |
-| text_slant  | string                | The slant of the text                                                                         |
-| tk          | tkinter.TopLevel      | The internal tkinter object, see [Using tkinter](usingtk.md)                                  |
-| visible     | boolean               | If the window is visible                                                                      |
-| width       | int                   | The width of the window                                                                       |
-| when_closed | function              | The function to call when the `Window` is closed. Setting to `None` (the default) will reset. |
+| Method          | Data type             | Description                                                                                   |
+|-----------------|-----------------------|-----------------------------------------------------------------------------------------------|
+| bg              | [color](colors.md)    | The background colour of the window                                                           |
+| children        | List                  | A list of widgets in this container                                                           |
+| enabled         | boolean               | `True` if the window is enabled                                                               |
+| font            | string                | The font that widgets should use                                                              |
+| full_screen     | boolean               | False                                                                                         |
+| height          | int                   | The height of the window                                                                      |
+| image           | image_source (string) | The file path, tkinter.PhotoImage or PIL.Image you wish to use as the window icon.            |
+| layout          | string                | The layout being used by the Window (`"auto"`) or (`"grid"`)                                  |
+| title           | string                | The title of the window                                                                       |
+| text_size       | int                   | The size of the text widgets should use                                                       |
+| text_color      | [color](colors.md)    | The colour of the text widgets should use                                                     |
+| text_weight     | string                | The weight of the text                                                                        |
+| text_slant      | string                | The slant of the text                                                                         |
+| text_underline  | boolean               | Add an underline to the text                                                                  |
+| text_overstrike | boolean               | Add an overstrike to the text                                                                 |
+| tk              | tkinter.TopLevel      | The internal tkinter object, see [Using tkinter](usingtk.md)                                  |
+| visible         | boolean               | If the window is visible                                                                      |
+| width           | int                   | The width of the window                                                                       |
+| when_closed     | function              | The function to call when the `Window` is closed. Setting to `None` (the default) will reset. |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `Window` object is called `window` you would write `window.title`.

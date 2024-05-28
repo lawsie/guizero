@@ -73,24 +73,26 @@ You can call the following methods on a `CheckBox` object.
 
 You can set and get the following properties:
 
-| Method      | Data type           | Description                                                                                           |
-|-------------|---------------------|-------------------------------------------------------------------------------------------------------|
-| align       | string              | The alignment of this widget within its container                                                     |
-| bg          | [color](colors.md)  | The background colour of the widget                                                                   |
-| enabled     | boolean             | `True` if the widget is enabled                                                                       |
-| font        | string              | The font of the text                                                                                  |
-| grid        | List                | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height      | [size](size.md)     | Set the height of the widget in characters or to `"fill"`                                             |
-| master      | App or Box          | The container to which this widget belongs                                                            |
-| text        | string              | The text associated with the checkbox                                                                 |
-| value       | int                 | `1` if the CheckBox is ticked or `0` if it is not ticked                                              |
-| visible     | boolean             | If this widget is visible                                                                             |
-| width       | [size](size.md)     | Set the width of the widget in characters or to `"fill"`                                              |
-| text_size   | int                 | The size of the text                                                                                  |
-| text_color  | [color](colors.md)  | The colour of the text                                                                                |
-| text_weight | string              | The weight of the text                                                                                |
-| text_slant  | string              | The slant of the text                                                                                 |
-| tk          | tkinter.Checkbutton | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
+| Method          | Data type           | Description                                                                                           |
+|-----------------|---------------------|-------------------------------------------------------------------------------------------------------|
+| align           | string              | The alignment of this widget within its container                                                     |
+| bg              | [color](colors.md)  | The background colour of the widget                                                                   |
+| enabled         | boolean             | `True` if the widget is enabled                                                                       |
+| font            | string              | The font of the text                                                                                  |
+| grid            | List                | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| height          | [size](size.md)     | Set the height of the widget in characters or to `"fill"`                                             |
+| master          | App or Box          | The container to which this widget belongs                                                            |
+| text            | string              | The text associated with the checkbox                                                                 |
+| value           | int                 | `1` if the CheckBox is ticked or `0` if it is not ticked                                              |
+| visible         | boolean             | If this widget is visible                                                                             |
+| width           | [size](size.md)     | Set the width of the widget in characters or to `"fill"`                                              |
+| text_size       | int                 | The size of the text                                                                                  |
+| text_color      | [color](colors.md)  | The colour of the text                                                                                |
+| text_weight     | string              | The weight of the text                                                                                |
+| text_slant      | string              | The slant of the text                                                                                 |
+| text_underline  | boolean             | Add an underline to the text                                                                          |
+| text_overstrike | boolean             | Add an overstrike to the text                                                                         |
+| tk              | tkinter.Checkbutton | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
 
 
 Refer to a property as `<name of widget>.property`. For example, if your `CheckBox` object is called `checkbox` you would write `checkbox.value`.

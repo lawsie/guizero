@@ -98,25 +98,27 @@ You can call the following methods on a `PushButton` object.
 
 You can set and get the following properties:
 
-| Method      | Data type             | Description                                                                                           |
-|-------------|-----------------------|-------------------------------------------------------------------------------------------------------|
-| align       | string                | The alignment of this widget within its container                                                     |
-| bg          | [color](colors.md)    | The background colour of the widget                                                                   |
-| enabled     | boolean               | `True` if the widget is enabled                                                                       |
-| font        | string                | The font of the text on the button                                                                    |
-| grid        | List                  | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height      | [size](size.md)       | Set the height of the widget in characters or pixels if its an image button or to `"fill"`            |
-| image       | image_source (string) | The file path, tkinter.PhotoImage or PIL.Image you wish to display.                                   |
-| master      | App or Box            | The container to which this widget belongs                                                            |
-| text        | string                | The text on the button                                                                                |
-| text_color  | [color](colors.md)    | The colour of the text on the button                                                                  |
-| text_size   | int                   | The size of the text on the button                                                                    |
-| text_weight | string                | The weight of the text                                                                                |
-| text_slant  | string                | The slant of the text                                                                                 |
-| tk          | tkinter.Button        | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
-| value       | int                   | Returns 1 when the button is pressed, 0 if the button is released                                     |
-| visible     | boolean               | If this widget is visible                                                                             |
-| width       | [size](size.md)       | Set the width of the widget in characters or pixels if its an image button or to `"fill"`             |
+| Method          | Data type             | Description                                                                                           |
+|-----------------|-----------------------|-------------------------------------------------------------------------------------------------------|
+| align           | string                | The alignment of this widget within its container                                                     |
+| bg              | [color](colors.md)    | The background colour of the widget                                                                   |
+| enabled         | boolean               | `True` if the widget is enabled                                                                       |
+| font            | string                | The font of the text on the button                                                                    |
+| grid            | List                  | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| height          | [size](size.md)       | Set the height of the widget in characters or pixels if its an image button or to `"fill"`            |
+| image           | image_source (string) | The file path, tkinter.PhotoImage or PIL.Image you wish to display.                                   |
+| master          | App or Box            | The container to which this widget belongs                                                            |
+| text            | string                | The text on the button                                                                                |
+| text_color      | [color](colors.md)    | The colour of the text on the button                                                                  |
+| text_size       | int                   | The size of the text on the button                                                                    |
+| text_weight     | string                | The weight of the text                                                                                |
+| text_slant      | string                | The slant of the text                                                                                 |
+| text_underline  | boolean               | Add an underline to the text                                                                          |
+| text_overstrike | boolean               | Add an overstrike to the text                                                                         |
+| tk              | tkinter.Button        | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
+| value           | int                   | Returns 1 when the button is pressed, 0 if the button is released                                     |
+| visible         | boolean               | If this widget is visible                                                                             |
+| width           | [size](size.md)       | Set the width of the widget in characters or pixels if its an image button or to `"fill"`             |
 
 Refer to a property as `<name of widget>.property`. For example, if your `PushButton` object is called `button` you would write `button.value`.
 

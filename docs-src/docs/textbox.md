@@ -95,6 +95,8 @@ You can set and get the following properties:
 | text_color      | [color](colors.md) | The colour of the text                                                                                                                                                        |
 | text_weight     | string             | The weight of the text                                                                                                                                                        |
 | text_slant      | string             | The slant of the text                                                                                                                                                         |
+| text_underline  | boolean            | Add an underline to the text                                                                                                                                                  |
+| text_overstrike | boolean            | Add an overstrike to the text                                                                                                                                                 |
 | tk              | tkinter.Entry      | The internal tkinter object, see [Using tkinter](usingtk.md)                                                                                                                  |
 | wrap            | boolean            | Whether text in a multiline text box should be wrapped. Defaults to `True`. If its a single line TextBox, `None` will be returned and a warning displayed when trying to set. |
 
