@@ -25,8 +25,8 @@ def test_default_values():
     assert t.align == None
     assert t.size == 12
     assert t.text_color == "black"
-    assert t.text_weight == "normal"
-    assert t.text_slant == "roman"
+    assert t.text_bold == False
+    assert t.text_italic == False
     assert t.text_underline == False
     assert t.text_overstrike == False
     assert t.value == ""
@@ -46,8 +46,8 @@ def test_alt_values():
         align="top",
         width = 10,
         height = 11,
-        weight="bold",
-        slant="italic",
+        bold=True,
+        italic=True,
         underline=True,
         overstrike=True)
 
@@ -62,8 +62,8 @@ def test_alt_values():
     assert t.value == "foo"
     assert t.width == 10
     assert t.height == 11
-    assert t.weight == "bold"
-    assert t.slant == "italic"
+    assert t.bold == True
+    assert t.italic == True
     assert t.underline == True
     assert t.overstrike == True
     a.destroy()
@@ -75,10 +75,10 @@ def test_getters_setters():
     assert t.value == "foo"
     t.size = 18
     assert t.size == 18
-    t.weight = "bold"
-    assert t.weight == "bold"
-    t.slant = "italic"
-    assert t.slant == "italic"
+    t.bold = True
+    assert t.bold == True
+    t.italic = True
+    assert t.italic == True
     t.underline = True
     assert t.underline == True
     t.overstrike = True
@@ -132,7 +132,7 @@ def test_display():
 def test_text():
     a = App()
     # default values
-    t = Text(a, color=None, size=None, font=None, weight=None, slant=None, underline=None, overstrike=None)
+    t = Text(a, color=None, size=None, font=None, bold=None, italic=None, underline=None, overstrike=None)
     text_test(t)
     a.destroy()
 

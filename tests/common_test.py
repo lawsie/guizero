@@ -154,17 +154,17 @@ def text_test(widget):
     widget.text_size = None
     assert widget.text_size == default
 
-    default = widget.text_weight
-    widget.text_weight = font.BOLD
-    assert widget.text_weight == font.BOLD
-    widget.text_weight = None
-    assert widget.text_weight == default
+    default = widget.text_bold
+    widget.text_bold = True
+    assert widget.text_bold == True
+    widget.text_bold = None
+    assert widget.text_bold == default
 
-    default = widget.text_slant
-    widget.text_slant = font.ITALIC
-    assert widget.text_slant == font.ITALIC
-    widget.text_slant = None
-    assert widget.text_slant == default
+    default = widget.text_italic
+    widget.text_italic = True
+    assert widget.text_italic == True
+    widget.text_italic = None
+    assert widget.text_italic == default
 
     default = widget.text_underline
     widget.text_underline = True
@@ -268,10 +268,10 @@ def cascaded_properties_test(container, widget, text):
         assert widget.text_color == "purple"
         container.text_size = 16
         assert widget.text_size == 16
-        container.text_weight = "bold"
-        assert widget.text_weight == "bold"
-        container.text_slant = "italic"
-        assert widget.text_slant == "italic"
+        container.text_bold = True
+        assert widget.text_bold == True
+        container.text_italic = True
+        assert widget.text_italic == True
         container.text_underline = True
         assert widget.text_underline == True
         container.text_overstrike = True
@@ -283,8 +283,8 @@ def inherited_properties_test(container, widget_create, text):
     if text:
         container.text_color = "purple"
         container.text_size = 16
-        container.text_weight = "bold"
-        container.text_slant = "italic"
+        container.text_bold = True
+        container.text_italic = True
         container.text_underline = True
         container.text_overstrike = True
 
@@ -295,8 +295,8 @@ def inherited_properties_test(container, widget_create, text):
     if text:
         assert w.text_color == "purple"
         assert w.text_size == 16
-        assert w.text_weight == "bold"
-        assert w.text_slant == "italic"
+        assert w.text_bold == True
+        assert w.text_italic == True
         assert w.text_underline == True
         assert w.text_overstrike == True
 
@@ -326,14 +326,14 @@ def cascading_enable_test(container):
     check_children(container, True)
 
 def cascading_properties_test(container):
-    t = Text(container, color=None, size=None, font=None, weight=None, slant=None, underline=None, overstrike=None)
+    t = Text(container, color=None, size=None, font=None, bold=None, italic=None, underline=None, overstrike=None)
     p = Picture(container)
 
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
-    container.text_weight = "bold"
-    container.text_slant = "italic"
+    container.text_bold = True
+    container.text_italic = True
     container.text_underline = True
     container.font = TEST_FONT
     container.enabled = False
@@ -345,8 +345,8 @@ def cascading_properties_test(container):
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
-    assert t.text_weight == "bold"
-    assert t.text_slant == "italic"
+    assert t.text_bold == True
+    assert t.text_italic == True
     assert t.text_underline == True
     assert t.font == TEST_FONT
     assert t.enabled == False
@@ -367,8 +367,8 @@ def inheriting_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
-    container.text_weight = "bold"
-    container.text_slant = "italic"
+    container.text_bold = True
+    container.text_italic = True
     container.text_underline = True
     container.font = TEST_FONT
     container.enabled = False
@@ -377,12 +377,12 @@ def inheriting_properties_test(container):
     if not isinstance(container, TitleBox):
         container.text_overstrike = True
 
-    t = Text(container, color=None, size=None, font=None, weight=None, slant=None, underline=None, overstrike=None)
+    t = Text(container, color=None, size=None, font=None, bold=None, italic=None, underline=None, overstrike=None)
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
-    assert t.text_weight == "bold"
-    assert t.text_slant == "italic"
+    assert t.text_bold == True
+    assert t.text_italic == True
     assert t.text_underline == True
     assert t.font == TEST_FONT
     assert not t.enabled

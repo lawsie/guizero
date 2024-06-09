@@ -1,5 +1,5 @@
 from tkinter import Canvas, ALL
-from tkinter.font import Font
+from tkinter.font import Font, BOLD, ITALIC, NORMAL, ROMAN
 from . import utilities as utils
 from .base import Widget
 from .event import EventManager
@@ -249,7 +249,7 @@ class Drawing(Widget):
         self._images[id] = _image
         return id
     
-    def text(self, x, y, text, color="black", font=None, size=None, max_width=None, weight=None, slant=None, underline=None, overstrike=None):
+    def text(self, x, y, text, color="black", font=None, size=None, max_width=None, bold=None, italic=None, underline=None, overstrike=None):
         """
         Inserts text into the drawing, position by its top-left corner.
         
@@ -270,9 +270,21 @@ class Drawing(Widget):
             The size of the text. Defaults to `None` and will use the system
             default font size.
 
-        :param str weight:
-            The font weight to use. Defaults to `None` and will use `normal` 
-            font weight by default. Can also use `bold`.
+        :param bool bold:
+            Whether the font is bold. Defaults to `None` and will use the normal 
+            font by default.
+
+        :param bool italic:
+            Whether the font is italic. Defaults to `None` and will use the normal 
+            font by default.
+
+        :param bool underline:
+            Whether the font is underlined. Defaults to `None` and will use the normal 
+            font by default.
+
+        :param bool overstrike:
+            Whether the font is overstruck. Defaults to `None` and will use the normal 
+            font by default.
 
         :param int max_width:
             Maximum line length. Lines longer than this value are wrapped. 
@@ -282,10 +294,14 @@ class Drawing(Widget):
         kwargs = {}
         if size is not None:
             kwargs["size"] = size
-        if weight is not None:
-            kwargs["weight"] = weight
-        if slant is not None:
-            kwargs["slant"] = slant
+        if bold:
+            kwargs["weight"] = BOLD
+        else:
+            kwargs["weight"] = NORMAL
+        if italic:
+            kwargs["slant"] = ITALIC
+        else:
+            kwargs["slant"] = ROMAN
         if underline is not None:
             kwargs["underline"] = underline
         if overstrike is not None:

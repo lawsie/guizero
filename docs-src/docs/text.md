@@ -15,8 +15,8 @@ __init__(
     enabled=None,
     width=None,
     height=None,
-    weight=None,
-    slant=None,
+    bold=None,
+    italic=None,
     underline=None,
     overstrike=None)
 ```
@@ -54,10 +54,10 @@ When you create a `Text` object, you **must** specify a `master` and you can spe
 | enabled         | boolean            | None        | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master       |
 | width           | [size](size.md)    | None        | No         | Set the width of the widget in characters or to `"fill"`                                                              |
 | height          | [size](size.md)    | None        | No         | Set the height of the widget in characters or to `"fill"`                                                             |
-| weight          | string             | None        | No         | Set the weight of the font. Possible values: `"normal"`, `"bold"`.                                                    |
-| slant           | string             | None        | No         | Set the slant of the font. Possible values: `"roman"`, `"italic"`.                                                    |
-| underline       | boolean            | False       | No         | Add an underline to the text                                                                                          |
-| overstrike      | boolean            | False       | No         | Add an overstrike to the text                                                                                         |
+| bold            | boolean            | None        | No         | Set the text to bold.                                                                                                 |
+| italic          | boolean            | None        | No         | Set the text to italic                                                                                                |
+| underline       | boolean            | None        | No         | Add an underline to the text                                                                                          |
+| overstrike      | boolean            | None        | No         | Add an overstrike to the text                                                                                         |
 
 
 ### Methods
@@ -95,10 +95,10 @@ You can set and get the following properties:
 | master          | App or Box         | The container to which this widget belongs                                                            |
 | text_size       | int                | The size of the text                                                                                  |
 | text_color      | [color](colors.md) | The colour of the text                                                                                |
-| text_weight     | string             | The weight of the text                                                                                |
-| text_slant      | string             | The slant of the text                                                                                 |
-| text_underline  | boolean            | Add an underline to the text                                                                          |
-| text_overstrike | boolean            | Add an overstrike to the text                                                                         |
+| text_bold       | boolean            | Whether the text is bold                                                                              |
+| text_italic     | boolean            | Whether the text is italic                                                                            |
+| text_underline  | boolean            | Whether the text is underlined                                                                        |
+| text_overstrike | boolean            | Whether the text is overstruck                                                                        |
 | tk              | tkinter.Label      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
 | value           | string             | The text                                                                                              |
 | visible         | boolean            | If this widget is visible                                                                             |

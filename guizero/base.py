@@ -222,8 +222,8 @@ class Container(Component):
         self._bg = None
         self._text_color = None
         self._text_size = None
-        self._text_weight = None
-        self._text_slant = None
+        self._text_bold = None
+        self._text_italic = None
         self._text_underline = None
         self._text_overstrike = None
         self._font = None
@@ -234,8 +234,8 @@ class Container(Component):
             self.bg = master.bg
             self.text_color = master.text_color
             self.text_size = master.text_size
-            self.text_weight = master.text_weight
-            self.text_slant = master.text_slant
+            self.text_bold = master.text_bold
+            self.text_italic = master.text_italic
             self.text_underline = master.text_underline
             self.text_overstrike = master.text_overstrike
             self.font = master.font
@@ -302,42 +302,42 @@ class Container(Component):
                 child.text_size = self.text_size
 
     @property
-    def text_weight(self):
+    def text_bold(self):
         """
-        Sets and returns the text weight to be used by the widgets
+        Sets and returns if the text is bold from the widgets
         in the container.
 
         If set to None (the default) any widgets added to this container
-        will use the default 'normal' weight
+        will use the default non-bold font.
         """
-        return self._text_weight
+        return self._text_bold
 
-    @text_weight.setter
-    def text_weight(self, value):
-        self._text_weight = value
+    @text_bold.setter
+    def text_bold(self, value):
+        self._text_bold = value
         # cascade to child widgets
         for child in self.children:
             if isinstance(child, (Container, TextWidget)):
-                child.text_weight = self.text_weight
+                child.text_bold = self.text_bold
 
     @property
-    def text_slant(self):
+    def text_italic(self):
         """
-        Sets and returns the text slant to be used by the widgets
+        Sets and returns if the text if italic from the widgets
         in the container.
 
         If set to None (the default) any widgets added to this container
-        will use the default 'roman' slant
+        will use the default non-italic font.
         """
-        return self._text_slant
+        return self._text_italic
 
-    @text_slant.setter
-    def text_slant(self, value):
-        self._text_slant = value
+    @text_italic.setter
+    def text_italic(self, value):
+        self._text_italic = value
         # cascade to child widgets
         for child in self.children:
             if isinstance(child, (Container, TextWidget)):
-                child.text_slant = self.text_slant
+                child.text_italic = self.text_italic
 
     @property
     def text_underline(self):
@@ -782,8 +782,8 @@ class TextWidget(
         #inherit from master
         self.text_color = master.text_color
         self.text_size = master.text_size
-        self.text_weight = master.text_weight
-        self.text_slant = master.text_slant
+        self.text_bold = master.text_bold
+        self.text_italic = master.text_italic
         self.text_underline = master.text_underline
         self.text_overstrike = master.text_overstrike
         self.font = master.font
@@ -901,28 +901,28 @@ class ContainerTextWidget(ContainerWidget):
         super(ContainerWidget, self.__class__).text_size.fset(self, size)
 
     @property
-    def text_weight(self):
+    def text_bold(self):
         """
-        Sets or returns the text weight of the widget.
+        Sets or returns if the text is bold from the widget.
         """
-        return TextMixin.get_text_weight(self)
+        return TextMixin.get_text_bold(self)
 
-    @text_weight.setter
-    def text_weight(self, weight):
-        TextMixin.set_text_weight(self, weight)
-        super(ContainerWidget, self.__class__).text_weight.fset(self, weight)
+    @text_bold.setter
+    def text_bold(self, bold):
+        TextMixin.set_text_bold(self, bold)
+        super(ContainerWidget, self.__class__).text_bold.fset(self, bold)
 
     @property
-    def text_slant(self):
+    def text_italic(self):
         """
-        Sets or returns the text slant of the widget.
+        Sets or returns if the text is italic from the widget.
         """
-        return TextMixin.get_text_slant(self)
+        return TextMixin.get_text_italic(self)
 
-    @text_slant.setter
-    def text_slant(self, slant):
-        TextMixin.set_text_slant(self, slant)
-        super(ContainerWidget, self.__class__).text_slant.fset(self, slant)
+    @text_italic.setter
+    def text_italic(self, italic):
+        TextMixin.set_text_italic(self, italic)
+        super(ContainerWidget, self.__class__).text_italic.fset(self, italic)
 
     @property
     def text_underline(self):

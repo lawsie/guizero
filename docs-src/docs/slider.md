@@ -89,10 +89,10 @@ You can set and get the following properties:
 | start           | int                | The smallest value selectable on the slider                                                           |
 | text_size       | int                | The size of the text                                                                                  |
 | text_color      | [color](colors.md) | The colour of the text                                                                                |
-| text_weight     | string             | The weight of the text                                                                                |
-| text_slant      | string             | The slant of the text                                                                                 |
-| text_underline  | boolean            | Add an underline to the text                                                                          |
-| text_overstrike | boolean            | Add an overstrike to the text                                                                         |
+| text_bold       | boolean            | Whether the text is bold                                                                              |
+| text_italic     | boolean            | Whether the text is italic                                                                            |
+| text_underline  | boolean            | Whether the text is underlined                                                                        |
+| text_overstrike | boolean            | Whether the text is overstruck                                                                        |
 | tk              | tkinter.Scale      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
 | value           | string             | The current value of the slider                                                                       |
 | visible         | boolean            | If this widget is visible                                                                             |

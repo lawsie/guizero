@@ -18,8 +18,8 @@ class Text(TextWidget):
         enabled=None,
         width=None,
         height=None,
-        weight=None,
-        slant=None,
+        bold=None,
+        italic=None,
         underline=None,
         overstrike=None):
 
@@ -40,11 +40,11 @@ class Text(TextWidget):
         if color is not None:
             self.text_color = color
 
-        if weight is not None:
-            self.text_weight = weight
+        if bold is not None:
+            self.text_bold = bold
 
-        if slant is not None:
-            self.text_slant = slant
+        if italic is not None:
+            self.text_italic = italic
 
         if underline is not None:
             self.text_underline = underline
@@ -75,21 +75,21 @@ class Text(TextWidget):
 
     # The font weight
     @property
-    def weight(self):
-        return self.text_weight
+    def bold(self):
+        return self.text_bold
 
-    @weight.setter
-    def weight(self, weight):
-        self.text_weight = weight
+    @bold.setter
+    def bold(self, bold):
+        self.text_bold = bold
 
     # The font slant
     @property
-    def slant(self):
-        return self.text_slant
+    def italic(self):
+        return self.text_italic
 
-    @slant.setter
-    def slant(self, slant):
-        self.text_slant = slant
+    @italic.setter
+    def italic(self, italic):
+        self.text_italic = italic
 
     # The font underline
     @property

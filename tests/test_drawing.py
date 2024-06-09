@@ -130,10 +130,10 @@ def test_text():
     assert id > 0
     a.destroy()
 
-def test_text_weight():
+def test_text_bold():
     a = App()
     d = Drawing(a)
-    id = d.text(1,2,"foo", weight="bold")
+    id = d.text(1,2,"foo", bold=True)
     assert id > 0
     a.destroy()
 
@@ -144,10 +144,10 @@ def test_text_color():
     assert id > 0
     a.destroy()
 
-def test_text_slant():
+def test_text_italic():
     a = App()
     d = Drawing(a)
-    id = d.text(1,2,"foo", slant="italic")
+    id = d.text(1,2,"foo", italic=True)
     assert id > 0
     a.destroy()
 

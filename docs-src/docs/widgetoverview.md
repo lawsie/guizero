@@ -180,10 +180,10 @@ All widgets are customisable through their properties. These properties are typi
 | width           | [size](size.md)    | The width of the widget.                                |
 | text_size       | int                | The size of the text                                    |
 | text_color      | [color](colors.md) | The colour of the text                                  |
-| text_weight     | string             | The weight of the text                                  |
-| text_slant      | string             | The slant of the text                                   |
-| text_underline  | boolean            | Add an underline to the text                            |
-| text_overstrike | boolean            | Add an overstrike to the text                           |
+| text_bold       | boolean            | Whether the text is bold                                |
+| text_italic     | boolean            | Whether the text is italic                              |
+| text_underline  | boolean            | Whether the text is underlined                          |
+| text_overstrike | boolean            | Whether the text is overstruck                          |
 
 ## Methods
 

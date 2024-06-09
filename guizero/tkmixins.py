@@ -1,5 +1,5 @@
 from . import utilities as utils
-from tkinter.font import Font, NORMAL, ROMAN
+from tkinter.font import Font, BOLD, ITALIC, NORMAL, ROMAN
 from tkinter import TclError
 
 
@@ -127,7 +127,7 @@ class TextMixin:
     @staticmethod
     def get_font(widget):
         f = TextMixin.get_tk_font(widget)
-        return (f["family"])
+        return f["family"]
 
     @staticmethod
     def set_font(widget, font):
@@ -149,7 +149,7 @@ class TextMixin:
     @staticmethod
     def get_text_size(widget):
         f = TextMixin.get_tk_font(widget)
-        return (f["size"])
+        return f["size"]
 
     @staticmethod
     def set_text_size(widget, size):
@@ -169,18 +169,20 @@ class TextMixin:
         widget._set_tk_config("font", tuple(kw_list))
 
     @staticmethod
-    def get_text_weight(widget):
+    def get_text_bold(widget):
         f = TextMixin.get_tk_font(widget)
-        return (f["weight"])
+        return True if f["weight"] == BOLD else False
     
     @staticmethod
-    def set_text_weight(widget, weight):
+    def set_text_bold(widget, bold):
         f = TextMixin.get_tk_font(widget)
 
-        if weight is None:
-            weight = NORMAL
+        if bold is None or not bold:
+            bold = NORMAL
+        else:
+            bold = BOLD
 
-        kw_list = [f["family"], f["size"], weight, f["slant"]]
+        kw_list = [f["family"], f["size"], bold, f["slant"]]
         if f["underline"]:
             kw_list.append("underline")
         if f["overstrike"]:
@@ -189,18 +191,20 @@ class TextMixin:
         widget._set_tk_config("font", tuple(kw_list))
 
     @staticmethod
-    def get_text_slant(widget):
+    def get_text_italic(widget):
         f = TextMixin.get_tk_font(widget)
-        return (f["slant"])
+        return True if f["slant"] == ITALIC else False
     
     @staticmethod
-    def set_text_slant(widget, slant):
+    def set_text_italic(widget, italic):
         f = TextMixin.get_tk_font(widget)
 
-        if slant is None:
-            slant = ROMAN
+        if italic is None or not italic:
+            italic = ROMAN
+        else:
+            italic = ITALIC
 
-        kw_list = [f["family"], f["size"], f["weight"], slant]
+        kw_list = [f["family"], f["size"], f["weight"], italic]
         if f["underline"]:
             kw_list.append("underline")
         if f["overstrike"]:
@@ -211,7 +215,7 @@ class TextMixin:
     @staticmethod
     def get_text_underline(widget):
         f = TextMixin.get_tk_font(widget)
-        return (f["underline"])
+        return f["underline"]
     
     @staticmethod
     def set_text_underline(widget, underline):
@@ -231,7 +235,7 @@ class TextMixin:
     @staticmethod
     def get_text_overstrike(widget):
         f = TextMixin.get_tk_font(widget)
-        return (f["overstrike"])
+        return f["overstrike"]
     
     @staticmethod
     def set_text_overstrike(widget, overstrike):
@@ -289,29 +293,29 @@ class TextMixin:
 
     # Get the current text weight
     @property
-    def text_weight(self):
+    def text_bold(self):
         """
-        Sets or returns the text weight of the widget.
+        Sets or returns if the text of the widget is bold.
         """
-        return TextMixin.get_text_weight(self)
+        return TextMixin.get_text_bold(self)
 
     # Set the font weight
-    @text_weight.setter
-    def text_weight(self, weight):
-        TextMixin.set_text_weight(self, weight)
+    @text_bold.setter
+    def text_bold(self, bold):
+        TextMixin.set_text_bold(self, bold)
 
     # Get the current text slant
     @property
-    def text_slant(self):
+    def text_italic(self):
         """
-        Sets or returns the text slant of the widget.
+        Sets or returns if the text of the widget is italic.
         """
-        return TextMixin.get_text_slant(self)
+        return TextMixin.get_text_italic(self)
 
     # Set the font slant
-    @text_slant.setter
-    def text_slant(self, slant):
-        TextMixin.set_text_slant(self, slant)
+    @text_italic.setter
+    def text_italic(self, italic):
+        TextMixin.set_text_italic(self, italic)
 
     # Get the current text underline
     @property
