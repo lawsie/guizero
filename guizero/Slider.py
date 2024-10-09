@@ -16,14 +16,15 @@ class Slider(TextWidget):
         visible=True, 
         enabled=None, 
         width=None, 
-        height=None):
+        height=None,
+        step=1):
 
         # Set the direction
         self._horizontal = horizontal
         orient = HORIZONTAL if horizontal else VERTICAL
 
         # Create a tk Scale object within this object
-        tk = Scale(master.tk, from_=start, to=end, orient=orient, command=self._command_callback)
+        tk = Scale(master.tk, from_=start, to=end, resolution=step, orient=orient, command=self._command_callback)
 
         super().__init__(master, tk, grid, align, visible, enabled, width, height)
 
@@ -56,6 +57,14 @@ class Slider(TextWidget):
     @end.setter
     def end(self, value):
         self._set_tk_config("to", value)
+    
+    @property
+    def step(self):
+        return self._get_tk_config("resolution")
+
+    @step.setter
+    def step(self, value):
+        self._set_tk_config("resolution", value)
     
     # Resize
     def resize(self, width, height):
