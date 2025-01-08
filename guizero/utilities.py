@@ -6,6 +6,7 @@ except ImportError:
 
 try:
     from PIL import Image, ImageTk
+
     PIL_AVAILABLE = True
 except ImportError:
     PIL_AVAILABLE = False
@@ -15,8 +16,10 @@ from collections.abc import MutableSequence
 
 import sys
 
+
 class GUIZeroException(Exception):
     pass
+
 
 # holds details about the configuration guizero is using
 class SystemConfig:
@@ -29,14 +32,22 @@ class SystemConfig:
             self._platform = "linux"
 
         if PIL_AVAILABLE:
-            self._supported_image_types = ["GIF", "Animated GIF", "BMP", "ICO", "PNG", "JPG", "TIF"]
+            self._supported_image_types = [
+                "GIF",
+                "Animated GIF",
+                "BMP",
+                "ICO",
+                "PNG",
+                "JPG",
+                "TIF",
+            ]
         else:
             self._supported_image_types = ["GIF", "PNG"]
             if self._platform == "darwin":
                 # macOS only supports GIF with PIL
                 self._supported_image_types = ["GIF"]
 
-        # tk options  
+        # tk options
         self._tk_options = {
             "*Label.Font": "helvetica 12",
             "*Label.Foreground": "black",
@@ -70,7 +81,7 @@ class SystemConfig:
         Returns a dictionary of tk options in the format {"pattern": value}
         which will be applied when an App is created.
 
-        The tk options can be used to modify the default behaviour of 
+        The tk options can be used to modify the default behaviour of
         tk and its widgets e.g. Change the background colour of all Buttons ::
 
             from guizero import system_config
@@ -78,6 +89,7 @@ class SystemConfig:
 
         """
         return self._tk_options
+
 
 system_config = SystemConfig()
 
@@ -178,7 +190,9 @@ class GUIZeroImage:
 
         except Exception as e:
             error_text = "Image import error - '{}'\n".format(e)
-            error_text += "Check the file path and image type is {}".format("/".join(system_config.supported_image_types))
+            error_text += "Check the file path and image type is {}".format(
+                "/".join(system_config.supported_image_types)
+            )
             raise_error(error_text)
 
     def _open_image_source(self):
@@ -188,7 +202,7 @@ class GUIZeroImage:
                 self._pil_image = Image.open(self._image_source)
                 self._tk_image = ImageTk.PhotoImage(self._pil_image)
 
-            elif Image.isImageType(self._image_source):
+            elif isinstance(self._image_source, Image.Image):
                 # the source is a PIL Image
                 self._pil_image = self._image_source
                 self._tk_image = ImageTk.PhotoImage(self._pil_image)
@@ -197,7 +211,9 @@ class GUIZeroImage:
                 self._tk_image = self._image_source
 
             else:
-                raise Exception("Image must be a file path, PIL.Image or tkinter.PhotoImage")
+                raise Exception(
+                    "Image must be a file path, PIL.Image or tkinter.PhotoImage"
+                )
 
         else:
             if isinstance(self._image_source, str):
@@ -219,12 +235,17 @@ class GUIZeroImage:
             self._height = self._tk_image.height()
 
         # does it need resizing?
-        if self._width != self._tk_image.width() or self._height != self._tk_image.height():
+        if (
+            self._width != self._tk_image.width()
+            or self._height != self._tk_image.height()
+        ):
             if self._pil_image:
                 resized_image = self._pil_image.resize((self._width, self._height))
                 self._tk_image = ImageTk.PhotoImage(resized_image)
             else:
-                error_format("Image resizing - cannot scale the image as PIL is not available.")
+                error_format(
+                    "Image resizing - cannot scale the image as PIL is not available."
+                )
 
     def _open_image_frames(self):
         if self._pil_image:
@@ -232,10 +253,12 @@ class GUIZeroImage:
             try:
                 while True:
                     self._pil_image.seek(frame_count)
-                    tk_frame = ImageTk.PhotoImage(self._pil_image.resize((self._width, self._height)))
+                    tk_frame = ImageTk.PhotoImage(
+                        self._pil_image.resize((self._width, self._height))
+                    )
 
                     try:
-                        delay = self._pil_image.info['duration']
+                        delay = self._pil_image.info["duration"]
                     except:
                         delay = 100
 
@@ -320,7 +343,7 @@ class TriggeredList(MutableSequence):
         """
         A list which will call a callback when a value is changed.
 
-        Used to hold a widgets grid reference.  
+        Used to hold a widgets grid reference.
         """
         self._list = list(iterable)
         self._on_change = on_change
@@ -360,8 +383,9 @@ class TriggeredList(MutableSequence):
 
 # Lambda-izer for making it easy to pass arguments with function calls
 # without having to know what lambda does
-def with_args( func_name, *args):
+def with_args(func_name, *args):
     return lambda: func_name(*args)
+
 
 # Gets the number of args a function expects
 def no_args_expected(func_name):
@@ -377,12 +401,14 @@ def no_args_expected(func_name):
     else:
         return 0
 
+
 # Format errors in a pretty way
 def error_format(message):
     print("------------------------------------------------------------")
     print("*** GUIZERO WARNING ***")
     print(message)
     print("------------------------------------------------------------")
+
 
 # Raise error in a pretty way
 def raise_error(message):
@@ -392,12 +418,14 @@ def raise_error(message):
     error_message += "------------------------------------------------------------\n"
     raise GUIZeroException(error_message)
 
+
 def deprecated(message):
     print("*** DEPRECATED: " + message)
 
+
 def convert_color(color):
     """
-    Converts a color from "color", (255, 255, 255) or "#ffffff" into a color tk 
+    Converts a color from "color", (255, 255, 255) or "#ffffff" into a color tk
     should understand.
     """
     if color is not None:
@@ -412,7 +440,11 @@ def convert_color(color):
 
                 # check its format
                 if len(color) != 7:
-                    raise ValueError("{} is not a valid # color, it must be in the format #ffffff.".format(color))
+                    raise ValueError(
+                        "{} is not a valid # color, it must be in the format #ffffff.".format(
+                            color
+                        )
+                    )
                 else:
                     # split the color into its hex values
                     hex_colors = (color[1:3], color[3:5], color[5:7])
@@ -422,10 +454,18 @@ def convert_color(color):
                         try:
                             int_color = int(hex_color, 16)
                         except:
-                            raise ValueError("{} is not a valid value, it must be hex 00 - ff".format(hex_color))
+                            raise ValueError(
+                                "{} is not a valid value, it must be hex 00 - ff".format(
+                                    hex_color
+                                )
+                            )
 
                         if not (0 <= int_color <= 255):
-                            raise ValueError("{} is not a valid color value, it must be 00 - ff".format(hex_color))
+                            raise ValueError(
+                                "{} is not a valid color value, it must be 00 - ff".format(
+                                    hex_color
+                                )
+                            )
 
         # if the color is not a string, try and convert it
         else:
@@ -433,7 +473,9 @@ def convert_color(color):
             try:
                 no_of_colors = len(color)
             except:
-                raise ValueError("A color must be a list or tuple of 3 values (red, green, blue)")
+                raise ValueError(
+                    "A color must be a list or tuple of 3 values (red, green, blue)"
+                )
 
             if no_of_colors != 3:
                 raise ValueError("A color must contain 3 values (red, green, blue)")
@@ -441,7 +483,9 @@ def convert_color(color):
             # check the color values are between 0 and 255
             for c in color:
                 if not (0 <= c <= 255):
-                    raise ValueError("{} is not a valid color value, it must be 0 - 255")
+                    raise ValueError(
+                        "{} is not a valid color value, it must be 0 - 255"
+                    )
 
             # convert to #ffffff format
             color = "#{:02x}{:02x}{:02x}".format(color[0], color[1], color[2])
