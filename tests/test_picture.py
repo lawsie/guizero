@@ -12,8 +12,9 @@ from common_test import (
     cascaded_properties_test,
     inherited_properties_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+)
+
 
 def test_default_values():
     a = App()
@@ -25,15 +26,17 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
+    a = App(layout="grid")
     p = Picture(
         a,
-        image = "../examples/guizero.gif",
-        grid = [0,1],
-        align = "top",
-        width = 10,
-        height = 11)
+        image="../examples/guizero.gif",
+        grid=[0, 1],
+        align="top",
+        width=10,
+        height=11,
+    )
     assert p.image == "../examples/guizero.gif"
     assert p._image.tk_image is not None
     assert p.grid[0] == 0
@@ -42,6 +45,7 @@ def test_alt_values():
     assert p.width == 10
     assert p.height == 11
     a.destroy()
+
 
 def test_getters_setters():
     a = App()
@@ -58,11 +62,11 @@ def test_getters_setters():
 
     a.destroy()
 
-@pytest.mark.skipif(system_config.PIL_available == False,
-                    reason="PIL not available")
+
+@pytest.mark.skipif(system_config.PIL_available == False, reason="PIL not available")
 def test_jpg():
     a = App()
-    p = Picture(a, image = "../examples/guizero.jpg")
+    p = Picture(a, image="../examples/guizero.jpg")
 
     assert p.image == "../examples/guizero.jpg"
     assert p._image.tk_image is not None
@@ -70,11 +74,11 @@ def test_jpg():
 
     a.destroy()
 
-@pytest.mark.skipif(system_config.PIL_available == False,
-                    reason="PIL not available")
+
+@pytest.mark.skipif(system_config.PIL_available == False, reason="PIL not available")
 def test_animated_picture():
     a = App()
-    p = Picture(a, image = "../examples/guizero_flash.gif")
+    p = Picture(a, image="../examples/guizero_flash.gif")
 
     assert p._image.tk_image is not None
     assert p._image.pil_image is not None
@@ -82,6 +86,7 @@ def test_animated_picture():
     assert p._image_player.running
 
     a.destroy()
+
 
 def test_picture_tkobject():
     from tkinter import PhotoImage
@@ -93,8 +98,8 @@ def test_picture_tkobject():
     assert p._image.tk_image is not None
     a.destroy()
 
-@pytest.mark.skipif(system_config.PIL_available == False,
-                    reason="PIL not available")
+
+@pytest.mark.skipif(system_config.PIL_available == False, reason="PIL not available")
 def test_picture_pilobject():
     from PIL import Image
 
@@ -106,11 +111,13 @@ def test_picture_pilobject():
     assert p._image.pil_image is not None
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     p = Picture(a)
     schedule_after_test(a, p)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
@@ -118,11 +125,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, p)
     a.destroy()
 
+
 def test_destroy():
     a = App()
     p = Picture(a)
     destroy_test(p)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -130,11 +139,13 @@ def test_enable():
     enable_test(p)
     a.destroy()
 
+
 def test_display():
     a = App()
     p = Picture(a)
     display_test(p)
     a.destroy()
+
 
 def test_color():
     a = App()
@@ -142,11 +153,13 @@ def test_color():
     color_test(p)
     a.destroy()
 
+
 def test_events():
     a = App()
     p = Picture(a)
     events_test(p)
     a.destroy()
+
 
 def test_cascaded_properties():
     a = App()
@@ -154,10 +167,12 @@ def test_cascaded_properties():
     cascaded_properties_test(a, p, False)
     a.destroy()
 
+
 def test_inherited_properties():
     a = App()
     inherited_properties_test(a, lambda: Picture(a), False)
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -165,16 +180,17 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
-    
-    w = Picture(a, grid=[1,2])
+
+    w = Picture(a, grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
-    
-    ws = Picture(a, grid=[1,2,3,4])
+
+    ws = Picture(a, grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = Picture(a, grid=[1,2], align="top")
+    wa = Picture(a, grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
-    
+
     a.destroy()

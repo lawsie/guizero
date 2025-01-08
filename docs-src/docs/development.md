@@ -27,14 +27,15 @@ pip uninstall guizero
 Create a virtual environment (not essential, but a good idea!):
 
 ```
-virtualenv guizero-[versionno]
-cd guizero-[versionno]
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 Activate your virtual environment:
 
 ```
-Scripts\activate
+source bin/activate
 ```
 
 Checkout and install guizero for development:
@@ -49,7 +50,7 @@ pip install -e .
 When you have finished your development, deactivate your virtual environment:
 
 ```
-Scripts\deactivate
+source bin/deactivate
 ```
 
 ## Tests

@@ -13,7 +13,8 @@ __init__(
     visible=True, 
     enabled=None, 
     width=None, 
-    height=None)
+    height=None,
+    step=1)
 ```
 
 ### What is it?
@@ -33,7 +34,7 @@ slider = Slider(app)
 app.display()
 ```
 
-### Starting paramters
+### Starting parameters
 
 When you create a `Slider` object, you **must** specify a `master` and you can specify any of the the optional parameters. Specify parameters in the brackets, like this: `slider = Slider(app, horizontal=False)`
 
@@ -50,6 +51,7 @@ When you create a `Slider` object, you **must** specify a `master` and you can s
 | enabled    | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 | width      | [size](size.md)    | None    | No         | Set the width of the widget in pixels or to `"fill"`                                                            |
 | height     | [size](size.md)    | None    | No         | Set the height of the widget in pixels or to `"fill"`                                                           |
+| step       | int                | 1       | No         | The increment of the slider's value                                                                             |
 
 
 ### Methods
@@ -76,27 +78,28 @@ You can call the following methods on a `Slider` object.
 
 You can set and get the following properties:
 
-| Method          | Data type          | Description                                                                                           |
-|-----------------|--------------------|-------------------------------------------------------------------------------------------------------|
-| align           | string             | The alignment of this widget within its container                                                     |
-| bg              | [color](colors.md) | The background colour of the widget                                                                   |
-| enabled         | boolean            | `True` if the widget is enabled                                                                       |
-| end             | int                | The largest value selectable on the slider                                                            |
-| font            | string             | The font of the text                                                                                  |
-| grid            | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
-| height          | [size](size.md)    | Set the height of the widget in pixels or to `"fill"`                                                 |
-| master          | App or Box         | The container to which this widget belongs                                                            |
-| start           | int                | The smallest value selectable on the slider                                                           |
-| text_size       | int                | The size of the text                                                                                  |
-| text_color      | [color](colors.md) | The colour of the text                                                                                |
+| Method     | Data type          | Description                                                                                           |
+|------------|--------------------|-------------------------------------------------------------------------------------------------------|
+| align      | string             | The alignment of this widget within its container                                                     |
+| bg         | [color](colors.md) | The background colour of the widget                                                                   |
+| enabled    | boolean            | `True` if the widget is enabled                                                                       |
+| end        | int                | The largest value selectable on the slider                                                          |
+| font       | string             | The font of the text                                                                                  |
+| grid       | List               | `[x,y]` coordinates of this widget. This parameter is only required if the `master` object has a grid |
+| height     | [size](size.md)    | Set the height of the widget in pixels or to `"fill"`                                                 |
+| master     | App or Box         | The container to which this widget belongs                                                            |
+| start      | int                | The smallest value selectable on the slider                                                         |
+| text_size  | int                | The size of the text                                                                                  |
 | text_bold       | boolean            | Whether the text is bold                                                                              |
+| text_color | [color](colors.md) | The colour of the text                                                                                |
 | text_italic     | boolean            | Whether the text is italic                                                                            |
-| text_underline  | boolean            | Whether the text is underlined                                                                        |
 | text_overstrike | boolean            | Whether the text is overstruck                                                                        |
-| tk              | tkinter.Scale      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
-| value           | string             | The current value of the slider                                                                       |
-| visible         | boolean            | If this widget is visible                                                                             |
-| width           | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                  | 
+| text_underline  | boolean            | Whether the text is underlined                                                                        |
+| tk         | tkinter.Scale      | The internal tkinter object, see [Using tkinter](usingtk.md)                                          |
+| value      | string             | The current value of the slider                                                                       |
+| visible    | boolean            | If this widget is visible                                                                             |
+| width      | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                  |
+| step       | int                | The increment of the slider's value                                                                   |
 
 ### Examples
 
