@@ -130,6 +130,41 @@ def test_text():
     assert id > 0
     a.destroy()
 
+def test_text_bold():
+    a = App()
+    d = Drawing(a)
+    id = d.text(1,2,"foo", bold=True)
+    assert id > 0
+    a.destroy()
+
+def test_text_color():
+    a = App()
+    d = Drawing(a)
+    id = d.text(1,2,"foo", color="blue")
+    assert id > 0
+    a.destroy()
+
+def test_text_italic():
+    a = App()
+    d = Drawing(a)
+    id = d.text(1,2,"foo", italic=True)
+    assert id > 0
+    a.destroy()
+
+def test_text_underline():
+    a = App()
+    d = Drawing(a)
+    id = d.text(1,2,"foo", underline=True)
+    assert id > 0
+    a.destroy()
+
+def test_text_overstrike():
+    a = App()
+    d = Drawing(a)
+    id = d.text(1,2,"foo", overstrike=True)
+    assert id > 0
+    a.destroy()
+
 def test_delete():
     a = App()
     d = Drawing(a)

@@ -92,7 +92,10 @@ You can set and get the following properties:
 | visible         | boolean            | If this widget is visible                                                                                                                                                     |
 | width           | [size](size.md)    | Set the width of the widget in characters or to `"fill"`                                                                                                                      |
 | text_size       | int                | The size of the text                                                                                                                                                          |
-| text_color      | [color](colors.md) | The colour of the text                                                                                                                                                        |
+| text_bold       | boolean            | Whether the text is bold                                                                                                                                                      |
+| text_italic     | boolean            | Whether the text is italic                                                                                                                                                    |
+| text_underline  | boolean            | Whether the text is underlined                                                                                                                                                |
+| text_overstrike | boolean            | Whether the text is overstruck                                                                                                                                                |
 | tk              | tkinter.Entry      | The internal tkinter object, see [Using tkinter](usingtk.md)                                                                                                                  |
 | wrap            | boolean            | Whether text in a multiline text box should be wrapped. Defaults to `True`. If its a single line TextBox, `None` will be returned and a warning displayed when trying to set. |
 

@@ -222,6 +222,10 @@ class Container(Component):
         self._bg = None
         self._text_color = None
         self._text_size = None
+        self._text_bold = None
+        self._text_italic = None
+        self._text_underline = None
+        self._text_overstrike = None
         self._font = None
         self._enabled = True
 
@@ -230,6 +234,10 @@ class Container(Component):
             self.bg = master.bg
             self.text_color = master.text_color
             self.text_size = master.text_size
+            self.text_bold = master.text_bold
+            self.text_italic = master.text_italic
+            self.text_underline = master.text_underline
+            self.text_overstrike = master.text_overstrike
             self.font = master.font
 
     @property
@@ -292,6 +300,82 @@ class Container(Component):
         for child in self.children:
             if isinstance(child, (Container, TextWidget)):
                 child.text_size = self.text_size
+
+    @property
+    def text_bold(self):
+        """
+        Sets and returns if the text is bold from the widgets
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default non-bold font.
+        """
+        return self._text_bold
+
+    @text_bold.setter
+    def text_bold(self, value):
+        self._text_bold = value
+        # cascade to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_bold = self.text_bold
+
+    @property
+    def text_italic(self):
+        """
+        Sets and returns if the text if italic from the widgets
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default non-italic font.
+        """
+        return self._text_italic
+
+    @text_italic.setter
+    def text_italic(self, value):
+        self._text_italic = value
+        # cascade to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_italic = self.text_italic
+
+    @property
+    def text_underline(self):
+        """
+        Sets and returns the text underline to be used by the widgets
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default (False)
+        """
+        return self._text_underline
+
+    @text_underline.setter
+    def text_underline(self, value):
+        self._text_underline = value
+        # cascade to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_underline = self.text_underline
+
+    @property
+    def text_overstrike(self):
+        """
+        Sets and returns the text overstrike to be used by the widgets
+        in the container.
+
+        If set to None (the default) any widgets added to this container
+        will use the default (False)
+        """
+        return self._text_overstrike
+
+    @text_overstrike.setter
+    def text_overstrike(self, value):
+        self._text_overstrike = value
+        # cascade to child widgets
+        for child in self.children:
+            if isinstance(child, (Container, TextWidget)):
+                child.text_overstrike = self.text_overstrike
 
     @property
     def font(self):
@@ -698,6 +782,10 @@ class TextWidget(
         #inherit from master
         self.text_color = master.text_color
         self.text_size = master.text_size
+        self.text_bold = master.text_bold
+        self.text_italic = master.text_italic
+        self.text_underline = master.text_underline
+        self.text_overstrike = master.text_overstrike
         self.font = master.font
 
 
@@ -811,3 +899,51 @@ class ContainerTextWidget(ContainerWidget):
     def text_size(self, size):
         TextMixin.set_text_size(self, size)
         super(ContainerWidget, self.__class__).text_size.fset(self, size)
+
+    @property
+    def text_bold(self):
+        """
+        Sets or returns if the text is bold from the widget.
+        """
+        return TextMixin.get_text_bold(self)
+
+    @text_bold.setter
+    def text_bold(self, bold):
+        TextMixin.set_text_bold(self, bold)
+        super(ContainerWidget, self.__class__).text_bold.fset(self, bold)
+
+    @property
+    def text_italic(self):
+        """
+        Sets or returns if the text is italic from the widget.
+        """
+        return TextMixin.get_text_italic(self)
+
+    @text_italic.setter
+    def text_italic(self, italic):
+        TextMixin.set_text_italic(self, italic)
+        super(ContainerWidget, self.__class__).text_italic.fset(self, italic)
+
+    @property
+    def text_underline(self):
+        """
+        Sets or returns the text underline of the widget.
+        """
+        return TextMixin.get_text_underline(self)
+
+    @text_underline.setter
+    def text_underline(self, underline):
+        TextMixin.set_text_underline(self, underline)
+        super(ContainerWidget, self.__class__).text_underline.fset(self, underline)
+
+    @property
+    def text_overstrike(self):
+        """
+        Sets or returns the text overstrike of the widget.
+        """
+        return TextMixin.get_text_overstrike(self)
+
+    @text_overstrike.setter
+    def text_overstrike(self, overstrike):
+        TextMixin.set_text_underline(self, overstrike)
+        super(ContainerWidget, self.__class__).text_overstrike.fset(self, overstrike)

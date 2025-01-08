@@ -1,5 +1,5 @@
 from tkinter import Canvas, ALL
-from tkinter.font import Font
+from tkinter.font import Font, BOLD, ITALIC, NORMAL, ROMAN
 from . import utilities as utils
 from .base import Widget
 from .event import EventManager
@@ -249,7 +249,7 @@ class Drawing(Widget):
         self._images[id] = _image
         return id
     
-    def text(self, x, y, text, color="black", font=None, size=None, max_width=None):
+    def text(self, x, y, text, color="black", font=None, size=None, max_width=None, bold=None, italic=None, underline=None, overstrike=None):
         """
         Inserts text into the drawing, position by its top-left corner.
         
@@ -270,16 +270,45 @@ class Drawing(Widget):
             The size of the text. Defaults to `None` and will use the system
             default font size.
 
+        :param bool bold:
+            Whether the font is bold. Defaults to `None` and will use the normal 
+            font by default.
+
+        :param bool italic:
+            Whether the font is italic. Defaults to `None` and will use the normal 
+            font by default.
+
+        :param bool underline:
+            Whether the font is underlined. Defaults to `None` and will use the normal 
+            font by default.
+
+        :param bool overstrike:
+            Whether the font is overstruck. Defaults to `None` and will use the normal 
+            font by default.
+
         :param int max_width:
             Maximum line length. Lines longer than this value are wrapped. 
             Default is `None` (no wrapping).
         """
         # create the font
-        if size is None:
-            f = Font(self.tk, family=font)
+        kwargs = {}
+        if size is not None:
+            kwargs["size"] = size
+        if bold:
+            kwargs["weight"] = BOLD
         else:
-            f = Font(self.tk, family=font, size=size)
-        
+            kwargs["weight"] = NORMAL
+        if italic:
+            kwargs["slant"] = ITALIC
+        else:
+            kwargs["slant"] = ROMAN
+        if underline is not None:
+            kwargs["underline"] = underline
+        if overstrike is not None:
+            kwargs["overstrike"] = overstrike
+
+        f = Font(self.tk, family=font, **kwargs)
+
         return self.tk.create_text(
             x, y, 
             text=text,
