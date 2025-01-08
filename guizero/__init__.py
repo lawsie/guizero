@@ -1,9 +1,10 @@
 __name__ = "guizero"
 __package__ = "guizero"
-__version__ = '1.5.0'
+__version__ = "1.5.1"
 __author__ = "Laura Sach"
 
 from sys import exit
+
 try:
     from tkinter import Tk
 except ImportError:

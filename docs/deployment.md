@@ -5,7 +5,7 @@ Notes on how to deploy guizero (on Windows).
 ## Prepare
 
 - Update version number in `guizero\__init__.py`
-- Update version number in `docs-src\docs\about.md`
+- Update version number in `docs\about.md`
 - Update `changelog.md` in docs
 
 ## Python library
@@ -21,8 +21,7 @@ Build for deployment:
 
 ```
 cd guizero
-python setup.py sdist
-python setup.py bdist_wheel
+python build
 ```
 
 Upload to pypi:
@@ -37,15 +36,15 @@ twine upload dist/* --skip-existing
 Build:
 
 ```
-cd guizero/docs-src
+cd guizero/docs
 mkdocs build
 ```
 
-Copy to `docs`:
+Deploy:
 
 ```
 cd guizero
-xcopy docs-src\site\* docs /E
+mkdocs gh-deploy
 ```
 
 ## Promote and tag release on github
