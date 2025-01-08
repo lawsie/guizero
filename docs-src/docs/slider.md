@@ -13,7 +13,8 @@ __init__(
     visible=True, 
     enabled=None, 
     width=None, 
-    height=None)
+    height=None,
+    step=1)
 ```
 
 ### What is it?
@@ -33,7 +34,7 @@ slider = Slider(app)
 app.display()
 ```
 
-### Starting paramters
+### Starting parameters
 
 When you create a `Slider` object, you **must** specify a `master` and you can specify any of the the optional parameters. Specify parameters in the brackets, like this: `slider = Slider(app, horizontal=False)`
 
@@ -50,6 +51,7 @@ When you create a `Slider` object, you **must** specify a `master` and you can s
 | enabled    | boolean            | None    | No         | If the widget should be enabled. If `None` (the default) the enabled property will be inherited from the master |
 | width      | [size](size.md)    | None    | No         | Set the width of the widget in pixels or to `"fill"`                                                            |
 | height     | [size](size.md)    | None    | No         | Set the height of the widget in pixels or to `"fill"`                                                           |
+| step       | int                | 1       | No         | The increment of the slider's value                                                                             |
 
 
 ### Methods
@@ -93,6 +95,7 @@ You can set and get the following properties:
 | value      | string             | The current value of the slider                                                                       |
 | visible    | boolean            | If this widget is visible                                                                             |
 | width      | [size](size.md)    | Set the width of the widget in pixels or to `"fill"`                                                  |
+| step       | int                | The increment of the slider's value                                                                   |
 
 ### Examples
 
