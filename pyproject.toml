@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "guizero"
-version = "1.5.0"
+version = "1.5.1"
 authors = [
     {name = "Laura Sach", email = "laura.sach@raspberrypi.org"},
     {name= "Martin O'Hanlon", email = ""}
