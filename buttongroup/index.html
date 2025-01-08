@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>ButtonGroup - guizero</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">guizero</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../about/" class="nav-link">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Using guizero</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../start/" class="dropdown-item">Getting started</a>
+</li>
+                                    
+<li>
+    <a href="../usingwidgets/" class="dropdown-item">Using Widgets</a>
+</li>
+                                    
+<li>
+    <a href="../commands/" class="dropdown-item">Commands</a>
+</li>
+                                    
+<li>
+    <a href="../multiple_windows/" class="dropdown-item">Multiple windows</a>
+</li>
+                                    
+<li>
+    <a href="../layout/" class="dropdown-item">Layouts</a>
+</li>
+                                    
+<li>
+    <a href="../alerts/" class="dropdown-item">Pop-ups</a>
+</li>
+                                    
+<li>
+    <a href="../size/" class="dropdown-item">Sizes</a>
+</li>
+                                    
+<li>
+    <a href="../colors/" class="dropdown-item">Colors</a>
+</li>
+                                    
+<li>
+    <a href="../images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../blocking/" class="dropdown-item">Loops and sleeping</a>
+</li>
+                                    
+<li>
+    <a href="../events/" class="dropdown-item">Events</a>
+</li>
+                                    
+<li>
+    <a href="../usingtk/" class="dropdown-item">Using tkinter</a>
+</li>
+                                    
+<li>
+    <a href="../gettinghelp/" class="dropdown-item">Getting help</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Widgets</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../widgetoverview/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../app/" class="dropdown-item">App</a>
+</li>
+                                    
+<li>
+    <a href="../box/" class="dropdown-item">Box</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">ButtonGroup</a>
+</li>
+                                    
+<li>
+    <a href="../checkbox/" class="dropdown-item">CheckBox</a>
+</li>
+                                    
+<li>
+    <a href="../combo/" class="dropdown-item">Combo</a>
+</li>
+                                    
+<li>
+    <a href="../drawing/" class="dropdown-item">Drawing</a>
+</li>
+                                    
+<li>
+    <a href="../listbox/" class="dropdown-item">ListBox</a>
+</li>
+                                    
+<li>
+    <a href="../menubar/" class="dropdown-item">MenuBar</a>
+</li>
+                                    
+<li>
+    <a href="../picture/" class="dropdown-item">Picture</a>
+</li>
+                                    
+<li>
+    <a href="../pushbutton/" class="dropdown-item">PushButton</a>
+</li>
+                                    
+<li>
+    <a href="../slider/" class="dropdown-item">Slider</a>
+</li>
+                                    
+<li>
+    <a href="../text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="../textbox/" class="dropdown-item">TextBox</a>
+</li>
+                                    
+<li>
+    <a href="../titlebox/" class="dropdown-item">TitleBox</a>
+</li>
+                                    
+<li>
+    <a href="../waffle/" class="dropdown-item">Waffle</a>
+</li>
+                                    
+<li>
+    <a href="../window/" class="dropdown-item">Window</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../recipes/" class="nav-link">Recipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../book/" class="nav-link">Book</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Contributing</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../contributing/" class="dropdown-item">Notes</a>
+</li>
+                                    
+<li>
+    <a href="../development/" class="dropdown-item">Developing</a>
+</li>
+                                    
+<li>
+    <a href="../deployment/" class="dropdown-item">Deploying</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../changelog/" class="nav-link">Change log</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../box/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../checkbox/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#buttongroup" class="nav-link">ButtonGroup</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="buttongroup">ButtonGroup</h1>
+<pre><code class="language-python">__init__(
+    self,
+    master,
+    options=[],
+    selected=None,
+    horizontal=False,
+    command=None,
+    grid=None,
+    align=None,
+    args=None,
+    visible=True,
+    enabled=None,
+    width=None,
+    height=None)
+</code></pre>
+<h3 id="what-is-it">What is it?</h3>
+<p>The <code>ButtonGroup</code> object displays a group of radio buttons, allowing the user to choose a single option.</p>
+<p><img alt="ButtonGroup" src="../images/buttongroup.png" /></p>
+<h3 id="how-do-i-make-one">How do I make one?</h3>
+<p>Create a <code>ButtonGroup</code> object like this:</p>
+<pre><code class="language-python">from guizero import App, ButtonGroup
+app = App()
+choice = ButtonGroup(app, options=[&quot;cheese&quot;, &quot;ham&quot;, &quot;salad&quot;], selected=&quot;cheese&quot;)
+app.display()
+</code></pre>
+<h3 id="starting-parameters">Starting parameters</h3>
+<p>When you create a <code>ButtonGroup</code> object you <strong>must</strong> specify a <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets like this: <code>choice = ButtonGroup(app, options=["cheese", "ham", "salad"], selected=1)</code></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Takes</th>
+<th>Default</th>
+<th>Compulsory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>master</td>
+<td>App, Window or Box</td>
+<td>-</td>
+<td>Yes</td>
+<td>The container to which this widget belongs</td>
+</tr>
+<tr>
+<td>options</td>
+<td>list or 2D List</td>
+<td>-</td>
+<td>No</td>
+<td>Either a list or a 2D list of [text, value] pairs. If a 2D list is specified, the first item in the pair will be displayed on the interface, and the second item will be a hidden value associated with this option.</td>
+</tr>
+<tr>
+<td>selected</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+<td>The option that should be selected, if a value isn't provided the first option will be selected.</td>
+</tr>
+<tr>
+<td>align</td>
+<td>string</td>
+<td>None</td>
+<td>-</td>
+<td>Alignment of this widget within its container. Possible values: <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>.</td>
+</tr>
+<tr>
+<td>command</td>
+<td>function name</td>
+<td>None</td>
+<td>-</td>
+<td>The name of a function to call when the selected option changes.</td>
+</tr>
+<tr>
+<td>args</td>
+<td>list</td>
+<td>None</td>
+<td>-</td>
+<td>If you wish to pass any arguments to the function specified in the command parameter, you can specify them as a list</td>
+</tr>
+<tr>
+<td>grid</td>
+<td>list [int, int]</td>
+<td>None</td>
+<td>-</td>
+<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
+</tr>
+<tr>
+<td>horizontal</td>
+<td>boolean</td>
+<td>False</td>
+<td>-</td>
+<td>Whether the buttons stack vertically or horizontally. (Defaults to vertical)</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td>If the widget should be visible.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td>None</td>
+<td>No</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
+</tr>
+<tr>
+<td>width</td>
+<td><a href="../size/">size</a></td>
+<td>None</td>
+<td>No</td>
+<td>Set the width of the widget in characters or to <code>"fill"</code></td>
+</tr>
+<tr>
+<td>height</td>
+<td><a href="../size/">size</a></td>
+<td>None</td>
+<td>No</td>
+<td>Set the height of the widget in characters or to <code>"fill"</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods">Methods</h3>
+<p>You can call the following methods on an <code>ButtonGroup</code> object.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Takes</th>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>append(option)</td>
+<td>item (string)</td>
+<td>-</td>
+<td>Appends a new <code>option</code> to the end of the ButtonGroup.</td>
+</tr>
+<tr>
+<td>after(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
+<td>-</td>
+<td>Schedules a <strong>single</strong> call to <code>command</code> after <code>time</code> milliseconds. (To repeatedly call the same command, use <code>repeat()</code>)</td>
+</tr>
+<tr>
+<td>cancel(command)</td>
+<td>command (function name)</td>
+<td>-</td>
+<td>Cancels a scheduled call to <code>command</code></td>
+</tr>
+<tr>
+<td>destroy()</td>
+<td>-</td>
+<td>-</td>
+<td>Destroys the widget</td>
+</tr>
+<tr>
+<td>disable()</td>
+<td>-</td>
+<td>-</td>
+<td>Disables the widget so that it is "greyed out" and cannot be interacted with</td>
+</tr>
+<tr>
+<td>enable()</td>
+<td>-</td>
+<td>-</td>
+<td>Enables the widget</td>
+</tr>
+<tr>
+<td>focus()</td>
+<td>-</td>
+<td>-</td>
+<td>Gives focus to the widget</td>
+</tr>
+<tr>
+<td>get_group_as_list()</td>
+<td>-</td>
+<td>list</td>
+<td>Returns a list containing all of the text/hidden value pairs from the ButtonGroup (useful for debugging)</td>
+</tr>
+<tr>
+<td>hide()</td>
+<td>-</td>
+<td>-</td>
+<td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
+</tr>
+<tr>
+<td>insert(index, option)</td>
+<td>index (int), option (string)</td>
+<td>-</td>
+<td>Insert a new <code>option</code> in the ButtonGroup at <code>index</code></td>
+</tr>
+<tr>
+<td>remove(option)</td>
+<td>item (string)</td>
+<td>Boolean</td>
+<td>Removes the first <code>option</code> from the ButtonGroup. Returns <code>True</code> if an item was removed.</td>
+</tr>
+<tr>
+<td>repeat(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
+<td>-</td>
+<td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
+</tr>
+<tr>
+<td>resize(width, height)</td>
+<td>width (int), height (int)</td>
+<td>-</td>
+<td>Sets the width and height of the widget</td>
+</tr>
+<tr>
+<td>show()</td>
+<td>-</td>
+<td>-</td>
+<td>Displays the widget if it was previously hidden</td>
+</tr>
+<tr>
+<td>update_command(command, args =None)</td>
+<td>command (function name), args (<em>Optional</em> List of arguments to be passed to command)</td>
+<td>-</td>
+<td>Updates the function to call when the selected option changes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties">Properties</h3>
+<p>You can set and get the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>align</td>
+<td>string</td>
+<td>The alignment of this widget within its container</td>
+</tr>
+<tr>
+<td>bg</td>
+<td><a href="../colors/">color</a></td>
+<td>The background colour of the widget</td>
+</tr>
+<tr>
+<td>children</td>
+<td>List</td>
+<td>A list of the widgets in this container. <code>[RadioButton, *]</code></td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td><code>True</code> if the widget is enabled</td>
+</tr>
+<tr>
+<td>font</td>
+<td>string</td>
+<td>The font of the text</td>
+</tr>
+<tr>
+<td>grid</td>
+<td>List</td>
+<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid</td>
+</tr>
+<tr>
+<td>height</td>
+<td><a href="../size/">size</a></td>
+<td>Set the height of the widget in characters or to <code>"fill"</code></td>
+</tr>
+<tr>
+<td>master</td>
+<td>App or Box</td>
+<td>The container to which this widget belongs</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>The hidden value associated with the currently selected option</td>
+</tr>
+<tr>
+<td>value_text</td>
+<td>string</td>
+<td>The text associated with the currently selected option</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td>If this widget is visible</td>
+</tr>
+<tr>
+<td>width</td>
+<td><a href="../size/">size</a></td>
+<td>Set the width of the widget in characters or to <code>"fill"</code></td>
+</tr>
+<tr>
+<td>text_size</td>
+<td>int</td>
+<td>The size of the text</td>
+</tr>
+<tr>
+<td>text_color</td>
+<td><a href="../colors/">color</a></td>
+<td>The colour of the text</td>
+</tr>
+<tr>
+<td>text_bold</td>
+<td>boolean</td>
+<td>Whether the text is bold</td>
+</tr>
+<tr>
+<td>text_italic</td>
+<td>boolean</td>
+<td>Whether the text is italic</td>
+</tr>
+<tr>
+<td>text_underline</td>
+<td>boolean</td>
+<td>Whether the text is underlined</td>
+</tr>
+<tr>
+<td>text_overstrike</td>
+<td>boolean</td>
+<td>Whether the text is overstruck</td>
+</tr>
+<tr>
+<td>tk</td>
+<td>tkinter.Frame</td>
+<td>The internal tkinter object, see <a href="../usingtk/">Using tkinter</a></td>
+</tr>
+</tbody>
+</table>
+<p>Refer to a property as <code>&lt;name of widget&gt;.property</code>. For example, if your <code>ButtonGroup</code> object is called <code>choice</code> you would write <code>choice.value</code>.</p>
+<p>You can <strong>set</strong> the property (for example <code>choice.value = "2"</code>) or <strong>get</strong> the value of the property to use (for example <code>print(choice.value)</code>).</p>
+<h3 id="examples">Examples</h3>
+<p><strong>Creating a ButtonGroup with a 2D list</strong></p>
+<p>If you want to create a ButtonGroup object with your own hidden values you can specify a 2D list of options:</p>
+<pre><code class="language-python">from guizero import App, ButtonGroup, Text
+
+def update_text():
+    what_is_selected.value = activities.value
+
+app = App()
+activities = ButtonGroup(app, options=[
+                              [&quot;Roller Skating&quot;, &quot;skate&quot;],
+                              [&quot;White water rafting&quot;, &quot;WWR&quot;],
+                              [&quot;Mountain climbing&quot;, &quot;climb&quot;]
+                            ],
+                            selected=&quot;skate&quot;, command=update_text)
+
+what_is_selected = Text(app, text=&quot;skate&quot;)
+app.display()
+</code></pre>
+<h3 id="using-buttongroup-tk-widgets">Using ButtonGroup tk widgets</h3>
+<p>Advanced users can gain internal access to the internal tkinter widgets used by <code>ButtonGroup</code>. For more information on using tkinter in combination with guizero see <a href="../usingtk/">Using tkinter</a>.</p>
+<p>The <code>ButtonGroup</code> widget contains a <code>tkinter.Frame</code> object, which frames multiple guizero <code>RadioButton</code> widgets. Each <code>RadioButton</code> widget contains a <code>tkinter.Radiobutton</code> object.</p>
+<p>The <code>.children</code> property returns the list of <code>RadioButton</code> widgets in the order they appear in the <code>ButtonGroup</code>:</p>
+<p>To access the internal <code>RadioButton</code> tk object you would use the child's <code>tk</code> property e.g.</p>
+<pre><code class="language-python">button_group = ButtonGroup(app)
+
+for radio_button in button_group.children:
+    tk_radio_button = radio_button.tk
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

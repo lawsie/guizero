@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>TextBox - guizero</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">guizero</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../about/" class="nav-link">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Using guizero</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../start/" class="dropdown-item">Getting started</a>
+</li>
+                                    
+<li>
+    <a href="../usingwidgets/" class="dropdown-item">Using Widgets</a>
+</li>
+                                    
+<li>
+    <a href="../commands/" class="dropdown-item">Commands</a>
+</li>
+                                    
+<li>
+    <a href="../multiple_windows/" class="dropdown-item">Multiple windows</a>
+</li>
+                                    
+<li>
+    <a href="../layout/" class="dropdown-item">Layouts</a>
+</li>
+                                    
+<li>
+    <a href="../alerts/" class="dropdown-item">Pop-ups</a>
+</li>
+                                    
+<li>
+    <a href="../size/" class="dropdown-item">Sizes</a>
+</li>
+                                    
+<li>
+    <a href="../colors/" class="dropdown-item">Colors</a>
+</li>
+                                    
+<li>
+    <a href="../images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../blocking/" class="dropdown-item">Loops and sleeping</a>
+</li>
+                                    
+<li>
+    <a href="../events/" class="dropdown-item">Events</a>
+</li>
+                                    
+<li>
+    <a href="../usingtk/" class="dropdown-item">Using tkinter</a>
+</li>
+                                    
+<li>
+    <a href="../gettinghelp/" class="dropdown-item">Getting help</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Widgets</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../widgetoverview/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../app/" class="dropdown-item">App</a>
+</li>
+                                    
+<li>
+    <a href="../box/" class="dropdown-item">Box</a>
+</li>
+                                    
+<li>
+    <a href="../buttongroup/" class="dropdown-item">ButtonGroup</a>
+</li>
+                                    
+<li>
+    <a href="../checkbox/" class="dropdown-item">CheckBox</a>
+</li>
+                                    
+<li>
+    <a href="../combo/" class="dropdown-item">Combo</a>
+</li>
+                                    
+<li>
+    <a href="../drawing/" class="dropdown-item">Drawing</a>
+</li>
+                                    
+<li>
+    <a href="../listbox/" class="dropdown-item">ListBox</a>
+</li>
+                                    
+<li>
+    <a href="../menubar/" class="dropdown-item">MenuBar</a>
+</li>
+                                    
+<li>
+    <a href="../picture/" class="dropdown-item">Picture</a>
+</li>
+                                    
+<li>
+    <a href="../pushbutton/" class="dropdown-item">PushButton</a>
+</li>
+                                    
+<li>
+    <a href="../slider/" class="dropdown-item">Slider</a>
+</li>
+                                    
+<li>
+    <a href="../text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">TextBox</a>
+</li>
+                                    
+<li>
+    <a href="../titlebox/" class="dropdown-item">TitleBox</a>
+</li>
+                                    
+<li>
+    <a href="../waffle/" class="dropdown-item">Waffle</a>
+</li>
+                                    
+<li>
+    <a href="../window/" class="dropdown-item">Window</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../recipes/" class="nav-link">Recipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../book/" class="nav-link">Book</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Contributing</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../contributing/" class="dropdown-item">Notes</a>
+</li>
+                                    
+<li>
+    <a href="../development/" class="dropdown-item">Developing</a>
+</li>
+                                    
+<li>
+    <a href="../deployment/" class="dropdown-item">Deploying</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../changelog/" class="nav-link">Change log</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../text/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../titlebox/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#textbox" class="nav-link">TextBox</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="textbox">TextBox</h1>
+<pre><code class="language-python">__init__(
+    self,
+    master,
+    text=&quot;&quot;,
+    width=10,
+    height=1,
+    grid=None,
+    align=None,
+    visible=True,
+    enabled=None,
+    multiline=False,
+    scrollbar=False,
+    command=None,
+    hide_text=False)
+</code></pre>
+<h3 id="what-is-it">What is it</h3>
+<p>The <code>TextBox</code> object displays a text box which the user can type in.</p>
+<p><img alt="TextBox on Windows" src="../images/textbox_windows.png" /></p>
+<h3 id="how-do-i-make-one">How do I make one?</h3>
+<p>Create a <code>TextBox</code> object like this:</p>
+<pre><code class="language-python">from guizero import App, TextBox
+app = App()
+input_box = TextBox(app)
+app.display()
+</code></pre>
+<h3 id="starting-parameters">Starting parameters</h3>
+<p>When you create a <code>TextBox</code> object you <strong>must</strong> specify <code>master</code> and you can specify any of the optional parameters. Specify parameters in the brackets, like this: <code>textbox = TextBox(app, text="Please enter some text")</code></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Data type</th>
+<th>Default</th>
+<th>Compulsory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>master</td>
+<td>App, Window or Box</td>
+<td>-</td>
+<td>Yes</td>
+<td>The container to which this widget belongs</td>
+</tr>
+<tr>
+<td>align</td>
+<td>string</td>
+<td>None</td>
+<td>-</td>
+<td>Alignment of this widget within its container. Possible values: <code>"top"</code>, <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>.</td>
+</tr>
+<tr>
+<td>grid</td>
+<td>List [int, int]</td>
+<td>None</td>
+<td>-</td>
+<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid layout.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>""</td>
+<td>-</td>
+<td>Any text you wish to be pre-filled in the text box</td>
+</tr>
+<tr>
+<td>width</td>
+<td>int</td>
+<td>10</td>
+<td>-</td>
+<td>Set the width of the widget in characters or to <code>"fill"</code></td>
+</tr>
+<tr>
+<td>height</td>
+<td>int</td>
+<td>1</td>
+<td>-</td>
+<td>Set the height of the widget in characters or to <code>"fill"</code>, only effective if <code>multiline</code> is <code>True</code></td>
+</tr>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td>True</td>
+<td>No</td>
+<td>If the widget should be visible.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td>None</td>
+<td>No</td>
+<td>If the widget should be enabled. If <code>None</code> (the default) the enabled property will be inherited from the master</td>
+</tr>
+<tr>
+<td>multiline</td>
+<td>boolean</td>
+<td>False</td>
+<td>No</td>
+<td>Create a multi-line text box.</td>
+</tr>
+<tr>
+<td>scrollbar</td>
+<td>boolean</td>
+<td>False</td>
+<td>No</td>
+<td>Add a vertical scrollbar to a multi-line text box</td>
+</tr>
+<tr>
+<td>command</td>
+<td>function name</td>
+<td>None</td>
+<td>-</td>
+<td>The name of a function to call when the text is changed. This function MUST take either zero or one argument, if the function takes one argument the key which was added to the textbox will be returned.</td>
+</tr>
+<tr>
+<td>hide_text</td>
+<td>boolean</td>
+<td>False</td>
+<td>-</td>
+<td>When set to <code>True</code> will hide the text replacing typed characters with <code>*</code>. Setting to a character will result in the text being hidden with that character.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods">Methods</h3>
+<p>You can call the following methods on your TextBox object.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Takes</th>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>after(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
+<td>-</td>
+<td>Schedules a <strong>single</strong> call to <code>command</code> after <code>time</code> milliseconds. (To repeatedly call the same command, use <code>repeat()</code>)</td>
+</tr>
+<tr>
+<td>append(text)</td>
+<td>text (string)</td>
+<td>-</td>
+<td>Adds the provided <code>text</code> to the end of the current text within the text box</td>
+</tr>
+<tr>
+<td>cancel(command)</td>
+<td>command (function name)</td>
+<td>-</td>
+<td>Cancels a scheduled call to <code>command</code></td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>-</td>
+<td>-</td>
+<td>Clears the textbox</td>
+</tr>
+<tr>
+<td>destroy()</td>
+<td>-</td>
+<td>-</td>
+<td>Destroys the widget</td>
+</tr>
+<tr>
+<td>disable()</td>
+<td>-</td>
+<td>-</td>
+<td>Disables the widget so that it is "greyed out" and cannot be interacted with</td>
+</tr>
+<tr>
+<td>enable()</td>
+<td>-</td>
+<td>-</td>
+<td>Enables the widget</td>
+</tr>
+<tr>
+<td>focus()</td>
+<td>-</td>
+<td>-</td>
+<td>Gives focus to the widget (e.g. focusing a <code>TextBox</code> so that the user can type inside it)</td>
+</tr>
+<tr>
+<td>hide()</td>
+<td>-</td>
+<td>-</td>
+<td>Hides the widget from view. This method will unpack the widget from the layout manager.</td>
+</tr>
+<tr>
+<td>repeat(time, command, args=None)</td>
+<td>time (int), command (function name), args (list of arguments)</td>
+<td>-</td>
+<td>Repeats <code>command</code> every <code>time</code> milliseconds. This is useful for scheduling a function to be regularly called, for example updating a value read from a sensor.</td>
+</tr>
+<tr>
+<td>resize(width, height)</td>
+<td>width (int), height (int)</td>
+<td>-</td>
+<td>Sets the width and height of the widget</td>
+</tr>
+<tr>
+<td>show()</td>
+<td>-</td>
+<td>-</td>
+<td>Displays the widget if it was previously hidden</td>
+</tr>
+<tr>
+<td>update_command(command)</td>
+<td>command (function name)</td>
+<td>-</td>
+<td>Updates the function to call when the text is changed.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties">Properties</h3>
+<p>You can set and get the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>align</td>
+<td>string</td>
+<td>The alignment of this widget within its container</td>
+</tr>
+<tr>
+<td>bg</td>
+<td><a href="../colors/">color</a></td>
+<td>The background colour of the widget</td>
+</tr>
+<tr>
+<td>cursor_position</td>
+<td>int</td>
+<td>The current position of the cursor</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td><code>True</code> if the widget is enabled</td>
+</tr>
+<tr>
+<td>font</td>
+<td>string</td>
+<td>The font of the text</td>
+</tr>
+<tr>
+<td>grid</td>
+<td>List</td>
+<td><code>[x,y]</code> coordinates of this widget. This parameter is only required if the <code>master</code> object has a grid</td>
+</tr>
+<tr>
+<td>height</td>
+<td><a href="../size/">size</a></td>
+<td>Set the height of the widget in characters or to <code>"fill"</code>, only effective if <code>multiline</code> is <code>True</code></td>
+</tr>
+<tr>
+<td>hide_text</td>
+<td>boolean / char</td>
+<td>When set to <code>True</code> will hide the text replacing typed characters with <code>*</code>. Setting to a character will result in the text being hidden with that character.</td>
+</tr>
+<tr>
+<td>master</td>
+<td>App or Box</td>
+<td>The container to which this widget belongs</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>The text in the TextBox</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td>If this widget is visible</td>
+</tr>
+<tr>
+<td>width</td>
+<td><a href="../size/">size</a></td>
+<td>Set the width of the widget in characters or to <code>"fill"</code></td>
+</tr>
+<tr>
+<td>text_size</td>
+<td>int</td>
+<td>The size of the text</td>
+</tr>
+<tr>
+<td>text_bold</td>
+<td>boolean</td>
+<td>Whether the text is bold</td>
+</tr>
+<tr>
+<td>text_italic</td>
+<td>boolean</td>
+<td>Whether the text is italic</td>
+</tr>
+<tr>
+<td>text_underline</td>
+<td>boolean</td>
+<td>Whether the text is underlined</td>
+</tr>
+<tr>
+<td>text_overstrike</td>
+<td>boolean</td>
+<td>Whether the text is overstruck</td>
+</tr>
+<tr>
+<td>tk</td>
+<td>tkinter.Entry</td>
+<td>The internal tkinter object, see <a href="../usingtk/">Using tkinter</a></td>
+</tr>
+<tr>
+<td>wrap</td>
+<td>boolean</td>
+<td>Whether text in a multiline text box should be wrapped. Defaults to <code>True</code>. If its a single line TextBox, <code>None</code> will be returned and a warning displayed when trying to set.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<p><strong>Creating a TextBox with default text</strong></p>
+<p>You can set the default text in a TextBox when it is created using the <code>text</code> parameter:</p>
+<pre><code class="language-python">from guizero import App, TextBox
+app = App()
+input_box = TextBox(app, text=&quot;Type here&quot;)
+app.display()
+</code></pre>
+<p><strong>Creating a password TextBox with hidden text</strong></p>
+<p>You can hide the text in a TextBox using the <code>hide_text</code> parameter:</p>
+<pre><code class="language-python">from guizero import App, TextBox
+app = App()
+password_box = TextBox(app, hide_text=True)
+app.display()
+</code></pre>
+<p><strong>Creating a multi-line TextBox</strong></p>
+<p>You can create a text box which is capable of capturing multiple lines of text by setting the <code>multiline</code> parameter to <code>True</code> and giving the textbox a <code>height</code>:</p>
+<pre><code class="language-python">from guizero import App, TextBox
+app = App()
+input_box = TextBox(app, text=&quot;Type lines here&quot;, height=10, multiline=True)
+app.display()
+</code></pre>
+<p>Multi-line text boxes can also be given a scrollbar by setting the <code>scrollbar</code> parameter to <code>True</code>:</p>
+<pre><code class="language-python">input_box = TextBox(app, text=&quot;Type lines here&quot;, height=10, multiline=True, scrollbar=True)
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

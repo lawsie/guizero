@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Colors - guizero</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">guizero</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../about/" class="nav-link">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Using guizero</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../start/" class="dropdown-item">Getting started</a>
+</li>
+                                    
+<li>
+    <a href="../usingwidgets/" class="dropdown-item">Using Widgets</a>
+</li>
+                                    
+<li>
+    <a href="../commands/" class="dropdown-item">Commands</a>
+</li>
+                                    
+<li>
+    <a href="../multiple_windows/" class="dropdown-item">Multiple windows</a>
+</li>
+                                    
+<li>
+    <a href="../layout/" class="dropdown-item">Layouts</a>
+</li>
+                                    
+<li>
+    <a href="../alerts/" class="dropdown-item">Pop-ups</a>
+</li>
+                                    
+<li>
+    <a href="../size/" class="dropdown-item">Sizes</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Colors</a>
+</li>
+                                    
+<li>
+    <a href="../images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../blocking/" class="dropdown-item">Loops and sleeping</a>
+</li>
+                                    
+<li>
+    <a href="../events/" class="dropdown-item">Events</a>
+</li>
+                                    
+<li>
+    <a href="../usingtk/" class="dropdown-item">Using tkinter</a>
+</li>
+                                    
+<li>
+    <a href="../gettinghelp/" class="dropdown-item">Getting help</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Widgets</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../widgetoverview/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../app/" class="dropdown-item">App</a>
+</li>
+                                    
+<li>
+    <a href="../box/" class="dropdown-item">Box</a>
+</li>
+                                    
+<li>
+    <a href="../buttongroup/" class="dropdown-item">ButtonGroup</a>
+</li>
+                                    
+<li>
+    <a href="../checkbox/" class="dropdown-item">CheckBox</a>
+</li>
+                                    
+<li>
+    <a href="../combo/" class="dropdown-item">Combo</a>
+</li>
+                                    
+<li>
+    <a href="../drawing/" class="dropdown-item">Drawing</a>
+</li>
+                                    
+<li>
+    <a href="../listbox/" class="dropdown-item">ListBox</a>
+</li>
+                                    
+<li>
+    <a href="../menubar/" class="dropdown-item">MenuBar</a>
+</li>
+                                    
+<li>
+    <a href="../picture/" class="dropdown-item">Picture</a>
+</li>
+                                    
+<li>
+    <a href="../pushbutton/" class="dropdown-item">PushButton</a>
+</li>
+                                    
+<li>
+    <a href="../slider/" class="dropdown-item">Slider</a>
+</li>
+                                    
+<li>
+    <a href="../text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="../textbox/" class="dropdown-item">TextBox</a>
+</li>
+                                    
+<li>
+    <a href="../titlebox/" class="dropdown-item">TitleBox</a>
+</li>
+                                    
+<li>
+    <a href="../waffle/" class="dropdown-item">Waffle</a>
+</li>
+                                    
+<li>
+    <a href="../window/" class="dropdown-item">Window</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../recipes/" class="nav-link">Recipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../book/" class="nav-link">Book</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Contributing</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../contributing/" class="dropdown-item">Notes</a>
+</li>
+                                    
+<li>
+    <a href="../development/" class="dropdown-item">Developing</a>
+</li>
+                                    
+<li>
+    <a href="../deployment/" class="dropdown-item">Deploying</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../changelog/" class="nav-link">Change log</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../size/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../images/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#colors-or-colours" class="nav-link">Colors (or Colours)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="colors-or-colours">Colors (or Colo<strong>u</strong>rs)</h2>
+<p>You can set colors in guizero using:</p>
+<ul>
+<li>the name of the color - <code>white</code></li>
+<li>a #rgb hex value - <code>#ffffff</code></li>
+<li>a list of rgb values - <code>(255,255,255)</code></li>
+</ul>
+<p>Colors can be used as either starting parameters, for example:</p>
+<pre><code class="language-python">app = App(bg = &quot;red&quot;)
+app = App(bg = &quot;#ff0000&quot;)
+app = App(bg = (255, 0, 0))
+</code></pre>
+<p>or as properties, for example:</p>
+<pre><code class="language-python">text = Text(app, text = &quot;hi&quot;)
+text.text_color = &quot;green&quot;
+text.text_color = &quot;#00ff00&quot;
+text.text_color = (0, 255, 0)
+</code></pre>
+<p>If a color is set using a list of rgb values (<code>(255,255,255)</code>) it will be returned as an #rgb hex value (<code>#ffffff</code>)</p>
+<p>A widget's color can be reset to its default value by setting the property to <code>None</code>, for example:</p>
+<pre><code class="language-python">text = Text(app, text = &quot;hi&quot;)
+text.text_color = &quot;green&quot;
+# reset to original color
+text.text_color = None
+</code></pre>
+<h3 id="color-names">Color names</h3>
+<p>Some color names can be given as strings, for example</p>
+<ul>
+<li><code>white</code></li>
+<li><code>black</code></li>
+<li><code>red</code></li>
+<li><code>green</code></li>
+<li><code>blue</code></li>
+<li><code>yellow</code></li>
+</ul>
+<p>A complete list of color names is available at <a href="https://wiki.tcl.tk/37701">wiki.tcl.tk/37701</a></p>
+<h3 id="rgb-hex-value">rgb hex value</h3>
+<p>A rgb color value must start with a <code>#</code> and 6 characters following, 2 each for the red, green and blue value in hex. Each value must be <code>00</code> - <code>ff</code>. Here are some examples:</p>
+<ul>
+<li>white = <code>#ffffff</code></li>
+<li>black = <code>#000000</code></li>
+<li>red = <code>#ff0000</code></li>
+<li>green = <code>#00ff00</code></li>
+<li>blue = <code>#0000ff</code></li>
+<li>yellow = <code>#ffff00</code></li>
+</ul>
+<p>You can mix your own color by changing the red, green and blue values.</p>
+<p>There is a RGB calculator application at <a href="https://www.w3schools.com/colors/colors_rgb.asp">https://www.w3schools.com/colors/colors_rgb.asp</a> where you can create your own color and get the <code>#rrggbb</code> value.</p>
+<h3 id="rgb-list">rgb list</h3>
+<p>The <code>(red, green, blue)</code> list color must contain three elements in the order red, green, blue. Each value must be between 0 - 255. Here are some examples:</p>
+<ul>
+<li>white = (255, 255, 255)</li>
+<li>black = (0, 0, 0)</li>
+<li>red = (255, 0, 0)</li>
+<li>green = (0, 255, 0)</li>
+<li>blue = (0, 0, 255)</li>
+<li>yellow = (255, 255, 0)</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

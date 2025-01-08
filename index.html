@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>guizero</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">guizero</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="about/" class="nav-link">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="." class="nav-link active" aria-current="page">Installation</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Using guizero</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="start/" class="dropdown-item">Getting started</a>
+</li>
+                                    
+<li>
+    <a href="usingwidgets/" class="dropdown-item">Using Widgets</a>
+</li>
+                                    
+<li>
+    <a href="commands/" class="dropdown-item">Commands</a>
+</li>
+                                    
+<li>
+    <a href="multiple_windows/" class="dropdown-item">Multiple windows</a>
+</li>
+                                    
+<li>
+    <a href="layout/" class="dropdown-item">Layouts</a>
+</li>
+                                    
+<li>
+    <a href="alerts/" class="dropdown-item">Pop-ups</a>
+</li>
+                                    
+<li>
+    <a href="size/" class="dropdown-item">Sizes</a>
+</li>
+                                    
+<li>
+    <a href="colors/" class="dropdown-item">Colors</a>
+</li>
+                                    
+<li>
+    <a href="images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="blocking/" class="dropdown-item">Loops and sleeping</a>
+</li>
+                                    
+<li>
+    <a href="events/" class="dropdown-item">Events</a>
+</li>
+                                    
+<li>
+    <a href="usingtk/" class="dropdown-item">Using tkinter</a>
+</li>
+                                    
+<li>
+    <a href="gettinghelp/" class="dropdown-item">Getting help</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Widgets</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="widgetoverview/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="app/" class="dropdown-item">App</a>
+</li>
+                                    
+<li>
+    <a href="box/" class="dropdown-item">Box</a>
+</li>
+                                    
+<li>
+    <a href="buttongroup/" class="dropdown-item">ButtonGroup</a>
+</li>
+                                    
+<li>
+    <a href="checkbox/" class="dropdown-item">CheckBox</a>
+</li>
+                                    
+<li>
+    <a href="combo/" class="dropdown-item">Combo</a>
+</li>
+                                    
+<li>
+    <a href="drawing/" class="dropdown-item">Drawing</a>
+</li>
+                                    
+<li>
+    <a href="listbox/" class="dropdown-item">ListBox</a>
+</li>
+                                    
+<li>
+    <a href="menubar/" class="dropdown-item">MenuBar</a>
+</li>
+                                    
+<li>
+    <a href="picture/" class="dropdown-item">Picture</a>
+</li>
+                                    
+<li>
+    <a href="pushbutton/" class="dropdown-item">PushButton</a>
+</li>
+                                    
+<li>
+    <a href="slider/" class="dropdown-item">Slider</a>
+</li>
+                                    
+<li>
+    <a href="text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="textbox/" class="dropdown-item">TextBox</a>
+</li>
+                                    
+<li>
+    <a href="titlebox/" class="dropdown-item">TitleBox</a>
+</li>
+                                    
+<li>
+    <a href="waffle/" class="dropdown-item">Waffle</a>
+</li>
+                                    
+<li>
+    <a href="window/" class="dropdown-item">Window</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="recipes/" class="nav-link">Recipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="book/" class="nav-link">Book</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Contributing</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="contributing/" class="dropdown-item">Notes</a>
+</li>
+                                    
+<li>
+    <a href="development/" class="dropdown-item">Developing</a>
+</li>
+                                    
+<li>
+    <a href="deployment/" class="dropdown-item">Deploying</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="changelog/" class="nav-link">Change log</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="about/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="start/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#installation" class="nav-link">Installation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#easy-install" class="nav-link">Easy install</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#install-using-command-line" class="nav-link">Install using command line</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="installation">Installation</h1>
+<p>guizero is designed to allow new learners to quickly and easily create GUIs for their programs.</p>
+<p>If you can download and unzip a file, you can <a href="#easy-install">install guizero</a> - <strong>no special permissions or administrator rights are required</strong>.</p>
+<p>If you have administrator rights and are connected to the internet, you can <a href="#install-using-command-line">use the command line to install or upgrade guizero</a> (recommended).</p>
+<h2 id="easy-install">Easy install</h2>
+<ol>
+<li>
+<p>Go to the <a href="https://github.com/lawsie/guizero">guizero repository</a> on GitHub.</p>
+</li>
+<li>
+<p>Click the green "Code" button and then "Download ZIP"</p>
+<p><img alt="Download the zip" src="images/download-zip-annotated.png" /></p>
+</li>
+<li>
+<p>Open the zip file</p>
+</li>
+<li>
+<p>Open the <code>guizero-master</code> folder, then copy the <code>guizero</code> folder and paste it into your home directory</p>
+<ul>
+<li>
+<p>Windows</p>
+<p><img alt="Copy the guizero folder in windows" src="images/copy-guizero-annotated.png" /></p>
+</li>
+<li>
+<p>macOS</p>
+<p><img alt="Copy the guizero folder in macos" src="images/copy-guizero-macos-annotated.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>That's it! When you write your guizero code, make sure you save it into your home directory.</p>
+</li>
+</ol>
+<h2 id="install-using-command-line">Install using command line</h2>
+<p>You can use the command prompt to install guizero for:</p>
+<ul>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#macos">macOS</a></li>
+<li><a href="#raspberry-pi">Raspberry Pi</a></li>
+<li><a href="#linux">Linux</a></li>
+</ul>
+<p><code>pip</code> can also be used to <a href="#additional-features-install">install additional features</a> and <a href="#upgrading">upgrade guizero</a>.</p>
+<h3 id="windows">Windows</h3>
+<ol>
+<li>
+<p>Open a command prompt by clicking <strong>Start</strong> &gt; <strong>Windows System</strong> &gt; <strong>Command Prompt</strong>, or by typing 'command' into the start menu's search bar.</p>
+<p><img alt="windows command prompt" src="images/windows_command_prompt_app.png" /></p>
+</li>
+<li>
+<p>Type this command to use <code>pip</code> to install guizero and press enter:</p>
+<p><code>pip3 install guizero</code></p>
+</li>
+</ol>
+<p><img alt="windows pip install" src="images/windows_pip_install.gif" /></p>
+<p>If you experience problems, have a look at this guide to <a href="https://projects.raspberrypi.org/en/projects/using-pip-on-windows"><em>Using pip on Windows</em></a>.</p>
+<h3 id="macos">macOS</h3>
+<ol>
+<li>
+<p>Open a terminal window by clicking <strong>Applications</strong> &gt; <strong>Utilities</strong> &gt; <strong>Terminal</strong>, or by typing 'terminal' into the desktop's search bar.</p>
+<p><img alt="Mac terminal" src="images/mac-terminal.png" /></p>
+</li>
+<li>
+<p>Type this command to use <code>pip</code> to install guizero and press enter:</p>
+<p><code>pip3 install guizero</code></p>
+<p><img alt="mac pip install" src="images/mac_pip_install.gif" /></p>
+</li>
+</ol>
+<h3 id="raspberry-pi">Raspberry Pi</h3>
+<ol>
+<li>
+<p>Open a terminal window by clicking <strong>Menu</strong> &gt; <strong>Accessories</strong> &gt; <strong>Terminal</strong>.</p>
+<p><img alt="pi terminal" src="images/pi-terminal.png" /></p>
+</li>
+<li>
+<p>Type this command to use <code>apt</code> to install guizero and press enter:</p>
+<p><code>sudo apt-get install python3-guizero</code></p>
+<p><img alt="run sudo apt-get install python3-guizero" src="images/pi_apt_install.gif" /></p>
+</li>
+</ol>
+<p><strong>Note:</strong> The installation available via apt may not be the latest. You can always install the latest version using <code>pip</code>.</p>
+<h3 id="linux">Linux</h3>
+<ol>
+<li>Open a terminal</li>
+<li>Install <code>tkinter</code> using your distribution's package manager, e.g. <code>sudo apt install python3-tk</code></li>
+<li>
+<p>Install guizero using pip by typing <code>pip3 install guizero</code> or <code>sudo pip3 install guizero</code> if you don't have superuser rights</p>
+<p><img alt="linux pip install" src="images/linux_pip_install.gif" /></p>
+</li>
+</ol>
+<p><strong>Note:</strong> If you are using Debian, you alternatively have the option to install guizero via apt
+<code>sudo apt-get install python3-guizero</code></p>
+<h3 id="install-additional-features">Install additional features</h3>
+<p>To use the additional <a href="images/">image features</a> of guizero such as:</p>
+<ul>
+<li>JPG image support</li>
+<li>scaling images</li>
+<li>animated gifs</li>
+</ul>
+<p>... you will need to install <a href="https://pypi.org/project/Pillow/">PIL/pillow (python imaging library)</a>.</p>
+<p>You can install pillow using <code>pip</code>:</p>
+<pre><code>pip3 install guizero[images]
+</code></pre>
+<p>Or using <code>apt</code> on Raspberry Pi / Linux</p>
+<pre><code>sudo apt-get install python3-pillow
+</code></pre>
+<p>The additional image features are not available to install using the easy install method.</p>
+<h3 id="upgrading-guizero">Upgrading guizero</h3>
+<p>Depending how you installed guizero will dictate how you should upgrade</p>
+<p>Using <code>pip</code>:</p>
+<pre><code>pip3 install guizero --upgrade
+</code></pre>
+<p>Using <code>apt</code></p>
+<pre><code>sudo apt-get install python3-guizero
+</code></pre>
+<p>If you installed guizero using the easy install method, to upgrade you should follow the same easy installation steps to download the latest version of guizero, then delete the old guizero folder and replace it with the newest version.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-01-08 11:01:35.781116+00:00
+-->

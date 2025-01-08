@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Pop-ups - guizero</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/color-brewer.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">guizero</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../about/" class="nav-link">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Using guizero</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../start/" class="dropdown-item">Getting started</a>
+</li>
+                                    
+<li>
+    <a href="../usingwidgets/" class="dropdown-item">Using Widgets</a>
+</li>
+                                    
+<li>
+    <a href="../commands/" class="dropdown-item">Commands</a>
+</li>
+                                    
+<li>
+    <a href="../multiple_windows/" class="dropdown-item">Multiple windows</a>
+</li>
+                                    
+<li>
+    <a href="../layout/" class="dropdown-item">Layouts</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Pop-ups</a>
+</li>
+                                    
+<li>
+    <a href="../size/" class="dropdown-item">Sizes</a>
+</li>
+                                    
+<li>
+    <a href="../colors/" class="dropdown-item">Colors</a>
+</li>
+                                    
+<li>
+    <a href="../images/" class="dropdown-item">Images</a>
+</li>
+                                    
+<li>
+    <a href="../blocking/" class="dropdown-item">Loops and sleeping</a>
+</li>
+                                    
+<li>
+    <a href="../events/" class="dropdown-item">Events</a>
+</li>
+                                    
+<li>
+    <a href="../usingtk/" class="dropdown-item">Using tkinter</a>
+</li>
+                                    
+<li>
+    <a href="../gettinghelp/" class="dropdown-item">Getting help</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Widgets</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../widgetoverview/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../app/" class="dropdown-item">App</a>
+</li>
+                                    
+<li>
+    <a href="../box/" class="dropdown-item">Box</a>
+</li>
+                                    
+<li>
+    <a href="../buttongroup/" class="dropdown-item">ButtonGroup</a>
+</li>
+                                    
+<li>
+    <a href="../checkbox/" class="dropdown-item">CheckBox</a>
+</li>
+                                    
+<li>
+    <a href="../combo/" class="dropdown-item">Combo</a>
+</li>
+                                    
+<li>
+    <a href="../drawing/" class="dropdown-item">Drawing</a>
+</li>
+                                    
+<li>
+    <a href="../listbox/" class="dropdown-item">ListBox</a>
+</li>
+                                    
+<li>
+    <a href="../menubar/" class="dropdown-item">MenuBar</a>
+</li>
+                                    
+<li>
+    <a href="../picture/" class="dropdown-item">Picture</a>
+</li>
+                                    
+<li>
+    <a href="../pushbutton/" class="dropdown-item">PushButton</a>
+</li>
+                                    
+<li>
+    <a href="../slider/" class="dropdown-item">Slider</a>
+</li>
+                                    
+<li>
+    <a href="../text/" class="dropdown-item">Text</a>
+</li>
+                                    
+<li>
+    <a href="../textbox/" class="dropdown-item">TextBox</a>
+</li>
+                                    
+<li>
+    <a href="../titlebox/" class="dropdown-item">TitleBox</a>
+</li>
+                                    
+<li>
+    <a href="../waffle/" class="dropdown-item">Waffle</a>
+</li>
+                                    
+<li>
+    <a href="../window/" class="dropdown-item">Window</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../recipes/" class="nav-link">Recipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../book/" class="nav-link">Book</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Contributing</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../contributing/" class="dropdown-item">Notes</a>
+</li>
+                                    
+<li>
+    <a href="../development/" class="dropdown-item">Developing</a>
+</li>
+                                    
+<li>
+    <a href="../deployment/" class="dropdown-item">Deploying</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../changelog/" class="nav-link">Change log</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../layout/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../size/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#pop-ups" class="nav-link">Pop-ups</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="pop-ups">Pop-ups</h1>
+<p>Pop-up windows which can be used to interrupt the user by asking question or providing information.</p>
+<p><img alt="Alert popup" src="../images/alert_info_windows.png" /></p>
+<h3 id="using-pop-ups">Using pop-ups</h3>
+<p>Pop-ups can be called from an <code>App</code> or <code>Window</code> object, for example:</p>
+<pre><code class="language-python">app.info(&quot;info&quot;, &quot;this is a guizero app&quot;)
+</code></pre>
+<p>Pop-ups can also be imported individually at the start of your program, for example:</p>
+<pre><code class="language-python">from guizero import info
+info(&quot;info&quot;, &quot;this is a guizero app&quot;)
+</code></pre>
+<h3 id="purpose">Purpose</h3>
+<p>These functions pop up a box on the screen that displays a message or asks a question. The functions available are:</p>
+<ul>
+<li><code>warn(title, text)</code> - popup box with a warning icon</li>
+<li><code>info(title, text)</code> - popup box with an information icon</li>
+<li><code>error(title, text)</code> - popup box with an error icon</li>
+<li><code>yesno(title, text)</code> - popup box with yes and no options. Pressing <code>Yes</code> returns <code>True</code> and pressing <code>No</code> returns <code>False</code>.</li>
+<li><code>question(title, text, initial_value=None)</code> - popup box with a question box which can accept a text response. Pressing <code>Ok</code> returns value entered into the box is returned and pressing <code>Cancel</code> returns <code>None</code>.</li>
+<li><code>select_file(title="Select file", folder=".", filetypes=[["All files", "*.*"]], save=False, filename="")</code> - popup file dialog box which asks the user to select a file. By default, an <em>Open</em> button is displayed, setting <code>save</code> to <code>True</code> will change the button to <em>Save as</em>. The path of the selected file is returned by the function. A <code>filename</code> parameter can be supplied which will auto populate the file name field.</li>
+<li><code>select_folder(title="Select folder", folder=".")</code> - popup box which asks the user to select a folder. The path of the selected folder is returned by the function.</li>
+<li><code>select_color(color=None)</code> - popup box which prompts the user to select a color. Set <code>color</code> to an <code>#rrggbb</code> to select a default color when the popup opens. Pressing <code>Ok</code> returns the select color as a <code>#rrggbb</code> value, pressing <code>Cancel</code> returns <code>None</code>.</li>
+</ul>
+<p>All pop up boxes use the native display, so they will look different depending on your operating system.</p>
+<h3 id="examples">Examples</h3>
+<p><strong>Warning box</strong></p>
+<p>This will pop up a warning box with the title <code>"Uh oh!"</code> and the message <code>"You are almost out of biscuits!"</code>.</p>
+<pre><code class="language-python">from guizero import App
+app = App(title=&quot;Biscuit monitor&quot;)
+app.warn(&quot;Uh oh!&quot;, &quot;You are almost out of biscuits!&quot;)
+app.display()
+</code></pre>
+<p>On Windows, the box looks like this:</p>
+<p><img alt="Warning popup" src="../images/warning_windows.png" /></p>
+<p>The <code>info</code> and <code>error</code> boxes work in exactly the same way but will display different icons.</p>
+<p><strong>Yes/No box</strong></p>
+<p>When this function is called it returns a <strong>boolean</strong> value.</p>
+<ul>
+<li>If <code>Yes</code> was pressed, return <code>True</code></li>
+<li>If <code>No</code> was pressed, return <code>False</code></li>
+</ul>
+<p>You can store this value in a variable and test it:</p>
+<pre><code class="language-python">from guizero import App
+app = App(title=&quot;Snowman&quot;)
+build_a_snowman = app.yesno(&quot;A question...&quot;, &quot;Do you want to build a snowman?&quot;)
+if build_a_snowman == True:
+    app.info(&quot;Snowman&quot;, &quot;It doesn't have to be a snowman&quot;)
+else:
+    app.error(&quot;Snowman&quot;, &quot;Okay bye...&quot;)
+app.display()
+</code></pre>
+<p>This code will first display the yes/no box</p>
+<p><img alt="Yes No popup" src="../images/yesno_windows.png" /></p>
+<p>If <code>Yes</code> is pressed, an information box will be displayed:</p>
+<p><img alt="Info popup" src="../images/info_windows.png" /></p>
+<p>If <code>No</code> is pressed, an error box will be displayed</p>
+<p><img alt="Info popup" src="../images/error_windows.png" /></p>
+<p><strong>Example: Using an alert as a callback</strong></p>
+<p>You can also use these functions in a <em>callback</em> (when you have to provide a function for another widget to call). Here is an example with a <code>PushButton</code> which pops up an <code>info</code> box when it is pressed.</p>
+<pre><code class="language-python">from guizero import App, PushButton, info
+app = App()
+button = PushButton(app, command=app.info, args=[&quot;Info&quot;, &quot;You pressed the button&quot;])
+app.display()
+</code></pre>
+<p>The arguments provided to the <code>PushButton</code> are:</p>
+<ul>
+<li>Where the button should be created (within the <code>app</code>)</li>
+<li>The name of the function to call when pressed (<code>info</code>)</li>
+<li>A list of the arguments to the function you are calling (values for the <code>title</code> and <code>message</code> arguments for the <code>info</code> function)</li>
+</ul>
+<p><strong>Example: Do you really want to close?</strong></p>
+<p>You can use a <code>yesno</code> box to check whether someone really wants to exit your app. If they click yes, the app is closed, if not, nothing happens and they can continue with what they were doing.</p>
+<pre><code class="language-python">from guizero import App, Text
+
+# Ask the user if they really want to close the window
+def do_this_when_closed():
+    if app.yesno(&quot;Close&quot;, &quot;Do you want to quit?&quot;):
+        app.destroy()
+
+app = App()
+
+title = Text(app, text=&quot;blank app&quot;)
+
+# When the user tries to close the window, run the function do_this_when_closed()
+app.when_closed = do_this_when_closed
+
+app.display()
+
+</code></pre>
+<p><strong>Example: Asking a question</strong></p>
+<p>You can use a <code>question</code> pop-up to get information from the user. In this example the user is asked to enter their name when a button is pressed.</p>
+<pre><code class="language-python">from guizero import App, PushButton, Text
+
+def button_pressed():
+    name = app.question(&quot;Hello&quot;, &quot;What's your name?&quot;)
+    # If cancel is pressed, None is returned
+    # so check a name was entered
+    if name is not None:
+        hello.value = &quot;Hello &quot; + name
+
+app = App()
+button = PushButton(app, command=button_pressed, text=&quot;Hello&quot;)
+hello = Text(app)
+app.display()
+</code></pre>
+<p><img alt="question popup" src="../images/question_windows.png" /></p>
+<p>** Example: Get a file name**</p>
+<p>Ask the user to select a file using the <code>select_file</code> pop-up.</p>
+<pre><code class="language-python">from guizero import App, PushButton, Text
+
+def get_file():
+    file_name.value = app.select_file()
+
+app = App()
+
+PushButton(app, command=get_file, text=&quot;Get file&quot;)
+file_name = Text(app)
+
+app.display()
+</code></pre>
+<p><img alt="select file popup" src="../images/select_file_windows.png" /></p>
+<p>You can change the file type filter by providing a list of type descriptions and extensions as the <code>filetypes</code> parameter e.g.   </p>
+<pre><code class="language-python">file_name.value = app.select_file(filetypes=[[&quot;All files&quot;, &quot;*.*&quot;], [&quot;Text documents&quot;, &quot;*.txt&quot;]])
+</code></pre>
+<p>The default is to show an <em>Open</em> button, this can be changed to a <em>Save</em> button by setting the <code>save</code> parameter to <code>True</code> e.g.</p>
+<pre><code class="language-python">file_name.value = app.select_file(save=True)
+</code></pre>
+<p><img alt="select save file popup" src="../images/select_file_save_windows.png" /></p>
+<p>** Example: Get a folder name**</p>
+<p>Select a folder using the <code>select_folder</code> pop-up.</p>
+<pre><code class="language-python">from guizero import App, PushButton, Text
+
+def get_folder():
+    path.value = app.select_folder()
+
+app = App()
+
+PushButton(app, command=get_folder, text=&quot;Get path&quot;)
+path = Text(app)
+
+app.display()
+</code></pre>
+<p><img alt="select folder popup" src="../images/select_file_windows.png" /></p>
+<p>You can set the initial folder by passing a path to the <code>folder</code> parameter    </p>
+<pre><code class="language-python">file_name.value = app.select_file(folder=&quot;c:\users\lawsie&quot;)
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
