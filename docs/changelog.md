@@ -1,6 +1,6 @@
 # guizero
 
-## 1.5.1 - 2025-01-08
+## 1.6.0 - 2025-01-09
 - Add example for how to set box borders
 - Add pyproject.toml to enable building with `build` module instead of `setup.py`
 - Change docs deployment to use `mkdocs gh-deploy` on a branch instead of in the main repo
