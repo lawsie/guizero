@@ -147,3 +147,6 @@ tags
 
 # MKDocs build
 site/
+
+# macos detritus
+.DS_Store
