@@ -1,6 +1,6 @@
 # guizero
 
-## 1.6.0 - 2025-01-09
+## 1.6.0 - 2025-01-10
 - Add example for how to set box borders
 - Add pyproject.toml to enable building with `build` module instead of `setup.py`
 - Change docs deployment to use `mkdocs gh-deploy` on a branch instead of in the main repo
@@ -8,6 +8,8 @@
 - Add bold, italic, underline and overstrike to text-based widgets
 - contributors [blindstars](https://github.com/blindstars), [james-pcdr](https://github.com/james-pcdr), [martinohanlon](https://github.com/martinohanlon), [lawsie](https://github.com/lawsie)
 
+## 1.5.1 - 2025-01-10
+- _Ahem_ nothing to see here
 
 ## 1.5.0 - 2023-12-03
 - Uplifted to Python 3.12
