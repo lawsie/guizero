@@ -2,7 +2,7 @@ import pytest
 from threading import Event
 from time import sleep
 from unittest.mock import MagicMock
-from guizero import Text, Picture
+from guizero import Text, Picture, TitleBox
 from tkinter import Spinbox
 
 # find a suitable font to test with
@@ -154,6 +154,30 @@ def text_test(widget):
     widget.text_size = None
     assert widget.text_size == default
 
+    default = widget.text_bold
+    widget.text_bold = True
+    assert widget.text_bold == True
+    widget.text_bold = None
+    assert widget.text_bold == default
+
+    default = widget.text_italic
+    widget.text_italic = True
+    assert widget.text_italic == True
+    widget.text_italic = None
+    assert widget.text_italic == default
+
+    default = widget.text_underline
+    widget.text_underline = True
+    assert widget.text_underline == True
+    widget.text_underline = None
+    assert widget.text_underline == default
+
+    default = widget.text_overstrike
+    widget.text_overstrike = True
+    assert widget.text_overstrike == True
+    widget.text_overstrike = None
+    assert widget.text_overstrike == default
+
 def events_test(widget):
 
     events_to_test = (
@@ -244,6 +268,14 @@ def cascaded_properties_test(container, widget, text):
         assert widget.text_color == "purple"
         container.text_size = 16
         assert widget.text_size == 16
+        container.text_bold = True
+        assert widget.text_bold == True
+        container.text_italic = True
+        assert widget.text_italic == True
+        container.text_underline = True
+        assert widget.text_underline == True
+        container.text_overstrike = True
+        assert widget.text_overstrike == True
 
 def inherited_properties_test(container, widget_create, text):
     container.bg = "red"
@@ -251,6 +283,10 @@ def inherited_properties_test(container, widget_create, text):
     if text:
         container.text_color = "purple"
         container.text_size = 16
+        container.text_bold = True
+        container.text_italic = True
+        container.text_underline = True
+        container.text_overstrike = True
 
     w = widget_create()
 
@@ -259,6 +295,10 @@ def inherited_properties_test(container, widget_create, text):
     if text:
         assert w.text_color == "purple"
         assert w.text_size == 16
+        assert w.text_bold == True
+        assert w.text_italic == True
+        assert w.text_underline == True
+        assert w.text_overstrike == True
 
 def cascading_enable_test(container):
 
@@ -286,20 +326,35 @@ def cascading_enable_test(container):
     check_children(container, True)
 
 def cascading_properties_test(container):
-    t = Text(container, color=None, size=None, font=None)
+    t = Text(container, color=None, size=None, font=None, bold=None, italic=None, underline=None, overstrike=None)
     p = Picture(container)
 
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
+    container.text_bold = True
+    container.text_italic = True
+    container.text_underline = True
     container.font = TEST_FONT
     container.enabled = False
+
+    # Titleboxes cannot be overstruck, it underlines...
+    if not isinstance(container, TitleBox):
+        container.text_overstrike = True
 
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
+    assert t.text_bold == True
+    assert t.text_italic == True
+    assert t.text_underline == True
     assert t.font == TEST_FONT
     assert t.enabled == False
+
+    # Titleboxes cannot be overstruck, it underlines...
+    if not isinstance(container, TitleBox):
+        assert t.text_overstrike == True
+
     assert p.bg == "red"
     assert p.enabled == False
 
@@ -312,15 +367,29 @@ def inheriting_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
     container.text_size = 16
+    container.text_bold = True
+    container.text_italic = True
+    container.text_underline = True
     container.font = TEST_FONT
     container.enabled = False
 
-    t = Text(container, color=None, size=None, font=None)
+    # Titleboxes cannot be overstruck, it underlines...
+    if not isinstance(container, TitleBox):
+        container.text_overstrike = True
+
+    t = Text(container, color=None, size=None, font=None, bold=None, italic=None, underline=None, overstrike=None)
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
+    assert t.text_bold == True
+    assert t.text_italic == True
+    assert t.text_underline == True
     assert t.font == TEST_FONT
     assert not t.enabled
+
+    # Titleboxes cannot be overstruck, it underlines...
+    if not isinstance(container, TitleBox):
+        assert t.text_overstrike == True
 
     p = Picture(container)
     assert p.bg == "red"

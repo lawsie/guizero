@@ -17,18 +17,22 @@ from common_test import (
     auto_layout_test
     )
 
-def test_start_end_change():
+def test_start_end_step_change():
     a = App()
     s = Slider(a)
     assert s.tk.cget("from") == 0
     assert s.tk.cget("to") == 100
-    s.start = 1
-    assert s.tk.cget("from") == 1
-    s.end = 99
-    assert s.tk.cget("to") == 99
+    assert s.tk.cget("resolution") == 1
+    s.start = 20
+    assert s.tk.cget("from") == 20
+    s.end = 90
+    assert s.tk.cget("to") == 90
+    s.step = 10
+    assert s.tk.cget("resolution") == 10
     # Also check that getters have worked
-    assert s.start == 1
-    assert s.end == 99
+    assert s.start == 20
+    assert s.end == 90
+    assert s.step == 10
     a.destroy()
 
 def test_default_values():
@@ -36,6 +40,7 @@ def test_default_values():
     s = Slider(a)
     assert s.tk.cget("from") == 0
     assert s.tk.cget("to") == 100
+    assert s.tk.cget("resolution") == 1
     assert s.tk.cget("orient") == "horizontal"
     assert s.master == a
     assert s.grid == None
@@ -53,7 +58,8 @@ def test_alt_values():
         grid = [0,1],
         align = "top",
         width=10,
-        height=11)
+        height=11,
+        step=5)
 
     assert s.tk.cget("from") == 10
     assert s.tk.cget("to") == 20
@@ -63,6 +69,7 @@ def test_alt_values():
     assert s.align == "top"
     assert s.width == 10
     assert s.height == 11
+    assert s.tk.cget("resolution") == 5
     a.destroy()
 
 def test_getters_setters():

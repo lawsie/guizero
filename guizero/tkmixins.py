@@ -1,5 +1,5 @@
 from . import utilities as utils
-from tkinter.font import Font
+from tkinter.font import Font, BOLD, ITALIC, NORMAL, ROMAN
 from tkinter import TclError
 
 
@@ -127,7 +127,7 @@ class TextMixin:
     @staticmethod
     def get_font(widget):
         f = TextMixin.get_tk_font(widget)
-        return (f["family"])
+        return f["family"]
 
     @staticmethod
     def set_font(widget, font):
@@ -138,12 +138,18 @@ class TextMixin:
             default_font = TextMixin.get_tk_font(widget, default = True)
             font = default_font["family"]
 
-        widget._set_tk_config("font", (font, f["size"]))
+        kw_list = [font, f["size"], f["weight"], f["slant"]]
+        if f["underline"]:
+            kw_list.append("underline")
+        if f["overstrike"]:
+            kw_list.append("overstrike")
+        
+        widget._set_tk_config("font", tuple(kw_list))
 
     @staticmethod
     def get_text_size(widget):
         f = TextMixin.get_tk_font(widget)
-        return (f["size"])
+        return f["size"]
 
     @staticmethod
     def set_text_size(widget, size):
@@ -153,8 +159,98 @@ class TextMixin:
             # get the size from the default font
             default_font = TextMixin.get_tk_font(widget, default=True)
             size = default_font["size"]
+        
+        kw_list = [f["family"], size, f["weight"], f["slant"]]
+        if f["underline"]:
+            kw_list.append("underline")
+        if f["overstrike"]:
+            kw_list.append("overstrike")
 
-        widget._set_tk_config("font", (f["family"], size))
+        widget._set_tk_config("font", tuple(kw_list))
+
+    @staticmethod
+    def get_text_bold(widget):
+        f = TextMixin.get_tk_font(widget)
+        return True if f["weight"] == BOLD else False
+    
+    @staticmethod
+    def set_text_bold(widget, bold):
+        f = TextMixin.get_tk_font(widget)
+
+        if bold is None or not bold:
+            bold = NORMAL
+        else:
+            bold = BOLD
+
+        kw_list = [f["family"], f["size"], bold, f["slant"]]
+        if f["underline"]:
+            kw_list.append("underline")
+        if f["overstrike"]:
+            kw_list.append("overstrike")
+        
+        widget._set_tk_config("font", tuple(kw_list))
+
+    @staticmethod
+    def get_text_italic(widget):
+        f = TextMixin.get_tk_font(widget)
+        return True if f["slant"] == ITALIC else False
+    
+    @staticmethod
+    def set_text_italic(widget, italic):
+        f = TextMixin.get_tk_font(widget)
+
+        if italic is None or not italic:
+            italic = ROMAN
+        else:
+            italic = ITALIC
+
+        kw_list = [f["family"], f["size"], f["weight"], italic]
+        if f["underline"]:
+            kw_list.append("underline")
+        if f["overstrike"]:
+            kw_list.append("overstrike")
+
+        widget._set_tk_config("font", tuple(kw_list))
+
+    @staticmethod
+    def get_text_underline(widget):
+        f = TextMixin.get_tk_font(widget)
+        return f["underline"]
+    
+    @staticmethod
+    def set_text_underline(widget, underline):
+        f = TextMixin.get_tk_font(widget)
+
+        if underline is None:
+            underline = False
+
+        kw_list = [f["family"], f["size"], f["weight"], f["slant"]]
+        if underline:
+            kw_list.append("underline")
+        if f["overstrike"]:
+            kw_list.append("overstrike")
+
+        widget._set_tk_config("font", tuple(kw_list))
+
+    @staticmethod
+    def get_text_overstrike(widget):
+        f = TextMixin.get_tk_font(widget)
+        return f["overstrike"]
+    
+    @staticmethod
+    def set_text_overstrike(widget, overstrike):
+        f = TextMixin.get_tk_font(widget)
+
+        if overstrike is None:
+            overstrike = False
+
+        kw_list = [f["family"], f["size"], f["weight"], f["slant"]]
+        if f["underline"]:
+            kw_list.append("underline")
+        if overstrike:
+            kw_list.append("overstrike")
+
+        widget._set_tk_config("font", tuple(kw_list))
 
     # Get the text colour as a string
     @property
@@ -194,6 +290,59 @@ class TextMixin:
     @text_size.setter
     def text_size(self, size):
         TextMixin.set_text_size(self, size)
+
+    # Get the current text weight
+    @property
+    def text_bold(self):
+        """
+        Sets or returns if the text of the widget is bold.
+        """
+        return TextMixin.get_text_bold(self)
+
+    # Set the font weight
+    @text_bold.setter
+    def text_bold(self, bold):
+        TextMixin.set_text_bold(self, bold)
+
+    # Get the current text slant
+    @property
+    def text_italic(self):
+        """
+        Sets or returns if the text of the widget is italic.
+        """
+        return TextMixin.get_text_italic(self)
+
+    # Set the font slant
+    @text_italic.setter
+    def text_italic(self, italic):
+        TextMixin.set_text_italic(self, italic)
+
+    # Get the current text underline
+    @property
+    def text_underline(self):
+        """
+        Sets or returns the text underline of the widget.
+        """
+        return TextMixin.get_text_underline(self)
+
+    # Set the font underline
+    @text_underline.setter
+    def text_underline(self, underline):
+        TextMixin.set_text_underline(self, underline)
+
+    # Get the current text overstrike
+    @property
+    def text_overstrike(self):
+        """
+        Sets or returns the text overstrike of the widget.
+        """
+        return TextMixin.get_text_overstrike(self)
+
+    # Set the font overstrike
+    @text_overstrike.setter
+    def text_overstrike(self, overstrike):
+        TextMixin.set_text_overstrike(self, overstrike)
+
 
 class ColorMixin:
 

@@ -17,7 +17,11 @@ class Text(TextWidget):
         visible=True,
         enabled=None,
         width=None,
-        height=None):
+        height=None,
+        bold=None,
+        italic=None,
+        underline=None,
+        overstrike=None):
 
         self._text = str(text)
         tk = Label(master.tk, text=text)
@@ -35,6 +39,18 @@ class Text(TextWidget):
 
         if color is not None:
             self.text_color = color
+
+        if bold is not None:
+            self.text_bold = bold
+
+        if italic is not None:
+            self.text_italic = italic
+
+        if underline is not None:
+            self.text_underline = underline
+
+        if overstrike is not None:
+            self.text_overstrike = overstrike
 
     # PROPERTIES
     # ----------------------------------
@@ -56,6 +72,42 @@ class Text(TextWidget):
     @size.setter
     def size(self, size):
         self.text_size = size
+
+    # The font weight
+    @property
+    def bold(self):
+        return self.text_bold
+
+    @bold.setter
+    def bold(self, bold):
+        self.text_bold = bold
+
+    # The font slant
+    @property
+    def italic(self):
+        return self.text_italic
+
+    @italic.setter
+    def italic(self, italic):
+        self.text_italic = italic
+
+    # The font underline
+    @property
+    def underline(self):
+        return self.text_underline
+
+    @underline.setter
+    def underline(self, underline):
+        self.text_underline = underline
+
+    # The font overstrike
+    @property
+    def overstrike(self):
+        return self.text_overstrike
+
+    @overstrike.setter
+    def overstrike(self, overstrike):
+        self.text_overstrike = overstrike
 
     @property
     def description(self):
