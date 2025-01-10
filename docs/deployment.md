@@ -7,6 +7,7 @@ Notes on how to deploy guizero (on Windows).
 - Update version number in `guizero\__init__.py`
 - Update version number in `docs\about.md`
 - Update `changelog.md` in docs
+- Update version number in `pyproject.toml` 
 
 ## Python library
 
@@ -21,7 +22,7 @@ Build for deployment:
 
 ```
 cd guizero
-python build
+python -m build
 ```
 
 Upload to pypi:
