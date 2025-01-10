@@ -6,7 +6,7 @@
 
 It is designed to allow new learners to quickly and easily create GUIs for their programs.
 
-![Have a go with guizero and see what you can create](docs-src/docs/images/have-a-go.png)
+![Have a go with guizero and see what you can create](docs/images/have-a-go.png)
 
 ```python
 from guizero import App, Text, PushButton
