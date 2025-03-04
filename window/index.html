@@ -582,7 +582,7 @@ app.display()
 <p>Create an <code>Window</code> object by calling the <code>Window()</code> constructor. You should give the object a name so you can refer to it later - in this case we have called it <code>window</code>. It is best to keep the name you give to your <code>Window</code> object quite short, as you will have to use it to tell other widgets where they should be stored.</p>
 <pre><code class="language-python">from guizero import App, Window
 app = App(title=&quot;My app&quot;, height=300, width=200)
-window = Window(app, title = &quot;2nd Window&quot;, height=300, width=200)
+window = Window(app, title=&quot;A new Window&quot;, height=300, width=200)
 app.display()
 </code></pre>
 <p><strong>Showing and hiding a Window</strong></p>
@@ -590,19 +590,19 @@ app.display()
 <pre><code class="language-python">from guizero import App, Window, PushButton
 
 def open_window():
-    window_2.show()
+    window.show()
 
 app = App(title=&quot;My app&quot;, height=300, width=200)
-window = Window(app, title = &quot;2nd Window&quot;, height=300, width=200)
-window.hide()
+button = PushButton(app, text=&quot;Show second window&quot;, command=open_window)
 
-open_button(app, text=&quot;open 2nd window&quot;, command=open_window)
+window = Window(app, title=&quot;A new Window&quot;, height=300, width=200)
+window.hide()
 
 app.display()
 </code></pre>
 <p>If you want a <code>Window</code> to become the main window and stop all other windows responding until it is closed you can set the optional <code>wait</code> parameter to <code>True</code> when using <code>show</code>:</p>
 <pre><code class="language-python">def open_window():
-    window_2.show(wait = True)
+    window.show(wait=True)
 </code></pre></div>
             </div>
         </div>
