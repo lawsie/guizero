@@ -1,0 +1,46 @@
+site_name: guizero
+theme:
+  name: 'litera'
+extra_css: [extra.css]
+nav:
+  - About: about.md
+  - Installation: index.md
+  - Using guizero:
+      - Getting started: start.md
+      - Using Widgets: usingwidgets.md
+      - Commands: commands.md
+      - Multiple windows: multiple_windows.md
+      - Layouts: layout.md
+      - Pop-ups: alerts.md
+      - Sizes: size.md
+      - Colors: colors.md
+      - Images: images.md
+      - Loops and sleeping: blocking.md
+      - Events: events.md
+      - Using tkinter: usingtk.md
+      - Getting help: gettinghelp.md
+  - Widgets:
+      - Overview: widgetoverview.md
+      - App: app.md
+      - Box: box.md
+      - ButtonGroup: buttongroup.md
+      - CheckBox: checkbox.md
+      - Combo: combo.md
+      - Drawing: drawing.md
+      - ListBox: listbox.md
+      - MenuBar: menubar.md
+      - Picture: picture.md
+      - PushButton: pushbutton.md
+      - Slider: slider.md
+      - Text: text.md
+      - TextBox: textbox.md
+      - TitleBox: titlebox.md
+      - Waffle: waffle.md
+      - Window: window.md
+  - Recipes: recipes.md
+  - Book : book.md
+  - Contributing:
+      - Notes: contributing.md
+      - Developing: development.md
+      - Deploying: deployment.md
+  - Change log: changelog.md
