@@ -112,7 +112,7 @@ Create an `Window` object by calling the `Window()` constructor. You should give
 ```python
 from guizero import App, Window
 app = App(title="My app", height=300, width=200)
-window = Window(app, title = "2nd Window", height=300, width=200)
+window = Window(app, title="A new Window", height=300, width=200)
 app.display()
 ```
 
@@ -124,13 +124,13 @@ app.display()
 from guizero import App, Window, PushButton
 
 def open_window():
-    window_2.show()
+    window.show()
 
 app = App(title="My app", height=300, width=200)
-window = Window(app, title = "2nd Window", height=300, width=200)
-window.hide()
+button = PushButton(app, text="Show second window", command=open_window)
 
-open_button(app, text="open 2nd window", command=open_window)
+window = Window(app, title="A new Window", height=300, width=200)
+window.hide()
 
 app.display()
 ```
@@ -139,5 +139,5 @@ If you want a `Window` to become the main window and stop all other windows resp
 
 ```python
 def open_window():
-    window_2.show(wait = True)
+    window.show(wait=True)
 ```
