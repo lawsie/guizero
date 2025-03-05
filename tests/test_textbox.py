@@ -13,8 +13,19 @@ from common_test import (
     cascaded_properties_test,
     inherited_properties_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+    cancel_no_warn,
+    cancel_with_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    t = TextBox(a)
+    cancel_with_warn(capsys, t)
+    cancel_no_warn(capsys, t)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -28,16 +39,18 @@ def test_default_values():
     assert t.wrap == None
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
+    a = App(layout="grid")
     t = TextBox(
         a,
         text="foo",
-        width = 20,
-        grid = [0,1],
+        width=20,
+        grid=[0, 1],
         align="top",
         multiline=True,
-        scrollbar=True)
+        scrollbar=True,
+    )
 
     assert t.master == a
     assert t.grid[0] == 0
@@ -48,6 +61,7 @@ def test_alt_values():
     assert t.wrap == True
     a.destroy()
 
+
 def test_getters_setters():
     a = App()
     t = TextBox(a)
@@ -55,25 +69,29 @@ def test_getters_setters():
     assert t.value == "foo"
     a.destroy()
 
+
 def test_clear():
     a = App()
-    t = TextBox(a, text = "foo")
+    t = TextBox(a, text="foo")
     t.clear()
     assert t.value == ""
     a.destroy()
 
+
 def test_cursor_position():
     a = App()
-    t = TextBox(a, text = "foo")
+    t = TextBox(a, text="foo")
     assert t.cursor_position == 0
     a.destroy()
 
+
 def test_append():
     a = App()
-    t = TextBox(a, text = "foo")
+    t = TextBox(a, text="foo")
     t.append("bar")
     assert t.value == "foobar"
     a.destroy()
+
 
 def test_after_schedule():
     a = App()
@@ -81,11 +99,13 @@ def test_after_schedule():
     schedule_after_test(a, t)
     a.destroy()
 
+
 def test_repeat_schedule():
     a = App()
     t = TextBox(a)
     schedule_repeat_test(a, t)
     a.destroy()
+
 
 def test_destroy():
     a = App()
@@ -93,11 +113,13 @@ def test_destroy():
     destroy_test(t)
     a.destroy()
 
+
 def test_enable():
     a = App()
     t = TextBox(a)
     enable_test(t)
     a.destroy()
+
 
 def test_display():
     a = App()
@@ -105,17 +127,20 @@ def test_display():
     display_test(t)
     a.destroy()
 
+
 def test_text():
     a = App()
     t = TextBox(a)
     text_test(t)
     a.destroy()
 
+
 def test_color():
     a = App()
     t = TextBox(a)
     color_test(t)
     a.destroy()
+
 
 def test_width():
     a = App()
@@ -125,16 +150,17 @@ def test_width():
     t.width = 30
     assert t.width == 30
     t.width = "fill"
-    assert t.width == "fill" 
+    assert t.width == "fill"
 
     a.destroy()
+
 
 def test_height():
     a = App()
 
     t1 = TextBox(a)
     t1.height = 10
-    #cant change height of single line text box
+    # cant change height of single line text box
     assert t1.height == 1
 
     t2 = TextBox(a, multiline=True)
@@ -146,11 +172,13 @@ def test_height():
 
     a.destroy()
 
+
 def test_events():
     a = App()
     t = TextBox(a)
     events_test(t)
     a.destroy()
+
 
 def test_cascaded_properties():
     a = App()
@@ -158,10 +186,12 @@ def test_cascaded_properties():
     cascaded_properties_test(a, t, True)
     a.destroy()
 
+
 def test_inherited_properties():
     a = App()
     inherited_properties_test(a, lambda: TextBox(a), True)
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -169,19 +199,21 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
-    
-    w = TextBox(a, grid=[1,2])
+
+    w = TextBox(a, grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
-    
-    ws = TextBox(a, grid=[1,2,3,4])
+
+    ws = TextBox(a, grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = TextBox(a, grid=[1,2], align="top")
+    wa = TextBox(a, grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
-    
+
     a.destroy()
+
 
 def test_disabled_text():
     a = App()
@@ -189,6 +221,7 @@ def test_disabled_text():
     t.text = "text"
     assert t.text == "text"
     a.destroy()
+
 
 def test_wrap():
     a = App()
@@ -202,8 +235,8 @@ def test_wrap():
 
     assert mlt.wrap == True
     mlt.wrap = False
-    assert mlt.wrap == False 
+    assert mlt.wrap == False
     mlt.wrap = True
     assert mlt.wrap == True
-    
+
     a.destroy()

@@ -14,8 +14,19 @@ from common_test import (
     cascaded_properties_test,
     inherited_properties_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+    cancel_no_warn,
+    cancel_with_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    s = Slider(a)
+    cancel_with_warn(capsys, a)
+    cancel_no_warn(capsys, a)
+    a.destroy()
+
 
 def test_start_end_step_change():
     a = App()
@@ -35,6 +46,7 @@ def test_start_end_step_change():
     assert s.step == 10
     a.destroy()
 
+
 def test_default_values():
     a = App()
     s = Slider(a)
@@ -48,18 +60,20 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
+    a = App(layout="grid")
     s = Slider(
         a,
         start=10,
         end=20,
         horizontal=False,
-        grid = [0,1],
-        align = "top",
+        grid=[0, 1],
+        align="top",
         width=10,
         height=11,
-        step=5)
+        step=5,
+    )
 
     assert s.tk.cget("from") == 10
     assert s.tk.cget("to") == 20
@@ -72,6 +86,7 @@ def test_alt_values():
     assert s.tk.cget("resolution") == 5
     a.destroy()
 
+
 def test_getters_setters():
     a = App()
     s = Slider(a)
@@ -82,14 +97,16 @@ def test_getters_setters():
 
     a.destroy()
 
+
 def test_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
-    s = Slider(a, command = callback)
+    s = Slider(a, command=callback)
     assert not callback_event.is_set()
     # you cant invoke a tk scale - this is better than no tests!
     s._command_callback(s.value)
@@ -97,15 +114,17 @@ def test_command():
 
     a.destroy()
 
+
 def test_command_with_parameter():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert value == 0
         callback_event.set()
 
-    s = Slider(a, command = callback)
+    s = Slider(a, command=callback)
     assert not callback_event.is_set()
 
     s._command_callback(s.value)
@@ -113,10 +132,12 @@ def test_command_with_parameter():
 
     a.destroy()
 
+
 def test_update_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
@@ -136,10 +157,12 @@ def test_update_command():
 
     a.destroy()
 
+
 def test_update_command_with_parameter():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert s.value == 0
         callback_event.set()
@@ -153,11 +176,13 @@ def test_update_command_with_parameter():
 
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     s = Slider(a)
     schedule_after_test(a, s)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
@@ -165,11 +190,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, s)
     a.destroy()
 
+
 def test_destroy():
     a = App()
     s = Slider(a)
     destroy_test(s)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -177,11 +204,13 @@ def test_enable():
     enable_test(s)
     a.destroy()
 
+
 def test_display():
     a = App()
     s = Slider(a)
     display_test(s)
     a.destroy()
+
 
 def test_text():
     a = App()
@@ -189,11 +218,13 @@ def test_text():
     text_test(s)
     a.destroy()
 
+
 def test_color():
     a = App()
     s = Slider(a)
     color_test(s)
     a.destroy()
+
 
 def test_size():
     a = App()
@@ -202,11 +233,13 @@ def test_size():
     size_fill_test(s)
     a.destroy()
 
+
 def test_events():
     a = App()
     s = Slider(a)
     events_test(s)
     a.destroy()
+
 
 def test_cascaded_properties():
     a = App()
@@ -214,10 +247,12 @@ def test_cascaded_properties():
     cascaded_properties_test(a, s, True)
     a.destroy()
 
+
 def test_inherited_properties():
     a = App()
     inherited_properties_test(a, lambda: Slider(a), True)
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -225,16 +260,17 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
-    
-    w = Slider(a, grid=[1,2])
+
+    w = Slider(a, grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
-    
-    ws = Slider(a, grid=[1,2,3,4])
+
+    ws = Slider(a, grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = Slider(a, grid=[1,2], align="top")
+    wa = Slider(a, grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
-    
+
     a.destroy()

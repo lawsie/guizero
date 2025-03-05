@@ -14,8 +14,19 @@ from common_test import (
     cascaded_properties_test,
     inherited_properties_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+    cancel_no_warn,
+    cancel_with_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    c = CheckBox(a, "foo")
+    cancel_with_warn(capsys, c)
+    cancel_no_warn(capsys, c)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -27,15 +38,10 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
-    c = CheckBox(
-        a,
-        text = "foo",
-        grid = [0,1],
-        align = "top",
-        width = 10,
-        height = 11)
+    a = App(layout="grid")
+    c = CheckBox(a, text="foo", grid=[0, 1], align="top", width=10, height=11)
 
     assert c.text == "foo"
     assert c.grid[0] == 0
@@ -44,6 +50,7 @@ def test_alt_values():
     assert c.width == 10
     assert c.height == 11
     a.destroy()
+
 
 def test_getters_setters():
     a = App()
@@ -59,39 +66,45 @@ def test_getters_setters():
 
     a.destroy()
 
+
 def test_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
-    c = CheckBox(a, "foo", command = callback)
+    c = CheckBox(a, "foo", command=callback)
     assert not callback_event.is_set()
     c.tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
 
+
 def test_command_with_args():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert value == "foo"
         callback_event.set()
 
-    c = CheckBox(a, "foo", command = callback, args = ["foo"])
+    c = CheckBox(a, "foo", command=callback, args=["foo"])
 
     c.tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
 
+
 def test_update_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
@@ -111,10 +124,12 @@ def test_update_command():
 
     a.destroy()
 
+
 def test_update_command_with_args():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert value == "foo"
         callback_event.set()
@@ -126,6 +141,7 @@ def test_update_command_with_args():
     assert callback_event.is_set()
 
     a.destroy()
+
 
 def test_toggle():
     a = App()
@@ -139,11 +155,13 @@ def test_toggle():
 
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     c = CheckBox(a, "foo")
     schedule_after_test(a, c)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
@@ -151,11 +169,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, c)
     a.destroy()
 
+
 def test_destroy():
     a = App()
     c = CheckBox(a, "foo")
     destroy_test(c)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -163,11 +183,13 @@ def test_enable():
     enable_test(c)
     a.destroy()
 
+
 def test_display():
     a = App()
     c = CheckBox(a, "foo")
     display_test(c)
     a.destroy()
+
 
 def test_text():
     a = App()
@@ -175,11 +197,13 @@ def test_text():
     text_test(c)
     a.destroy()
 
+
 def test_color():
     a = App()
     c = CheckBox(a, "foo")
     color_test(c)
     a.destroy()
+
 
 def test_size():
     a = App()
@@ -188,11 +212,13 @@ def test_size():
     size_fill_test(c)
     a.destroy()
 
+
 def test_events():
     a = App()
     c = CheckBox(a, "foo")
     events_test(c)
     a.destroy()
+
 
 def test_cascaded_properties():
     a = App()
@@ -200,10 +226,12 @@ def test_cascaded_properties():
     cascaded_properties_test(a, c, True)
     a.destroy()
 
+
 def test_inherited_properties():
     a = App()
     inherited_properties_test(a, lambda: CheckBox(a, "foo"), True)
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -211,16 +239,17 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
-    
-    w = CheckBox(a, grid=[1,2])
+
+    w = CheckBox(a, grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
-    
-    ws = CheckBox(a, grid=[1,2,3,4])
+
+    ws = CheckBox(a, grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = CheckBox(a, grid=[1,2], align="top")
+    wa = CheckBox(a, grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
-    
+
     a.destroy()

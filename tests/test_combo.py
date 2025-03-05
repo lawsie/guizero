@@ -14,8 +14,19 @@ from common_test import (
     cascaded_properties_test,
     inherited_properties_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+    cancel_with_warn,
+    cancel_no_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    c = Combo(a, ["foo", "bar"])
+    cancel_with_warn(capsys, c)
+    cancel_no_warn(capsys, c)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -27,16 +38,12 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
+    a = App(layout="grid")
     c = Combo(
-        a,
-        ["foo", "bar"],
-        selected = "bar",
-        grid = [0,1],
-        align = "top",
-        width=10,
-        height=11)
+        a, ["foo", "bar"], selected="bar", grid=[0, 1], align="top", width=10, height=11
+    )
 
     assert c.value == "bar"
     assert c.grid[0] == 0
@@ -45,6 +52,7 @@ def test_alt_values():
     assert c.width == 10
     assert c.height == 11
     a.destroy()
+
 
 def test_no_options():
     a = App()
@@ -58,6 +66,7 @@ def test_no_options():
 
     a.destroy()
 
+
 def test_getters_setters():
     a = App()
     c = Combo(a, ["foo", "bar"])
@@ -67,6 +76,7 @@ def test_getters_setters():
     assert c.value == "bar"
 
     a.destroy()
+
 
 def test_select_default():
     a = App()
@@ -87,6 +97,7 @@ def test_select_default():
 
     a.destroy()
 
+
 def test_append():
     a = App()
     c = Combo(a, ["foo", "bar"])
@@ -96,6 +107,7 @@ def test_append():
     assert c.options == ["foo", "bar", "car"]
 
     a.destroy()
+
 
 def test_insert():
     a = App()
@@ -107,6 +119,7 @@ def test_insert():
 
     a.destroy()
 
+
 def test_remove():
     a = App()
     c = Combo(a, ["foo", "bar", "foo"])
@@ -116,6 +129,7 @@ def test_remove():
     assert c.options == ["bar", "foo"]
 
     a.destroy()
+
 
 def test_clear():
     a = App()
@@ -127,14 +141,16 @@ def test_clear():
 
     a.destroy()
 
+
 def test_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
-    c = Combo(a, ["foo", "bar"], command = callback)
+    c = Combo(a, ["foo", "bar"], command=callback)
     assert not callback_event.is_set()
     # you cant invoke a tk optionmenu - this is better than no tests!
     c._command_callback(c.value)
@@ -142,15 +158,17 @@ def test_command():
 
     a.destroy()
 
+
 def test_command_with_parameter():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert value == "foo"
         callback_event.set()
 
-    c = Combo(a, ["foo", "bar"], command = callback)
+    c = Combo(a, ["foo", "bar"], command=callback)
     assert not callback_event.is_set()
 
     c._command_callback(c.value)
@@ -158,10 +176,12 @@ def test_command_with_parameter():
 
     a.destroy()
 
+
 def test_update_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
@@ -181,10 +201,12 @@ def test_update_command():
 
     a.destroy()
 
+
 def test_update_command_with_parameter():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert c.value == "foo"
         callback_event.set()
@@ -198,11 +220,13 @@ def test_update_command_with_parameter():
 
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     c = Combo(a, ["foo", "bar"])
     schedule_after_test(a, c)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
@@ -210,11 +234,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, c)
     a.destroy()
 
+
 def test_destroy():
     a = App()
     c = Combo(a, ["foo", "bar"])
     destroy_test(c)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -222,11 +248,13 @@ def test_enable():
     enable_test(c)
     a.destroy()
 
+
 def test_display():
     a = App()
     c = Combo(a, ["foo", "bar"])
     display_test(c)
     a.destroy()
+
 
 def test_text():
     a = App()
@@ -234,11 +262,13 @@ def test_text():
     text_test(c)
     a.destroy()
 
+
 def test_color():
     a = App()
     c = Combo(a, ["foo", "bar"])
     color_test(c)
     a.destroy()
+
 
 def test_size():
     a = App()
@@ -247,11 +277,13 @@ def test_size():
     size_fill_test(c)
     a.destroy()
 
+
 def test_events():
     a = App()
     c = Combo(a, ["foo", "bar"])
     events_test(c)
     a.destroy()
+
 
 def test_cascaded_properties():
     a = App()
@@ -259,10 +291,12 @@ def test_cascaded_properties():
     cascaded_properties_test(a, c, True)
     a.destroy()
 
+
 def test_inherited_properties():
     a = App()
     inherited_properties_test(a, lambda: Combo(a, ["foo", "bar"]), True)
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -270,16 +304,17 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
-    
-    w = Combo(a, grid=[1,2])
+
+    w = Combo(a, grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
-    
-    ws = Combo(a, grid=[1,2,3,4])
+
+    ws = Combo(a, grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = Combo(a, grid=[1,2], align="top")
+    wa = Combo(a, grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
-    
+
     a.destroy()

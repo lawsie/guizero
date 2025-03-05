@@ -14,8 +14,19 @@ from common_test import (
     cascaded_properties_test,
     inherited_properties_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+    cancel_with_warn,
+    cancel_no_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    l = ListBox(a)
+    cancel_with_warn(capsys, l)
+    cancel_no_warn(capsys, l)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -31,17 +42,19 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
+    a = App(layout="grid")
     l = ListBox(
         a,
         ["foo", "bar"],
-        selected = "bar",
-        grid = [0,1],
-        align = "top",
+        selected="bar",
+        grid=[0, 1],
+        align="top",
         width=10,
         height=11,
-        scrollbar=True)
+        scrollbar=True,
+    )
 
     assert l.value == "bar"
     assert l.items == ["foo", "bar"]
@@ -53,9 +66,10 @@ def test_alt_values():
 
     a.destroy()
 
+
 def test_multi_default_values():
     a = App()
-    l = ListBox(a, multiselect = True)
+    l = ListBox(a, multiselect=True)
     assert l.master == a
     assert l.value == None
     assert l.items == []
@@ -66,16 +80,18 @@ def test_multi_default_values():
     assert l._listbox._multiselect == True
     a.destroy()
 
+
 def test_multi_alt_values():
-    a = App(layout = "grid")
+    a = App(layout="grid")
     l = ListBox(
         a,
         ["foo", "bar"],
-        selected = ["bar"],
-        grid = [0,1],
-        align = "top",
-        multiselect = True,
-        scrollbar=True)
+        selected=["bar"],
+        grid=[0, 1],
+        align="top",
+        multiselect=True,
+        scrollbar=True,
+    )
 
     assert l.value == ["bar"]
     assert l.items == ["foo", "bar"]
@@ -84,6 +100,7 @@ def test_multi_alt_values():
     assert l.align == "top"
     assert l._listbox._multiselect == True
     a.destroy()
+
 
 def test_getters_setters():
     a = App()
@@ -95,6 +112,7 @@ def test_getters_setters():
 
     a.destroy()
 
+
 def test_multi_getters_setters():
     a = App()
     l = ListBox(a, ["foo", "bar"], multiselect=True)
@@ -104,9 +122,10 @@ def test_multi_getters_setters():
     assert l.value == ["bar"]
     l.value = ["bar", "foo"]
     # test selected values are in value
-    assert all(x in l.value for x in ['bar', 'foo'])
+    assert all(x in l.value for x in ["bar", "foo"])
 
     a.destroy()
+
 
 def test_append():
     a = App()
@@ -118,6 +137,7 @@ def test_append():
 
     a.destroy()
 
+
 def test_insert():
     a = App()
     l = ListBox(a, ["foo", "bar"])
@@ -127,6 +147,7 @@ def test_insert():
     assert l.items == ["foo", "car", "bar"]
 
     a.destroy()
+
 
 def test_remove():
     a = App()
@@ -138,6 +159,7 @@ def test_remove():
 
     a.destroy()
 
+
 def test_clear():
     a = App()
     l = ListBox(a, ["foo", "bar"])
@@ -147,14 +169,16 @@ def test_clear():
 
     a.destroy()
 
+
 def test_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
-    l = ListBox(a, ["foo", "bar"], command = callback)
+    l = ListBox(a, ["foo", "bar"], command=callback)
     assert not callback_event.is_set()
 
     l._listbox._command_callback()
@@ -162,15 +186,17 @@ def test_command():
 
     a.destroy()
 
+
 def test_command_with_parameter():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert value == "bar"
         callback_event.set()
 
-    l = ListBox(a, ["foo", "bar"], command = callback)
+    l = ListBox(a, ["foo", "bar"], command=callback)
     l.value = "bar"
     assert not callback_event.is_set()
 
@@ -179,10 +205,12 @@ def test_command_with_parameter():
 
     a.destroy()
 
+
 def test_update_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
@@ -202,10 +230,12 @@ def test_update_command():
 
     a.destroy()
 
+
 def test_update_command_with_parameter():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert l.value == "foo"
         callback_event.set()
@@ -220,11 +250,13 @@ def test_update_command_with_parameter():
 
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     l = ListBox(a, ["foo", "bar"])
     schedule_after_test(a, l)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
@@ -232,11 +264,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, l)
     a.destroy()
 
+
 def test_destroy():
     a = App()
     l = ListBox(a, ["foo", "bar"])
     destroy_test(l)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -244,11 +278,13 @@ def test_enable():
     enable_test(l)
     a.destroy()
 
+
 def test_display():
     a = App()
     l = ListBox(a, ["foo", "bar"])
     display_test(l)
     a.destroy()
+
 
 def test_text():
     a = App()
@@ -256,11 +292,13 @@ def test_text():
     text_test(l)
     a.destroy()
 
+
 def test_color():
     a = App()
     l = ListBox(a, ["foo", "bar"])
     color_test(l)
     a.destroy()
+
 
 def test_size():
     a = App()
@@ -269,11 +307,13 @@ def test_size():
     size_fill_test(l)
     a.destroy()
 
+
 def test_events():
     a = App()
     l = ListBox(a, ["foo", "bar"])
     events_test(l)
     a.destroy()
+
 
 def test_cascaded_properties():
     a = App()
@@ -281,10 +321,12 @@ def test_cascaded_properties():
     cascaded_properties_test(a, l, True)
     a.destroy()
 
+
 def test_inherited_properties():
     a = App()
     inherited_properties_test(a, lambda: ListBox(a, ["foo", "bar"]), True)
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -292,18 +334,20 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
-    
-    w = ListBox(a, grid=[1,2])
+
+    w = ListBox(a, grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
-    
-    ws = ListBox(a, grid=[1,2,3,4])
+
+    ws = ListBox(a, grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = ListBox(a, grid=[1,2], align="top")
+    wa = ListBox(a, grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
-    
+
     a.destroy()
+
 
 test_multi_alt_values()

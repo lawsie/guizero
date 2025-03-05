@@ -11,7 +11,18 @@ from common_test import (
     inheriting_properties_test,
     full_screen_test,
     add_tk_widget_test,
-    icon_test)
+    icon_test,
+    cancel_with_warn,
+    cancel_no_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    cancel_with_warn(capsys, a)
+    cancel_no_warn(capsys, a)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -22,13 +33,15 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
-    a = App(title = "foo", width = 666, height = 666, layout="grid")
+    a = App(title="foo", width=666, height=666, layout="grid")
     assert a.title == "foo"
     assert a.width == 666
     assert a.height == 666
     assert a.layout == "grid"
     a.destroy()
+
 
 def test_getters_setters():
     a = App()
@@ -42,26 +55,31 @@ def test_getters_setters():
     assert a.width == 666
     a.destroy()
 
+
 def test_update():
     a = App()
     # just testing it doesnt fail
     a.update()
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     schedule_after_test(a, a)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
     schedule_repeat_test(a, a)
     a.destroy()
 
+
 def test_display():
     a = App()
     display_test(a)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -69,16 +87,19 @@ def test_enable():
     cascading_enable_test(a)
     a.destroy()
 
+
 def test_events():
     a = App()
     events_test(a)
     a.destroy()
 
+
 def test_when_resized():
-    
+
     a = App()
 
     resize_event = Event()
+
     def callback():
         resize_event.set()
 
@@ -87,12 +108,11 @@ def test_when_resized():
         assert event.height == 504
         resize_event.set()
 
-
     a.when_resized = callback
     a.resize(501, 502)
     assert resize_event.wait(1)
     resize_event.clear()
-    
+
     a.when_resized = callback_params
     a.resize(503, 504)
     assert resize_event.wait(1)
@@ -104,33 +124,38 @@ def test_when_resized():
 
     a.destroy()
 
+
 def test_cascading_properties():
     a = App()
     cascading_properties_test(a)
     a.destroy()
+
 
 def test_inheriting_properties():
     a = App()
     inheriting_properties_test(a)
     a.destroy()
 
+
 def test_full_screen():
     a = App()
     full_screen_test(a)
     a.destroy()
+
 
 def test_add_tk_widget():
     a = App()
     add_tk_widget_test(a)
     a.destroy()
 
+
 def test_icon():
     a = App()
     icon_test(a, "../examples/guizero.gif")
     a.destroy()
 
-@pytest.mark.skipif(system_config.PIL_available == False,
-                    reason="PIL not available")
+
+@pytest.mark.skipif(system_config.PIL_available == False, reason="PIL not available")
 def test_icon_jpg():
     a = App()
     icon_test(a, "../examples/guizero.jpg")

@@ -14,8 +14,19 @@ from common_test import (
     cascaded_properties_test,
     inherited_properties_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+    cancel_with_warn,
+    cancel_no_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    b = ButtonGroup(a, ["foo", "bar"])
+    cancel_with_warn(capsys, b)
+    cancel_no_warn(capsys, b)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -28,16 +39,12 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
+    a = App(layout="grid")
     b = ButtonGroup(
-        a,
-        ["foo", "bar"],
-        "bar",
-        grid = [0,1],
-        align = "top",
-        width=11,
-        height=10)
+        a, ["foo", "bar"], "bar", grid=[0, 1], align="top", width=11, height=10
+    )
 
     assert b.value == "bar"
     assert b.value_text == "bar"
@@ -48,12 +55,14 @@ def test_alt_values():
     assert b.height == 10
     a.destroy()
 
+
 def test_2d_options_list():
     a = App()
     b = ButtonGroup(a, [["foo", "f"], ["bar", "b"]])
     assert b.value == "f"
     assert b.value_text == "foo"
     a.destroy()
+
 
 def test_getters_setters():
     a = App()
@@ -71,6 +80,7 @@ def test_getters_setters():
 
     a.destroy()
 
+
 def test_append():
     a = App()
     b = ButtonGroup(a, [["foo", "f"], ["bar", "b"]])
@@ -84,6 +94,7 @@ def test_append():
     assert b.options == [["foo", "f"], ["bar", "b"], ["car", "car"], ["lah", "l"]]
 
     a.destroy()
+
 
 def test_insert():
     a = App()
@@ -99,6 +110,7 @@ def test_insert():
 
     a.destroy()
 
+
 def test_remove():
     a = App()
     b = ButtonGroup(a, [["foo", "f"], ["bar", "b"], ["car", "c"]])
@@ -108,6 +120,7 @@ def test_remove():
     assert b.options == [["bar", "b"], ["car", "c"]]
 
     a.destroy()
+
 
 def test_clear():
     a = App()
@@ -119,16 +132,18 @@ def test_clear():
 
     a.destroy()
 
+
 def test_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         assert b.value == "bar"
         assert b.value_text == "bar"
         callback_event.set()
 
-    b = ButtonGroup(a, ["foo", "bar"], command = callback)
+    b = ButtonGroup(a, ["foo", "bar"], command=callback)
 
     assert not callback_event.is_set()
     b._rbuttons[1].tk.invoke()
@@ -136,27 +151,31 @@ def test_command():
 
     a.destroy()
 
+
 def test_command_with_args():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert value == "foo"
         assert b.value == "bar"
         assert b.value_text == "bar"
         callback_event.set()
 
-    b = ButtonGroup(a, ["foo", "bar"], command = callback, args = ["foo"])
+    b = ButtonGroup(a, ["foo", "bar"], command=callback, args=["foo"])
 
     b._rbuttons[1].tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
 
+
 def test_update_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
@@ -176,10 +195,12 @@ def test_update_command():
 
     a.destroy()
 
+
 def test_update_command_with_args():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert value == "foo"
         callback_event.set()
@@ -192,11 +213,13 @@ def test_update_command_with_args():
 
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     b = ButtonGroup(a, ["foo", "bar"])
     schedule_after_test(a, b)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
@@ -204,11 +227,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, b)
     a.destroy()
 
+
 def test_destroy():
     a = App()
     b = ButtonGroup(a, ["foo", "bar"])
     destroy_test(b)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -216,11 +241,13 @@ def test_enable():
     enable_test(b)
     a.destroy()
 
+
 def test_display():
     a = App()
     b = ButtonGroup(a, ["foo", "bar"])
     display_test(b)
     a.destroy()
+
 
 def test_text():
     a = App()
@@ -228,11 +255,13 @@ def test_text():
     text_test(b)
     a.destroy()
 
+
 def test_color():
     a = App()
     b = ButtonGroup(a, ["foo", "bar"])
     color_test(b)
     a.destroy()
+
 
 def test_size():
     a = App()
@@ -241,11 +270,13 @@ def test_size():
     size_fill_test(b)
     a.destroy()
 
+
 def test_events():
     a = App()
     b = ButtonGroup(a, ["foo", "bar"])
     events_test(b)
     a.destroy()
+
 
 def test_cascaded_properties():
     a = App()
@@ -253,10 +284,12 @@ def test_cascaded_properties():
     cascaded_properties_test(a, b, True)
     a.destroy()
 
+
 def test_inherited_properties():
     a = App()
     inherited_properties_test(a, lambda: ButtonGroup(a, ["foo", "bar"]), True)
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -264,16 +297,17 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
-    
-    w = ButtonGroup(a, grid=[1,2])
+
+    w = ButtonGroup(a, grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
-    
-    ws = ButtonGroup(a, grid=[1,2,3,4])
+
+    ws = ButtonGroup(a, grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = ButtonGroup(a, grid=[1,2], align="top")
+    wa = ButtonGroup(a, grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
-    
+
     a.destroy()

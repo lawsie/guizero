@@ -5,24 +5,27 @@ from tkinter import TclError
 
 class ScheduleMixin:
     _callback = {}
-    def after(self, time, function, args = []):
+
+    def after(self, time, function, args=[]):
         """Call `function` after `time` milliseconds."""
         callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
         self._callback[function] = [callback_id, False]
 
-    def repeat(self, time, function, args = []):
+    def repeat(self, time, function, args=[]):
         """Repeat `function` every `time` milliseconds."""
         callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
         self._callback[function] = [callback_id, True]
 
-    def cancel(self, function):
+    def cancel(self, function, warn=True):
         """Cancel the scheduled `function` calls."""
         if function in self._callback.keys():
             callback_id = self._callback[function][0]
             self.tk.after_cancel(callback_id)
             self._callback.pop(function)
-        else:
-            utils.error_format("Could not cancel function - it doesnt exist, it may have already run")
+        elif warn:
+            utils.error_format(
+                "Could not cancel function - it doesnt exist, it may have already run"
+            )
 
     def _call_wrapper(self, time, function, *args):
         """Fired by tk.after, gets the callback and either executes the function and cancels or repeats"""
@@ -30,7 +33,9 @@ class ScheduleMixin:
             repeat = self._callback[function][1]
             if repeat:
                 # setup the call back again and update the id
-                callback_id = self.tk.after(time, self._call_wrapper, time, function, *args)
+                callback_id = self.tk.after(
+                    time, self._call_wrapper, time, function, *args
+                )
                 self._callback[function][0] = callback_id
             else:
                 # remove it from the call back dictionary
@@ -135,7 +140,7 @@ class TextMixin:
 
         if font is None:
             # get the font from the default font
-            default_font = TextMixin.get_tk_font(widget, default = True)
+            default_font = TextMixin.get_tk_font(widget, default=True)
             font = default_font["family"]
 
         kw_list = [font, f["size"], f["weight"], f["slant"]]
@@ -143,7 +148,7 @@ class TextMixin:
             kw_list.append("underline")
         if f["overstrike"]:
             kw_list.append("overstrike")
-        
+
         widget._set_tk_config("font", tuple(kw_list))
 
     @staticmethod
@@ -159,7 +164,7 @@ class TextMixin:
             # get the size from the default font
             default_font = TextMixin.get_tk_font(widget, default=True)
             size = default_font["size"]
-        
+
         kw_list = [f["family"], size, f["weight"], f["slant"]]
         if f["underline"]:
             kw_list.append("underline")
@@ -172,7 +177,7 @@ class TextMixin:
     def get_text_bold(widget):
         f = TextMixin.get_tk_font(widget)
         return True if f["weight"] == BOLD else False
-    
+
     @staticmethod
     def set_text_bold(widget, bold):
         f = TextMixin.get_tk_font(widget)
@@ -187,14 +192,14 @@ class TextMixin:
             kw_list.append("underline")
         if f["overstrike"]:
             kw_list.append("overstrike")
-        
+
         widget._set_tk_config("font", tuple(kw_list))
 
     @staticmethod
     def get_text_italic(widget):
         f = TextMixin.get_tk_font(widget)
         return True if f["slant"] == ITALIC else False
-    
+
     @staticmethod
     def set_text_italic(widget, italic):
         f = TextMixin.get_tk_font(widget)
@@ -216,7 +221,7 @@ class TextMixin:
     def get_text_underline(widget):
         f = TextMixin.get_tk_font(widget)
         return f["underline"]
-    
+
     @staticmethod
     def set_text_underline(widget, underline):
         f = TextMixin.get_tk_font(widget)
@@ -236,7 +241,7 @@ class TextMixin:
     def get_text_overstrike(widget):
         f = TextMixin.get_tk_font(widget)
         return f["overstrike"]
-    
+
     @staticmethod
     def set_text_overstrike(widget, overstrike):
         f = TextMixin.get_tk_font(widget)
@@ -264,7 +269,7 @@ class TextMixin:
     @text_color.setter
     def text_color(self, color):
         TextMixin.set_text_color(self, color)
-        
+
     # Get the current font as a string
     @property
     def font(self):
@@ -433,18 +438,36 @@ class LayoutMixin:
         if self.master.layout == "grid":
             # validate the grid
             if grid is None:
-                utils.error_format("{} will not be displayed because it has a missing grid reference.".format(self.description))
+                utils.error_format(
+                    "{} will not be displayed because it has a missing grid reference.".format(
+                        self.description
+                    )
+                )
             elif not isinstance(grid, (list, tuple)):
-                utils.error_format("{} will not be displayed because the grid reference is not a list or tuple.".format(self.description))
+                utils.error_format(
+                    "{} will not be displayed because the grid reference is not a list or tuple.".format(
+                        self.description
+                    )
+                )
             # Can have 2 values (just coords) or 4 values (coords and col/rowspan)
-            elif (len(grid) != 2 and len(grid) != 4):
-                utils.error_format("{} will not be displayed because the grid reference should be either grid=[x, y] or grid=[x, y, columnspan, rowspan].".format(self.description))
+            elif len(grid) != 2 and len(grid) != 4:
+                utils.error_format(
+                    "{} will not be displayed because the grid reference should be either grid=[x, y] or grid=[x, y, columnspan, rowspan].".format(
+                        self.description
+                    )
+                )
             else:
                 # convert the grid to a trackable list
-                self._grid = utils.TriggeredList(grid, on_change=self.master.display_widgets)
+                self._grid = utils.TriggeredList(
+                    grid, on_change=self.master.display_widgets
+                )
         else:
             if grid is not None:
-                utils.error_format("A grid is not required for {} as it is not using a 'grid' layout.".format(self.description))
+                utils.error_format(
+                    "A grid is not required for {} as it is not using a 'grid' layout.".format(
+                        self.description
+                    )
+                )
 
     @property
     def align(self):
@@ -467,10 +490,11 @@ class LayoutMixin:
             if align in ["top", "bottom", "left", "right"]:
                 self._align = align
             else:
-                utils.error_format("Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
-                    align,
-                    self.description
-                ))
+                utils.error_format(
+                    "Invalid align value ('{}') for {}\nShould be: top, bottom, left or right".format(
+                        align, self.description
+                    )
+                )
 
 
 class EventsMixin:
@@ -543,7 +567,9 @@ class EventsMixin:
 
     @when_right_button_released.setter
     def when_right_button_released(self, value):
-        self.events.set_event("<when_right_button_released>", "<ButtonRelease-3>", value)
+        self.events.set_event(
+            "<when_right_button_released>", "<ButtonRelease-3>", value
+        )
 
     @property
     def when_key_pressed(self):

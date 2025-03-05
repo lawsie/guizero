@@ -9,6 +9,7 @@ from tkinter import Spinbox
 SUITABLE_FONTS = ["Times New Roman", "Liberation Serif", "Impact", "FreeSans"]
 TEST_FONT = None
 from tkinter import Tk, font
+
 root = Tk()
 available_fonts = font.families()
 root.destroy()
@@ -21,32 +22,64 @@ for suitable_font in SUITABLE_FONTS:
 if TEST_FONT is None:
     pytest.exit("A suitable test font could not be found.")
 
+
 def schedule_after_test(app, widget):
     callback_event = Event()
+
     def callback():
         callback_event.set()
+
     assert not callback_event.is_set()
     widget.after(0, callback)
     # call tk to update the app
     app.tk.update()
     assert callback_event.is_set()
-    #widget.cancel(callback)
+    # widget.cancel(callback)
+
 
 def schedule_repeat_test(app, widget):
     callback_event = Event()
+
     def callback():
         callback_event.set()
         widget.cancel(callback)
+
     assert not callback_event.is_set()
     widget.repeat(0, callback)
     # call tk to update the app
     app.tk.update()
     assert callback_event.is_set()
 
+
+def cancel_with_warn(capsys, widget):
+    callback_event = Event()
+
+    def callback():
+        callback_event.set()
+
+    assert not callback_event.is_set()
+    widget.cancel(callback, warn=True)
+    captured = capsys.readouterr()
+    assert "Could not cancel function" in captured.out
+
+
+def cancel_no_warn(capsys, widget):
+    callback_event = Event()
+
+    def callback():
+        callback_event.set()
+
+    assert not callback_event.is_set()
+    widget.cancel(callback, warn=False)
+    captured = capsys.readouterr()
+    assert "Could not cancel function" not in captured.out
+
+
 def destroy_test(widget):
     assert widget.tk.winfo_exists()
     widget.destroy()
     assert not widget.tk.winfo_exists()
+
 
 def enable_test(widget):
     assert widget.enabled
@@ -59,6 +92,7 @@ def enable_test(widget):
     widget.enable()
     assert widget.enabled
 
+
 # doesn't work under pytest, app always returns None from focus_get() run
 # direct from Python it works fine.
 def focus_test(app, widget):
@@ -69,6 +103,7 @@ def focus_test(app, widget):
     widget.focus()
     app.tk.update()
     assert app.tk.focus_get() == widget.tk
+
 
 def display_test(widget):
     assert widget.visible
@@ -81,6 +116,7 @@ def display_test(widget):
     widget.show()
     assert widget.visible
 
+
 def color_test(widget):
     default = widget.bg
     widget.bg = "red"
@@ -91,6 +127,7 @@ def color_test(widget):
     assert widget.bg == "#ff0000"
     widget.bg = None
     assert widget.bg == default
+
 
 def size_pixel_test(widget):
     default = widget.width
@@ -105,6 +142,7 @@ def size_pixel_test(widget):
     widget.height = None
     assert widget.height == default
 
+
 def size_text_test(widget):
     default = widget.width
     widget.width = 30
@@ -118,6 +156,7 @@ def size_text_test(widget):
     widget.height = None
     assert widget.height == default
 
+
 def size_fill_test(widget):
     default = widget.width
     widget.width = "fill"
@@ -130,6 +169,7 @@ def size_fill_test(widget):
     assert widget.height == "fill"
     widget.height = None
     assert widget.height == default
+
 
 def text_test(widget):
     default = widget.font
@@ -178,6 +218,7 @@ def text_test(widget):
     widget.text_overstrike = None
     assert widget.text_overstrike == default
 
+
 def events_test(widget):
 
     events_to_test = (
@@ -195,10 +236,12 @@ def events_test(widget):
     )
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
     callback_with_param_event = Event()
+
     def callback_with_param(e):
         assert e.widget == widget
         assert e.key == "A"
@@ -236,6 +279,7 @@ def events_test(widget):
         assert not callback_event.is_set()
         assert not callback_with_param_event.is_set()
 
+
 def mock_event(widget, ref, key, x, y, display_x, display_y, width, height, keycode):
     # you cant invoke a tk event so we will mock it
     # create a mock event
@@ -257,6 +301,7 @@ def mock_event(widget, ref, key, x, y, display_x, display_y, width, height, keyc
     # call the event callback
     event_callback._event_callback(tk_event)
 
+
 def cascaded_properties_test(container, widget, text):
     container.bg = "red"
     container.enabled = False
@@ -276,6 +321,7 @@ def cascaded_properties_test(container, widget, text):
         assert widget.text_underline == True
         container.text_overstrike = True
         assert widget.text_overstrike == True
+
 
 def inherited_properties_test(container, widget_create, text):
     container.bg = "red"
@@ -299,6 +345,7 @@ def inherited_properties_test(container, widget_create, text):
         assert w.text_italic == True
         assert w.text_underline == True
         assert w.text_overstrike == True
+
 
 def cascading_enable_test(container):
 
@@ -325,8 +372,18 @@ def cascading_enable_test(container):
     assert container.enabled
     check_children(container, True)
 
+
 def cascading_properties_test(container):
-    t = Text(container, color=None, size=None, font=None, bold=None, italic=None, underline=None, overstrike=None)
+    t = Text(
+        container,
+        color=None,
+        size=None,
+        font=None,
+        bold=None,
+        italic=None,
+        underline=None,
+        overstrike=None,
+    )
     p = Picture(container)
 
     container.bg = "red"
@@ -363,6 +420,7 @@ def cascading_properties_test(container):
     container.bg = "green"
     assert t.bg == "green"
 
+
 def inheriting_properties_test(container):
     container.bg = "red"
     container.text_color = "purple"
@@ -377,7 +435,16 @@ def inheriting_properties_test(container):
     if not isinstance(container, TitleBox):
         container.text_overstrike = True
 
-    t = Text(container, color=None, size=None, font=None, bold=None, italic=None, underline=None, overstrike=None)
+    t = Text(
+        container,
+        color=None,
+        size=None,
+        font=None,
+        bold=None,
+        italic=None,
+        underline=None,
+        overstrike=None,
+    )
     assert t.bg == "red"
     assert t.text_color == "purple"
     assert t.text_size == 16
@@ -395,6 +462,7 @@ def inheriting_properties_test(container):
     assert p.bg == "red"
     assert not p.enabled
 
+
 def full_screen_test(window):
     assert window.full_screen == False
     window.full_screen = True
@@ -405,6 +473,7 @@ def full_screen_test(window):
     assert window.full_screen == True
     window.exit_full_screen()
     assert window.full_screen == False
+
 
 def add_tk_widget_test(container):
     s = Spinbox(from_=0, to=10)
@@ -417,9 +486,11 @@ def add_tk_widget_test(container):
     assert sw.visible
     assert sw.width is None
     assert sw.height is None
-    
+
     s2 = Spinbox(from_=0, to=10)
-    sw = container.add_tk_widget(s2, align="left", visible=False, enabled=False, width="fill", height="fill")
+    sw = container.add_tk_widget(
+        s2, align="left", visible=False, enabled=False, width="fill", height="fill"
+    )
     assert s is not None
     assert sw is not None
     assert sw.align == "left"
@@ -428,8 +499,9 @@ def add_tk_widget_test(container):
     assert sw.width == "fill"
     assert sw.height == "fill"
 
+
 def auto_layout_test(widget, align):
-    
+
     assert widget.master.layout == "auto"
     side = "top" if align is None else align
     assert widget.tk.pack_info()["side"] == side
@@ -445,6 +517,7 @@ def auto_layout_test(widget, align):
 
     widget.align = "bottom"
     assert widget.tk.pack_info()["side"] == "bottom"
+
 
 def grid_layout_test(widget, x, y, col_span, row_span, align):
 
@@ -467,14 +540,14 @@ def grid_layout_test(widget, x, y, col_span, row_span, align):
     assert int(widget.tk.grid_info()["rowspan"]) == row_span
     assert widget.tk.grid_info()["sticky"] == sticky[align]
 
-    widget.grid = [5,6]
+    widget.grid = [5, 6]
     assert int(widget.tk.grid_info()["column"]) == 5
     assert int(widget.tk.grid_info()["row"]) == 6
     assert int(widget.tk.grid_info()["columnspan"]) == 1
     assert int(widget.tk.grid_info()["rowspan"]) == 1
     assert widget.tk.grid_info()["sticky"] == sticky[align]
 
-    widget.grid = (7,8)
+    widget.grid = (7, 8)
     assert int(widget.tk.grid_info()["column"]) == 7
     assert int(widget.tk.grid_info()["row"]) == 8
     assert int(widget.tk.grid_info()["columnspan"]) == 1
@@ -492,6 +565,7 @@ def grid_layout_test(widget, x, y, col_span, row_span, align):
     # change align
     widget.align = "left"
     assert widget.tk.grid_info()["sticky"] == sticky["left"]
+
 
 def icon_test(widget, file_name):
     widget.icon = file_name
