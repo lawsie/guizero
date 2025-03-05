@@ -37,7 +37,7 @@ twine upload dist/* --skip-existing
 Build:
 
 ```
-cd guizero/docs
+cd guizero
 mkdocs build
 ```
 
