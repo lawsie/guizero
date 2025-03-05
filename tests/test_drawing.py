@@ -10,8 +10,19 @@ from common_test import (
     cascaded_properties_test,
     inherited_properties_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+    cancel_no_warn,
+    cancel_with_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    d = Drawing(a)
+    cancel_with_warn(capsys, d)
+    cancel_no_warn(capsys, d)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -24,14 +35,10 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
-    d = Drawing(
-        a,
-        grid = [0,1],
-        align = "top",
-        width = 10,
-        height = 11)
+    a = App(layout="grid")
+    d = Drawing(a, grid=[0, 1], align="top", width=10, height=11)
 
     assert d.grid[0] == 0
     assert d.grid[1] == 1
@@ -40,11 +47,13 @@ def test_alt_values():
     assert d.height == 11
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     d = Drawing(a)
     schedule_after_test(a, d)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
@@ -52,11 +61,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, d)
     a.destroy()
 
+
 def test_destroy():
     a = App()
     d = Drawing(a)
     destroy_test(d)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -64,11 +75,13 @@ def test_enable():
     enable_test(d)
     a.destroy()
 
+
 def test_display():
     a = App()
     d = Drawing(a)
     display_test(d)
     a.destroy()
+
 
 def test_cascaded_properties():
     a = App()
@@ -76,100 +89,114 @@ def test_cascaded_properties():
     cascaded_properties_test(a, d, False)
     a.destroy()
 
+
 def test_inherited_properties():
     a = App()
     inherited_properties_test(a, lambda: Drawing(a), False)
     a.destroy()
 
+
 def test_line():
     a = App()
-    d = Drawing(a)    
-    id = d.line(1,2,3,4)
+    d = Drawing(a)
+    id = d.line(1, 2, 3, 4)
     assert id > 0
     a.destroy()
+
 
 def test_oval():
     a = App()
     d = Drawing(a)
-    id = d.oval(1,2,3,4)
+    id = d.oval(1, 2, 3, 4)
     assert id > 0
     a.destroy()
+
 
 def test_rectangle():
     a = App()
     d = Drawing(a)
-    id = d.rectangle(1,2,3,4)
+    id = d.rectangle(1, 2, 3, 4)
     assert id > 0
     a.destroy()
+
 
 def test_polygon():
     a = App()
     d = Drawing(a)
-    id = d.polygon(1,2,3,4,5,6,7,8)
+    id = d.polygon(1, 2, 3, 4, 5, 6, 7, 8)
     assert id > 0
     a.destroy()
+
 
 def test_triangle():
     a = App()
     d = Drawing(a)
-    id = d.triangle(1,2,3,4,5,6)
+    id = d.triangle(1, 2, 3, 4, 5, 6)
     assert id > 0
     a.destroy()
+
 
 def test_image():
     a = App()
     d = Drawing(a)
-    id = d.image(1,2,"../examples/guizero.gif")
+    id = d.image(1, 2, "../examples/guizero.gif")
     assert id > 0
     a.destroy()
+
 
 def test_text():
     a = App()
     d = Drawing(a)
-    id = d.text(1,2,"foo")
+    id = d.text(1, 2, "foo")
     assert id > 0
     a.destroy()
+
 
 def test_text_bold():
     a = App()
     d = Drawing(a)
-    id = d.text(1,2,"foo", bold=True)
+    id = d.text(1, 2, "foo", bold=True)
     assert id > 0
     a.destroy()
+
 
 def test_text_color():
     a = App()
     d = Drawing(a)
-    id = d.text(1,2,"foo", color="blue")
+    id = d.text(1, 2, "foo", color="blue")
     assert id > 0
     a.destroy()
+
 
 def test_text_italic():
     a = App()
     d = Drawing(a)
-    id = d.text(1,2,"foo", italic=True)
+    id = d.text(1, 2, "foo", italic=True)
     assert id > 0
     a.destroy()
+
 
 def test_text_underline():
     a = App()
     d = Drawing(a)
-    id = d.text(1,2,"foo", underline=True)
+    id = d.text(1, 2, "foo", underline=True)
     assert id > 0
     a.destroy()
+
 
 def test_text_overstrike():
     a = App()
     d = Drawing(a)
-    id = d.text(1,2,"foo", overstrike=True)
+    id = d.text(1, 2, "foo", overstrike=True)
     assert id > 0
     a.destroy()
+
 
 def test_delete():
     a = App()
     d = Drawing(a)
-    id1 = d.line(1,2,3,4)
-    id2 = d.oval(1,2,3,4)
+    id1 = d.line(1, 2, 3, 4)
+    id2 = d.oval(1, 2, 3, 4)
     assert len(d.tk.find_all()) == 2
     d.delete(id1)
     assert len(d.tk.find_all()) == 1
@@ -177,15 +204,17 @@ def test_delete():
     assert len(d.tk.find_all()) == 0
     a.destroy()
 
+
 def test_clear():
     a = App()
     d = Drawing(a)
-    d.line(1,2,3,4)
-    d.oval(1,2,3,4)
+    d.line(1, 2, 3, 4)
+    d.oval(1, 2, 3, 4)
     assert len(d.tk.find_all()) == 2
     d.clear()
     assert len(d.tk.find_all()) == 0
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -193,16 +222,17 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
-    
-    w = Drawing(a, grid=[1,2])
+
+    w = Drawing(a, grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
-    
-    ws = Drawing(a, grid=[1,2,3,4])
+
+    ws = Drawing(a, grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = Drawing(a, grid=[1,2], align="top")
+    wa = Drawing(a, grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
-    
+
     a.destroy()

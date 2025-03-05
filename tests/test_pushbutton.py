@@ -15,8 +15,19 @@ from common_test import (
     cascaded_properties_test,
     inherited_properties_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+    cancel_with_warn,
+    cancel_no_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    b = PushButton(a)
+    cancel_with_warn(capsys, b)
+    cancel_no_warn(capsys, b)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -28,15 +39,10 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
-    b = PushButton(
-        a,
-        text = "foo",
-        grid = [0,1],
-        align = "top",
-        width = 10,
-        height = 11)
+    a = App(layout="grid")
+    b = PushButton(a, text="foo", grid=[0, 1], align="top", width=10, height=11)
 
     assert b.text == "foo"
     assert b.grid[0] == 0
@@ -46,47 +52,54 @@ def test_alt_values():
     assert b.height == 11
     a.destroy()
 
+
 def test_getters_setters():
     a = App()
-    b = PushButton(a, text = "foo")
+    b = PushButton(a, text="foo")
     assert b.text == "foo"
     b.text = "bar"
     assert b.text == "bar"
     a.destroy()
 
+
 def test_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
-    b = PushButton(a, command = callback)
+    b = PushButton(a, command=callback)
     assert not callback_event.is_set()
     b.tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
 
+
 def test_command_with_args():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert value == "foo"
         callback_event.set()
 
-    b = PushButton(a, command = callback, args = ["foo"])
+    b = PushButton(a, command=callback, args=["foo"])
 
     b.tk.invoke()
     assert callback_event.is_set()
 
     a.destroy()
 
+
 def test_update_command():
     a = App()
 
     callback_event = Event()
+
     def callback():
         callback_event.set()
 
@@ -106,10 +119,12 @@ def test_update_command():
 
     a.destroy()
 
+
 def test_update_command_with_args():
     a = App()
 
     callback_event = Event()
+
     def callback(value):
         assert value == "foo"
         callback_event.set()
@@ -122,6 +137,7 @@ def test_update_command_with_args():
 
     a.destroy()
 
+
 def test_toggle():
     a = App()
     b = PushButton(a)
@@ -132,6 +148,7 @@ def test_toggle():
     assert b.enabled
     a.destroy()
 
+
 def test_picture_gif():
     a = App()
     b = PushButton(a, image="../examples/guizero.gif")
@@ -139,8 +156,8 @@ def test_picture_gif():
     assert b._image.tk_image is not None
     a.destroy()
 
-@pytest.mark.skipif(system_config.PIL_available == False,
-                    reason="PIL not available")
+
+@pytest.mark.skipif(system_config.PIL_available == False, reason="PIL not available")
 def test_picture_jpg():
     a = App()
     b = PushButton(a, image="../examples/guizero.jpg")
@@ -149,8 +166,8 @@ def test_picture_jpg():
     assert b._image.pil_image is not None
     a.destroy()
 
-@pytest.mark.skipif(system_config.PIL_available == False,
-                    reason="PIL not available")
+
+@pytest.mark.skipif(system_config.PIL_available == False, reason="PIL not available")
 def test_animated_picture():
     a = App()
     b = PushButton(a, image="../examples/guizero_flash.gif")
@@ -160,6 +177,7 @@ def test_animated_picture():
     assert b._image.animation
     assert b._image_player.running
     a.destroy()
+
 
 def test_picture_tkobject():
     from tkinter import PhotoImage
@@ -171,8 +189,8 @@ def test_picture_tkobject():
     assert b._image.tk_image is not None
     a.destroy()
 
-@pytest.mark.skipif(system_config.PIL_available == False,
-                    reason="PIL not available")
+
+@pytest.mark.skipif(system_config.PIL_available == False, reason="PIL not available")
 def test_picture_pilobject():
     from PIL import Image
 
@@ -184,11 +202,13 @@ def test_picture_pilobject():
     assert b._image.pil_image is not None
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     b = PushButton(a)
     schedule_after_test(a, b)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
@@ -196,11 +216,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, b)
     a.destroy()
 
+
 def test_destroy():
     a = App()
     b = PushButton(a)
     destroy_test(b)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -208,11 +230,13 @@ def test_enable():
     enable_test(b)
     a.destroy()
 
+
 def test_display():
     a = App()
     b = PushButton(a)
     display_test(b)
     a.destroy()
+
 
 def test_text():
     a = App()
@@ -220,11 +244,13 @@ def test_text():
     text_test(b)
     a.destroy()
 
+
 def test_color():
     a = App()
     b = PushButton(a)
     color_test(b)
     a.destroy()
+
 
 def test_size():
     a = App()
@@ -233,11 +259,13 @@ def test_size():
     size_fill_test(b)
     a.destroy()
 
+
 def test_events():
     a = App()
     p = PushButton(a)
     events_test(p)
     a.destroy()
+
 
 def test_cascaded_properties():
     a = App()
@@ -245,10 +273,12 @@ def test_cascaded_properties():
     cascaded_properties_test(a, p, True)
     a.destroy()
 
+
 def test_inherited_properties():
     a = App()
     inherited_properties_test(a, lambda: PushButton(a), True)
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -256,16 +286,17 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
-    
-    w = PushButton(a, grid=[1,2])
+
+    w = PushButton(a, grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
-    
-    ws = PushButton(a, grid=[1,2,3,4])
+
+    ws = PushButton(a, grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = PushButton(a, grid=[1,2], align="top")
+    wa = PushButton(a, grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
-    
+
     a.destroy()

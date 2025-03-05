@@ -13,8 +13,19 @@ from common_test import (
     inheriting_properties_test,
     add_tk_widget_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+    cancel_no_warn,
+    cancel_with_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    b = Box(a)
+    cancel_with_warn(capsys, b)
+    cancel_no_warn(capsys, b)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -26,9 +37,10 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
-    b = Box(a, layout="grid", grid=[0,1], align="top", width=10, height=11)
+    a = App(layout="grid")
+    b = Box(a, layout="grid", grid=[0, 1], align="top", width=10, height=11)
     assert b.layout == "grid"
     assert b.grid[0] == 0
     assert b.grid[1] == 1
@@ -36,6 +48,7 @@ def test_alt_values():
     assert b.width == 10
     assert b.height == 11
     a.destroy()
+
 
 def test_border():
     a = App()
@@ -68,11 +81,13 @@ def test_after_schedule():
     schedule_after_test(a, b)
     a.destroy()
 
+
 def test_repeat_schedule():
     a = App()
     b = Box(a)
     schedule_repeat_test(a, b)
     a.destroy()
+
 
 def test_destroy():
     a = App()
@@ -80,11 +95,13 @@ def test_destroy():
     destroy_test(b)
     a.destroy()
 
+
 def test_display():
     a = App()
     b = Box(a)
     display_test(b)
     a.destroy()
+
 
 def test_color():
     a = App()
@@ -92,12 +109,14 @@ def test_color():
     color_test(b)
     a.destroy()
 
+
 def test_size():
     a = App()
     b = Box(a)
     size_pixel_test(b)
     size_fill_test(b)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -107,11 +126,13 @@ def test_enable():
     cascading_enable_test(b)
     a.destroy()
 
+
 def test_events():
     a = App()
     b = Box(a)
     events_test(b)
     a.destroy()
+
 
 def test_cascading_properties():
     a = App()
@@ -119,16 +140,19 @@ def test_cascading_properties():
     cascading_properties_test(b)
     a.destroy()
 
+
 def test_inheriting_properties():
     a = App()
     b = Box(a)
     inheriting_properties_test(b)
     a.destroy()
 
+
 def test_add_tk_widget():
     a = App()
     add_tk_widget_test(a)
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -136,16 +160,17 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
-    
-    w = Box(a, grid=[1,2])
+
+    w = Box(a, grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
-    
-    ws = Box(a, grid=[1,2,3,4])
+
+    ws = Box(a, grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = Box(a, grid=[1,2], align="top")
+    wa = Box(a, grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
-    
+
     a.destroy()
