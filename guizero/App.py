@@ -1,4 +1,4 @@
-from tkinter import Tk, Toplevel
+from tkinter import Tk, Toplevel, font
 from .base import BaseWindow
 from . import utilities as utils, system_config
 
@@ -87,3 +87,10 @@ class App(BaseWindow):
         if self == App._main_app:
             App._main_app = None
         self.tk.destroy()
+
+    @property
+    def fonts(self):
+        """
+        Returns a tuple of available fonts ('Courier', 'Public Sans', 'Roman')
+        """
+        return sorted(font.families())

@@ -79,6 +79,7 @@ You can set and get the following properties:
 | enabled         | boolean               | `True` if the app is enabled                                                               |
 | height          | int                   | The height of the window                                                                   |
 | font            | string                | The font that widgets should use                                                           |
+| fonts           | tuple                 | A sorted tuple of the fonts available for this application                                 |
 | full_screen     | boolean               | False                                                                                      |
 | image           | image_source (string) | The file path, tkinter.PhotoImage or PIL.Image you wish to use as the window icon.         |
 | layout          | string                | The layout being used by the App (`"auto"`) or (`"grid"`)                                  |
