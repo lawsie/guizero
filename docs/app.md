@@ -80,7 +80,7 @@ You can set and get the following properties:
 | height          | int                   | The height of the window                                                                   |
 | font            | string                | The font that widgets should use                                                           |
 | full_screen     | boolean               | False                                                                                      |
-| image           | image_source (string) | The file path, tkinter.PhotoImage or PIL.Image you wish to use as the window icon.         |
+| icon            | image_source (string) | The file path, tkinter.PhotoImage or PIL.Image you wish to use as the window icon.         |
 | layout          | string                | The layout being used by the App (`"auto"`) or (`"grid"`)                                  |
 | title           | string                | The title of the window                                                                    |
 | text_size       | int                   | The size of the text widgets should use                                                    |
