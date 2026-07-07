@@ -945,5 +945,5 @@ class ContainerTextWidget(ContainerWidget):
 
     @text_overstrike.setter
     def text_overstrike(self, overstrike):
-        TextMixin.set_text_underline(self, overstrike)
+        TextMixin.set_text_overstrike(self, overstrike)
         super(ContainerWidget, self.__class__).text_overstrike.fset(self, overstrike)
