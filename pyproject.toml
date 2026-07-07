@@ -40,3 +40,6 @@ images =  ["pillow>=4.3.0"]
 [project.urls]
 Repository = "https://github.com/lawsie/guizero"
 Documentation = "https://lawsie.github.io/guizero/"
+
+[tool.pytest.ini_options]
+addopts = "--capture=sys"
