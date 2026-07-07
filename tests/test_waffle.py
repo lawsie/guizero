@@ -115,6 +115,19 @@ def test_pixel_getters_setters():
     assert pixel.color == w.color
     assert pixel.dotty == w.dotty
 
+    # canvas_x/canvas_y are the top-left pixel position on the canvas,
+    # offset by column/row * (pixel size + padding), plus the initial pad
+    assert pixel.canvas_x == w.pad + (pixel.x * (w.pixel_size + w.pad))
+    assert pixel.canvas_y == w.pad + (pixel.y * (w.pixel_size + w.pad))
+
+    # a second pixel with x and y swapped relative to the first, to catch
+    # canvas_x/canvas_y being confused with one another
+    pixel2 = w[1,0]
+    assert pixel2.canvas_x == w.pad + (pixel2.x * (w.pixel_size + w.pad))
+    assert pixel2.canvas_y == w.pad + (pixel2.y * (w.pixel_size + w.pad))
+    assert pixel.canvas_x != pixel2.canvas_x
+    assert pixel.canvas_y != pixel2.canvas_y
+
     pixel.color = "red"
     assert pixel.color == "red"
 
