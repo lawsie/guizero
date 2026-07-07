@@ -75,7 +75,7 @@ class PushButton(TextWidget):
         """
 
         self._value = 0
-        self._image_source = icon
+        self._image_source = icon   # Deliberate - deprecated parameter
         self._image_source = image
         self._image = None
         self._image_height = None

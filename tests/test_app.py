@@ -102,6 +102,19 @@ def test_when_resized():
     a.resize(505, 506)
     assert not resize_event.wait(0.1)
 
+    # resize so that only the width changes, and the new width equals
+    # the previous height - this catches a bug where the widget's
+    # actual width was mistakenly tracked using the configure event's
+    # height, which masked width-only changes like this one
+    a.when_resized = callback
+    a.resize(300, 200)
+    assert resize_event.wait(1)
+    resize_event.clear()
+
+    a.resize(200, 200)
+    assert resize_event.wait(1)
+    resize_event.clear()
+
     a.destroy()
 
 def test_cascading_properties():

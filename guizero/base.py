@@ -197,7 +197,7 @@ class Component(
             if self._actual_height != event.tk_event.height or self._actual_width != event.tk_event.width: 
 
                 self._actual_height = event.tk_event.height
-                self._actual_width = event.tk_event.height
+                self._actual_width = event.tk_event.width
 
                 # call the resize event
                 if self._when_resized is not None:
