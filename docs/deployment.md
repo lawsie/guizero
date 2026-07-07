@@ -15,7 +15,7 @@ Install locally:
 
 ```
 cd guizero
-python setup.py install
+pip install .
 ```
 
 Build for deployment:

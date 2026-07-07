@@ -2,7 +2,7 @@ import pytest
 from threading import Event
 from time import sleep
 from unittest.mock import MagicMock
-from guizero import Text, Picture, TitleBox
+from guizero import Text, Picture
 from tkinter import Spinbox
 
 # find a suitable font to test with
@@ -337,10 +337,7 @@ def cascading_properties_test(container):
     container.text_underline = True
     container.font = TEST_FONT
     container.enabled = False
-
-    # Titleboxes cannot be overstruck, it underlines...
-    if not isinstance(container, TitleBox):
-        container.text_overstrike = True
+    container.text_overstrike = True
 
     assert t.bg == "red"
     assert t.text_color == "purple"
@@ -350,10 +347,7 @@ def cascading_properties_test(container):
     assert t.text_underline == True
     assert t.font == TEST_FONT
     assert t.enabled == False
-
-    # Titleboxes cannot be overstruck, it underlines...
-    if not isinstance(container, TitleBox):
-        assert t.text_overstrike == True
+    assert t.text_overstrike == True
 
     assert p.bg == "red"
     assert p.enabled == False
@@ -372,10 +366,7 @@ def inheriting_properties_test(container):
     container.text_underline = True
     container.font = TEST_FONT
     container.enabled = False
-
-    # Titleboxes cannot be overstruck, it underlines...
-    if not isinstance(container, TitleBox):
-        container.text_overstrike = True
+    container.text_overstrike = True
 
     t = Text(container, color=None, size=None, font=None, bold=None, italic=None, underline=None, overstrike=None)
     assert t.bg == "red"
@@ -386,10 +377,7 @@ def inheriting_properties_test(container):
     assert t.text_underline == True
     assert t.font == TEST_FONT
     assert not t.enabled
-
-    # Titleboxes cannot be overstruck, it underlines...
-    if not isinstance(container, TitleBox):
-        assert t.text_overstrike == True
+    assert t.text_overstrike == True
 
     p = Picture(container)
     assert p.bg == "red"

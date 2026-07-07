@@ -1,8 +1,4 @@
-# this is to cater for Python 2, is it really needed?
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
+from inspect import getfullargspec
 
 try:
     from PIL import Image, ImageTk

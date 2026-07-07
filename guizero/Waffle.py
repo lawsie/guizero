@@ -337,7 +337,7 @@ class WafflePixel:
 
     @property
     def canvas_y(self):
-        return self._canvas_x
+        return self._canvas_y
 
     @property
     def size(self):
