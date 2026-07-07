@@ -12,7 +12,6 @@ __init__(
     padx=10,
     grid=None,
     align=None,
-    icon=None,
     visible=True,
     enabled=None,
     width=None,

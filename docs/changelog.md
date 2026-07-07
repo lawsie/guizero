@@ -1,5 +1,8 @@
 # guizero
 
+## Unreleased
+- **Breaking:** removed the `icon` constructor argument from [PushButton](pushbutton.md), deprecated since 2018 in favour of `image` and non-functional (silently ignored) for several releases. Use `image` instead.
+
 ## 1.6.0 - 2025-01-10
 - Add example for how to set box borders
 - Add pyproject.toml to enable building with `build` module instead of `setup.py`
