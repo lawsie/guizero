@@ -26,7 +26,7 @@ class PushButton(TextWidget):
             The Container (App, Box, etc) the Picture will belong to.
 
         :param Callable command:
-            A string containing the image to display, defaults to `None`.
+            The function to call when the button is pressed.
 
         :param List args:
             A list of arguments to pass to the command. Defaults to `None`.
