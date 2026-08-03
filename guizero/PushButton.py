@@ -14,7 +14,6 @@ class PushButton(TextWidget):
         padx=10,
         grid=None,
         align=None,
-        icon=None,
         visible=True,
         enabled=None,
         width=None,
@@ -27,7 +26,7 @@ class PushButton(TextWidget):
             The Container (App, Box, etc) the Picture will belong to.
 
         :param Callable command:
-            A string containing the image to display, defaults to `None`.
+            The function to call when the button is pressed.
 
         :param List args:
             A list of arguments to pass to the command. Defaults to `None`.
@@ -53,11 +52,6 @@ class PushButton(TextWidget):
         :param string align:
             How to align the widget within the grid, defaults to None.
 
-        :param string icon:
-            A string containing the image to display, defaults to `None`.
-            If an image is specified, this overrides any text set to display
-            on the button. (DEPRECATED)
-
         :param bool visible:
             If the widget should be visible, defaults to `True`.
 
@@ -75,7 +69,6 @@ class PushButton(TextWidget):
         """
 
         self._value = 0
-        self._image_source = icon
         self._image_source = image
         self._image = None
         self._image_height = None
