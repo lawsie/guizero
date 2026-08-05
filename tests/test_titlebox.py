@@ -14,8 +14,19 @@ from common_test import (
     inheriting_properties_test,
     add_tk_widget_test,
     grid_layout_test,
-    auto_layout_test
-    )
+    auto_layout_test,
+    cancel_with_warn,
+    cancel_no_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    b = TitleBox(a, "title")
+    cancel_with_warn(capsys, b)
+    cancel_no_warn(capsys, b)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -28,9 +39,19 @@ def test_default_values():
     assert b.border == 2
     a.destroy()
 
+
 def test_alt_values():
-    a = App(layout = "grid")
-    b = TitleBox(a, "title", layout="grid", grid=[0,1], align="top", width=10, height=11, border=0)
+    a = App(layout="grid")
+    b = TitleBox(
+        a,
+        "title",
+        layout="grid",
+        grid=[0, 1],
+        align="top",
+        width=10,
+        height=11,
+        border=0,
+    )
     assert b.layout == "grid"
     assert b.grid[0] == 0
     assert b.grid[1] == 1
@@ -39,6 +60,7 @@ def test_alt_values():
     assert b.height == 11
     assert b.border == 0
     a.destroy()
+
 
 def test_border():
     a = App()
@@ -56,11 +78,13 @@ def test_border():
 
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     b = TitleBox(a, "title")
     schedule_after_test(a, b)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
@@ -68,11 +92,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, b)
     a.destroy()
 
+
 def test_destroy():
     a = App()
     b = TitleBox(a, "title")
     destroy_test(b)
     a.destroy()
+
 
 def test_display():
     a = App()
@@ -80,11 +106,13 @@ def test_display():
     display_test(b)
     a.destroy()
 
+
 def test_color():
     a = App()
     b = TitleBox(a, "title")
     color_test(b)
     a.destroy()
+
 
 def test_size():
     a = App()
@@ -92,6 +120,7 @@ def test_size():
     size_pixel_test(b)
     size_fill_test(b)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -101,11 +130,13 @@ def test_enable():
     cascading_enable_test(b)
     a.destroy()
 
+
 def test_events():
     a = App()
     b = TitleBox(a, "title")
     events_test(b)
     a.destroy()
+
 
 def test_cascading_properties():
     a = App()
@@ -113,16 +144,19 @@ def test_cascading_properties():
     cascading_properties_test(b)
     a.destroy()
 
+
 def test_inheriting_properties():
     a = App()
     b = TitleBox(a, "title")
     inheriting_properties_test(b)
     a.destroy()
 
+
 def test_add_tk_widget():
     a = App()
     add_tk_widget_test(a)
     a.destroy()
+
 
 def test_auto_layout():
     a = App()
@@ -130,16 +164,17 @@ def test_auto_layout():
     auto_layout_test(w, None)
     a.destroy()
 
+
 def test_grid_layout():
     a = App(layout="grid")
 
-    w = TitleBox(a, "title", grid=[1,2])
+    w = TitleBox(a, "title", grid=[1, 2])
     grid_layout_test(w, 1, 2, 1, 1, None)
 
-    ws = TitleBox(a, "title", grid=[1,2,3,4])
+    ws = TitleBox(a, "title", grid=[1, 2, 3, 4])
     grid_layout_test(ws, 1, 2, 3, 4, None)
 
-    wa = TitleBox(a, "title", grid=[1,2], align="top")
+    wa = TitleBox(a, "title", grid=[1, 2], align="top")
     grid_layout_test(wa, 1, 2, 1, 1, "top")
 
     a.destroy()

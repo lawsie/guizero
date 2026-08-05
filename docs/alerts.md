@@ -144,7 +144,7 @@ app.display()
 
 ![question popup](images/question_windows.png)
 
-** Example: Get a file name**
+**Example: Get a file name**
 
 Ask the user to select a file using the `select_file` pop-up.
 
@@ -178,7 +178,7 @@ file_name.value = app.select_file(save=True)
 
 ![select save file popup](images/select_file_save_windows.png)
 
-** Example: Get a folder name**
+**Example: Get a folder name**
 
 Select a folder using the `select_folder` pop-up.
 

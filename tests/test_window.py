@@ -11,8 +11,19 @@ from common_test import (
     inheriting_properties_test,
     full_screen_test,
     add_tk_widget_test,
-    icon_test
-    )
+    icon_test,
+    cancel_with_warn,
+    cancel_no_warn,
+)
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    w = Window(a)
+    cancel_with_warn(capsys, w)
+    cancel_no_warn(capsys, w)
+    a.destroy()
+
 
 def test_default_values():
     a = App()
@@ -24,14 +35,16 @@ def test_default_values():
     assert a.description > ""
     a.destroy()
 
+
 def test_alt_values():
     a = App()
-    w = Window(a, title = "foo", width = 666, height = 666, layout="grid")
+    w = Window(a, title="foo", width=666, height=666, layout="grid")
     assert w.title == "foo"
     assert w.width == 666
     assert w.height == 666
     assert w.layout == "grid"
     a.destroy()
+
 
 def test_getters_setters():
     a = App()
@@ -46,6 +59,7 @@ def test_getters_setters():
     assert w.width == 666
     a.destroy()
 
+
 def test_update():
     a = App()
     w = Window(a)
@@ -53,11 +67,13 @@ def test_update():
     w.update()
     a.destroy()
 
+
 def test_after_schedule():
     a = App()
     w = Window(a)
     schedule_after_test(a, w)
     a.destroy()
+
 
 def test_repeat_schedule():
     a = App()
@@ -65,11 +81,13 @@ def test_repeat_schedule():
     schedule_repeat_test(a, w)
     a.destroy()
 
+
 def test_display():
     a = App()
     w = Window(a)
     display_test(w)
     a.destroy()
+
 
 def test_enable():
     a = App()
@@ -79,11 +97,13 @@ def test_enable():
     cascading_enable_test(w)
     a.destroy()
 
+
 def test_events():
     a = App()
     w = Window(a)
     events_test(w)
     a.destroy()
+
 
 def test_cascading_properties():
     a = App()
@@ -91,11 +111,13 @@ def test_cascading_properties():
     cascading_properties_test(w)
     a.destroy()
 
+
 def test_inheriting_properties():
     a = App()
     w = Window(a)
     inheriting_properties_test(w)
     a.destroy()
+
 
 def test_full_screen():
     a = App()
@@ -103,10 +125,12 @@ def test_full_screen():
     full_screen_test(w)
     a.destroy()
 
+
 def test_add_tk_widget():
     a = App()
     add_tk_widget_test(a)
     a.destroy()
+
 
 def test_icon():
     a = App()
@@ -114,8 +138,8 @@ def test_icon():
     icon_test(w, "../examples/guizero.gif")
     a.destroy()
 
-@pytest.mark.skipif(system_config.PIL_available == False,
-                    reason="PIL not available")
+
+@pytest.mark.skipif(system_config.PIL_available == False, reason="PIL not available")
 def test_icon_jpg():
     a = App()
     w = Window(a)

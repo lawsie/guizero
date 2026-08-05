@@ -13,7 +13,17 @@ from common_test import (
     inherited_properties_test,
     grid_layout_test,
     auto_layout_test,
+    cancel_no_warn,
+    cancel_with_warn,
 )
+
+
+def test_cancel_callback(capsys):
+    a = App()
+    p = Picture(a)
+    cancel_with_warn(capsys, p)
+    cancel_no_warn(capsys, p)
+    a.destroy()
 
 
 def test_default_values():
